@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">云合未来一体化系统</string>
+
+    <string name="sign_in">登录</string>
+    <string name="login_title">请登录</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="system">系统</string>
+    <string name="company">公司</string>
+
+    <string-array name="system">
+        <item>云合未来财务系统</item>
+        <item>云合人事管理系统</item>
+        <item>云合未来进销存系统</item>
+        <item>云合分权编辑系统</item>
+        <item>云合卡管理系统</item>
+        <item>云和排产管理系统</item>
+        <item>云合教务管理系统</item>
+    </string-array>
+
+
+</resources>
