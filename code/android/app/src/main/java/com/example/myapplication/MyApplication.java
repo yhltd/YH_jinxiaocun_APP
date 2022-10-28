@@ -10,6 +10,8 @@ import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 public class MyApplication extends Application {
     private YhJinXiaoCunUser yhJinXiaoCunUser;
 
+
+
     public YhJinXiaoCunUser getYhJinXiaoCunUser() {
         return yhJinXiaoCunUser;
     }

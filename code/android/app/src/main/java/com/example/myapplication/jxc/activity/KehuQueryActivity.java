@@ -3,6 +3,7 @@ package com.example.myapplication.jxc.activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
@@ -38,9 +40,15 @@ public class KehuQueryActivity extends AppCompatActivity {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState)  {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kehu_query);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         //初始化控件
         kehu_spinner = findViewById(R.id.kehu_spinner);
@@ -52,6 +60,15 @@ public class KehuQueryActivity extends AppCompatActivity {
         initList();
         kehu_spinner.setOnItemSelectedListener(new kehuItemSelectedListener());
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initList() {
@@ -73,7 +90,7 @@ public class KehuQueryActivity extends AppCompatActivity {
                 try {
                     yhJinXiaoCunMingXiService = new YhJinXiaoCunMingXiService();
                     List<String> list = yhJinXiaoCunMingXiService.getKehu(yhJinXiaoCunUser.getGongsi());
-                    adapter = new ArrayAdapter<String>(KehuQueryActivity.this, android.R.layout.simple_spinner_item, list);
+                    adapter = new ArrayAdapter<String>(KehuQueryActivity.this, android.R.layout.simple_spinner_dropdown_item, list);
                     if (list.size() > 0) {
                         msg.obj = adapter;
                     } else {
@@ -124,7 +141,7 @@ public class KehuQueryActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    SimpleAdapter adapter = new SimpleAdapter(KehuQueryActivity.this, data, R.layout.kehu_query_row, new String[]{"kehu", "spDm", "cpname", "cplb", "ruku_price", "ruku_num", "ruku_price"}, new int[]{R.id.kehu, R.id.spDm, R.id.cpname, R.id.cplb, R.id.ruku_num, R.id.ruku_price}) {
+                    SimpleAdapter adapter = new SimpleAdapter(KehuQueryActivity.this, data, R.layout.kehu_query_row, new String[]{"kehu", "spDm", "cpname", "cplb", "ruku_num", "ruku_price"}, new int[]{R.id.kehu, R.id.spDm, R.id.cpname, R.id.cplb, R.id.ruku_num, R.id.ruku_price}) {
                         @Override
                         public View getView(int position, View convertView, ViewGroup parent) {
                             final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);

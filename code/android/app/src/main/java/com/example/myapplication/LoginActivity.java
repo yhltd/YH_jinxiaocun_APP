@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         //建立数据源
         String[] systemArray = getResources().getStringArray(R.array.system);
         //建立Adapter并且绑定数据源
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, systemArray);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, systemArray);
         system.setAdapter(adapter);
 
         system.setOnItemSelectedListener(new systemItemSelectedListener());
@@ -71,7 +71,6 @@ public class LoginActivity extends AppCompatActivity {
                 public boolean handleMessage(@NonNull Message msg) {
                     if (msg.obj != null) {
                         company.setAdapter((SpinnerAdapter) msg.obj);
-//                        ToastUtil.show(LoginActivity.this, "成功！！！！！！！！！", 5000);
                     }
                     return true;
                 }
@@ -86,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             yhJinXiaoCunUserService = new YhJinXiaoCunUserService();
                             List<String> list = yhJinXiaoCunUserService.getCompany();
-                            adapter = new ArrayAdapter<String>(LoginActivity.this, android.R.layout.simple_spinner_item, list);
+                            adapter = new ArrayAdapter<String>(LoginActivity.this, android.R.layout.simple_spinner_dropdown_item, list);
                             if (list.size() > 0) {
                                 msg.obj = adapter;
                             } else {
@@ -135,14 +134,15 @@ public class LoginActivity extends AppCompatActivity {
                         if (msg.obj != null) {
                             if (systemText.equals("云合未来进销存系统")) {
                                 YhJinXiaoCunUser user = (YhJinXiaoCunUser) msg.obj;
-
-                                MyApplication application = (MyApplication) getApplicationContext();
-                                application.setYhJinXiaoCunUser(user);
-
-                                ToastUtil.show(LoginActivity.this, "登录成功");
-
-                            Intent intent = new Intent(LoginActivity.this,JxcActivity.class);
-                            startActivity(intent);
+                                if(user.getBtype().equals("正常")){
+                                    MyApplication application = (MyApplication) getApplicationContext();
+                                    application.setYhJinXiaoCunUser(user);
+                                    ToastUtil.show(LoginActivity.this, "登录成功");
+                                    Intent intent = new Intent(LoginActivity.this,JxcActivity.class);
+                                    startActivity(intent);
+                                }else{
+                                    ToastUtil.show(LoginActivity.this, "账号已被禁用");
+                                }
                             }
                         } else {
                             ToastUtil.show(LoginActivity.this, "用户名密码错误");

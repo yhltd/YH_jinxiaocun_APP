@@ -2,18 +2,16 @@ package com.example.myapplication.jxc.entity;
 
 public class YhJinXiaoCunUser {
     private String _id;
-    private String AdminIS;
-    private String Btype;
-    private String Createdate;
+    private String adminis;
+    private String btype;
+    private String createdate;
     private String _openid;
     private String gongsi;
-    private String jiagoudaima;
+    private String jigoudaima;
     private String name;
     private String password;
     private String mi_bao;
-    private String C_id;
-
-
+    private String c_id;
 
     public String get_id() {
         return _id;
@@ -23,28 +21,28 @@ public class YhJinXiaoCunUser {
         this._id = _id;
     }
 
-    public String getAdminIS() {
-        return AdminIS;
+    public String getAdminis() {
+        return adminis;
     }
 
-    public void setAdminIS(String adminIS) {
-        AdminIS = adminIS;
+    public void setAdminis(String adminis) {
+        this.adminis = adminis;
     }
 
     public String getBtype() {
-        return Btype;
+        return btype;
     }
 
     public void setBtype(String btype) {
-        Btype = btype;
+        this.btype = btype;
     }
 
     public String getCreatedate() {
-        return Createdate;
+        return createdate;
     }
 
     public void setCreatedate(String createdate) {
-        Createdate = createdate;
+        this.createdate = createdate;
     }
 
     public String get_openid() {
@@ -63,12 +61,12 @@ public class YhJinXiaoCunUser {
         this.gongsi = gongsi;
     }
 
-    public String getJiagoudaima() {
-        return jiagoudaima;
+    public String getJigoudaima() {
+        return jigoudaima;
     }
 
-    public void setJiagoudaima(String jiagoudaima) {
-        this.jiagoudaima = jiagoudaima;
+    public void setJigoudaima(String jigoudaima) {
+        this.jigoudaima = jigoudaima;
     }
 
     public String getName() {
@@ -96,10 +94,10 @@ public class YhJinXiaoCunUser {
     }
 
     public String getC_id() {
-        return C_id;
+        return c_id;
     }
 
     public void setC_id(String c_id) {
-        C_id = c_id;
+        this.c_id = c_id;
     }
 }

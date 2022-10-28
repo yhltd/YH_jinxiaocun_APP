@@ -16,9 +16,9 @@
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/yhlogo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/yhlogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".LoginActivity">
@@ -47,8 +47,30 @@
 
 
 
-
-
+        <activity
+            android:name=".jxc.activity.QiChuActivity"
+            android:label="期初">
+            <intent-filter>
+                <action android:name="android.intent.action.QiChuActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.QiChuChangeActivity"
+            android:label="期初">
+            <intent-filter>
+                <action android:name="android.intent.action.QiChuChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.JinXiaoCunActivity"
+            android:label="进销存">
+            <intent-filter>
+                <action android:name="android.intent.action.JinXiaoCunActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".jxc.activity.ProductQueryActivity"
             android:label="商品进出查询">
@@ -67,10 +89,66 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".jxc.activity.JiChuZiLiaoActivity"
+            android:label="基础资料">
+            <intent-filter>
+                <action android:name="android.intent.action.JiChuZiLiaoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.JiChuZiLiaoChangeActivity"
+            android:label="基础资料">
+            <intent-filter>
+                <action android:name="android.intent.action.JiChuZiLiaoChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.KehuActivity"
+            android:label="客户/供应商资料">
+            <intent-filter>
+                <action android:name="android.intent.action.KehuActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.KehuChangeActivity"
+            android:label="客户/供应商资料">
+            <intent-filter>
+                <action android:name="android.intent.action.KehuChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".jxc.activity.BiJiActivity"
             android:label="笔记">
             <intent-filter>
                 <action android:name="android.intent.action.BiJiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.BiJiChangeActivity"
+            android:label="笔记">
+            <intent-filter>
+                <action android:name="android.intent.action.BiJiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.UserActivity"
+            android:label="用户管理">
+            <intent-filter>
+                <action android:name="android.intent.action.BiJiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.UserChangeActivity"
+            android:label="用户管理">
+            <intent-filter>
+                <action android:name="android.intent.action.BiJiChangeActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

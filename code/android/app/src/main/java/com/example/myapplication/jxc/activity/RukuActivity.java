@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
@@ -36,13 +38,18 @@ public class RukuActivity extends AppCompatActivity {
 
     private List<YhJinXiaoCunJiChuZiLiao> list;
 
-
     private ListView listView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ruku);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         MyApplication myApplication = (MyApplication) getApplication();
         yhJinXiaoCunUser = myApplication.getYhJinXiaoCunUser();
@@ -52,6 +59,15 @@ public class RukuActivity extends AppCompatActivity {
         initList();
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initList() {
@@ -67,7 +83,7 @@ public class RukuActivity extends AppCompatActivity {
             @Override
             public void run() {
                 yhJinXiaoCunJiChuZiLiaoService = new YhJinXiaoCunJiChuZiLiaoService();
-                list = yhJinXiaoCunJiChuZiLiaoService.getList(yhJinXiaoCunUser.getGongsi());
+                list = yhJinXiaoCunJiChuZiLiaoService.getList(yhJinXiaoCunUser.getGongsi(), "");
 
                 if (list == null) return;
 
@@ -103,7 +119,6 @@ public class RukuActivity extends AppCompatActivity {
             }
         }).start();
     }
-
 
 
 }

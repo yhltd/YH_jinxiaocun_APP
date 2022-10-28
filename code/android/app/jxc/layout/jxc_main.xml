@@ -35,7 +35,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/ruku" />
+                        android:background="@drawable/rukuguanli" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -90,7 +90,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/register" />
+                        android:background="@drawable/qichukucun" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -114,7 +114,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/examine" />
+                        android:background="@drawable/shoufamingxi" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -145,7 +145,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/finish" />
+                        android:background="@drawable/jinxiaocun" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -169,7 +169,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/finish" />
+                        android:background="@drawable/shangpin_jinchu" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -200,7 +200,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/finish" />
+                        android:background="@drawable/kehu_chuhuo" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -224,7 +224,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/finish" />
+                        android:background="@drawable/shangpinguanli" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -255,7 +255,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/finish" />
+                        android:background="@drawable/kehu" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -279,7 +279,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/finish" />
+                        android:background="@drawable/gys" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -310,7 +310,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/finish" />
+                        android:background="@drawable/biji" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -323,7 +323,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/shuoming"
+                    android:id="@+id/user"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
@@ -334,13 +334,13 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/finish" />
+                        android:background="@drawable/yonghu" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="下载使用说明"
+                        android:text="用户管理"
                         android:textColor="@color/main_text"
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />

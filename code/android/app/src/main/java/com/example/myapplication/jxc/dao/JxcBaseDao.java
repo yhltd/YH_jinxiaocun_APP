@@ -30,7 +30,7 @@ public class JxcBaseDao<T> {
     public JxcBaseDao() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn= DriverManager.getConnection("jdbc:mysql://yhocn.cn/yh_jinxiaocun_pc?autoReconnect=true&allowMultiQueries=true&characterEncoding=utf-8&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai","root","Lyh07910");
+            conn = DriverManager.getConnection("jdbc:mysql://yhocn.cn/yh_jinxiaocun_pc?autoReconnect=true&allowMultiQueries=true&characterEncoding=utf-8&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai", "root", "Lyh07910");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -43,7 +43,7 @@ public class JxcBaseDao<T> {
             preparedStatement = conn.prepareStatement(sql);
 
             if (params != null) for (int i = 0; i < params.length; i++) {
-                preparedStatement.setString(i + 1, params[i] != null ?handlerParam(params[i]) :"");
+                preparedStatement.setString(i + 1, params[i] != null ? handlerParam(params[i]) : "");
             }
 
             resultSet = preparedStatement.executeQuery();

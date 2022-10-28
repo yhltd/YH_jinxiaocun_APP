@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:text="客户/供应商"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:text="商品代码"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:text="商品名称"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:text="商品类别"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:text="入库/出库数量"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:text="入库/出库金额"
             android:textStyle="bold"
             android:width="150dp"/>

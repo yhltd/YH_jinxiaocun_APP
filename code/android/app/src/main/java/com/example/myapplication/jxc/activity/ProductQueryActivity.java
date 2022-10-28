@@ -3,6 +3,7 @@ package com.example.myapplication.jxc.activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
@@ -45,6 +47,12 @@ public class ProductQueryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_query);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         //初始化控件
         product_spinner = findViewById(R.id.product_spinner);
         listView = findViewById(R.id.product_list);
@@ -54,6 +62,15 @@ public class ProductQueryActivity extends AppCompatActivity {
 
         initList();
         product_spinner.setOnItemSelectedListener(new productItemSelectedListener());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initList() {
@@ -73,9 +90,9 @@ public class ProductQueryActivity extends AppCompatActivity {
                 Message msg = new Message();
                 SpinnerAdapter adapter = null;
                 try {
-                    yhJinXiaoCunJiChuZiLiaoService = new YhJinXiaoCunJiChuZiLiaoService();
-                    List<String> list = yhJinXiaoCunJiChuZiLiaoService.getProduct(yhJinXiaoCunUser.getGongsi());
-                    adapter = new ArrayAdapter<String>(ProductQueryActivity.this, android.R.layout.simple_spinner_item, list);
+                    yhJinXiaoCunMingXiService = new YhJinXiaoCunMingXiService();
+                    List<String> list = yhJinXiaoCunMingXiService.getProduct(yhJinXiaoCunUser.getGongsi());
+                    adapter = new ArrayAdapter<String>(ProductQueryActivity.this, android.R.layout.simple_spinner_dropdown_item, list);
                     if (list.size() > 0) {
                         msg.obj = adapter;
                     } else {

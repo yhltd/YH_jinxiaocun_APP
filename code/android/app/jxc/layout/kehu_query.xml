@@ -21,7 +21,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
-            android:hint="客户/供应商名称"/>
+            android:hint="客户/供应商名称"
+            android:spinnerMode="dialog"/>
     </LinearLayout>
 
     <HorizontalScrollView
@@ -126,7 +127,7 @@
 
             <ListView
                 android:id="@+id/kehu_list"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:divider="@color/border_level_1"
                 android:dividerHeight="1dp"/>
