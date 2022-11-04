@@ -101,14 +101,14 @@ public class QiChuActivity extends AppCompatActivity {
                         item.put("cplb", list.get(i).getCplb());
                         item.put("cpsj", list.get(i).getCpsj());
                         item.put("cpsl", list.get(i).getCpsl());
-                        item.put("jine", Double.parseDouble(list.get(i).getCpsl())*Double.parseDouble(list.get(i).getCpsj()) );
+                        item.put("jine", Double.parseDouble(list.get(i).getCpsl()) * Double.parseDouble(list.get(i).getCpsj()));
                         data.add(item);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(QiChuActivity.this, data, R.layout.qichu_row, new String[]{"cpid", "cpname", "cplb", "cpsj", "cpsl","jine"}, new int[]{R.id.cpname, R.id.cpid, R.id.cplb, R.id.cpsj, R.id.cpsl,R.id.jine}) {
+                SimpleAdapter adapter = new SimpleAdapter(QiChuActivity.this, data, R.layout.qichu_row, new String[]{"cpname", "cpid", "cplb", "cpsj", "cpsl", "jine"}, new int[]{R.id.cpname, R.id.cpid, R.id.cplb, R.id.cpsj, R.id.cpsl, R.id.jine}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);

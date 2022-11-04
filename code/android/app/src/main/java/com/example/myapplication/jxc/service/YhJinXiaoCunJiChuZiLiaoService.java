@@ -28,8 +28,10 @@ public class YhJinXiaoCunJiChuZiLiaoService {
         base = new JxcBaseDao();
         List<YhJinXiaoCunJiChuZiLiao> list = base.query(YhJinXiaoCunJiChuZiLiao.class, sql, company);
         List<String> cpidList = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            cpidList.add(list.get(i).getSpDm());
+        if (cpidList!=null){
+            for (int i = 0; i < list.size(); i++) {
+                cpidList.add(list.get(i).getSpDm());
+            }
         }
         return cpidList != null && cpidList.size() > 0 ? cpidList : null;
     }

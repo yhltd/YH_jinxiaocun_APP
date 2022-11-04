@@ -39,16 +39,16 @@ public class QiChuChangeActivity extends AppCompatActivity {
     private YhJinXiaoCunQiChuShuService yhJinXiaoCunQiChuShuService;
     private YhJinXiaoCunJiChuZiLiaoService yhJinXiaoCunJiChuZiLiaoService;
 
+    List<YhJinXiaoCunJiChuZiLiao> getList;
+
     private EditText cpname;
     private Spinner cpid;
     private EditText cplb;
     private EditText cpsj;
     private EditText cpsl;
 
-    private List<String> cpid_array;
 
-    public QiChuChangeActivity() {
-    }
+    String[] cpid_array;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -75,25 +75,26 @@ public class QiChuChangeActivity extends AppCompatActivity {
 
         init();
 
+        cpid.setOnItemSelectedListener(new cpidItemSelectedListener());
+
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
         if (id == R.id.insert_btn) {
             yhJinXiaoCunQiChuShu = new YhJinXiaoCunQiChuShu();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
+            cpid.setSelection(0, true);
         } else if (id == R.id.update_btn) {
             yhJinXiaoCunQiChuShu = (YhJinXiaoCunQiChuShu) myApplication.getObj();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
 
             cpname.setText(yhJinXiaoCunQiChuShu.getCpname());
-            cpid.setSelection(getPosition(yhJinXiaoCunQiChuShu.getCpid()));
+            cpid.setSelection(getPosition(yhJinXiaoCunQiChuShu.getCpid()), true);
             cplb.setText(yhJinXiaoCunQiChuShu.getCplb());
             cpsj.setText(yhJinXiaoCunQiChuShu.getCpsj());
             cpsl.setText(yhJinXiaoCunQiChuShu.getCpsl());
         }
-        cpid.setOnItemSelectedListener(new cpidItemSelectedListener());
-
     }
 
     @Override
@@ -105,7 +106,7 @@ public class QiChuChangeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void init() {
+    public void init() {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -119,9 +120,12 @@ public class QiChuChangeActivity extends AppCompatActivity {
             public void run() {
                 SpinnerAdapter adapter = null;
                 try {
-                    cpid_array = yhJinXiaoCunJiChuZiLiaoService.getCpid(yhJinXiaoCunUser.getGongsi());
-                    if (cpid_array == null) return;
-
+                    List<String> cpidList = yhJinXiaoCunJiChuZiLiaoService.getCpid(yhJinXiaoCunUser.getGongsi());
+                    if (cpidList == null) return;
+                    cpid_array = new String[cpidList.size()];
+                    for (int i = 0; i < cpidList.size(); i++) {
+                        cpid_array[i] = cpidList.get(i);
+                    }
                     adapter = new ArrayAdapter<String>(QiChuChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, cpid_array);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -223,9 +227,12 @@ public class QiChuChangeActivity extends AppCompatActivity {
     }
 
     private int getPosition(String cpid) {
-        for (int i = 0; i < cpid_array.size(); i++) {
-            if (cpid.equals(cpid_array.get(i))) {
-                return i;
+        System.out.println("cpid_array:" + cpid_array);
+        if (cpid_array != null) {
+            for (int i = 0; i < cpid_array.length; i++) {
+                if (cpid.equals(cpid_array[i])) {
+                    return i;
+                }
             }
         }
         return 0;
@@ -238,6 +245,10 @@ public class QiChuChangeActivity extends AppCompatActivity {
             Handler systemHandler = new Handler(new Handler.Callback() {
                 @Override
                 public boolean handleMessage(@NonNull Message msg) {
+                    if (getList != null && getList.size() != 0) {
+                        cpname.setText(getList.get(0).getName());
+                        cplb.setText(getList.get(0).getLeiBie());
+                    }
                     return true;
                 }
             });
@@ -249,11 +260,10 @@ public class QiChuChangeActivity extends AppCompatActivity {
                     String text = cpid.getItemAtPosition(position).toString();
                     try {
                         yhJinXiaoCunJiChuZiLiaoService = new YhJinXiaoCunJiChuZiLiaoService();
-                        List<YhJinXiaoCunJiChuZiLiao> getList = yhJinXiaoCunJiChuZiLiaoService.getListByCpid(yhJinXiaoCunUser.getGongsi(), text);
-                        if (getList.size() != 0) {
-                            cpname.setText(getList.get(0).getName());
-                            cplb.setText(getList.get(0).getLeiBie());
-                        }
+                        getList = yhJinXiaoCunJiChuZiLiaoService.getListByCpid(yhJinXiaoCunUser.getGongsi(), text);
+                        Message msg = new Message();
+                        msg.obj = getList;
+                        systemHandler.sendMessage(msg);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

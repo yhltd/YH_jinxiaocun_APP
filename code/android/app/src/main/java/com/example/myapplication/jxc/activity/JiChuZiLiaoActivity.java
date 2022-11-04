@@ -65,7 +65,6 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        //初始化控件
         cpname_text = findViewById(R.id.cpname_text);
         listView = findViewById(R.id.jichuziliao_list);
         sel_button = findViewById(R.id.sel_button);

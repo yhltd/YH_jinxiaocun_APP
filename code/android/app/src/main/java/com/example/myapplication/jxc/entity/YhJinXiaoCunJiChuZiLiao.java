@@ -1,6 +1,8 @@
 package com.example.myapplication.jxc.entity;
 
-public class YhJinXiaoCunJiChuZiLiao {
+import java.io.Serializable;
+
+public class YhJinXiaoCunJiChuZiLiao implements Serializable {
     private int id;
     private String spDm;
     private String name;
@@ -10,6 +12,9 @@ public class YhJinXiaoCunJiChuZiLiao {
     private String gongHuo;
     private String zhName;
     private String gsName;
+    private boolean check;
+    private String num;
+    private String jine;
 
     public int getId() {
         return id;
@@ -81,5 +86,29 @@ public class YhJinXiaoCunJiChuZiLiao {
 
     public void setGsName(String gsName) {
         this.gsName = gsName;
+    }
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
+
+    public String getJine() {
+        return jine;
+    }
+
+    public void setJine(String jine) {
+        this.jine = jine;
     }
 }

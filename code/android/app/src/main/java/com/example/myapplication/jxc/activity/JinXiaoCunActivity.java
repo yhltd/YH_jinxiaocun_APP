@@ -24,6 +24,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.jxc.entity.YhJinXiaoCun;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunService;
+import com.example.myapplication.utils.ExcelUtil;
 import com.example.myapplication.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class JinXiaoCunActivity extends AppCompatActivity {
     private EditText js;
     private ListView listView;
     private Button sel_button;
+    private Button export_button;
 
     List<YhJinXiaoCun> list;
 
@@ -54,10 +56,10 @@ public class JinXiaoCunActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        //初始化控件
         spDm_text = findViewById(R.id.spDm_text);
         listView = findViewById(R.id.jinxiaocun_list);
         sel_button = findViewById(R.id.sel_button);
+        export_button=findViewById(R.id.export);
         ks = findViewById(R.id.ks);
         js = findViewById(R.id.js);
 
@@ -66,9 +68,13 @@ public class JinXiaoCunActivity extends AppCompatActivity {
 
         initList();
         sel_button.setOnClickListener(selClick());
+        export_button.setOnClickListener(exportClick());
+
+        sel_button.requestFocus();
 
         showDateOnClick(ks);
         showDateOnClick(js);
+
 
     }
 
@@ -183,4 +189,15 @@ public class JinXiaoCunActivity extends AppCompatActivity {
         };
     }
 
+    public View.OnClickListener exportClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] title = { "商品代码", "商品名称", "商品类别", "期初数量", "期初金额", "入库数量", "入库金额", "出库数量","出库金额","结存数量","结存金额"};
+                String fileName = "进销存" + System.currentTimeMillis() + ".xls";
+                ExcelUtil.initExcel(fileName, "进销存", title);
+                ExcelUtil.jinXiaoCunToExcel(list, fileName, MyApplication.getContext());
+            }
+        };
+    }
 }

@@ -53,7 +53,6 @@ public class ProductQueryActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        //初始化控件
         product_spinner = findViewById(R.id.product_spinner);
         listView = findViewById(R.id.product_list);
 

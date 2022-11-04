@@ -50,7 +50,6 @@ public class KehuQueryActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        //初始化控件
         kehu_spinner = findViewById(R.id.kehu_spinner);
         listView = findViewById(R.id.kehu_list);
 

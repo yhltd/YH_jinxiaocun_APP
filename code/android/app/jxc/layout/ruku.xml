@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,11 +22,17 @@
             android:layout_weight="1"
             android:layout_height="50dp"
             android:hint="产品名称"/>
+
+        <Button
+            android:id="@+id/sel_button"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="查询" />
     </LinearLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="570dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -39,6 +45,21 @@
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:id="@+id/cb_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="48dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/main_text"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                </View>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,18 +115,68 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2">
                 </View>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/main_text"
+                    android:textSize="18sp"
+                    android:text="数量"
+                    android:textStyle="bold"
+                    android:width="150dp"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+                </View>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/main_text"
+                    android:textSize="18sp"
+                    android:text="单价"
+                    android:textStyle="bold"
+                    android:width="150dp"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+                </View>
+
+
+
             </LinearLayout>
+
 
             <ListView
                 android:id="@+id/product_list"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:divider="@color/border_level_1"
-                android:dividerHeight="1dp"/>
+                android:dividerHeight="1dp"
+                android:scrollingCache="false"
+                android:animationCache="false"
+                android:cacheColorHint="@color/high_light"
+                android:choiceMode="multipleChoice"/>
         </LinearLayout>
 
     </HorizontalScrollView>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/biji_insert"
+        android:onClick="onInsertClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/insert"
+        app:backgroundTint="@color/primary"
+        app:backgroundTintMode="add"
+        app:pressedTranslationZ="10dp"
+        app:tint="@color/white" />
 
 
 </LinearLayout>

@@ -13,7 +13,7 @@ public class YhJinXiaoCunKeHuService {
      * 查询全部客户数据
      */
     public List<YhJinXiaoCunKeHu> getListByKehu(String company, String beizhu) {
-        String sql = "select * from yh_jinxiaocun_jinhuofang where gongsi = ? and beizhu like '%' ? '%' order by _id";
+        String sql = "select * from yh_jinxiaocun_jinhuofang where gongsi = ? and beizhu like '%' ? '%' ";
         base = new JxcBaseDao();
         List<YhJinXiaoCunKeHu> list = base.query(YhJinXiaoCunKeHu.class, sql, company, beizhu);
         return list;
@@ -24,7 +24,6 @@ public class YhJinXiaoCunKeHuService {
      */
     public boolean insertByKehu(YhJinXiaoCunKeHu yhJinXiaoCunKeHu) {
         String sql = "insert into yh_jinxiaocun_jinhuofang (beizhu,lianxidizhi,lianxifangshi,gongsi) values(?,?,?,?)";
-
         base = new JxcBaseDao();
         long result = base.executeOfId(sql, yhJinXiaoCunKeHu.getBeizhu(), yhJinXiaoCunKeHu.getLianxidizhi(), yhJinXiaoCunKeHu.getLianxifangshi(), yhJinXiaoCunKeHu.getGongsi());
         return result > 0;
@@ -35,7 +34,6 @@ public class YhJinXiaoCunKeHuService {
      */
     public boolean updateByKehu(YhJinXiaoCunKeHu yhJinXiaoCunKeHu) {
         String sql = "update yh_jinxiaocun_jinhuofang set beizhu=?,lianxidizhi=?,lianxifangshi=? where _id=? ";
-
         base = new JxcBaseDao();
         boolean result = base.execute(sql, yhJinXiaoCunKeHu.getBeizhu(), yhJinXiaoCunKeHu.getLianxidizhi(), yhJinXiaoCunKeHu.getLianxifangshi(), yhJinXiaoCunKeHu.get_id());
         return result;
@@ -50,12 +48,11 @@ public class YhJinXiaoCunKeHuService {
         return base.execute(sql, id);
     }
 
-
     /**
      * 查询全部供应商数据
      */
     public List<YhJinXiaoCunKeHu> getListByGys(String company, String beizhu) {
-        String sql = "select * from yh_jinxiaocun_chuhuofang where gongsi = ? and beizhu like '%' ? '%' order by _id";
+        String sql = "select * from yh_jinxiaocun_chuhuofang where gongsi = ? and beizhu like '%' ? '%' ";
         base = new JxcBaseDao();
         List<YhJinXiaoCunKeHu> list = base.query(YhJinXiaoCunKeHu.class, sql, company, beizhu);
         return list;
@@ -66,7 +63,6 @@ public class YhJinXiaoCunKeHuService {
      */
     public boolean insertByGys(YhJinXiaoCunKeHu yhJinXiaoCunKeHu) {
         String sql = "insert into yh_jinxiaocun_chuhuofang (beizhu,lianxidizhi,lianxifangshi,gongsi) values(?,?,?,?)";
-
         base = new JxcBaseDao();
         long result = base.executeOfId(sql, yhJinXiaoCunKeHu.getBeizhu(), yhJinXiaoCunKeHu.getLianxidizhi(), yhJinXiaoCunKeHu.getLianxifangshi(), yhJinXiaoCunKeHu.getGongsi());
         return result > 0;
@@ -77,7 +73,6 @@ public class YhJinXiaoCunKeHuService {
      */
     public boolean updateByGys(YhJinXiaoCunKeHu yhJinXiaoCunKeHu) {
         String sql = "update yh_jinxiaocun_chuhuofang set beizhu=?,lianxidizhi=?,lianxifangshi=? where _id=? ";
-
         base = new JxcBaseDao();
         boolean result = base.execute(sql, yhJinXiaoCunKeHu.getBeizhu(), yhJinXiaoCunKeHu.getLianxidizhi(), yhJinXiaoCunKeHu.getLianxifangshi(), yhJinXiaoCunKeHu.get_id());
         return result;

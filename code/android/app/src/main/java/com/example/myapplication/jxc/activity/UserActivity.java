@@ -54,7 +54,6 @@ public class UserActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        //初始化控件
         search_text = findViewById(R.id.search_text);
         listView = findViewById(R.id.user_list);
         sel_button = findViewById(R.id.sel_button);
