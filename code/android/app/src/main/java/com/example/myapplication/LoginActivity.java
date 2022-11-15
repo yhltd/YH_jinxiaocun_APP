@@ -25,11 +25,15 @@ import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunUserService;
 import com.example.myapplication.utils.InputUtil;
 import com.example.myapplication.utils.ToastUtil;
+import com.example.myapplication.finance.activity.FinanceActivity;
+import com.example.myapplication.finance.entity.YhFinanceUser;
+import com.example.myapplication.finance.service.YhFinanceUserService;
 
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     private YhJinXiaoCunUserService yhJinXiaoCunUserService;
+    private YhFinanceUserService yhFinanceUserService;
     private Spinner system;
     private Spinner company;
     private Button signBtn;
@@ -116,6 +120,22 @@ public class LoginActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                    }else if (systemText.equals("云合未来财务系统")) {
+                        Message msg = new Message();
+                        SpinnerAdapter adapter = null;
+                        try {
+                            yhFinanceUserService = new YhFinanceUserService();
+                            List<String> list = yhFinanceUserService.getCompany();
+                            adapter = new ArrayAdapter<String>(LoginActivity.this, android.R.layout.simple_spinner_dropdown_item, list);
+                            if (list.size() > 0) {
+                                msg.obj = adapter;
+                            } else {
+                                msg.obj = null;
+                            }
+                            systemHandler.sendMessage(msg);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }).start();
@@ -164,6 +184,13 @@ public class LoginActivity extends AppCompatActivity {
                                 }else{
                                     ToastUtil.show(LoginActivity.this, "账号已被禁用");
                                 }
+                            }else if (systemText.equals("云合未来财务系统")) {
+                                YhFinanceUser user = (YhFinanceUser) msg.obj;
+                                MyApplication application = (MyApplication) getApplicationContext();
+                                application.setYhFinanceUser(user);
+                                ToastUtil.show(LoginActivity.this, "登录成功");
+                                Intent intent = new Intent(LoginActivity.this, FinanceActivity.class);
+                                startActivity(intent);
                             }
                         } else {
                             ToastUtil.show(LoginActivity.this, "用户名密码错误");
@@ -181,6 +208,15 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 yhJinXiaoCunUserService = new YhJinXiaoCunUserService();
                                 msg.obj = yhJinXiaoCunUserService.login(username.getText().toString(), password.getText().toString(), companyText);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            signHandler.sendMessage(msg);
+                        }else if (systemText.equals("云合未来财务系统")) {
+                            Message msg = new Message();
+                            try {
+                                yhFinanceUserService = new YhFinanceUserService();
+                                msg.obj = yhFinanceUserService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

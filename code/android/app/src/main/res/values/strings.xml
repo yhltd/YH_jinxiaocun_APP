@@ -19,4 +19,15 @@
     </string-array>
 
 
+    <string-array name="type">
+        <item>经营收入</item>
+        <item>经营支出</item>
+        <item>筹资收入</item>
+        <item>筹资支出</item>
+        <item>投资收入</item>
+        <item>投资支出</item>
+        <item>凭证字</item>
+    </string-array>
+
+
 </resources>

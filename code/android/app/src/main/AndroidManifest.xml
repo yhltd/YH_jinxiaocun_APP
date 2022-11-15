@@ -188,6 +188,53 @@
         </activity>
 
 
+
+        <activity
+            android:name=".finance.activity.FinanceActivity"
+            android:label="首页">
+            <intent-filter>
+                <action android:name="android.intent.action.FinanceActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.DepartmentActivity"
+            android:label="部门设置">
+            <intent-filter>
+                <action android:name="android.intent.action.DepartmentActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.DepartmentChangeActivity"
+            android:label="部门设置">
+            <intent-filter>
+                <action android:name="android.intent.action.DepartmentChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.ExpenditureActivity"
+            android:label="开支项目">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.ExpenditureChangeActivity"
+            android:label="经营收入">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
     </application>
 
 </manifest>

@@ -7,9 +7,11 @@ import android.os.StrictMode;
 import android.widget.EditText;
 
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
+import com.example.myapplication.finance.entity.YhFinanceUser;
 
 public class MyApplication extends Application {
     private YhJinXiaoCunUser yhJinXiaoCunUser;
+    private YhFinanceUser yhFinanceUser;
     private static Context context;
 
 
@@ -19,6 +21,15 @@ public class MyApplication extends Application {
 
     public void setYhJinXiaoCunUser(YhJinXiaoCunUser yhJinXiaoCunUser) {
         this.yhJinXiaoCunUser = yhJinXiaoCunUser;
+    }
+
+
+    public YhFinanceUser getYhFinanceUser() {
+        return yhFinanceUser;
+    }
+
+    public void setYhFinanceUser(YhFinanceUser yhFinanceUser) {
+        this.yhFinanceUser = yhFinanceUser;
     }
 
     private Object obj;
