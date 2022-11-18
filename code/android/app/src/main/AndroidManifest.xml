@@ -50,14 +50,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".jxc.activity.RukuActivity"
-            android:label="入库">
-            <intent-filter>
-                <action android:name="android.intent.action.RukuActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".jxc.activity.RukuChangeActivity"
             android:label="入库">
             <intent-filter>
@@ -227,9 +219,36 @@
 
         <activity
             android:name=".finance.activity.ExpenditureChangeActivity"
-            android:label="经营收入">
+            android:label="开支项目">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.KeMuZongZhangActivity"
+            android:label="科目总账">
+            <intent-filter>
+                <action android:name="android.intent.action.KeMuZongZhangActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.KeMuZongZhangChangeActivity"
+            android:label="科目总账">
+            <intent-filter>
+                <action android:name="android.intent.action.KeMuZongZhangChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.VoucherSummaryActivity"
+            android:label="凭证汇总">
+            <intent-filter>
+                <action android:name="android.intent.action.VoucherSummaryActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

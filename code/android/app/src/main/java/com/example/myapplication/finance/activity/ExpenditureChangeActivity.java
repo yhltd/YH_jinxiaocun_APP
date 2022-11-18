@@ -19,17 +19,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
-import com.example.myapplication.finance.entity.YhFinanceDepartment;
 import com.example.myapplication.finance.entity.YhFinanceExpenditure;
 import com.example.myapplication.finance.entity.YhFinanceUser;
-import com.example.myapplication.finance.service.YhFinanceDepartmentService;
 import com.example.myapplication.finance.service.YhFinanceExpenditureService;
 import com.example.myapplication.finance.service.YhFinanceIncomeService;
-import com.example.myapplication.finance.service.YhFinanceInvestmentExpenditure;
-import com.example.myapplication.finance.service.YhFinanceInvestmentIncome;
-import com.example.myapplication.finance.service.YhFinanceManagementExpenditure;
-import com.example.myapplication.finance.service.YhFinanceManagementIncome;
-import com.example.myapplication.finance.service.YhFinanceVoucherWord;
+import com.example.myapplication.finance.service.YhFinanceInvestmentExpenditureService;
+import com.example.myapplication.finance.service.YhFinanceInvestmentIncomeService;
+import com.example.myapplication.finance.service.YhFinanceManagementExpenditureService;
+import com.example.myapplication.finance.service.YhFinanceManagementIncomeService;
+import com.example.myapplication.finance.service.YhFinanceVoucherWordService;
 import com.example.myapplication.utils.ToastUtil;
 
 public class ExpenditureChangeActivity extends AppCompatActivity {
@@ -38,11 +36,11 @@ public class ExpenditureChangeActivity extends AppCompatActivity {
     private YhFinanceExpenditure yhFinanceExpenditure;
     private YhFinanceExpenditureService yhFinanceExpenditureService;
     private YhFinanceIncomeService yhFinanceIncomeService;
-    private YhFinanceInvestmentExpenditure yhFinanceInvestmentExpenditure;
-    private YhFinanceInvestmentIncome yhFinanceInvestmentIncome;
-    private YhFinanceManagementExpenditure yhFinanceManagementExpenditure;
-    private YhFinanceManagementIncome yhFinanceManagementIncome;
-    private YhFinanceVoucherWord yhFinanceVoucherWord;
+    private YhFinanceInvestmentExpenditureService yhFinanceInvestmentExpenditureService;
+    private YhFinanceInvestmentIncomeService yhFinanceInvestmentIncomeService;
+    private YhFinanceManagementExpenditureService yhFinanceManagementExpenditureService;
+    private YhFinanceManagementIncomeService yhFinanceManagementIncomeService;
+    private YhFinanceVoucherWordService yhFinanceVoucherWordService;
 
     private EditText shouru;
     private TextView textView1;
@@ -63,11 +61,11 @@ public class ExpenditureChangeActivity extends AppCompatActivity {
         yhFinanceUser = myApplication.getYhFinanceUser();
         yhFinanceExpenditureService = new YhFinanceExpenditureService();
         yhFinanceIncomeService = new YhFinanceIncomeService();
-        yhFinanceInvestmentExpenditure = new YhFinanceInvestmentExpenditure();
-        yhFinanceInvestmentIncome = new YhFinanceInvestmentIncome();
-        yhFinanceManagementExpenditure = new YhFinanceManagementExpenditure();
-        yhFinanceManagementIncome = new YhFinanceManagementIncome();
-        yhFinanceVoucherWord = new YhFinanceVoucherWord();
+        yhFinanceInvestmentExpenditureService = new YhFinanceInvestmentExpenditureService();
+        yhFinanceInvestmentIncomeService = new YhFinanceInvestmentIncomeService();
+        yhFinanceManagementExpenditureService = new YhFinanceManagementExpenditureService();
+        yhFinanceManagementIncomeService = new YhFinanceManagementIncomeService();
+        yhFinanceVoucherWordService = new YhFinanceVoucherWordService();
 
         shouru = findViewById(R.id.shouru);
         textView1 = findViewById(R.id.jingyingshouru_text);
@@ -129,15 +127,15 @@ public class ExpenditureChangeActivity extends AppCompatActivity {
                 }else if(service.equals("经营支出")){
                     msg.obj = yhFinanceIncomeService.insert(yhFinanceExpenditure);
                 }else if(service.equals("筹资收入")){
-                    msg.obj = yhFinanceInvestmentIncome.insert(yhFinanceExpenditure);
+                    msg.obj = yhFinanceInvestmentIncomeService.insert(yhFinanceExpenditure);
                 }else if(service.equals("筹资支出")){
-                    msg.obj = yhFinanceInvestmentExpenditure.insert(yhFinanceExpenditure);
+                    msg.obj = yhFinanceInvestmentExpenditureService.insert(yhFinanceExpenditure);
                 }else if(service.equals("投资收入")){
-                    msg.obj = yhFinanceManagementExpenditure.insert(yhFinanceExpenditure);
+                    msg.obj = yhFinanceManagementExpenditureService.insert(yhFinanceExpenditure);
                 }else if(service.equals("投资支出")){
-                    msg.obj = yhFinanceManagementIncome.insert(yhFinanceExpenditure);
+                    msg.obj = yhFinanceManagementIncomeService.insert(yhFinanceExpenditure);
                 }else if(service.equals("凭证字")){
-                    msg.obj = yhFinanceVoucherWord.insert(yhFinanceExpenditure);
+                    msg.obj = yhFinanceVoucherWordService.insert(yhFinanceExpenditure);
                 }
 
                 saveHandler.sendMessage(msg);
@@ -173,15 +171,15 @@ public class ExpenditureChangeActivity extends AppCompatActivity {
                 }else if(service.equals("经营支出")){
                     msg.obj = yhFinanceIncomeService.update(yhFinanceExpenditure);
                 }else if(service.equals("筹资收入")){
-                    msg.obj = yhFinanceInvestmentIncome.update(yhFinanceExpenditure);
+                    msg.obj = yhFinanceInvestmentIncomeService.update(yhFinanceExpenditure);
                 }else if(service.equals("筹资支出")){
-                    msg.obj = yhFinanceInvestmentExpenditure.update(yhFinanceExpenditure);
+                    msg.obj = yhFinanceInvestmentExpenditureService.update(yhFinanceExpenditure);
                 }else if(service.equals("投资收入")){
-                    msg.obj = yhFinanceManagementExpenditure.update(yhFinanceExpenditure);
+                    msg.obj = yhFinanceManagementExpenditureService.update(yhFinanceExpenditure);
                 }else if(service.equals("投资支出")){
-                    msg.obj = yhFinanceManagementIncome.update(yhFinanceExpenditure);
+                    msg.obj = yhFinanceManagementIncomeService.update(yhFinanceExpenditure);
                 }else if(service.equals("凭证字")){
-                    msg.obj = yhFinanceVoucherWord.update(yhFinanceExpenditure);
+                    msg.obj = yhFinanceVoucherWordService.update(yhFinanceExpenditure);
                 }
                 saveHandler.sendMessage(msg);
             }

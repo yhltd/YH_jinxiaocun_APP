@@ -22,22 +22,17 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.LoginActivity;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
-import com.example.myapplication.finance.entity.YhFinanceDepartment;
 import com.example.myapplication.finance.entity.YhFinanceExpenditure;
 import com.example.myapplication.finance.entity.YhFinanceUser;
-import com.example.myapplication.finance.service.YhFinanceDepartmentService;
 import com.example.myapplication.finance.service.YhFinanceExpenditureService;
 import com.example.myapplication.finance.service.YhFinanceIncomeService;
-import com.example.myapplication.finance.service.YhFinanceInvestmentExpenditure;
-import com.example.myapplication.finance.service.YhFinanceInvestmentIncome;
-import com.example.myapplication.finance.service.YhFinanceManagementExpenditure;
-import com.example.myapplication.finance.service.YhFinanceManagementIncome;
-import com.example.myapplication.finance.service.YhFinanceUserService;
-import com.example.myapplication.finance.service.YhFinanceVoucherWord;
-import com.example.myapplication.jxc.service.YhJinXiaoCunUserService;
+import com.example.myapplication.finance.service.YhFinanceInvestmentExpenditureService;
+import com.example.myapplication.finance.service.YhFinanceInvestmentIncomeService;
+import com.example.myapplication.finance.service.YhFinanceManagementExpenditureService;
+import com.example.myapplication.finance.service.YhFinanceManagementIncomeService;
+import com.example.myapplication.finance.service.YhFinanceVoucherWordService;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -53,11 +48,11 @@ public class ExpenditureActivity extends AppCompatActivity {
 
     private YhFinanceExpenditureService yhFinanceExpenditureService;
     private YhFinanceIncomeService yhFinanceIncomeService;
-    private YhFinanceInvestmentExpenditure yhFinanceInvestmentExpenditure;
-    private YhFinanceInvestmentIncome yhFinanceInvestmentIncome;
-    private YhFinanceManagementExpenditure yhFinanceManagementExpenditure;
-    private YhFinanceManagementIncome yhFinanceManagementIncome;
-    private YhFinanceVoucherWord yhFinanceVoucherWord;
+    private YhFinanceInvestmentExpenditureService yhFinanceInvestmentExpenditureService;
+    private YhFinanceInvestmentIncomeService yhFinanceInvestmentIncomeService;
+    private YhFinanceManagementExpenditureService yhFinanceManagementExpenditureService;
+    private YhFinanceManagementIncomeService yhFinanceManagementIncomeService;
+    private YhFinanceVoucherWordService yhFinanceVoucherWordService;
 
     private ListView listView1;
     private Spinner type_select;
@@ -156,8 +151,8 @@ public class ExpenditureActivity extends AppCompatActivity {
                         Message msg = new Message();
                         SpinnerAdapter adapter = null;
                         try {
-                            yhFinanceInvestmentIncome = new YhFinanceInvestmentIncome();
-                            list1 = yhFinanceInvestmentIncome.getList(yhFinanceUser.getCompany());
+                            yhFinanceInvestmentIncomeService = new YhFinanceInvestmentIncomeService();
+                            list1 = yhFinanceInvestmentIncomeService.getList(yhFinanceUser.getCompany());
                             if (list1 == null) return;
                             for (int i = 0; i < list1.size(); i++) {
                                 HashMap<String, Object> item = new HashMap<>();
@@ -171,8 +166,8 @@ public class ExpenditureActivity extends AppCompatActivity {
                         Message msg = new Message();
                         SpinnerAdapter adapter = null;
                         try {
-                            yhFinanceInvestmentExpenditure = new YhFinanceInvestmentExpenditure();
-                            list1 = yhFinanceInvestmentExpenditure.getList(yhFinanceUser.getCompany());
+                            yhFinanceInvestmentExpenditureService = new YhFinanceInvestmentExpenditureService();
+                            list1 = yhFinanceInvestmentExpenditureService.getList(yhFinanceUser.getCompany());
                             if (list1 == null) return;
                             for (int i = 0; i < list1.size(); i++) {
                                 HashMap<String, Object> item = new HashMap<>();
@@ -186,8 +181,8 @@ public class ExpenditureActivity extends AppCompatActivity {
                         Message msg = new Message();
                         SpinnerAdapter adapter = null;
                         try {
-                            yhFinanceManagementExpenditure = new YhFinanceManagementExpenditure();
-                            list1 = yhFinanceManagementExpenditure.getList(yhFinanceUser.getCompany());
+                            yhFinanceManagementExpenditureService = new YhFinanceManagementExpenditureService();
+                            list1 = yhFinanceManagementExpenditureService.getList(yhFinanceUser.getCompany());
                             if (list1 == null) return;
                             for (int i = 0; i < list1.size(); i++) {
                                 HashMap<String, Object> item = new HashMap<>();
@@ -201,8 +196,8 @@ public class ExpenditureActivity extends AppCompatActivity {
                         Message msg = new Message();
                         SpinnerAdapter adapter = null;
                         try {
-                            yhFinanceManagementIncome = new YhFinanceManagementIncome();
-                            list1 = yhFinanceManagementIncome.getList(yhFinanceUser.getCompany());
+                            yhFinanceManagementIncomeService = new YhFinanceManagementIncomeService();
+                            list1 = yhFinanceManagementIncomeService.getList(yhFinanceUser.getCompany());
                             if (list1 == null) return;
                             for (int i = 0; i < list1.size(); i++) {
                                 HashMap<String, Object> item = new HashMap<>();
@@ -216,8 +211,8 @@ public class ExpenditureActivity extends AppCompatActivity {
                         Message msg = new Message();
                         SpinnerAdapter adapter = null;
                         try {
-                            yhFinanceVoucherWord = new YhFinanceVoucherWord();
-                            list1 = yhFinanceVoucherWord.getList(yhFinanceUser.getCompany());
+                            yhFinanceVoucherWordService = new YhFinanceVoucherWordService();
+                            list1 = yhFinanceVoucherWordService.getList(yhFinanceUser.getCompany());
                             if (list1 == null) return;
                             for (int i = 0; i < list1.size(); i++) {
                                 HashMap<String, Object> item = new HashMap<>();
@@ -286,8 +281,8 @@ public class ExpenditureActivity extends AppCompatActivity {
                             data.add(item);
                         }
                     }else if(type_selectText.equals("筹资收入")){
-                        yhFinanceInvestmentIncome = new YhFinanceInvestmentIncome();
-                        list1 = yhFinanceInvestmentIncome.getList(yhFinanceUser.getCompany());
+                        yhFinanceInvestmentIncomeService = new YhFinanceInvestmentIncomeService();
+                        list1 = yhFinanceInvestmentIncomeService.getList(yhFinanceUser.getCompany());
                         if (list1 == null) return;
                         for (int i = 0; i < list1.size(); i++) {
                             HashMap<String, Object> item = new HashMap<>();
@@ -295,8 +290,8 @@ public class ExpenditureActivity extends AppCompatActivity {
                             data.add(item);
                         }
                     }else if(type_selectText.equals("筹资支出")){
-                        yhFinanceInvestmentExpenditure = new YhFinanceInvestmentExpenditure();
-                        list1 = yhFinanceInvestmentExpenditure.getList(yhFinanceUser.getCompany());
+                        yhFinanceInvestmentExpenditureService = new YhFinanceInvestmentExpenditureService();
+                        list1 = yhFinanceInvestmentExpenditureService.getList(yhFinanceUser.getCompany());
                         if (list1 == null) return;
                         for (int i = 0; i < list1.size(); i++) {
                             HashMap<String, Object> item = new HashMap<>();
@@ -304,8 +299,8 @@ public class ExpenditureActivity extends AppCompatActivity {
                             data.add(item);
                         }
                     }else if(type_selectText.equals("投资收入")){
-                        yhFinanceManagementExpenditure = new YhFinanceManagementExpenditure();
-                        list1 = yhFinanceManagementExpenditure.getList(yhFinanceUser.getCompany());
+                        yhFinanceManagementExpenditureService = new YhFinanceManagementExpenditureService();
+                        list1 = yhFinanceManagementExpenditureService.getList(yhFinanceUser.getCompany());
                         if (list1 == null) return;
                         for (int i = 0; i < list1.size(); i++) {
                             HashMap<String, Object> item = new HashMap<>();
@@ -313,8 +308,8 @@ public class ExpenditureActivity extends AppCompatActivity {
                             data.add(item);
                         }
                     }else if(type_selectText.equals("投资支出")){
-                        yhFinanceManagementIncome = new YhFinanceManagementIncome();
-                        list1 = yhFinanceManagementIncome.getList(yhFinanceUser.getCompany());
+                        yhFinanceManagementIncomeService = new YhFinanceManagementIncomeService();
+                        list1 = yhFinanceManagementIncomeService.getList(yhFinanceUser.getCompany());
                         if (list1 == null) return;
                         for (int i = 0; i < list1.size(); i++) {
                             HashMap<String, Object> item = new HashMap<>();
@@ -322,8 +317,8 @@ public class ExpenditureActivity extends AppCompatActivity {
                             data.add(item);
                         }
                     }else if(type_selectText.equals("凭证字")){
-                        yhFinanceVoucherWord = new YhFinanceVoucherWord();
-                        list1 = yhFinanceVoucherWord.getList(yhFinanceUser.getCompany());
+                        yhFinanceVoucherWordService = new YhFinanceVoucherWordService();
+                        list1 = yhFinanceVoucherWordService.getList(yhFinanceUser.getCompany());
                         if (list1 == null) return;
                         for (int i = 0; i < list1.size(); i++) {
                             HashMap<String, Object> item = new HashMap<>();
@@ -402,15 +397,15 @@ public class ExpenditureActivity extends AppCompatActivity {
                                 }else if(type_selectText.equals("经营支出")){
                                     msg.obj = yhFinanceIncomeService.delete(list1.get(position).getId());
                                 }else if(type_selectText.equals("筹资收入")){
-                                    msg.obj = yhFinanceInvestmentIncome.delete(list1.get(position).getId());
+                                    msg.obj = yhFinanceInvestmentIncomeService.delete(list1.get(position).getId());
                                 }else if(type_selectText.equals("筹资支出")){
-                                    msg.obj = yhFinanceInvestmentExpenditure.delete(list1.get(position).getId());
+                                    msg.obj = yhFinanceInvestmentExpenditureService.delete(list1.get(position).getId());
                                 }else if(type_selectText.equals("投资收入")){
-                                    msg.obj = yhFinanceManagementExpenditure.delete(list1.get(position).getId());
+                                    msg.obj = yhFinanceManagementExpenditureService.delete(list1.get(position).getId());
                                 }else if(type_selectText.equals("投资支出")){
-                                    msg.obj = yhFinanceManagementIncome.delete(list1.get(position).getId());
+                                    msg.obj = yhFinanceManagementIncomeService.delete(list1.get(position).getId());
                                 }else if(type_selectText.equals("凭证字")){
-                                    msg.obj = yhFinanceVoucherWord.delete(list1.get(position).getId());
+                                    msg.obj = yhFinanceVoucherWordService.delete(list1.get(position).getId());
                                 }
 
                                 deleteHandler.sendMessage(msg);

@@ -29,5 +29,13 @@
         <item>凭证字</item>
     </string-array>
 
+    <string-array name="class_list">
+        <item>资产类</item>
+        <item>负债类</item>
+        <item>权益类</item>
+        <item>成本类</item>
+        <item>损益类</item>
+    </string-array>
+
 
 </resources>

@@ -5,7 +5,7 @@ import com.example.myapplication.finance.entity.YhFinanceExpenditure;
 import java.util.List;
 
 //投资收入
-public class YhFinanceManagementExpenditure {
+public class YhFinanceManagementExpenditureService {
     private financeBaseDao base;
 
     /**

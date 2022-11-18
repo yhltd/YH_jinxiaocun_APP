@@ -1,18 +1,19 @@
 package com.example.myapplication.finance.service;
 
+
 import com.example.myapplication.finance.dao.financeBaseDao;
 import com.example.myapplication.finance.entity.YhFinanceExpenditure;
 import java.util.List;
 
-//凭证字
-public class YhFinanceVoucherWord {
+//投资支出
+public class YhFinanceManagementIncomeService {
     private financeBaseDao base;
 
     /**
      * 查询全部数据
      */
     public List<YhFinanceExpenditure> getList(String company) {
-        String sql = "select id,word as shouru,company from VoucherWord where company = ?";
+        String sql = "select id,managementIncome as shouru,company from ManagementIncome where company = ?";
         base = new financeBaseDao();
         List<YhFinanceExpenditure> list = base.query(YhFinanceExpenditure.class, sql, company);
         return list;
@@ -22,7 +23,7 @@ public class YhFinanceVoucherWord {
      * 新增
      */
     public boolean insert(YhFinanceExpenditure YhFinanceExpenditure) {
-        String sql = "insert into VoucherWord(word,company) values(?,?)";
+        String sql = "insert into ManagementIncome(managementIncome,company) values(?,?)";
         base = new financeBaseDao();
         long result = base.executeOfId(sql, YhFinanceExpenditure.getShouru(), YhFinanceExpenditure.getCompany());
         return result > 0;
@@ -32,7 +33,7 @@ public class YhFinanceVoucherWord {
      * 修改
      */
     public boolean update(YhFinanceExpenditure YhFinanceExpenditure) {
-        String sql = "update VoucherWord set word=? where id=? ";
+        String sql = "update ManagementIncome set managementIncome=? where id=? ";
         base = new financeBaseDao();
         boolean result = base.execute(sql, YhFinanceExpenditure.getShouru(), YhFinanceExpenditure.getId());
         return result;
@@ -42,7 +43,7 @@ public class YhFinanceVoucherWord {
      * 删除
      */
     public boolean delete(int id) {
-        String sql = "delete from VoucherWord where id = ?";
+        String sql = "delete from ManagementIncome where id = ?";
         base = new financeBaseDao();
         return base.execute(sql, id);
     }

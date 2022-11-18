@@ -46,6 +46,24 @@ public class FinanceActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        LinearLayout kemuzongzhang = findViewById(R.id.kemuzongzhang);
+        kemuzongzhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, KeMuZongZhangActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout pingzhenghuizong = findViewById(R.id.pingzhenghuizong);
+        pingzhenghuizong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, VoucherSummaryActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private long exitTime = 0;
