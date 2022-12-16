@@ -29,6 +29,12 @@
         <item>凭证字</item>
     </string-array>
 
+    <string-array name="jijian_type">
+        <item>科目</item>
+        <item>客户/供应商/往来单位</item>
+        <item>发票种类</item>
+    </string-array>
+
     <string-array name="class_list">
         <item>资产类</item>
         <item>负债类</item>
@@ -37,5 +43,26 @@
         <item>损益类</item>
     </string-array>
 
+    <string-array name="jijianpeizhi_class_list">
+        <item>资产类</item>
+        <item>负债类</item>
+        <item>权益类</item>
+    </string-array>
+
+    <string-array name="liyisunyi_class_list">
+        <item>支出</item>
+        <item>收入</item>
+    </string-array>
+
+    <string-array name="baobiao_class_list">
+        <item>年</item>
+        <item>月</item>
+        <item>日</item>
+    </string-array>
+
+    <string-array name="fapiao_type_list">
+        <item>进项发票</item>
+        <item>销项发票</item>
+    </string-array>
 
 </resources>

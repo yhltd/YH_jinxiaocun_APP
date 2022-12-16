@@ -465,7 +465,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/lirun"
+                    android:id="@+id/yingfubaobiao"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
@@ -482,7 +482,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="利润"
+                        android:text="应付报表"
                         android:textColor="@color/main_text"
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
@@ -513,60 +513,60 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="150dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:orientation="horizontal">-->
 
-                <LinearLayout
-                    android:id="@+id/yingfubaobiao"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
-                    android:gravity="center"
-                    android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/lirun"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="150dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@drawable/border_bottom_top"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical">-->
 
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/biji" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="55dp"-->
+<!--                        android:layout_height="55dp"-->
+<!--                        android:background="@drawable/biji" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="应付报表"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:text="利润"-->
+<!--                        android:textColor="@color/main_text"-->
+<!--                        android:textSize="15sp"-->
+<!--                        tools:ignore="RtlSymmetry" />-->
+<!--                </LinearLayout>-->
 
-                <LinearLayout
-                    android:id="@+id/shujukongjian"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
-                    android:gravity="center"
-                    android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/shujukongjian"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="150dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@drawable/border_bottom_top"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical">-->
 
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/yonghu" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="55dp"-->
+<!--                        android:layout_height="55dp"-->
+<!--                        android:background="@drawable/yonghu" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="数据空间"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
-            </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:text="数据空间"-->
+<!--                        android:textColor="@color/main_text"-->
+<!--                        android:textSize="15sp"-->
+<!--                        tools:ignore="RtlSymmetry" />-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
 
 
         </LinearLayout>

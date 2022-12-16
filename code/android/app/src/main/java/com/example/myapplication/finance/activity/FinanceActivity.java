@@ -64,6 +64,124 @@ public class FinanceActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        LinearLayout jijianpeizhi = findViewById(R.id.jijianpeizhi);
+        jijianpeizhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, JiJianPeiZhiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout jijiantaizhang = findViewById(R.id.jijiantaizhang);
+        jijiantaizhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, JiJianTaiZhangActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout jijianzongzhang = findViewById(R.id.jijianzongzhang);
+        jijianzongzhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, JiJianZongZhangActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout xianjinliuliang = findViewById(R.id.xianjinliuliang);
+        xianjinliuliang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, XianJinLiuLiangActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout zichanfuzhai = findViewById(R.id.zichanfuzhai);
+        zichanfuzhai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, ZiChanFuZhaiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout liyisunyi = findViewById(R.id.liyisunyi);
+        liyisunyi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, LiYiSunYiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout baobiao = findViewById(R.id.baobiao);
+        baobiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, BaoBiaoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout yingshoubaobiao = findViewById(R.id.yingshoubaobiao);
+        yingshoubaobiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, YingShouBaoBiaoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout yingfubaobiao = findViewById(R.id.yingfubaobiao);
+        yingfubaobiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, YingFuBaoBiaoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout yingshoumingxizhang = findViewById(R.id.yingshoumingxizhang);
+        yingshoumingxizhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, YingShouMingXiZhangActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout yingfumingxizhang = findViewById(R.id.yingfumingxizhang);
+        yingfumingxizhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, YingFuMingXiZhangActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout fapiao = findViewById(R.id.fapiao);
+        fapiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, FaPiaoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout zhanghaoguanli = findViewById(R.id.zhanghaoguanli);
+        zhanghaoguanli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, ZhangHaoGuanLiActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private long exitTime = 0;

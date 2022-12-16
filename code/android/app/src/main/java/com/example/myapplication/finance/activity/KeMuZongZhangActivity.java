@@ -273,6 +273,12 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
         };
     }
 
+    public void onInsertClick(View v) {
+        Intent intent = new Intent(KeMuZongZhangActivity.this, KeMuZongZhangChangeActivity.class);
+        intent.putExtra("type", R.id.insert_btn);
+        startActivityForResult(intent, REQUEST_CODE_CHANG);
+    }
+
 
     private void initList() {
         Handler listLoadHandler = new Handler(new Handler.Callback() {

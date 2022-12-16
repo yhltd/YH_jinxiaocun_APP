@@ -258,6 +258,167 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".finance.activity.JiJianPeiZhiActivity"
+            android:label="极简配置">
+            <intent-filter>
+                <action android:name="android.intent.action.JiJianPeiZhiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.JiJianPeiZhiChangeActivity"
+            android:label="极简配置">
+            <intent-filter>
+                <action android:name="android.intent.action.JiJianPeiZhiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.JiJianTaiZhangActivity"
+            android:label="极简台账">
+            <intent-filter>
+                <action android:name="android.intent.action.JiJianTaiZhangActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.JiJianTaiZhangChangeActivity"
+            android:label="极简台账">
+            <intent-filter>
+                <action android:name="android.intent.action.JiJianTaiZhangChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.JiJianZongZhangActivity"
+            android:label="极简总账">
+            <intent-filter>
+                <action android:name="android.intent.action.JiJianZongZhangActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.XianJinLiuLiangActivity"
+            android:label="现金流量">
+            <intent-filter>
+                <action android:name="android.intent.action.XianJinLiuLiangActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.ZiChanFuZhaiActivity"
+            android:label="资产负债">
+            <intent-filter>
+                <action android:name="android.intent.action.ZiChanFuZhaiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.LiYiSunYiActivity"
+            android:label="利益损益">
+            <intent-filter>
+                <action android:name="android.intent.action.LiYiSunYiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.BaoBiaoActivity"
+            android:label="报表">
+            <intent-filter>
+                <action android:name="android.intent.action.BaoBiaoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.YingShouBaoBiaoActivity"
+            android:label="应收报表">
+            <intent-filter>
+                <action android:name="android.intent.action.YingShouBaoBiaoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.YingFuBaoBiaoActivity"
+            android:label="应付报表">
+            <intent-filter>
+                <action android:name="android.intent.action.YingFuBaoBiaoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.YingShouMingXiZhangActivity"
+            android:label="应收明细账">
+            <intent-filter>
+                <action android:name="android.intent.action.YingShouMingXiZhangActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.YingFuMingXiZhangActivity"
+            android:label="应付明细账">
+            <intent-filter>
+                <action android:name="android.intent.action.YingFuMingXiZhangActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.FaPiaoActivity"
+            android:label="发票">
+            <intent-filter>
+                <action android:name="android.intent.action.FaPiaoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.FaPiaoChangeActivity"
+            android:label="发票">
+            <intent-filter>
+                <action android:name="android.intent.action.FaPiaoChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.VoucherSummaryChangeActivity"
+            android:label="凭证汇总">
+            <intent-filter>
+                <action android:name="android.intent.action.VoucherSummaryChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.ZhangHaoGuanLiActivity"
+            android:label="账号管理">
+            <intent-filter>
+                <action android:name="android.intent.action.ZhangHaoGuanLiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.ZhangHaoGuanLiChangeActivity"
+            android:label="账号管理">
+            <intent-filter>
+                <action android:name="android.intent.action.ZhangHaoGuanLiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <!--    排产    -->
         <activity

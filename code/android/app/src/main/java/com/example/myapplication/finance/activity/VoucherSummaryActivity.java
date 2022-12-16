@@ -2,6 +2,7 @@ package com.example.myapplication.finance.activity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,6 +23,7 @@ import android.widget.SpinnerAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
@@ -32,6 +34,7 @@ import com.example.myapplication.finance.entity.YhFinanceVoucherSummary;
 import com.example.myapplication.finance.service.YhFinanceVoucherSummaryService;
 import com.example.myapplication.finance.service.YhFinanceVoucherWordService;
 import com.example.myapplication.utils.StringUtils;
+import com.example.myapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -97,6 +100,7 @@ public class VoucherSummaryActivity extends AppCompatActivity {
                 if (msg.obj != null) {
                     type_select.setAdapter((SpinnerAdapter) msg.obj);
                 }
+//                initList();
                 return true;
             }
         });
@@ -195,8 +199,8 @@ public class VoucherSummaryActivity extends AppCompatActivity {
                         public View getView(int position, View convertView, ViewGroup parent) {
                             final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
                             LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
-//                            linearLayout.setOnLongClickListener(onItemLongClick());
-//                            linearLayout.setOnClickListener(updateClick());
+                            linearLayout.setOnLongClickListener(onItemLongClick());
+                            linearLayout.setOnClickListener(updateClick());
                             linearLayout.setTag(position);
                             return view;
                         }
@@ -211,6 +215,52 @@ public class VoucherSummaryActivity extends AppCompatActivity {
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {}
+    }
+
+    public View.OnLongClickListener onItemLongClick() {
+        return new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(VoucherSummaryActivity.this);
+                int position = Integer.parseInt(view.getTag().toString());
+                Handler deleteHandler = new Handler(new Handler.Callback() {
+                    @Override
+                    public boolean handleMessage(@NonNull Message msg) {
+                        if ((boolean) msg.obj) {
+                            ToastUtil.show(VoucherSummaryActivity.this, "删除成功");
+                            initList();
+                        }
+                        return true;
+                    }
+                });
+
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Message msg = new Message();
+                                msg.obj = yhFinanceVoucherSummaryService.delete(list.get(position).getId());
+                                deleteHandler.sendMessage(msg);
+                            }
+                        }).start();
+                    }
+                });
+
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setMessage("确定删除吗？");
+                builder.setTitle("提示");
+                builder.show();
+                return true;
+            }
+        };
     }
 
 
@@ -235,6 +285,20 @@ public class VoucherSummaryActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public View.OnClickListener updateClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = Integer.parseInt(view.getTag().toString());
+                Intent intent = new Intent(VoucherSummaryActivity.this, VoucherSummaryChangeActivity.class);
+                intent.putExtra("type", R.id.update_btn);
+                MyApplication myApplication = (MyApplication) getApplication();
+                myApplication.setObj(list.get(position));
+                startActivityForResult(intent, REQUEST_CODE_CHANG);
+            }
+        };
     }
 
     protected void showDatePickDlg(final EditText editText) {
@@ -317,8 +381,8 @@ public class VoucherSummaryActivity extends AppCompatActivity {
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
                         LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
-//                        linearLayout.setOnLongClickListener(onItemLongClick());
-//                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
                         linearLayout.setTag(position);
                         return view;
                     }
@@ -329,6 +393,12 @@ public class VoucherSummaryActivity extends AppCompatActivity {
 
             }
         }).start();
+    }
+
+    public void onInsertClick(View v) {
+        Intent intent = new Intent(VoucherSummaryActivity.this, VoucherSummaryChangeActivity.class);
+        intent.putExtra("type", R.id.insert_btn);
+        startActivityForResult(intent, REQUEST_CODE_CHANG);
     }
 
     @Override

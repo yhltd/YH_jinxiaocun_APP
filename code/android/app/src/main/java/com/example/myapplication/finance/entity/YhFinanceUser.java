@@ -3,7 +3,7 @@ package com.example.myapplication.finance.entity;
 import com.google.gson.annotations.SerializedName;
 
 public class YhFinanceUser {
-    private String id;
+    private int id;
     private String company;
     private String pwd;
     @SerializedName("do")
@@ -11,11 +11,11 @@ public class YhFinanceUser {
     private String name;
     private String bianhao;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

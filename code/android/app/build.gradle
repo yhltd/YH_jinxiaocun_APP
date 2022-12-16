@@ -33,7 +33,8 @@ android {
                 'src/main/res', //默认路径
                 'jxc',
                 'finance',
-                'scheduling'
+                'scheduling',
+                'renshi'
             ]
         }
     }
