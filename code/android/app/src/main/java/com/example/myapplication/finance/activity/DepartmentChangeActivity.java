@@ -20,12 +20,7 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.finance.entity.YhFinanceDepartment;
 import com.example.myapplication.finance.entity.YhFinanceUser;
-import com.example.myapplication.finance.activity.DepartmentActivity;
 import com.example.myapplication.finance.service.YhFinanceDepartmentService;
-import com.example.myapplication.jxc.activity.JiChuZiLiaoChangeActivity;
-import com.example.myapplication.jxc.entity.YhJinXiaoCunJiChuZiLiao;
-import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
-import com.example.myapplication.jxc.service.YhJinXiaoCunJiChuZiLiaoService;
 import com.example.myapplication.utils.ToastUtil;
 
 public class DepartmentChangeActivity extends AppCompatActivity {

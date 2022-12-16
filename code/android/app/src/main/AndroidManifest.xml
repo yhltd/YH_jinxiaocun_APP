@@ -3,19 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
         tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-
 
 
     <application
@@ -23,16 +26,18 @@
         android:allowBackup="true"
         android:icon="@drawable/yhlogo"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/yhlogo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication"
-        android:requestLegacyExternalStorage="true">
+        android:theme="@style/Theme.MyApplication">
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--    进销存    -->
         <activity
             android:name=".jxc.activity.JxcActivity"
             android:label="进销存首页">
@@ -180,7 +185,7 @@
         </activity>
 
 
-
+        <!--    财务    -->
         <activity
             android:name=".finance.activity.FinanceActivity"
             android:label="首页">
@@ -254,6 +259,249 @@
         </activity>
 
 
+        <!--    排产    -->
+        <activity
+            android:name=".scheduling.activity.SchedulingActivity"
+            android:label="首页">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.ModuleActivity"
+            android:label="模块单位">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.ModuleChangeActivity"
+            android:label="模块单位">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.ModuleTypeActivity"
+            android:label="模块类别">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.ModuleTypeChangeActivity"
+            android:label="模块类别">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.TimeConfigActivity"
+            android:label="工作时间">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.TimeConfigChangeActivity"
+            android:label="工作时间">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.HolidayActivity"
+            android:label="工作时间">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.HolidayChangeActivity"
+            android:label="工作时间">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.BomActivity"
+            android:label="BOM">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.BomChangeActivity"
+            android:label="BOM">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.OrderActivity"
+            android:label="订单">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.OrderChangeActivity"
+            android:label="订单">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.OrderCheckActivity"
+            android:label="订单核对">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.OrderCheckChangeActivity"
+            android:label="订单核对">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.DepartmentActivity"
+            android:label="部门">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.DepartmentChangeActivity"
+            android:label="部门">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.PaibanRenyuanActivity"
+            android:label="人员信息">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.PaibanRenyuanChangeActivity"
+            android:label="人员信息">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.PaibanInfoActivity"
+            android:label="排班">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.PaibanInfoChangeActivity"
+            android:label="排班">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.PaibanInfoAddActivity"
+            android:label="排班">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.PaibanDetailActivity"
+            android:label="排班明细">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.PaibanDetailChangeActivity"
+            android:label="排班明细">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.UserActivity"
+            android:label="账号管理">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.UserChangeActivity"
+            android:label="账号管理">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.WorkActivity"
+            android:label="排产1">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

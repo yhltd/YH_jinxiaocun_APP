@@ -32,7 +32,8 @@ android {
             res.srcDirs = [
                 'src/main/res', //默认路径
                 'jxc',
-                'finance'
+                'finance',
+                'scheduling'
             ]
         }
     }

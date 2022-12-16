@@ -8,12 +8,13 @@ import android.widget.EditText;
 
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.finance.entity.YhFinanceUser;
+import com.example.myapplication.scheduling.entity.UserInfo;
 
 public class MyApplication extends Application {
     private YhJinXiaoCunUser yhJinXiaoCunUser;
     private YhFinanceUser yhFinanceUser;
+    private UserInfo userInfo;
     private static Context context;
-
 
     public YhJinXiaoCunUser getYhJinXiaoCunUser() {
         return yhJinXiaoCunUser;
@@ -23,13 +24,20 @@ public class MyApplication extends Application {
         this.yhJinXiaoCunUser = yhJinXiaoCunUser;
     }
 
-
     public YhFinanceUser getYhFinanceUser() {
         return yhFinanceUser;
     }
 
     public void setYhFinanceUser(YhFinanceUser yhFinanceUser) {
         this.yhFinanceUser = yhFinanceUser;
+    }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 
     private Object obj;
