@@ -2,9 +2,13 @@ package com.example.myapplication.scheduling.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,30 +17,51 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.jxc.activity.JxcActivity;
 import com.example.myapplication.jxc.activity.RukuActivity;
+import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.PaibanInfo;
 import com.example.myapplication.scheduling.entity.PaibanRenyuan;
 import com.example.myapplication.scheduling.entity.UserInfo;
+import com.example.myapplication.scheduling.service.DepartmentService;
+import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class SchedulingActivity extends AppCompatActivity {
     private UserInfo userInfo;
+    private DepartmentService departmentService;
+    private List<Department> list;
+    private boolean pd;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.scheduling_main);
 
         MyApplication myApplication = (MyApplication) getApplication();
         userInfo = myApplication.getUserInfo();
 
+        init();
 
         LinearLayout module = findViewById(R.id.module);
         module.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SchedulingActivity.this, ModuleActivity.class);
-                startActivity(intent);
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("模块单位") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, ModuleActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -44,8 +69,19 @@ public class SchedulingActivity extends AppCompatActivity {
         time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SchedulingActivity.this, TimeConfigActivity.class);
-                startActivity(intent);
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("工作时间及休息日") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, TimeConfigActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -53,8 +89,19 @@ public class SchedulingActivity extends AppCompatActivity {
         bom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SchedulingActivity.this, BomActivity.class);
-                startActivity(intent);
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("BOM") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, BomActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -62,8 +109,19 @@ public class SchedulingActivity extends AppCompatActivity {
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SchedulingActivity.this, OrderActivity.class);
-                startActivity(intent);
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("订单") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, OrderActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -71,8 +129,19 @@ public class SchedulingActivity extends AppCompatActivity {
         orderCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SchedulingActivity.this, OrderCheckActivity.class);
-                startActivity(intent);
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("排产核对") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, OrderCheckActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -80,8 +149,19 @@ public class SchedulingActivity extends AppCompatActivity {
         department.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SchedulingActivity.this, DepartmentActivity.class);
-                startActivity(intent);
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("部门") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, DepartmentActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -89,8 +169,19 @@ public class SchedulingActivity extends AppCompatActivity {
         renyuan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SchedulingActivity.this, PaibanRenyuanActivity.class);
-                startActivity(intent);
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("人员信息") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, PaibanRenyuanActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -98,8 +189,19 @@ public class SchedulingActivity extends AppCompatActivity {
         paiban.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SchedulingActivity.this, PaibanInfoActivity.class);
-                startActivity(intent);
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("排班") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, PaibanInfoActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -107,8 +209,19 @@ public class SchedulingActivity extends AppCompatActivity {
         paiban_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SchedulingActivity.this, PaibanDetailActivity.class);
-                startActivity(intent);
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("排班明细") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, PaibanDetailActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -116,8 +229,19 @@ public class SchedulingActivity extends AppCompatActivity {
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SchedulingActivity.this, UserActivity.class);
-                startActivity(intent);
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("账号管理") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, UserActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -125,12 +249,41 @@ public class SchedulingActivity extends AppCompatActivity {
         work.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SchedulingActivity.this, WorkActivity.class);
-                startActivity(intent);
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("排产") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, WorkActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
-
+        LinearLayout summary = findViewById(R.id.summary);
+        summary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("汇总") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, SummaryActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     private long exitTime = 0;
@@ -151,4 +304,32 @@ public class SchedulingActivity extends AppCompatActivity {
 
         return super.onKeyDown(keyCode, event);
     }
+
+    private void init() {
+        Handler listLoadHandler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                return true;
+            }
+        });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<HashMap<String, Object>> data = new ArrayList<>();
+                try {
+                    departmentService = new DepartmentService();
+                    list = departmentService.getList(userInfo.getCompany(), userInfo.getDepartment_name(), "");
+                    if (list == null) return;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Message msg = new Message();
+                msg.obj = null;
+                listLoadHandler.sendMessage(msg);
+            }
+        }).start();
+    }
+
+
 }

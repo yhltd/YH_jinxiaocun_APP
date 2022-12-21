@@ -657,12 +657,67 @@
 
         <activity
             android:name=".scheduling.activity.WorkActivity"
-            android:label="排产1">
+            android:label="排产">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".scheduling.activity.WorkDetailActivity"
+            android:label="排产">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.WorkAddActivity"
+            android:label="排产">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.WorkPlAddActivity"
+            android:label="排产">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.WorkPlanActivity"
+            android:label="今日计划">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.WorkTongjiActivity"
+            android:label="统计">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.SummaryActivity"
+            android:label="汇总">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

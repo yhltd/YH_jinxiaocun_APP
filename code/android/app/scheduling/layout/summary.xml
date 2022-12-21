@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".scheduling.activity.WorkActivity">
+    tools:context=".scheduling.activity.SummaryActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,17 +25,28 @@
             android:layout_weight="1"
             android:hint="订单号" />
 
-        <Button
-            android:id="@+id/sel_button"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="查询" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/border_bottom"
+        android:gravity="center_vertical">
 
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search" />
+
+        <Spinner
+            android:id="@+id/type_spinner"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="480dp">
+        android:layout_height="500dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -53,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="150dp"
-                    android:text="编号"
+                    android:text="类别"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -66,7 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="150dp"
-                    android:text="订单号"
+                    android:text="模块名称"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -79,7 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="150dp"
-                    android:text="所属模块"
+                    android:text="产量/时"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -92,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="150dp"
-                    android:text="模块效率/时"
+                    android:text="父模块"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -105,33 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="150dp"
-                    android:text="生产数量"
-                    android:textColor="@color/main_text"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:width="150dp"
-                    android:text="类型"
-                    android:textColor="@color/main_text"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:width="150dp"
-                    android:text="开始生产日期"
+                    android:text="合计产量"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -142,7 +127,7 @@
             </LinearLayout>
 
             <ListView
-                android:id="@+id/work_list"
+                android:id="@+id/list"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -158,83 +143,12 @@
         android:gravity="center"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/pc_button"
-            android:layout_width="100dp"
+            android:id="@+id/sel_button"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:text="排产1"
-            tools:ignore="MissingConstraints"
-            android:gravity="center" />
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            android:gravity="center_horizontal"/>
-        <Button
-            android:onClick="insertClick"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="添加"
-            tools:ignore="MissingConstraints"
-            android:gravity="center" />
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            android:gravity="center_horizontal"/>
-        <Button
-            android:onClick="insertPlClick"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="批量添加"
+            android:text="查询"
             tools:ignore="MissingConstraints"
             android:gravity="center" />
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-        <Button
-            android:onClick="planClick"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="生产计划"
-            tools:ignore="MissingConstraints"
-            android:gravity="center" />
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            android:gravity="center_horizontal"/>
-        <Button
-            android:onClick="tongjiClick"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="统计"
-            tools:ignore="MissingConstraints"
-            android:gravity="center" />
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            android:gravity="center_horizontal"/>
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            android:gravity="center"
-            android:visibility="invisible"/>
-    </LinearLayout>
-
 
 </LinearLayout>

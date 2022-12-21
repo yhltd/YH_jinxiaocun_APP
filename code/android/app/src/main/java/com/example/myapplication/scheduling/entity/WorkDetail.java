@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class WorkDetail implements Serializable {
     private int id;
-    private String orderId;
+    private int order_id;
     private int work_num;
     private String work_start_date;
     private String company;
@@ -24,12 +24,12 @@ public class WorkDetail implements Serializable {
         this.id = id;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public int getOrder_id() {
+        return order_id;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
     }
 
     public int getWork_num() {

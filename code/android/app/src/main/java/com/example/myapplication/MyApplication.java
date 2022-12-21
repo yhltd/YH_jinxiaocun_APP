@@ -8,12 +8,15 @@ import android.widget.EditText;
 
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.finance.entity.YhFinanceUser;
+import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.UserInfo;
 
 public class MyApplication extends Application {
     private YhJinXiaoCunUser yhJinXiaoCunUser;
     private YhFinanceUser yhFinanceUser;
     private UserInfo userInfo;
+    private Department pcDepartment;
+
     private static Context context;
 
     public YhJinXiaoCunUser getYhJinXiaoCunUser() {
@@ -38,6 +41,14 @@ public class MyApplication extends Application {
 
     public void setUserInfo(UserInfo userInfo) {
         this.userInfo = userInfo;
+    }
+
+    public Department getPcDepartment() {
+        return pcDepartment;
+    }
+
+    public void setPcDepartment(Department pcDepartment) {
+        this.pcDepartment = pcDepartment;
     }
 
     private Object obj;

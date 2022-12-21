@@ -76,4 +76,12 @@ public class OrderInfoService {
         base = new SchedulingDao();
         return base.execute(sql, order_id);
     }
+
+    public List<OrderInfo> getOrderId(){
+        String sql="select oi.id,oi.is_complete,oi.code,oi.product_name,oi.norms,oi.set_date,oi.company,oi.order_id,oi.set_num-sum(isnull(wd.work_num, 0)) as set_num from order_info as oi left join work_detail as wd on oi.id = wd.order_id group by oi.id,oi.code,oi.product_name,oi.norms,oi.set_date,oi.company,oi.order_id,oi.set_num,oi.is_complete having oi.set_num-sum(isnull(wd.work_num, 0)) > 0";
+        base = new SchedulingDao();
+        List<OrderInfo> list = base.query(OrderInfo.class, sql);
+        return list;
+    }
+
 }

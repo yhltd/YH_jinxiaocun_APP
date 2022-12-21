@@ -1,5 +1,6 @@
 package com.example.myapplication.scheduling.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,7 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
@@ -24,6 +27,7 @@ import com.example.myapplication.scheduling.entity.WorkDetail;
 import com.example.myapplication.scheduling.service.ModuleInfoService;
 import com.example.myapplication.scheduling.service.WorkDetailService;
 import com.example.myapplication.utils.StringUtils;
+import com.example.myapplication.utils.ToastUtil;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -125,7 +129,7 @@ public class WorkActivity extends AppCompatActivity {
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
                         LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
-                        //linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnLongClickListener(onItemLongClick());
                         linearLayout.setOnClickListener(pcDetail());
                         linearLayout.setTag(position);
                         return view;
@@ -136,6 +140,52 @@ public class WorkActivity extends AppCompatActivity {
                 listLoadHandler.sendMessage(msg);
             }
         }).start();
+    }
+
+    public View.OnLongClickListener onItemLongClick() {
+        return new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(WorkActivity.this);
+                int position = Integer.parseInt(view.getTag().toString());
+                Handler deleteHandler = new Handler(new Handler.Callback() {
+                    @Override
+                    public boolean handleMessage(@NonNull Message msg) {
+                        if ((boolean) msg.obj) {
+                            ToastUtil.show(WorkActivity.this, "删除成功");
+                            initList();
+                        }
+                        return true;
+                    }
+                });
+
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Message msg = new Message();
+                                msg.obj = workDetailService.delete(list.get(position).getOrder_number(), userInfo.getCompany());
+                                deleteHandler.sendMessage(msg);
+                            }
+                        }).start();
+                    }
+                });
+
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setMessage("确定要删除此订单吗？");
+                builder.setTitle("提示");
+                builder.show();
+                return true;
+            }
+        };
     }
 
     public View.OnClickListener selClick() {
@@ -186,4 +236,33 @@ public class WorkActivity extends AppCompatActivity {
         }
     }
 
+    public void insertClick(View v) {
+        Intent intent = new Intent(WorkActivity.this, WorkAddActivity.class);
+        intent.putExtra("type", pc_button.getText().toString());
+        intent.putExtra("list", (Serializable) list);
+        intent.putExtra("moduleList", (Serializable) moduleList);
+        startActivityForResult(intent, REQUEST_CODE_CHANG);
+    }
+
+    public void insertPlClick(View v) {
+        Intent intent = new Intent(WorkActivity.this, WorkPlAddActivity.class);
+        intent.putExtra("type", pc_button.getText().toString());
+        startActivityForResult(intent, REQUEST_CODE_CHANG);
+    }
+
+    public void planClick(View v) {
+        Intent intent = new Intent(WorkActivity.this, WorkPlanActivity.class);
+        intent.putExtra("type", pc_button.getText().toString());
+        intent.putExtra("list", (Serializable) list);
+        intent.putExtra("moduleList", (Serializable) moduleList);
+        startActivityForResult(intent, REQUEST_CODE_CHANG);
+    }
+
+    public void tongjiClick(View v) {
+        Intent intent = new Intent(WorkActivity.this, WorkTongjiActivity.class);
+        intent.putExtra("type", pc_button.getText().toString());
+        intent.putExtra("list", (Serializable) list);
+        intent.putExtra("moduleList", (Serializable) moduleList);
+        startActivityForResult(intent, REQUEST_CODE_CHANG);
+    }
 }

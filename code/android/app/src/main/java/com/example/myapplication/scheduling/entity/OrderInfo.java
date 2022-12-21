@@ -10,6 +10,7 @@ public class OrderInfo {
     private int set_num;
     private String company;
     private String is_complete;
+    private boolean check;
 
     public int getId() {
         return id;
@@ -81,5 +82,13 @@ public class OrderInfo {
 
     public void setIs_complete(String is_complete) {
         this.is_complete = is_complete;
+    }
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
     }
 }
