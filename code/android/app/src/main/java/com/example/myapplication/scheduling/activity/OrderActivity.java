@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.OrderInfo;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.OrderCheckService;
@@ -36,6 +37,7 @@ import java.util.List;
 public class OrderActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
     private UserInfo userInfo;
+    private Department department;
     private OrderInfoService orderInfoService;
 
     private EditText product_name_text;
@@ -60,6 +62,7 @@ public class OrderActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         userInfo = myApplication.getUserInfo();
+        department = myApplication.getPcDepartment();
 
         listView = findViewById(R.id.order_list);
         product_name_text = findViewById(R.id.product_name_text);
@@ -141,6 +144,10 @@ public class OrderActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
+        if(!department.getAdd().equals("是")){
+            ToastUtil.show(OrderActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(OrderActivity.this, OrderChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
@@ -150,6 +157,10 @@ public class OrderActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!department.getUpd().equals("是")){
+                    ToastUtil.show(OrderActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(OrderActivity.this, OrderChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
@@ -164,6 +175,10 @@ public class OrderActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!department.getDel().equals("是")){
+                    ToastUtil.show(OrderActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(OrderActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {

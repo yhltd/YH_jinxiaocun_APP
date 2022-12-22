@@ -1,18 +1,14 @@
-package com.example.myapplication.scheduling.activity;
+package com.example.myapplication.fenquan.activity;
 
-import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -25,61 +21,49 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
-import com.example.myapplication.jxc.activity.MingXiActivity;
-import com.example.myapplication.scheduling.entity.Department;
-import com.example.myapplication.scheduling.entity.OrderCheck;
-import com.example.myapplication.scheduling.entity.UserInfo;
-import com.example.myapplication.scheduling.service.OrderCheckService;
+import com.example.myapplication.fenquan.entity.Renyuan;
+import com.example.myapplication.fenquan.service.RenyuanService;
+import com.example.myapplication.jxc.activity.BiJiActivity;
+import com.example.myapplication.jxc.activity.BiJiChangeActivity;
+import com.example.myapplication.jxc.service.YhJinXiaoCunZhengLiService;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-public class OrderCheckActivity extends AppCompatActivity {
+public class RenyuanActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
-    private UserInfo userInfo;
-    private Department department;
-    private OrderCheckService orderCheckService;
+    private Renyuan renyuan;
+    private RenyuanService renyuanService;
 
-    private EditText order_number_text;
-    private EditText moudle_text;
-    private EditText ks;
-    private EditText js;
-
+    private EditText c_text;
     private ListView listView;
     private Button sel_button;
 
-    List<OrderCheck> list;
+    private List<Renyuan> list;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.order_check);
+        setContentView(R.layout.renyuan);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        MyApplication myApplication = (MyApplication) getApplication();
-        userInfo = myApplication.getUserInfo();
-        department = myApplication.getPcDepartment();
 
-        listView = findViewById(R.id.order_check_list);
-        order_number_text = findViewById(R.id.order_number_text);
-        moudle_text = findViewById(R.id.moudle_text);
-        ks = findViewById(R.id.ks);
-        js = findViewById(R.id.js);
+        c_text = findViewById(R.id.c_text);
+        listView = findViewById(R.id.list);
         sel_button = findViewById(R.id.sel_button);
+
+        MyApplication myApplication = (MyApplication) getApplication();
+        renyuan = myApplication.getRenyuan();
 
         initList();
         sel_button.setOnClickListener(selClick());
-
-        showDateOnClick(ks);
-        showDateOnClick(js);
     }
 
     @Override
@@ -105,23 +89,27 @@ public class OrderCheckActivity extends AppCompatActivity {
             public void run() {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
-                    orderCheckService = new OrderCheckService();
-                    list = orderCheckService.getList(userInfo.getCompany(), order_number_text.getText().toString(), moudle_text.getText().toString(), ks.getText().toString(), js.getText().toString());
+                    renyuanService = new RenyuanService();
+                    list = renyuanService.getList(renyuan.getB(), c_text.getText().toString());
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
-                        item.put("order_number", list.get(i).getOrder_number());
-                        item.put("moudle", list.get(i).getMoudle());
-                        item.put("riqi", list.get(i).getRiqi());
-                        item.put("num", list.get(i).getNum());
+                        item.put("c", list.get(i).getC());
+                        item.put("d", list.get(i).getD());
+                        item.put("e", list.get(i).getE());
+                        item.put("bumen", list.get(i).getBumen());
+                        item.put("zhuangtai", list.get(i).getZhuangtai());
+                        item.put("email", list.get(i).getEmail());
+                        item.put("phone", list.get(i).getPhone());
+                        item.put("bianhao", list.get(i).getBianhao());
                         data.add(item);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(OrderCheckActivity.this, data, R.layout.order_check_row, new String[]{"order_number", "moudle", "riqi", "num"}, new int[]{R.id.order_number, R.id.moudle, R.id.riqi, R.id.num}) {
+                SimpleAdapter adapter = new SimpleAdapter(RenyuanActivity.this, data, R.layout.renyuan_row, new String[]{"c", "d", "e", "bumen", "zhuangtai", "email", "phone", "bianhao"}, new int[]{R.id.c, R.id.d, R.id.e, R.id.bumen, R.id.zhuangtai, R.id.email, R.id.phone, R.id.bianhao}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -149,11 +137,7 @@ public class OrderCheckActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
-        if(!department.getAdd().equals("是")){
-            ToastUtil.show(OrderCheckActivity.this, "无权限！");
-            return;
-        }
-        Intent intent = new Intent(OrderCheckActivity.this, OrderCheckChangeActivity.class);
+        Intent intent = new Intent(RenyuanActivity.this, RenyuanChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
     }
@@ -162,12 +146,8 @@ public class OrderCheckActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!department.getUpd().equals("是")){
-                    ToastUtil.show(OrderCheckActivity.this, "无权限！");
-                    return;
-                }
                 int position = Integer.parseInt(view.getTag().toString());
-                Intent intent = new Intent(OrderCheckActivity.this, OrderCheckChangeActivity.class);
+                Intent intent = new Intent(RenyuanActivity.this, RenyuanChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
                 MyApplication myApplication = (MyApplication) getApplication();
                 myApplication.setObj(list.get(position));
@@ -180,17 +160,13 @@ public class OrderCheckActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                if(!department.getDel().equals("是")){
-                    ToastUtil.show(OrderCheckActivity.this, "无权限！");
-                    return true;
-                }
-                AlertDialog.Builder builder = new AlertDialog.Builder(OrderCheckActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(RenyuanActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {
                     @Override
                     public boolean handleMessage(@NonNull Message msg) {
                         if ((boolean) msg.obj) {
-                            ToastUtil.show(OrderCheckActivity.this, "删除成功");
+                            ToastUtil.show(RenyuanActivity.this, "删除成功");
                             initList();
                         }
                         return true;
@@ -204,7 +180,7 @@ public class OrderCheckActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 Message msg = new Message();
-                                msg.obj = orderCheckService.delete(list.get(position).getId());
+                                msg.obj = renyuanService.delete(list.get(position).getId());
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
@@ -234,41 +210,6 @@ public class OrderCheckActivity extends AppCompatActivity {
                 initList();
             }
         }
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    protected void showDateOnClick(final EditText editText) {
-        editText.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                    showDatePickDlg(editText);
-                    return true;
-                }
-                return false;
-            }
-        });
-        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (b) {
-                    showDatePickDlg(editText);
-                }
-
-            }
-        });
-    }
-
-    protected void showDatePickDlg(final EditText editText) {
-        Calendar calendar = Calendar.getInstance();
-        DatePickerDialog datePickerDialog = new DatePickerDialog(OrderCheckActivity.this, new DatePickerDialog.OnDateSetListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
-            }
-        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-        datePickerDialog.show();
     }
 
 

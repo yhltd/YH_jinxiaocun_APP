@@ -718,6 +718,35 @@
             </intent-filter>
         </activity>
 
+        <!--    分权    -->
+        <activity
+            android:name=".fenquan.activity.FenquanActivity"
+            android:label="首页">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fenquan.activity.RenyuanActivity"
+            android:label="人员管理">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fenquan.activity.RenyuanChangeActivity"
+            android:label="人员管理">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
     </application>
 
 </manifest>

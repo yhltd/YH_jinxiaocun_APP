@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.ModuleInfo;
 import com.example.myapplication.scheduling.entity.ModuleType;
 import com.example.myapplication.scheduling.entity.UserInfo;
@@ -37,7 +38,7 @@ import java.util.List;
 public class ModuleActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
     private UserInfo userInfo;
-
+    private Department department;
     private ModuleInfoService moduleInfoService;
     private ModuleTypeService moduleTypeService;
 
@@ -65,7 +66,7 @@ public class ModuleActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         userInfo = myApplication.getUserInfo();
-
+        department = myApplication.getPcDepartment();
         type_spinner = findViewById(R.id.type_spinner);
         listView = findViewById(R.id.module_list);
 
@@ -226,6 +227,10 @@ public class ModuleActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!department.getDel().equals("是")){
+                    ToastUtil.show(ModuleActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(ModuleActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {
@@ -269,6 +274,10 @@ public class ModuleActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
+        if(!department.getAdd().equals("是")){
+            ToastUtil.show(ModuleActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(ModuleActivity.this, ModuleChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
@@ -283,6 +292,10 @@ public class ModuleActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!department.getUpd().equals("是")){
+                    ToastUtil.show(ModuleActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(ModuleActivity.this, ModuleChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);

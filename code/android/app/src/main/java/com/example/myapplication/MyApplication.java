@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.StrictMode;
 import android.widget.EditText;
 
+import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.scheduling.entity.Department;
@@ -16,6 +17,7 @@ public class MyApplication extends Application {
     private YhFinanceUser yhFinanceUser;
     private UserInfo userInfo;
     private Department pcDepartment;
+    private Renyuan renyuan;
 
     private static Context context;
 
@@ -49,6 +51,14 @@ public class MyApplication extends Application {
 
     public void setPcDepartment(Department pcDepartment) {
         this.pcDepartment = pcDepartment;
+    }
+
+    public Renyuan getRenyuan() {
+        return renyuan;
+    }
+
+    public void setRenyuan(Renyuan renyuan) {
+        this.renyuan = renyuan;
     }
 
     private Object obj;

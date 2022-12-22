@@ -16,11 +16,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.TimeConfig;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.PaibanDetailService;
 import com.example.myapplication.scheduling.service.TimeConfigService;
 import com.example.myapplication.utils.StringUtils;
+import com.example.myapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +31,7 @@ import java.util.List;
 public class TimeConfigActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
     private UserInfo userInfo;
+    private Department department;
     private TimeConfigService timeConfigService;
 
     private ListView listView;
@@ -47,7 +50,7 @@ public class TimeConfigActivity extends AppCompatActivity {
         }
         MyApplication myApplication = (MyApplication) getApplication();
         userInfo = myApplication.getUserInfo();
-
+        department = myApplication.getPcDepartment();
         listView = findViewById(R.id.time_list);
 
         initList();
@@ -131,6 +134,10 @@ public class TimeConfigActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!department.getUpd().equals("是")){
+                    ToastUtil.show(TimeConfigActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(TimeConfigActivity.this, TimeConfigChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);

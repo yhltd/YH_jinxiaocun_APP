@@ -20,6 +20,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
+import com.example.myapplication.fenquan.activity.FenquanActivity;
+import com.example.myapplication.fenquan.entity.Renyuan;
+import com.example.myapplication.fenquan.service.RenyuanService;
 import com.example.myapplication.jxc.activity.JxcActivity;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunUserService;
@@ -38,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
     private YhJinXiaoCunUserService yhJinXiaoCunUserService;
     private YhFinanceUserService yhFinanceUserService;
     private UserInfoService userInfoService;
+    private RenyuanService renyuanService;
+
     private Spinner system;
     private Spinner company;
     private Button signBtn;
@@ -158,6 +163,22 @@ public class LoginActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                    } else if (systemText.equals("云合分权编辑系统")) {
+                        Message msg = new Message();
+                        SpinnerAdapter adapter = null;
+                        try {
+                            renyuanService = new RenyuanService();
+                            List<String> list = renyuanService.getCompany();
+                            adapter = new ArrayAdapter<String>(LoginActivity.this, android.R.layout.simple_spinner_dropdown_item, list);
+                            if (list.size() > 0) {
+                                msg.obj = adapter;
+                            } else {
+                                msg.obj = null;
+                            }
+                            systemHandler.sendMessage(msg);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }).start();
@@ -225,6 +246,17 @@ public class LoginActivity extends AppCompatActivity {
                                 } else {
                                     ToastUtil.show(LoginActivity.this, "账号已被禁用");
                                 }
+                            } else if (systemText.equals("云合分权编辑系统")) {
+                                Renyuan renyuan = (Renyuan) msg.obj;
+                                if (renyuan.getZhuangtai().equals("正常")) {
+                                    MyApplication application = (MyApplication) getApplicationContext();
+                                    application.setRenyuan(renyuan);
+                                    ToastUtil.show(LoginActivity.this, "登录成功");
+                                    Intent intent = new Intent(LoginActivity.this, FenquanActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    ToastUtil.show(LoginActivity.this, "账号已被禁用");
+                                }
                             }
                         } else {
                             ToastUtil.show(LoginActivity.this, "用户名密码错误");
@@ -264,8 +296,16 @@ public class LoginActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                             signHandler.sendMessage(msg);
+                        } else if (systemText.equals("云合分权编辑系统")) {
+                            Message msg = new Message();
+                            try {
+                                renyuanService = new RenyuanService();
+                                msg.obj = renyuanService.login(username.getText().toString(), password.getText().toString(), companyText);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            signHandler.sendMessage(msg);
                         }
-
                     }
                 }).start();
             }

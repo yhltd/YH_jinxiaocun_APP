@@ -34,7 +34,8 @@ android {
                 'jxc',
                 'finance',
                 'scheduling',
-                'renshi'
+                'renshi',
+                'fenquan'
             ]
         }
     }

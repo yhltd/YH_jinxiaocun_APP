@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.PaibanDetail;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.PaibanDetailService;
@@ -34,6 +35,7 @@ import java.util.List;
 public class PaibanDetailActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
     private UserInfo userInfo;
+    private Department department;
     private PaibanDetailService paibanDetailService;
 
     private EditText name_text;
@@ -55,6 +57,7 @@ public class PaibanDetailActivity extends AppCompatActivity {
         }
         MyApplication myApplication = (MyApplication) getApplication();
         userInfo = myApplication.getUserInfo();
+        department = myApplication.getPcDepartment();
 
         listView = findViewById(R.id.detail_list);
         name_text = findViewById(R.id.name_text);
@@ -137,6 +140,10 @@ public class PaibanDetailActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!department.getUpd().equals("是")){
+                    ToastUtil.show(PaibanDetailActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(PaibanDetailActivity.this, PaibanDetailChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
@@ -151,6 +158,10 @@ public class PaibanDetailActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!department.getDel().equals("是")){
+                    ToastUtil.show(PaibanDetailActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(PaibanDetailActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {

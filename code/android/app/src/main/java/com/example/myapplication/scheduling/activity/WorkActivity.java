@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.ModuleInfo;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.entity.WorkDetail;
@@ -37,6 +38,7 @@ import java.util.List;
 public class WorkActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
     private UserInfo userInfo;
+    private Department department;
     private WorkDetailService workDetailService;
     private ModuleInfoService moduleInfoService;
 
@@ -66,6 +68,7 @@ public class WorkActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         userInfo = myApplication.getUserInfo();
+        department = myApplication.getPcDepartment();
 
         initList();
         sel_button.setOnClickListener(selClick());
@@ -146,6 +149,10 @@ public class WorkActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!department.getDel().equals("是")){
+                    ToastUtil.show(WorkActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(WorkActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {
@@ -237,6 +244,10 @@ public class WorkActivity extends AppCompatActivity {
     }
 
     public void insertClick(View v) {
+        if(!department.getAdd().equals("是")){
+            ToastUtil.show(WorkActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(WorkActivity.this, WorkAddActivity.class);
         intent.putExtra("type", pc_button.getText().toString());
         intent.putExtra("list", (Serializable) list);
@@ -245,6 +256,10 @@ public class WorkActivity extends AppCompatActivity {
     }
 
     public void insertPlClick(View v) {
+        if(!department.getAdd().equals("是")){
+            ToastUtil.show(WorkActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(WorkActivity.this, WorkPlAddActivity.class);
         intent.putExtra("type", pc_button.getText().toString());
         startActivityForResult(intent, REQUEST_CODE_CHANG);

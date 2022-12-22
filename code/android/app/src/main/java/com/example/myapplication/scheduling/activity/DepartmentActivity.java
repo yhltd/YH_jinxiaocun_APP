@@ -34,6 +34,7 @@ import java.util.List;
 public class DepartmentActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
     private UserInfo userInfo;
+    private Department department;
     private DepartmentService departmentService;
 
     private EditText department_text;
@@ -62,6 +63,7 @@ public class DepartmentActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         userInfo = myApplication.getUserInfo();
+        department = myApplication.getPcDepartment();
 
         initList();
         sel_button.setOnClickListener(selClick());
@@ -136,6 +138,10 @@ public class DepartmentActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
+        if(!department.getAdd().equals("是")){
+            ToastUtil.show(DepartmentActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(DepartmentActivity.this, DepartmentChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
@@ -145,6 +151,10 @@ public class DepartmentActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!department.getUpd().equals("是")){
+                    ToastUtil.show(DepartmentActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(DepartmentActivity.this, DepartmentChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
@@ -159,6 +169,10 @@ public class DepartmentActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!department.getDel().equals("是")){
+                    ToastUtil.show(DepartmentActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(DepartmentActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {
