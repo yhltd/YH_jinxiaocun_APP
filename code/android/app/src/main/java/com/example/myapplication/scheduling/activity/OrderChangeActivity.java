@@ -264,7 +264,11 @@ public class OrderChangeActivity extends AppCompatActivity {
                 @Override
                 public void afterTextChanged(Editable s) {
                     int a = (int) num.getTag();
-                    list.get(a).setUse_num(Double.parseDouble(s.toString()));
+                    if (!s.toString().equals("")) {
+                        list.get(a).setUse_num(Double.parseDouble(s.toString()));
+                    } else {
+                        list.get(a).setUse_num(0);
+                    }
                 }
             });
 

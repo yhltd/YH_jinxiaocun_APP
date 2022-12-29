@@ -251,200 +251,200 @@ public class WorkDetailActivity extends AppCompatActivity {
                             }
                         }
                     } else if (type.equals("排产2")) {
+//                        //模块最后的开始时间
+//                        List<Paichan_modoule_time> pmtList = new ArrayList<>();
+//                        int num = 0;
+//                        //模块变量
+//                        int mokuai = 0;
+//                        int bianliang = 0;
+
+//                        for (WorkDetail workDetail : list) {
+//                            //订单开始日期
+//                            String nowDate = df.format(df.parse(workDetail.getWork_start_date()));
+//                            //总生产数量
+//                            double lastNum = workDetail.getWork_num();
+//                            //所需生产小时
+//                            double xiaoshi = 0;
+//                            //订单所有模块效率合计
+//                            double xiaolv = 0;
+//
+//                            for (int i = 0; i < list.size(); i++) {
+//                                if (workDetail.getOrder_number().equals(list.get(i).getOrder_number()) && workDetail.getWork_num() == list.get(i).getWork_num()) {
+//                                    xiaolv += list.get(i).getNum();
+//                                }
+//                            }
+//
+//                            if (xiaolv != 0) {
+//                                xiaoshi = lastNum / xiaolv;
+//                            }
+//
+//                            boolean pd = false;
+//                            double shichang = xiaoshi;
+//                            double shijianbianliang = 0;
+//                            String ks = nowDate;
+//
+//                            for (int i = 0; i < pmtList.size(); i++) {
+//                                if (workDetail.getModule_id() == pmtList.get(i).modoule_id) {
+//                                    if (ks.compareTo(pmtList.get(i).riqi) <= 0) {
+//                                        ks = pmtList.get(i).riqi;
+//                                    }
+//
+//                                    int dowhile = 0;
+//                                    do {
+//                                        double hour1 = WorkHour(df.parse(ks));
+//                                        if (dowhile == 0) {
+//                                            hour1 = pmtList.get(i).time;
+//                                            dowhile += 1;
+//                                        }
+//                                        if (shichang >= hour1) {
+//                                            Pc pc = new Pc();
+//                                            pc.id = workDetail.getId();
+//                                            pc.num = baoliu.format(hour1 * workDetail.getNum());
+//                                            pc.riqi = ks;
+//                                            pc.modoule_id = workDetail.getModule_id();
+//                                            pcList.add(pc);
+//                                            shichang -= hour1;
+//                                        } else {
+//                                            Pc pc = new Pc();
+//                                            pc.id = workDetail.getId();
+//                                            pc.num = baoliu.format(shichang * workDetail.getNum());
+//                                            pc.riqi = ks;
+//                                            pc.modoule_id = workDetail.getModule_id();
+//                                            pcList.add(pc);
+//                                            shijianbianliang = hour1 - shichang;
+//                                            shichang = 0;
+//                                        }
+//                                        Calendar calendar = new GregorianCalendar();
+//                                        calendar.setTime(df.parse(ks));
+//                                        calendar.add(calendar.DATE, 1);
+//                                        ks = df.format(calendar.getTime());
+//                                    } while (shichang > 0);
+//                                    bianliang += 1;
+//                                    Calendar calendar = new GregorianCalendar();
+//                                    calendar.setTime(df.parse(ks));
+//                                    calendar.add(calendar.DATE, -1);
+//                                    ks = df.format(calendar.getTime());
+//
+//                                    pmtList.get(i).riqi = ks;
+//                                    pmtList.get(i).time = shijianbianliang;
+//                                    pd = true;
+//                                }
+//                            }
+//                            if (!pd) {
+//                                do {
+//                                    double hour1 = WorkHour(df.parse(ks));
+//                                    if (shichang >= hour1) {
+//                                        Pc pc = new Pc();
+//                                        pc.id = workDetail.getId();
+//                                        pc.num = baoliu.format(hour1 * workDetail.getNum());
+//                                        pc.riqi = ks;
+//                                        pc.modoule_id = workDetail.getModule_id();
+//                                        pcList.add(pc);
+//                                        shichang -= hour1;
+//                                    } else {
+//                                        Pc pc = new Pc();
+//                                        pc.id = workDetail.getId();
+//                                        pc.num = baoliu.format(shichang * workDetail.getNum());
+//                                        pc.riqi = ks;
+//                                        pc.modoule_id = workDetail.getModule_id();
+//                                        pcList.add(pc);
+//                                        shijianbianliang = hour1 - shichang;
+//                                        shichang = 0;
+//                                    }
+//                                    Calendar calendar = new GregorianCalendar();
+//                                    calendar.setTime(df.parse(ks));
+//                                    calendar.add(calendar.DATE, 1);
+//                                    ks = df.format(calendar.getTime());
+//                                } while (shichang > 0);
+//                                Calendar calendar = new GregorianCalendar();
+//                                calendar.setTime(df.parse(ks));
+//                                calendar.add(calendar.DATE, -1);
+//                                ks = df.format(calendar.getTime());
+//                                bianliang += 1;
+//                                Paichan_modoule_time pmt = new Paichan_modoule_time();
+//                                pmt.modoule_id = workDetail.getModule_id();
+//                                pmt.riqi = ks;
+//                                pmt.time = shijianbianliang;
+//                                pmtList.add(pmt);
+//                            }
+//                        }
+
                         //模块最后的开始时间
                         List<Paichan_modoule_time> pmtList = new ArrayList<>();
-                        int num = 0;
-                        //模块变量
-                        int mokuai = 0;
-                        int bianliang = 0;
 
                         for (WorkDetail workDetail : list) {
                             //订单开始日期
                             String nowDate = df.format(df.parse(workDetail.getWork_start_date()));
                             //总生产数量
                             double lastNum = workDetail.getWork_num();
-                            //所需生产小时
-                            double xiaoshi = 0;
-                            //订单所有模块效率合计
-                            double xiaolv = 0;
 
-                            for (int i = 0; i < list.size(); i++) {
-                                if (workDetail.getOrder_number().equals(list.get(i).getOrder_number()) && workDetail.getWork_num() == list.get(i).getWork_num()) {
-                                    xiaolv += list.get(i).getNum();
-                                }
-                            }
-
-                            if (xiaolv != 0) {
-                                xiaoshi = lastNum / xiaolv;
-                            }
-
-                            boolean pd = false;
-                            double shichang = xiaoshi;
-                            double shijianbianliang = 0;
-                            String ks = nowDate;
-
-                            for (int i = 0; i < pmtList.size(); i++) {
-                                if (workDetail.getModule_id() == pmtList.get(i).modoule_id) {
-                                    if (ks.compareTo(pmtList.get(i).riqi) <= 0) {
-                                        ks = pmtList.get(i).riqi;
-                                    }
-
-                                    int dowhile = 0;
-                                    do {
-                                        double hour1 = WorkHour(df.parse(ks));
-                                        if (dowhile == 0) {
-                                            hour1 = pmtList.get(i).time;
-                                            dowhile += 1;
-                                        }
-                                        if (shichang >= hour1) {
-                                            Pc pc = new Pc();
-                                            pc.id = workDetail.getId();
-                                            pc.num = baoliu.format(hour1 * workDetail.getNum());
-                                            pc.riqi = ks;
-                                            pc.modoule_id = workDetail.getModule_id();
-                                            pcList.add(pc);
-                                            shichang -= hour1;
+                            do {
+                                int zuihou = 0;
+                                boolean pd = false;
+                                String ks = nowDate;
+                                double time1 = 0;
+                                for (int i = 0; i < pmtList.size(); i++) {
+                                    if (workDetail.getModule_id() == pmtList.get(i).modoule_id) {
+                                        pd = true;
+                                        zuihou = i;
+                                        if (ks.compareTo(pmtList.get(i).riqi) == 0) {
+                                            ks = pmtList.get(i).riqi;
+                                            time1 = pmtList.get(i).time;
                                         } else {
-                                            Pc pc = new Pc();
-                                            pc.id = workDetail.getId();
-                                            pc.num = baoliu.format(shichang * workDetail.getNum());
-                                            pc.riqi = ks;
-                                            pc.modoule_id = workDetail.getModule_id();
-                                            pcList.add(pc);
-                                            shijianbianliang = hour1 - shichang;
-                                            shichang = 0;
+                                            time1 = WorkHour(df.parse(ks));
                                         }
-                                        Calendar calendar = new GregorianCalendar();
-                                        calendar.setTime(df.parse(ks));
-                                        calendar.add(calendar.DATE, 1);
-                                        ks = df.format(calendar.getTime());
-                                    } while (shichang > 0);
-                                    bianliang += 1;
-                                    Calendar calendar = new GregorianCalendar();
-                                    calendar.setTime(df.parse(ks));
-                                    calendar.add(calendar.DATE, -1);
-                                    ks = df.format(calendar.getTime());
-
-                                    pmtList.get(i).riqi = ks;
-                                    pmtList.get(i).time = shijianbianliang;
-                                    pd = true;
-                                }
-                            }
-                            if (!pd) {
-                                do {
-                                    double hour1 = WorkHour(df.parse(ks));
-                                    if (shichang >= hour1) {
-                                        Pc pc = new Pc();
-                                        pc.id = workDetail.getId();
-                                        pc.num = baoliu.format(hour1 * workDetail.getNum());
-                                        pc.riqi = ks;
-                                        pc.modoule_id = workDetail.getModule_id();
-                                        pcList.add(pc);
-                                        shichang -= hour1;
-                                    } else {
-                                        Pc pc = new Pc();
-                                        pc.id = workDetail.getId();
-                                        pc.num = baoliu.format(shichang * workDetail.getNum());
-                                        pc.riqi = ks;
-                                        pc.modoule_id = workDetail.getModule_id();
-                                        pcList.add(pc);
-                                        shijianbianliang = hour1 - shichang;
-                                        shichang = 0;
                                     }
-                                    Calendar calendar = new GregorianCalendar();
-                                    calendar.setTime(df.parse(ks));
-                                    calendar.add(calendar.DATE, 1);
-                                    ks = df.format(calendar.getTime());
-                                } while (shichang > 0);
-                                Calendar calendar = new GregorianCalendar();
-                                calendar.setTime(df.parse(ks));
-                                calendar.add(calendar.DATE, -1);
-                                ks = df.format(calendar.getTime());
-                                bianliang += 1;
-                                Paichan_modoule_time pmt = new Paichan_modoule_time();
-                                pmt.modoule_id = workDetail.getModule_id();
-                                pmt.riqi = ks;
-                                pmt.time = shijianbianliang;
-                                pmtList.add(pmt);
-                            }
-                        }
+                                }
+                                double hour1 = WorkHour(df.parse(ks));
+                                double shengchan = 0;
+                                hour1 -= time1;
+                                if (workDetail.getNum() != 0) {
+                                    shengchan = lastNum / workDetail.getNum();
+                                }
+                                double workNum = 0;
+                                if (shengchan >= hour1) {
+                                    workNum = hour1 * workDetail.getNum();
+                                    lastNum -= workNum;
+                                    time1 = hour1;
+                                    Pc pc = new Pc();
+                                    pc.id = workDetail.getId();
+                                    pc.num = workNum + "";
+                                    pc.riqi = ks;
+                                    pc.modoule_id = workDetail.getModule_id();
+                                    pcList.add(pc);
+                                } else {
+                                    workNum = shengchan * workDetail.getNum();
+                                    lastNum = 0;
+                                    time1 = shengchan;
+                                    Pc pc = new Pc();
+                                    pc.id = workDetail.getId();
+                                    pc.num = workNum + "";
+                                    pc.riqi = ks;
+                                    pc.modoule_id = workDetail.getModule_id();
+                                    pcList.add(pc);
+                                }
 
-//                        //模块最后的开始时间
-//                        List<Paichan_modoule_time> pmtList = new ArrayList<>();
-//
-//                        for (WorkDetail workDetail : list) {
-//                            //订单开始日期
-//                            String nowDate = df.format(df.parse(workDetail.getWork_start_date()));
-//                            //总生产数量
-//                            double lastNum = workDetail.getWork_num();
-//
-//                            do {
-//                                int zuihou = 0;
-//                                boolean pd = false;
-//                                String ks = nowDate;
-//                                double time1 = 0;
-//                                for (int i = 0; i < pmtList.size(); i++) {
-//                                    if (workDetail.getModule_id() == pmtList.get(i).modoule_id) {
-//                                        pd = true;
-//                                        zuihou = i;
-//                                        if (ks.compareTo(pmtList.get(i).riqi) == 0) {
-//                                            ks = pmtList.get(i).riqi;
-//                                            time1 = pmtList.get(i).time;
-//                                        } else {
-//                                            time1 = WorkHour(df.parse(ks));
-//                                        }
-//                                    }
-//                                }
-//                                double hour1 = WorkHour(df.parse(ks));
-//                                double shengchan = 0;
-//                                hour1 -= time1;
-//                                if (workDetail.getNum() != 0) {
-//                                    shengchan = lastNum / workDetail.getNum();
-//                                }
-//                                double workNum = 0;
-//                                if (shengchan >= hour1) {
-//                                    workNum = hour1 * workDetail.getNum();
-//                                    lastNum -= workNum;
-//                                    time1 = hour1;
-//                                    Pc pc = new Pc();
-//                                    pc.id = workDetail.getId();
-//                                    pc.num = workNum + "";
-//                                    pc.riqi = ks;
-//                                    pc.modoule_id = workDetail.getModule_id();
-//                                    pcList.add(pc);
-//                                } else {
-//                                    workNum = shengchan * workDetail.getNum();
-//                                    lastNum = 0;
-//                                    time1 = shengchan;
-//                                    Pc pc = new Pc();
-//                                    pc.id = workDetail.getId();
-//                                    pc.num = workNum + "";
-//                                    pc.riqi = ks;
-//                                    pc.modoule_id = workDetail.getModule_id();
-//                                    pcList.add(pc);
-//                                }
-//
-//                                if (workNum == 0) {
-//                                    if (pd) {
-//                                        pmtList.get(zuihou).riqi = ks;
-//                                        pmtList.get(zuihou).time = time1;
-//                                    } else {
-//                                        Paichan_modoule_time pmt = new Paichan_modoule_time();
-//                                        pmt.modoule_id = workDetail.getModule_id();
-//                                        pmt.riqi = ks;
-//                                        pmt.time = time1;
-//                                        pmtList.add(pmt);
-//                                    }
-//                                }
-//
-//                                Calendar calendar = new GregorianCalendar();
-//                                calendar.setTime(df.parse(nowDate));
-//                                calendar.add(calendar.DATE, +1);
-//                                nowDate = df.format(calendar.getTime());
-//
-//
-//                            } while (lastNum > 0);
-//                        }
+                                if (workNum == 0) {
+                                    if (pd) {
+                                        pmtList.get(zuihou).riqi = ks;
+                                        pmtList.get(zuihou).time = time1;
+                                    } else {
+                                        Paichan_modoule_time pmt = new Paichan_modoule_time();
+                                        pmt.modoule_id = workDetail.getModule_id();
+                                        pmt.riqi = ks;
+                                        pmt.time = time1;
+                                        pmtList.add(pmt);
+                                    }
+                                }
+
+                                Calendar calendar = new GregorianCalendar();
+                                calendar.setTime(df.parse(nowDate));
+                                calendar.add(calendar.DATE, +1);
+                                nowDate = df.format(calendar.getTime());
+
+
+                            } while (lastNum > 0);
+                        }
                         for (Pc pc : pcList) {
                             if (pc.id == workDetail.getId() && pc.modoule_id == workDetail.getModule_id()) {
                                 HashMap<String, Object> item = new HashMap<>();

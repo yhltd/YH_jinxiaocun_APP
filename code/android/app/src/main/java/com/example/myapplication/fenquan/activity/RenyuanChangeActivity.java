@@ -94,7 +94,7 @@ public class RenyuanChangeActivity extends AppCompatActivity {
                 zhuangtai.setSelection(1);
             }
 
-            bumen.setSelection();
+            //bumen.setSelection();
         }
 
     }
