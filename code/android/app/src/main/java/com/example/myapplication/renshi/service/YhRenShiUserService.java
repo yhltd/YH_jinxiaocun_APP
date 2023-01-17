@@ -31,10 +31,30 @@ public class YhRenShiUserService {
     /**
      * 查询全部数据
      */
-    public List<YhFinanceUser> getList(String company, String username) {
-        String sql = "select * from gongzi_renyuan where L = ? and name like '%'+ ? +'%'";
+    public List<YhRenShiUser> getList(String company, String username) {
+        String sql = "select * from gongzi_renyuan where L = ? and B like '%'+ ? +'%'";
         base = new renshiBaseDao();
-        List<YhFinanceUser> list = base.query(YhFinanceUser.class, sql,company,username);
+        List<YhRenShiUser> list = base.query(YhRenShiUser.class, sql,company,username);
+        return list;
+    }
+
+    /**
+     * 查询当天过生日的员工
+     */
+    public List<YhRenShiUser> birthdayList(String company, String this_date) {
+        String sql = "select * from gongzi_renyuan where L = ? and Q = ?";
+        base = new renshiBaseDao();
+        List<YhRenShiUser> list = base.query(YhRenShiUser.class, sql,company,this_date);
+        return list;
+    }
+
+    /**
+     * 查询当月过生日的员工
+     */
+    public List<YhRenShiUser> monthBirthdayList(String company, String month) {
+        String sql = "SELECT id,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,AA,AB,AC,AD,convert(varchar,day(convert(date,Q))) as Q from gongzi_renyuan where L = ? and month(convert(date,Q))=?";
+        base = new renshiBaseDao();
+        List<YhRenShiUser> list = base.query(YhRenShiUser.class, sql,company,month);
         return list;
     }
 

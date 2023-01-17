@@ -2,18 +2,12 @@ package com.example.myapplication.renshi.entity;
 
 import com.google.gson.annotations.SerializedName;
 
-public class YhRenShiUser {
+public class YhRenShiKaoQinJiLu {
+
     private int id;
-
-    @SerializedName("B")
-    private String b;
-
-    @SerializedName("C")
-    private String c;
-
-    @SerializedName("D")
-    private String d;
-
+    private String year;
+    private String moth;
+    private String name;
     @SerializedName("E")
     private String e;
 
@@ -92,6 +86,39 @@ public class YhRenShiUser {
     @SerializedName("AD")
     private String ad;
 
+    @SerializedName("AE")
+    private String ae;
+
+    @SerializedName("AF")
+    private String af;
+
+    @SerializedName("AG")
+    private String ag;
+
+    @SerializedName("AH")
+    private String ah;
+
+    @SerializedName("AI")
+    private String ai;
+
+    @SerializedName("AJ")
+    private String aj;
+
+    @SerializedName("AK")
+    private String ak;
+
+    @SerializedName("AL")
+    private String al;
+
+    @SerializedName("AM")
+    private String am;
+
+    @SerializedName("AN")
+    private String an;
+
+    @SerializedName("AO")
+    private String ao;
+
     public int getId() {
         return id;
     }
@@ -100,28 +127,28 @@ public class YhRenShiUser {
         this.id = id;
     }
 
-    public String getB() {
-        return b;
+    public String getYear() {
+        return year;
     }
 
-    public void setB(String b) {
-        this.b = b;
+    public void setYear(String year) {
+        this.year = year;
     }
 
-    public String getC() {
-        return c;
+    public String getMoth() {
+        return moth;
     }
 
-    public void setC(String c) {
-        this.c = c;
+    public void setMoth(String moth) {
+        this.moth = moth;
     }
 
-    public String getD() {
-        return d;
+    public String getName() {
+        return name;
     }
 
-    public void setD(String d) {
-        this.d = d;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getE() {
@@ -330,5 +357,93 @@ public class YhRenShiUser {
 
     public void setAd(String ad) {
         this.ad = ad;
+    }
+
+    public String getAe() {
+        return ae;
+    }
+
+    public void setAe(String ae) {
+        this.ae = ae;
+    }
+
+    public String getAf() {
+        return af;
+    }
+
+    public void setAf(String af) {
+        this.af = af;
+    }
+
+    public String getAg() {
+        return ag;
+    }
+
+    public void setAg(String ag) {
+        this.ag = ag;
+    }
+
+    public String getAh() {
+        return ah;
+    }
+
+    public void setAh(String ah) {
+        this.ah = ah;
+    }
+
+    public String getAi() {
+        return ai;
+    }
+
+    public void setAi(String ai) {
+        this.ai = ai;
+    }
+
+    public String getAj() {
+        return aj;
+    }
+
+    public void setAj(String aj) {
+        this.aj = aj;
+    }
+
+    public String getAk() {
+        return ak;
+    }
+
+    public void setAk(String ak) {
+        this.ak = ak;
+    }
+
+    public String getAl() {
+        return al;
+    }
+
+    public void setAl(String al) {
+        this.al = al;
+    }
+
+    public String getAm() {
+        return am;
+    }
+
+    public void setAm(String am) {
+        this.am = am;
+    }
+
+    public String getAn() {
+        return an;
+    }
+
+    public void setAn(String an) {
+        this.an = an;
+    }
+
+    public String getAo() {
+        return ao;
+    }
+
+    public void setAo(String ao) {
+        this.ao = ao;
     }
 }

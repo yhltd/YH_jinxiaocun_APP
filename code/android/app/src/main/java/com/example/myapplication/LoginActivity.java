@@ -26,6 +26,9 @@ import com.example.myapplication.fenquan.service.RenyuanService;
 import com.example.myapplication.jxc.activity.JxcActivity;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunUserService;
+import com.example.myapplication.renshi.activity.RenShiActivity;
+import com.example.myapplication.renshi.entity.YhRenShiUser;
+import com.example.myapplication.renshi.service.YhRenShiUserService;
 import com.example.myapplication.scheduling.activity.SchedulingActivity;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.UserInfoService;
@@ -40,6 +43,7 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity {
     private YhJinXiaoCunUserService yhJinXiaoCunUserService;
     private YhFinanceUserService yhFinanceUserService;
+    private YhRenShiUserService yhRenShiUserService;
     private UserInfoService userInfoService;
     private RenyuanService renyuanService;
 
@@ -179,6 +183,22 @@ public class LoginActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                    } else if (systemText.equals("云合人事管理系统")) {
+                        Message msg = new Message();
+                        SpinnerAdapter adapter = null;
+                        try {
+                            yhRenShiUserService = new YhRenShiUserService();
+                            List<String> list = yhRenShiUserService.getCompany();
+                            adapter = new ArrayAdapter<String>(LoginActivity.this, android.R.layout.simple_spinner_dropdown_item, list);
+                            if (list.size() > 0) {
+                                msg.obj = adapter;
+                            } else {
+                                msg.obj = null;
+                            }
+                            systemHandler.sendMessage(msg);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }).start();
@@ -257,6 +277,13 @@ public class LoginActivity extends AppCompatActivity {
                                 } else {
                                     ToastUtil.show(LoginActivity.this, "账号已被禁用");
                                 }
+                            }else if (systemText.equals("云合人事管理系统")) {
+                                YhRenShiUser user = (YhRenShiUser) msg.obj;
+                                MyApplication application = (MyApplication) getApplicationContext();
+                                application.setYhRenShiUser(user);
+                                ToastUtil.show(LoginActivity.this, "登录成功");
+                                Intent intent = new Intent(LoginActivity.this, RenShiActivity.class);
+                                startActivity(intent);
                             }
                         } else {
                             ToastUtil.show(LoginActivity.this, "用户名密码错误");
@@ -301,6 +328,15 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 renyuanService = new RenyuanService();
                                 msg.obj = renyuanService.login(username.getText().toString(), password.getText().toString(), companyText);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            signHandler.sendMessage(msg);
+                        } else if (systemText.equals("云合人事管理系统")) {
+                            Message msg = new Message();
+                            try {
+                                yhRenShiUserService = new YhRenShiUserService();
+                                msg.obj = yhRenShiUserService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

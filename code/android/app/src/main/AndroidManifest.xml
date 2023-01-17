@@ -747,6 +747,196 @@
         </activity>
 
 
+        <!--    人事    -->
+        <activity
+            android:name=".renshi.activity.RenShiActivity"
+            android:label="首页">
+            <intent-filter>
+                <action android:name="android.intent.action.RenShiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.PeiZhiBiaoActivity"
+            android:label="配置表">
+            <intent-filter>
+                <action android:name="android.intent.action.PeiZhiBiaoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.PeiZhiBiaoChangeActivity"
+            android:label="配置表">
+            <intent-filter>
+                <action android:name="android.intent.action.PeiZhiBiaoChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.KaoQinJiLuActivity"
+            android:label="考勤记录">
+            <intent-filter>
+                <action android:name="android.intent.action.KaoQinJiLuActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.BaoShuiActivity"
+            android:label="报税">
+            <intent-filter>
+                <action android:name="android.intent.action.BaoShuiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.BaoShuiChangeActivity"
+            android:label="报税">
+            <intent-filter>
+                <action android:name="android.intent.action.BaoShuiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.GongZiTiaoActivity"
+            android:label="工资条">
+            <intent-filter>
+                <action android:name="android.intent.action.GongZiTiaoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.KaoQinBiaoActivity"
+            android:label="考勤表">
+            <intent-filter>
+                <action android:name="android.intent.action.KaoQinBiaoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.KaoQinBiaoChangeActivity"
+            android:label="考勤表">
+            <intent-filter>
+                <action android:name="android.intent.action.KaoQinBiaoChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.GeRenSuoDeShuiActivity"
+            android:label="个人所得税">
+            <intent-filter>
+                <action android:name="android.intent.action.GeRenSuoDeShuiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.YuanGongDangAnActivity"
+            android:label="员工档案">
+            <intent-filter>
+                <action android:name="android.intent.action.YuanGongDangAnActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.SheBaoActivity"
+            android:label="社保">
+            <intent-filter>
+                <action android:name="android.intent.action.SheBaoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.SheBaoItemActivity"
+            android:label="社保">
+            <intent-filter>
+                <action android:name="android.intent.action.SheBaoItemActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.BuMenHuiZongActivity"
+            android:label="部门汇总">
+            <intent-filter>
+                <action android:name="android.intent.action.BuMenHuiZongActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.BuMenHuiZongItemActivity"
+            android:label="部门汇总">
+            <intent-filter>
+                <action android:name="android.intent.action.BuMenHuiZongItemActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.GongZiMingXiActivity"
+            android:label="工资明细">
+            <intent-filter>
+                <action android:name="android.intent.action.GongZiMingXiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.GongZiMingXiChangeActivity"
+            android:label="工资明细">
+            <intent-filter>
+                <action android:name="android.intent.action.GongZiMingXiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.ShengRiTiXingActivity"
+            android:label="生日提醒">
+            <intent-filter>
+                <action android:name="android.intent.action.ShengRiTiXingActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.BaoPanActivity"
+            android:label="报盘">
+            <intent-filter>
+                <action android:name="android.intent.action.BaoPanActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.BaoPanShenPiActivity"
+            android:label="报盘审批">
+            <intent-filter>
+                <action android:name="android.intent.action.BaoPanActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.BaoPanChangeActivity"
+            android:label="报盘审批">
+            <intent-filter>
+                <action android:name="android.intent.action.BaoPanActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

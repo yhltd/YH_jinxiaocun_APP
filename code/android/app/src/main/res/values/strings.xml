@@ -65,4 +65,19 @@
         <item>销项发票</item>
     </string-array>
 
+    <string-array name="kaoqin_type_list">
+        <item>出勤</item>
+        <item>旷勤</item>
+        <item>请假</item>
+        <item>迟到</item>
+        <item>早退</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="gongzimingxi_type_list">
+        <item>姓名</item>
+        <item>部门</item>
+        <item>岗位</item>
+    </string-array>
+
 </resources>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".jxc.activity.JxcActivity">
+    tools:context=".renshi.activity.RenShiActivity">
 
     <ScrollView
         android:layout_height="match_parent"
@@ -268,7 +268,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/gerenxinxi"
+                    android:id="@+id/yuangongdangan"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
@@ -285,7 +285,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="个人信息"
+                        android:text="员工档案"
                         android:textColor="@color/main_text"
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
@@ -377,197 +377,7 @@
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
 
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/baobiao"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="150dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="@drawable/border_bottom_top"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="55dp"-->
-<!--                        android:layout_height="55dp"-->
-<!--                        android:background="@drawable/yonghu" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:text="报表"-->
-<!--                        android:textColor="@color/main_text"-->
-<!--                        android:textSize="15sp"-->
-<!--                        tools:ignore="RtlSymmetry" />-->
-<!--                </LinearLayout>-->
             </LinearLayout>
-
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:gravity="center_vertical"-->
-<!--                android:orientation="horizontal">-->
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/yingfumingxizhang"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="150dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="@drawable/border_bottom_top"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="55dp"-->
-<!--                        android:layout_height="55dp"-->
-<!--                        android:background="@drawable/biji" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:text="应付明细账"-->
-<!--                        android:textColor="@color/main_text"-->
-<!--                        android:textSize="15sp"-->
-<!--                        tools:ignore="RtlSymmetry" />-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/yingshoumingxizhang"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="150dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="@drawable/border_bottom_top"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="55dp"-->
-<!--                        android:layout_height="55dp"-->
-<!--                        android:background="@drawable/yonghu" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:text="应收明细账"-->
-<!--                        android:textColor="@color/main_text"-->
-<!--                        android:textSize="15sp"-->
-<!--                        tools:ignore="RtlSymmetry" />-->
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:gravity="center_vertical"-->
-<!--                android:orientation="horizontal">-->
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/yingfubaobiao"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="150dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="@drawable/border_bottom_top"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="55dp"-->
-<!--                        android:layout_height="55dp"-->
-<!--                        android:background="@drawable/biji" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:text="应付报表"-->
-<!--                        android:textColor="@color/main_text"-->
-<!--                        android:textSize="15sp"-->
-<!--                        tools:ignore="RtlSymmetry" />-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/yingshoubaobiao"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="150dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="@drawable/border_bottom_top"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="55dp"-->
-<!--                        android:layout_height="55dp"-->
-<!--                        android:background="@drawable/yonghu" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:text="应收报表"-->
-<!--                        android:textColor="@color/main_text"-->
-<!--                        android:textSize="15sp"-->
-<!--                        tools:ignore="RtlSymmetry" />-->
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:gravity="center_vertical"-->
-<!--                android:orientation="horizontal">-->
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lirun"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="150dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="@drawable/border_bottom_top"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="55dp"-->
-<!--                        android:layout_height="55dp"-->
-<!--                        android:background="@drawable/biji" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:text="利润"-->
-<!--                        android:textColor="@color/main_text"-->
-<!--                        android:textSize="15sp"-->
-<!--                        tools:ignore="RtlSymmetry" />-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/shujukongjian"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="150dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:background="@drawable/border_bottom_top"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="55dp"-->
-<!--                        android:layout_height="55dp"-->
-<!--                        android:background="@drawable/yonghu" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:text="数据空间"-->
-<!--                        android:textColor="@color/main_text"-->
-<!--                        android:textSize="15sp"-->
-<!--                        tools:ignore="RtlSymmetry" />-->
-<!--                </LinearLayout>-->
-<!--            </LinearLayout>-->
-
 
         </LinearLayout>
     </ScrollView>
