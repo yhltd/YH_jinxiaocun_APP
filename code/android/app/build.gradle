@@ -35,7 +35,8 @@ android {
                 'finance',
                 'scheduling',
                 'renshi',
-                'fenquan'
+                'fenquan',
+                'mendian'
             ]
         }
     }

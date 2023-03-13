@@ -9,6 +9,7 @@ import android.widget.EditText;
 import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.finance.entity.YhFinanceUser;
+import com.example.myapplication.mendian.entity.YhMendianUser;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.UserInfo;
@@ -17,11 +18,20 @@ public class MyApplication extends Application {
     private YhJinXiaoCunUser yhJinXiaoCunUser;
     private YhFinanceUser yhFinanceUser;
     private YhRenShiUser yhRenShiUser;
+    private YhMendianUser yhMendianUser;
     private UserInfo userInfo;
     private Department pcDepartment;
     private Renyuan renyuan;
 
     private static Context context;
+
+    public YhMendianUser getYhMendianUser() {
+        return yhMendianUser;
+    }
+
+    public void setYhMendianUser(YhMendianUser yhMendianUser) {
+        this.yhMendianUser = yhMendianUser;
+    }
 
     public YhJinXiaoCunUser getYhJinXiaoCunUser() {
         return yhJinXiaoCunUser;
@@ -102,4 +112,6 @@ public class MyApplication extends Application {
     public static Context getContext() {
         return context;
     }
+
+
 }

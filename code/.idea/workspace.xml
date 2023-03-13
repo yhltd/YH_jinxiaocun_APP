@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ffbc98cf-c48a-4d06-8fbb-72ea6cd3dd42" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/app.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/beizhu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/beizhu1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/bg1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/channel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/custom.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/del.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/diancan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/diandan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/diandanmianban.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/dingdanxinxi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/excel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/excel2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/guanbi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/huiyuandengji.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/huiyuandengjidengjizuanshi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/huiyuanguanli.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/index_touxiang.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/ioc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/jiaoyijilu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/jiaoyijilu_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/jiaoyizonge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/kehuxinxi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/kehuxinxiguanli.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/login_yuansu1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/logo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/look.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/luru.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/main_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/main_menu_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/miandan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/miandan1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/nice.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/quanping.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/quanpingxianshi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/rijiaoyijilu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/select_xl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/select_xl01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/shangpin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/shangpin_background.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/shangpinshezhi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/shouqi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/shouqi2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/shouye.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/source.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/statistics.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/syetem_management.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/system.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/title.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/tongjibaobiao.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/tongjijiaoyizonge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/tuichuquanping.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/upd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/welcome_quanxian.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/welcome_tongji.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/yuangongxinxi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/yuejiaoyijilu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/zd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/zhangdan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/zheko.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/drawable/zheko1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/homepage.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/kehuinfo.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/kehuinfo_change.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/kehuinfo_row.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/memberinfo.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/memberinfo_change.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/memberinfo_row.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/memberlevel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/memberlevel_change.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/memberlevel_row.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/rijiao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/rijiao_row.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/users.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/users_change.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/users_row.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/yuejiao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/yuejiao_row.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/zongjiao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/mendian/layout/zongjiao_row.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/DiandanActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/DingdanActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/HuiyuanlevelActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/JiaoyizongeActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/KehuinfoActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/KehuinfoChangeActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/MemberinfoActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/MemberinfoChangeActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/MemberlevelChangeActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/MendianActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/ShangpinshezhiActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/TongjiActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/YuangongActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/YuejiaoActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/ZongjiaoActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/activity/rijiaoActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/dao/MendianDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/entity/YhMendianKeHu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/entity/YhMendianMemberinfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/entity/YhMendianMemberlevel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/entity/YhMendianRijiao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/entity/YhMendianUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/entity/YhMendianUsers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/entity/YhMendianYuejiao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/entity/YhMendianZongjiao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/service/YhMendianKehuService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/service/YhMendianMemberinfoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/service/YhMendianMemberlevelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/service/YhMendianRijiaoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/service/YhMendianUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/service/YhMendianUsersService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/service/YhMendianYuejiaoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/mendian/service/YhMendianZongjiaoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/jxc/layout/biji.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/jxc/layout/biji.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/jxc/layout/ruku.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/jxc/layout/ruku.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/MyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/MyApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/fenquan/activity/RenyuanChangeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/com/example/myapplication/fenquan/activity/RenyuanChangeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2MwEsTCkbhRZmb1JeEXXc2CqgP1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/android" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ffbc98cf-c48a-4d06-8fbb-72ea6cd3dd42" name="Default Changelist" comment="" />
+      <created>1678670450409</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678670450409</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="420" y="135" key="FileChooserDialogImpl" timestamp="1678677529016">
+      <screen x="0" y="0" width="1280" height="760" />
+    </state>
+    <state x="420" y="135" key="FileChooserDialogImpl/0.0.1280.760@0.0.1280.760" timestamp="1678677529016" />
+  </component>
+</project>

@@ -26,6 +26,9 @@ import com.example.myapplication.fenquan.service.RenyuanService;
 import com.example.myapplication.jxc.activity.JxcActivity;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunUserService;
+import com.example.myapplication.mendian.activity.MendianActivity;
+import com.example.myapplication.mendian.entity.YhMendianUser;
+import com.example.myapplication.mendian.service.YhMendianUserService;
 import com.example.myapplication.renshi.activity.RenShiActivity;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.renshi.service.YhRenShiUserService;
@@ -46,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     private YhRenShiUserService yhRenShiUserService;
     private UserInfoService userInfoService;
     private RenyuanService renyuanService;
+    private YhMendianUserService yhMendianUserService;
 
     private Spinner system;
     private Spinner company;
@@ -199,6 +203,22 @@ public class LoginActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                    }else if (systemText.equals("云合智慧门店收银系统")) {
+                        Message msg = new Message();
+                        SpinnerAdapter adapter = null;
+                        try {
+                            yhMendianUserService = new YhMendianUserService();
+                            List<String> list = yhMendianUserService.getCompany();
+                            adapter = new ArrayAdapter<String>(LoginActivity.this, android.R.layout.simple_spinner_dropdown_item, list);
+                            if (list.size() > 0) {
+                                msg.obj = adapter;
+                            } else {
+                                msg.obj = null;
+                            }
+                            systemHandler.sendMessage(msg);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }).start();
@@ -284,6 +304,13 @@ public class LoginActivity extends AppCompatActivity {
                                 ToastUtil.show(LoginActivity.this, "登录成功");
                                 Intent intent = new Intent(LoginActivity.this, RenShiActivity.class);
                                 startActivity(intent);
+                            }else if (systemText.equals("云合智慧门店收银系统")) {
+                                YhMendianUser user = (YhMendianUser) msg.obj;
+                                MyApplication application = (MyApplication) getApplicationContext();
+                                application.setYhMendianUser(user);
+                                ToastUtil.show(LoginActivity.this, "登录成功");
+                                Intent intent = new Intent(LoginActivity.this, MendianActivity.class);
+                                startActivity(intent);
                             }
                         } else {
                             ToastUtil.show(LoginActivity.this, "用户名密码错误");
@@ -337,6 +364,15 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 yhRenShiUserService = new YhRenShiUserService();
                                 msg.obj = yhRenShiUserService.login(username.getText().toString(), password.getText().toString(), companyText);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            signHandler.sendMessage(msg);
+                        }else if (systemText.equals("云合智慧门店收银系统")) {
+                            Message msg = new Message();
+                            try {
+                                yhMendianUserService = new YhMendianUserService();
+                                msg.obj = yhMendianUserService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

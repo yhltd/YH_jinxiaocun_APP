@@ -94,11 +94,6 @@ public class RenyuanChangeActivity extends AppCompatActivity {
                 zhuangtai.setSelection(1);
             }
 
-<<<<<<< Updated upstream
-            //bumen.setSelection();
-=======
-//            bumen.setSelection();
->>>>>>> Stashed changes
         }
 
     }

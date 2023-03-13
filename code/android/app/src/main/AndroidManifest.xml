@@ -937,6 +937,45 @@
             </intent-filter>
         </activity>
 
+        <!--    门店    -->
+        <activity
+            android:name=".mendian.activity.MendianActivity"
+            android:label="首页">
+            <intent-filter>
+                <action android:name="android.intent.action.MendianActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mendian.activity.KehuinfoActivity"
+            android:label="客户信息">
+            <intent-filter>
+                <action android:name="android.intent.action.MendianActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mendian.activity.rijiaoActivity"
+            android:label="日交易额">
+            <intent-filter>
+                <action android:name="android.intent.action.MendianActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mendian.activity.YuejiaoActivity"
+            android:label="月交易额">
+            <intent-filter>
+                <action android:name="android.intent.action.MendianActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+
     </application>
 
 </manifest>
