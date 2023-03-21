@@ -7,6 +7,8 @@ import android.os.StrictMode;
 import android.widget.EditText;
 
 import com.example.myapplication.fenquan.entity.Renyuan;
+import com.example.myapplication.jiaowu.entity.AccountManagement;
+import com.example.myapplication.jiaowu.entity.Quanxian;
 import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.finance.entity.YhFinanceUser;
@@ -24,6 +26,24 @@ public class MyApplication extends Application {
     private YhMendianUser yhMendianUser;
     private Renyuan renyuan;
     private Teacher teacher;
+    private AccountManagement accountManagement;
+    private Quanxian quanxian;
+
+    public Quanxian getQuanxian() {
+        return quanxian;
+    }
+
+    public void setQuanxian(Quanxian quanxian) {
+        this.quanxian = quanxian;
+    }
+
+    public AccountManagement getAccountManagement() {
+        return accountManagement;
+    }
+
+    public void setAccountManagement(AccountManagement accountManagement) {
+        this.accountManagement = accountManagement;
+    }
 
     public YhMendianUser getYhMendianUser() {
         return yhMendianUser;
