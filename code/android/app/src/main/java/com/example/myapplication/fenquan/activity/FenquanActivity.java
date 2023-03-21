@@ -39,6 +39,43 @@ public class FenquanActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        LinearLayout copy2 = findViewById(R.id.copy2);
+        copy2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FenquanActivity.this, GongZuoTaiShiYongChangeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout copy1 = findViewById(R.id.copy1);
+        copy1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FenquanActivity.this, RenyuanQuanXianActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout jisuan = findViewById(R.id.jisuan);
+        jisuan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FenquanActivity.this, GongZuoTaiGongShiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout department = findViewById(R.id.department);
+        department.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FenquanActivity.this, BuMenQuanXianActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private long exitTime = 0;

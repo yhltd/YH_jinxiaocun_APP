@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.fenquan.entity.Renyuan;
+import com.example.myapplication.fenquan.service.Copy1Service;
 import com.example.myapplication.fenquan.service.RenyuanService;
 import com.example.myapplication.jxc.activity.BiJiActivity;
 import com.example.myapplication.jxc.activity.BiJiChangeActivity;
@@ -37,6 +38,7 @@ public class RenyuanActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
     private Renyuan renyuan;
     private RenyuanService renyuanService;
+    private Copy1Service copy1Service;
 
     private EditText c_text;
     private ListView listView;
@@ -54,6 +56,8 @@ public class RenyuanActivity extends AppCompatActivity {
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        copy1Service = new Copy1Service();
 
         c_text = findViewById(R.id.c_text);
         listView = findViewById(R.id.list);
@@ -180,6 +184,7 @@ public class RenyuanActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 Message msg = new Message();
+                                copy1Service.delete(list.get(position).getRenyuan_id());
                                 msg.obj = renyuanService.delete(list.get(position).getId());
                                 deleteHandler.sendMessage(msg);
                             }

@@ -7,6 +7,7 @@ import android.os.StrictMode;
 import android.widget.EditText;
 
 import com.example.myapplication.fenquan.entity.Renyuan;
+import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.mendian.entity.YhMendianUser;
@@ -18,12 +19,11 @@ public class MyApplication extends Application {
     private YhJinXiaoCunUser yhJinXiaoCunUser;
     private YhFinanceUser yhFinanceUser;
     private YhRenShiUser yhRenShiUser;
-    private YhMendianUser yhMendianUser;
     private UserInfo userInfo;
     private Department pcDepartment;
+    private YhMendianUser yhMendianUser;
     private Renyuan renyuan;
-
-    private static Context context;
+    private Teacher teacher;
 
     public YhMendianUser getYhMendianUser() {
         return yhMendianUser;
@@ -32,6 +32,20 @@ public class MyApplication extends Application {
     public void setYhMendianUser(YhMendianUser yhMendianUser) {
         this.yhMendianUser = yhMendianUser;
     }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public static void setContext(Context context) {
+        MyApplication.context = context;
+    }
+
+    private static Context context;
 
     public YhJinXiaoCunUser getYhJinXiaoCunUser() {
         return yhJinXiaoCunUser;
@@ -112,6 +126,4 @@ public class MyApplication extends Application {
     public static Context getContext() {
         return context;
     }
-
-
 }

@@ -746,6 +746,69 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".fenquan.activity.GongZuoTaiShiYongChangeActivity"
+            android:label="工作台使用状态">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fenquan.activity.RenyuanQuanXianActivity"
+            android:label="人员权限设置">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fenquan.activity.RenyuanQuanXianChangeActivity"
+            android:label="人员权限设置">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fenquan.activity.GongZuoTaiGongShiActivity"
+            android:label="工作台公式设置">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fenquan.activity.GongZuoTaiGongShiChangeActivity"
+            android:label="工作台公式设置">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fenquan.activity.BuMenQuanXianActivity"
+            android:label="部门权限设置">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fenquan.activity.BuMenQuanXianChangeActivity"
+            android:label="部门权限设置">
+            <intent-filter>
+                <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
 
         <!--    人事    -->
         <activity
@@ -937,7 +1000,35 @@
             </intent-filter>
         </activity>
 
-        <!--    门店    -->
+        <!--    教务    -->
+        <activity
+            android:name=".jiaowu.activity.JiaowuActivity"
+            android:label="首页">
+            <intent-filter>
+                <action android:name="android.intent.action.JiaowuActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.SheZhiActivity"
+            android:label="设置">
+            <intent-filter>
+                <action android:name="android.intent.action.SheZhiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.SheZhiChangeActivity"
+            android:label="设置">
+            <intent-filter>
+                <action android:name="android.intent.action.SheZhiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--    教务    -->
         <activity
             android:name=".mendian.activity.MendianActivity"
             android:label="首页">
@@ -965,6 +1056,47 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".mendian.activity.MemberinfoActivity"
+            android:label="会员管理">
+            <intent-filter>
+                <action android:name="android.intent.action.YuejiaoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mendian.activity.MemberlevelActivity"
+            android:label="会员等级">
+            <intent-filter>
+                <action android:name="android.intent.action.YuejiaoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--        <activity-->
+        <!--            android:name=".mendian.activity.DiandanActivity"-->
+        <!--            android:label="点单面板">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.YuejiaoActivity" />-->
+        <!--                <category android:name="android.intent.category.DEFAULT" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
+        <activity
+            android:name=".mendian.activity.OrdersActivity"
+            android:label="订单信息">
+            <intent-filter>
+                <action android:name="android.intent.action.YuejiaoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".mendian.activity.ReportFormActivity"
+            android:label="统计报表">
+            <intent-filter>
+                <action android:name="android.intent.action.YuejiaoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".mendian.activity.YuejiaoActivity"
             android:label="月交易额">
@@ -998,48 +1130,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".mendian.activity.MemberinfoActivity"
-            android:label="会员管理">
-            <intent-filter>
-                <action android:name="android.intent.action.YuejiaoActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".mendian.activity.MemberlevelActivity"
-            android:label="会员等级">
-            <intent-filter>
-                <action android:name="android.intent.action.YuejiaoActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-<!--        <activity-->
-<!--            android:name=".mendian.activity.DiandanActivity"-->
-<!--            android:label="点单面板">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.YuejiaoActivity" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
-        <activity
-            android:name=".mendian.activity.OrdersActivity"
-            android:label="订单信息">
-            <intent-filter>
-                <action android:name="android.intent.action.YuejiaoActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".mendian.activity.ReportFormActivity"
-            android:label="统计报表">
-            <intent-filter>
-                <action android:name="android.intent.action.YuejiaoActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-
 
     </application>
 

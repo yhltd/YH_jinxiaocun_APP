@@ -80,4 +80,37 @@
         <item>岗位</item>
     </string-array>
 
+    <string-array name="zhanghao_type_list">
+        <item>正常</item>
+        <item>锁死</item>
+    </string-array>
+
+    <string-array name="quanxian_type_list">
+        <item></item>
+        <item>查询</item>
+        <item>修改</item>
+    </string-array>
+
+    <string-array name="quanxian_select_list">
+        <item></item>
+        <item>√</item>
+    </string-array>
+
+    <string-array name="view_name_list">
+        <item>工作台</item>
+        <item>工作台权限设置</item>
+        <item>部门权限设置</item>
+        <item>公司数据分析</item>
+        <item>人员管理</item>
+        <item>人员权限设置</item>
+        <item>人员数据分析</item>
+        <item>工作台使用状态</item>
+        <item>工作台公式设置</item>
+    </string-array>
+
+    <string-array name="yes_no_list">
+        <item>是</item>
+        <item>否</item>
+    </string-array>
+
 </resources>

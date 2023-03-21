@@ -8,9 +8,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -21,12 +23,23 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.fenquan.entity.Department;
 import com.example.myapplication.fenquan.entity.Renyuan;
+import com.example.myapplication.fenquan.service.Copy1Service;
+import com.example.myapplication.fenquan.service.DepartmentService;
 import com.example.myapplication.fenquan.service.RenyuanService;
 import com.example.myapplication.jxc.activity.BiJiChangeActivity;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunZhengLi;
+import com.example.myapplication.renshi.activity.GongZiMingXiChangeActivity;
+import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
+import com.example.myapplication.renshi.entity.YhRenShiPeiZhiBiao;
+import com.example.myapplication.renshi.entity.YhRenShiUser;
+import com.example.myapplication.renshi.service.YhRenShiPeiZhiBiaoService;
+import com.example.myapplication.renshi.service.YhRenShiUserService;
+import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -34,6 +47,8 @@ public class RenyuanChangeActivity extends AppCompatActivity {
     private Renyuan renyuan;
     private Renyuan ry;
     private RenyuanService renyuanService;
+    private DepartmentService departmentService;
+    private Copy1Service copy1Service;
 
     private EditText c;
     private EditText d;
@@ -44,19 +59,22 @@ public class RenyuanChangeActivity extends AppCompatActivity {
     private EditText phone;
     private EditText bianhao;
 
-    private List<Department> departmentList;
+    List<String> department_array;
+    String[] zhanghao_typeArray;
 
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.biji_change);
+        setContentView(R.layout.renyuan_change);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        renyuanService = new RenyuanService();
+        copy1Service = new Copy1Service();
 
         MyApplication myApplication = (MyApplication) getApplication();
         renyuan = myApplication.getRenyuan();
@@ -70,32 +88,75 @@ public class RenyuanChangeActivity extends AppCompatActivity {
         phone = findViewById(R.id.phone);
         bianhao = findViewById(R.id.bianhao);
 
-        Intent intent = getIntent();
-        int id = intent.getIntExtra("type", 0);
-        if (id == R.id.insert_btn) {
-            ry = new Renyuan();
-            Button btn = findViewById(id);
-            btn.setVisibility(View.VISIBLE);
-        } else if (id == R.id.update_btn) {
-            ry = (Renyuan) myApplication.getObj();
-            Button btn = findViewById(id);
-            btn.setVisibility(View.VISIBLE);
+        zhanghao_typeArray = getResources().getStringArray(R.array.zhanghao_type_list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, zhanghao_typeArray);
+        zhuangtai.setAdapter(adapter);
+        init_select();
 
-            c.setText(ry.getC());
-            d.setText(ry.getD());
-            e.setText(ry.getE());
-            email.setText(ry.getEmail());
-            phone.setText(ry.getPhone());
-            bianhao.setText(ry.getBianhao());
+    }
 
-            if (ry.getZhuangtai().equals("正常")) {
-                zhuangtai.setSelection(0);
-            } else {
-                zhuangtai.setSelection(1);
+    public void init_select() {
+        Handler listLoadHandler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                SpinnerAdapter adapter = new ArrayAdapter<String>(RenyuanChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, department_array);
+                bumen.setAdapter(StringUtils.cast(adapter));
+
+                Intent intent = getIntent();
+                MyApplication myApplication = (MyApplication) getApplication();
+                int id = intent.getIntExtra("type", 0);
+                if (id == R.id.insert_btn) {
+                    ry = new Renyuan();
+                    Button btn = findViewById(id);
+                    btn.setVisibility(View.VISIBLE);
+                } else if (id == R.id.update_btn) {
+                    ry = (Renyuan) myApplication.getObj();
+                    Button btn = findViewById(id);
+                    btn.setVisibility(View.VISIBLE);
+                    c.setText(ry.getC());
+                    d.setText(ry.getD());
+                    e.setText(ry.getE());
+                    email.setText(ry.getEmail());
+                    phone.setText(ry.getPhone());
+                    bianhao.setText(ry.getBianhao());
+                    bumen.setSelection(getDepartmentPosition(ry.getBumen()));
+
+                    if (ry.getZhuangtai().equals("正常")) {
+                        zhuangtai.setSelection(0);
+                    } else {
+                        zhuangtai.setSelection(1);
+                    }
+
+                }
+
+                return true;
             }
+        });
 
-        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                SpinnerAdapter adapter = null;
+                try {
+                    departmentService = new DepartmentService();
+                    List<Department> departmentList = departmentService.getDepartment(renyuan.getB());
+                    department_array = new ArrayList<>();
+                    if (departmentList.size() > 0) {
+                        for (int i = 0; i < departmentList.size(); i++) {
+                            if(!departmentList.get(i).getDepartment_name().equals(""))
+                                department_array.add(departmentList.get(i).getDepartment_name());
+                        }
+                    }
 
+                    adapter = new ArrayAdapter<String>(RenyuanChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, department_array);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Message msg = new Message();
+                msg.obj = adapter;
+                listLoadHandler.sendMessage(msg);
+            }
+        }).start();
     }
 
     @Override
@@ -128,6 +189,8 @@ public class RenyuanChangeActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Message msg = new Message();
+                copy1Service.insert(ry.getB(),ry.getC(),ry.getRenyuan_id(),"查询");
+                copy1Service.insert(ry.getB(),ry.getC(),ry.getRenyuan_id(),"修改");
                 msg.obj = renyuanService.insert(ry);
                 saveHandler.sendMessage(msg);
             }
@@ -192,6 +255,7 @@ public class RenyuanChangeActivity extends AppCompatActivity {
         ry.setPhone(phone.getText().toString());
         ry.setBianhao(bianhao.getText().toString());
         ry.setRenyuan_id(spd.format(date));
+        ry.setB(renyuan.getB());
         return true;
     }
 
@@ -201,9 +265,9 @@ public class RenyuanChangeActivity extends AppCompatActivity {
     }
 
     private int getDepartmentPosition(String param) {
-        if (departmentList != null) {
-            for (int i = 0; i < departmentList.size(); i++) {
-                if (param.equals(departmentList.get(i))) {
+        if (department_array != null) {
+            for (int i = 0; i < department_array.size(); i++) {
+                if (param.equals(department_array.get(i))) {
                     return i;
                 }
             }

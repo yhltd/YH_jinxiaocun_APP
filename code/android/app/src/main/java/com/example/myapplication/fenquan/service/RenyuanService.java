@@ -37,8 +37,8 @@ public class RenyuanService {
     public boolean insert(Renyuan renyuan) {
         String sql = "insert into baitaoquanxian_renyun(B,C,D,E,renyuan_id,zhuangtai,email,phone,bianhao,bumen) values(?,?,?,?,?,?,?,?,?,?)";
         base = new FenquanDao();
-        long result = base.executeOfId(sql, renyuan.getB(), renyuan.getC(), renyuan.getD(), renyuan.getE(), renyuan.getRenyuan_id(), renyuan.getZhuangtai(), renyuan.getEmail(), renyuan.getPhone(), renyuan.getBianhao(), renyuan.getBumen());
-        return result > 0;
+        boolean result = base.execute(sql, renyuan.getB(), renyuan.getC(), renyuan.getD(), renyuan.getE(), renyuan.getRenyuan_id(), renyuan.getZhuangtai(), renyuan.getEmail(), renyuan.getPhone(), renyuan.getBianhao(), renyuan.getBumen());
+        return result;
     }
 
     public boolean update(Renyuan renyuan) {

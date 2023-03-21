@@ -23,6 +23,8 @@ import android.widget.SpinnerAdapter;
 import com.example.myapplication.fenquan.activity.FenquanActivity;
 import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.fenquan.service.RenyuanService;
+import com.example.myapplication.jiaowu.entity.Teacher;
+import com.example.myapplication.jiaowu.service.TeacherService;
 import com.example.myapplication.jxc.activity.JxcActivity;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunUserService;
@@ -49,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
     private YhRenShiUserService yhRenShiUserService;
     private UserInfoService userInfoService;
     private RenyuanService renyuanService;
+    private TeacherService teacherService;
     private YhMendianUserService yhMendianUserService;
 
     private Spinner system;
@@ -203,6 +206,22 @@ public class LoginActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                    } else if (systemText.equals("云合教务管理系统")) {
+                        Message msg = new Message();
+                        SpinnerAdapter adapter = null;
+                        try {
+                            teacherService = new TeacherService();
+                            List<String> list = teacherService.getCompany();
+                            adapter = new ArrayAdapter<String>(LoginActivity.this, android.R.layout.simple_spinner_dropdown_item, list);
+                            if (list.size() > 0) {
+                                msg.obj = adapter;
+                            } else {
+                                msg.obj = null;
+                            }
+                            systemHandler.sendMessage(msg);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }else if (systemText.equals("云合智慧门店收银系统")) {
                         Message msg = new Message();
                         SpinnerAdapter adapter = null;
@@ -215,8 +234,7 @@ public class LoginActivity extends AppCompatActivity {
                             } else {
                                 msg.obj = null;
                             }
-                            systemHandler.sendMessage(msg);
-                        } catch (Exception e) {
+                        }catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
@@ -304,6 +322,17 @@ public class LoginActivity extends AppCompatActivity {
                                 ToastUtil.show(LoginActivity.this, "登录成功");
                                 Intent intent = new Intent(LoginActivity.this, RenShiActivity.class);
                                 startActivity(intent);
+                            }else if (systemText.equals("云合教务管理系统")) {
+                                Teacher user = (Teacher) msg.obj;
+                                if (user.getState().equals("正常")) {
+                                    MyApplication application = (MyApplication) getApplicationContext();
+                                    application.setTeacher(user);
+                                    ToastUtil.show(LoginActivity.this, "登录成功");
+                                    Intent intent = new Intent(LoginActivity.this, JxcActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    ToastUtil.show(LoginActivity.this, "账号已被禁用");
+                                }
                             }else if (systemText.equals("云合智慧门店收银系统")) {
                                 YhMendianUser user = (YhMendianUser) msg.obj;
                                 MyApplication application = (MyApplication) getApplicationContext();
@@ -368,6 +397,15 @@ public class LoginActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                             signHandler.sendMessage(msg);
+                        }else if (systemText.equals("云合教务管理系统")) {
+                            Message msg = new Message();
+                            try {
+                                teacherService = new TeacherService();
+                                msg.obj = teacherService.login(username.getText().toString(), password.getText().toString(), companyText);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            signHandler.sendMessage(msg);
                         }else if (systemText.equals("云合智慧门店收银系统")) {
                             Message msg = new Message();
                             try {
@@ -376,7 +414,6 @@ public class LoginActivity extends AppCompatActivity {
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                            signHandler.sendMessage(msg);
                         }
                     }
                 }).start();
