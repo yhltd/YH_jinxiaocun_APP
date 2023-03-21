@@ -21,7 +21,9 @@ import com.example.myapplication.R;
 import com.example.myapplication.finance.activity.ZhangHaoGuanLiChangeActivity;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceUserService;
+import com.example.myapplication.mendian.entity.YhMendianKeHu;
 import com.example.myapplication.mendian.entity.YhMendianUser;
+import com.example.myapplication.mendian.service.YhMendianKehuService;
 import com.example.myapplication.mendian.service.YhMendianUserService;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -32,6 +34,8 @@ public class KehuinfoChangeActivity extends AppCompatActivity {
 
     private YhMendianUser yhMendianUser;
     private YhMendianUserService yhMendianUserService;
+    private YhMendianKeHu yhMendianKeHu;
+    private YhMendianKehuService yhMendianKehuService;
 
     private EditText recipient;
     private EditText cardholder;
@@ -47,8 +51,6 @@ public class KehuinfoChangeActivity extends AppCompatActivity {
     private EditText telephone;
     private EditText password;
     private EditText staff;
-
-    List<YhMendianUser> getList;
 
 
     @SuppressLint("NonConstantResourceId")
@@ -66,6 +68,7 @@ public class KehuinfoChangeActivity extends AppCompatActivity {
         MyApplication myApplication = (MyApplication) getApplication();
         yhMendianUser = myApplication.getYhMendianUser();
         yhMendianUserService = new YhMendianUserService();
+        yhMendianKehuService = new YhMendianKehuService();
 
         recipient = findViewById(R.id.recipient);
         cardholder = findViewById(R.id.cardholder);
@@ -86,26 +89,26 @@ public class KehuinfoChangeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
         if (id == R.id.update_btn) {
-            yhMendianUser = (YhMendianUser) myApplication.getObj();
+            yhMendianKeHu = (YhMendianKeHu) myApplication.getObj();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
-            recipient.setText(yhMendianUser.getRecipient());
-            cardholder.setText(yhMendianUser.getCardholder());
-            drawee.setText(yhMendianUser.getDrawee());
-            issuing_bank.setText(yhMendianUser.getIssuing_bank());
-            bill_day.setText(yhMendianUser.getBill_day());
-            repayment_date.setText(yhMendianUser.getRepayment_date());
-            total.setText(yhMendianUser.getTotal());
-            repayable.setText(yhMendianUser.getRepayable());
-            balance.setText(yhMendianUser.getBalance());
-            loan.setText(yhMendianUser.getLoan());
-            service_charge.setText(yhMendianUser.getService_charge());
-            telephone.setText(yhMendianUser.getTelephone());
-            password.setText(yhMendianUser.getPassword());
-            staff.setText(yhMendianUser.getStaff());
+            recipient.setText(yhMendianKeHu.getRecipient());
+            cardholder.setText(yhMendianKeHu.getCardholder());
+            drawee.setText(yhMendianKeHu.getDrawee());
+            issuing_bank.setText(yhMendianKeHu.getIssuing_bank());
+            bill_day.setText(yhMendianKeHu.getBill_day());
+            repayment_date.setText(yhMendianKeHu.getRepayment_date());
+            total.setText(yhMendianKeHu.getTotal());
+            repayable.setText(yhMendianKeHu.getRepayable());
+            balance.setText(yhMendianKeHu.getBalance());
+            loan.setText(yhMendianKeHu.getLoan());
+            service_charge.setText(yhMendianKeHu.getService_charge());
+            telephone.setText(yhMendianKeHu.getTelephone());
+            password.setText(yhMendianKeHu.getPassword());
+            staff.setText(yhMendianKeHu.getStaff());
 
         }else{
-            yhMendianUser = new YhMendianUser();
+            yhMendianKeHu = new YhMendianKeHu();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
         }
@@ -141,7 +144,7 @@ public class KehuinfoChangeActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Message msg = new Message();
-                msg.obj = yhMendianUserService.update(yhMendianUser);
+                msg.obj = yhMendianKehuService.updateByKehu(yhMendianKeHu);
                 saveHandler.sendMessage(msg);
             }
         }).start();
@@ -170,7 +173,7 @@ public class KehuinfoChangeActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Message msg = new Message();
-                msg.obj = yhMendianUserService.insert(yhMendianUser);
+                msg.obj = yhMendianKehuService.insertByKehu(yhMendianKeHu);
                 saveHandler.sendMessage(msg);
             }
         }).start();
@@ -183,89 +186,89 @@ public class KehuinfoChangeActivity extends AppCompatActivity {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入收卡人");
             return false;
         } else {
-            yhMendianUser.setRecipient(recipient.getText().toString());
+            yhMendianKeHu.setRecipient(recipient.getText().toString());
         }
 
         if (cardholder.getText().toString().equals("")) {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入付款人");
             return false;
         } else {
-            yhMendianUser.setCardholder(cardholder.getText().toString());
+            yhMendianKeHu.setCardholder(cardholder.getText().toString());
         }
         if (drawee.getText().toString().equals("")) {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入持卡人");
             return false;
         } else {
-            yhMendianUser.setDrawee(drawee.getText().toString());
+            yhMendianKeHu.setDrawee(drawee.getText().toString());
         }
         if (issuing_bank.getText().toString().equals("")) {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入发卡行");
             return false;
         } else {
-            yhMendianUser.setIssuing_bank(issuing_bank.getText().toString());
+            yhMendianKeHu.setIssuing_bank(issuing_bank.getText().toString());
         }
         if (bill_day.getText().toString().equals("")) {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入账单日");
             return false;
         } else {
-            yhMendianUser.setBill_day(bill_day.getText().toString());
+            yhMendianKeHu.setBill_day(bill_day.getText().toString());
         }
         if (repayment_date.getText().toString().equals("")) {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入还款日");
             return false;
         } else {
-            yhMendianUser.setRepayment_date(repayment_date.getText().toString());
+            yhMendianKeHu.setRepayment_date(repayment_date.getText().toString());
         }
         if (total.getText().toString().equals("")) {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入总金额");
             return false;
         } else {
-            yhMendianUser.setTotal(total.getText().toString());
+            yhMendianKeHu.setTotal(total.getText().toString());
         }
         if (repayable.getText().toString().equals("")) {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入应还款");
             return false;
         } else {
-            yhMendianUser.setRepayable(repayable.getText().toString());
+            yhMendianKeHu.setRepayable(repayable.getText().toString());
         }
         if (balance.getText().toString().equals("")) {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入余款额");
             return false;
         } else {
-            yhMendianUser.setBalance(balance.getText().toString());
+            yhMendianKeHu.setBalance(balance.getText().toString());
         }
         if (loan.getText().toString().equals("")) {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入借款额");
             return false;
         } else {
-            yhMendianUser.setLoan(loan.getText().toString());
+            yhMendianKeHu.setLoan(loan.getText().toString());
         }
         if (service_charge.getText().toString().equals("")) {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入手续费");
             return false;
         } else {
-            yhMendianUser.setService_charge(service_charge.getText().toString());
+            yhMendianKeHu.setService_charge(service_charge.getText().toString());
         }
         if (telephone.getText().toString().equals("")) {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入电话号");
             return false;
         } else {
-            yhMendianUser.setTelephone(telephone.getText().toString());
+            yhMendianKeHu.setTelephone(telephone.getText().toString());
         }
         if (password.getText().toString().equals("")) {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入密码");
             return false;
         } else {
-            yhMendianUser.setPassword(password.getText().toString());
+            yhMendianKeHu.setPassword(password.getText().toString());
         }
         if (staff.getText().toString().equals("")) {
             ToastUtil.show(KehuinfoChangeActivity.this, "请输入员工");
             return false;
         } else {
-            yhMendianUser.setStaff(staff.getText().toString());
+            yhMendianKeHu.setStaff(staff.getText().toString());
         }
 
-        yhMendianUser.setCompany(yhMendianUser.getCompany());
+        yhMendianKeHu.setGongsi(yhMendianKeHu.getGongsi());
 
         return true;
     }

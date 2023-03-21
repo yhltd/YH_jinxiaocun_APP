@@ -13,10 +13,10 @@ public class YhMendianMemberinfoService {
     /**
      * 查询全部客户数据
      */
-    public List<YhMendianMemberinfo> getList(String name, String password, String company) {
-        String sql = "select * from member_info where gongsi = ? and name like '%' ? '%' and password like '%' ? '%' ";
+    public List<YhMendianMemberinfo> getList(String name, String phone, String company) {
+        String sql = "select * from member_info where company = ? and name like '%' ? '%' and phone like '%' ? '%' ";
         base = new MendianDao();
-        List<YhMendianMemberinfo> list = base.query(YhMendianMemberinfo.class, sql, company, name,password);
+        List<YhMendianMemberinfo> list = base.query(YhMendianMemberinfo.class, sql, company, name,phone);
         return list;
     }
 
@@ -24,9 +24,9 @@ public class YhMendianMemberinfoService {
      * 新增客户
      */
     public boolean insertByMember(YhMendianMemberinfo yhMendianMemberinfo) {
-        String sql = "insert into member_info (username,password,name,gender,state,phone,birthday,points) values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into member_info (username,password,name,gender,state,phone,birthday,company,points) values(?,?,?,?,?,?,?,?,?)";
         base = new MendianDao();
-        long result = base.executeOfId(sql, yhMendianMemberinfo.getUsername(), yhMendianMemberinfo.getPassword(), yhMendianMemberinfo.getName(), yhMendianMemberinfo.getGender(), yhMendianMemberinfo.getState(), yhMendianMemberinfo.getPhone(), yhMendianMemberinfo.getBirthday(), yhMendianMemberinfo.getPoints());
+        long result = base.executeOfId(sql, yhMendianMemberinfo.getUsername(), yhMendianMemberinfo.getPassword(), yhMendianMemberinfo.getName(), yhMendianMemberinfo.getGender(), yhMendianMemberinfo.getState(), yhMendianMemberinfo.getPhone(), yhMendianMemberinfo.getBirthday(),yhMendianMemberinfo.getCompany(), yhMendianMemberinfo.getPoints());
         return result > 0;
     }
 

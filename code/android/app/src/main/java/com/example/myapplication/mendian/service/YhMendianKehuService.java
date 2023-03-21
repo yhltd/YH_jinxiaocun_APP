@@ -14,10 +14,10 @@ public class YhMendianKehuService {
     /**
      * 查询全部客户数据
      */
-    public List<YhMendianKeHu> getList(String shou, String fu, String chi, String company) {
+    public List<YhMendianKeHu> getList( String gongsi,String shouka, String fukuan, String chika) {
         String sql = "select * from customer where gongsi = ? and recipient like '%' ? '%' and cardholder like '%' ? '%' and drawee like '%' ? '%' ";
         base = new MendianDao();
-        List<YhMendianKeHu> list = base.query(YhMendianKeHu.class, sql, company, shou,fu,chi);
+        List<YhMendianKeHu> list = base.query(YhMendianKeHu.class, sql, gongsi, shouka,fukuan,chika);
         return list;
     }
 
@@ -25,7 +25,7 @@ public class YhMendianKehuService {
      * 新增客户
      */
     public boolean insertByKehu(YhMendianKeHu yhMendianKeHu) {
-        String sql = "insert into customer (recipient,cardholder,drawee,issuing_bank,bill_day,repayment_date,total,repayable,balance,loan,service_charge,telephone,password,staff.gongsi) values(?,?,?,?)";
+        String sql = "insert into customer (recipient,cardholder,drawee,issuing_bank,bill_day,repayment_date,total,repayable,balance,loan,service_charge,telephone,password,staff,gongsi) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         base = new MendianDao();
         long result = base.executeOfId(sql, yhMendianKeHu.getRecipient(), yhMendianKeHu.getCardholder(), yhMendianKeHu.getDrawee(), yhMendianKeHu.getIssuing_bank(), yhMendianKeHu.getBill_day(), yhMendianKeHu.getRepayment_date(), yhMendianKeHu.getTotal(), yhMendianKeHu.getRepayable(), yhMendianKeHu.getBalance(), yhMendianKeHu.getLoan(), yhMendianKeHu.getService_charge(), yhMendianKeHu.getTelephone(), yhMendianKeHu.getStaff(), yhMendianKeHu.getGongsi());
         return result > 0;
@@ -35,7 +35,7 @@ public class YhMendianKehuService {
      * 修改客户
      */
     public boolean updateByKehu(YhMendianKeHu yhMendianKeHu) {
-        String sql = "update customer set recipient=?,cardholder=?,drawee=?,issuing_bank=?,bill_day=?,repayment_date=?,total=?,repayable=?,balance=?,loan=?,service_charge=?,telephone=?,password=?,staff=? where _id=? ";
+        String sql = "update customer set recipient=?,cardholder=?,drawee=?,issuing_bank=?,bill_day=?,repayment_date=?,total=?,repayable=?,balance=?,loan=?,service_charge=?,telephone=?,password=?,staff=? where id=? ";
         base = new MendianDao();
         boolean result = base.execute(sql, yhMendianKeHu.getRecipient(), yhMendianKeHu.getCardholder(), yhMendianKeHu.getDrawee(), yhMendianKeHu.getIssuing_bank(), yhMendianKeHu.getBill_day(), yhMendianKeHu.getRepayment_date(), yhMendianKeHu.getTotal(), yhMendianKeHu.getRepayable(), yhMendianKeHu.getBalance(), yhMendianKeHu.getLoan(), yhMendianKeHu.getService_charge(), yhMendianKeHu.getTelephone(), yhMendianKeHu.getStaff(), yhMendianKeHu.getId());
         return result;
@@ -45,7 +45,7 @@ public class YhMendianKehuService {
      * 删除客户
      */
     public boolean deleteByKehu(int id) {
-        String sql = "delete from customer where _id = ?";
+        String sql = "delete from customer where id = ?";
         base = new MendianDao();
         return base.execute(sql, id);
     }

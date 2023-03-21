@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    tools:context=".mendian.activity.DiandanActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/ll_list_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/buttom"
+            android:orientation="horizontal">
+            <ListView
+                android:id="@+id/parentlist"
+                android:layout_width="100dp"
+                android:layout_height="match_parent">
+
+            </ListView>
+            <ListView
+                android:id="@+id/childlist"
+                android:background="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </ListView>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/buttom"
+            android:visibility="gone"
+            android:background="#50000000"/>
+
+
+        <LinearLayout
+            android:id="@+id/window"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:layout_above="@+id/buttom"
+            android:background="@android:color/white"
+            android:visibility="gone"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@color/primary_material_light">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="购物车"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:id="@+id/clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="清空"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/list_cart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </ListView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/buttom"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/white"
+            android:layout_height="50dp">
+            <TextView
+                android:id="@+id/price_main"
+                android:layout_marginLeft="80dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥0.00"
+                android:textColor="@android:color/holo_red_light"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:id="@+id/billing"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:text="去结算"
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:background="@android:color/holo_green_light"/>
+        </RelativeLayout>
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/cart"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/gouwuchekong" />
+    <TextView
+        android:id="@+id/tv_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="54dp"
+        android:layout_marginLeft="48dp"
+        android:text="1"
+        android:background="@drawable/chuku"
+        android:textColor="@android:color/holo_orange_dark"
+        android:visibility="gone"/>
+</RelativeLayout>

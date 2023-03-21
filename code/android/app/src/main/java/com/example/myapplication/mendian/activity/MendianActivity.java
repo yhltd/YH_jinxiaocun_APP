@@ -29,15 +29,19 @@ public class MendianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MendianActivity.this, KehuinfoActivity.class);
-                startActivity(intent);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent); finish();
             }
         });
-        LinearLayout Jiaoyizonge = findViewById(R.id.Jiaoyizonge);
-        Jiaoyizonge.setOnClickListener(new View.OnClickListener() {
+        LinearLayout Zongjiao = findViewById(R.id.Zongjiao);
+        Zongjiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MendianActivity.this, ZongjiaoActivity.class);
-                startActivity(intent);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent); finish();
             }
         });
         LinearLayout rijiao = findViewById(R.id.rijiao);
@@ -45,7 +49,9 @@ public class MendianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MendianActivity.this, rijiaoActivity.class);
-                startActivity(intent);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent); finish();
             }
         });
         LinearLayout Yuejiao = findViewById(R.id.Yuejiao);
@@ -53,39 +59,49 @@ public class MendianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MendianActivity.this, YuejiaoActivity.class);
-                startActivity(intent);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent); finish();
             }
         });
-        LinearLayout Yuangong = findViewById(R.id.Yuangong);
-        Yuangong.setOnClickListener(new View.OnClickListener() {
+        LinearLayout Users = findViewById(R.id.Users);
+        Users.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MendianActivity.this, UsersActivity.class);
-                startActivity(intent);
+                startActivity(intent);intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent); finish();
             }
         });
-        LinearLayout Shangpinshezhi = findViewById(R.id.Shangpinshezhi);
-        Shangpinshezhi.setOnClickListener(new View.OnClickListener() {
+        LinearLayout Productshezhi = findViewById(R.id.Productshezhi);
+        Productshezhi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MendianActivity.this, ShangpinshezhiActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(MendianActivity.this, ProductshezhiActivity.class);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent); finish();
             }
         });
-        LinearLayout Huiyuanguanli = findViewById(R.id.Huiyuanguanli);
-        Huiyuanguanli.setOnClickListener(new View.OnClickListener() {
+        LinearLayout Memberinfo = findViewById(R.id.Memberinfo);
+        Memberinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MendianActivity.this, MemberinfoActivity.class);
-                startActivity(intent);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent); finish();
             }
         });
-        LinearLayout Huiyuanlevel = findViewById(R.id.Huiyuanlevel);
-        Huiyuanlevel.setOnClickListener(new View.OnClickListener() {
+        LinearLayout Memberlevel = findViewById(R.id.Memberlevel);
+        Memberlevel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MendianActivity.this, MemberlevelActivity.class);
-                startActivity(intent);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent); finish();
             }
         });
         LinearLayout Diandan = findViewById(R.id.Diandan);
@@ -93,23 +109,29 @@ public class MendianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MendianActivity.this, DiandanActivity.class);
-                startActivity(intent);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent); finish();
             }
         });
-        LinearLayout Dingdan = findViewById(R.id.Dingdan);
-        Dingdan.setOnClickListener(new View.OnClickListener() {
+        LinearLayout Orders = findViewById(R.id.Orders);
+        Orders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MendianActivity.this, DingdanActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(MendianActivity.this, OrdersActivity.class);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent); finish();
             }
         });
-        LinearLayout Tongji = findViewById(R.id.Tongji);
-        Tongji.setOnClickListener(new View.OnClickListener() {
+        LinearLayout Reportform = findViewById(R.id.Reportform);
+        Reportform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MendianActivity.this, TongjiActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(MendianActivity.this, ReportFormActivity.class);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent); finish();
             }
         });
 

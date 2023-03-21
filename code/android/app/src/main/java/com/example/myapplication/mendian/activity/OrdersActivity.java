@@ -114,7 +114,7 @@ public class OrdersActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     yhMendianOrdersService = new YhMendianOrdersService();
-                    list = yhMendianOrdersService.getList(ddhText,syyText,hyxmText,startdateText,enddateText,yhMendianOrders.getCompany());
+                    list = yhMendianOrdersService.getList(ddhText,syyText,hyxmText,startdateText,enddateText,yhMendianUser.getCompany());
                     if (list == null) return;
 
                 } catch (Exception e) {
@@ -136,7 +136,7 @@ public class OrdersActivity extends AppCompatActivity {
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(OrdersActivity.this, data, R.layout.orders_row, new String[]{"ddh","syy","hyxm"}, new int[]{R.id.ddh,R.id.syy,R.id.hyxm}) {
+                SimpleAdapter adapter = new SimpleAdapter(OrdersActivity.this, data, R.layout.orders_row, new String[]{"riqi","ddh","hyzh","hyxm","yhfa","xfje","ssje","yhje","syy",}, new int[]{R.id.riqi,R.id.ddh,R.id.hyzh,R.id.hyxm,R.id.yhfa,R.id.xfje,R.id.ssje,R.id.yhje,R.id.syy}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);

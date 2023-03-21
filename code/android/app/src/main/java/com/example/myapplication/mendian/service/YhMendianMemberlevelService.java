@@ -23,9 +23,9 @@ public class YhMendianMemberlevelService {
      * 新增等级
      */
     public boolean insertBylevel(YhMendianMemberlevel yhMendianMemberlevel) {
-        String sql = "insert into member_jibie (jibie,menkan,bili) values(?,?,?)";
+        String sql = "insert into member_jibie (company,jibie,menkan,bili) values(?,?,?,?)";
         base = new MendianDao();
-        long result = base.executeOfId(sql, yhMendianMemberlevel.getJibie(), yhMendianMemberlevel.getMenkan(), yhMendianMemberlevel.getBili());
+        long result = base.executeOfId(sql, yhMendianMemberlevel.getCompany() ,yhMendianMemberlevel.getJibie(), yhMendianMemberlevel.getMenkan(), yhMendianMemberlevel.getBili());
         return result > 0;
     }
 

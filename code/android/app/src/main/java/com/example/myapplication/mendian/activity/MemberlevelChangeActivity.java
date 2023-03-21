@@ -40,8 +40,6 @@ public class MemberlevelChangeActivity extends AppCompatActivity {
     private EditText menkan;
     private EditText bili;
 
-    List<YhMendianMemberlevel> List;
-
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -150,20 +148,20 @@ public class MemberlevelChangeActivity extends AppCompatActivity {
     private boolean checkForm() throws ParseException {
 
         if (jibie.getText().toString().equals("")) {
-            ToastUtil.show(MemberlevelChangeActivity.this, "请输入账号");
+            ToastUtil.show(MemberlevelChangeActivity.this, "请输入级别");
             return false;
         } else {
             yhMendianMemberlevel.setJibie(jibie.getText().toString());
         }
 
         if (menkan.getText().toString().equals("")) {
-            ToastUtil.show(MemberlevelChangeActivity.this, "请输入密码");
+            ToastUtil.show(MemberlevelChangeActivity.this, "请输入门槛金额");
             return false;
         } else {
             yhMendianMemberlevel.setMenkan(menkan.getText().toString());
         }
         if (bili.getText().toString().equals("")) {
-            ToastUtil.show(MemberlevelChangeActivity.this, "请输入姓名");
+            ToastUtil.show(MemberlevelChangeActivity.this, "请输入折扣比例");
             return false;
         } else {
             yhMendianMemberlevel.setBili(bili.getText().toString());

@@ -46,8 +46,6 @@ public class OrdersChangeActivity extends AppCompatActivity {
     private EditText yhje;
     private EditText syy;
 
-    List<YhMendianMemberinfo> getList;
-
 
     @SuppressLint("NonConstantResourceId")
     @Override

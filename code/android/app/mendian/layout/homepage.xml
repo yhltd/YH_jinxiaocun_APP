@@ -48,7 +48,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/Jiaoyizonge"
+                    android:id="@+id/Zongjiao"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
@@ -134,7 +134,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/Yuangong"
+                    android:id="@+id/Users"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
@@ -158,7 +158,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/Shangpinshezhi"
+                    android:id="@+id/Productshezhi"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
@@ -189,7 +189,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/Huiyuanguanli"
+                    android:id="@+id/Memberinfo"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
@@ -213,7 +213,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/Huiyuanlevel"
+                    android:id="@+id/Memberlevel"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
@@ -268,7 +268,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/Dingdan"
+                    android:id="@+id/Orders"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"
@@ -299,7 +299,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/Tongji"
+                    android:id="@+id/Reportform"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_weight="1"

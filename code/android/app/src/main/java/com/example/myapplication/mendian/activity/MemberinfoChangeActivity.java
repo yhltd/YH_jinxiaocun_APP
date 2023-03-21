@@ -42,8 +42,6 @@ public class MemberinfoChangeActivity extends AppCompatActivity {
     private EditText phone;
     private EditText birthday;
 
-    List<YhMendianMemberinfo> getList;
-
 
     @SuppressLint("NonConstantResourceId")
     @Override

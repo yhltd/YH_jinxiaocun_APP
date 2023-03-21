@@ -64,7 +64,7 @@ public class KehuinfoActivity extends AppCompatActivity {
         myApplication = (MyApplication) getApplication();
         yhMendianUser = myApplication.getYhMendianUser();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kehu);
+        setContentView(R.layout.kehuinfo);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -113,7 +113,7 @@ public class KehuinfoActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     yhMedianKehuService = new YhMendianKehuService();
-                    list = yhMedianKehuService.getList(shoukaText,fukuanText,chikaText,yhMendianUser.getCompany());
+                    list = yhMedianKehuService.getList(yhMendianUser.getCompany(),shoukaText,fukuanText,chikaText);
                     if (list == null) return;
 
                 } catch (Exception e) {
@@ -139,7 +139,7 @@ public class KehuinfoActivity extends AppCompatActivity {
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(KehuinfoActivity.this, data, R.layout.kehuinfo_row, new String[]{"recipient","cardholder","drawee"}, new int[]{R.id.recipient,R.id.cardholder,R.id.drawee}) {
+                SimpleAdapter adapter = new SimpleAdapter(KehuinfoActivity.this, data, R.layout.kehuinfo_row, new String[]{"recipient","cardholder","drawee","issuing_bank","bill_day","repayment_date","total","repayable","balance","loan","service_charge","telephone","password","staff"}, new int[]{R.id.recipient,R.id.cardholder,R.id.drawee,R.id.issuing_bank,R.id.bill_day,R.id.repayment_date,R.id.total,R.id.repayable,R.id.balance,R.id.loan,R.id.service_charge,R.id.telephone,R.id.password,R.id.staff}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);

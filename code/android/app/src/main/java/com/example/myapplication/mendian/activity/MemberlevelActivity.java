@@ -112,7 +112,7 @@ public class MemberlevelActivity extends AppCompatActivity {
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(MemberlevelActivity.this, data, R.layout.memberlevel_row, new String[]{"jibie"}, new int[]{R.id.jibie}) {
+                SimpleAdapter adapter = new SimpleAdapter(MemberlevelActivity.this, data, R.layout.memberlevel_row, new String[]{"jibie","menkan","bili"}, new int[]{R.id.jibie,R.id.menkan,R.id.bili}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);

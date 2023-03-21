@@ -20,11 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
-import com.example.myapplication.mendian.entity.YhMendianKeHu;
-import com.example.myapplication.mendian.entity.YhMendianMemberinfo;
+import com.example.myapplication.mendian.entity.YhMendianOrders;
+import com.example.myapplication.mendian.entity.YhMendianProductshezhi;
 import com.example.myapplication.mendian.entity.YhMendianUser;
-import com.example.myapplication.mendian.service.YhMendianKehuService;
-import com.example.myapplication.mendian.service.YhMendianMemberinfoService;
+import com.example.myapplication.mendian.service.YhMendianOrdersService;
+import com.example.myapplication.mendian.service.YhMendianProductshezhiService;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -32,22 +32,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MemberinfoActivity extends AppCompatActivity {
+public class ProductshezhiActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
 
     MyApplication myApplication;
 
     private YhMendianUser yhMendianUser;
-    private YhMendianMemberinfo yhMendianMemberinfo;
-    private YhMendianMemberinfoService yhMendianMemberinfoService;
-    private EditText name;
-    private EditText phone;
-    private String nameText;
-    private String phoneText;
-    private ListView huiyuan_list;
+    private YhMendianProductshezhi yhMendianProductshezhi;
+    private YhMendianProductshezhiService yhMendianProductshezhiService;
+    private EditText product_name;
+    private EditText type;
+    private String product_nameText;
+    private String typeText;
+    private ListView productshezhi_list;
     private Button sel_button;
 
-    List<YhMendianMemberinfo> list;
+    List<YhMendianProductshezhi> list;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class MemberinfoActivity extends AppCompatActivity {
         myApplication = (MyApplication) getApplication();
         yhMendianUser = myApplication.getYhMendianUser();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.memberinfo);
+        setContentView(R.layout.productshezhi);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -63,12 +63,12 @@ public class MemberinfoActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        yhMendianMemberinfoService = new YhMendianMemberinfoService();
+        yhMendianProductshezhiService = new YhMendianProductshezhiService();
 
         //初始化控件
-        name = findViewById(R.id.name);
-        phone = findViewById(R.id.phone);
-        huiyuan_list = findViewById(R.id.huiyuan_list);
+        product_name = findViewById(R.id.product_name);
+        type = findViewById(R.id.type);
+        productshezhi_list = findViewById(R.id.productshezhi_list);
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
@@ -85,13 +85,13 @@ public class MemberinfoActivity extends AppCompatActivity {
     }
 
     private void initList() {
-        nameText = name.getText().toString();
-        phoneText = phone.getText().toString();
+        product_nameText = product_name.getText().toString();
+        typeText = type.getText().toString();
 
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                huiyuan_list.setAdapter(StringUtils.cast(msg.obj));
+                productshezhi_list.setAdapter(StringUtils.cast(msg.obj));
                 return true;
             }
         });
@@ -101,8 +101,8 @@ public class MemberinfoActivity extends AppCompatActivity {
             public void run() {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
-                    yhMendianMemberinfoService = new YhMendianMemberinfoService();
-                    list = yhMendianMemberinfoService.getList(nameText,phoneText,yhMendianMemberinfo.getCompany());
+                    yhMendianProductshezhiService = new YhMendianProductshezhiService();
+                    list = yhMendianProductshezhiService.getList(product_nameText,typeText,yhMendianProductshezhi.getCompany());
                     if (list == null) return;
 
                 } catch (Exception e) {
@@ -111,19 +111,18 @@ public class MemberinfoActivity extends AppCompatActivity {
 
                 for (int i = 0; i < list.size(); i++) {
                     HashMap<String, Object> item = new HashMap<>();
-                    item.put("username", list.get(i).getUsername());
-                    item.put("password", list.get(i).getPassword());
-                    item.put("name", list.get(i).getName());
-                    item.put("gender", list.get(i).getGender());
-                    item.put("state", list.get(i).getState());
-                    item.put("phone", list.get(i).getPhone());
-                    item.put("birthday", list.get(i).getBirthday());
-                    item.put("points", list.get(i).getPoints());
+                    item.put("product_bianhao", list.get(i).getProduct_bianhao());
+                    item.put("type", list.get(i).getType());
+                    item.put("product_name", list.get(i).getProduct_name());
+                    item.put("unit", list.get(i).getUnit());
+                    item.put("price", list.get(i).getPrice());
+                    item.put("chengben", list.get(i).getChengben());
+                    item.put("tingyong", list.get(i).getTingyong());
 
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(MemberinfoActivity.this, data, R.layout.memberinfo_row, new String[]{"username","password","name","gender","state","phone","birthday","points"}, new int[]{R.id.username,R.id.password,R.id.name,R.id.gender,R.id.state,R.id.phone,R.id.birthday,R.id.points}) {
+                SimpleAdapter adapter = new SimpleAdapter(ProductshezhiActivity.this, data, R.layout.productshezhi_row, new String[]{"product_bianhao","type","product_name","unit","price","chengben","tingyong"}, new int[]{R.id.product_bianhao,R.id.type,R.id.product_name,R.id.unit,R.id.price,R.id.chengben,R.id.tingyong}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -146,13 +145,13 @@ public class MemberinfoActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MemberinfoActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProductshezhiActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {
                     @Override
                     public boolean handleMessage(@NonNull Message msg) {
                         if ((boolean) msg.obj) {
-                            ToastUtil.show(MemberinfoActivity.this, "删除成功");
+                            ToastUtil.show(ProductshezhiActivity.this, "删除成功");
                             initList();
                         }
                         return true;
@@ -166,7 +165,7 @@ public class MemberinfoActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 Message msg = new Message();
-                                msg.obj = yhMendianMemberinfoService.deleteByMember(list.get(position).getId());
+                                msg.obj = yhMendianProductshezhiService.deleteByProductshezhi(list.get(position).getId());
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
@@ -193,7 +192,7 @@ public class MemberinfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int position = Integer.parseInt(view.getTag().toString());
-                Intent intent = new Intent(MemberinfoActivity.this, MemberinfoChangeActivity.class);
+                Intent intent = new Intent(ProductshezhiActivity.this, ProductshezhiChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
                 MyApplication myApplication = (MyApplication) getApplication();
                 myApplication.setObj(list.get(position));
@@ -203,7 +202,7 @@ public class MemberinfoActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
-        Intent intent = new Intent(MemberinfoActivity.this, MemberinfoChangeActivity.class);
+        Intent intent = new Intent(ProductshezhiActivity.this, ProductshezhiChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
     }
