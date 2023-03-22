@@ -113,4 +113,9 @@
         <item>否</item>
     </string-array>
 
+    <string-array name="sex_list">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+
 </resources>
