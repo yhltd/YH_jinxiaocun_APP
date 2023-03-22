@@ -13,12 +13,12 @@
         android:gravity="center"
         android:background="@drawable/border_bottom">
         <TextView
-            android:id="@+id/Realname"
+            android:id="@+id/teacher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
             android:textSize="14sp"
-            android:text="姓名"
+            android:text="教师"
             android:textStyle="bold"
             android:width="150dp"/>
         <View
@@ -28,12 +28,12 @@
         </View>
 
         <TextView
-            android:id="@+id/view_name"
+            android:id="@+id/course"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
             android:textSize="14sp"
-            android:text="页面名称"
+            android:text="课程"
             android:textStyle="bold"
             android:width="150dp"/>
         <View
@@ -43,12 +43,12 @@
         </View>
 
         <TextView
-            android:id="@+id/add"
+            android:id="@+id/riqi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
             android:textSize="14sp"
-            android:text="增"
+            android:text="日期"
             android:textStyle="bold"
             android:width="150dp"/>
         <View
@@ -58,42 +58,12 @@
         </View>
 
         <TextView
-            android:id="@+id/del"
+            android:id="@+id/xingqi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
             android:textSize="14sp"
-            android:text="删"
-            android:textStyle="bold"
-            android:width="150dp"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
-
-        <TextView
-            android:id="@+id/upd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
-            android:text="改"
-            android:textStyle="bold"
-            android:width="150dp"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
-
-        <TextView
-            android:id="@+id/sel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
-            android:text="查"
+            android:text="星期"
             android:textStyle="bold"
             android:width="150dp"/>
         <View
