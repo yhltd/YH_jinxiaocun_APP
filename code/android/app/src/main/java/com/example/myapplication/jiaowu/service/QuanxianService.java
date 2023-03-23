@@ -19,6 +19,13 @@ public class QuanxianService {
         return list;
     }
 
+    public List<Quanxian> getListQuanXian( int t_id,String view_name) {
+        String sql = "select p.id,t_id,view_name,`add`,del,upd,sel,RealName as s_name from power as p left join teacher as t on p.t_id=t.ID  where t_id = ? and view_name like '%' + ? + '%'";
+        base = new JiaowuBaseDao();
+        List<Quanxian> list = base.query(AccountManagement.class, sql,t_id,view_name);
+        return list;
+    }
+
     /**
      * 新增
      */

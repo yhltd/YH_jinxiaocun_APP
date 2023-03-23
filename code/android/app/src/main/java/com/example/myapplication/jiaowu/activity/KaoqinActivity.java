@@ -23,6 +23,7 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.jiaowu.entity.AccountManagement;
 import com.example.myapplication.jiaowu.entity.Kaoqin;
+import com.example.myapplication.jiaowu.entity.Quanxian;
 import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.AccountManagementService;
 import com.example.myapplication.jiaowu.service.KaoqinService;
@@ -45,6 +46,7 @@ public class KaoqinActivity extends AppCompatActivity {
 
     List<Kaoqin> list;
 
+    private Quanxian quanxian;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,7 @@ public class KaoqinActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
+        quanxian = myApplication.getQuanxian();
 
         initList();
     }
@@ -155,6 +158,10 @@ public class KaoqinActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
+        if(!quanxian.getAdd().equals("√")){
+            ToastUtil.show(KaoqinActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(KaoqinActivity.this, KaoqinChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
@@ -164,6 +171,10 @@ public class KaoqinActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!quanxian.getUpd().equals("√")){
+                    ToastUtil.show(KaoqinActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(KaoqinActivity.this, KaoqinChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
@@ -178,6 +189,10 @@ public class KaoqinActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!quanxian.getDel().equals("√")){
+                    ToastUtil.show(KaoqinActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(KaoqinActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {

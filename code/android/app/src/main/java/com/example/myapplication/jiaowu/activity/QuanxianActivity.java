@@ -23,6 +23,7 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.jiaowu.entity.AccountManagement;
 import com.example.myapplication.jiaowu.entity.Quanxian;
+import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.AccountManagementService;
 import com.example.myapplication.jiaowu.service.QuanxianService;
 import com.example.myapplication.utils.StringUtils;
@@ -34,7 +35,7 @@ import java.util.List;
 
 public class QuanxianActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
-
+    private Teacher teacher;
     private Quanxian quanxian;
     private QuanxianService quanxianService;
     private ListView listView;
@@ -59,6 +60,7 @@ public class QuanxianActivity extends AppCompatActivity {
         listView = findViewById(R.id.account_quanxian_list);
 
         MyApplication myApplication = (MyApplication) getApplication();
+        teacher = myApplication.getTeacher();
         quanxian = myApplication.getQuanxian();
 
         initList();
@@ -88,7 +90,7 @@ public class QuanxianActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     quanxianService = new QuanxianService();
-                    list = quanxianService.getList(quanxian.getCompany());
+                    list = quanxianService.getList(teacher.getCompany());
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {
@@ -126,6 +128,10 @@ public class QuanxianActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
+        if(!quanxian.getAdd().equals("√")){
+            ToastUtil.show(QuanxianActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(QuanxianActivity.this, QuanxianChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
@@ -135,6 +141,10 @@ public class QuanxianActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!quanxian.getUpd().equals("√")){
+                    ToastUtil.show(QuanxianActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(QuanxianActivity.this, QuanxianChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
@@ -149,6 +159,10 @@ public class QuanxianActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!quanxian.getDel().equals("√")){
+                    ToastUtil.show(QuanxianActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(QuanxianActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {

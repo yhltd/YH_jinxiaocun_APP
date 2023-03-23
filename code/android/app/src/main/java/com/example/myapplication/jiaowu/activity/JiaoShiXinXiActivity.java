@@ -1,14 +1,18 @@
 package com.example.myapplication.jiaowu.activity;
 
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -21,39 +25,37 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
-import com.example.myapplication.jiaowu.entity.Kaoqin;
 import com.example.myapplication.jiaowu.entity.Quanxian;
+import com.example.myapplication.jiaowu.entity.Student;
 import com.example.myapplication.jiaowu.entity.Teacher;
-import com.example.myapplication.jiaowu.entity.TeacherCurriculum;
-import com.example.myapplication.jiaowu.service.KaoqinService;
-import com.example.myapplication.jiaowu.service.TeacherCurriculumService;
+import com.example.myapplication.jiaowu.entity.TeacherInfo;
+import com.example.myapplication.jiaowu.service.StudentService;
+import com.example.myapplication.jiaowu.service.TeacherInfoService;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-public class TeacherCurriculumActivity extends AppCompatActivity {
+public class JiaoShiXinXiActivity extends AppCompatActivity {
+
     private final static int REQUEST_CODE_CHANG = 1;
 
     private Teacher teacher;
-    private TeacherCurriculumService teacherCurriculumService;
+    private TeacherInfoService teacherInfoService;
     private ListView listView;
-    private EditText teacher1;
-    private EditText course;
-    private String teacherText;
-    private String courseText;
+    private EditText teacher_name;
+    private String teacher_nameText;
     private Button sel_button;
+    List<TeacherInfo> list;
     private Quanxian quanxian;
-
-    List<TeacherCurriculum> list;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.jiaowu_teachercurriculum);
+        setContentView(R.layout.jiaowu_jiaoshixinxi);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -61,12 +63,27 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        listView = findViewById(R.id.teachercurriculum_list);
+        //初始化控件
+        listView = findViewById(R.id.jiaoshixinxi_list);
+        teacher_name = findViewById(R.id.teacher_name);
+
+        sel_button = findViewById(R.id.sel_button);
+        sel_button.setOnClickListener(selClick());
+        sel_button.requestFocus();
 
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
         quanxian = myApplication.getQuanxian();
         initList();
+    }
+
+    public View.OnClickListener selClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initList();
+            }
+        };
     }
 
     @Override
@@ -78,7 +95,9 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     private void initList() {
+        teacher_nameText = teacher_name.getText().toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -92,25 +111,31 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
             public void run() {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
-                    teacherCurriculumService = new TeacherCurriculumService();
-                    list = teacherCurriculumService.getList(teacherText,courseText,teacher.getCompany());
+                    teacherInfoService = new TeacherInfoService();
+                    list = teacherInfoService.getList(teacher.getCompany(),teacher_nameText);
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
-                        item.put("id", list.get(i).getId());
-                        item.put("teacher", list.get(i).getTeacher());
-                        item.put("course", list.get(i).getCourse());
-                        item.put("riqi", list.get(i).getRiqi());
-                        item.put("xingqi", list.get(i).getXingqi());
-                        item.put("company", list.get(i).getCompany());
+                        item.put("t_name", list.get(i).getT_name());
+                        item.put("sex", list.get(i).getSex());
+                        item.put("id_code", list.get(i).getId_code());
+                        item.put("minzu", list.get(i).getMinzu());
+                        item.put("birthday", list.get(i).getBirthday());
+                        item.put("post", list.get(i).getPost());
+                        item.put("education", list.get(i).getEducation());
+                        item.put("phone", list.get(i).getPhone());
+                        item.put("rz_riqi", list.get(i).getRz_riqi());
+                        item.put("state", list.get(i).getState());
+                        item.put("shebao", list.get(i).getShebao());
+                        item.put("address", list.get(i).getAddress());
                         data.add(item);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(TeacherCurriculumActivity.this, data, R.layout.jiaowu_teachercurriculum_row, new String[]{"teacher", "course", "riqi", "xingqi"}, new int[]{R.id.teacher, R.id.course, R.id.riqi, R.id.xingqi}) {
+                SimpleAdapter adapter = new SimpleAdapter(JiaoShiXinXiActivity.this, data, R.layout.jiaowu_jiaoshixinxi_row, new String[]{"t_name","sex","id_code","minzu","birthday","post","education","phone","rz_riqi","state","shebao","address"}, new int[]{R.id.t_name, R.id.sex, R.id.id_code, R.id.minzu, R.id.birthday, R.id.post, R.id.education, R.id.phone, R.id.rz_riqi, R.id.state, R.id.shebao, R.id.address}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -131,10 +156,10 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
 
     public void onInsertClick(View v) {
         if(!quanxian.getAdd().equals("√")){
-            ToastUtil.show(TeacherCurriculumActivity.this, "无权限！");
+            ToastUtil.show(JiaoShiXinXiActivity.this, "无权限！");
             return;
         }
-        Intent intent = new Intent(TeacherCurriculumActivity.this, TeacherCurriculumChangeActivity.class);
+        Intent intent = new Intent(JiaoShiXinXiActivity.this, JiaoShiXinXiChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
     }
@@ -144,11 +169,11 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!quanxian.getUpd().equals("√")){
-                    ToastUtil.show(TeacherCurriculumActivity.this, "无权限！");
+                    ToastUtil.show(JiaoShiXinXiActivity.this, "无权限！");
                     return;
                 }
                 int position = Integer.parseInt(view.getTag().toString());
-                Intent intent = new Intent(TeacherCurriculumActivity.this, TeacherCurriculumChangeActivity.class);
+                Intent intent = new Intent(JiaoShiXinXiActivity.this, JiaoShiXinXiChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
                 MyApplication myApplication = (MyApplication) getApplication();
                 myApplication.setObj(list.get(position));
@@ -162,16 +187,16 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View view) {
                 if(!quanxian.getDel().equals("√")){
-                    ToastUtil.show(TeacherCurriculumActivity.this, "无权限！");
+                    ToastUtil.show(JiaoShiXinXiActivity.this, "无权限！");
                     return true;
                 }
-                AlertDialog.Builder builder = new AlertDialog.Builder(TeacherCurriculumActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(JiaoShiXinXiActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {
                     @Override
                     public boolean handleMessage(@NonNull Message msg) {
                         if ((boolean) msg.obj) {
-                            ToastUtil.show(TeacherCurriculumActivity.this, "删除成功");
+                            ToastUtil.show(JiaoShiXinXiActivity.this, "删除成功");
                             initList();
                         }
                         return true;
@@ -185,7 +210,7 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 Message msg = new Message();
-                                msg.obj = teacherCurriculumService.delete(list.get(position).getId());
+                                msg.obj = teacherInfoService.delete(list.get(position).getId());
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
@@ -207,6 +232,42 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
         };
     }
 
+    @SuppressLint("ClickableViewAccessibility")
+    protected void showDateOnClick(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    showDatePickDlg(editText);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    showDatePickDlg(editText);
+                }
+
+            }
+        });
+    }
+
+    protected void showDatePickDlg(final EditText editText) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(JiaoShiXinXiActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -216,4 +277,6 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
             }
         }
     }
+
+
 }

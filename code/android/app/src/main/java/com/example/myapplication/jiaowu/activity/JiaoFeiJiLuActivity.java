@@ -1,14 +1,18 @@
 package com.example.myapplication.jiaowu.activity;
 
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -21,39 +25,41 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
-import com.example.myapplication.jiaowu.entity.Kaoqin;
+import com.example.myapplication.jiaowu.entity.Payment;
 import com.example.myapplication.jiaowu.entity.Quanxian;
+import com.example.myapplication.jiaowu.entity.Student;
 import com.example.myapplication.jiaowu.entity.Teacher;
-import com.example.myapplication.jiaowu.entity.TeacherCurriculum;
-import com.example.myapplication.jiaowu.service.KaoqinService;
-import com.example.myapplication.jiaowu.service.TeacherCurriculumService;
+import com.example.myapplication.jiaowu.service.PaymentService;
+import com.example.myapplication.jiaowu.service.StudentService;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-public class TeacherCurriculumActivity extends AppCompatActivity {
+public class JiaoFeiJiLuActivity extends AppCompatActivity {
+
     private final static int REQUEST_CODE_CHANG = 1;
 
     private Teacher teacher;
-    private TeacherCurriculumService teacherCurriculumService;
+    private PaymentService paymentService;
     private ListView listView;
-    private EditText teacher1;
-    private EditText course;
-    private String teacherText;
-    private String courseText;
+    private EditText start_date;
+    private EditText stop_date;
+    private EditText student_name;
+    private String start_dateText;
+    private String stop_dateText;
+    private String student_nameText;
     private Button sel_button;
+    List<Payment> list;
     private Quanxian quanxian;
-
-    List<TeacherCurriculum> list;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.jiaowu_teachercurriculum);
+        setContentView(R.layout.jiaowu_jiaofeijilu);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -61,12 +67,32 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        listView = findViewById(R.id.teachercurriculum_list);
+        //初始化控件
+        listView = findViewById(R.id.jiaofeijilu_list);
+
+        start_date = findViewById(R.id.start_date);
+        stop_date = findViewById(R.id.stop_date);
+        showDateOnClick(start_date);
+        showDateOnClick(stop_date);
+        student_name = findViewById(R.id.student_name);
+
+        sel_button = findViewById(R.id.sel_button);
+        sel_button.setOnClickListener(selClick());
+        sel_button.requestFocus();
 
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
         quanxian = myApplication.getQuanxian();
         initList();
+    }
+
+    public View.OnClickListener selClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initList();
+            }
+        };
     }
 
     @Override
@@ -78,7 +104,17 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     private void initList() {
+        start_dateText = start_date.getText().toString();
+        stop_dateText = stop_date.getText().toString();
+        student_nameText = student_name.getText().toString();
+        if(start_dateText.equals("")){
+            start_dateText = "1900-01-01";
+        }
+        if(stop_dateText.equals("")){
+            stop_dateText = "2100-12-31";
+        }
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -92,25 +128,26 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
             public void run() {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
-                    teacherCurriculumService = new TeacherCurriculumService();
-                    list = teacherCurriculumService.getList(teacherText,courseText,teacher.getCompany());
+                    paymentService = new PaymentService();
+                    list = paymentService.getList(teacher.getCompany(),start_dateText,stop_dateText,student_nameText);
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
-                        item.put("id", list.get(i).getId());
-                        item.put("teacher", list.get(i).getTeacher());
-                        item.put("course", list.get(i).getCourse());
-                        item.put("riqi", list.get(i).getRiqi());
-                        item.put("xingqi", list.get(i).getXingqi());
-                        item.put("company", list.get(i).getCompany());
+                        item.put("ksdate", list.get(i).getKsdate());
+                        item.put("realname", list.get(i).getRealname());
+                        item.put("paid", list.get(i).getPaid());
+                        item.put("money", list.get(i).getMoney());
+                        item.put("paiment", list.get(i).getPaiment());
+                        item.put("keeper", list.get(i).getKeeper());
+                        item.put("remark", list.get(i).getRemark());
                         data.add(item);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(TeacherCurriculumActivity.this, data, R.layout.jiaowu_teachercurriculum_row, new String[]{"teacher", "course", "riqi", "xingqi"}, new int[]{R.id.teacher, R.id.course, R.id.riqi, R.id.xingqi}) {
+                SimpleAdapter adapter = new SimpleAdapter(JiaoFeiJiLuActivity.this, data, R.layout.jiaowu_jiaofeijilu_row, new String[]{"ksdate","realname","paid","money","paiment","keeper","remark"}, new int[]{R.id.ksdate, R.id.realname, R.id.paid, R.id.money, R.id.paiment, R.id.keeper, R.id.remark}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -131,10 +168,10 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
 
     public void onInsertClick(View v) {
         if(!quanxian.getAdd().equals("√")){
-            ToastUtil.show(TeacherCurriculumActivity.this, "无权限！");
+            ToastUtil.show(JiaoFeiJiLuActivity.this, "无权限！");
             return;
         }
-        Intent intent = new Intent(TeacherCurriculumActivity.this, TeacherCurriculumChangeActivity.class);
+        Intent intent = new Intent(JiaoFeiJiLuActivity.this, JiaoFeiJiLuChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
     }
@@ -144,11 +181,11 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!quanxian.getUpd().equals("√")){
-                    ToastUtil.show(TeacherCurriculumActivity.this, "无权限！");
+                    ToastUtil.show(JiaoFeiJiLuActivity.this, "无权限！");
                     return;
                 }
                 int position = Integer.parseInt(view.getTag().toString());
-                Intent intent = new Intent(TeacherCurriculumActivity.this, TeacherCurriculumChangeActivity.class);
+                Intent intent = new Intent(JiaoFeiJiLuActivity.this, JiaoFeiJiLuChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
                 MyApplication myApplication = (MyApplication) getApplication();
                 myApplication.setObj(list.get(position));
@@ -162,16 +199,16 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View view) {
                 if(!quanxian.getDel().equals("√")){
-                    ToastUtil.show(TeacherCurriculumActivity.this, "无权限！");
+                    ToastUtil.show(JiaoFeiJiLuActivity.this, "无权限！");
                     return true;
                 }
-                AlertDialog.Builder builder = new AlertDialog.Builder(TeacherCurriculumActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(JiaoFeiJiLuActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {
                     @Override
                     public boolean handleMessage(@NonNull Message msg) {
                         if ((boolean) msg.obj) {
-                            ToastUtil.show(TeacherCurriculumActivity.this, "删除成功");
+                            ToastUtil.show(JiaoFeiJiLuActivity.this, "删除成功");
                             initList();
                         }
                         return true;
@@ -185,7 +222,7 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 Message msg = new Message();
-                                msg.obj = teacherCurriculumService.delete(list.get(position).getId());
+                                msg.obj = paymentService.delete(list.get(position).getId());
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
@@ -207,6 +244,42 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
         };
     }
 
+    @SuppressLint("ClickableViewAccessibility")
+    protected void showDateOnClick(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    showDatePickDlg(editText);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    showDatePickDlg(editText);
+                }
+
+            }
+        });
+    }
+
+    protected void showDatePickDlg(final EditText editText) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(JiaoFeiJiLuActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -216,4 +289,6 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
             }
         }
     }
+
+
 }

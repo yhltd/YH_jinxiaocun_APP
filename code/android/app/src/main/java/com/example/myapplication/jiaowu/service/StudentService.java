@@ -20,6 +20,16 @@ public class StudentService {
     }
 
     /**
+     * 查询全部数据
+     */
+    public List<Student> getListQianFei(String company, String student) {
+        String sql = "select * from student where Nocost is not null and Nocost>0 and RealName like '%' + ? + '%' and Company= ?";
+        base = new JiaowuBaseDao();
+        List<Student> list = base.query(Student.class, sql, student,company);
+        return list;
+    }
+
+    /**
      * 新增
      */
     public boolean insert(Student student) {

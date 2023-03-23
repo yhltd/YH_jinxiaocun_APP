@@ -7,8 +7,8 @@ public class TeacherInfo implements Serializable {
     private String t_name;
     private String sex;
     private String id_code;
-    private int minzu;
-    private int birthday;
+    private String minzu;
+    private String birthday;
     private String post;
     private String education;
     private String phone;
@@ -50,19 +50,19 @@ public class TeacherInfo implements Serializable {
         this.id_code = id_code;
     }
 
-    public int getMinzu() {
+    public String getMinzu() {
         return minzu;
     }
 
-    public void setMinzu(int minzu) {
+    public void setMinzu(String minzu) {
         this.minzu = minzu;
     }
 
-    public int getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(int birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 

@@ -33,8 +33,6 @@ public class GongZuoTaiQuanXianChangeActivity extends AppCompatActivity {
     private Renyuan renyuan;
     private Copy2Service copy2Service;
 
-    private Spinner A;
-    private Spinner B;
     private Spinner C;
     private Spinner D;
     private Spinner E;
@@ -133,6 +131,8 @@ public class GongZuoTaiQuanXianChangeActivity extends AppCompatActivity {
     private Spinner CT;
     private Spinner CU;
     private Spinner CV;
+    private Spinner CW;
+    private Spinner CX;
     private Button jiechuClick;
 
     private List<Gongsi> list;
@@ -154,8 +154,6 @@ public class GongZuoTaiQuanXianChangeActivity extends AppCompatActivity {
         jiechuClick.setOnClickListener(jiechuAll());
         jiechuClick.requestFocus();
 
-        A = findViewById(R.id.A);
-        B = findViewById(R.id.B);
         C = findViewById(R.id.C);
         D = findViewById(R.id.D);
         E = findViewById(R.id.E);
@@ -254,6 +252,8 @@ public class GongZuoTaiQuanXianChangeActivity extends AppCompatActivity {
         CT = findViewById(R.id.CT);
         CU = findViewById(R.id.CU);
         CV = findViewById(R.id.CV);
+        CW = findViewById(R.id.CW);
+        CX = findViewById(R.id.CX);
 
         MyApplication myApplication = (MyApplication) getApplication();
         renyuan = myApplication.getRenyuan();
@@ -318,8 +318,6 @@ public class GongZuoTaiQuanXianChangeActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 if(list != null){
-                    A.setText(list.get(0).getA());
-                    B.setText(list.get(0).getB());
                     C.setText(list.get(0).getC());
                     D.setText(list.get(0).getD());
                     E.setText(list.get(0).getE());

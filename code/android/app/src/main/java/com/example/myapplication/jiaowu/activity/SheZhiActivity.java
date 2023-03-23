@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.jiaowu.entity.Quanxian;
 import com.example.myapplication.jiaowu.entity.SheZhi;
 import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.SheZhiService;
@@ -41,6 +42,7 @@ public class SheZhiActivity extends AppCompatActivity {
     private Teacher teacher;
     private SheZhiService sheZhiService;
     private ListView listView;
+    private Quanxian quanxian;
 
     List<SheZhi> list;
 
@@ -126,6 +128,10 @@ public class SheZhiActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
+        if(!quanxian.getAdd().equals("√")){
+            ToastUtil.show(SheZhiActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(SheZhiActivity.this, SheZhiChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
@@ -135,6 +141,10 @@ public class SheZhiActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!quanxian.getUpd().equals("√")){
+                    ToastUtil.show(SheZhiActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(SheZhiActivity.this, SheZhiChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
@@ -149,6 +159,10 @@ public class SheZhiActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!quanxian.getDel().equals("√")){
+                    ToastUtil.show(SheZhiActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(SheZhiActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {

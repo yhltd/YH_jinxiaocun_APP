@@ -33,6 +33,7 @@ import java.text.ParseException;
 import java.util.List;
 
 public class AccountManagementChangeActivity extends AppCompatActivity {
+    private Teacher teacher;
     private AccountManagement accountManagement;
     private AccountManagementService accountManagementService;
 
@@ -60,7 +61,7 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
         }
 
         MyApplication myApplication = (MyApplication) getApplication();
-        accountManagement = myApplication.getAccountManagement();
+        teacher = myApplication.getTeacher();
         accountManagementService = new AccountManagementService();
 
         Username = findViewById(R.id.Username);
@@ -174,6 +175,7 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
         accountManagement.setPhoto(photo.getText().toString());
         accountManagement.setEducation(Education.getText().toString());
         accountManagement.setState(state.getText().toString());
+        accountManagement.setCompany(teacher.getCompany());
         return true;
     }
 

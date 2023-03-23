@@ -20,11 +20,13 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.jiaowu.entity.AccountManagement;
 import com.example.myapplication.jiaowu.entity.Quanxian;
+import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.AccountManagementService;
 import com.example.myapplication.jiaowu.service.QuanxianService;
 import com.example.myapplication.utils.ToastUtil;
 
 public class QuanxianChangeActivity extends AppCompatActivity {
+    private Teacher teacher;
     private Quanxian quanxian;
     private QuanxianService quanxianService;
 
@@ -48,7 +50,7 @@ public class QuanxianChangeActivity extends AppCompatActivity {
         }
 
         MyApplication myApplication = (MyApplication) getApplication();
-        quanxian = myApplication.getQuanxian();
+        teacher = myApplication.getTeacher();
         quanxianService = new QuanxianService();
 
         Realname = findViewById(R.id.Realname);
@@ -150,6 +152,7 @@ public class QuanxianChangeActivity extends AppCompatActivity {
         quanxian.setDel(del.getText().toString());
         quanxian.setUpd(upd.getText().toString());
         quanxian.setSel(sel.getText().toString());
+        quanxian.setCompany(teacher.getCompany());
         return true;
     }
 

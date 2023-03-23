@@ -1028,7 +1028,196 @@
             </intent-filter>
         </activity>
 
-        <!--    教务    -->
+        <activity
+            android:name=".jiaowu.activity.XueShengXinXiActivity"
+            android:label="学生信息">
+            <intent-filter>
+                <action android:name="android.intent.action.XueShengXinXiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.XueShengXinXiChangeActivity"
+            android:label="学生信息">
+            <intent-filter>
+                <action android:name="android.intent.action.XueShengXinXiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.JiaoShiXinXiActivity"
+            android:label="教师信息">
+            <intent-filter>
+                <action android:name="android.intent.action.JiaoShiXinXiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.JiaoShiXinXiChangeActivity"
+            android:label="教师信息">
+            <intent-filter>
+                <action android:name="android.intent.action.JiaoShiXinXiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.JiaoFeiJiLuActivity"
+            android:label="缴费记录">
+            <intent-filter>
+                <action android:name="android.intent.action.JiaoFeiJiLuActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.JiaoFeiJiLuChangeActivity"
+            android:label="缴费记录">
+            <intent-filter>
+                <action android:name="android.intent.action.JiaoFeiJiLuChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.KeShiTongJiActivity"
+            android:label="课时统计">
+            <intent-filter>
+                <action android:name="android.intent.action.KeShiTongJiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.KeShiTongJiChangeActivity"
+            android:label="课时统计">
+            <intent-filter>
+                <action android:name="android.intent.action.KeShiTongJiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.ShouZhiMingXiActivity"
+            android:label="收支明细">
+            <intent-filter>
+                <action android:name="android.intent.action.KeShiTongJiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.ShouZhiMingXiChangeActivity"
+            android:label="收支明细">
+            <intent-filter>
+                <action android:name="android.intent.action.KeShiTongJiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.QianFeiXueYuanActivity"
+            android:label="欠费学员">
+            <intent-filter>
+                <action android:name="android.intent.action.QianFeiXueYuanActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.TeacherSalActivity"
+            android:label="教师工资">
+            <intent-filter>
+                <action android:name="android.intent.action.TeacherSalActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.JiaoShiKeShiActivity"
+            android:label="教师课时统计">
+            <intent-filter>
+                <action android:name="android.intent.action.JiaoShiKeShiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.AccountManagementActivity"
+            android:label="用户管理">
+            <intent-filter>
+                <action android:name="android.intent.action.AccountManagementActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.AccountManagementChangeActivity"
+            android:label="用户管理">
+            <intent-filter>
+                <action android:name="android.intent.action.AccountManagementChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.KaoqinActivity"
+            android:label="考勤表">
+            <intent-filter>
+                <action android:name="android.intent.action.KaoqinActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.KaoqinChangeActivity"
+            android:label="考勤表">
+            <intent-filter>
+                <action android:name="android.intent.action.KaoqinChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.TeacherCurriculumActivity"
+            android:label="教师课表">
+            <intent-filter>
+                <action android:name="android.intent.action.TeacherCurriculumActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.TeacherCurriculumChangeActivity"
+            android:label="教师课表">
+            <intent-filter>
+                <action android:name="android.intent.action.TeacherCurriculumChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.QuanxianActivity"
+            android:label="权限管理">
+            <intent-filter>
+                <action android:name="android.intent.action.QuanxianActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.QuanxianChangeActivity"
+            android:label="权限管理">
+            <intent-filter>
+                <action android:name="android.intent.action.QuanxianChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--    门店    -->
         <activity
             android:name=".mendian.activity.MendianActivity"
             android:label="首页">

@@ -153,6 +153,7 @@ public class SheZhiChangeActivity extends AppCompatActivity {
         sheZhi.setPaiment(paiment.getText().toString());
         sheZhi.setMsort(msort.getText().toString());
         sheZhi.setPsort(psort.getText().toString());
+        sheZhi.setCompany(teacher.getCompany());
         return true;
     }
 
