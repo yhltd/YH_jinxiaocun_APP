@@ -86,9 +86,9 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
 
-            Username.setText(accountManagement.getUserName());
+            Username.setText(accountManagement.getUsername());
             Password.setText(accountManagement.getPassword());
-            Realname.setText(accountManagement.getRealName());
+            Realname.setText(accountManagement.getRealname());
             UseType.setText(accountManagement.getUseType());
             Age.setText(accountManagement.getAge());
             Phone.setText(accountManagement.getPhone());
@@ -165,9 +165,9 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
 
     private boolean checkForm() {
 
-        accountManagement.setUserName(Username.getText().toString());
+        accountManagement.setUsername(Username.getText().toString());
         accountManagement.setPassword(Password.getText().toString());
-        accountManagement.setRealName(Realname.getText().toString());
+        accountManagement.setRealname(Realname.getText().toString());
         accountManagement.setUseType(UseType.getText().toString());
         accountManagement.setAge(Age.getText().toString());
         accountManagement.setPhone(Phone.getText().toString());

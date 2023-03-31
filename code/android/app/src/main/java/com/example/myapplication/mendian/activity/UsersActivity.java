@@ -38,7 +38,6 @@ public class UsersActivity extends AppCompatActivity {
     MyApplication myApplication;
 
     private YhMendianUser yhMendianUser;
-    private YhMendianUsers yhMendianUsers;
     private YhMendianUsersService yhMendianUsersService;
     private EditText uname;
     private EditText position;
@@ -57,7 +56,7 @@ public class UsersActivity extends AppCompatActivity {
         myApplication = (MyApplication) getApplication();
         yhMendianUser = myApplication.getYhMendianUser();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.memberinfo);
+        setContentView(R.layout.users);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -106,7 +105,7 @@ public class UsersActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     yhMendianUsersService = new YhMendianUsersService();
-                    list = yhMendianUsersService.getList(unameText,positionText,accountText,yhMendianUsers.getCompany());
+                    list = yhMendianUsersService.getList(unameText,positionText,accountText,yhMendianUser.getCompany());
                     if (list == null) return;
 
                 } catch (Exception e) {
@@ -119,11 +118,10 @@ public class UsersActivity extends AppCompatActivity {
                     item.put("uname", list.get(i).getUname());
                     item.put("account", list.get(i).getAccount());
                     item.put("password", list.get(i).getPassword());
-
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(UsersActivity.this, data, R.layout.users_row, new String[]{"uname","position","account"}, new int[]{R.id.position,R.id.uname,R.id.account}) {
+                SimpleAdapter adapter = new SimpleAdapter(UsersActivity.this, data, R.layout.users_row, new String[]{"position","uname","account","password"}, new int[]{R.id.position,R.id.uname,R.id.account,R.id.password}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);

@@ -1,13 +1,18 @@
 package com.example.myapplication.mendian.activity;
 
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -29,6 +34,7 @@ import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -79,6 +85,8 @@ public class rijiaoActivity extends AppCompatActivity {
         chika = findViewById(R.id.chika);
         start_date = findViewById(R.id.start_date);
         end_date = findViewById(R.id.end_date);
+        showDateOnClick(start_date);
+        showDateOnClick(end_date);
         rijiao_list = findViewById(R.id.rijiao_list);
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
@@ -95,12 +103,28 @@ public class rijiaoActivity extends AppCompatActivity {
         };
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void initList() {
         shoukaText = shouka.getText().toString();
         fukuanText = fukuan.getText().toString();
         chikaText = chika.getText().toString();
         start_dateText = start_date.getText().toString();
         end_dateText = end_date.getText().toString();
+
+        if(start_dateText.equals("")){
+            start_dateText = "1900-01-01";
+        }
+        if(end_dateText.equals("")){
+            end_dateText = "2100-12-31";
+        }
 
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
@@ -116,7 +140,7 @@ public class rijiaoActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     yhMendianRijiaoService = new YhMendianRijiaoService();
-                    list = yhMendianRijiaoService.getList(shoukaText,fukuanText,chikaText,start_dateText,end_dateText,yhMendianRijiao.getGongsi());
+                    list = yhMendianRijiaoService.getList(shoukaText,fukuanText,chikaText,start_dateText,end_dateText,yhMendianUser.getCompany());
                     if (list == null) return;
 
                 } catch (Exception e) {
@@ -163,6 +187,54 @@ public class rijiaoActivity extends AppCompatActivity {
 
             }
         }).start();
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    protected void showDateOnClick(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    showDatePickDlg(editText);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    showDatePickDlg(editText);
+                }
+
+            }
+        });
+    }
+
+    protected void showDatePickDlg(final EditText editText) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(rijiaoActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                String this_month = "";
+                if (monthOfYear + 1 < 10){
+                    this_month = "0" + String.format("%s",monthOfYear + 1);
+                }else{
+                    this_month = String.format("%s",monthOfYear + 1);
+                }
+
+                String this_day = "";
+                if (dayOfMonth + 1 < 10){
+                    this_day = "0" + String.format("%s",dayOfMonth);
+                }else{
+                    this_day = String.format("%s",dayOfMonth);
+                }
+                editText.setText(year + "-" + this_month + "-" + this_day);
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
 

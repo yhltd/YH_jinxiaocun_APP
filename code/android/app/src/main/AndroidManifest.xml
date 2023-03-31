@@ -1104,7 +1104,7 @@
             android:name=".jiaowu.activity.ShouZhiMingXiActivity"
             android:label="收支明细">
             <intent-filter>
-                <action android:name="android.intent.action.KeShiTongJiActivity" />
+                <action android:name="android.intent.action.ShouZhiMingXiActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -1113,7 +1113,7 @@
             android:name=".jiaowu.activity.ShouZhiMingXiChangeActivity"
             android:label="收支明细">
             <intent-filter>
-                <action android:name="android.intent.action.KeShiTongJiChangeActivity" />
+                <action android:name="android.intent.action.ShouZhiMingXiChangeActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -1237,6 +1237,15 @@
         </activity>
 
         <activity
+            android:name=".mendian.activity.KehuinfoChangeActivity"
+            android:label="客户信息">
+            <intent-filter>
+                <action android:name="android.intent.action.KehuinfoChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".mendian.activity.rijiaoActivity"
             android:label="日交易额">
             <intent-filter>
@@ -1249,7 +1258,16 @@
             android:name=".mendian.activity.MemberinfoActivity"
             android:label="会员管理">
             <intent-filter>
-                <action android:name="android.intent.action.YuejiaoActivity" />
+                <action android:name="android.intent.action.MemberinfoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mendian.activity.MemberinfoChangeActivity"
+            android:label="会员管理">
+            <intent-filter>
+                <action android:name="android.intent.action.MemberinfoChangeActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -1258,31 +1276,52 @@
             android:name=".mendian.activity.MemberlevelActivity"
             android:label="会员等级">
             <intent-filter>
-                <action android:name="android.intent.action.YuejiaoActivity" />
+                <action android:name="android.intent.action.MemberlevelActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!--        <activity-->
-        <!--            android:name=".mendian.activity.DiandanActivity"-->
-        <!--            android:label="点单面板">-->
-        <!--            <intent-filter>-->
-        <!--                <action android:name="android.intent.action.YuejiaoActivity" />-->
-        <!--                <category android:name="android.intent.category.DEFAULT" />-->
-        <!--            </intent-filter>-->
-        <!--        </activity>-->
+
+        <activity
+            android:name=".mendian.activity.MemberlevelChangeActivity"
+            android:label="会员等级">
+            <intent-filter>
+                <action android:name="android.intent.action.MemberlevelChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mendian.activity.OrderPanelActivity"
+            android:label="点单面板">
+            <intent-filter>
+                <action android:name="android.intent.action.OrderPanelActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".mendian.activity.OrdersActivity"
             android:label="订单信息">
             <intent-filter>
-                <action android:name="android.intent.action.YuejiaoActivity" />
+                <action android:name="android.intent.action.OrdersActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".mendian.activity.OrdersChangeActivity"
+            android:label="订单信息">
+            <intent-filter>
+                <action android:name="android.intent.action.OrdersChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".mendian.activity.ReportFormActivity"
             android:label="统计报表">
             <intent-filter>
-                <action android:name="android.intent.action.YuejiaoActivity" />
+                <action android:name="android.intent.action.ReportFormActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -1299,23 +1338,70 @@
             android:name=".mendian.activity.ZongjiaoActivity"
             android:label="交易总额">
             <intent-filter>
-                <action android:name="android.intent.action.YuejiaoActivity" />
+                <action android:name="android.intent.action.ZongjiaoActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".mendian.activity.UsersActivity"
             android:label="员工信息">
             <intent-filter>
-                <action android:name="android.intent.action.YuejiaoActivity" />
+                <action android:name="android.intent.action.UsersActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".mendian.activity.UsersChangeActivity"
+            android:label="员工信息">
+            <intent-filter>
+                <action android:name="android.intent.action.UsersChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".mendian.activity.ProductshezhiActivity"
             android:label="商品设置">
             <intent-filter>
-                <action android:name="android.intent.action.YuejiaoActivity" />
+                <action android:name="android.intent.action.ProductshezhiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mendian.activity.ProductshezhiChangeActivity"
+            android:label="商品设置">
+            <intent-filter>
+                <action android:name="android.intent.action.ProductshezhiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mendian.activity.ProductInsActivity"
+            android:label="商品选择">
+            <intent-filter>
+                <action android:name="android.intent.action.ProductInsActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mendian.activity.GouWuCheActivity"
+            android:label="购物车">
+            <intent-filter>
+                <action android:name="android.intent.action.GouWuCheActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mendian.activity.OrderInsActivity"
+            android:label="选择会员">
+            <intent-filter>
+                <action android:name="android.intent.action.OrderInsActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

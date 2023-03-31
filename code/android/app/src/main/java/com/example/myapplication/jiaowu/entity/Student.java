@@ -1,10 +1,13 @@
 package com.example.myapplication.jiaowu.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class Student implements Serializable {
     private int id;
-    private String realName;
+    @SerializedName("RealName")
+    private String realname;
     private String sex;
     private String rgdate;
     private String course;
@@ -18,6 +21,7 @@ public class Student implements Serializable {
     private String nohour;
     private String allhour;
     private String type;
+    @SerializedName("Company")
     private String company;
 
     public String getCompany() {
@@ -36,12 +40,12 @@ public class Student implements Serializable {
         this.id = id;
     }
 
-    public String getRealName() {
-        return realName;
+    public String getRealname() {
+        return realname;
     }
 
-    public void setRealName(String realName) {
-        this.realName = realName;
+    public void setRealname(String realname) {
+        this.realname = realname;
     }
 
     public String getSex() {

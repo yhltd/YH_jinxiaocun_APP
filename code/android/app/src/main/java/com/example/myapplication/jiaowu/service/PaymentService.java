@@ -13,7 +13,7 @@ public class PaymentService {
      * 查询全部数据
      */
     public List<Payment> getList(String company, String start_date, String stop_date, String student_name) {
-        String sql = "select * from payment where Company = ? and ksdate >= ? and ksdate <= ? and realname like '%' + ? + '%'";
+        String sql = "select * from payment where Company = ? and ksdate >= ? and ksdate <= ? and realname like '%' ? '%'";
         base = new JiaowuBaseDao();
         List<Payment> list = base.query(Payment.class, sql, company,start_date,stop_date,student_name);
         return list;

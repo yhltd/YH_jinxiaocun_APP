@@ -12,7 +12,7 @@ public class AccountManagementService {
      * 查询全部数据
      */
     public List<AccountManagement> getList(String Username, String Realname, String Phone ,String company) {
-        String sql = "select * from teacher where Username like ? and Realname like ? and Phone like ? and Company = ?";
+        String sql = "select * from teacher where Username like '%' ? '%' and Realname like '%' ? '%' and Phone like '%' ? '%' and Company = ?";
         base = new JiaowuBaseDao();
         List<AccountManagement> list = base.query(AccountManagement.class, sql,Username,Realname, Phone,company);
         return list;
@@ -24,7 +24,7 @@ public class AccountManagementService {
     public boolean insert(AccountManagement accountManagement) {
         String sql = "insert into teacher(UserName,Password,RealName,UseType,Age,Phone,Home,photo,Education,state,Company) values(?,?,?,?,?,?,?,?,?,?,?)";
         base = new JiaowuBaseDao();
-        long result = base.executeOfId(sql, accountManagement.getUserName(), accountManagement.getPassword(), accountManagement.getRealName(), accountManagement.getUseType(), accountManagement.getAge(), accountManagement.getPhone(), accountManagement.getHome(), accountManagement.getPhoto(), accountManagement.getEducation(), accountManagement.getState(), accountManagement.getCompany());
+        long result = base.executeOfId(sql, accountManagement.getUsername(), accountManagement.getPassword(), accountManagement.getRealname(), accountManagement.getUseType(), accountManagement.getAge(), accountManagement.getPhone(), accountManagement.getHome(), accountManagement.getPhoto(), accountManagement.getEducation(), accountManagement.getState(), accountManagement.getCompany());
         return result > 0;
     }
 
@@ -35,7 +35,7 @@ public class AccountManagementService {
         String sql = "update teacher set UserName = ?, Password = ?,RealName = ?,UseType = ?,Age = ?,Phone,Home,photo,Education,state where id=? ";
 
         base = new JiaowuBaseDao();
-        boolean result = base.execute(sql, accountManagement.getUserName(), accountManagement.getPassword(), accountManagement.getRealName(), accountManagement.getUseType(), accountManagement.getAge(), accountManagement.getPhone(), accountManagement.getHome(), accountManagement.getPhoto(), accountManagement.getEducation(), accountManagement.getState(), accountManagement.getId());
+        boolean result = base.execute(sql, accountManagement.getUsername(), accountManagement.getPassword(), accountManagement.getRealname(), accountManagement.getUseType(), accountManagement.getAge(), accountManagement.getPhone(), accountManagement.getHome(), accountManagement.getPhoto(), accountManagement.getEducation(), accountManagement.getState(), accountManagement.getId());
         return result;
     }
 

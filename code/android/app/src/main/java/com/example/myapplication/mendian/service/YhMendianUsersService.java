@@ -15,7 +15,7 @@ public class YhMendianUsersService {
     public List<YhMendianUsers> getList(String uname, String position,String account, String company) {
         String sql = "select * from users where company = ? and uname like '%' ? '%' and position like '%' ? '%' and account like '%' ? '%' ";
         base = new MendianDao();
-        List<YhMendianUsers> list = base.query(YhMendianMemberinfo.class, sql, company, uname,position,account);
+        List<YhMendianUsers> list = base.query(YhMendianUsers.class, sql, company, uname,position,account);
         return list;
     }
 

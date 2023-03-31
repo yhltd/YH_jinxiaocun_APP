@@ -64,11 +64,20 @@ public class AccountManagementActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        listView = findViewById(R.id.AccountManagement_list);
+        listView = findViewById(R.id.accountManagement_list);
+
+        Uname = findViewById(R.id.Uname);
+        Realname = findViewById(R.id.Realname);
+        Phone = findViewById(R.id.Phone);
 
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
         quanxian = myApplication.getQuanxian();
+
+        sel_button = findViewById(R.id.sel_button);
+        sel_button.setOnClickListener(selClick());
+        sel_button.requestFocus();
+
         initList();
     }
 
@@ -81,7 +90,21 @@ public class AccountManagementActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public View.OnClickListener selClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initList();
+            }
+        };
+    }
+
     private void initList() {
+
+        UnameText = Uname.getText().toString();
+        RealnameText = Realname.getText().toString();
+        PhoneText = Phone.getText().toString();
+
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -101,16 +124,15 @@ public class AccountManagementActivity extends AppCompatActivity {
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
-                        item.put("id", list.get(i).getId());
-                        item.put("UserName", list.get(i).getUserName());
-                        item.put("Password", list.get(i).getPassword());
-                        item.put("RealName", list.get(i).getRealName());
-                        item.put("UseType", list.get(i).getUseType());
-                        item.put("Age", list.get(i).getAge());
-                        item.put("Phone", list.get(i).getPhone());
-                        item.put("Home", list.get(i).getHome());
+                        item.put("userName", list.get(i).getUsername());
+                        item.put("password", list.get(i).getPassword());
+                        item.put("realName", list.get(i).getRealname());
+                        item.put("useType", list.get(i).getUseType());
+                        item.put("age", list.get(i).getAge());
+                        item.put("phone", list.get(i).getPhone());
+                        item.put("home", list.get(i).getHome());
                         item.put("photo", list.get(i).getPhoto());
-                        item.put("Education", list.get(i).getEducation());
+                        item.put("education", list.get(i).getEducation());
                         item.put("state", list.get(i).getState());
                         data.add(item);
                     }
@@ -118,7 +140,7 @@ public class AccountManagementActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(AccountManagementActivity.this, data, R.layout.accountmanagement_row, new String[]{"Username", "Password", "RealName", "UseType", "Age", "Phone","Home","photo","Education","state"}, new int[]{R.id.Username, R.id.password, R.id.Realname, R.id.UseType, R.id.Age, R.id.Phone, R.id.Home,R.id.photo, R.id.Education, R.id.state}) {
+                SimpleAdapter adapter = new SimpleAdapter(AccountManagementActivity.this, data, R.layout.accountmanagement_row, new String[]{"username", "password", "realName", "useType", "age", "phone","home","photo","education","state"}, new int[]{R.id.Username, R.id.password, R.id.Realname, R.id.UseType, R.id.Age, R.id.Phone, R.id.Home,R.id.photo, R.id.Education, R.id.state}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);

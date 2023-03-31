@@ -104,7 +104,7 @@ public class XueShengXinXiChangeActivity extends AppCompatActivity {
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
 
-            realName.setText(student.getRealName().toString());
+            realName.setText(student.getRealname().toString());
             rgdate.setText(student.getRgdate().toString());
             classnum.setText(student.getClassnum().toString());
             phone.setText(student.getPhone().toString());
@@ -285,7 +285,7 @@ public class XueShengXinXiChangeActivity extends AppCompatActivity {
             ToastUtil.show(XueShengXinXiChangeActivity.this, "请输入学生姓名");
             return false;
         } else {
-            student.setRealName(realName.getText().toString());
+            student.setRealname(realName.getText().toString());
         }
 
         if (rgdate.getText().toString().equals("")) {

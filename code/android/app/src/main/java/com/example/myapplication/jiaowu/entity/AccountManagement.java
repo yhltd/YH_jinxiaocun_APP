@@ -1,20 +1,32 @@
 package com.example.myapplication.jiaowu.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class AccountManagement implements Serializable {
     private int id;
-    private String UserName;
-    private String Password;
-    private String RealName;
-    private String UseType;
-    private String Age;
-    private String Phone;
-    private String Home;
+    @SerializedName("UserName")
+    private String username;
+    @SerializedName("Password")
+    private String password;
+    @SerializedName("RealName")
+    private String realname;
+    @SerializedName("UseType")
+    private String useType;
+    @SerializedName("Age")
+    private String age;
+    @SerializedName("Phone")
+    private String phone;
+    @SerializedName("Home")
+    private String home;
+    @SerializedName("Photo")
     private String photo;
-    private String Education;
+    @SerializedName("Education")
+    private String education;
     private String state;
-    private String Company;
+    @SerializedName("Company")
+    private String company;
 
     public int getId() {
         return id;
@@ -24,60 +36,60 @@ public class AccountManagement implements Serializable {
         this.id = id;
     }
 
-    public String getUserName() {
-        return UserName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        UserName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
-    public String getRealName() {
-        return RealName;
+    public String getRealname() {
+        return realname;
     }
 
-    public void setRealName(String realName) {
-        RealName = realName;
+    public void setRealname(String realname) {
+        this.realname = realname;
     }
 
     public String getUseType() {
-        return UseType;
+        return useType;
     }
 
     public void setUseType(String useType) {
-        UseType = useType;
+        this.useType = useType;
     }
 
     public String getAge() {
-        return Age;
+        return age;
     }
 
     public void setAge(String age) {
-        Age = age;
+        this.age = age;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
     }
 
     public String getHome() {
-        return Home;
+        return home;
     }
 
     public void setHome(String home) {
-        Home = home;
+        this.home = home;
     }
 
     public String getPhoto() {
@@ -89,11 +101,11 @@ public class AccountManagement implements Serializable {
     }
 
     public String getEducation() {
-        return Education;
+        return education;
     }
 
     public void setEducation(String education) {
-        Education = education;
+        this.education = education;
     }
 
     public String getState() {
@@ -105,10 +117,10 @@ public class AccountManagement implements Serializable {
     }
 
     public String getCompany() {
-        return Company;
+        return company;
     }
 
     public void setCompany(String company) {
-        Company = company;
+        this.company = company;
     }
 }

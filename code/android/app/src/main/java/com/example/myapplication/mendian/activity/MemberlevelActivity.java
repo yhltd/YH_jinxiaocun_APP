@@ -36,7 +36,6 @@ public class MemberlevelActivity extends AppCompatActivity {
     MyApplication myApplication;
 
     private YhMendianUser yhMendianUser;
-    private YhMendianMemberlevel yhMendianMemberlevel;
     private YhMendianMemberlevelService yhMendianMemberlevelService;
     private EditText jibie;
     private String jibieText;
@@ -62,7 +61,7 @@ public class MemberlevelActivity extends AppCompatActivity {
         yhMendianMemberlevelService = new YhMendianMemberlevelService();
 
         //初始化控件
-        jibie = findViewById(R.id.name);
+        jibie = findViewById(R.id.jibie);
         memberlevel_list = findViewById(R.id.memberlevel_list);
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
@@ -96,7 +95,7 @@ public class MemberlevelActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     yhMendianMemberlevelService = new YhMendianMemberlevelService();
-                    list = yhMendianMemberlevelService.getList(jibieText,yhMendianMemberlevel.getCompany());
+                    list = yhMendianMemberlevelService.getList(jibieText,yhMendianUser.getCompany());
                     if (list == null) return;
 
                 } catch (Exception e) {

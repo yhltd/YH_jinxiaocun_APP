@@ -62,7 +62,7 @@ public class SheZhiActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
-
+        quanxian = myApplication.getQuanxian();
         initList();
     }
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -84,6 +85,15 @@ public class ProductshezhiActivity extends AppCompatActivity {
         };
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void initList() {
         product_nameText = product_name.getText().toString();
         typeText = type.getText().toString();
@@ -102,7 +112,7 @@ public class ProductshezhiActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     yhMendianProductshezhiService = new YhMendianProductshezhiService();
-                    list = yhMendianProductshezhiService.getList(product_nameText,typeText,yhMendianProductshezhi.getCompany());
+                    list = yhMendianProductshezhiService.getList(product_nameText,typeText,yhMendianUser.getCompany());
                     if (list == null) return;
 
                 } catch (Exception e) {

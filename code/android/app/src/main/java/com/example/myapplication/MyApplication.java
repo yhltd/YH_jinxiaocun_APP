@@ -12,15 +12,22 @@ import com.example.myapplication.jiaowu.entity.Quanxian;
 import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.finance.entity.YhFinanceUser;
+import com.example.myapplication.mendian.entity.YhMendianOrderDetail;
+import com.example.myapplication.mendian.entity.YhMendianProductshezhi;
 import com.example.myapplication.mendian.entity.YhMendianUser;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.UserInfo;
 
+import java.util.List;
+
 public class MyApplication extends Application {
     private YhJinXiaoCunUser yhJinXiaoCunUser;
     private YhFinanceUser yhFinanceUser;
     private YhRenShiUser yhRenShiUser;
+    private YhMendianProductshezhi yhMendianProductshezhi;
+    private YhMendianOrderDetail yhMendianOrderDetail;
+    private List<YhMendianOrderDetail> orderDetails;
     private UserInfo userInfo;
     private Department pcDepartment;
     private YhMendianUser yhMendianUser;
@@ -28,6 +35,30 @@ public class MyApplication extends Application {
     private Teacher teacher;
     private AccountManagement accountManagement;
     private Quanxian quanxian;
+
+    public YhMendianOrderDetail getYhMendianOrderDetail() {
+        return yhMendianOrderDetail;
+    }
+
+    public void setYhMendianOrderDetail(YhMendianOrderDetail yhMendianOrderDetail) {
+        this.yhMendianOrderDetail = yhMendianOrderDetail;
+    }
+
+    public List<YhMendianOrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<YhMendianOrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
+
+    public YhMendianProductshezhi getYhMendianProductshezhi() {
+        return yhMendianProductshezhi;
+    }
+
+    public void setYhMendianProductshezhi(YhMendianProductshezhi yhMendianProductshezhi) {
+        this.yhMendianProductshezhi = yhMendianProductshezhi;
+    }
 
     public Quanxian getQuanxian() {
         return quanxian;
@@ -146,4 +177,5 @@ public class MyApplication extends Application {
     public static Context getContext() {
         return context;
     }
+
 }

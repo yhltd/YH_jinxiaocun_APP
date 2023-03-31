@@ -12,15 +12,10 @@ public class YhMendianYuejiaoService {
     /**
      * 查询全部客户数据
      */
-    public List<YhMendianYuejiao> getList(String shou, String fu, String chi, String company) {
-        String sql = "select b.*,sum(a.repayment) as repayment,\n" +
-                "    sum(a.swipe) as swipe,\n" +
-                "    sum(a.repayment)-sum(a.swipe) as balance_of_credit_card,\n" +
-                "    sum(a.basics_service_charge)+sum(a.other_service_charge) as the_total_fee,\n" +
-                "    sum(a.swipe)*(b.service_charge)+sum(a.repayment)-sum(a.swipe) as collected_amount,sum(a.swipe)*(b.service_charge)-sum(a.basics_service_charge)+sum(a.other_service_charge) as profit\n" +
-                "    from day_trading as a,customer as b where gongsi = ? and recipient like '%' ? '%' and cardholder like '%' ? '%' and drawee like '%' ? '%' ";
+    public List<YhMendianYuejiao> getList(String shou, String fu, String chi,String start_date,String end_date, String company) {
+        String sql = "select b.*,sum(a.repayment) as repayment,sum(a.swipe) as swipe,sum(a.repayment)-sum(a.swipe) as balance_of_credit_card,sum(a.basics_service_charge)+sum(a.other_service_charge) as the_total_fee,sum(a.swipe)*(b.service_charge)+sum(a.repayment)-sum(a.swipe) as collected_amount,sum(a.swipe)*(b.service_charge)-sum(a.basics_service_charge)+sum(a.other_service_charge) as profitfrom from day_trading as a,customer as b where a.id=b.id and a.gongsi = ? and recipient like '%' ? '%' and cardholder like '%' ? '%' and drawee like '%' ? '%' and a.date_time  >= ? and a.date_time <= ?";
         base = new MendianDao();
-        List<YhMendianYuejiao> list = base.query(YhMendianYuejiao.class, sql, company, shou,fu,chi);
+        List<YhMendianYuejiao> list = base.query(YhMendianYuejiao.class, sql, company, shou,fu,chi,start_date,end_date);
         return list;
     }
 }

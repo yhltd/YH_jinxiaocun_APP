@@ -13,9 +13,9 @@ public class KeShiDetailService {
      * 查询全部数据
      */
     public List<KeShiDetail> getList(String company, String teacher_name,String course,String start_date,String stop_date) {
-        String sql = "select * from keshi_detail where teacher_name like '%' + ? + '%' and course like '%' + ? + '%' and riqi >= ? and riqi <=? and Company= ?";
+        String sql = "select * from keshi_detail where teacher_name like '%' ? '%' and course like '%' ? '%' and riqi >= ? and riqi <=? and Company= ?";
         base = new JiaowuBaseDao();
-        List<KeShiDetail> list = base.query(TeacherInfo.class, sql, teacher_name,course,start_date,stop_date,company);
+        List<KeShiDetail> list = base.query(KeShiDetail.class, sql, teacher_name,course,start_date,stop_date,company);
         return list;
     }
 

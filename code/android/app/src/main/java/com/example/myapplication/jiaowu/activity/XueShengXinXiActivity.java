@@ -148,7 +148,7 @@ public class XueShengXinXiActivity extends AppCompatActivity {
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
                         item.put("id", list.get(i).getId());
-                        item.put("realName", list.get(i).getRealName());
+                        item.put("realName", list.get(i).getRealname());
                         item.put("sex", list.get(i).getSex());
                         item.put("rgdate", list.get(i).getRgdate());
                         item.put("course", list.get(i).getCourse());

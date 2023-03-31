@@ -8,6 +8,15 @@ public class YhMendianReportForm {
     private String hyzs;
     private String xdrs;
     private String ddzs;
+    private String huiyuan_sum;
+
+    public String getHuiyuan_sum() {
+        return huiyuan_sum;
+    }
+
+    public void setHuiyuan_sum(String huiyuan_sum) {
+        this.huiyuan_sum = huiyuan_sum;
+    }
 
     public String getXfje() {
         return xfje;

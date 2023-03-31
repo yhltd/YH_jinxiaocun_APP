@@ -32,7 +32,6 @@ import java.util.List;
 
 public class ProductshezhiChangeActivity extends AppCompatActivity {
     private YhMendianUser yhMendianUser;
-    private YhMendianUserService yhMendianUserService;
 
     private YhMendianProductshezhi yhMendianProductshezhi;
     private YhMendianProductshezhiService yhMendianProductshezhiService;
@@ -65,7 +64,6 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         yhMendianUser = myApplication.getYhMendianUser();
-        yhMendianUserService = new YhMendianUserService();
         yhMendianProductshezhi = new YhMendianProductshezhi();
         yhMendianProductshezhiService = new YhMendianProductshezhiService();
 
@@ -100,7 +98,7 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
             specifications.setText(yhMendianProductshezhi.getSpecifications());
             practice.setText(yhMendianProductshezhi.getPractice());
             tingyong.setText(yhMendianProductshezhi.getTingyong());
-            photo.setText(yhMendianProductshezhi.getPhoto());
+//            photo.setText(yhMendianProductshezhi.getPhoto());
 
         }
     }
@@ -228,15 +226,15 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
         } else {
             yhMendianProductshezhi.setTingyong(tingyong.getText().toString());
         }
-        if (photo.getText().toString().equals("")) {
-            ToastUtil.show(ProductshezhiChangeActivity.this, "请输入图片");
-            return false;
-        } else {
-            yhMendianProductshezhi.setPhoto(photo.getText().toString());
-        }
+//        if (photo.getText().toString().equals("")) {
+//            ToastUtil.show(ProductshezhiChangeActivity.this, "请输入图片");
+//            return false;
+//        } else {
+//            yhMendianProductshezhi.setPhoto(photo.getText().toString());
+//        }
 
 
-        yhMendianProductshezhi.setCompany(yhMendianProductshezhi.getCompany());
+        yhMendianProductshezhi.setCompany(yhMendianUser.getCompany());
 
         return true;
     }

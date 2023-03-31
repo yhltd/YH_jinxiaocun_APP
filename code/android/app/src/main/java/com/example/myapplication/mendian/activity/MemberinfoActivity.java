@@ -102,7 +102,7 @@ public class MemberinfoActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     yhMendianMemberinfoService = new YhMendianMemberinfoService();
-                    list = yhMendianMemberinfoService.getList(nameText,phoneText,yhMendianMemberinfo.getCompany());
+                    list = yhMendianMemberinfoService.getList(nameText,phoneText,yhMendianUser.getCompany());
                     if (list == null) return;
 
                 } catch (Exception e) {

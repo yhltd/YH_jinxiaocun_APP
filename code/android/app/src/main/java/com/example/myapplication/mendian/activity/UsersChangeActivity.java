@@ -31,17 +31,13 @@ import java.util.List;
 
 public class UsersChangeActivity extends AppCompatActivity {
     private YhMendianUser yhMendianUser;
-    private YhMendianUserService yhMendianUserService;
-
     private YhMendianUsers yhMendianUsers;
     private YhMendianUsersService yhMendianUsersService;
 
     private EditText uname;
     private EditText position;
     private EditText account;
-
-    java.util.List<YhMendianUsers> List;
-
+    private EditText password;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -57,13 +53,12 @@ public class UsersChangeActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         yhMendianUser = myApplication.getYhMendianUser();
-        yhMendianUserService = new YhMendianUserService();
-        yhMendianUsers = new YhMendianUsers();
         yhMendianUsersService = new YhMendianUsersService();
 
         uname = findViewById(R.id.uname);
         position = findViewById(R.id.position);
         account = findViewById(R.id.account);
+        password = findViewById(R.id.password);
 
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
@@ -78,6 +73,7 @@ public class UsersChangeActivity extends AppCompatActivity {
             uname.setText(yhMendianUsers.getUname());
             position.setText(yhMendianUsers.getPosition());
             account.setText(yhMendianUsers.getAccount());
+            password.setText(yhMendianUsers.getPassword());
         }
     }
 
@@ -162,6 +158,7 @@ public class UsersChangeActivity extends AppCompatActivity {
         } else {
             yhMendianUsers.setPosition(position.getText().toString());
         }
+
         if (account.getText().toString().equals("")) {
             ToastUtil.show(UsersChangeActivity.this, "请输入账号");
             return false;
@@ -169,8 +166,14 @@ public class UsersChangeActivity extends AppCompatActivity {
             yhMendianUsers.setAccount(account.getText().toString());
         }
 
+        if (password.getText().toString().equals("")) {
+            ToastUtil.show(UsersChangeActivity.this, "请输入密码");
+            return false;
+        } else {
+            yhMendianUsers.setPassword(password.getText().toString());
+        }
 
-        yhMendianUsers.setCompany(yhMendianUsers.getCompany());
+        yhMendianUsers.setCompany(yhMendianUser.getCompany());
 
         return true;
     }

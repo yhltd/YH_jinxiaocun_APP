@@ -38,6 +38,14 @@
             android:layout_weight="1"
             android:hint="会员姓名" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/border_bottom">
+
         <EditText
             android:id="@+id/startdate"
             android:layout_width="0dp"
@@ -57,7 +65,6 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:text="查询" />
-
 
     </LinearLayout>
 
@@ -219,20 +226,5 @@
         </LinearLayout>
 
     </HorizontalScrollView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/orders_insert"
-        android:onClick="onInsertClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/insert"
-        app:backgroundTint="@color/primary"
-        app:backgroundTintMode="add"
-        app:pressedTranslationZ="10dp"
-        app:tint="@color/white" />
 
 </LinearLayout>

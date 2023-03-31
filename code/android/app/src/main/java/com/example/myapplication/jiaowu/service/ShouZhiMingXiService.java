@@ -15,7 +15,7 @@ public class ShouZhiMingXiService {
     public List<ShouZhiMingXi> getList(String start_date, String stop_date, String company) {
         String sql = "select * from income where rgdate >= ? and rgdate <= ? and Company= ?";
         base = new JiaowuBaseDao();
-        List<ShouZhiMingXi> list = base.query(Student.class, sql, start_date,stop_date,company);
+        List<ShouZhiMingXi> list = base.query(ShouZhiMingXi.class, sql, start_date,stop_date,company);
         return list;
     }
 

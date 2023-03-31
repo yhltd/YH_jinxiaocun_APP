@@ -70,7 +70,7 @@ public class KeShiTongJiActivity extends AppCompatActivity {
         }
 
         //初始化控件
-        listView = findViewById(R.id.xueshengxinxi_list);
+        listView = findViewById(R.id.keshitongji_list);
 
         start_date = findViewById(R.id.start_date);
         stop_date = findViewById(R.id.stop_date);

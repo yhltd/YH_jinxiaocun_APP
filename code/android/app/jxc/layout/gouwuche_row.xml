@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/border_bottom">
+
+        <TextView
+            android:id="@+id/cpmc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text"
+            android:textSize="14sp"
+            android:text="商品名称"
+            android:textStyle="bold"
+            android:width="200dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+        <TextView
+            android:id="@+id/gs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text"
+            android:textSize="14sp"
+            android:text="数量"
+            android:textStyle="bold"
+            android:width="200dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+        <TextView
+            android:id="@+id/zhje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text"
+            android:textSize="14sp"
+            android:text="金额"
+            android:textStyle="bold"
+            android:width="200dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+        <TextView
+            android:id="@+id/dzbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text"
+            android:textSize="14sp"
+            android:text="折扣"
+            android:textStyle="bold"
+            android:width="200dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+    </LinearLayout>
+</LinearLayout>

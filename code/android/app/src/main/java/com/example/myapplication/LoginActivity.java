@@ -23,6 +23,7 @@ import android.widget.SpinnerAdapter;
 import com.example.myapplication.fenquan.activity.FenquanActivity;
 import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.fenquan.service.RenyuanService;
+import com.example.myapplication.jiaowu.activity.JiaowuActivity;
 import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.TeacherService;
 import com.example.myapplication.jxc.activity.JxcActivity;
@@ -234,6 +235,7 @@ public class LoginActivity extends AppCompatActivity {
                             } else {
                                 msg.obj = null;
                             }
+                            systemHandler.sendMessage(msg);
                         }catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -328,7 +330,7 @@ public class LoginActivity extends AppCompatActivity {
                                     MyApplication application = (MyApplication) getApplicationContext();
                                     application.setTeacher(user);
                                     ToastUtil.show(LoginActivity.this, "登录成功");
-                                    Intent intent = new Intent(LoginActivity.this, JxcActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, JiaowuActivity.class);
                                     startActivity(intent);
                                 } else {
                                     ToastUtil.show(LoginActivity.this, "账号已被禁用");
@@ -414,6 +416,7 @@ public class LoginActivity extends AppCompatActivity {
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
+                            signHandler.sendMessage(msg);
                         }
                     }
                 }).start();

@@ -21,6 +21,16 @@ public class YhMendianMemberinfoService {
     }
 
     /**
+     * 查询全部客户数据
+     */
+    public List<YhMendianMemberinfo> getListThree(String company, String this_where) {
+        String sql = "select * from member_info where company = ? and (phone like '%' ? '%' or username like '%' ? '%' or `name` like '%' ? '%') ";
+        base = new MendianDao();
+        List<YhMendianMemberinfo> list = base.query(YhMendianMemberinfo.class, sql, company, this_where,this_where,this_where);
+        return list;
+    }
+
+    /**
      * 新增客户
      */
     public boolean insertByMember(YhMendianMemberinfo yhMendianMemberinfo) {
@@ -34,9 +44,9 @@ public class YhMendianMemberinfoService {
      * 修改客户
      */
     public boolean updateByMember(YhMendianMemberinfo yhMendianMemberinfo) {
-        String sql = "update member_info set username=?,password=?,name=?,gender=?,state=?,phone=?,birthday=? where id=? ";
+        String sql = "update member_info set username=?,password=?,name=?,gender=?,state=?,phone=?,birthday=?,points=? where id=? ";
         base = new MendianDao();
-        boolean result = base.execute(sql,yhMendianMemberinfo.getUsername(), yhMendianMemberinfo.getPassword(), yhMendianMemberinfo.getName(), yhMendianMemberinfo.getGender(), yhMendianMemberinfo.getState(), yhMendianMemberinfo.getPhone(), yhMendianMemberinfo.getBirthday(), yhMendianMemberinfo.getId());
+        boolean result = base.execute(sql,yhMendianMemberinfo.getUsername(), yhMendianMemberinfo.getPassword(), yhMendianMemberinfo.getName(), yhMendianMemberinfo.getGender(), yhMendianMemberinfo.getState(), yhMendianMemberinfo.getPhone(), yhMendianMemberinfo.getBirthday(), yhMendianMemberinfo.getPoints(), yhMendianMemberinfo.getId());
         return result;
     }
 

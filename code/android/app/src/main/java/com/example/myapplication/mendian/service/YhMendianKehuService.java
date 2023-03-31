@@ -27,7 +27,7 @@ public class YhMendianKehuService {
     public boolean insertByKehu(YhMendianKeHu yhMendianKeHu) {
         String sql = "insert into customer (recipient,cardholder,drawee,issuing_bank,bill_day,repayment_date,total,repayable,balance,loan,service_charge,telephone,password,staff,gongsi) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         base = new MendianDao();
-        long result = base.executeOfId(sql, yhMendianKeHu.getRecipient(), yhMendianKeHu.getCardholder(), yhMendianKeHu.getDrawee(), yhMendianKeHu.getIssuing_bank(), yhMendianKeHu.getBill_day(), yhMendianKeHu.getRepayment_date(), yhMendianKeHu.getTotal(), yhMendianKeHu.getRepayable(), yhMendianKeHu.getBalance(), yhMendianKeHu.getLoan(), yhMendianKeHu.getService_charge(), yhMendianKeHu.getTelephone(), yhMendianKeHu.getStaff(), yhMendianKeHu.getGongsi());
+        long result = base.executeOfId(sql, yhMendianKeHu.getRecipient(), yhMendianKeHu.getCardholder(), yhMendianKeHu.getDrawee(), yhMendianKeHu.getIssuing_bank(), yhMendianKeHu.getBill_day(), yhMendianKeHu.getRepayment_date(), yhMendianKeHu.getTotal(), yhMendianKeHu.getRepayable(), yhMendianKeHu.getBalance(), yhMendianKeHu.getLoan(), yhMendianKeHu.getService_charge(), yhMendianKeHu.getTelephone(),yhMendianKeHu.getPassword(), yhMendianKeHu.getStaff(), yhMendianKeHu.getGongsi());
         return result > 0;
     }
 
@@ -37,7 +37,7 @@ public class YhMendianKehuService {
     public boolean updateByKehu(YhMendianKeHu yhMendianKeHu) {
         String sql = "update customer set recipient=?,cardholder=?,drawee=?,issuing_bank=?,bill_day=?,repayment_date=?,total=?,repayable=?,balance=?,loan=?,service_charge=?,telephone=?,password=?,staff=? where id=? ";
         base = new MendianDao();
-        boolean result = base.execute(sql, yhMendianKeHu.getRecipient(), yhMendianKeHu.getCardholder(), yhMendianKeHu.getDrawee(), yhMendianKeHu.getIssuing_bank(), yhMendianKeHu.getBill_day(), yhMendianKeHu.getRepayment_date(), yhMendianKeHu.getTotal(), yhMendianKeHu.getRepayable(), yhMendianKeHu.getBalance(), yhMendianKeHu.getLoan(), yhMendianKeHu.getService_charge(), yhMendianKeHu.getTelephone(), yhMendianKeHu.getStaff(), yhMendianKeHu.getId());
+        boolean result = base.execute(sql, yhMendianKeHu.getRecipient(), yhMendianKeHu.getCardholder(), yhMendianKeHu.getDrawee(), yhMendianKeHu.getIssuing_bank(), yhMendianKeHu.getBill_day(), yhMendianKeHu.getRepayment_date(), yhMendianKeHu.getTotal(), yhMendianKeHu.getRepayable(), yhMendianKeHu.getBalance(), yhMendianKeHu.getLoan(), yhMendianKeHu.getService_charge(), yhMendianKeHu.getTelephone(),yhMendianKeHu.getPassword(), yhMendianKeHu.getStaff(), yhMendianKeHu.getId());
         return result;
     }
 

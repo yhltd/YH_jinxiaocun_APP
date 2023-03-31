@@ -65,9 +65,15 @@ public class TeacherSalActivity extends AppCompatActivity {
         }
 
         listView = findViewById(R.id.teachersal_list);
-
+        start_date = findViewById(R.id.startdate);
+        end_date = findViewById(R.id.enddate);
+        teacher_name = findViewById(R.id.teacher_name);
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
+
+        sel_button = findViewById(R.id.sel_button);
+        sel_button.setOnClickListener(selClick());
+        sel_button.requestFocus();
 
         initList();
     }
@@ -81,9 +87,19 @@ public class TeacherSalActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public View.OnClickListener selClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initList();
+            }
+        };
+    }
+
     private void initList() {
         start_dateText = start_date.getText().toString();
         end_dateText = end_date.getText().toString();
+        teacher_nameText = teacher_name.getText().toString();
 
         if(start_dateText.equals("")){
             start_dateText = "1900-01-01";
@@ -92,8 +108,6 @@ public class TeacherSalActivity extends AppCompatActivity {
         if(end_dateText.equals("")){
             end_dateText = "2100-12-31";
         }
-
-
 
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
@@ -114,7 +128,6 @@ public class TeacherSalActivity extends AppCompatActivity {
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
-                        item.put("id", list.get(i).getId());
                         item.put("teacher_name", list.get(i).getTeacher_name());
                         item.put("course", list.get(i).getCourse());
                         item.put("keshi", list.get(i).getKeshi());

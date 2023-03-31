@@ -257,7 +257,7 @@ public class GongZuoTaiQuanXianChangeActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         renyuan = myApplication.getRenyuan();
-        initList();
+//        initList();
     }
 
     @Override
@@ -279,7 +279,7 @@ public class GongZuoTaiQuanXianChangeActivity extends AppCompatActivity {
                     public boolean handleMessage(@NonNull Message msg) {
                         if ((boolean) msg.obj) {
                             ToastUtil.show(GongZuoTaiQuanXianChangeActivity.this, "解除成功");
-                            initList();
+//                            initList();
                         }
                         return true;
                     }
@@ -313,132 +313,132 @@ public class GongZuoTaiQuanXianChangeActivity extends AppCompatActivity {
         };
     }
 
-    private void initList() {
-        Handler listLoadHandler = new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message msg) {
-                if(list != null){
-                    C.setText(list.get(0).getC());
-                    D.setText(list.get(0).getD());
-                    E.setText(list.get(0).getE());
-                    F.setText(list.get(0).getF());
-                    G.setText(list.get(0).getG());
-                    H.setText(list.get(0).getH());
-                    I.setText(list.get(0).getI());
-                    J.setText(list.get(0).getJ());
-                    K.setText(list.get(0).getK());
-                    L.setText(list.get(0).getL());
-                    M.setText(list.get(0).getM());
-                    N.setText(list.get(0).getN());
-                    O.setText(list.get(0).getO());
-                    P.setText(list.get(0).getP());
-                    Q.setText(list.get(0).getQ());
-                    RR.setText(list.get(0).getR());
-                    S.setText(list.get(0).getS());
-                    T.setText(list.get(0).getT());
-                    U.setText(list.get(0).getU());
-                    V.setText(list.get(0).getV());
-                    W.setText(list.get(0).getW());
-                    X.setText(list.get(0).getX());
-                    Y.setText(list.get(0).getY());
-                    Z.setText(list.get(0).getZ());
-                    AA.setText(list.get(0).getAa());
-                    AB.setText(list.get(0).getAb());
-                    AC.setText(list.get(0).getAc());
-                    AD.setText(list.get(0).getAd());
-                    AE.setText(list.get(0).getAe());
-                    AF.setText(list.get(0).getAf());
-                    AG.setText(list.get(0).getAg());
-                    AH.setText(list.get(0).getAh());
-                    AI.setText(list.get(0).getAi());
-                    AJ.setText(list.get(0).getAj());
-                    AK.setText(list.get(0).getAk());
-                    AL.setText(list.get(0).getAl());
-                    AM.setText(list.get(0).getAm());
-                    AN.setText(list.get(0).getAn());
-                    AO.setText(list.get(0).getAo());
-                    AP.setText(list.get(0).getAp());
-                    AQ.setText(list.get(0).getAq());
-                    AR.setText(list.get(0).getAr());
-                    ASS.setText(list.get(0).getAss());
-                    AT.setText(list.get(0).getAt());
-                    AU.setText(list.get(0).getAu());
-                    AV.setText(list.get(0).getAv());
-                    AW.setText(list.get(0).getAw());
-                    AX.setText(list.get(0).getAx());
-                    AY.setText(list.get(0).getAy());
-                    AZ.setText(list.get(0).getAz());
-                    BA.setText(list.get(0).getBa());
-                    BB.setText(list.get(0).getBb());
-                    BC.setText(list.get(0).getBc());
-                    BD.setText(list.get(0).getBd());
-                    BE.setText(list.get(0).getBe());
-                    BF.setText(list.get(0).getBf());
-                    BG.setText(list.get(0).getBg());
-                    BH.setText(list.get(0).getBh());
-                    BI.setText(list.get(0).getBi());
-                    BJ.setText(list.get(0).getBj());
-                    BK.setText(list.get(0).getBk());
-                    BL.setText(list.get(0).getBl());
-                    BM.setText(list.get(0).getBm());
-                    BN.setText(list.get(0).getBn());
-                    BO.setText(list.get(0).getBo());
-                    BP.setText(list.get(0).getBp());
-                    BQ.setText(list.get(0).getBq());
-                    BR.setText(list.get(0).getBr());
-                    BS.setText(list.get(0).getBs());
-                    BT.setText(list.get(0).getBt());
-                    BU.setText(list.get(0).getBu());
-                    BV.setText(list.get(0).getBv());
-                    BW.setText(list.get(0).getBw());
-                    BX.setText(list.get(0).getBx());
-                    BYY.setText(list.get(0).getByy());
-                    BZ.setText(list.get(0).getBz());
-                    CA.setText(list.get(0).getCa());
-                    CB.setText(list.get(0).getCb());
-                    CC.setText(list.get(0).getCc());
-                    CD.setText(list.get(0).getCd());
-                    CE.setText(list.get(0).getCe());
-                    CF.setText(list.get(0).getCf());
-                    CG.setText(list.get(0).getCg());
-                    CH.setText(list.get(0).getCh());
-                    CI.setText(list.get(0).getCi());
-                    CJ.setText(list.get(0).getCj());
-                    CK.setText(list.get(0).getCk());
-                    CL.setText(list.get(0).getCl());
-                    CM.setText(list.get(0).getCm());
-                    CN.setText(list.get(0).getCn());
-                    CO.setText(list.get(0).getCo());
-                    CP.setText(list.get(0).getCp());
-                    CQ.setText(list.get(0).getCq());
-                    CR.setText(list.get(0).getCr());
-                    CS.setText(list.get(0).getCs());
-                    CT.setText(list.get(0).getCt());
-                    CU.setText(list.get(0).getCu());
-                    CV.setText(list.get(0).getCv());
-                }
-                return true;
-            }
-        });
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                List<HashMap<String, Object>> data = new ArrayList<>();
-                try {
-                    copy2Service = new Copy2Service();
-                    list = copy2Service.getList(renyuan.getB());
-                    if (list == null) return;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                Message msg = new Message();
-                listLoadHandler.sendMessage(msg);
-            }
-        }).start();
-    }
+//    private void initList() {
+//        Handler listLoadHandler = new Handler(new Handler.Callback() {
+//            @Override
+//            public boolean handleMessage(Message msg) {
+//                if(list != null){
+//                    C.setText(list.get(0).getC());
+//                    D.setText(list.get(0).getD());
+//                    E.setText(list.get(0).getE());
+//                    F.setText(list.get(0).getF());
+//                    G.setText(list.get(0).getG());
+//                    H.setText(list.get(0).getH());
+//                    I.setText(list.get(0).getI());
+//                    J.setText(list.get(0).getJ());
+//                    K.setText(list.get(0).getK());
+//                    L.setText(list.get(0).getL());
+//                    M.setText(list.get(0).getM());
+//                    N.setText(list.get(0).getN());
+//                    O.setText(list.get(0).getO());
+//                    P.setText(list.get(0).getP());
+//                    Q.setText(list.get(0).getQ());
+//                    RR.setText(list.get(0).getR());
+//                    S.setText(list.get(0).getS());
+//                    T.setText(list.get(0).getT());
+//                    U.setText(list.get(0).getU());
+//                    V.setText(list.get(0).getV());
+//                    W.setText(list.get(0).getW());
+//                    X.setText(list.get(0).getX());
+//                    Y.setText(list.get(0).getY());
+//                    Z.setText(list.get(0).getZ());
+//                    AA.setText(list.get(0).getAa());
+//                    AB.setText(list.get(0).getAb());
+//                    AC.setText(list.get(0).getAc());
+//                    AD.setText(list.get(0).getAd());
+//                    AE.setText(list.get(0).getAe());
+//                    AF.setText(list.get(0).getAf());
+//                    AG.setText(list.get(0).getAg());
+//                    AH.setText(list.get(0).getAh());
+//                    AI.setText(list.get(0).getAi());
+//                    AJ.setText(list.get(0).getAj());
+//                    AK.setText(list.get(0).getAk());
+//                    AL.setText(list.get(0).getAl());
+//                    AM.setText(list.get(0).getAm());
+//                    AN.setText(list.get(0).getAn());
+//                    AO.setText(list.get(0).getAo());
+//                    AP.setText(list.get(0).getAp());
+//                    AQ.setText(list.get(0).getAq());
+//                    AR.setText(list.get(0).getAr());
+//                    ASS.setText(list.get(0).getAss());
+//                    AT.setText(list.get(0).getAt());
+//                    AU.setText(list.get(0).getAu());
+//                    AV.setText(list.get(0).getAv());
+//                    AW.setText(list.get(0).getAw());
+//                    AX.setText(list.get(0).getAx());
+//                    AY.setText(list.get(0).getAy());
+//                    AZ.setText(list.get(0).getAz());
+//                    BA.setText(list.get(0).getBa());
+//                    BB.setText(list.get(0).getBb());
+//                    BC.setText(list.get(0).getBc());
+//                    BD.setText(list.get(0).getBd());
+//                    BE.setText(list.get(0).getBe());
+//                    BF.setText(list.get(0).getBf());
+//                    BG.setText(list.get(0).getBg());
+//                    BH.setText(list.get(0).getBh());
+//                    BI.setText(list.get(0).getBi());
+//                    BJ.setText(list.get(0).getBj());
+//                    BK.setText(list.get(0).getBk());
+//                    BL.setText(list.get(0).getBl());
+//                    BM.setText(list.get(0).getBm());
+//                    BN.setText(list.get(0).getBn());
+//                    BO.setText(list.get(0).getBo());
+//                    BP.setText(list.get(0).getBp());
+//                    BQ.setText(list.get(0).getBq());
+//                    BR.setText(list.get(0).getBr());
+//                    BS.setText(list.get(0).getBs());
+//                    BT.setText(list.get(0).getBt());
+//                    BU.setText(list.get(0).getBu());
+//                    BV.setText(list.get(0).getBv());
+//                    BW.setText(list.get(0).getBw());
+//                    BX.setText(list.get(0).getBx());
+//                    BYY.setText(list.get(0).getByy());
+//                    BZ.setText(list.get(0).getBz());
+//                    CA.setText(list.get(0).getCa());
+//                    CB.setText(list.get(0).getCb());
+//                    CC.setText(list.get(0).getCc());
+//                    CD.setText(list.get(0).getCd());
+//                    CE.setText(list.get(0).getCe());
+//                    CF.setText(list.get(0).getCf());
+//                    CG.setText(list.get(0).getCg());
+//                    CH.setText(list.get(0).getCh());
+//                    CI.setText(list.get(0).getCi());
+//                    CJ.setText(list.get(0).getCj());
+//                    CK.setText(list.get(0).getCk());
+//                    CL.setText(list.get(0).getCl());
+//                    CM.setText(list.get(0).getCm());
+//                    CN.setText(list.get(0).getCn());
+//                    CO.setText(list.get(0).getCo());
+//                    CP.setText(list.get(0).getCp());
+//                    CQ.setText(list.get(0).getCq());
+//                    CR.setText(list.get(0).getCr());
+//                    CS.setText(list.get(0).getCs());
+//                    CT.setText(list.get(0).getCt());
+//                    CU.setText(list.get(0).getCu());
+//                    CV.setText(list.get(0).getCv());
+//                }
+//                return true;
+//            }
+//        });
+//
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                List<HashMap<String, Object>> data = new ArrayList<>();
+//                try {
+//                    copy2Service = new Copy2Service();
+//                    list = copy2Service.getList(renyuan.getB());
+//                    if (list == null) return;
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//                Message msg = new Message();
+//                listLoadHandler.sendMessage(msg);
+//            }
+//        }).start();
+//    }
 
     public View.OnClickListener onItemClick(final EditText editText,String this_column) {
         return new View.OnClickListener() {
@@ -454,7 +454,7 @@ public class GongZuoTaiQuanXianChangeActivity extends AppCompatActivity {
                     public boolean handleMessage(@NonNull Message msg) {
                         if ((boolean) msg.obj) {
                             ToastUtil.show(GongZuoTaiQuanXianChangeActivity.this, "解除成功");
-                            initList();
+//                            initList();
                         }
                         return true;
                     }
@@ -494,7 +494,7 @@ public class GongZuoTaiQuanXianChangeActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_CHANG) {
             if (resultCode == RESULT_OK) {
-                initList();
+//                initList();
             }
         }
     }

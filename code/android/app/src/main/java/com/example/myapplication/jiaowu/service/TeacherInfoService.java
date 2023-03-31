@@ -13,7 +13,7 @@ public class TeacherInfoService {
      * 查询全部数据
      */
     public List<TeacherInfo> getList(String company, String t_name) {
-        String sql = "select * from teacherinfo where company =? and t_name like '%' + ? + '%'";
+        String sql = "select * from teacherinfo where company =? and t_name like '%' ? '%'";
         base = new JiaowuBaseDao();
         List<TeacherInfo> list = base.query(TeacherInfo.class, sql, company,t_name);
         return list;

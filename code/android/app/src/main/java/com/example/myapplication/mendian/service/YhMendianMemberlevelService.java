@@ -15,7 +15,7 @@ public class YhMendianMemberlevelService {
     public List<YhMendianMemberlevel> getList(String jibie, String company) {
         String sql = "select * from member_jibie where company = ? and jibie like '%' ? '%' ";
         base = new MendianDao();
-        List<YhMendianMemberlevel> list = base.query(YhMendianMemberinfo.class, sql, company, jibie);
+        List<YhMendianMemberlevel> list = base.query(YhMendianMemberlevel.class, sql, company, jibie);
         return list;
     }
 
@@ -33,9 +33,9 @@ public class YhMendianMemberlevelService {
      * 修改等级
      */
     public boolean updateBylevel(YhMendianMemberlevel yhMendianMemberlevel) {
-        String sql = "update member_jibie set jibie=?,menkan=?,name=?,bili=? where id=? ";
+        String sql = "update member_jibie set jibie=?,menkan=?,bili=? where id=? ";
         base = new MendianDao();
-        boolean result = base.execute(sql,yhMendianMemberlevel.getJibie(), yhMendianMemberlevel.getMenkan(), yhMendianMemberlevel.getBili());
+        boolean result = base.execute(sql,yhMendianMemberlevel.getJibie(), yhMendianMemberlevel.getMenkan(), yhMendianMemberlevel.getBili(), yhMendianMemberlevel.getId());
         return result;
     }
 

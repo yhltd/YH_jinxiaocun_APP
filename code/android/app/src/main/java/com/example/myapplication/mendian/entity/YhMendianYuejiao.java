@@ -18,7 +18,7 @@ public class YhMendianYuejiao {
     private String balance_of_credit_card;
     private String the_total_fee;
     private String collected_amount;
-    private String profit;
+    private String profitfrom;
     private String gongsi;
 
     public int getId() {
@@ -157,12 +157,12 @@ public class YhMendianYuejiao {
         this.collected_amount = collected_amount;
     }
 
-    public String getProfit() {
-        return profit;
+    public String getProfitfrom() {
+        return profitfrom;
     }
 
-    public void setProfit(String profit) {
-        this.profit = profit;
+    public void setProfitfrom(String profitfrom) {
+        this.profitfrom = profitfrom;
     }
 
     public String getGongsi() {

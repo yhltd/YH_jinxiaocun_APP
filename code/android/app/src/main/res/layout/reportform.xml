@@ -4,18 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mendian.activity.ReportFormActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".mendian.activity.ReportFormActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
         android:background="@drawable/border_bottom">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"/>
 
         <EditText
             android:id="@+id/start_date"
@@ -33,7 +29,7 @@
 
         <Button
             android:id="@+id/sel_button"
-            android:layout_width="100dp"
+            android:layout_width="70dp"
             android:layout_height="match_parent"
             android:text="查询" />
 
@@ -43,7 +39,7 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="570dp">
+        android:layout_height="130dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -141,10 +137,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-
-
             </LinearLayout>
-
 
             <ListView
                 android:id="@+id/reportform_list"
@@ -159,6 +152,12 @@
         </LinearLayout>
 
     </HorizontalScrollView>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:layout_marginTop="10dp"
+        android:id="@+id/bc_1"
+        android:layout_width="match_parent"
+        android:layout_height="400dp" />
 
 
 

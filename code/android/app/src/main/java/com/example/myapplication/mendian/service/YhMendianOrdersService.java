@@ -14,9 +14,19 @@ public class YhMendianOrdersService {
      * 查询全部等级数据
      */
     public List<YhMendianOrders> getList(String ddh,String syy,String hyxm,String startdate,String enddate, String company) {
-        String sql = "select * from orders where company = ? and ddh like '%' ? '%' and ddh like '%' ? '%' and syy like '%' ? '%' and hyxm like '%' ? '%' and riqi>=? and riqi <= ? ";
+        String sql = "select * from orders where company = ? and ddh like '%' ? '%' and syy like '%' ? '%' and hyxm like '%' ? '%' and riqi>=? and riqi <= ? ";
         base = new MendianDao();
         List<YhMendianOrders> list = base.query(YhMendianOrders.class, sql, company, ddh,syy,hyxm,startdate,enddate);
+        return list;
+    }
+
+    /**
+     * 查询当日最大订单号
+     */
+    public List<YhMendianOrders> getListDDH(String ddh, String company) {
+        String sql = "select max(ddh) from orders where company = ? and ddh like ? '%' ";
+        base = new MendianDao();
+        List<YhMendianOrders> list = base.query(YhMendianOrders.class, sql, company, ddh);
         return list;
     }
 
@@ -26,7 +36,7 @@ public class YhMendianOrdersService {
     public boolean insertByOrders(YhMendianOrders yhMendianOrders) {
         String sql = "insert into orders (riqi,ddh,hyzh,hyxm,yhfa,xfje,ssje,yhje,syy,company) values(?,?,?,?,?,?,?,?,?,?)";
         base = new MendianDao();
-        long result = base.executeOfId(sql, yhMendianOrders.getRiqi(), yhMendianOrders.getDdh(), yhMendianOrders.getHyzh(), yhMendianOrders.getHyxm(), yhMendianOrders.getYhfa(), yhMendianOrders.getXfje(),yhMendianOrders.getSyy(), yhMendianOrders.getCompany());
+        long result = base.executeOfId(sql, yhMendianOrders.getRiqi(), yhMendianOrders.getDdh(), yhMendianOrders.getHyzh(), yhMendianOrders.getHyxm(), yhMendianOrders.getYhfa(), yhMendianOrders.getXfje(), yhMendianOrders.getSsje(), yhMendianOrders.getYhje(),yhMendianOrders.getSyy(), yhMendianOrders.getCompany());
         return result > 0;
     }
 

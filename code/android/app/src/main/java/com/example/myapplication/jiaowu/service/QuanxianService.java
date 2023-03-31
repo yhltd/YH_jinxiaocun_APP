@@ -13,16 +13,16 @@ public class QuanxianService {
      * 查询全部数据
      */
     public List<Quanxian> getList( String company) {
-        String sql = "select p.id,t_id,view_name,`add`,del,upd,sel,RealName as s_name from power as p left join teacher as t on p.t_id=t.ID  where p.company = ?";
+        String sql = "select p.id,t_id,view_name,`add`,del,upd,sel,RealName from power as p left join teacher as t on p.t_id=t.ID  where p.company = ?";
         base = new JiaowuBaseDao();
-        List<Quanxian> list = base.query(AccountManagement.class, sql,company);
+        List<Quanxian> list = base.query(Quanxian.class, sql,company);
         return list;
     }
 
     public List<Quanxian> getListQuanXian( int t_id,String view_name) {
-        String sql = "select p.id,t_id,view_name,`add`,del,upd,sel,RealName as s_name from power as p left join teacher as t on p.t_id=t.ID  where t_id = ? and view_name like '%' + ? + '%'";
+        String sql = "select p.id,t_id,view_name,`add`,del,upd,sel,RealName from power as p left join teacher as t on p.t_id=t.ID  where t_id = ? and view_name like '%'  ?  '%'";
         base = new JiaowuBaseDao();
-        List<Quanxian> list = base.query(AccountManagement.class, sql,t_id,view_name);
+        List<Quanxian> list = base.query(Quanxian.class, sql,t_id,view_name);
         return list;
     }
 

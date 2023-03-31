@@ -41,6 +41,7 @@ public class MemberinfoChangeActivity extends AppCompatActivity {
     private EditText state;
     private EditText phone;
     private EditText birthday;
+    private EditText points;
 
 
     @SuppressLint("NonConstantResourceId")
@@ -68,6 +69,7 @@ public class MemberinfoChangeActivity extends AppCompatActivity {
         state = findViewById(R.id.state);
         phone = findViewById(R.id.phone);
         birthday = findViewById(R.id.birthday);
+        points = findViewById(R.id.points);
 
 
         Intent intent = getIntent();
@@ -87,6 +89,7 @@ public class MemberinfoChangeActivity extends AppCompatActivity {
             state.setText(yhMendianMemberinfo.getState());
             phone.setText(yhMendianMemberinfo.getPhone());
             birthday.setText(yhMendianMemberinfo.getBirthday());
+            points.setText(yhMendianMemberinfo.getPoints());
         }
     }
 
@@ -195,6 +198,7 @@ public class MemberinfoChangeActivity extends AppCompatActivity {
         } else {
             yhMendianMemberinfo.setPhone(phone.getText().toString());
         }
+
         if (birthday.getText().toString().equals("")) {
             ToastUtil.show(MemberinfoChangeActivity.this, "请输入生日");
             return false;
@@ -202,8 +206,9 @@ public class MemberinfoChangeActivity extends AppCompatActivity {
             yhMendianMemberinfo.setBirthday(birthday.getText().toString());
         }
 
+        yhMendianMemberinfo.setPoints(points.getText().toString());
 
-        yhMendianMemberinfo.setCompany(yhMendianMemberinfo.getCompany());
+        yhMendianMemberinfo.setCompany(yhMendianUser.getCompany());
 
         return true;
     }

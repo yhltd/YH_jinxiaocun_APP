@@ -27,10 +27,8 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.jiaowu.entity.Quanxian;
 import com.example.myapplication.jiaowu.entity.ShouZhiMingXi;
-import com.example.myapplication.jiaowu.entity.Student;
 import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.ShouZhiMingXiService;
-import com.example.myapplication.jiaowu.service.StudentService;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 

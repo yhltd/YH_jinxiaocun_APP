@@ -31,6 +31,14 @@
             android:layout_weight="1"
             android:hint="员工职位" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/border_bottom">
+
         <EditText
             android:id="@+id/account"
             android:layout_width="0dp"

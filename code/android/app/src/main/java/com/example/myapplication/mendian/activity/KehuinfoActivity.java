@@ -21,15 +21,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
-import com.example.myapplication.finance.activity.ZhangHaoGuanLiActivity;
-import com.example.myapplication.finance.activity.ZhangHaoGuanLiChangeActivity;
-import com.example.myapplication.finance.entity.YhFinanceUser;
-import com.example.myapplication.finance.service.YhFinanceUserService;
-import com.example.myapplication.jxc.activity.KehuActivity;
-import com.example.myapplication.jxc.activity.KehuChangeActivity;
-import com.example.myapplication.jxc.entity.YhJinXiaoCunKeHu;
-import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
-import com.example.myapplication.jxc.service.YhJinXiaoCunKeHuService;
 import com.example.myapplication.mendian.entity.YhMendianKeHu;
 import com.example.myapplication.mendian.entity.YhMendianUser;
 import com.example.myapplication.mendian.service.YhMendianKehuService;
@@ -92,6 +83,15 @@ public class KehuinfoActivity extends AppCompatActivity {
                 initList();
             }
         };
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initList() {

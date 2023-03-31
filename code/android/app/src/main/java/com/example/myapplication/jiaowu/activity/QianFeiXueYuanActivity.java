@@ -60,7 +60,7 @@ public class QianFeiXueYuanActivity extends AppCompatActivity {
         }
 
         //初始化控件
-        listView = findViewById(R.id.xueshengxinxi_list);
+        listView = findViewById(R.id.qianfeixueyuan_list);
 
         student_name = findViewById(R.id.student_name);
 
@@ -113,7 +113,7 @@ public class QianFeiXueYuanActivity extends AppCompatActivity {
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
-                        item.put("realName", list.get(i).getRealName());
+                        item.put("realName", list.get(i).getRealname());
                         item.put("nocost", list.get(i).getNocost());
                         item.put("rgdate", list.get(i).getRgdate());
                         item.put("course", list.get(i).getCourse());
