@@ -15,119 +15,192 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="商品代码" />
-
-            <EditText
-                android:id="@+id/cpDm"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入商品代码"
-                android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="商品名称" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
 
-            <EditText
-                android:id="@+id/name"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="商品代码:" />
+
+                <EditText
+                    android:id="@+id/cpDm"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入商品代码"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入商品名称"
-                android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="商品类别" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
 
-            <EditText
-                android:id="@+id/leiBie"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="商品名称:" />
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入商品名称"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入商品类别"
-                android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="商品单位" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
 
-            <EditText
-                android:id="@+id/danWei"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="商品类别:" />
+
+                <EditText
+                    android:id="@+id/leiBie"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入商品类别"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入商品单位"
-                android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="客户名称" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
 
-            <EditText
-                android:id="@+id/kehu"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="商品单位:" />
+
+                <EditText
+                    android:id="@+id/danWei"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入商品单位"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入客户名称"
-                android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="供应名称" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
 
-            <EditText
-                android:id="@+id/gongyingshang"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="客户名称:" />
+
+                <EditText
+                    android:id="@+id/kehu"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入客户名称"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入供应名称"
-                android:inputType="text"
-                android:textIsSelectable="false" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="供应名称:" />
+
+                <EditText
+                    android:id="@+id/gongyingshang"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入供应名称"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/border_bottom"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/mark1"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/image_border"
+                    android:padding="3dp"/>
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout

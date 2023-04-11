@@ -1,5 +1,6 @@
 package com.example.myapplication.jxc.activity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,8 +24,8 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunZhengLi;
-import com.example.myapplication.jxc.service.YhJinXiaoCunJiChuZiLiaoService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunZhengLiService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -75,10 +76,12 @@ public class BiJiActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

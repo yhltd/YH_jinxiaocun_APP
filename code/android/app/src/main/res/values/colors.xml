@@ -25,4 +25,10 @@
     <color name="transparent">#00FFFFFF</color>
 
     <color name="colorPrimary">#008577</color>
+
+    <color name="teal_200">#4B5CC4</color>
+
+    <color name="WhiteSmoke">#F5F5F5</color>
+
+    <color name="button">#007BD3</color>
 </resources>

@@ -15,6 +15,15 @@ public class YhJinXiaoCunJiChuZiLiao implements Serializable {
     private boolean check;
     private String num;
     private String jine;
+    private String mark1;
+
+    public String getMark1() {
+        return mark1;
+    }
+
+    public void setMark1(String mark1) {
+        this.mark1 = mark1;
+    }
 
     public int getId() {
         return id;

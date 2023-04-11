@@ -22,6 +22,7 @@ import com.example.myapplication.jxc.entity.YhJinXiaoCunJiChuZiLiao;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunZhengLi;
 import com.example.myapplication.jxc.service.YhJinXiaoCunZhengLiService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 public class BiJiChangeActivity extends AppCompatActivity {
@@ -86,6 +87,7 @@ public class BiJiChangeActivity extends AppCompatActivity {
     }
 
     public void insertClick(View v) {
+        LoadingDialog.getInstance(this).show();
         if (!checkForm()) return;
 
         Handler saveHandler = new Handler(new Handler.Callback() {
@@ -93,9 +95,11 @@ public class BiJiChangeActivity extends AppCompatActivity {
             public boolean handleMessage(@NonNull Message msg) {
                 if ((boolean) msg.obj) {
                     ToastUtil.show(BiJiChangeActivity.this, "保存成功");
+                    LoadingDialog.getInstance(getApplicationContext()).dismiss();
                     back();
                 } else {
                     ToastUtil.show(BiJiChangeActivity.this, "保存失败，请稍后再试");
+                    LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 }
                 return true;
             }
@@ -113,6 +117,7 @@ public class BiJiChangeActivity extends AppCompatActivity {
     }
 
     public void updateClick(View v) {
+        LoadingDialog.getInstance(this).show();
         if (!checkForm()) return;
 
         Handler saveHandler = new Handler(new Handler.Callback() {
@@ -120,9 +125,11 @@ public class BiJiChangeActivity extends AppCompatActivity {
             public boolean handleMessage(@NonNull Message msg) {
                 if ((boolean) msg.obj) {
                     ToastUtil.show(BiJiChangeActivity.this, "保存成功");
+                    LoadingDialog.getInstance(getApplicationContext()).dismiss();
                     back();
                 } else {
                     ToastUtil.show(BiJiChangeActivity.this, "保存失败，请稍后再试");
+                    LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 }
                 return true;
             }

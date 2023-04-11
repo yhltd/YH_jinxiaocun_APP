@@ -68,9 +68,9 @@ public class RukuChangeActivity extends AppCompatActivity {
         mingxiList = (List<YhJinXiaoCunJiChuZiLiao>) getIntent().getSerializableExtra("jczlList");
 
         if (churuku.equals("")) {
-            kehu_type.setText("供应商");
+            kehu_type.setText("供应商:");
         } else {
-            kehu_type.setText("客户");
+            kehu_type.setText("客户:");
         }
 
 

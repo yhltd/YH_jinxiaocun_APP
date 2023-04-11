@@ -19,6 +19,26 @@ public class YhFinanceKeMuZongZhangService {
     }
 
     /**
+     * 查询科目代码
+     */
+    public List<YhFinanceKeMuZongZhang> getCodeList(String company,String code,int len) {
+        String sql = "select * from Accounting where company = ? and left(code,1) = ? and len(code) = ?";
+        base = new financeBaseDao();
+        List<YhFinanceKeMuZongZhang> list = base.query(YhFinanceKeMuZongZhang.class, sql,company,code,len);
+        return list;
+    }
+
+    /**
+     * 查询科目代码
+     */
+    public List<YhFinanceKeMuZongZhang> getCodeListByCode(String company,String code,int len,String code2) {
+        String sql = "select * from Accounting where company = ? and left(code,1) = ? and len(code) = ? and left(code,?) = ?";
+        base = new financeBaseDao();
+        List<YhFinanceKeMuZongZhang> list = base.query(YhFinanceKeMuZongZhang.class, sql,company,code,len,len-2,code2);
+        return list;
+    }
+
+    /**
      * 新增
      */
     public boolean insert(YhFinanceKeMuZongZhang YhFinanceKeMuZongZhang) {

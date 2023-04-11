@@ -33,6 +33,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunJiChuZiLiao;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunJiChuZiLiaoService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -236,11 +237,13 @@ public class RukuActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 MyApplication myApplication = (MyApplication) getApplication();
                 listView.setAdapter(new MyAdapter(myApplication.getApplicationContext()));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -284,4 +287,8 @@ public class RukuActivity extends AppCompatActivity {
         intent.putExtra("churuku", churuku);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
     }
+
+
+
+
 }

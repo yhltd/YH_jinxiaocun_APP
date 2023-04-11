@@ -15,6 +15,84 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="一级科目:"
+                    />
+
+                <Spinner
+                    android:id="@+id/class1"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="二级科目:"
+                    />
+
+                <Spinner
+                    android:id="@+id/class2"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="三级科目:"
+                    />
+
+                <Spinner
+                    android:id="@+id/class3"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp" />
+
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,6 +130,32 @@
                 android:hint="请输入科目名称"
                 android:inputType="text"
                 android:textIsSelectable="false" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="借贷方向:"
+                    />
+
+                <Spinner
+                    android:id="@+id/direction"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

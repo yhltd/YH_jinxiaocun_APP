@@ -25,6 +25,7 @@ import com.example.myapplication.jxc.entity.YhJinXiaoCunKeHu;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunKeHuService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunZhengLiService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -83,10 +84,12 @@ public class KehuActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

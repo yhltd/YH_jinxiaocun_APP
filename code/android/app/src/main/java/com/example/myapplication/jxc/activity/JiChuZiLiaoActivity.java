@@ -2,12 +2,15 @@ package com.example.myapplication.jxc.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -35,6 +39,7 @@ import com.example.myapplication.jxc.service.YhJinXiaoCunMingXiService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunUserService;
 import com.example.myapplication.utils.GsonUtil;
 import com.example.myapplication.utils.InputUtil;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -86,10 +91,24 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
+                SimpleAdapter adapter = StringUtils.cast(msg.obj);
+                adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
+                    public boolean setViewValue(View view, Object data,
+                                                String textRepresentation) {
+                        if (view instanceof ImageView && data instanceof Bitmap) {
+                            ImageView image = (ImageView) view;
+                            image.setImageBitmap((Bitmap) data);
+                            return true;
+                        }
+                        return false;
+                    }
+                });
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -105,6 +124,9 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
+                        byte[] decodedString = Base64.decode(list.get(i).getMark1(), Base64.DEFAULT);
+                        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                        item.put("mark1", decodedByte);
                         item.put("spDm", list.get(i).getSpDm());
                         item.put("name", list.get(i).getName());
                         item.put("leiBie", list.get(i).getLeiBie());
@@ -117,7 +139,7 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row, new String[]{"spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
+                SimpleAdapter adapter = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row, new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"}, new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);

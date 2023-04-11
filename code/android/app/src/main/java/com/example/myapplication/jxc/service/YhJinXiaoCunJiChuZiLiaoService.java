@@ -50,10 +50,10 @@ public class YhJinXiaoCunJiChuZiLiaoService {
      * 新增
      */
     public boolean insert(YhJinXiaoCunJiChuZiLiao yhJinXiaoCunJiChuZiLiao) {
-        String sql = "insert into yh_jinxiaocun_jichuziliao(sp_dm,name,lei_bie,dan_wei,shou_huo,gong_huo,gs_name) values(?,?,?,?,?,?,?)";
+        String sql = "insert into yh_jinxiaocun_jichuziliao(sp_dm,name,lei_bie,dan_wei,shou_huo,gong_huo,gs_name,mark1) values(?,?,?,?,?,?,?,?)";
 
         base = new JxcBaseDao();
-        long result = base.executeOfId(sql, yhJinXiaoCunJiChuZiLiao.getSpDm(), yhJinXiaoCunJiChuZiLiao.getName(), yhJinXiaoCunJiChuZiLiao.getLeiBie(), yhJinXiaoCunJiChuZiLiao.getDanWei(), yhJinXiaoCunJiChuZiLiao.getShouHuo(), yhJinXiaoCunJiChuZiLiao.getGongHuo(), yhJinXiaoCunJiChuZiLiao.getGsName());
+        long result = base.executeOfId(sql, yhJinXiaoCunJiChuZiLiao.getSpDm(), yhJinXiaoCunJiChuZiLiao.getName(), yhJinXiaoCunJiChuZiLiao.getLeiBie(), yhJinXiaoCunJiChuZiLiao.getDanWei(), yhJinXiaoCunJiChuZiLiao.getShouHuo(), yhJinXiaoCunJiChuZiLiao.getGongHuo(), yhJinXiaoCunJiChuZiLiao.getGsName(), yhJinXiaoCunJiChuZiLiao.getMark1());
         return result > 0;
     }
 
@@ -61,10 +61,10 @@ public class YhJinXiaoCunJiChuZiLiaoService {
      * 修改
      */
     public boolean update(YhJinXiaoCunJiChuZiLiao yhJinXiaoCunJiChuZiLiao) {
-        String sql = "update yh_jinxiaocun_jichuziliao set sp_dm=?,name=?,lei_bie=?,dan_wei=?,shou_huo=?,gong_huo=? where id=? ";
+        String sql = "update yh_jinxiaocun_jichuziliao set sp_dm=?,name=?,lei_bie=?,dan_wei=?,shou_huo=?,gong_huo=?,mark1=? where id=? ";
 
         base = new JxcBaseDao();
-        boolean result = base.execute(sql, yhJinXiaoCunJiChuZiLiao.getSpDm(), yhJinXiaoCunJiChuZiLiao.getName(), yhJinXiaoCunJiChuZiLiao.getLeiBie(), yhJinXiaoCunJiChuZiLiao.getDanWei(), yhJinXiaoCunJiChuZiLiao.getShouHuo(), yhJinXiaoCunJiChuZiLiao.getGongHuo(), yhJinXiaoCunJiChuZiLiao.getId());
+        boolean result = base.execute(sql, yhJinXiaoCunJiChuZiLiao.getSpDm(), yhJinXiaoCunJiChuZiLiao.getName(), yhJinXiaoCunJiChuZiLiao.getLeiBie(), yhJinXiaoCunJiChuZiLiao.getDanWei(), yhJinXiaoCunJiChuZiLiao.getShouHuo(), yhJinXiaoCunJiChuZiLiao.getGongHuo(), yhJinXiaoCunJiChuZiLiao.getMark1(), yhJinXiaoCunJiChuZiLiao.getId());
         return result;
     }
 

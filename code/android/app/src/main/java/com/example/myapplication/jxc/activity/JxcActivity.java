@@ -1,6 +1,7 @@
 package com.example.myapplication.jxc.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -12,12 +13,22 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.utils.ToastUtil;
+import com.youth.banner.Banner;
+import com.youth.banner.adapter.BannerImageAdapter;
+import com.youth.banner.holder.BannerImageHolder;
+import com.youth.banner.indicator.CircleIndicator;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JxcActivity extends AppCompatActivity {
     private YhJinXiaoCunUser yhJinXiaoCunUser;
+
+    private Banner banner;
+    private List<Integer> banner_data;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,6 +38,26 @@ public class JxcActivity extends AppCompatActivity {
         MyApplication myApplication = (MyApplication) getApplication();
         yhJinXiaoCunUser = myApplication.getYhJinXiaoCunUser();
 
+
+        initData();
+        banner = findViewById(R.id.main_banner);
+
+        banner.setAdapter(new BannerImageAdapter<Integer>(banner_data) {
+
+            @Override
+            public void onBindView(BannerImageHolder holder, Integer data, int position, int size) {
+                holder.imageView.setImageResource(data);
+            }
+        });
+
+        // 开启循环轮播
+        banner.isAutoLoop(true);
+        banner.setIndicator(new CircleIndicator(this));
+        banner.setScrollBarFadeDuration(1000);
+        // 设置指示器颜色(TODO 即选中时那个小点的颜色)
+        banner.setIndicatorSelectedColor(Color.GREEN);
+        // 开始轮播
+        banner.start();
 
         LinearLayout ruku = findViewById(R.id.ruku);
         ruku.setOnClickListener(new View.OnClickListener() {
@@ -176,6 +207,15 @@ public class JxcActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    private void initData(){
+        banner_data = new ArrayList<>();
+        banner_data.add(R.drawable.jxc_banner_01);
+        banner_data.add(R.drawable.jxc_banner_01);
+        banner_data.add(R.drawable.jxc_banner_01);
+    }
+
 
     private long exitTime = 0;
 

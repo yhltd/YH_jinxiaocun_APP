@@ -25,6 +25,7 @@ import com.example.myapplication.jxc.entity.YhJinXiaoCun;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunService;
 import com.example.myapplication.utils.ExcelUtil;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -123,10 +124,12 @@ public class JinXiaoCunActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

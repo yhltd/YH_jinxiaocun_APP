@@ -52,6 +52,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="150dp"
+                    android:text="图片"
+                    android:textColor="@color/main_text"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="150dp"
                     android:text="商品代码"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
