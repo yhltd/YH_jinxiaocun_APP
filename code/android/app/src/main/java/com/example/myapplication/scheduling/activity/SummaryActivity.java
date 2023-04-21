@@ -26,6 +26,7 @@ import com.example.myapplication.scheduling.entity.Summary;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.ModuleTypeService;
 import com.example.myapplication.scheduling.service.SummaryService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -84,11 +85,13 @@ public class SummaryActivity extends AppCompatActivity {
     }
 
     private void initList1() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 type_spinner.setAdapter(typeAdapter);
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -147,10 +150,12 @@ public class SummaryActivity extends AppCompatActivity {
     }
 
     private void initList2() {
+        LoadingDialog.getInstance(this).show();
         Handler handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

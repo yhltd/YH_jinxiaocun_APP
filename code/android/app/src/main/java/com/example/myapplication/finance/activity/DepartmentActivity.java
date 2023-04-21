@@ -20,8 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.finance.entity.YhFinanceDepartment;
+import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceDepartmentService;
+import com.example.myapplication.jiaowu.activity.SheZhiActivity;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -36,6 +39,7 @@ public class DepartmentActivity extends AppCompatActivity {
     private YhFinanceUser yhFinanceUser;
     private YhFinanceDepartmentService yhFinanceDepartmentService;
     private ListView listView;
+    private YhFinanceQuanXian yhFinanceQuanXian;
 
     List<YhFinanceDepartment> list;
 
@@ -55,6 +59,7 @@ public class DepartmentActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         yhFinanceUser = myApplication.getYhFinanceUser();
+        yhFinanceQuanXian = myApplication.getYhFinanceQuanXian();
 
         initList();
     }
@@ -70,10 +75,12 @@ public class DepartmentActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -121,6 +128,10 @@ public class DepartmentActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!yhFinanceQuanXian.getBmszUpdate().equals("是")){
+                    ToastUtil.show(DepartmentActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(DepartmentActivity.this, DepartmentChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
@@ -136,6 +147,10 @@ public class DepartmentActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!yhFinanceQuanXian.getBmszDelete().equals("是")){
+                    ToastUtil.show(DepartmentActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(DepartmentActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {
@@ -179,6 +194,10 @@ public class DepartmentActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
+        if(!yhFinanceQuanXian.getBmszAdd().equals("是")){
+            ToastUtil.show(DepartmentActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(DepartmentActivity.this, DepartmentChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);

@@ -37,6 +37,7 @@ import com.example.myapplication.scheduling.entity.WorkModule;
 import com.example.myapplication.scheduling.service.ModuleInfoService;
 import com.example.myapplication.scheduling.service.OrderInfoService;
 import com.example.myapplication.scheduling.service.WorkDetailService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -96,12 +97,14 @@ public class WorkPlAddActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 module.setAdapter(moduleAdapter);
                 MyApplication myApplication = (MyApplication) getApplication();
                 listView.setAdapter(new MyAdapter(myApplication.getApplicationContext()));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

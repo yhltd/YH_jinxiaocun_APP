@@ -25,12 +25,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.finance.entity.YhFinanceJiJianTaiZhang;
+import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.entity.YhFinanceVoucherSummary;
 import com.example.myapplication.finance.service.YhFinanceJiJianTaiZhangService;
 import com.example.myapplication.finance.service.YhFinanceVoucherSummaryService;
 import com.example.myapplication.jxc.activity.MingXiActivity;
 import com.example.myapplication.jxc.activity.MingXiChangeActivity;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -44,6 +46,7 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
     MyApplication myApplication;
 
     private YhFinanceUser yhFinanceUser;
+    private YhFinanceQuanXian yhFinanceQuanXian;
     private YhFinanceJiJianTaiZhangService yhFinanceJiJianTaiZhangService;
 
     private EditText project;
@@ -65,6 +68,7 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
 
         myApplication = (MyApplication) getApplication();
         yhFinanceUser = myApplication.getYhFinanceUser();
+        yhFinanceQuanXian = myApplication.getYhFinanceQuanXian();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jijiantaizhang);
 
@@ -132,7 +136,7 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
     }
 
     private void initList() {
-
+        LoadingDialog.getInstance(this).show();
         projectText = project.getText().toString();
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
@@ -147,6 +151,7 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -205,6 +210,10 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!yhFinanceQuanXian.getJjtzDelete().equals("是")){
+                    ToastUtil.show(JiJianTaiZhangActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(JiJianTaiZhangActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {
@@ -251,6 +260,10 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!yhFinanceQuanXian.getJjtzUpdate().equals("是")){
+                    ToastUtil.show(JiJianTaiZhangActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(JiJianTaiZhangActivity.this, JiJianTaiZhangChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
@@ -262,6 +275,10 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
+        if(!yhFinanceQuanXian.getJjtzAdd().equals("是")){
+            ToastUtil.show(JiJianTaiZhangActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(JiJianTaiZhangActivity.this, JiJianTaiZhangChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);

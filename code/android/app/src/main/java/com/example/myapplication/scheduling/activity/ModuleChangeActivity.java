@@ -26,6 +26,7 @@ import com.example.myapplication.scheduling.entity.ModuleType;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.ModuleInfoService;
 import com.example.myapplication.scheduling.service.ModuleTypeService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -159,7 +160,7 @@ public class ModuleChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -169,6 +170,7 @@ public class ModuleChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(ModuleChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -186,7 +188,7 @@ public class ModuleChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -196,6 +198,7 @@ public class ModuleChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(ModuleChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

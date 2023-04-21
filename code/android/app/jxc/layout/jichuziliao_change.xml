@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/shape_corner_up">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/border_bottom_top">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -160,7 +160,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/shape_corner_down">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -187,9 +187,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:orientation="vertical"
-                android:background="@drawable/border_bottom"
+                android:background="@drawable/shape_corner"
                 android:gravity="center">
 
                 <ImageView
@@ -219,7 +220,10 @@
                 android:onClick="updateClick"
                 android:text="提交"
                 android:visibility="gone"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:background="@drawable/btn_style"
+                android:textSize="17dp"
+                android:textColor="@color/white"/>
 
             <Button
                 android:id="@+id/insert_btn"
@@ -228,7 +232,10 @@
                 android:onClick="insertClick"
                 android:text="提交"
                 android:visibility="gone"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:background="@drawable/btn_style"
+                android:textSize="17dp"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
     </LinearLayout>

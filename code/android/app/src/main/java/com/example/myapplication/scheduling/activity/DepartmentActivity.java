@@ -24,6 +24,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.DepartmentService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -79,10 +80,12 @@ public class DepartmentActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

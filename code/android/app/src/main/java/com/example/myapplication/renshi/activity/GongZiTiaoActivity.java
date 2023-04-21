@@ -33,6 +33,7 @@ import com.example.myapplication.finance.entity.YhFinanceJiJianPeiZhi;
 import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.renshi.service.YhRenShiGongZiMingXiService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -155,6 +156,7 @@ public class GongZiTiaoActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         bumen_selectText = bumen_select.getSelectedItem().toString();
         gangwei_selectText = gangwei_select.getSelectedItem().toString();
         this_dateText = this_date.getText().toString();
@@ -163,6 +165,7 @@ public class GongZiTiaoActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

@@ -26,6 +26,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.finance.entity.YhFinanceBaoBiao;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceBaoBiaoService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 
 import java.text.SimpleDateFormat;
@@ -99,6 +100,7 @@ public class BaoBiaoActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         this_dateText = this_date.getText().toString();
         class_selectText = class_select.getSelectedItem().toString();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
@@ -144,6 +146,7 @@ public class BaoBiaoActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

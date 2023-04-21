@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".jxc.activity.KehuActivity">
+    tools:context=".jxc.activity.KehuActivity"
+    android:background="@color/WhiteSmoke">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/border_bottom"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
         android:gravity="center_vertical">
 
         <ImageView
@@ -29,12 +31,16 @@
             android:id="@+id/sel_button"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:text="查询" />
+            android:text="查询"
+            android:layout_marginEnd="10dp"/>
     </LinearLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="570dp">
+        android:layout_height="570dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -43,7 +49,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="40dp"
                 android:background="@drawable/border_bottom"
                 android:gravity="center"
                 android:orientation="horizontal">

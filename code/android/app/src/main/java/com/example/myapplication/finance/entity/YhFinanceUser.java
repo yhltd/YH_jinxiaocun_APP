@@ -7,7 +7,7 @@ public class YhFinanceUser {
     private String company;
     private String pwd;
     @SerializedName("do")
-    private String _do;
+    private String doo;
     private String name;
     private String bianhao;
 
@@ -27,9 +27,6 @@ public class YhFinanceUser {
         this.pwd = pwd;
     }
 
-    public void set_do(String _do) {
-        this._do = _do;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -47,8 +44,12 @@ public class YhFinanceUser {
         return pwd;
     }
 
-    public String get_do() {
-        return _do;
+    public String getDoo() {
+        return doo;
+    }
+
+    public void setDoo(String doo) {
+        this.doo = doo;
     }
 
     public String getName() {

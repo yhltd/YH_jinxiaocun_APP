@@ -33,6 +33,7 @@ import com.example.myapplication.finance.service.YhFinanceBaoBiaoService;
 import com.example.myapplication.finance.service.YhFinanceKehuPeizhiService;
 import com.example.myapplication.finance.service.YhFinanceLiYiSunYiService;
 import com.example.myapplication.finance.service.YhFinanceYingShouBaoBiaoService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 
 import java.text.SimpleDateFormat;
@@ -142,6 +143,7 @@ public class YingShouBaoBiaoActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         class_selectText = class_select.getSelectedItem().toString();
@@ -156,6 +158,7 @@ public class YingShouBaoBiaoActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

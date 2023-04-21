@@ -15,138 +15,213 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="姓名" />
-
-            <EditText
-                android:id="@+id/B"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入姓名"
-                android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="证件号码" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
 
-            <EditText
-                android:id="@+id/E"
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="姓名:" />
+
+                <EditText
+                    android:id="@+id/B"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入姓名"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入证件号码"
-                android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="收入金额" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
 
-            <EditText
-                android:id="@+id/U"
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="证件号码:" />
+
+                <EditText
+                    android:id="@+id/E"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入证件号码"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入收入金额"
-                android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="基本养老保险金" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
 
-            <EditText
-                android:id="@+id/AI"
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="收入金额:" />
+
+                <EditText
+                    android:id="@+id/U"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入收入金额"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入基本养老保险金"
-                android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="失业保险金" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
 
-            <EditText
-                android:id="@+id/AK"
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="基本养老保险金:" />
+
+                <EditText
+                    android:id="@+id/AI"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入基本养老保险金"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入失业保险金"
-                android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="住房公积金" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
 
-            <EditText
-                android:id="@+id/AN"
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="失业保险金:" />
+
+                <EditText
+                    android:id="@+id/AK"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入失业保险金"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入住房公积金"
-                android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="年金（个人部分）" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
 
-            <EditText
-                android:id="@+id/AO"
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="住房公积金:" />
+
+                <EditText
+                    android:id="@+id/AN"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入住房公积金"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入年金（个人部分）"
-                android:inputType="text"
-                android:textIsSelectable="false" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="年金(个人部分):" />
+
+                <EditText
+                    android:id="@+id/AO"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入年金(个人部分)"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

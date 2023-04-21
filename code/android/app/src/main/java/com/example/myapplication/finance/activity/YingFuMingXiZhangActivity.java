@@ -29,6 +29,7 @@ import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.entity.YhFinanceYingShouMingXiZhang;
 import com.example.myapplication.finance.service.YhFinanceKehuPeizhiService;
 import com.example.myapplication.finance.service.YhFinanceYingShouMingXiZhangService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 
 import java.math.BigDecimal;
@@ -138,6 +139,7 @@ public class YingFuMingXiZhangActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         class_selectText = class_select.getSelectedItem().toString();
@@ -152,6 +154,7 @@ public class YingFuMingXiZhangActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

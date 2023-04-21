@@ -29,10 +29,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.finance.entity.YhFinanceExpenditure;
+import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.entity.YhFinanceVoucherSummary;
 import com.example.myapplication.finance.service.YhFinanceVoucherSummaryService;
 import com.example.myapplication.finance.service.YhFinanceVoucherWordService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -48,6 +50,7 @@ public class VoucherSummaryActivity extends AppCompatActivity {
     MyApplication myApplication;
 
     private YhFinanceUser yhFinanceUser;
+    private YhFinanceQuanXian yhFinanceQuanXian;
     private YhFinanceVoucherSummaryService yhFinanceVoucherSummaryService;
     private YhFinanceVoucherWordService yhFinanceVoucherWordService;
     private EditText start_date;
@@ -68,6 +71,7 @@ public class VoucherSummaryActivity extends AppCompatActivity {
 
         myApplication = (MyApplication) getApplication();
         yhFinanceUser = myApplication.getYhFinanceUser();
+        yhFinanceQuanXian = myApplication.getYhFinanceQuanXian();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.voucher_summary);
         type_select = findViewById(R.id.type_select);
@@ -221,6 +225,10 @@ public class VoucherSummaryActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!yhFinanceQuanXian.getPzhzDelete().equals("是")){
+                    ToastUtil.show(VoucherSummaryActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(VoucherSummaryActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {
@@ -291,6 +299,10 @@ public class VoucherSummaryActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!yhFinanceQuanXian.getPzhzUpdate().equals("是")){
+                    ToastUtil.show(VoucherSummaryActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(VoucherSummaryActivity.this, VoucherSummaryChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
@@ -325,7 +337,7 @@ public class VoucherSummaryActivity extends AppCompatActivity {
 
 
     private void initList() {
-
+        LoadingDialog.getInstance(this).show();
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         if(start_dateText.equals("")){
@@ -339,6 +351,7 @@ public class VoucherSummaryActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -396,6 +409,10 @@ public class VoucherSummaryActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
+        if(!yhFinanceQuanXian.getPzhzAdd().equals("是")){
+            ToastUtil.show(VoucherSummaryActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(VoucherSummaryActivity.this, VoucherSummaryChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);

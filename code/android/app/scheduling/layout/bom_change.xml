@@ -15,131 +15,209 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="物料编码" />
-            <EditText
-                android:id="@+id/code"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入物料编码"
-                android:inputType="text"
-                android:textIsSelectable="false" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="物料名称" />
-            <EditText
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入物料名称"
-                android:inputType="text"
-                android:textIsSelectable="false" />
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="物料编码:" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="类别" />
-            <EditText
-                android:id="@+id/type"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入类别"
-                android:inputType="text"
-                android:textIsSelectable="false" />
+                <EditText
+                    android:id="@+id/code"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入物料编码"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="规格" />
-            <EditText
-                android:id="@+id/norms"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入规格"
-                android:inputType="text"
-                android:textIsSelectable="false" />
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="描述" />
-            <EditText
-                android:id="@+id/comment"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入描述"
-                android:inputType="text"
-                android:textIsSelectable="false" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="大小" />
-            <EditText
-                android:id="@+id/size"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入大小"
-                android:inputType="numberDecimal"
-                android:textIsSelectable="false" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="单位" />
-            <EditText
-                android:id="@+id/unit"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:hint="请输入单位"
-                android:inputType="text"
-                android:textIsSelectable="false" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="物料名称:" />
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入物料名称"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="类别:" />
+                <EditText
+                    android:id="@+id/type"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入类别"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="规格:" />
+                <EditText
+                    android:id="@+id/norms"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入规格"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="描述:" />
+                <EditText
+                    android:id="@+id/comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入描述"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="大小:" />
+                <EditText
+                    android:id="@+id/size"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入大小"
+                    android:inputType="numberDecimal"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:text="单位:" />
+                <EditText
+                    android:id="@+id/unit"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入单位"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
 

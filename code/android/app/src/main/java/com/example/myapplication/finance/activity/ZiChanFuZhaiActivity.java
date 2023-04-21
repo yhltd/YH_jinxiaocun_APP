@@ -28,6 +28,7 @@ import com.example.myapplication.finance.entity.YhFinanceXianJinLiuLiang;
 import com.example.myapplication.finance.entity.YhFinanceZiChanFuZhai;
 import com.example.myapplication.finance.service.YhFinanceXianJinLiuLiangService;
 import com.example.myapplication.finance.service.YhFinanceZiChanFuZhaiService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 
 import java.text.SimpleDateFormat;
@@ -103,6 +104,7 @@ public class ZiChanFuZhaiActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         class_selectText = class_select.getSelectedItem().toString();
@@ -126,6 +128,7 @@ public class ZiChanFuZhaiActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

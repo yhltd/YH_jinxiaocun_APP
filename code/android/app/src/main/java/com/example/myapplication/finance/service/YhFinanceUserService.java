@@ -12,7 +12,7 @@ public class YhFinanceUserService {
     private financeBaseDao base;
 
     public YhFinanceUser login(String username, String password, String company) {
-        String sql = "select * from Account where name = ? and pwd = ? and company = ? ";
+        String sql = "select *,[do] as doo from Account where name = ? and pwd = ? and company = ? ";
         base = new financeBaseDao();
         List<YhFinanceUser> list = base.query(YhFinanceUser.class, sql, username, password, company);
         return list != null && list.size() > 0 ? list.get(0) : null;
@@ -33,7 +33,7 @@ public class YhFinanceUserService {
      * 查询全部数据
      */
     public List<YhFinanceUser> getList(String company, String username) {
-        String sql = "select * from Account where company = ? and name like '%'+ ? +'%'";
+        String sql = "select *,[do] as doo from Account where company = ? and name like '%'+ ? +'%'";
         base = new financeBaseDao();
         List<YhFinanceUser> list = base.query(YhFinanceUser.class, sql,company,username);
         return list;
@@ -45,7 +45,7 @@ public class YhFinanceUserService {
     public boolean insert(YhFinanceUser YhFinanceUser) {
         String sql = "insert into Account(name,pwd,[do],bianhao,company) values(?,?,?,?,?)";
         base = new financeBaseDao();
-        long result = base.executeOfId(sql, YhFinanceUser.getName(), YhFinanceUser.getPwd(),YhFinanceUser.get_do(),YhFinanceUser.getBianhao(),YhFinanceUser.getCompany());
+        long result = base.executeOfId(sql, YhFinanceUser.getName(), YhFinanceUser.getPwd(),YhFinanceUser.getDoo(),YhFinanceUser.getBianhao(),YhFinanceUser.getCompany());
         return result > 0;
     }
 
@@ -55,7 +55,7 @@ public class YhFinanceUserService {
     public boolean update(YhFinanceUser YhFinanceUser) {
         String sql = "update Account set name=?,pwd=?,[do]=?,bianhao=?,company=? where id=? ";
         base = new financeBaseDao();
-        boolean result = base.execute(sql, YhFinanceUser.getName(), YhFinanceUser.getPwd(),YhFinanceUser.get_do(),YhFinanceUser.getBianhao(),YhFinanceUser.getCompany());
+        boolean result = base.execute(sql, YhFinanceUser.getName(), YhFinanceUser.getPwd(),YhFinanceUser.getDoo(),YhFinanceUser.getBianhao(),YhFinanceUser.getCompany());
         return result;
     }
 

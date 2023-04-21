@@ -403,6 +403,24 @@
         </activity>
 
         <activity
+            android:name=".finance.activity.ZhiNengKanBanActivity"
+            android:label="智能看板">
+            <intent-filter>
+                <action android:name="android.intent.action.ZhiNengKanBanActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.QuanXianChangeActivity"
+            android:label="权限管理">
+            <intent-filter>
+                <action android:name="android.intent.action.QuanXianChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".finance.activity.ZhangHaoGuanLiActivity"
             android:label="账号管理">
             <intent-filter>
@@ -811,6 +829,15 @@
 
 
         <!--    人事    -->
+        <activity
+            android:name=".renshi.activity.RenYuanXinXiGuanLiActivity"
+            android:label="人员信息管理">
+            <intent-filter>
+                <action android:name="android.intent.action.RenYuanXinXiGuanLiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".renshi.activity.RenShiActivity"
             android:label="首页">

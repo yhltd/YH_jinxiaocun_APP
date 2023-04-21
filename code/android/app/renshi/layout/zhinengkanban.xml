@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".finance.activity.ZhiNengKanBanActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/border_bottom">
+
+        <EditText
+            android:id="@+id/start_date"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="起始时间" />
+
+        <EditText
+            android:id="@+id/end_date"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="终止时间" />
+
+        <Button
+            android:id="@+id/sel_button"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:text="查询" />
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/main_scollview" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                android:text="年初余额" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_marginTop="10dp"
+                android:id="@+id/bc_1"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                android:text="凭证金额" />
+
+            <com.github.mikephil.charting.charts.HorizontalBarChart
+                android:layout_marginTop="10dp"
+                android:id="@+id/bc_2"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                android:text="科目余额" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_marginTop="10dp"
+                android:id="@+id/bc_3"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                android:text="资产负债" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_marginTop="10dp"
+                android:id="@+id/bc_4"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                android:text="利润合计" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_marginTop="10dp"
+                android:id="@+id/bc_5"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                android:text="利润合计" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_marginTop="10dp"
+                android:id="@+id/bc_6"
+                android:layout_width="match_parent"
+                android:layout_height="400dp" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

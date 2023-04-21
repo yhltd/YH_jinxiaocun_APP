@@ -37,6 +37,7 @@ import com.example.myapplication.finance.service.YhFinanceFaPiaoService;
 import com.example.myapplication.finance.service.YhFinanceKehuPeizhiService;
 import com.example.myapplication.finance.service.YhFinanceVoucherSummaryService;
 import com.example.myapplication.finance.service.YhFinanceVoucherWordService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -188,6 +189,7 @@ public class FaPiaoActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         type_selectText = type_select.getSelectedItem().toString();
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
@@ -202,6 +204,7 @@ public class FaPiaoActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

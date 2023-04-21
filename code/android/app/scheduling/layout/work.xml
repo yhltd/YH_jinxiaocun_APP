@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".scheduling.activity.WorkActivity">
+    tools:context=".scheduling.activity.WorkActivity"
+    android:background="@color/WhiteSmoke">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/border_bottom"
-        android:gravity="center_vertical">
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:layout_marginTop="5dp">
 
         <ImageView
             android:layout_width="30dp"
@@ -35,7 +37,10 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="480dp">
+        android:layout_height="480dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -44,7 +49,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="40dp"
                 android:background="@drawable/border_bottom"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -221,19 +226,7 @@
             android:text="统计"
             tools:ignore="MissingConstraints"
             android:gravity="center" />
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            android:gravity="center_horizontal"/>
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            android:gravity="center"
-            android:visibility="invisible"/>
+
     </LinearLayout>
 
 

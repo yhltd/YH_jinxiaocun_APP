@@ -337,7 +337,7 @@ public class GongZiMingXiChangeActivity extends AppCompatActivity {
                     yhRenShiUserService = new YhRenShiUserService();
                     yhRenShiPeiZhiBiaoService = new YhRenShiPeiZhiBiaoService();
                     List<YhRenShiPeiZhiBiao> peizhiList = yhRenShiPeiZhiBiaoService.getList(yhRenShiUser.getL());
-                    List<YhRenShiUser> nameList = yhRenShiUserService.getList(yhRenShiUser.getL(),"");
+                    List<YhRenShiUser> nameList = yhRenShiUserService.getList(yhRenShiUser.getL(),"","");
 
                     name_array = new ArrayList<>();
                     name_array.add("");
@@ -475,7 +475,7 @@ public class GongZiMingXiChangeActivity extends AppCompatActivity {
                     List<HashMap<String, Object>> data = new ArrayList<>();
                     try {
                         yhRenShiUserService = new YhRenShiUserService();
-                        user_list = yhRenShiUserService.getList(yhRenShiUser.getL(),B_selectText);
+                        user_list = yhRenShiUserService.getList(yhRenShiUser.getL(),B_selectText,"");
                         if (user_list == null){
                             this_renyuan = null;
                         }

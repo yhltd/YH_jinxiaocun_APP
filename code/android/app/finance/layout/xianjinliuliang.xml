@@ -5,29 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".finance.activity.XianJinLiuLiangActivity">
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:gravity="center_vertical"-->
-<!--        android:background="@drawable/border_bottom">-->
-<!--        <ImageView-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:src="@drawable/search"/>-->
-<!--        <EditText-->
-<!--            android:id="@+id/project"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:hint="项目名称" />-->
-<!--    </LinearLayout>-->
+    tools:context=".finance.activity.XianJinLiuLiangActivity"
+    android:background="@color/WhiteSmoke">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/border_bottom"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"
         android:gravity="center_vertical">
 
         <EditText
@@ -58,7 +43,10 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="584dp">
+        android:layout_height="584dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -67,7 +55,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="40dp"
                 android:background="@drawable/border_bottom"
                 android:gravity="center"
                 android:orientation="horizontal">

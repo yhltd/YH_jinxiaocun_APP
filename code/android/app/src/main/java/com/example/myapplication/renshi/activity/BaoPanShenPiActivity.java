@@ -32,6 +32,7 @@ import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.renshi.service.YhRenShiBaoPanShenPiService;
 import com.example.myapplication.renshi.service.YhRenShiGongZiMingXiService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -104,6 +105,7 @@ public class BaoPanShenPiActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         nameText = name.getText().toString();
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
@@ -119,6 +121,7 @@ public class BaoPanShenPiActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

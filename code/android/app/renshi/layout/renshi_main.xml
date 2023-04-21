@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".renshi.activity.RenShiActivity">
+
+    <com.youth.banner.Banner
+        android:id="@+id/main_banner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"
+        app:banner_radius="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:banner_loop_time="5000"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="100%"
+        />
 
     <ScrollView
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
-
+        android:layout_width="match_parent"
+        android:id="@+id/main_scollview"
+        app:layout_marginTopPercent="24%"
+        app:layout_heightPercent="78%">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,25 +34,32 @@
             android:gravity="start"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="20dp"
+                android:text="基础数据" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="110dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/kaoqinbiao"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/rukuguanli" />
+                        android:background="@drawable/kaoqinbiao" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -50,16 +74,15 @@
                 <LinearLayout
                     android:id="@+id/renyuanxinxiguanli"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/kaizhixiangmu" />
+                        android:background="@drawable/renyuanxinxiguanli" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -70,27 +93,19 @@
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/baopan"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/bumenshezhi" />
+                        android:background="@drawable/baopan" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -105,16 +120,15 @@
                 <LinearLayout
                     android:id="@+id/peizhibiao"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/shoufamingxi" />
+                        android:background="@drawable/peizhibiao" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -125,51 +139,132 @@
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/gongzimingxi"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:background="@drawable/gongzimingxi" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="工资明细"
+                    android:textColor="@color/main_text"
+                    android:textSize="15sp"
+                    tools:ignore="RtlSymmetry" />
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                     />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=""
+                    android:textColor="@color/main_text"
+                    android:textSize="15sp"
+                    tools:ignore="RtlSymmetry" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=""
+                    android:textColor="@color/main_text"
+                    android:textSize="15sp"
+                    tools:ignore="RtlSymmetry" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=""
+                    android:textColor="@color/main_text"
+                    android:textSize="15sp"
+                    tools:ignore="RtlSymmetry" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="20dp"
+                android:text="查询/汇总" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="110dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/gongzimingxi"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/jinxiaocun" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="工资明细"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/baoshui"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/shangpin_jinchu" />
+                        android:background="@drawable/baoshui" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -180,27 +275,19 @@
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/kaoqinjilu"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/kehu_chuhuo" />
+                        android:background="@drawable/kaoqinjilu" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -215,16 +302,15 @@
                 <LinearLayout
                     android:id="@+id/bumenhuizong"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/shangpinguanli" />
+                        android:background="@drawable/bumenhuizong" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -235,27 +321,19 @@
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/shebao"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/kehu" />
+                        android:background="@drawable/shebao" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -267,19 +345,26 @@
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
                 <LinearLayout
                     android:id="@+id/yuangongdangan"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/gys" />
+                        android:background="@drawable/yuangongdangan" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -290,27 +375,19 @@
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/gerensuodeshui"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/biji" />
+                        android:background="@drawable/gerensuodeshui" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -325,16 +402,15 @@
                 <LinearLayout
                     android:id="@+id/gongzitiao"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/yonghu" />
+                        android:background="@drawable/gongzitiao" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -345,27 +421,19 @@
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/shengritixing"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/biji" />
+                        android:background="@drawable/shengritixing" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -379,7 +447,8 @@
 
             </LinearLayout>
 
+
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>

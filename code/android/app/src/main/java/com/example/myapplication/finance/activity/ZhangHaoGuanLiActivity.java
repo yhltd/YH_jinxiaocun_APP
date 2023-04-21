@@ -29,10 +29,13 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.finance.entity.YhFinanceFaPiao;
 import com.example.myapplication.finance.entity.YhFinanceJiJianPeiZhi;
+import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceFaPiaoService;
 import com.example.myapplication.finance.service.YhFinanceKehuPeizhiService;
+import com.example.myapplication.finance.service.YhFinanceQuanXianService;
 import com.example.myapplication.finance.service.YhFinanceUserService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -48,7 +51,9 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
     MyApplication myApplication;
 
     private YhFinanceUser yhFinanceUser;
+    private YhFinanceQuanXian yhFinanceQuanXian;
     private YhFinanceUserService yhFinanceUserService;
+    private YhFinanceQuanXianService yhFinanceQuanXianService;
     private EditText username;
     private ListView listView;
     private String usernameText;
@@ -61,6 +66,7 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
 
         myApplication = (MyApplication) getApplication();
         yhFinanceUser = myApplication.getYhFinanceUser();
+        yhFinanceQuanXian = myApplication.getYhFinanceQuanXian();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.zhanghaoguanli);
 
@@ -93,12 +99,13 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         usernameText = username.getText().toString();
-
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -120,11 +127,11 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
                     HashMap<String, Object> item = new HashMap<>();
                     item.put("name", list.get(i).getName());
                     item.put("pwd", list.get(i).getPwd());
-                    item.put("do", list.get(i).get_do());
+                    item.put("doo", list.get(i).getDoo());
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(ZhangHaoGuanLiActivity.this, data, R.layout.zhanghaoguanli_row, new String[]{"name","pwd","do"}, new int[]{R.id.name,R.id.pwd,R.id._do}) {
+                SimpleAdapter adapter = new SimpleAdapter(ZhangHaoGuanLiActivity.this, data, R.layout.zhanghaoguanli_row, new String[]{"name","pwd","doo"}, new int[]{R.id.name,R.id.pwd,R.id.doo}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -147,6 +154,10 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!yhFinanceQuanXian.getZhglDelete().equals("是")){
+                    ToastUtil.show(ZhangHaoGuanLiActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(ZhangHaoGuanLiActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {
@@ -167,6 +178,7 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 Message msg = new Message();
+                                yhFinanceQuanXianService.delete(list.get(position).getBianhao());
                                 msg.obj = yhFinanceUserService.delete(list.get(position).getId());
                                 deleteHandler.sendMessage(msg);
                             }
@@ -194,6 +206,10 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!yhFinanceQuanXian.getZhglUpdate().equals("是")){
+                    ToastUtil.show(ZhangHaoGuanLiActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(ZhangHaoGuanLiActivity.this, ZhangHaoGuanLiChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
@@ -205,6 +221,10 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
+        if(!yhFinanceQuanXian.getZhglAdd().equals("是")){
+            ToastUtil.show(ZhangHaoGuanLiActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(ZhangHaoGuanLiActivity.this, ZhangHaoGuanLiChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);

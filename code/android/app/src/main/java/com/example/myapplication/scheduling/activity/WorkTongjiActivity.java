@@ -28,6 +28,7 @@ import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.entity.WorkDetail;
 import com.example.myapplication.scheduling.service.TimeConfigService;
 import com.example.myapplication.scheduling.service.WorkDetailService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -140,11 +141,12 @@ public class WorkTongjiActivity extends AppCompatActivity {
         } else {
             js_riqi = df.format(df.parse(js.getText().toString()));
         }
-
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

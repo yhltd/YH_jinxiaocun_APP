@@ -7,6 +7,7 @@ import android.os.StrictMode;
 import android.widget.EditText;
 
 import com.example.myapplication.fenquan.entity.Renyuan;
+import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.jiaowu.entity.AccountManagement;
 import com.example.myapplication.jiaowu.entity.Quanxian;
 import com.example.myapplication.jiaowu.entity.Teacher;
@@ -35,6 +36,15 @@ public class MyApplication extends Application {
     private Teacher teacher;
     private AccountManagement accountManagement;
     private Quanxian quanxian;
+    private YhFinanceQuanXian yhFinanceQuanXian;
+
+    public YhFinanceQuanXian getYhFinanceQuanXian() {
+        return yhFinanceQuanXian;
+    }
+
+    public void setYhFinanceQuanXian(YhFinanceQuanXian yhFinanceQuanXian) {
+        this.yhFinanceQuanXian = yhFinanceQuanXian;
+    }
 
     public YhMendianOrderDetail getYhMendianOrderDetail() {
         return yhMendianOrderDetail;

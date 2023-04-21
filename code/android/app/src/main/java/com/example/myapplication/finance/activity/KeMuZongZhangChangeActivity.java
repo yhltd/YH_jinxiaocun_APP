@@ -55,6 +55,7 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
     private String code_text1;
     private String code_text2;
     private String code_text3;
+    private boolean panduan = false;
 
     List<YhFinanceKeMuZongZhang> list1;
 
@@ -65,6 +66,8 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
     String[] class2_array;
 
     String[] class3_array;
+
+    String[] fangxiang_array = {"借","贷"};
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -94,6 +97,8 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
         String[] type_selectArray = getResources().getStringArray(R.array.class_list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, type_selectArray);
         class1.setAdapter(adapter);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, fangxiang_array);
+        direction.setAdapter(adapter);
 
         class1.setOnItemSelectedListener(new typeSelectSelectedListener01());
 
@@ -111,11 +116,14 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
             yhFinanceKeMuZongZhang = (YhFinanceKeMuZongZhang) myApplication.getObj();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
-
-            code.setText(yhFinanceKeMuZongZhang.getCode());
             name.setText(yhFinanceKeMuZongZhang.getName());
             load.setText(yhFinanceKeMuZongZhang.getLoad().toString());
             borrowed.setText(yhFinanceKeMuZongZhang.getBorrowed().toString());
+            if(yhFinanceKeMuZongZhang.isDirection()){
+                direction.setSelection(0);
+            }else{
+                direction.setSelection(1);
+            }
         }
     }
 
@@ -415,6 +423,26 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                     }else{
                         code.setText(code_text1);
                     }
+                    if(panduan == false){
+                        Intent intent = getIntent();
+                        int id = intent.getIntExtra("type", 0);
+                        if (id == R.id.insert_btn) {
+                            yhFinanceKeMuZongZhang = new YhFinanceKeMuZongZhang();
+                            Button btn = findViewById(id);
+                            btn.setVisibility(View.VISIBLE);
+                        } else if (id == R.id.update_btn) {
+                            MyApplication myApplication = (MyApplication) getApplication();
+                            yhFinanceKeMuZongZhang = (YhFinanceKeMuZongZhang) myApplication.getObj();
+                            Button btn = findViewById(id);
+                            btn.setVisibility(View.VISIBLE);
+                            code.setText(yhFinanceKeMuZongZhang.getCode());
+                            name.setText(yhFinanceKeMuZongZhang.getName());
+                            load.setText(yhFinanceKeMuZongZhang.getLoad().toString());
+                            borrowed.setText(yhFinanceKeMuZongZhang.getBorrowed().toString());
+
+                        }
+                        panduan = true;
+                    }
                     return true;
                 }
             });
@@ -623,6 +651,12 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
         } else {
             BigDecimal bd = new BigDecimal(borrowed.getText().toString());
             yhFinanceKeMuZongZhang.setBorrowed(bd);
+        }
+
+        if (direction.getSelectedItem().equals("借")) {
+            yhFinanceKeMuZongZhang.setDirection(true);
+        }else{
+            yhFinanceKeMuZongZhang.setDirection(false);
         }
 
         yhFinanceKeMuZongZhang.setCompany(yhFinanceUser.getCompany());

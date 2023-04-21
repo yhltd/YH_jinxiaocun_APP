@@ -26,6 +26,7 @@ import com.example.myapplication.renshi.entity.YhRenShiPeiZhiBiao;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.renshi.service.YhRenShiGongZiMingXiService;
 import com.example.myapplication.renshi.service.YhRenShiPeiZhiBiaoService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -90,12 +91,14 @@ public class BaoShuiActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         yuangong_nameText = yuangong_name.getText().toString();
 
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

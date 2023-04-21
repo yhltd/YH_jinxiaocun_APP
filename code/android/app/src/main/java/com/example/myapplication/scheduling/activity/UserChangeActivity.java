@@ -24,6 +24,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.DepartmentService;
 import com.example.myapplication.scheduling.service.UserInfoService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -112,12 +113,14 @@ public class UserChangeActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 if (msg.obj != null) {
                     department.setAdapter((SpinnerAdapter) msg.obj);
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -147,7 +150,7 @@ public class UserChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -157,6 +160,7 @@ public class UserChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(UserChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -174,7 +178,7 @@ public class UserChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -184,6 +188,7 @@ public class UserChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(UserChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

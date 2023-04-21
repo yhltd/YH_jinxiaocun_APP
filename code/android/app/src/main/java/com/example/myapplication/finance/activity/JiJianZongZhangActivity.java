@@ -26,9 +26,11 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.finance.entity.YhFinanceJiJianPeiZhi;
 import com.example.myapplication.finance.entity.YhFinanceJiJianTaiZhang;
+import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceJiJianZongZhangService;
 import com.example.myapplication.finance.service.YhFinanceKehuPeizhiService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -42,6 +44,7 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
     MyApplication myApplication;
 
     private YhFinanceUser yhFinanceUser;
+    private YhFinanceQuanXian yhFinanceQuanXian;
     private YhFinanceJiJianZongZhangService yhFinanceJiJianZongZhangService;
     private YhFinanceKehuPeizhiService yhFinanceKehuPeizhiService;
     private Spinner kehu_select;
@@ -62,6 +65,7 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
 
         myApplication = (MyApplication) getApplication();
         yhFinanceUser = myApplication.getYhFinanceUser();
+        yhFinanceQuanXian = myApplication.getYhFinanceQuanXian();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jijianzongzhang);
 
@@ -131,12 +135,14 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         projectText = project.getText().toString();
         kehu_selectText = kehu_select.getItemAtPosition(0).toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

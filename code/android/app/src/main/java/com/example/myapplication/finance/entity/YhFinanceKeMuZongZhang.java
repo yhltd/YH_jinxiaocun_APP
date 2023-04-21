@@ -19,6 +19,7 @@ public class YhFinanceKeMuZongZhang {
     private BigDecimal load;
     private BigDecimal borrowed;
 
+
     public int getId() {
         return id;
     }

@@ -30,6 +30,7 @@ import com.example.myapplication.scheduling.service.ModuleInfoService;
 import com.example.myapplication.scheduling.service.OrderInfoService;
 import com.example.myapplication.scheduling.service.TimeConfigService;
 import com.example.myapplication.scheduling.service.WorkDetailService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -124,11 +125,12 @@ public class WorkPlanActivity extends AppCompatActivity {
             ToastUtil.show(WorkPlanActivity.this, "请选择日期");
             return;
         }
-
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

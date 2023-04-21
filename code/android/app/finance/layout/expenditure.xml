@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".finance.activity.ExpenditureActivity">
+    tools:context=".finance.activity.ExpenditureActivity"
+    android:background="@color/WhiteSmoke">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:background="@drawable/border_bottom">
+        android:background="@color/white"
+        android:layout_marginTop="5dp">
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -27,16 +29,19 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="634dp">
+        android:layout_height="584dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="40dp"
                 android:background="@drawable/border_bottom"
                 android:gravity="center"
                 android:orientation="horizontal">

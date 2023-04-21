@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.finance.entity.YhFinanceExpenditure;
+import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceExpenditureService;
 import com.example.myapplication.finance.service.YhFinanceIncomeService;
@@ -33,6 +34,7 @@ import com.example.myapplication.finance.service.YhFinanceInvestmentIncomeServic
 import com.example.myapplication.finance.service.YhFinanceManagementExpenditureService;
 import com.example.myapplication.finance.service.YhFinanceManagementIncomeService;
 import com.example.myapplication.finance.service.YhFinanceVoucherWordService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -53,6 +55,7 @@ public class ExpenditureActivity extends AppCompatActivity {
     private YhFinanceManagementExpenditureService yhFinanceManagementExpenditureService;
     private YhFinanceManagementIncomeService yhFinanceManagementIncomeService;
     private YhFinanceVoucherWordService yhFinanceVoucherWordService;
+    private YhFinanceQuanXian yhFinanceQuanXian;
 
     private ListView listView1;
     private Spinner type_select;
@@ -86,6 +89,7 @@ public class ExpenditureActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         yhFinanceUser = myApplication.getYhFinanceUser();
+        yhFinanceQuanXian = myApplication.getYhFinanceQuanXian();
 
     }
 
@@ -249,10 +253,12 @@ public class ExpenditureActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView1.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -356,6 +362,10 @@ public class ExpenditureActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!yhFinanceQuanXian.getKzxmUpdate().equals("是")){
+                    ToastUtil.show(ExpenditureActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(ExpenditureActivity.this, ExpenditureChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
@@ -372,6 +382,10 @@ public class ExpenditureActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!yhFinanceQuanXian.getKzxmDelete().equals("是")){
+                    ToastUtil.show(ExpenditureActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(ExpenditureActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {
@@ -430,6 +444,10 @@ public class ExpenditureActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
+        if(!yhFinanceQuanXian.getKzxmAdd().equals("是")){
+            ToastUtil.show(ExpenditureActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(ExpenditureActivity.this, ExpenditureChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         intent.putExtra("service", type_selectText);

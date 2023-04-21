@@ -31,10 +31,10 @@ public class YhRenShiUserService {
     /**
      * 查询全部数据
      */
-    public List<YhRenShiUser> getList(String company, String username) {
-        String sql = "select * from gongzi_renyuan where L = ? and B like '%'+ ? +'%'";
+    public List<YhRenShiUser> getList(String company, String username,String phone) {
+        String sql = "select * from gongzi_renyuan where L = ? and B like '%'+ ? +'%' and O like '%' + ? + '%'";
         base = new renshiBaseDao();
-        List<YhRenShiUser> list = base.query(YhRenShiUser.class, sql,company,username);
+        List<YhRenShiUser> list = base.query(YhRenShiUser.class, sql,company,username,phone);
         return list;
     }
 
@@ -61,20 +61,20 @@ public class YhRenShiUserService {
     /**
      * 新增
      */
-    public boolean insert(YhFinanceUser YhFinanceUser) {
-        String sql = "insert into Account(name,pwd,[do],bianhao,company) values(?,?,?,?,?)";
+    public boolean insert(YhRenShiUser YhRenShiUser) {
+        String sql = "insert into gongzi_renyuan(B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,AA,AB,AC,AD) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         base = new renshiBaseDao();
-        long result = base.executeOfId(sql, YhFinanceUser.getName(), YhFinanceUser.getPwd(),YhFinanceUser.get_do(),YhFinanceUser.getBianhao(),YhFinanceUser.getCompany());
+        long result = base.executeOfId(sql, YhRenShiUser.getB(), YhRenShiUser.getC(),YhRenShiUser.getD(),YhRenShiUser.getE(),YhRenShiUser.getF(),YhRenShiUser.getG(),YhRenShiUser.getH(),YhRenShiUser.getI(),YhRenShiUser.getJ(),YhRenShiUser.getK(),YhRenShiUser.getL(),YhRenShiUser.getM(),YhRenShiUser.getN(),YhRenShiUser.getO(),YhRenShiUser.getP(),YhRenShiUser.getQ(),YhRenShiUser.getR(),YhRenShiUser.getS(),YhRenShiUser.getT(),YhRenShiUser.getU(),YhRenShiUser.getV(),YhRenShiUser.getW(),YhRenShiUser.getX(),YhRenShiUser.getY(),YhRenShiUser.getZ(),YhRenShiUser.getAa(),YhRenShiUser.getAb(),YhRenShiUser.getAc(),YhRenShiUser.getAd());
         return result > 0;
     }
 
     /**
      * 修改
      */
-    public boolean update(YhFinanceUser YhFinanceUser) {
-        String sql = "update Account set name=?,pwd=?,[do]=?,bianhao=?,company=? where id=? ";
+    public boolean update(YhRenShiUser YhRenShiUser) {
+        String sql = "update gongzi_renyuan set B=?,C=?,D=?,E=?,F=?,G=?,H=?,I=?,J=?,K=?,L=?,M=?,N=?,O=?,P=?,Q=?,R=?,S=?,T=?,U=?,V=?,W=?,X=?,Y=?,Z=?,AA=?,AB=?,AC=?,AD=? where id=? ";
         base = new renshiBaseDao();
-        boolean result = base.execute(sql, YhFinanceUser.getName(), YhFinanceUser.getPwd(),YhFinanceUser.get_do(),YhFinanceUser.getBianhao(),YhFinanceUser.getCompany());
+        boolean result = base.execute(sql, YhRenShiUser.getB(), YhRenShiUser.getC(),YhRenShiUser.getD(),YhRenShiUser.getE(),YhRenShiUser.getF(),YhRenShiUser.getG(),YhRenShiUser.getH(),YhRenShiUser.getI(),YhRenShiUser.getJ(),YhRenShiUser.getK(),YhRenShiUser.getL(),YhRenShiUser.getM(),YhRenShiUser.getN(),YhRenShiUser.getO(),YhRenShiUser.getP(),YhRenShiUser.getQ(),YhRenShiUser.getR(),YhRenShiUser.getS(),YhRenShiUser.getT(),YhRenShiUser.getU(),YhRenShiUser.getV(),YhRenShiUser.getW(),YhRenShiUser.getX(),YhRenShiUser.getY(),YhRenShiUser.getZ(),YhRenShiUser.getAa(),YhRenShiUser.getAb(),YhRenShiUser.getAc(),YhRenShiUser.getAd(),YhRenShiUser.getId());
         return result;
     }
 
@@ -82,7 +82,7 @@ public class YhRenShiUserService {
      * 删除
      */
     public boolean delete(int id) {
-        String sql = "delete from Account where id = ?";
+        String sql = "delete from gongzi_renyuan where id = ?";
         base = new renshiBaseDao();
         return base.execute(sql, id);
     }

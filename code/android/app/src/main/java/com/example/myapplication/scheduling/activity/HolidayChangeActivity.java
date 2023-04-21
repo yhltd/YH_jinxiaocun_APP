@@ -24,6 +24,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.scheduling.entity.Holiday;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.HolidayService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.util.Calendar;
@@ -82,7 +83,7 @@ public class HolidayChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -92,6 +93,7 @@ public class HolidayChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(HolidayChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -109,7 +111,7 @@ public class HolidayChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -119,6 +121,7 @@ public class HolidayChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(HolidayChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

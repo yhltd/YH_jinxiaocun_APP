@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".jxc.activity.ProductQueryActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/WhiteSmoke">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:background="@drawable/border_bottom">
+        android:layout_marginTop="5dp"
+        android:background="@color/white">
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -27,7 +29,10 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp">
 
 
         <LinearLayout
@@ -37,7 +42,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:background="@drawable/border_bottom">

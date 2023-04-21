@@ -27,6 +27,7 @@ import com.example.myapplication.scheduling.entity.WorkDetail;
 import com.example.myapplication.scheduling.service.ModuleInfoService;
 import com.example.myapplication.scheduling.service.TimeConfigService;
 import com.example.myapplication.scheduling.service.WorkDetailService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 
 import java.text.DateFormat;
@@ -103,10 +104,12 @@ public class WorkDetailActivity extends AppCompatActivity {
     }
 
     private void initList(String type) {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

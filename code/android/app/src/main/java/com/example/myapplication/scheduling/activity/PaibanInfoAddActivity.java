@@ -39,6 +39,7 @@ import com.example.myapplication.scheduling.service.DepartmentService;
 import com.example.myapplication.scheduling.service.PaibanDetailService;
 import com.example.myapplication.scheduling.service.PaibanInfoService;
 import com.example.myapplication.scheduling.service.PaibanRenyuanService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.text.ParseException;
@@ -143,11 +144,13 @@ public class PaibanInfoAddActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 if (msg.obj != null) {
                     department.setAdapter((SpinnerAdapter) msg.obj);
+                    LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 }
                 return true;
             }
@@ -191,11 +194,13 @@ public class PaibanInfoAddActivity extends AppCompatActivity {
     }
 
     private void init() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 MyApplication myApplication = (MyApplication) getApplication();
                 listView.setAdapter(new MyAdapter(myApplication.getApplicationContext()));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

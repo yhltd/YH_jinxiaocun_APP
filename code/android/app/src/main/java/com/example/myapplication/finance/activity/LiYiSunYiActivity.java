@@ -24,10 +24,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.finance.entity.YhFinanceLiYiSunYi;
+import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.entity.YhFinanceZiChanFuZhai;
 import com.example.myapplication.finance.service.YhFinanceLiYiSunYiService;
 import com.example.myapplication.finance.service.YhFinanceZiChanFuZhaiService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 
 import java.text.SimpleDateFormat;
@@ -42,6 +44,7 @@ public class LiYiSunYiActivity extends AppCompatActivity {
     MyApplication myApplication;
 
     private YhFinanceUser yhFinanceUser;
+    private YhFinanceQuanXian yhFinanceQuanXian;
     private YhFinanceLiYiSunYiService yhFinanceLiYiSunYiService;
     private Spinner class_select;
     private EditText start_date;
@@ -63,6 +66,7 @@ public class LiYiSunYiActivity extends AppCompatActivity {
 
         myApplication = (MyApplication) getApplication();
         yhFinanceUser = myApplication.getYhFinanceUser();
+        yhFinanceQuanXian = myApplication.getYhFinanceQuanXian();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liyisunyi);
 
@@ -102,6 +106,7 @@ public class LiYiSunYiActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         class_selectText = class_select.getSelectedItem().toString();
@@ -123,6 +128,7 @@ public class LiYiSunYiActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

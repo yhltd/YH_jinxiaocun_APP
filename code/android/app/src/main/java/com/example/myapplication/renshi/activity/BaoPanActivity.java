@@ -28,6 +28,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.renshi.service.YhRenShiGongZiMingXiService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -115,6 +116,7 @@ public class BaoPanActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         if(start_dateText.equals("")){
@@ -128,6 +130,7 @@ public class BaoPanActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

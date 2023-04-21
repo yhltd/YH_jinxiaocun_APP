@@ -30,6 +30,7 @@ import com.example.myapplication.renshi.entity.YhRenShiShengRiTiXing;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.renshi.service.YhRenShiGongZiMingXiService;
 import com.example.myapplication.renshi.service.YhRenShiUserService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -99,6 +100,7 @@ public class ShengRiTiXingActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         this_dateText = this_date.getText().toString();
         if(this_dateText.equals("")){
             Calendar now = Calendar.getInstance();
@@ -120,6 +122,7 @@ public class ShengRiTiXingActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

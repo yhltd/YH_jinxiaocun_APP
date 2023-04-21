@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".scheduling.activity.SchedulingActivity">
+
+    <com.youth.banner.Banner
+        android:id="@+id/main_banner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"
+        app:banner_radius="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:banner_loop_time="5000"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="100%"
+        />
 
     <ScrollView
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:id="@+id/main_scollview"
+        app:layout_marginTopPercent="24%"
+        app:layout_heightPercent="78%">
 
 
         <LinearLayout
@@ -17,25 +35,32 @@
             android:gravity="start"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="20dp"
+                android:text="基础配置" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="110dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/module"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/rukuguanli" />
+                        android:background="@drawable/mokuaidanwei" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -50,16 +75,15 @@
                 <LinearLayout
                     android:id="@+id/time"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/chuku" />
+                        android:background="@drawable/gongzuoshijianjixiuxiri" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -67,31 +91,22 @@
                         android:layout_marginTop="10dp"
                         android:text="工作时间及休息日"
                         android:textColor="@color/main_text"
-                        android:textSize="15sp"
+                        android:textSize="12sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/bom"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/qichukucun" />
+                        android:background="@drawable/bom" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -104,11 +119,49 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/user_info"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:background="@drawable/yonghu" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="账号管理"
+                        android:textColor="@color/main_text"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="20dp"
+                android:text="订单及部门" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
                     android:id="@+id/order"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -127,27 +180,99 @@
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
                 <LinearLayout
-                    android:id="@+id/work"
+                    android:id="@+id/department"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/jinxiaocun" />
+                        android:background="@drawable/bumen" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="部门"
+                        android:textColor="@color/main_text"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                    />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/main_text"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/main_text"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="20dp"
+                android:text="排产及排班" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/work"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:background="@drawable/paichan" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -160,105 +285,40 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/work_check"
+                    android:id="@+id/paiban"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/shangpin_jinchu" />
+                        android:background="@drawable/paiban" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="排产核对"
+                        android:text="排班"
                         android:textColor="@color/main_text"
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/summary"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/kehu_chuhuo" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="汇总"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/department"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/shangpinguanli" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="部门"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/paiban_renyuan"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/kehu" />
+                        android:background="@drawable/renyuanxinxi" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -271,49 +331,17 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/paiban"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/gys" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="排班"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <LinearLayout
                     android:id="@+id/paiban_detail"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/biji" />
+                        android:background="@drawable/paibanmingxi" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -326,32 +354,208 @@
                 </LinearLayout>
 
 
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
                 <LinearLayout
-                    android:id="@+id/user_info"
+                    android:id="@+id/work_check"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/yonghu" />
+                        android:background="@drawable/paichanhedui" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="账号管理"
+                        android:text="排产核对"
                         android:textColor="@color/main_text"
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/main_text"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/main_text"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/main_text"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="20dp"
+                android:text="汇总" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/summary"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:background="@drawable/huizong" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="汇总"
+                        android:textColor="@color/main_text"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/main_text"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/main_text"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/main_text"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>

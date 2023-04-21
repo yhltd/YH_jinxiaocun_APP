@@ -29,6 +29,7 @@ import com.example.myapplication.scheduling.entity.PaibanRenyuan;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.DepartmentService;
 import com.example.myapplication.scheduling.service.PaibanRenyuanService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -108,12 +109,14 @@ public class PaibanRenyuanChangeActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 if (msg.obj != null) {
                     departmentName.setAdapter((SpinnerAdapter) msg.obj);
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -143,7 +146,7 @@ public class PaibanRenyuanChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -153,6 +156,7 @@ public class PaibanRenyuanChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(PaibanRenyuanChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -170,7 +174,7 @@ public class PaibanRenyuanChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -180,6 +184,7 @@ public class PaibanRenyuanChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(PaibanRenyuanChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

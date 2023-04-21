@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".renshi.activity.KaoQinBiaoActivity">
+    tools:context=".renshi.activity.KaoQinBiaoActivity"
+    android:background="@color/WhiteSmoke">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:background="@drawable/border_bottom">
+        android:background="@color/white"
+        android:layout_marginTop="5dp">
         <EditText
             android:id="@+id/start_date"
             android:layout_width="0dp"
@@ -35,7 +37,8 @@
             android:id="@+id/sel_button"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:text="查询" />
+            android:text="查询"
+            android:layout_marginEnd="10dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -71,7 +74,10 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="534dp">
+        android:layout_height="534dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -80,7 +86,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="40dp"
                 android:background="@drawable/border_bottom"
                 android:gravity="center"
                 android:orientation="horizontal">

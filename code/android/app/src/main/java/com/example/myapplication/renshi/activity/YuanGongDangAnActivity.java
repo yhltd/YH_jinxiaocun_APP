@@ -25,6 +25,7 @@ import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.renshi.service.YhRenShiGongZiMingXiService;
 import com.example.myapplication.renshi.service.YhRenShiUserService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -105,12 +106,14 @@ public class YuanGongDangAnActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         yuangong_nameText = yuangong_name.getText().toString();
 
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -121,7 +124,7 @@ public class YuanGongDangAnActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     yhRenShiUserService = new YhRenShiUserService();
-                    list = yhRenShiUserService.getList(yhRenShiUser.getL(),yuangong_nameText);
+                    list = yhRenShiUserService.getList(yhRenShiUser.getL(),yuangong_nameText,"");
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {

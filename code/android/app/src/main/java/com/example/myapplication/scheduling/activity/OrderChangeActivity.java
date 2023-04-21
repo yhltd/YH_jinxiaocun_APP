@@ -39,6 +39,7 @@ import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.BomInfoService;
 import com.example.myapplication.scheduling.service.OrderInfoService;
 import com.example.myapplication.scheduling.service.PaibanRenyuanService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.text.SimpleDateFormat;
@@ -135,11 +136,13 @@ public class OrderChangeActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 MyApplication myApplication = (MyApplication) getApplication();
                 listView.setAdapter(new MyAdapter(myApplication.getApplicationContext()));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -288,6 +291,7 @@ public class OrderChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
+
         List<BomInfo> bmList = new ArrayList<>();
         for (BomInfo bomInfo : list) {
             if (bomInfo.isCheck()) {
@@ -298,6 +302,7 @@ public class OrderChangeActivity extends AppCompatActivity {
             ToastUtil.show(OrderChangeActivity.this, "请选择物料！");
             return;
         }
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -307,6 +312,7 @@ public class OrderChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(OrderChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -342,6 +348,7 @@ public class OrderChangeActivity extends AppCompatActivity {
             ToastUtil.show(OrderChangeActivity.this, "请选择物料！");
             return;
         }
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -351,6 +358,7 @@ public class OrderChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(OrderChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

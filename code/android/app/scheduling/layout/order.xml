@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".scheduling.activity.OrderActivity">
+    tools:context=".scheduling.activity.OrderActivity"
+    android:background="@color/WhiteSmoke">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/border_bottom"
-        android:gravity="center_vertical">
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:layout_marginTop="5dp">
 
         <ImageView
             android:layout_width="30dp"
@@ -50,7 +52,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="40dp"
                 android:background="@drawable/border_bottom"
                 android:gravity="center"
                 android:orientation="horizontal">

@@ -26,8 +26,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.finance.entity.YhFinanceKeMuZongZhang;
+import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceKeMuZongZhangService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -40,6 +42,7 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
 
     private YhFinanceUser yhFinanceUser;
+    private YhFinanceQuanXian yhFinanceQuanXian;
 
     private YhFinanceKeMuZongZhangService yhFinanceKeMuZongZhangService;
 
@@ -80,6 +83,7 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         yhFinanceUser = myApplication.getYhFinanceUser();
+        yhFinanceQuanXian = myApplication.getYhFinanceQuanXian();
 
     }
 
@@ -216,6 +220,10 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
         return new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
+                if(!yhFinanceQuanXian.getKmzzDelete().equals("是")){
+                    ToastUtil.show(KeMuZongZhangActivity.this, "无权限！");
+                    return true;
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(KeMuZongZhangActivity.this);
                 int position = Integer.parseInt(view.getTag().toString());
                 Handler deleteHandler = new Handler(new Handler.Callback() {
@@ -263,6 +271,10 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!yhFinanceQuanXian.getKmzzUpdate().equals("是")){
+                    ToastUtil.show(KeMuZongZhangActivity.this, "无权限！");
+                    return;
+                }
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(KeMuZongZhangActivity.this, KeMuZongZhangChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
@@ -274,6 +286,10 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
     }
 
     public void onInsertClick(View v) {
+        if(!yhFinanceQuanXian.getKmzzAdd().equals("是")){
+            ToastUtil.show(KeMuZongZhangActivity.this, "无权限！");
+            return;
+        }
         Intent intent = new Intent(KeMuZongZhangActivity.this, KeMuZongZhangChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
@@ -281,10 +297,12 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
