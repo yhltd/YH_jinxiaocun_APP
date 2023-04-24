@@ -25,11 +25,13 @@ import com.example.myapplication.R;
 import com.example.myapplication.finance.entity.YhFinanceKeMuZongZhang;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceKeMuZongZhangService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -134,6 +136,13 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void clearClick(View v) {
+        code.setText("");
+        name.setText("");
+        load.setText("");
+        borrowed.setText("");
     }
 
 
@@ -595,9 +604,9 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
         public void onNothingSelected(AdapterView<?> parent) {}
     }
 
-    public void updateClick(View v) {
+    public void insertClick(View v) throws ParseException {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -607,6 +616,35 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(KeMuZongZhangChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                return true;
+            }
+        });
+
+        new Thread(new Runnable() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void run() {
+                Message msg = new Message();
+                msg.obj = yhFinanceKeMuZongZhangService.insert(yhFinanceKeMuZongZhang);
+                saveHandler.sendMessage(msg);
+            }
+        }).start();
+    }
+
+    public void updateClick(View v) {
+        if (!checkForm()) return;
+        LoadingDialog.getInstance(this).show();
+        Handler saveHandler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(@NonNull Message msg) {
+                if ((boolean) msg.obj) {
+                    ToastUtil.show(KeMuZongZhangChangeActivity.this, "保存成功");
+                    back();
+                } else {
+                    ToastUtil.show(KeMuZongZhangChangeActivity.this, "保存失败，请稍后再试");
+                }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -31,6 +33,9 @@ import com.example.myapplication.finance.service.YhFinanceKehuPeizhiService;
 import com.example.myapplication.finance.service.YhFinanceSimpleAccountingService;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
+import com.jzxiang.pickerview.TimePickerDialog;
+import com.jzxiang.pickerview.data.Type;
+import com.jzxiang.pickerview.listener.OnDateSetListener;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -38,16 +43,17 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class JiJianTaiZhangChangeActivity extends AppCompatActivity {
+public class JiJianTaiZhangChangeActivity extends AppCompatActivity implements OnDateSetListener, View.OnClickListener {
     private YhFinanceUser yhFinanceUser;
     private YhFinanceJiJianTaiZhang yhFinanceJiJianTaiZhang;
     private YhFinanceJiJianTaiZhangService yhFinanceJiJianTaiZhangService;
     private YhFinanceKehuPeizhiService yhFinanceKehuPeizhiService;
     private YhFinanceSimpleAccountingService yhFinanceSimpleAccountingService;
 
-    private EditText insert_date;
+    private TextView insert_date;
     private Spinner accounting;
     private EditText project;
     private Spinner kehu;
@@ -56,8 +62,9 @@ public class JiJianTaiZhangChangeActivity extends AppCompatActivity {
     private EditText cope;
     private EditText payment;
     private EditText zhaiyao;
-
-
+    private SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private TimePickerDialog pickerdialog;
+    private String date_name;
     String[] project_array;
     String[] kehu_array;
 
@@ -89,6 +96,9 @@ public class JiJianTaiZhangChangeActivity extends AppCompatActivity {
         payment = findViewById(R.id.payment);
         zhaiyao = findViewById(R.id.zhaiyao);
 
+        insert_date.setOnClickListener(this);
+
+
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
         if (id == R.id.update_btn) {
@@ -96,8 +106,10 @@ public class JiJianTaiZhangChangeActivity extends AppCompatActivity {
             init1();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
-
-            insert_date.setText(yhFinanceJiJianTaiZhang.getInsert_date().toString());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date(yhFinanceJiJianTaiZhang.getInsert_date().getTime());
+            String java_date = sdf.format(date);
+            insert_date.setText(java_date);
             project.setText(yhFinanceJiJianTaiZhang.getProject());
 
             receivable.setText(yhFinanceJiJianTaiZhang.getReceivable().toString());
@@ -120,6 +132,16 @@ public class JiJianTaiZhangChangeActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void clearClick(View v) {
+        insert_date.setText("请选择");
+        project.setText("");
+        receivable.setText("");
+        receipts.setText("");
+        cope.setText("");
+        payment.setText("");
+        zhaiyao.setText("");
     }
 
 
@@ -265,13 +287,12 @@ public class JiJianTaiZhangChangeActivity extends AppCompatActivity {
 
 
     private boolean checkForm() throws ParseException {
-        if (insert_date.getText().toString().equals("")) {
+        if (insert_date.getText().toString().equals("请选择")) {
             ToastUtil.show(JiJianTaiZhangChangeActivity.this, "请输入日期");
             return false;
         } else {
-            DateFormat spd = new SimpleDateFormat("yyyyMMddHHmmss");
-            Timestamp startTime = new Timestamp(spd.parse(insert_date.getText().toString()).getTime());
-            yhFinanceJiJianTaiZhang.setInsert_date(startTime);
+            Timestamp startTime = CovertStrTODate(insert_date.getText().toString());
+            yhFinanceJiJianTaiZhang.setInsert_date(CovertStrTODate(insert_date.getText().toString()));
         }
 
         if (accounting.getSelectedItem().toString().equals("")) {
@@ -360,6 +381,65 @@ public class JiJianTaiZhangChangeActivity extends AppCompatActivity {
         return 0;
     }
 
+
+    private void intiTimeDialog(Type claa) {
+        pickerdialog = new TimePickerDialog.Builder()
+                //设置类型
+                .setType(claa)
+                //设置选择时间监听回调
+                .setCallBack(this)
+                //设置标题
+                .setTitleStringId("请选择时间")
+                //设置时间
+                //设置颜色
+                .setThemeColor(getResources().getColor(R.color.button))
+                //设置 字体大小
+                .setWheelItemTextSize(15)
+                //完毕
+                .build();
+        pickerdialog.show(getSupportFragmentManager(),"abc");
+    }
+
+    public void thisOnClick(View v) {
+        intiTimeDialog(Type.ALL);
+    }
+
+    @Override
+    public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
+//        Toast.makeText(this, "你选择的时间:"+getDateToString(millseconds), Toast.LENGTH_SHORT).show();
+        if(date_name.equals("insert_date")){
+            insert_date.setText(getDateToString(millseconds));
+        }
+    }
+
+    //Android时间选择器，支持年月日时分，年月日，年月，月日时分，时分格式，可以设置最小时间（精确到分）
+    public String getDateToString(long time) {
+        Date d = new Date(time);
+        return sf.format(d);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.insert_date:
+                date_name = "insert_date";
+                intiTimeDialog(Type.ALL);
+                break;
+        }
+    }
+
+    public static Timestamp CovertStrTODate(String str) {
+        Timestamp ts =null;
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        format.setLenient(false);
+        try {
+            ts = new Timestamp(format.parse(str).getTime());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return ts;
+    }
 
     private void back() {
         setResult(RESULT_OK, new Intent());

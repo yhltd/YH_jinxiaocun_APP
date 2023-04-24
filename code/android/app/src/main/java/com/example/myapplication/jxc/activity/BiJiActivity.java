@@ -22,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunZhengLi;
 import com.example.myapplication.jxc.service.YhJinXiaoCunZhengLiService;
@@ -184,6 +186,31 @@ public class BiJiActivity extends AppCompatActivity {
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("商品代码:");
+                        xiangQingYe.setB_title("商品名称:");
+                        xiangQingYe.setC_title("商品类别:");
+                        xiangQingYe.setD_title("商品单位:");
+                        xiangQingYe.setE_title("备注:");
+
+                        xiangQingYe.setA(list.get(position).getSpDm());
+                        xiangQingYe.setB(list.get(position).getName());
+                        xiangQingYe.setC(list.get(position).getLeiBie());
+                        xiangQingYe.setD(list.get(position).getDanWei());
+                        xiangQingYe.setE(list.get(position).getBeizhu());
+
+                        Intent intent = new Intent(BiJiActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

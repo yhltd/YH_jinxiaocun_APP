@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:background="@color/white"
+        android:background="@drawable/shape_corner"
         android:layout_marginTop="5dp">
         <ImageView
             android:layout_width="30dp"

@@ -30,6 +30,16 @@
         android:roundIcon="@drawable/yhlogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+
+        <activity
+            android:name=".XiangQingYeActivity"
+            android:label="详情">
+            <intent-filter>
+                <action android:name="android.intent.action.XiangQingYeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

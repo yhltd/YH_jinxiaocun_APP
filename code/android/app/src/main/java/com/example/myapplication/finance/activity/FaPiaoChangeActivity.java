@@ -33,6 +33,7 @@ import com.example.myapplication.finance.service.YhFinanceInvoicePeizhiService;
 import com.example.myapplication.finance.service.YhFinanceJiJianTaiZhangService;
 import com.example.myapplication.finance.service.YhFinanceKehuPeizhiService;
 import com.example.myapplication.finance.service.YhFinanceSimpleAccountingService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -133,8 +134,17 @@ public class FaPiaoChangeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void clearClick(View v) {
+        riqi.setText("");
+        zhaiyao.setText("");
+        invoice_no.setText("");
+        jine.setText("");
+        remarks.setText("");
+    }
+
 
     public void init1() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -144,6 +154,7 @@ public class FaPiaoChangeActivity extends AppCompatActivity {
                 SpinnerAdapter adapter_kehu = new ArrayAdapter<String>(FaPiaoChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, kehu_array);
                 unit.setAdapter(StringUtils.cast(adapter_kehu));
                 unit.setSelection(getKehuPosition(yhFinanceFaPiao.getUnit()));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -178,6 +189,7 @@ public class FaPiaoChangeActivity extends AppCompatActivity {
     }
 
     public void init2() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -185,6 +197,7 @@ public class FaPiaoChangeActivity extends AppCompatActivity {
                 invoice_type.setAdapter(StringUtils.cast(adapter_project));
                 SpinnerAdapter adapter_kehu = new ArrayAdapter<String>(FaPiaoChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, kehu_array);
                 unit.setAdapter(StringUtils.cast(adapter_kehu));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -220,7 +233,7 @@ public class FaPiaoChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) throws ParseException {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -230,6 +243,7 @@ public class FaPiaoChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(FaPiaoChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -248,7 +262,7 @@ public class FaPiaoChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) throws ParseException {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -258,7 +272,7 @@ public class FaPiaoChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(FaPiaoChangeActivity.this, "保存失败，请稍后再试");
                 }
-
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -303,7 +317,20 @@ public class FaPiaoChangeActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                editText.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
+                String this_month = "";
+                if (monthOfYear + 1 < 10){
+                    this_month = "0" + String.format("%s",monthOfYear + 1);
+                }else{
+                    this_month = String.format("%s",monthOfYear + 1);
+                }
+
+                String this_day = "";
+                if (dayOfMonth + 1 < 10){
+                    this_day = "0" + String.format("%s",dayOfMonth);
+                }else{
+                    this_day = String.format("%s",dayOfMonth);
+                }
+                editText.setText(year + "-" + this_month + "-" + this_day);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

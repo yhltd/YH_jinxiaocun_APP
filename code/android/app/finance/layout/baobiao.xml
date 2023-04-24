@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:background="@color/white"
+        android:background="@drawable/shape_corner_up"
         android:layout_marginTop="5dp">
         <ImageView
             android:layout_width="30dp"
@@ -30,7 +30,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
+        android:background="@drawable/shape_corner_down"
         android:gravity="center_vertical">
 
         <EditText
@@ -43,8 +43,11 @@
         <Button
             android:id="@+id/sel_button"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:text="查询"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"
             android:layout_marginEnd="10dp"/>
     </LinearLayout>
 

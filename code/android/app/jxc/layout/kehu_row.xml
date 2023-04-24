@@ -20,7 +20,7 @@
             android:textSize="14sp"
             android:text="公司名称"
             android:textStyle="bold"
-            android:width="250dp"/>
+            android:width="150dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:textSize="14sp"
             android:text="联系地址"
             android:textStyle="bold"
-            android:width="250dp"/>
+            android:width="150dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             android:textSize="14sp"
             android:text="联系方式"
             android:textStyle="bold"
-            android:width="250dp"/>
+            android:width="150dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"

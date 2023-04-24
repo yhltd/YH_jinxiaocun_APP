@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunKeHu;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunKeHuService;
@@ -183,6 +185,27 @@ public class KehuActivity extends AppCompatActivity {
                             initList();
                         }
                         return true;
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("公司名称:");
+                        xiangQingYe.setB_title("联系地址:");
+                        xiangQingYe.setC_title("联系电话:");
+
+                        xiangQingYe.setA(list.get(position).getBeizhu());
+                        xiangQingYe.setB(list.get(position).getLianxidizhi());
+                        xiangQingYe.setC(list.get(position).getLianxifangshi());
+
+                        Intent intent = new Intent(KehuActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,8 +37,10 @@ import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -89,6 +92,15 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
         showDateOnClick(start_date);
         showDateOnClick(stop_date);
         initList();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -172,7 +184,10 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
                 for (int i = 0; i < list.size(); i++) {
                     HashMap<String, Object> item = new HashMap<>();
                     item.put("company", list.get(i).getCompany());
-                    item.put("insert_date", list.get(i).getInsert_date());
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date date = new Date(list.get(i).getInsert_date().getTime());
+                    String java_date = sdf.format(date);
+                    item.put("insert_date", java_date);
                     item.put("project", list.get(i).getProject());
                     item.put("kehu", list.get(i).getKehu());
                     item.put("receipts", list.get(i).getReceipts());

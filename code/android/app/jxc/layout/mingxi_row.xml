@@ -35,7 +35,7 @@
             android:textSize="14sp"
             android:text="商品代码"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             android:textSize="14sp"
             android:text="商品名称"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:textSize="14sp"
             android:text="商品类别"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
             android:textSize="14sp"
             android:text="价格"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
             android:textSize="14sp"
             android:text="数量"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
             android:textSize="14sp"
             android:text="明细类型"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
             android:textSize="14sp"
             android:text="收/进货方"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"

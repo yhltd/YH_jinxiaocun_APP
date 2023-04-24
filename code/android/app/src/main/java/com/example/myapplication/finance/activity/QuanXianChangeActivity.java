@@ -27,6 +27,7 @@ import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceQuanXianService;
 import com.example.myapplication.finance.service.YhFinanceUserService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -205,6 +206,7 @@ public class QuanXianChangeActivity extends AppCompatActivity {
 
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -247,6 +249,7 @@ public class QuanXianChangeActivity extends AppCompatActivity {
                 jjzzDelete.setSelection(getType(yhFinanceQuanXian.getJjzzDelete()));
                 jjzzUpdate.setSelection(getType(yhFinanceQuanXian.getJjzzUpdate()));
                 jjzzSelect.setSelection(getType(yhFinanceQuanXian.getJjzzSelect()));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -284,7 +287,7 @@ public class QuanXianChangeActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void updateClick(View v) throws ParseException {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -294,6 +297,7 @@ public class QuanXianChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(QuanXianChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

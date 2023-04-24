@@ -28,6 +28,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.jxc.entity.YhJinXiaoCun;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunMingXi;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
@@ -288,6 +290,41 @@ public class MingXiActivity extends AppCompatActivity {
                             initList();
                         }
                         return true;
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("订单号:");
+                        xiangQingYe.setB_title("商品代码:");
+                        xiangQingYe.setC_title("商品名称:");
+                        xiangQingYe.setD_title("商品类别:");
+                        xiangQingYe.setE_title("价格:");
+                        xiangQingYe.setF_title("数量:");
+                        xiangQingYe.setG_title("明细类型:");
+                        xiangQingYe.setH_title("时间:");
+                        xiangQingYe.setI_title("公司名:");
+                        xiangQingYe.setJ_title("收/进货方:");
+
+                        xiangQingYe.setA(list.get(position).getOrderid());
+                        xiangQingYe.setB(list.get(position).getSpDm());
+                        xiangQingYe.setC(list.get(position).getCpname());
+                        xiangQingYe.setD(list.get(position).getCplb());
+                        xiangQingYe.setE(list.get(position).getCpsj());
+                        xiangQingYe.setF(list.get(position).getCpsl());
+                        xiangQingYe.setG(list.get(position).getMxtype());
+                        xiangQingYe.setH(list.get(position).getShijian());
+                        xiangQingYe.setI(list.get(position).getGsName());
+                        xiangQingYe.setJ(list.get(position).getShou_h());
+
+                        Intent intent = new Intent(MingXiActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:background="@color/white"
+        android:background="@drawable/shape_corner"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:focusableInTouchMode="true">
@@ -20,7 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/border_bottom"
+            android:background="@drawable/shape_corner"
             android:gravity="center_vertical">
             <ImageView
                 android:layout_width="30dp"
@@ -84,7 +84,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="120dp"
                     android:text="商品代码"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -97,7 +97,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="120dp"
                     android:text="商品名称"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -110,7 +110,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="120dp"
                     android:text="商品类别"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -123,7 +123,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="120dp"
                     android:text="价格"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -136,7 +136,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="120dp"
                     android:text="数量"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -149,7 +149,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="120dp"
                     android:text="明细类型"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -188,7 +188,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="120dp"
                     android:text="收/进货方"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -223,7 +223,10 @@
             android:layout_height="wrap_content"
             android:text="查询"
             tools:ignore="MissingConstraints"
-            android:gravity="center" />
+            android:gravity="center"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -237,6 +240,9 @@
             android:layout_height="wrap_content"
             android:text="导出excel"
             tools:ignore="MissingConstraints"
-            android:gravity="center" />
+            android:gravity="center"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 </LinearLayout>

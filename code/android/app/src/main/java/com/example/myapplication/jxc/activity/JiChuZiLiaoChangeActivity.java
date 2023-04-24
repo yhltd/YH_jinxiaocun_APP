@@ -33,6 +33,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunJiChuZiLiao;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunJiChuZiLiaoService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.io.ByteArrayOutputStream;
@@ -113,6 +114,18 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void clearClick(View v) {
+        byte[] decodedString = Base64.decode("", Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        mark1.setImageBitmap(decodedByte);
+        cpDm.setText("");
+        name.setText("");
+        leiBie.setText("");
+        danWei.setText("");
+        kehu.setText("");
+        gongyingshang.setText("");
+    }
+
     //点击image控件选择图片
     public View.OnClickListener imageSel() {
         return new View.OnClickListener() {
@@ -150,6 +163,7 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -159,6 +173,7 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(JiChuZiLiaoChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -176,7 +191,7 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -186,6 +201,7 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(JiChuZiLiaoChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

@@ -74,7 +74,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="120dp"
                     android:text="商品代码"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -88,7 +88,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="120dp"
                     android:text="商品名称"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -102,7 +102,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="120dp"
                     android:text="商品类别"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -116,7 +116,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="120dp"
                     android:text="商品单位"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -130,7 +130,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="120dp"
                     android:text="客户名称"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -144,7 +144,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="120dp"
                     android:text="供应名称"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"

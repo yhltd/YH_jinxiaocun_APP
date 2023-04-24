@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,8 +99,18 @@ public class FaPiaoActivity extends AppCompatActivity {
         selectListShow();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private void selectListShow() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -107,6 +118,7 @@ public class FaPiaoActivity extends AppCompatActivity {
                     type_select.setAdapter((SpinnerAdapter) msg.obj);
                 }
                 initList();
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

@@ -31,6 +31,7 @@ import com.example.myapplication.jxc.entity.YhJinXiaoCunZhengLi;
 import com.example.myapplication.jxc.service.YhJinXiaoCunJiChuZiLiaoService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunKeHuService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunMingXiService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -123,6 +124,14 @@ public class MingXiChangeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void clearClick(View v) {
+        orderid.setText("");
+        cpname.setText("");
+        cplb.setText("");
+        cpsj.setText("");
+        cpsl.setText("");
+    }
+
     private class spDmItemSelectedListener implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -209,11 +218,13 @@ public class MingXiChangeActivity extends AppCompatActivity {
     }
 
     public void init1() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 spDm.setAdapter(StringUtils.cast(msg.obj));
                 spDm.setSelection(getSpDmPosition(yhJinXiaoCunMingXi.getSpDm()));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -224,9 +235,10 @@ public class MingXiChangeActivity extends AppCompatActivity {
                 try {
                     List<String> spDmList = yhJinXiaoCunJiChuZiLiaoService.getCpid(yhJinXiaoCunUser.getGongsi());
                     if (spDmList != null) {
-                        spDm_array = new String[spDmList.size()];
+                        spDm_array = new String[spDmList.size() + 1];
+                        spDm_array[0] = "";
                         for (int i = 0; i < spDmList.size(); i++) {
-                            spDm_array[i] = spDmList.get(i);
+                            spDm_array[i + 1] = spDmList.get(i);
                         }
                     }
                     adapter = new ArrayAdapter<String>(MingXiChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, spDm_array);
@@ -289,7 +301,7 @@ public class MingXiChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -299,6 +311,7 @@ public class MingXiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(MingXiChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

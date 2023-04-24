@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunUserService;
 import com.example.myapplication.utils.LoadingDialog;
@@ -173,6 +175,29 @@ public class UserActivity extends AppCompatActivity {
                             initList();
                         }
                         return true;
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("用户名:");
+                        xiangQingYe.setB_title("密码:");
+                        xiangQingYe.setC_title("权限:");
+                        xiangQingYe.setD_title("账号状态:");
+
+                        xiangQingYe.setA(list.get(position).getName());
+                        xiangQingYe.setB(list.get(position).getPassword());
+                        xiangQingYe.setC(list.get(position).getAdminis());
+                        xiangQingYe.setD(list.get(position).getBtype());
+
+                        Intent intent = new Intent(UserActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

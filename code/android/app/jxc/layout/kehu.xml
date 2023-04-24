@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:background="@color/white"
+        android:background="@drawable/shape_corner"
         android:gravity="center_vertical">
 
         <ImageView
@@ -30,8 +30,11 @@
         <Button
             android:id="@+id/sel_button"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:text="查询"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"
             android:layout_marginEnd="10dp"/>
     </LinearLayout>
 
@@ -57,7 +60,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="250dp"
+                    android:width="150dp"
                     android:text="公司名称"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -71,7 +74,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="250dp"
+                    android:width="150dp"
                     android:text="联系地址"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
@@ -85,7 +88,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="250dp"
+                    android:width="150dp"
                     android:text="联系方式"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"

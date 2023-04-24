@@ -24,6 +24,7 @@ import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceInvoicePeizhiService;
 import com.example.myapplication.finance.service.YhFinanceKehuPeizhiService;
 import com.example.myapplication.finance.service.YhFinanceSimpleAccountingService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 public class JiJianPeiZhiChangeActivity extends AppCompatActivity {
@@ -76,6 +77,10 @@ public class JiJianPeiZhiChangeActivity extends AppCompatActivity {
         }
     }
 
+    public void clearClick(View v) {
+        shouru.setText("");
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -106,7 +111,7 @@ public class JiJianPeiZhiChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -116,7 +121,7 @@ public class JiJianPeiZhiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(JiJianPeiZhiChangeActivity.this, "保存失败，请稍后再试");
                 }
-
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -144,7 +149,7 @@ public class JiJianPeiZhiChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -154,6 +159,7 @@ public class JiJianPeiZhiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(JiJianPeiZhiChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

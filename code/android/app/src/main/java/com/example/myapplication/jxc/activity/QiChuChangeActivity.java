@@ -28,6 +28,7 @@ import com.example.myapplication.jxc.entity.YhJinXiaoCunQiChuShu;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunJiChuZiLiaoService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunQiChuShuService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -106,11 +107,20 @@ public class QiChuChangeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void clearClick(View v) {
+        cpname.setText("");
+        cplb.setText("");
+        cpsj.setText("");
+        cpsl.setText("");
+    }
+
     public void init() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 cpid.setAdapter(StringUtils.cast(msg.obj));
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -122,9 +132,10 @@ public class QiChuChangeActivity extends AppCompatActivity {
                 try {
                     List<String> cpidList = yhJinXiaoCunJiChuZiLiaoService.getCpid(yhJinXiaoCunUser.getGongsi());
                     if (cpidList == null) return;
-                    cpid_array = new String[cpidList.size()];
+                    cpid_array = new String[cpidList.size() + 1];
+                    cpid_array[0] = "";
                     for (int i = 0; i < cpidList.size(); i++) {
-                        cpid_array[i] = cpidList.get(i);
+                        cpid_array[i + 1] = cpidList.get(i);
                     }
                     adapter = new ArrayAdapter<String>(QiChuChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, cpid_array);
                 } catch (Exception e) {
@@ -139,7 +150,7 @@ public class QiChuChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -149,6 +160,7 @@ public class QiChuChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(QiChuChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -166,7 +178,7 @@ public class QiChuChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -176,6 +188,7 @@ public class QiChuChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(QiChuChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

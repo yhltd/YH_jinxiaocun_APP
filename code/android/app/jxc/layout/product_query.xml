@@ -13,7 +13,7 @@
         android:layout_height="50dp"
         android:gravity="center_vertical"
         android:layout_marginTop="5dp"
-        android:background="@color/white">
+        android:background="@drawable/shape_corner">
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -53,7 +53,7 @@
                     android:textSize="18sp"
                     android:text="商品代码"
                     android:textStyle="bold"
-                    android:width="150dp"/>
+                    android:width="120dp"/>
                 <View
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                     android:textSize="18sp"
                     android:text="商品名称"
                     android:textStyle="bold"
-                    android:width="150dp"/>
+                    android:width="120dp"/>
                 <View
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                     android:textSize="18sp"
                     android:text="商品类别"
                     android:textStyle="bold"
-                    android:width="150dp"/>
+                    android:width="120dp"/>
                 <View
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
                     android:textSize="18sp"
                     android:text="入库数量"
                     android:textStyle="bold"
-                    android:width="150dp"/>
+                    android:width="120dp"/>
                 <View
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                     android:textSize="18sp"
                     android:text="入库金额"
                     android:textStyle="bold"
-                    android:width="150dp"/>
+                    android:width="120dp"/>
                 <View
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
                     android:textSize="18sp"
                     android:text="出库数量"
                     android:textStyle="bold"
-                    android:width="150dp"/>
+                    android:width="120dp"/>
                 <View
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                     android:textSize="18sp"
                     android:text="出库金额"
                     android:textStyle="bold"
-                    android:width="150dp"/>
+                    android:width="120dp"/>
                 <View
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

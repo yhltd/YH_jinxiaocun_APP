@@ -24,6 +24,7 @@ import com.example.myapplication.finance.entity.YhFinanceKeMuZongZhang;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceKeMuZongZhangService;
 import com.example.myapplication.mendian.entity.YhMendianReportForm;
+import com.example.myapplication.utils.LoadingDialog;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -566,6 +567,7 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        LoadingDialog.getInstance(this).show();
         start_dateText = start_date.getText().toString();
         end_dateText = end_date.getText().toString();
 
@@ -589,6 +591,7 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
                 setZiChanFuZhai();
                 setLiRunHeJi();
                 setXianJinLiuLiang();
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

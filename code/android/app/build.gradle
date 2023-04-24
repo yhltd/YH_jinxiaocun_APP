@@ -69,6 +69,8 @@ dependencies {
     implementation files('libs\\commons-collections4-4.1.jar')
     implementation 'androidx.percentlayout:percentlayout:1.0.0'
 
+    implementation 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
+
 
 
     testImplementation 'junit:junit:4.+'

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.finance.entity.YhFinanceBaoBiao;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceBaoBiaoService;
+import com.example.myapplication.mendian.activity.ReportFormActivity;
 import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 
@@ -88,6 +90,15 @@ public class BaoBiaoActivity extends AppCompatActivity {
         initList();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public View.OnClickListener selClick() {
         return new View.OnClickListener() {
             @Override
@@ -104,41 +115,43 @@ public class BaoBiaoActivity extends AppCompatActivity {
         this_dateText = this_date.getText().toString();
         class_selectText = class_select.getSelectedItem().toString();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
-        SimpleDateFormat sdf2 = new SimpleDateFormat("mm");
-        SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("MM");
+        SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         String this_year = sdf.format(date);
         String this_month = sdf2.format(date);
         if(class_selectText.equals("年")){
             if(this_dateText.equals("")){
-                start_date = this_year + "-01-01";
-                stop_date = this_year + "-12-31";
+                start_date = this_year + "-01-01" + " 00:00:00";
+                stop_date = this_year + "-12-31" + " 23:59:59";
             }else{
-                this_year = this_dateText.split("/")[0];
-                start_date = this_year + "-01-01";
-                stop_date = this_year + "-12-31";
+                this_year = this_dateText.split("-")[0];
+                start_date = this_year + "-01-01" + " 00:00:00";
+                stop_date = this_year + "-12-31" + " 23:59:59";
             }
         }else if(class_selectText.equals("月")){
             if(this_dateText.equals("")){
-                start_date = this_year + "-" + this_month + "-01";
-                stop_date = this_year + "-" + this_month + "-31";
-            }else{
-                this_year = this_dateText.split("/")[0];
-                this_month = this_dateText.split("/")[1];
                 Integer this_day = getDaysByYearMonth(Integer.valueOf(this_year),Integer.valueOf(this_month));
                 String end_day = this_day.toString();
-                this_year = this_dateText.split("/")[0];
-                start_date = this_year + "-" + this_month + "-01";
-                stop_date = this_year + "-" + this_month + "-" + end_day;
+                start_date = this_year + "-" + this_month + "-01" + "-01" + " 00:00:00";
+                stop_date = this_year + "-" + this_month + "-" + end_day + " 23:59:59";
+            }else{
+                this_year = this_dateText.split("-")[0];
+                this_month = this_dateText.split("-")[1];
+                Integer this_day = getDaysByYearMonth(Integer.valueOf(this_year),Integer.valueOf(this_month));
+                String end_day = this_day.toString();
+                this_year = this_dateText.split("-")[0];
+                start_date = this_year + "-" + this_month + "-01" + " 00:00:00";
+                stop_date = this_year + "-" + this_month + "-" + end_day + " 23:59:59";
             }
         }else if(class_selectText.equals("日")){
             if(this_dateText.equals("")){
                 String this_day = sdf3.format(date);
-                start_date = this_day;
-                stop_date = this_day;
+                start_date = this_day + " 00:00:00";
+                stop_date = this_day + " 23:59:59";
             }else{
-                start_date = this_dateText;
-                stop_date = this_dateText;
+                start_date = this_dateText + " 00:00:00";
+                stop_date = this_dateText + " 23:59:59";
             }
         }
 
@@ -248,7 +261,20 @@ public class BaoBiaoActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                editText.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
+                String this_month = "";
+                if (monthOfYear + 1 < 10){
+                    this_month = "0" + String.format("%s",monthOfYear + 1);
+                }else{
+                    this_month = String.format("%s",monthOfYear + 1);
+                }
+
+                String this_day = "";
+                if (dayOfMonth + 1 < 10){
+                    this_day = "0" + String.format("%s",dayOfMonth);
+                }else{
+                    this_day = String.format("%s",dayOfMonth);
+                }
+                editText.setText(year + "-" + this_month + "-" + this_day);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

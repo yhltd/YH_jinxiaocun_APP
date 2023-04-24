@@ -90,11 +90,13 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
     }
 
     public void init_select() {
+        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 kehu_select.setAdapter(StringUtils.cast(msg.obj));
                 initList();
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -109,7 +111,9 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
                         kehu_array = new ArrayList<>();
                         kehu_array.add("");
                         for (int i = 0; i < kehuList.size(); i++) {
-                            kehu_array.add(kehuList.get(i).getPeizhi());
+                            if(!kehuList.get(i).getPeizhi().equals("")){
+                                kehu_array.add(kehuList.get(i).getPeizhi());
+                            }
                         }
                     }
                     adapter = new ArrayAdapter<String>(JiJianZongZhangActivity.this, android.R.layout.simple_spinner_dropdown_item, kehu_array);
@@ -137,7 +141,7 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
     private void initList() {
         LoadingDialog.getInstance(this).show();
         projectText = project.getText().toString();
-        kehu_selectText = kehu_select.getItemAtPosition(0).toString();
+        kehu_selectText = kehu_select.getSelectedItem().toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {

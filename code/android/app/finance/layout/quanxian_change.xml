@@ -7,7 +7,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/shape_corner_up">
 
                 <TextView
                     android:layout_width="180dp"
@@ -49,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/border_bottom_top">
 
                 <TextView
                     android:layout_width="180dp"
@@ -923,7 +925,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/shape_corner_down">
 
                 <TextView
                     android:layout_width="180dp"
@@ -964,7 +966,10 @@
                 android:text="权限"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints"
-                android:gravity="center" />
+                android:gravity="center"
+                android:background="@drawable/btn_style"
+                android:textSize="17dp"
+                android:textColor="@color/white"/>
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -980,7 +985,10 @@
                 android:onClick="updateClick"
                 android:text="提交"
                 android:visibility="gone"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:background="@drawable/btn_style"
+                android:textSize="17dp"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 

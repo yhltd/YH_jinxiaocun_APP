@@ -20,7 +20,7 @@
             android:textSize="14sp"
             android:text="商品代码"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:textSize="14sp"
             android:text="商品名称"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             android:textSize="14sp"
             android:text="商品类别"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:textSize="14sp"
             android:text="期初数量"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
             android:textSize="14sp"
             android:text="期初金额"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
             android:textSize="14sp"
             android:text="入库数量"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
             android:textSize="14sp"
             android:text="入库金额"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
             android:textSize="14sp"
             android:text="出库数量"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
             android:textSize="14sp"
             android:text="出库金额"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
             android:textSize="14sp"
             android:text="结存数量"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
             android:textSize="14sp"
             android:text="结存金额"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"

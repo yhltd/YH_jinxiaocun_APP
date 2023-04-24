@@ -103,7 +103,6 @@ public class ExpenditureActivity extends AppCompatActivity {
     }
 
     private class typeSelectSelectedListener implements AdapterView.OnItemSelectedListener {
-
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             //获取选择的项的值

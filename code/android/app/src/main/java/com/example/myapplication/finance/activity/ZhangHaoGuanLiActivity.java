@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,7 +78,7 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
         }
 
         yhFinanceUserService = new YhFinanceUserService();
-
+        yhFinanceQuanXianService = new YhFinanceQuanXianService();
         //初始化控件
         username = findViewById(R.id.username);
         listView = findViewById(R.id.zhanghaoguanli_list);
@@ -85,6 +86,15 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
         initList();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
@@ -178,7 +188,7 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 Message msg = new Message();
-                                yhFinanceQuanXianService.delete(list.get(position).getBianhao());
+                                msg.obj = yhFinanceQuanXianService.delete(list.get(position).getBianhao());
                                 msg.obj = yhFinanceUserService.delete(list.get(position).getId());
                                 deleteHandler.sendMessage(msg);
                             }

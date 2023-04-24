@@ -21,6 +21,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.finance.entity.YhFinanceDepartment;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceDepartmentService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 public class DepartmentChangeActivity extends AppCompatActivity {
@@ -78,9 +79,14 @@ public class DepartmentChangeActivity extends AppCompatActivity {
     }
 
 
+    public void clearClick(View v) {
+        department.setText("");
+        man.setText("");
+    }
+
     public void insertClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -90,7 +96,7 @@ public class DepartmentChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(DepartmentChangeActivity.this, "保存失败，请稍后再试");
                 }
-
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -108,7 +114,7 @@ public class DepartmentChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -118,6 +124,7 @@ public class DepartmentChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(DepartmentChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

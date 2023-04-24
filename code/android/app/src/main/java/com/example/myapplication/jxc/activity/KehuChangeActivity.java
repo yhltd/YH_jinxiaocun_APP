@@ -2,10 +2,13 @@ package com.example.myapplication.jxc.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +25,7 @@ import com.example.myapplication.jxc.entity.YhJinXiaoCunKeHu;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunZhengLi;
 import com.example.myapplication.jxc.service.YhJinXiaoCunKeHuService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 public class KehuChangeActivity extends AppCompatActivity {
@@ -85,9 +89,15 @@ public class KehuChangeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void clearClick(View v) {
+        beizhu.setText("");
+        lianxidizhi.setText("");
+        lianxifangshi.setText("");
+    }
+
     public void insertClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -97,7 +107,7 @@ public class KehuChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(KehuChangeActivity.this, "保存失败，请稍后再试");
                 }
-
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -120,7 +130,7 @@ public class KehuChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -130,6 +140,7 @@ public class KehuChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(KehuChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
