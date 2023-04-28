@@ -26,6 +26,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/spDm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,6 +42,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,6 +58,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/leiBie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,6 +74,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/danWei"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -86,6 +90,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/kehu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -101,6 +106,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/gongyingshang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

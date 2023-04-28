@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.DepartmentService;
@@ -200,6 +202,33 @@ public class DepartmentActivity extends AppCompatActivity {
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("部门名称:");
+                        xiangQingYe.setB_title("页面名称:");
+                        xiangQingYe.setC_title("添加:");
+                        xiangQingYe.setD_title("删除:");
+                        xiangQingYe.setE_title("修改:");
+                        xiangQingYe.setF_title("查询:");
+
+                        xiangQingYe.setA(list.get(position).getDepartment_name());
+                        xiangQingYe.setB(list.get(position).getView_name());
+                        xiangQingYe.setC(list.get(position).getAdd());
+                        xiangQingYe.setD(list.get(position).getDel());
+                        xiangQingYe.setE(list.get(position).getUpd());
+                        xiangQingYe.setF(list.get(position).getSel());
+
+                        Intent intent = new Intent(DepartmentActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

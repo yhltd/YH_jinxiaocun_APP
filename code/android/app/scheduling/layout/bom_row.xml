@@ -12,6 +12,7 @@
         android:gravity="center"
         android:background="@drawable/border_bottom">
         <TextView
+            android:gravity="center"
             android:id="@+id/code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,6 +28,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,6 +44,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,6 +60,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/norms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,6 +76,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,6 +92,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -102,6 +108,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -117,6 +124,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/use_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

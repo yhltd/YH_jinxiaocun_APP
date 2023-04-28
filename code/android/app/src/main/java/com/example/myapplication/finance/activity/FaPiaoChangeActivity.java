@@ -189,7 +189,6 @@ public class FaPiaoChangeActivity extends AppCompatActivity {
     }
 
     public void init2() {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -197,7 +196,6 @@ public class FaPiaoChangeActivity extends AppCompatActivity {
                 invoice_type.setAdapter(StringUtils.cast(adapter_project));
                 SpinnerAdapter adapter_kehu = new ArrayAdapter<String>(FaPiaoChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, kehu_array);
                 unit.setAdapter(StringUtils.cast(adapter_kehu));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

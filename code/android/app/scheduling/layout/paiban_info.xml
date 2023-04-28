@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
+        android:background="@drawable/shape_corner"
         android:gravity="center_vertical"
         android:layout_marginTop="5dp">
 
@@ -55,16 +55,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/border_bottom"
+                android:background="@color/title"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="创建日期"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -73,11 +74,12 @@
                     android:layout_weight="1" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="150dp"
                     android:text="计划名称"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -86,11 +88,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="人数"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -99,11 +102,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="部门"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -137,7 +141,10 @@
             android:layout_height="wrap_content"
             android:text="查询"
             tools:ignore="MissingConstraints"
-            android:gravity="center" />
+            android:gravity="center"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
         <ImageView
             android:layout_width="25dp"
             android:layout_height="30dp"
@@ -152,7 +159,10 @@
             android:layout_height="wrap_content"
             android:text="轮换排班"
             tools:ignore="MissingConstraints"
-            android:gravity="center" />
+            android:gravity="center"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
         <ImageView
             android:layout_width="25dp"
             android:layout_height="30dp"
@@ -167,7 +177,10 @@
             android:layout_height="wrap_content"
             android:text="不轮换排班"
             tools:ignore="MissingConstraints"
-            android:gravity="center" />
+            android:gravity="center"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 

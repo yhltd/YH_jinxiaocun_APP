@@ -25,6 +25,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.finance.entity.YhFinanceJiJianTaiZhang;
 import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.finance.entity.YhFinanceUser;
@@ -253,6 +255,43 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("日期:");
+                        xiangQingYe.setB_title("客户/供应商:");
+                        xiangQingYe.setC_title("项目名称:");
+                        xiangQingYe.setD_title("应收:");
+                        xiangQingYe.setE_title("实收:");
+                        xiangQingYe.setF_title("未收:");
+                        xiangQingYe.setG_title("应付:");
+                        xiangQingYe.setH_title("实付:");
+                        xiangQingYe.setI_title("未付:");
+                        xiangQingYe.setJ_title("科目:");
+                        xiangQingYe.setK_title("摘要:");
+
+                        xiangQingYe.setA(list.get(position).getInsert_date().toString());
+                        xiangQingYe.setB(list.get(position).getProject());
+                        xiangQingYe.setC(list.get(position).getKehu());
+                        xiangQingYe.setD(list.get(position).getReceipts().toString());
+                        xiangQingYe.setE(list.get(position).getReceivable().toString());
+                        xiangQingYe.setF(list.get(position).getReceivable().subtract(list.get(position).getReceipts()).toString());
+                        xiangQingYe.setG(list.get(position).getCope().toString());
+                        xiangQingYe.setH(list.get(position).getPayment().toString());
+                        xiangQingYe.setI(list.get(position).getCope().subtract(list.get(position).getPayment()).toString());
+                        xiangQingYe.setJ(list.get(position).getAccounting());
+                        xiangQingYe.setK(list.get(position).getZhaiyao());
+
+                        Intent intent = new Intent(JiJianTaiZhangActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

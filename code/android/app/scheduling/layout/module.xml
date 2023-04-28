@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
+        android:background="@drawable/shape_corner"
         android:gravity="center_vertical"
         android:layout_marginTop="5dp">
 
@@ -42,16 +42,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/border_bottom"
+                android:background="@color/title"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="150dp"
                     android:text="模块类别"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -61,11 +62,12 @@
                     android:layout_weight="1" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="150dp"
                     android:text="名称"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -75,11 +77,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="150dp"
                     android:text="效率/时"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -89,11 +92,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="150dp"
                     android:text="父模块"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -128,7 +132,10 @@
             android:layout_height="wrap_content"
             android:text="查看类别"
             tools:ignore="MissingConstraints"
-            android:gravity="center" />
+            android:gravity="center"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -143,7 +150,10 @@
             android:layout_height="wrap_content"
             android:text="添加模块"
             tools:ignore="MissingConstraints"
-            android:gravity="center" />
+            android:gravity="center"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
 <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->

@@ -137,6 +137,11 @@ public class DepartmentChangeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void clearClick(View v) {
+        department_name.setText("");
+        view_name.setText("");
+    }
+
     public void insertClick(View v) {
         if (!checkForm()) return;
         LoadingDialog.getInstance(this).show();

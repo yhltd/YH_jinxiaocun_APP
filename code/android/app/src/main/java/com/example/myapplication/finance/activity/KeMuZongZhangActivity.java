@@ -25,10 +25,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.finance.entity.YhFinanceKeMuZongZhang;
 import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceKeMuZongZhangService;
+import com.example.myapplication.jxc.activity.BiJiActivity;
 import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
@@ -248,6 +251,39 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("科目代码:");
+                        xiangQingYe.setB_title("科目名称:");
+                        xiangQingYe.setC_title("科目等级:");
+                        xiangQingYe.setD_title("科目全称:");
+                        xiangQingYe.setE_title("方向:");
+                        xiangQingYe.setF_title("借贷合计:");
+                        xiangQingYe.setG_title("明细:");
+                        xiangQingYe.setH_title("年初借金:");
+                        xiangQingYe.setI_title("年初贷金:");
+
+                        xiangQingYe.setA(list.get(position).getCode());
+                        xiangQingYe.setB(list.get(position).getName());
+                        xiangQingYe.setC(list.get(position).getGrade());
+                        xiangQingYe.setD(list.get(position).getName1());
+                        xiangQingYe.setE(list.get(position).getDirection_text());
+                        xiangQingYe.setF(list.get(position).getMoney());
+                        xiangQingYe.setG(list.get(position).getMingxi());
+                        xiangQingYe.setH(list.get(position).getLoad().toString());
+                        xiangQingYe.setI(list.get(position).getBorrowed().toString());
+
+                        Intent intent = new Intent(KeMuZongZhangActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

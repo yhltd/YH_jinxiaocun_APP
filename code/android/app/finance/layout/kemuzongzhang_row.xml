@@ -13,6 +13,7 @@
         android:gravity="center"
         android:background="@drawable/border_bottom">
         <TextView
+            android:gravity="center"
             android:id="@+id/code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +21,7 @@
             android:textSize="14sp"
             android:text="科目代码"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +37,7 @@
             android:textSize="14sp"
             android:text="科目名称"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="130dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -43,6 +45,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/grade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +53,7 @@
             android:textSize="14sp"
             android:text="科目等级"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,6 +61,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/name1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,6 +77,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/direction_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,7 +85,7 @@
             android:textSize="14sp"
             android:text="方向"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="50dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -88,6 +93,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,7 +101,7 @@
             android:textSize="14sp"
             android:text="借贷合计"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -103,6 +109,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/mingxi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,7 +117,7 @@
             android:textSize="14sp"
             android:text="明细"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="50dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -118,6 +125,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/load"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -125,7 +133,7 @@
             android:textSize="14sp"
             android:text="年初借金"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -133,6 +141,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/borrowed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -140,7 +149,7 @@
             android:textSize="14sp"
             android:text="年初贷金"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"

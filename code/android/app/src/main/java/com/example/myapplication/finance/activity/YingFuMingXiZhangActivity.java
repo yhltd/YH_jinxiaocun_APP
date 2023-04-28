@@ -2,6 +2,7 @@ package com.example.myapplication.finance.activity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,10 +22,13 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.finance.entity.YhFinanceJiJianPeiZhi;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.entity.YhFinanceYingShouMingXiZhang;
@@ -238,6 +242,7 @@ public class YingFuMingXiZhangActivity extends AppCompatActivity {
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
                         LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
                         linearLayout.setTag(position);
                         return view;
                     }
@@ -293,6 +298,57 @@ public class YingFuMingXiZhangActivity extends AppCompatActivity {
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
+    }
+
+
+    public View.OnClickListener updateClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(YingFuMingXiZhangActivity.this);
+                int position = Integer.parseInt(view.getTag().toString());
+
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("日期:");
+                        xiangQingYe.setB_title("供应商:");
+                        xiangQingYe.setC_title("科目:");
+                        xiangQingYe.setD_title("项目:");
+                        xiangQingYe.setE_title("应付:");
+                        xiangQingYe.setF_title("实付:");
+                        xiangQingYe.setG_title("未付:");
+
+                        xiangQingYe.setA(list.get(position).getInsert_date().toString());
+                        xiangQingYe.setB(list.get(position).getKehu());
+                        xiangQingYe.setC(list.get(position).getAccounting());
+                        xiangQingYe.setD(list.get(position).getProject());
+                        xiangQingYe.setE(list.get(position).getCope().toString());
+                        xiangQingYe.setF(list.get(position).getPayment().toString());
+                        xiangQingYe.setG(list.get(position).getWeifu().toString());
+
+                        Intent intent = new Intent(YingFuMingXiZhangActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
+                    }
+                });
+
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setMessage("确定查看明细？");
+                builder.setTitle("提示");
+                builder.show();
+            }
+        };
     }
 
     @Override

@@ -21,9 +21,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
-import com.example.myapplication.jxc.activity.BiJiActivity;
-import com.example.myapplication.jxc.activity.BiJiChangeActivity;
-import com.example.myapplication.jxc.service.YhJinXiaoCunZhengLiService;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
+import com.example.myapplication.finance.activity.DepartmentActivity;
 import com.example.myapplication.scheduling.entity.BomInfo;
 import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.UserInfo;
@@ -208,6 +208,38 @@ public class BomActivity extends AppCompatActivity {
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
+                    }
+                });
+
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("物料编码:");
+                        xiangQingYe.setB_title("物料名称:");
+                        xiangQingYe.setC_title("类别:");
+                        xiangQingYe.setD_title("规格:");
+                        xiangQingYe.setE_title("描述:");
+                        xiangQingYe.setF_title("大小:");
+                        xiangQingYe.setG_title("单位:");
+                        xiangQingYe.setH_title("使用数量:");
+
+                        xiangQingYe.setA(list.get(position).getCode());
+                        xiangQingYe.setB(list.get(position).getName());
+                        xiangQingYe.setC(list.get(position).getType());
+                        xiangQingYe.setD(list.get(position).getNorms());
+                        xiangQingYe.setE(list.get(position).getComment());
+                        xiangQingYe.setF(String.valueOf(list.get(position).getSize()));
+                        xiangQingYe.setG(list.get(position).getUnit());
+                        xiangQingYe.setH(String.valueOf(list.get(position).getUse_num()));
+
+                        Intent intent = new Intent(BomActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

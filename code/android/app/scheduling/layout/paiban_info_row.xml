@@ -12,6 +12,7 @@
         android:gravity="center"
         android:background="@drawable/border_bottom">
         <TextView
+            android:gravity="center"
             android:id="@+id/riqi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,7 +20,7 @@
             android:textSize="14sp"
             android:text="创建日期"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -27,6 +28,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/plan_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,6 +44,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/renshu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +52,7 @@
             android:textSize="14sp"
             android:text="人数"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="80dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -57,6 +60,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/department_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,7 +68,7 @@
             android:textSize="14sp"
             android:text="部门"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -23,6 +23,7 @@
         android:gravity="center">
         <!--        android:background="@drawable/border_bottom"-->
         <TextView
+            android:gravity="center"
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,6 +39,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/spDm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,6 +56,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/leiBie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,6 +73,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/danWei"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -86,6 +90,7 @@
         </View>
 
         <EditText
+            android:gravity="center"
             android:id="@+id/num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,6 +108,7 @@
         </View>
 
         <EditText
+            android:gravity="center"
             android:id="@+id/jine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -81,16 +81,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/border_bottom"
+                android:background="@color/title"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="120dp"
                     android:text="商品代码"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -99,11 +100,12 @@
                     android:layout_weight="1" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="120dp"
                     android:text="商品名称"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -112,11 +114,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="120dp"
                     android:text="商品类别"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -125,11 +128,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="120dp"
                     android:text="期初数量"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -138,11 +142,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="120dp"
                     android:text="期初金额"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -151,11 +156,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="120dp"
                     android:text="入库数量"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -164,11 +170,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="120dp"
                     android:text="入库金额"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -177,11 +184,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="120dp"
                     android:text="出库数量"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -190,11 +198,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="120dp"
                     android:text="出库金额"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -203,11 +212,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="120dp"
                     android:text="结存数量"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View
@@ -216,11 +226,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="120dp"
                     android:text="结存金额"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <View

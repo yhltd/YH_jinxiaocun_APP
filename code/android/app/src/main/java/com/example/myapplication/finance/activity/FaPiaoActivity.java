@@ -29,6 +29,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.finance.entity.YhFinanceExpenditure;
 import com.example.myapplication.finance.entity.YhFinanceFaPiao;
 import com.example.myapplication.finance.entity.YhFinanceJiJianPeiZhi;
@@ -280,6 +282,37 @@ public class FaPiaoActivity extends AppCompatActivity {
                             initList();
                         }
                         return true;
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("类型:");
+                        xiangQingYe.setB_title("日期:");
+                        xiangQingYe.setC_title("摘要:");
+                        xiangQingYe.setD_title("往来单位:");
+                        xiangQingYe.setE_title("发票种类:");
+                        xiangQingYe.setF_title("发票号码:");
+                        xiangQingYe.setG_title("金额:");
+                        xiangQingYe.setH_title("备注:");
+
+                        xiangQingYe.setA(list.get(position).getType());
+                        xiangQingYe.setB(list.get(position).getRiqi());
+                        xiangQingYe.setC(list.get(position).getZhaiyao());
+                        xiangQingYe.setD(list.get(position).getUnit());
+                        xiangQingYe.setE(list.get(position).getInvoice_type());
+                        xiangQingYe.setF(list.get(position).getInvoice_no());
+                        xiangQingYe.setG(list.get(position).getJine());
+                        xiangQingYe.setH(list.get(position).getRemarks());
+
+                        Intent intent = new Intent(FaPiaoActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

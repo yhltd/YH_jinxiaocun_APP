@@ -2,6 +2,7 @@ package com.example.myapplication.finance.activity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,10 +22,13 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.finance.entity.YhFinanceBaoBiao;
 import com.example.myapplication.finance.entity.YhFinanceJiJianPeiZhi;
 import com.example.myapplication.finance.entity.YhFinanceLiYiSunYi;
@@ -220,7 +224,7 @@ public class YingShouBaoBiaoActivity extends AppCompatActivity {
                 for (int i = 0; i < list.size(); i++) {
                     HashMap<String, Object> item = new HashMap<>();
                     item.put("kehu", list.get(i).getKehu());
-                    item.put("project", list.get(i).getKehu());
+                    item.put("project", list.get(i).getProject());
                     item.put("zhaiyao", list.get(i).getZhaiyao());
                     item.put("jine1", list.get(i).getJine1());
                     item.put("unit", list.get(i).getUnit());
@@ -235,6 +239,7 @@ public class YingShouBaoBiaoActivity extends AppCompatActivity {
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
                         LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
                         linearLayout.setTag(position);
                         return view;
                     }
@@ -290,6 +295,58 @@ public class YingShouBaoBiaoActivity extends AppCompatActivity {
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
+    }
+
+    public View.OnClickListener updateClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(YingShouBaoBiaoActivity.this);
+                int position = Integer.parseInt(view.getTag().toString());
+
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("往来单位:");
+                        xiangQingYe.setB_title("项目:");
+                        xiangQingYe.setC_title("摘要:");
+                        xiangQingYe.setD_title("应收:");
+                        xiangQingYe.setE_title("往来单位:");
+                        xiangQingYe.setF_title("发票种类:");
+                        xiangQingYe.setG_title("发票号:");
+                        xiangQingYe.setH_title("金额:");
+
+                        xiangQingYe.setA(list.get(position).getKehu());
+                        xiangQingYe.setB(list.get(position).getProject());
+                        xiangQingYe.setC(list.get(position).getZhaiyao());
+                        xiangQingYe.setC(list.get(position).getJine1().toString());
+                        xiangQingYe.setC(list.get(position).getUnit());
+                        xiangQingYe.setC(list.get(position).getInvoice_type());
+                        xiangQingYe.setC(list.get(position).getInvoice_no());
+                        xiangQingYe.setC(list.get(position).getJine2().toString());
+
+                        Intent intent = new Intent(YingShouBaoBiaoActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
+                    }
+                });
+
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setMessage("确定查看明细？");
+                builder.setTitle("提示");
+                builder.show();
+            }
+        };
     }
 
     @Override

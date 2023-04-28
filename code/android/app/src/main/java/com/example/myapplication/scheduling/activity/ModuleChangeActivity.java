@@ -105,6 +105,12 @@ public class ModuleChangeActivity extends AppCompatActivity {
         parent.setOnItemSelectedListener(new parentSelectedListener());
     }
 
+
+    public void clearClick(View v) {
+        name.setText("");
+        num.setText("");
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

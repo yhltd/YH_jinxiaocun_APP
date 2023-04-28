@@ -95,6 +95,16 @@ public class BomChangeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void clearClick(View v) {
+        code.setText("");
+        name.setText("");
+        type.setText("");
+        norms.setText("");
+        comment.setText("");
+        size.setText("");
+        unit.setText("");
+    }
+
     public void insertClick(View v) {
         if (!checkForm()) return;
         LoadingDialog.getInstance(this).show();

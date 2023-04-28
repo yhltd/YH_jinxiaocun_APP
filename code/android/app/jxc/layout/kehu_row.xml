@@ -13,6 +13,7 @@
         android:gravity="center"
         android:background="@drawable/border_bottom">
         <TextView
+            android:gravity="center"
             android:id="@+id/beizhu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/lianxidizhi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,6 +45,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/lianxifangshi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
