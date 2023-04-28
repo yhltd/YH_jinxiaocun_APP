@@ -21,12 +21,12 @@
             android:textSize="14sp"
             android:text="日期"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="200dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/ddh"
@@ -36,12 +36,12 @@
             android:textSize="14sp"
             android:text="订单号"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="200dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/hyzh"
@@ -51,12 +51,12 @@
             android:textSize="14sp"
             android:text="会员账号"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/hyxm"
@@ -66,12 +66,12 @@
             android:textSize="14sp"
             android:text="会员姓名"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/yhfa"
@@ -81,12 +81,12 @@
             android:textSize="14sp"
             android:text="优惠方案"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/xfje"
@@ -96,12 +96,12 @@
             android:textSize="14sp"
             android:text="消费金额"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/ssje"
@@ -111,12 +111,12 @@
             android:textSize="14sp"
             android:text="实收金额"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/yhje"
@@ -126,12 +126,12 @@
             android:textSize="14sp"
             android:text="优惠金额"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/syy"
@@ -141,12 +141,8 @@
             android:textSize="14sp"
             android:text="收银员"
             android:textStyle="bold"
-            android:width="200dp"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:width="150dp"
+            android:gravity="center"/>
 
 
     </LinearLayout>

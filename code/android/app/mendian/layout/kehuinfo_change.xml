@@ -16,29 +16,28 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
-                android:text="收卡人" />
+                android:text="收卡人"
+                />
 
             <EditText
                 android:id="@+id/recipient"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入收卡人"
                 android:inputType="text"
-                android:textIsSelectable="false" />
+                android:textIsSelectable="false"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="付款人" />
 
@@ -46,18 +45,17 @@
                 android:id="@+id/cardholder"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入付款人"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="持卡人" />
 
@@ -65,19 +63,18 @@
                 android:id="@+id/drawee"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入持卡人"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="发卡行" />
 
@@ -85,18 +82,17 @@
                 android:id="@+id/issuing_bank"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入发卡行"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="账单日" />
 
@@ -104,18 +100,17 @@
                 android:id="@+id/bill_day"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入账单日"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="还款日" />
 
@@ -123,18 +118,17 @@
                 android:id="@+id/repayment_date"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入还款日"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="总金额" />
 
@@ -142,18 +136,17 @@
                 android:id="@+id/total"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入总金额"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="应还款" />
 
@@ -161,18 +154,17 @@
                 android:id="@+id/repayable"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入应还款"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="剩余额" />
 
@@ -180,18 +172,17 @@
                 android:id="@+id/balance"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入剩余额"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="借款额" />
 
@@ -199,18 +190,17 @@
                 android:id="@+id/loan"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入借款额"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="手续费" />
 
@@ -218,18 +208,17 @@
                 android:id="@+id/service_charge"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入手续费"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="电话号" />
 
@@ -237,18 +226,17 @@
                 android:id="@+id/telephone"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入电话"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="密码" />
 
@@ -256,18 +244,17 @@
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入密码"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="员工" />
 
@@ -275,9 +262,9 @@
                 android:id="@+id/staff"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入员工"
                 android:inputType="text"
                 android:textIsSelectable="false" />
@@ -299,6 +286,8 @@
                 android:layout_height="wrap_content"
                 android:onClick="updateClick"
                 android:text="提交"
+                android:background="#65AA68"
+                android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />
 
@@ -308,6 +297,8 @@
                 android:layout_height="wrap_content"
                 android:onClick="insertClick"
                 android:text="提交"
+                android:background="#65AA68"
+                android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />
         </LinearLayout>

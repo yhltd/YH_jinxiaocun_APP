@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="55dp"
+    android:layout_height="45dp"
     android:orientation="horizontal"
     android:gravity="center">
 
@@ -21,12 +21,12 @@
             android:textSize="14sp"
             android:text="商品编号"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="200dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/type"
@@ -36,12 +36,12 @@
             android:textSize="14sp"
             android:text="商品类别"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/product_name"
@@ -51,12 +51,12 @@
             android:textSize="14sp"
             android:text="商品名称"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/unit"
             android:layout_width="wrap_content"
@@ -65,12 +65,12 @@
             android:textSize="14sp"
             android:text="单位"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
@@ -79,12 +79,12 @@
             android:textSize="14sp"
             android:text="单价"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/chengben"
             android:layout_width="wrap_content"
@@ -93,12 +93,12 @@
             android:textSize="14sp"
             android:text="成本"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/tingyong"
             android:layout_width="wrap_content"
@@ -107,12 +107,8 @@
             android:textSize="14sp"
             android:text="是否停用"
             android:textStyle="bold"
-            android:width="200dp"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:width="100dp"
+            android:gravity="center"/>
 
 
 

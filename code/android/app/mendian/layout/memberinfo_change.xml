@@ -16,10 +16,9 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="账号" />
 
@@ -27,18 +26,17 @@
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入账号"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="密码" />
 
@@ -46,18 +44,17 @@
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入密码"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="姓名" />
 
@@ -65,19 +62,18 @@
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入姓名"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="性别" />
 
@@ -85,18 +81,17 @@
                 android:id="@+id/gender"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入性别"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="账号状态" />
 
@@ -104,18 +99,17 @@
                 android:id="@+id/state"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入账号状态"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="电话号" />
 
@@ -123,18 +117,17 @@
                 android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入电话号"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="生日" />
 
@@ -142,18 +135,17 @@
                 android:id="@+id/birthday"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入生日"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="积分" />
 
@@ -161,9 +153,9 @@
                 android:id="@+id/points"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入积分"
                 android:inputType="text"
                 android:textIsSelectable="false" />
@@ -187,6 +179,8 @@
                 android:layout_height="wrap_content"
                 android:onClick="updateClick"
                 android:text="提交"
+                android:background="#65AA68"
+                android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />
 
@@ -196,6 +190,8 @@
                 android:layout_height="wrap_content"
                 android:onClick="insertClick"
                 android:text="提交"
+                android:background="#65AA68"
+                android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />
         </LinearLayout>

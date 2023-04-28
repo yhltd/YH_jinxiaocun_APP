@@ -11,59 +11,23 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/border_bottom"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp">
 
         <EditText
             android:id="@+id/ddh"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint="订单编号" />
+            android:hint="订单编号"
+            android:gravity="center"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/border_bottom"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/clear_button"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="作废" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            android:gravity="center_horizontal"/>
-
-        <Button
-            android:id="@+id/sel_button"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="购物车" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            android:gravity="center_horizontal"/>
-
-        <Button
-            android:id="@+id/ins_button"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="结账" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="560dp"
         android:layout_above="@+id/rela_button"
         android:layout_below="@+id/linear_top"
         android:layout_marginTop="10dp"
@@ -86,117 +50,68 @@
             android:background="#ffffff"></com.example.myapplication.mendian.entity.PinnedHeaderListView>
     </LinearLayout>
 
-<!--    <HorizontalScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="570dp">-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/border_bottom"
+        android:gravity="center"
+        android:layout_marginTop="15dp">
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="vertical">-->
+        <Button
+            android:id="@+id/clear_button"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="作废"
+            android:layout_marginStart="20dp"
+            />
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="55dp"-->
-<!--                android:background="@drawable/border_bottom"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="horizontal">-->
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:width="150dp"-->
-<!--                    android:text="商品名称"-->
-<!--                    android:textColor="@color/main_text"-->
-<!--                    android:textSize="18sp"-->
-<!--                    android:textStyle="bold" />-->
+        <Button
+            android:id="@+id/sel_button"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:textColor="#838383"
+            android:background="@drawable/gouwuche"
+            />
 
-<!--                <View-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="2" />-->
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:width="150dp"-->
-<!--                    android:text="单位"-->
-<!--                    android:textColor="@color/main_text"-->
-<!--                    android:textSize="18sp"-->
-<!--                    android:textStyle="bold" />-->
+        <Button
+            android:id="@+id/ins_button"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:text="结账"
+            android:textColor="#ffffff"
+            android:background="#4CAF50"/>
+    </LinearLayout>
 
-<!--                <View-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="2" />-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:width="150dp"-->
-<!--                    android:text="数量"-->
-<!--                    android:textColor="@color/main_text"-->
-<!--                    android:textSize="18sp"-->
-<!--                    android:textStyle="bold" />-->
-
-<!--                <View-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="2" />-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:width="150dp"-->
-<!--                    android:text="金额"-->
-<!--                    android:textColor="@color/main_text"-->
-<!--                    android:textSize="18sp"-->
-<!--                    android:textStyle="bold" />-->
-
-<!--                <View-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="2" />-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:width="150dp"-->
-<!--                    android:text="打折比例"-->
-<!--                    android:textColor="@color/main_text"-->
-<!--                    android:textSize="18sp"-->
-<!--                    android:textStyle="bold" />-->
-
-<!--                <View-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="2" />-->
-<!--            </LinearLayout>-->
-
-<!--            <ListView-->
-<!--                android:id="@+id/orderpanel_list"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="0dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:dividerHeight="1dp"-->
-<!--                android:paddingBottom="5dp" />-->
-<!--        </LinearLayout>-->
-
-<!--    </HorizontalScrollView>-->
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/jczl_insert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:onClick="onInsertClick"
-        android:src="@drawable/insert"
-        app:backgroundTint="@color/primary"
-        app:backgroundTintMode="add"
-        app:pressedTranslationZ="10dp"
-        app:tint="@color/white" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/jczl_insert"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="end"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:onClick="onInsertClick"-->
+<!--        android:src="@drawable/insert"-->
+<!--        app:backgroundTint="@color/primary"-->
+<!--        app:backgroundTintMode="add"-->
+<!--        app:pressedTranslationZ="10dp"-->
+<!--        app:tint="@color/white" />-->
 
 </LinearLayout>

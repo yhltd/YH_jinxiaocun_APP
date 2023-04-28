@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="55dp"
+    android:layout_height="45dp"
     android:orientation="horizontal"
     android:gravity="center">
 
@@ -21,12 +21,12 @@
             android:textSize="14sp"
             android:text="级别名称"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/menkan"
@@ -36,12 +36,12 @@
             android:textSize="14sp"
             android:text="消费额度门槛"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/bili"
@@ -51,12 +51,8 @@
             android:textSize="14sp"
             android:text="折扣比例"
             android:textStyle="bold"
-            android:width="200dp"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:width="100dp"
+            android:gravity="center"/>
 
 
     </LinearLayout>

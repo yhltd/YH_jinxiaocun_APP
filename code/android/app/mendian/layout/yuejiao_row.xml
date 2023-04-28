@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="55dp"
+    android:layout_height="45dp"
     android:orientation="horizontal"
     android:gravity="center">
 
@@ -21,12 +21,12 @@
             android:textSize="14sp"
             android:text="收卡人"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/cardholder"
@@ -36,12 +36,12 @@
             android:textSize="14sp"
             android:text="付款人"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/drawee"
@@ -51,12 +51,12 @@
             android:textSize="14sp"
             android:text="持卡人"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/issuing_bank"
             android:layout_width="wrap_content"
@@ -65,12 +65,12 @@
             android:textSize="14sp"
             android:text="发卡行"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/bill_day"
             android:layout_width="wrap_content"
@@ -79,12 +79,12 @@
             android:textSize="14sp"
             android:text="账单日"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="200dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/repayment_date"
             android:layout_width="wrap_content"
@@ -93,12 +93,12 @@
             android:textSize="14sp"
             android:text="还款日"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="200dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/total"
             android:layout_width="wrap_content"
@@ -107,12 +107,12 @@
             android:textSize="14sp"
             android:text="总金额"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/repayable"
             android:layout_width="wrap_content"
@@ -121,12 +121,12 @@
             android:textSize="14sp"
             android:text="应还款"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/balance"
             android:layout_width="wrap_content"
@@ -135,12 +135,12 @@
             android:textSize="14sp"
             android:text="剩余额"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/loan"
             android:layout_width="wrap_content"
@@ -149,12 +149,12 @@
             android:textSize="14sp"
             android:text="借款额"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/repayment"
             android:layout_width="wrap_content"
@@ -163,12 +163,12 @@
             android:textSize="14sp"
             android:text="已还款"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/swipe"
             android:layout_width="wrap_content"
@@ -177,12 +177,12 @@
             android:textSize="14sp"
             android:text="已刷额"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/balance_of_credit_card"
             android:layout_width="wrap_content"
@@ -191,12 +191,12 @@
             android:textSize="14sp"
             android:text="未刷金额"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/the_total_fee"
             android:layout_width="wrap_content"
@@ -205,12 +205,12 @@
             android:textSize="14sp"
             android:text="总手续费"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/collected_amount"
             android:layout_width="wrap_content"
@@ -219,12 +219,12 @@
             android:textSize="14sp"
             android:text="应收金额"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"
+            android:gravity="center"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_width="3dp"
+            android:background="#BFBFBF"
+            android:layout_height="20dp" />
         <TextView
             android:id="@+id/profit"
             android:layout_width="wrap_content"
@@ -233,12 +233,8 @@
             android:textSize="14sp"
             android:text="利润"
             android:textStyle="bold"
-            android:width="200dp"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:width="150dp"
+            android:gravity="center"/>
 
 
 

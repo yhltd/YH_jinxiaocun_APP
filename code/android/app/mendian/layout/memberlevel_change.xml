@@ -16,10 +16,9 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="级别名称" />
 
@@ -27,18 +26,17 @@
                 android:id="@+id/jibie"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入级别名称"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="消费额度门槛" />
 
@@ -46,18 +44,17 @@
                 android:id="@+id/menkan"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入消费额度门槛"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="折扣比例" />
 
@@ -65,9 +62,9 @@
                 android:id="@+id/bili"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入折扣比例"
                 android:inputType="text"
                 android:textIsSelectable="false" />
@@ -90,6 +87,8 @@
                 android:layout_height="wrap_content"
                 android:onClick="updateClick"
                 android:text="提交"
+                android:background="#65AA68"
+                android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />
 
@@ -99,6 +98,8 @@
                 android:layout_height="wrap_content"
                 android:onClick="insertClick"
                 android:text="提交"
+                android:background="#65AA68"
+                android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />
         </LinearLayout>

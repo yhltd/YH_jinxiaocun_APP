@@ -7,57 +7,10 @@
     tools:context=".mendian.activity.UsersActivity"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:background="@drawable/border_bottom">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"/>
-
-        <EditText
-            android:id="@+id/uname"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:hint="员工姓名" />
-
-        <EditText
-            android:id="@+id/position"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:hint="员工职位" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:background="@drawable/border_bottom">
-
-        <EditText
-            android:id="@+id/account"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:hint="员工账号" />
-
-        <Button
-            android:id="@+id/sel_button"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="查询" />
-
-
-    </LinearLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="570dp">
+        android:layout_height="549dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -67,65 +20,65 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:orientation="horizontal"
+                android:background="#58bd2c"
                 android:gravity="center"
-                android:background="@drawable/border_bottom">
+                android:orientation="horizontal"
+                android:typeface="monospace">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="100dp"
+                    android:gravity="center"
                     android:text="职位"
-                    android:textColor="@color/main_text"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_width="3dp"
+                    android:layout_height="25dp"
+                    android:background="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="150dp"
+                    android:gravity="center"
                     android:text="员工"
-                    android:textColor="@color/main_text"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_width="3dp"
+                    android:layout_height="25dp"
+                    android:background="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="200dp"
+                    android:gravity="center"
                     android:text="账号"
-                    android:textColor="@color/main_text"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_width="3dp"
+                    android:layout_height="25dp"
+                    android:background="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="150dp"
+                    android:gravity="center"
                     android:text="密码"
-                    android:textColor="@color/main_text"
+                    android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
 
             </LinearLayout>
 
@@ -135,14 +88,79 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:animationCache="false"
-                android:cacheColorHint="@color/high_light"
+                android:cacheColorHint="#000000"
                 android:choiceMode="multipleChoice"
-                android:divider="@color/border_level_1"
-                android:dividerHeight="1dp"
+                android:divider="@color/cardview_shadow_start_color"
+                android:dividerHeight="2dp"
                 android:scrollingCache="false" />
         </LinearLayout>
 
     </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/sele_out"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/border_bottom"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/border_bottom">
+
+            <EditText
+                android:id="@+id/uname"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:hint="员工姓名"
+                android:textSize="10dp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/border_bottom">
+            <EditText
+                android:id="@+id/position"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:hint="员工职位"
+                android:textSize="10dp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/border_bottom">
+
+            <EditText
+                android:id="@+id/account"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:hint="员工账号"
+                android:textSize="10dp"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/sel_button"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/search"
+                android:gravity="center_horizontal" />
+
+
+        </LinearLayout>
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/users_insert"

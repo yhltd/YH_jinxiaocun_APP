@@ -16,10 +16,9 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="职位" />
 
@@ -27,18 +26,17 @@
                 android:id="@+id/position"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入职位"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="消费额度门槛" />
 
@@ -46,18 +44,17 @@
                 android:id="@+id/uname"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入姓名"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="账号" />
 
@@ -65,18 +62,17 @@
                 android:id="@+id/account"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入账号"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="密码" />
 
@@ -84,9 +80,9 @@
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入密码"
                 android:inputType="text"
                 android:textIsSelectable="false" />
@@ -109,6 +105,8 @@
                 android:layout_height="wrap_content"
                 android:onClick="updateClick"
                 android:text="提交"
+                android:background="#65AA68"
+                android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />
 
@@ -118,6 +116,8 @@
                 android:layout_height="wrap_content"
                 android:onClick="insertClick"
                 android:text="提交"
+                android:background="#65AA68"
+                android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />
         </LinearLayout>

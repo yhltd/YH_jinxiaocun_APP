@@ -16,10 +16,9 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="商品编码" />
 
@@ -27,18 +26,17 @@
                 android:id="@+id/product_bianhao"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入商品编码"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="商品类别" />
 
@@ -46,18 +44,17 @@
                 android:id="@+id/type"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入商品类型"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="商品名称" />
 
@@ -65,18 +62,17 @@
                 android:id="@+id/product_name"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入商品名称"
                 android:inputType="text"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="单位" />
 
@@ -84,17 +80,16 @@
                 android:id="@+id/unit"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入单位"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="单价" />
 
@@ -102,17 +97,16 @@
                 android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入单价"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="成本" />
 
@@ -120,17 +114,16 @@
                 android:id="@+id/chengben"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入成本"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="规格" />
 
@@ -138,17 +131,16 @@
                 android:id="@+id/specifications"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入规格"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="保存方式" />
 
@@ -156,17 +148,16 @@
                 android:id="@+id/practice"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入保存方式"
                 android:textIsSelectable="false" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:text="是否停用" />
 
@@ -174,9 +165,9 @@
                 android:id="@+id/tingyong"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center"
                 android:hint="请输入是否"
                 android:textIsSelectable="false" />
 
@@ -215,6 +206,8 @@
                 android:layout_height="wrap_content"
                 android:onClick="updateClick"
                 android:text="提交"
+                android:background="#65AA68"
+                android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />
 
@@ -224,6 +217,8 @@
                 android:layout_height="wrap_content"
                 android:onClick="insertClick"
                 android:text="提交"
+                android:background="#65AA68"
+                android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />
         </LinearLayout>
