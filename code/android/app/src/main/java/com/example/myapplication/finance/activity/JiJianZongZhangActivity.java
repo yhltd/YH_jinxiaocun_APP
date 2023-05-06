@@ -20,10 +20,13 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.finance.entity.YhFinanceJiJianPeiZhi;
 import com.example.myapplication.finance.entity.YhFinanceJiJianTaiZhang;
 import com.example.myapplication.finance.entity.YhFinanceQuanXian;
@@ -90,13 +93,11 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
     }
 
     public void init_select() {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 kehu_select.setAdapter(StringUtils.cast(msg.obj));
                 initList();
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -139,14 +140,12 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
 
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
         projectText = project.getText().toString();
         kehu_selectText = kehu_select.getSelectedItem().toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -182,6 +181,7 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
                         LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
                         linearLayout.setTag(position);
                         return view;
                     }
@@ -194,7 +194,57 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
         }).start();
     }
 
+    public View.OnClickListener updateClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(JiJianZongZhangActivity.this);
+                int position = Integer.parseInt(view.getTag().toString());
 
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("客户/供应商:");
+                        xiangQingYe.setB_title("项目名称:");
+                        xiangQingYe.setC_title("应收:");
+                        xiangQingYe.setD_title("实收:");
+                        xiangQingYe.setE_title("未收:");
+                        xiangQingYe.setF_title("应付:");
+                        xiangQingYe.setG_title("实付:");
+                        xiangQingYe.setH_title("未付:");
+
+                        xiangQingYe.setA(list.get(position).getProject());
+                        xiangQingYe.setB(list.get(position).getKehu());
+                        xiangQingYe.setC(list.get(position).getReceipts().toString());
+                        xiangQingYe.setD(list.get(position).getReceivable().toString());
+                        xiangQingYe.setE(list.get(position).getReceivable().subtract(list.get(position).getReceipts()).toString());
+                        xiangQingYe.setF(list.get(position).getCope().toString());
+                        xiangQingYe.setG(list.get(position).getPayment().toString());
+                        xiangQingYe.setH(list.get(position).getCope().subtract(list.get(position).getPayment()).toString());
+
+                        Intent intent = new Intent(JiJianZongZhangActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
+                    }
+                });
+
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setMessage("确定查看明细？");
+                builder.setTitle("提示");
+                builder.show();
+            }
+        };
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

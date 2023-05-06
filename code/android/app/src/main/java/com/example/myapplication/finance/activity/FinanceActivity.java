@@ -12,10 +12,13 @@ import android.widget.Toast;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.entity.SystemBanner;
 import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceQuanXianService;
+import com.example.myapplication.service.SystemService;
 import com.example.myapplication.utils.LoadingDialog;
+import com.example.myapplication.utils.MarqueeTextView;
 import com.example.myapplication.utils.ToastUtil;
 import com.youth.banner.Banner;
 import com.youth.banner.adapter.BannerImageAdapter;
@@ -31,7 +34,10 @@ import java.util.List;
 public class FinanceActivity extends AppCompatActivity {
 
     private YhFinanceUser yhFinanceUser;
+    private SystemService systemService;
     private YhFinanceQuanXianService yhFinanceQuanXianService;
+    private List<SystemBanner> list1;
+    private List<SystemBanner> list2;
     private List<YhFinanceQuanXian> list;
     private boolean pd;
 
@@ -388,6 +394,41 @@ public class FinanceActivity extends AppCompatActivity {
         banner_data.add(R.drawable.finance_banner_01);
         banner_data.add(R.drawable.finance_banner_01);
         banner_data.add(R.drawable.finance_banner_01);
+    }
+
+    private void systeminit() {
+        LoadingDialog.getInstance(this).show();
+        Handler listLoadHandler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                MarqueeTextView marqueeTextView = findViewById(R.id.marquee);
+                if(list1.size() > 0){
+                    marqueeTextView.setText(list1.get(0).getText());
+                }else if(list2.size() > 0){
+                    marqueeTextView.setText(list2.get(0).getText());
+                }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                return true;
+            }
+        });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<HashMap<String, Object>> data = new ArrayList<>();
+                try {
+                    systemService = new SystemService();
+                    list1 = systemService.getList("财务",yhFinanceUser.getCompany());
+                    list2 = systemService.getTongYongList("财务");
+                    if (list1 == null && list2 == null) return;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Message msg = new Message();
+                msg.obj = null;
+                listLoadHandler.sendMessage(msg);
+            }
+        }).start();
     }
 
     @Override

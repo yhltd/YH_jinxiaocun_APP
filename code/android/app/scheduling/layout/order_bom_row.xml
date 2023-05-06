@@ -13,6 +13,7 @@
         android:background="@drawable/border_bottom">
 
         <CheckBox
+            android:gravity="center"
             android:id="@+id/cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,6 +24,7 @@
             tools:ignore="RtlHardcoded"/>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,6 +40,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,6 +56,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,6 +72,7 @@
         </View>
 
         <EditText
+            android:gravity="center"
             android:id="@+id/use_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

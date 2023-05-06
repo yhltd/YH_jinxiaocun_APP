@@ -112,6 +112,11 @@ public class UserChangeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void clearClick(View v) {
+        user_code.setText("");
+        password.setText("");
+    }
+
     private void initList() {
         LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {

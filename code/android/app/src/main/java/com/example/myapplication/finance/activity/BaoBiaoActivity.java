@@ -2,6 +2,7 @@ package com.example.myapplication.finance.activity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,13 +21,17 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.finance.entity.YhFinanceBaoBiao;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceBaoBiaoService;
+import com.example.myapplication.jxc.activity.JinXiaoCunActivity;
 import com.example.myapplication.mendian.activity.ReportFormActivity;
 import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
@@ -196,10 +201,10 @@ public class BaoBiaoActivity extends AppCompatActivity {
 
                 for (int i = 0; i < list.size(); i++) {
                     HashMap<String, Object> item = new HashMap<>();
-                    item.put("zhaiyao", list.get(i).getKehu());
+                    item.put("zhaiyao", list.get(i).getZhaiyao());
                     item.put("kehu", list.get(i).getKehu());
                     item.put("receivable", list.get(i).getReceivable());
-                    item.put("zhaiyao2", list.get(i).getKehu2());
+                    item.put("zhaiyao2", list.get(i).getZhaiyao2());
                     item.put("kehu2", list.get(i).getKehu2());
                     item.put("cope", list.get(i).getCope());
                     data.add(item);
@@ -210,6 +215,7 @@ public class BaoBiaoActivity extends AppCompatActivity {
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
                         LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
                         linearLayout.setTag(position);
                         return view;
                     }
@@ -278,6 +284,54 @@ public class BaoBiaoActivity extends AppCompatActivity {
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
+    }
+
+    public View.OnClickListener updateClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(BaoBiaoActivity.this);
+                int position = Integer.parseInt(view.getTag().toString());
+
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("摘要:");
+                        xiangQingYe.setB_title("客户/供应商:");
+                        xiangQingYe.setC_title("未收:");
+                        xiangQingYe.setD_title("摘要:");
+                        xiangQingYe.setE_title("客户/供应商:");
+                        xiangQingYe.setF_title("未付:");
+
+                        xiangQingYe.setA(list.get(position).getZhaiyao());
+                        xiangQingYe.setB(list.get(position).getKehu());
+                        xiangQingYe.setC(list.get(position).getReceivable().toString());
+                        xiangQingYe.setD(list.get(position).getZhaiyao2());
+                        xiangQingYe.setE(list.get(position).getKehu2());
+                        xiangQingYe.setF(list.get(position).getCope().toString());
+
+                        Intent intent = new Intent(BaoBiaoActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
+                    }
+                });
+
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setMessage("确定查看明细？");
+                builder.setTitle("提示");
+                builder.show();
+            }
+        };
     }
 
     @Override

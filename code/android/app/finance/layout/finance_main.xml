@@ -5,7 +5,20 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".jxc.activity.JxcActivity">
+    tools:context=".jxc.activity.JxcActivity"
+    android:background="@color/WhiteSmoke">
+
+    <com.example.myapplication.utils.MarqueeTextView
+        android:id="@+id/marquee"
+        android:layout_marginTop="7dp"
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="5%"
+        android:text="hello_world! hello_world! hello_world! hello_world! hello_world! hello_world! hello_world! hello_world! hello_world!"
+        android:textColor="#FF0033"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:marqueeRepeatLimit="marquee_forever"/>
+    >
 
     <com.youth.banner.Banner
         android:id="@+id/main_banner"
@@ -13,7 +26,7 @@
         android:layout_height="0dp"
         android:layout_alignParentTop="true"
         app:banner_radius="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         app:banner_loop_time="5000"
@@ -25,7 +38,7 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:id="@+id/main_scollview"
-        app:layout_marginTopPercent="24%"
+        app:layout_marginTopPercent="26%"
         app:layout_heightPercent="78%">
 
 
@@ -33,7 +46,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="start"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/shape_corner">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -41,7 +55,10 @@
                 android:layout_marginStart="27dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="20dp"
-                android:text="基本信息" />
+                android:text="基本信息"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -153,7 +170,10 @@
                 android:layout_marginStart="27dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="20dp"
-                android:text="凭证处理" />
+                android:text="凭证处理"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"/>
 
 
             <LinearLayout
@@ -262,7 +282,10 @@
                 android:layout_marginStart="27dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="20dp"
-                android:text="各类报表" />
+                android:text="各类报表"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -372,7 +395,10 @@
                 android:layout_marginStart="27dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="20dp"
-                android:text="极简财务" />
+                android:text="极简财务"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

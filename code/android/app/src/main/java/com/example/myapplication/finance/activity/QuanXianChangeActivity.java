@@ -198,8 +198,6 @@ public class QuanXianChangeActivity extends AppCompatActivity {
             yhFinanceUserNow = (YhFinanceUser) myApplication.getObj();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
-            Button quanxian = findViewById(R.id.quanxianClick);
-            quanxian.setVisibility(View.VISIBLE);
             initList();
         }
     }

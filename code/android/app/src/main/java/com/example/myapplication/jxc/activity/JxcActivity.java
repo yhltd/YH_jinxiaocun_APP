@@ -3,15 +3,24 @@ package com.example.myapplication.jxc.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.entity.SystemBanner;
+import com.example.myapplication.finance.entity.YhFinanceQuanXian;
+import com.example.myapplication.finance.service.YhFinanceQuanXianService;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
+import com.example.myapplication.service.SystemService;
+import com.example.myapplication.utils.LoadingDialog;
+import com.example.myapplication.utils.MarqueeTextView;
 import com.example.myapplication.utils.ToastUtil;
 import com.youth.banner.Banner;
 import com.youth.banner.adapter.BannerImageAdapter;
@@ -22,12 +31,16 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class JxcActivity extends AppCompatActivity {
     private YhJinXiaoCunUser yhJinXiaoCunUser;
+    private SystemService systemService;
 
     private Banner banner;
+    private List<SystemBanner> list1;
+    private List<SystemBanner> list2;
     private List<Integer> banner_data;
 
     @Override
@@ -37,13 +50,11 @@ public class JxcActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         yhJinXiaoCunUser = myApplication.getYhJinXiaoCunUser();
-
-
+        systemService = new SystemService();
         initData();
         banner = findViewById(R.id.main_banner);
 
         banner.setAdapter(new BannerImageAdapter<Integer>(banner_data) {
-
             @Override
             public void onBindView(BannerImageHolder holder, Integer data, int position, int size) {
                 holder.imageView.setImageResource(data);
@@ -58,6 +69,8 @@ public class JxcActivity extends AppCompatActivity {
         banner.setIndicatorSelectedColor(Color.GREEN);
         // 开始轮播
         banner.start();
+
+        systeminit();
 
         LinearLayout ruku = findViewById(R.id.ruku);
         ruku.setOnClickListener(new View.OnClickListener() {
@@ -214,6 +227,42 @@ public class JxcActivity extends AppCompatActivity {
         banner_data.add(R.drawable.jxc_banner_01);
         banner_data.add(R.drawable.jxc_banner_01);
         banner_data.add(R.drawable.jxc_banner_01);
+    }
+
+
+    private void systeminit() {
+        LoadingDialog.getInstance(this).show();
+        Handler listLoadHandler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                MarqueeTextView marqueeTextView = findViewById(R.id.marquee);
+                if(list1.size() > 0){
+                    marqueeTextView.setText(list1.get(0).getText());
+                }else if(list2.size() > 0){
+                    marqueeTextView.setText(list2.get(0).getText());
+                }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                return true;
+            }
+        });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<HashMap<String, Object>> data = new ArrayList<>();
+                try {
+                    systemService = new SystemService();
+                    list1 = systemService.getList("进销存",yhJinXiaoCunUser.getGongsi());
+                    list2 = systemService.getTongYongList("进销存");
+                    if (list1 == null && list2 == null) return;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Message msg = new Message();
+                msg.obj = null;
+                listLoadHandler.sendMessage(msg);
+            }
+        }).start();
     }
 
 

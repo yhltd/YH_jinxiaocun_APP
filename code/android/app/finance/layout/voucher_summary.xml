@@ -78,16 +78,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/border_bottom"
+                android:background="@color/title"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="80dp"
                     android:text="凭证字"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -97,11 +98,12 @@
                     android:layout_weight="1" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="130dp"
                     android:text="凭证号"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -111,11 +113,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="200dp"
                     android:text="录入时间"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -125,11 +128,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="100dp"
                     android:text="摘要"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -139,11 +143,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="100dp"
                     android:text="科目代码"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -153,11 +158,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="100dp"
                     android:text="科目名称"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -167,11 +173,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="150dp"
                     android:text="借方金额"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -181,11 +188,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="150dp"
                     android:text="贷方金额"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -195,11 +203,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="100dp"
                     android:text="部门"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -209,11 +218,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="100dp"
                     android:text="开支项目"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -223,11 +233,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="100dp"
                     android:text="备注"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -237,11 +248,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="100dp"
                     android:text="审核人"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -251,11 +263,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="150dp"
                     android:text="应收/付"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -265,11 +278,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="150dp"
                     android:text="实收/付"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -279,11 +293,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="150dp"
                     android:text="未收/付"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 

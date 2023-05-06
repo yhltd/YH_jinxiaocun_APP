@@ -29,6 +29,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.finance.entity.YhFinanceExpenditure;
 import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.finance.entity.YhFinanceUser;
@@ -265,6 +267,51 @@ public class VoucherSummaryActivity extends AppCompatActivity {
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("凭证字:");
+                        xiangQingYe.setB_title("凭证号:");
+                        xiangQingYe.setC_title("录入时间:");
+                        xiangQingYe.setD_title("摘要:");
+                        xiangQingYe.setE_title("科目代码:");
+                        xiangQingYe.setF_title("科目名称:");
+                        xiangQingYe.setG_title("借方金额:");
+                        xiangQingYe.setH_title("贷方金额:");
+                        xiangQingYe.setI_title("部门:");
+                        xiangQingYe.setJ_title("开支项目:");
+                        xiangQingYe.setK_title("备注:");
+                        xiangQingYe.setL_title("审核人:");
+                        xiangQingYe.setM_title("应收/付:");
+                        xiangQingYe.setN_title("实收/付:");
+                        xiangQingYe.setO_title("未收/付:");
+
+                        xiangQingYe.setA(list.get(position).getWord());
+                        xiangQingYe.setB(list.get(position).getNo());
+                        xiangQingYe.setC(list.get(position).getInsert_date().toString());
+                        xiangQingYe.setD(list.get(position).getZhaiyao());
+                        xiangQingYe.setE(String.valueOf(list.get(position).getCode()));
+                        xiangQingYe.setF(list.get(position).getFull_name());
+                        xiangQingYe.setG(list.get(position).getLoad().toString());
+                        xiangQingYe.setH(list.get(position).getBorrowed().toString());
+                        xiangQingYe.setI(list.get(position).getDepartment());
+                        xiangQingYe.setJ(list.get(position).getExpenditure());
+                        xiangQingYe.setK(list.get(position).getNote());
+                        xiangQingYe.setL(list.get(position).getMan());
+                        xiangQingYe.setM(list.get(position).getMoney().toString());
+                        xiangQingYe.setN(list.get(position).getReal().toString());
+                        xiangQingYe.setN(list.get(position).getMoney().subtract(list.get(position).getReal()).toString());
+
+                        Intent intent = new Intent(VoucherSummaryActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

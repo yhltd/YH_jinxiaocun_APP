@@ -2,6 +2,7 @@ package com.example.myapplication.finance.activity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,10 +21,13 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.entity.YhFinanceXianJinLiuLiang;
 import com.example.myapplication.finance.entity.YhFinanceZiChanFuZhai;
@@ -169,6 +173,7 @@ public class ZiChanFuZhaiActivity extends AppCompatActivity {
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
                         LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
                         linearLayout.setTag(position);
                         return view;
                     }
@@ -214,6 +219,48 @@ public class ZiChanFuZhaiActivity extends AppCompatActivity {
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
+    }
+
+    public View.OnClickListener updateClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ZiChanFuZhaiActivity.this);
+                int position = Integer.parseInt(view.getTag().toString());
+
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("项目名称:");
+                        xiangQingYe.setB_title("日期合计:");
+                        xiangQingYe.setC_title("本年合计:");
+
+                        xiangQingYe.setA(list.get(position).getName());
+                        xiangQingYe.setB(list.get(position).getLoad().toString());
+                        xiangQingYe.setC(list.get(position).getBorrowed().toString());
+
+                        Intent intent = new Intent(ZiChanFuZhaiActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
+                    }
+                });
+
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setMessage("确定查看明细？");
+                builder.setTitle("提示");
+                builder.show();
+            }
+        };
     }
 
     @Override

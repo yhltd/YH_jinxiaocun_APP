@@ -13,6 +13,7 @@
         android:gravity="center"
         android:background="@drawable/border_bottom">
         <TextView
+            android:gravity="center"
             android:id="@+id/spDm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,6 +45,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/leiBie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,6 +61,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/jq_cpsl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,6 +77,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/jq_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,6 +93,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/mx_ruku_cpsl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,6 +109,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/mx_ruku_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -118,6 +125,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/mx_chuku_cpsl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -133,6 +141,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/mx_chuku_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -148,6 +157,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/jc_sl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -163,6 +173,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/jc_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

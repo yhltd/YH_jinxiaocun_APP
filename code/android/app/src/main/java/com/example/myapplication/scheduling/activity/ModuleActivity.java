@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,6 +23,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.ModuleInfo;
 import com.example.myapplication.scheduling.entity.ModuleType;
@@ -77,6 +80,15 @@ public class ModuleActivity extends AppCompatActivity {
 
         pd = 0;
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initList2() {
@@ -260,6 +272,29 @@ public class ModuleActivity extends AppCompatActivity {
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("模块类别:");
+                        xiangQingYe.setB_title("名称:");
+                        xiangQingYe.setC_title("效率/时:");
+                        xiangQingYe.setD_title("父模块:");
+
+                        xiangQingYe.setA(list.get(position).getType());
+                        xiangQingYe.setB(list.get(position).getName());
+                        xiangQingYe.setC(String.valueOf(list.get(position).getNum()));
+                        xiangQingYe.setD(list.get(position).getParent());
+
+                        Intent intent = new Intent(ModuleActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

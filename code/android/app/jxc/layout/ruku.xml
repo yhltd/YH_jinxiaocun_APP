@@ -55,10 +55,11 @@
                 android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:background="@drawable/border_bottom"
+                android:background="@color/title"
                 >
 
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/cb_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -74,9 +75,10 @@
                 </View>
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/regular_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:text="商品名称"
                     android:textStyle="bold"
@@ -88,9 +90,10 @@
                 </View>
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/regular_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:text="商品代码"
                     android:textStyle="bold"
@@ -102,9 +105,10 @@
                 </View>
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/regular_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:text="商品类别"
                     android:textStyle="bold"
@@ -116,9 +120,10 @@
                 </View>
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/regular_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:text="商品单位"
                     android:textStyle="bold"
@@ -130,9 +135,10 @@
                 </View>
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/regular_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:text="数量"
                     android:textStyle="bold"
@@ -144,9 +150,10 @@
                 </View>
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/regular_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:text="单价"
                     android:textStyle="bold"

@@ -74,6 +74,10 @@ public class ModuleTypeChangeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void clearClick(View v) {
+        name.setText("");
+    }
+
     public void insertClick(View v) {
         if (!checkForm()) return;
         LoadingDialog.getInstance(this).show();

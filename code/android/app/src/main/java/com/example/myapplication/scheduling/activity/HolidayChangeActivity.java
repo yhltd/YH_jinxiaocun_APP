@@ -81,6 +81,10 @@ public class HolidayChangeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void clearClick(View v) {
+        riqi.setText("");
+    }
+
     public void insertClick(View v) {
         if (!checkForm()) return;
         LoadingDialog.getInstance(this).show();
