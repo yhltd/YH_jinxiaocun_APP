@@ -1,6 +1,7 @@
 package com.example.myapplication.mendian.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,6 +32,10 @@ import com.example.myapplication.mendian.service.YhMendianOrdersService;
 import com.example.myapplication.mendian.service.YhMendianProductshezhiService;
 import com.example.myapplication.utils.ToastUtil;
 import com.lxj.xpopup.core.BasePopupView;
+import com.youth.banner.Banner;
+import com.youth.banner.adapter.BannerImageAdapter;
+import com.youth.banner.holder.BannerImageHolder;
+import com.youth.banner.indicator.CircleIndicator;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -65,6 +70,9 @@ public class OrderPanelActivity extends AppCompatActivity {
 
     List<YhMendianOrderDetail> list = new ArrayList<>();
     List<YhMendianOrders> max_order;
+
+    private Banner banner;
+    private List<Integer> banner_data;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -101,6 +109,25 @@ public class OrderPanelActivity extends AppCompatActivity {
 
         orderRefresh();
 
+        initData();
+        banner = findViewById(R.id.main_banner);
+
+        banner.setAdapter(new BannerImageAdapter<Integer>(banner_data) {
+
+            @Override
+            public void onBindView(BannerImageHolder holder, Integer data, int position, int size) {
+                holder.imageView.setImageResource(data);
+            }
+        });
+
+        // 开启循环轮播
+        banner.isAutoLoop(true);
+        banner.setIndicator(new CircleIndicator(this));
+        banner.setScrollBarFadeDuration(1000);
+        // 设置指示器颜色(TODO 即选中时那个小点的颜色)
+        banner.setIndicatorSelectedColor(Color.GREEN);
+        // 开始轮播
+        banner.start();
     }
 
     private void instantiation() {
@@ -341,6 +368,10 @@ public class OrderPanelActivity extends AppCompatActivity {
     private void back() {
         setResult(RESULT_OK, new Intent());
         finish();
+    }
+    private void initData(){
+        banner_data = new ArrayList<>();
+        banner_data.add(R.drawable.orderpanel_baokuan);
     }
 
 }

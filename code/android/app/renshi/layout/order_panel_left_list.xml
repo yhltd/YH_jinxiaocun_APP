@@ -2,23 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EBEDF0"
     android:orientation="vertical" >
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:src="@drawable/search"
-        android:orientation="vertical"
-        android:visibility="invisible"
-        android:gravity="center_horizontal"/>
+<!--    android:background="#EBEDF0"-->
+<!--    <ImageView-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:src="@drawable/search"-->
+<!--        android:orientation="vertical"-->
+<!--        android:visibility="invisible"-->
+<!--        android:gravity="center_horizontal"/>-->
 
     <TextView
         android:id="@+id/left_list_item"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:padding="12dp"
-        android:gravity="center_vertical"
-        android:textColor="#444444"/>
+        android:gravity="center"
+        android:textColor="#7E7E7E"
+        android:background="#FF5722"
+        />
 
 </LinearLayout>

@@ -8,33 +8,34 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="50dp"
+        android:background="@drawable/border_bottom"
         android:gravity="center_vertical"
-        android:background="@drawable/border_bottom">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"/>
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp">
 
         <EditText
             android:id="@+id/this_where"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
-            android:hint="手机号/卡号/姓名"/>
+            android:hint="手机号/卡号/姓名"
+            android:textSize="10dp"
+            android:gravity="center"/>
 
         <Button
             android:id="@+id/sel_button"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="查询" />
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/search"
+            android:gravity="center_horizontal" />
     </LinearLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="570dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -44,79 +45,81 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:orientation="horizontal"
+                android:background="#58bd2c"
                 android:gravity="center"
-                android:background="@drawable/border_bottom">
+                android:orientation="horizontal"
+                android:typeface="monospace">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="200dp"
+                    android:gravity="center"
+                    android:textColor="#FFFFFF"
                     android:text="卡号"
-                    android:textColor="@color/main_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_width="3dp"
+                    android:layout_height="25dp"
+                    android:background="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="150dp"
+                    android:gravity="center"
+                    android:textColor="#FFFFFF"
                     android:text="姓名"
-                    android:textColor="@color/main_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_width="3dp"
+                    android:layout_height="25dp"
+                    android:background="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="100dp"
+                    android:gravity="center"
+                    android:textColor="#FFFFFF"
                     android:text="性别"
-                    android:textColor="@color/main_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_width="3dp"
+                    android:layout_height="25dp"
+                    android:background="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="150dp"
+                    android:gravity="center"
+                    android:textColor="#FFFFFF"
                     android:text="电话"
-                    android:textColor="@color/main_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_width="3dp"
+                    android:layout_height="25dp"
+                    android:background="#FFFFFF" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
+                    android:width="100dp"
+                    android:gravity="center"
+                    android:textColor="#FFFFFF"
                     android:text="状态"
-                    android:textColor="@color/main_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
 
             </LinearLayout>
 
