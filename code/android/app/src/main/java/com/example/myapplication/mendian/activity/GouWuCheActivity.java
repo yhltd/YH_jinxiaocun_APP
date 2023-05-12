@@ -39,6 +39,7 @@ public class GouWuCheActivity extends AppCompatActivity {
 
     private YhMendianUser yhMendianUser;
     private ListView gouwuche_list;
+    private Button ins_button;
 
     List<YhMendianOrderDetail> list;
 
@@ -57,6 +58,10 @@ public class GouWuCheActivity extends AppCompatActivity {
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        ins_button = findViewById(R.id.ins_button);
+        ins_button.setOnClickListener(insClick());
+        ins_button.requestFocus();
 
         initList();
     }
@@ -175,6 +180,22 @@ public class GouWuCheActivity extends AppCompatActivity {
                 initList();
             }
         }
+    }
+
+    public View.OnClickListener insClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GouWuCheActivity.this, OrderInsActivity.class);
+                MyApplication myApplication = (MyApplication) getApplication();
+                if(list.size() == 0){
+                    ToastUtil.show(GouWuCheActivity.this, "购物车为空");
+                }else{
+                    myApplication.setObj(list);
+                    startActivityForResult(intent, REQUEST_CODE_CHANG);
+                }
+            }
+        };
     }
 
 }

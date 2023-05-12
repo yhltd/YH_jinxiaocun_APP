@@ -30,6 +30,8 @@ public class MendianDao<T> {
     public MendianDao() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
+//            yhocn.cn
+//            49.233.85.4
             conn = DriverManager.getConnection("jdbc:mysql://yhocn.cn/testdb?autoReconnect=true&allowMultiQueries=true&characterEncoding=utf-8&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai", "root", "Lyh07910");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
