@@ -322,6 +322,144 @@ public class XiangQingYeActivity extends AppCompatActivity {
             k_title.setText(xiangQingYe.getK_title());
         }
 
+        if(!(xiangQingYe.getL_title() == null)){
+            l_line.setVisibility(View.VISIBLE);
+            l_text.setText(xiangQingYe.getL());
+            l_title.setText(xiangQingYe.getL_title());
+        }
+
+        if(!(xiangQingYe.getM_title() == null)){
+            m_line.setVisibility(View.VISIBLE);
+            m_text.setText(xiangQingYe.getM());
+            m_title.setText(xiangQingYe.getM_title());
+        }
+
+        if(!(xiangQingYe.getN_title() == null)){
+            n_line.setVisibility(View.VISIBLE);
+            n_text.setText(xiangQingYe.getN());
+            n_title.setText(xiangQingYe.getN_title());
+        }
+
+        if(!(xiangQingYe.getO_title() == null)){
+            o_line.setVisibility(View.VISIBLE);
+            o_text.setText(xiangQingYe.getO());
+            o_title.setText(xiangQingYe.getO_title());
+        }
+
+        if(!(xiangQingYe.getP_title() == null)){
+            p_line.setVisibility(View.VISIBLE);
+            p_text.setText(xiangQingYe.getP());
+            p_title.setText(xiangQingYe.getP_title());
+        }
+
+        if(!(xiangQingYe.getQ_title() == null)){
+            q_line.setVisibility(View.VISIBLE);
+            q_text.setText(xiangQingYe.getQ());
+            q_title.setText(xiangQingYe.getQ_title());
+        }
+
+        if(!(xiangQingYe.getR_title() == null)){
+            r_line.setVisibility(View.VISIBLE);
+            r_text.setText(xiangQingYe.getR());
+            r_title.setText(xiangQingYe.getR_title());
+        }
+
+        if(!(xiangQingYe.getS_title() == null)){
+            s_line.setVisibility(View.VISIBLE);
+            s_text.setText(xiangQingYe.getS());
+            s_title.setText(xiangQingYe.getS_title());
+        }
+
+        if(!(xiangQingYe.getT_title() == null)){
+            t_line.setVisibility(View.VISIBLE);
+            t_text.setText(xiangQingYe.getT());
+            t_title.setText(xiangQingYe.getT_title());
+        }
+
+        if(!(xiangQingYe.getU_title() == null)){
+            u_line.setVisibility(View.VISIBLE);
+            u_text.setText(xiangQingYe.getU());
+            u_title.setText(xiangQingYe.getU_title());
+        }
+
+        if(!(xiangQingYe.getV_title() == null)){
+            v_line.setVisibility(View.VISIBLE);
+            v_text.setText(xiangQingYe.getV());
+            v_title.setText(xiangQingYe.getV_title());
+        }
+
+        if(!(xiangQingYe.getW_title() == null)){
+            w_line.setVisibility(View.VISIBLE);
+            w_text.setText(xiangQingYe.getW());
+            w_title.setText(xiangQingYe.getW_title());
+        }
+
+        if(!(xiangQingYe.getX_title() == null)){
+            x_line.setVisibility(View.VISIBLE);
+            x_text.setText(xiangQingYe.getX());
+            x_title.setText(xiangQingYe.getX_title());
+        }
+
+        if(!(xiangQingYe.getY_title() == null)){
+            y_line.setVisibility(View.VISIBLE);
+            y_text.setText(xiangQingYe.getY());
+            y_title.setText(xiangQingYe.getY_title());
+        }
+
+        if(!(xiangQingYe.getZ_title() == null)){
+            z_line.setVisibility(View.VISIBLE);
+            z_text.setText(xiangQingYe.getZ());
+            z_title.setText(xiangQingYe.getZ_title());
+        }
+
+        if(!(xiangQingYe.getAa_title() == null)){
+            aa_line.setVisibility(View.VISIBLE);
+            aa_text.setText(xiangQingYe.getAa());
+            aa_title.setText(xiangQingYe.getAa_title());
+        }
+
+        if(!(xiangQingYe.getAb_title() == null)){
+            ab_line.setVisibility(View.VISIBLE);
+            ab_text.setText(xiangQingYe.getAb());
+            ab_title.setText(xiangQingYe.getAb_title());
+        }
+
+        if(!(xiangQingYe.getAc_title() == null)){
+            ac_line.setVisibility(View.VISIBLE);
+            ac_text.setText(xiangQingYe.getAc());
+            ac_title.setText(xiangQingYe.getAc_title());
+        }
+
+        if(!(xiangQingYe.getAd_title() == null)){
+            ad_line.setVisibility(View.VISIBLE);
+            ad_text.setText(xiangQingYe.getAd());
+            ad_title.setText(xiangQingYe.getAd_title());
+        }
+
+        if(!(xiangQingYe.getAe_title() == null)){
+            ae_line.setVisibility(View.VISIBLE);
+            ae_text.setText(xiangQingYe.getAe());
+            ae_title.setText(xiangQingYe.getAe_title());
+        }
+
+        if(!(xiangQingYe.getAf_title() == null)){
+            af_line.setVisibility(View.VISIBLE);
+            af_text.setText(xiangQingYe.getAf());
+            af_title.setText(xiangQingYe.getAf_title());
+        }
+
+        if(!(xiangQingYe.getAg_title() == null)){
+            ag_line.setVisibility(View.VISIBLE);
+            ag_text.setText(xiangQingYe.getAg());
+            ag_title.setText(xiangQingYe.getAg_title());
+        }
+
+        if(!(xiangQingYe.getAh_title() == null)){
+            ah_line.setVisibility(View.VISIBLE);
+            ah_text.setText(xiangQingYe.getAh());
+            ah_title.setText(xiangQingYe.getAh_title());
+        }
+
     }
 
     @Override

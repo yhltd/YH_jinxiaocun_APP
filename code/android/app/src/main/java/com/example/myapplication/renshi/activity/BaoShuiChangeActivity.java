@@ -84,6 +84,16 @@ public class BaoShuiChangeActivity extends AppCompatActivity {
         }
     }
 
+    public void clearClick(View v) {
+        B.setText("");
+        E.setText("");
+        U.setText("");
+        AI.setText("");
+        AK.setText("");
+        AN.setText("");
+        AO.setText("");
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

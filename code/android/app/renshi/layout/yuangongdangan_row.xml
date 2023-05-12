@@ -13,6 +13,7 @@
         android:gravity="center"
         android:background="@drawable/border_bottom">
         <TextView
+            android:gravity="center"
             android:id="@+id/B"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +21,7 @@
             android:textSize="14sp"
             android:text="姓名"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/C"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +37,7 @@
             android:textSize="14sp"
             android:text="部门"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -43,6 +45,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/D"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +53,7 @@
             android:textSize="14sp"
             android:text="职务"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,6 +61,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/E"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +69,7 @@
             android:textSize="14sp"
             android:text="身份证号"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -73,6 +77,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/F"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,7 +85,7 @@
             android:textSize="14sp"
             android:text="基本工资"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -88,6 +93,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/G"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,7 +101,7 @@
             android:textSize="14sp"
             android:text="银行卡号"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -103,6 +109,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/H"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,7 +117,7 @@
             android:textSize="14sp"
             android:text="入职时间"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -118,6 +125,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/K"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -125,7 +133,7 @@
             android:textSize="14sp"
             android:text="工龄"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -133,6 +141,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/M"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -140,7 +149,7 @@
             android:textSize="14sp"
             android:text="民族"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -148,6 +157,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/N"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -155,7 +165,7 @@
             android:textSize="14sp"
             android:text="籍贯"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -163,6 +173,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/O"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -170,7 +181,7 @@
             android:textSize="14sp"
             android:text="手机号"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -178,6 +189,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/P"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -185,7 +197,7 @@
             android:textSize="14sp"
             android:text="学历"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -193,6 +205,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/Q"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -200,7 +213,7 @@
             android:textSize="14sp"
             android:text="出生日期"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -208,6 +221,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/R"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -215,7 +229,7 @@
             android:textSize="14sp"
             android:text="婚姻状况"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -223,6 +237,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/S"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -230,7 +245,7 @@
             android:textSize="14sp"
             android:text="就职状态"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -238,6 +253,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/AC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -245,7 +261,7 @@
             android:textSize="14sp"
             android:text="绩效工资"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -253,6 +269,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/AD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -260,7 +277,7 @@
             android:textSize="14sp"
             android:text="调薪时间"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -268,6 +285,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/T"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -275,7 +293,7 @@
             android:textSize="14sp"
             android:text="现住址"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -283,6 +301,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/U"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -290,7 +309,7 @@
             android:textSize="14sp"
             android:text="家庭住址"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -298,6 +317,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/V"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -305,7 +325,7 @@
             android:textSize="14sp"
             android:text="银行卡支行"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="125dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -313,6 +333,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/W"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -320,7 +341,7 @@
             android:textSize="14sp"
             android:text="是否购买社保"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="150dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -328,6 +349,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/X"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -335,7 +357,7 @@
             android:textSize="14sp"
             android:text="公积金账号"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="125dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -343,6 +365,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/Y"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -350,7 +373,7 @@
             android:textSize="14sp"
             android:text="社保账号"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -358,6 +381,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/Z"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -365,7 +389,7 @@
             android:textSize="14sp"
             android:text="劳动合同签订有效期限"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="250dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -373,6 +397,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/AA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -380,7 +405,7 @@
             android:textSize="14sp"
             android:text="劳动合同第二次续签"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="225dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -388,6 +413,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/AB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -395,7 +421,7 @@
             android:textSize="14sp"
             android:text="备注"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"

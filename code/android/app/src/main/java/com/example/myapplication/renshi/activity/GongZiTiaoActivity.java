@@ -28,6 +28,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.finance.activity.YingShouMingXiZhangActivity;
 import com.example.myapplication.finance.entity.YhFinanceJiJianPeiZhi;
 import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
@@ -243,6 +245,7 @@ public class GongZiTiaoActivity extends AppCompatActivity {
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
                         LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
                         linearLayout.setTag(position);
                         return view;
                     }
@@ -253,6 +256,111 @@ public class GongZiTiaoActivity extends AppCompatActivity {
 
             }
         }).start();
+    }
+
+    public View.OnClickListener updateClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(GongZiTiaoActivity.this);
+                int position = Integer.parseInt(view.getTag().toString());
+
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("姓名:");
+                        xiangQingYe.setB_title("部门:");
+                        xiangQingYe.setC_title("岗位:");
+                        xiangQingYe.setD_title("身份证号:");
+                        xiangQingYe.setE_title("入职时间:");
+                        xiangQingYe.setF_title("基本工资:");
+                        xiangQingYe.setG_title("绩效工资:");
+                        xiangQingYe.setH_title("岗位工资:");
+                        xiangQingYe.setI_title("标准工资:");
+                        xiangQingYe.setJ_title("跨度工资:");
+                        xiangQingYe.setK_title("职称津贴:");
+                        xiangQingYe.setL_title("月出勤天数:");
+                        xiangQingYe.setM_title("加班时间:");
+                        xiangQingYe.setN_title("加班费:");
+                        xiangQingYe.setO_title("全勤应发:");
+                        xiangQingYe.setP_title("缺勤天数:");
+                        xiangQingYe.setQ_title("缺勤扣款:");
+                        xiangQingYe.setR_title("迟到天数:");
+                        xiangQingYe.setS_title("迟到扣款:");
+                        xiangQingYe.setT_title("应发工资:");
+                        xiangQingYe.setU_title("社保基数:");
+                        xiangQingYe.setV_title("医疗基数:");
+                        xiangQingYe.setW_title("公积金基数:");
+                        xiangQingYe.setX_title("年金基数:");
+                        xiangQingYe.setY_title("企业养老:");
+                        xiangQingYe.setZ_title("企业失业:");
+                        xiangQingYe.setAa_title("企业医疗:");
+                        xiangQingYe.setAb_title("企业工伤:");
+                        xiangQingYe.setAc_title("企业生育:");
+                        xiangQingYe.setAd_title("企业公积金:");
+                        xiangQingYe.setAe_title("企业年金:");
+                        xiangQingYe.setAf_title("滞纳金:");
+                        xiangQingYe.setAg_title("利息:");
+                        xiangQingYe.setAh_title("企业小计:");
+
+                        xiangQingYe.setA(list.get(position).getB());
+                        xiangQingYe.setB(list.get(position).getC());
+                        xiangQingYe.setC(list.get(position).getD());
+                        xiangQingYe.setD(list.get(position).getE());
+                        xiangQingYe.setE(list.get(position).getF());
+                        xiangQingYe.setF(list.get(position).getG());
+                        xiangQingYe.setG(list.get(position).getH());
+                        xiangQingYe.setH(list.get(position).getI());
+                        xiangQingYe.setI(list.get(position).getJ());
+                        xiangQingYe.setJ(list.get(position).getK());
+                        xiangQingYe.setK(list.get(position).getL());
+                        xiangQingYe.setL(list.get(position).getM());
+                        xiangQingYe.setM(list.get(position).getN());
+                        xiangQingYe.setN(list.get(position).getO());
+                        xiangQingYe.setO(list.get(position).getP());
+                        xiangQingYe.setP(list.get(position).getQ());
+                        xiangQingYe.setQ(list.get(position).getR());
+                        xiangQingYe.setR(list.get(position).getS());
+                        xiangQingYe.setS(list.get(position).getT());
+                        xiangQingYe.setT(list.get(position).getU());
+                        xiangQingYe.setU(list.get(position).getV());
+                        xiangQingYe.setV(list.get(position).getW());
+                        xiangQingYe.setW(list.get(position).getX());
+                        xiangQingYe.setX(list.get(position).getY());
+                        xiangQingYe.setY(list.get(position).getZ());
+                        xiangQingYe.setZ(list.get(position).getAa());
+                        xiangQingYe.setAa(list.get(position).getAb());
+                        xiangQingYe.setAb(list.get(position).getAc());
+                        xiangQingYe.setAc(list.get(position).getAd());
+                        xiangQingYe.setAd(list.get(position).getAe());
+                        xiangQingYe.setAe(list.get(position).getAf());
+                        xiangQingYe.setAf(list.get(position).getAg());
+                        xiangQingYe.setAg(list.get(position).getAh());
+                        xiangQingYe.setAh(list.get(position).getAi());
+
+
+                        Intent intent = new Intent(GongZiTiaoActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
+                    }
+                });
+
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setMessage("确定查看明细？");
+                builder.setTitle("提示");
+                builder.show();
+            }
+        };
     }
 
 

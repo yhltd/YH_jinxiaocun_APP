@@ -102,6 +102,14 @@ public class PaibanDetailChangeActivity extends AppCompatActivity {
         showDateOnClick(riqi);
     }
 
+    public void clearClick(View v) {
+        staffName.setText("");
+        phoneNumber.setText("");
+        idNumber.setText("");
+        banci.setText("");
+        riqi.setText("");
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

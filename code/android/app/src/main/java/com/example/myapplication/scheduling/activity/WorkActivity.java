@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.ModuleInfo;
 import com.example.myapplication.scheduling.entity.UserInfo;
@@ -166,6 +168,35 @@ public class WorkActivity extends AppCompatActivity {
                             initList();
                         }
                         return true;
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("编号:");
+                        xiangQingYe.setB_title("订单号:");
+                        xiangQingYe.setC_title("所属模块:");
+                        xiangQingYe.setD_title("模块效率/时:");
+                        xiangQingYe.setE_title("生产数量:");
+                        xiangQingYe.setF_title("类型:");
+                        xiangQingYe.setG_title("开始生产日期:");
+
+                        xiangQingYe.setA(String.valueOf(list.get(position).getRow_num()));
+                        xiangQingYe.setB(list.get(position).getOrder_number());
+                        xiangQingYe.setC(list.get(position).getModule());
+                        xiangQingYe.setD(String.valueOf(list.get(position).getNum()));
+                        xiangQingYe.setE(String.valueOf(list.get(position).getWork_num()));
+                        xiangQingYe.setF(list.get(position).getType());
+                        xiangQingYe.setG(list.get(position).getWork_start_date());
+
+                        Intent intent = new Intent(WorkActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

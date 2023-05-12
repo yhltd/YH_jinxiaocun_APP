@@ -27,6 +27,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
+import com.example.myapplication.jxc.activity.BiJiActivity;
 import com.example.myapplication.renshi.entity.YhRenShiBaoPanShenPi;
 import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
@@ -211,6 +214,35 @@ public class BaoPanShenPiActivity extends AppCompatActivity {
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("实发工资:");
+                        xiangQingYe.setB_title("个人支出:");
+                        xiangQingYe.setC_title("企业支出:");
+                        xiangQingYe.setD_title("员工人数:");
+                        xiangQingYe.setE_title("全勤天数:");
+                        xiangQingYe.setF_title("审批人:");
+                        xiangQingYe.setG_title("日期:");
+
+                        xiangQingYe.setA(list.get(position).getShifa_gongzi());
+                        xiangQingYe.setB(list.get(position).getGeren_zhichu());
+                        xiangQingYe.setC(list.get(position).getQiye_zhichu());
+                        xiangQingYe.setD(list.get(position).getYuangong_renshu());
+                        xiangQingYe.setE(list.get(position).getQuanqin_tianshu());
+                        xiangQingYe.setF(list.get(position).getShenpiren());
+                        xiangQingYe.setG(list.get(position).getRiqi());
+
+                        Intent intent = new Intent(BaoPanShenPiActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

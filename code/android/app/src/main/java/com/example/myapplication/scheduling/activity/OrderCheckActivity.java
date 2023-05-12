@@ -25,6 +25,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.jxc.activity.MingXiActivity;
 import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.OrderCheck;
@@ -197,6 +199,29 @@ public class OrderCheckActivity extends AppCompatActivity {
                             initList();
                         }
                         return true;
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("订单号:");
+                        xiangQingYe.setB_title("模块:");
+                        xiangQingYe.setC_title("日期:");
+                        xiangQingYe.setD_title("数量:");
+
+                        xiangQingYe.setA(list.get(position).getOrder_number());
+                        xiangQingYe.setB(list.get(position).getMoudle());
+                        xiangQingYe.setC(list.get(position).getRiqi());
+                        xiangQingYe.setD(String.valueOf(list.get(position).getNum()));
+
+                        Intent intent = new Intent(OrderCheckActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

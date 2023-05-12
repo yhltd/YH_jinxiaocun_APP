@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,7 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -82,6 +84,12 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
     private List<BarEntry> nianchuXianJinList = new ArrayList<>();
     private List<BarEntry> nianmoXianJinList = new ArrayList<>();
     private List<DictModel> xianjin_list = new ArrayList<>();
+
+    private float jiejin_sum = 0f;
+    private float daijin_sum = 0f;
+
+    private float jiefang_sum = 0f;
+    private float daifang_sum = 0f;
 
     List<YhFinanceKeMuZongZhang> list1;
     List<YhFinanceKeMuZongZhang> list2;
@@ -164,11 +172,22 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
         nianchuList = new ArrayList<>();
         nianmoList = new ArrayList<>();
 
+        jiejin_sum = 0f;
+        daijin_sum = 0f;
+
         for(int i=0;i<list.size();i++){
+            jiejin_sum = jiejin_sum + toFloat(list.get(i).boyCnt);
+            daijin_sum = daijin_sum + toFloat(list.get(i).girlCnt);
             nianchuList.add(new BarEntry((float) (i+1),toFloat(list.get(i).boyCnt)));
             nianmoList.add(new BarEntry((float) (i+1),toFloat(list.get(i).girlCnt)));
         }
 
+        TextView jiejin = findViewById(R.id.jiejin_sum);
+        TextView daijin = findViewById(R.id.daijin_sum);
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setGroupingUsed(true);
+        jiejin.setText("借金合计：" + nf.format(jiejin_sum));
+        daijin.setText("贷金合计：" + nf.format(daijin_sum));
 
         BarDataSet barDataSet=new BarDataSet(nianchuList,"年初借金");
         barDataSet.setColor(Color.parseColor("#0066CC"));    //为第一组柱子设置颜色
@@ -307,11 +326,21 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
 
         nianchuKeMuList = new ArrayList<>();
         nianmoKeMuList = new ArrayList<>();
-
+        jiefang_sum = 0f;
+        daifang_sum = 0f;
         for(int i=0;i<kemu_list.size();i++){
+            jiefang_sum = jiefang_sum + toFloat(kemu_list.get(i).boyCnt);
+            daifang_sum = daifang_sum + toFloat(kemu_list.get(i).girlCnt);
             nianchuKeMuList.add(new BarEntry((float) (i+1),toFloat(kemu_list.get(i).boyCnt)));
             nianmoKeMuList.add(new BarEntry((float) (i+1),toFloat(kemu_list.get(i).girlCnt)));
         }
+
+        TextView jiejin = findViewById(R.id.jiefang_sum);
+        TextView daijin = findViewById(R.id.daifang_sum);
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setGroupingUsed(true);
+        jiejin.setText("借方合计：" + nf.format(jiefang_sum));
+        daijin.setText("贷方合计：" + nf.format(daifang_sum));
 
 
         BarDataSet barDataSet=new BarDataSet(nianchuKeMuList,"贷方");

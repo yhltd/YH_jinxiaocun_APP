@@ -39,6 +39,64 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/shape_corner"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/jiejin_sum"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:textSize="17dp"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/daijin_sum"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:textSize="17dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/shape_corner"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/jiefang_sum"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:textSize="17dp"
+            />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/daifang_sum"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:textSize="17dp"
+            />
+
+    </LinearLayout>
+
     <ScrollView
         android:layout_height="match_parent"
         android:layout_width="match_parent"

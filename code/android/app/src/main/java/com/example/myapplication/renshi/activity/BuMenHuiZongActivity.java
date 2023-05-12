@@ -2,6 +2,7 @@ package com.example.myapplication.renshi.activity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,10 +22,13 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.renshi.service.YhRenShiGongZiMingXiService;
@@ -229,6 +233,7 @@ public class BuMenHuiZongActivity extends AppCompatActivity {
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
                         LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
                         linearLayout.setTag(position);
                         return view;
                     }
@@ -239,6 +244,111 @@ public class BuMenHuiZongActivity extends AppCompatActivity {
 
             }
         }).start();
+    }
+
+    public View.OnClickListener updateClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(BuMenHuiZongActivity.this);
+                int position = Integer.parseInt(view.getTag().toString());
+
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("部门:");
+                        xiangQingYe.setB_title("人数:");
+                        xiangQingYe.setC_title("基本工资:");
+                        xiangQingYe.setD_title("绩效工资:");
+                        xiangQingYe.setE_title("岗位工资:");
+                        xiangQingYe.setF_title("标准工资:");
+                        xiangQingYe.setG_title("跨度工资:");
+                        xiangQingYe.setH_title("职称津贴:");
+                        xiangQingYe.setI_title("月出勤天数:");
+                        xiangQingYe.setJ_title("加班时间:");
+                        xiangQingYe.setK_title("加班费:");
+                        xiangQingYe.setL_title("全勤应发:");
+                        xiangQingYe.setM_title("缺勤天数:");
+                        xiangQingYe.setN_title("缺勤扣款:");
+                        xiangQingYe.setO_title("迟到天数:");
+                        xiangQingYe.setP_title("迟到扣款:");
+                        xiangQingYe.setQ_title("应发工资:");
+                        xiangQingYe.setR_title("社保基数:");
+                        xiangQingYe.setS_title("医疗基数:");
+                        xiangQingYe.setT_title("公积金基数:");
+                        xiangQingYe.setU_title("年金基数:");
+                        xiangQingYe.setV_title("企业养老:");
+                        xiangQingYe.setW_title("企业失业:");
+                        xiangQingYe.setX_title("企业医疗:");
+                        xiangQingYe.setY_title("企业工伤:");
+                        xiangQingYe.setZ_title("企业生育:");
+                        xiangQingYe.setAa_title("企业公积金:");
+                        xiangQingYe.setAb_title("企业年金:");
+                        xiangQingYe.setAc_title("滞纳金:");
+                        xiangQingYe.setAd_title("利息:");
+                        xiangQingYe.setAe_title("企业小计:");
+                        xiangQingYe.setAf_title("个人养老:");
+                        xiangQingYe.setAg_title("个人失业:");
+                        xiangQingYe.setAh_title("个人医疗:");
+
+                        xiangQingYe.setA(list.get(position).getC());
+                        xiangQingYe.setB(list.get(position).getD());
+                        xiangQingYe.setC(list.get(position).getG());
+                        xiangQingYe.setD(list.get(position).getH());
+                        xiangQingYe.setE(list.get(position).getI());
+                        xiangQingYe.setF(list.get(position).getJ());
+                        xiangQingYe.setG(list.get(position).getK());
+                        xiangQingYe.setH(list.get(position).getL());
+                        xiangQingYe.setI(list.get(position).getM());
+                        xiangQingYe.setJ(list.get(position).getN());
+                        xiangQingYe.setK(list.get(position).getO());
+                        xiangQingYe.setL(list.get(position).getP());
+                        xiangQingYe.setM(list.get(position).getQ());
+                        xiangQingYe.setN(list.get(position).getR());
+                        xiangQingYe.setO(list.get(position).getS());
+                        xiangQingYe.setP(list.get(position).getT());
+                        xiangQingYe.setQ(list.get(position).getU());
+                        xiangQingYe.setR(list.get(position).getV());
+                        xiangQingYe.setS(list.get(position).getW());
+                        xiangQingYe.setT(list.get(position).getX());
+                        xiangQingYe.setU(list.get(position).getY());
+                        xiangQingYe.setV(list.get(position).getZ());
+                        xiangQingYe.setW(list.get(position).getAa());
+                        xiangQingYe.setX(list.get(position).getAb());
+                        xiangQingYe.setY(list.get(position).getAc());
+                        xiangQingYe.setZ(list.get(position).getAd());
+                        xiangQingYe.setAa(list.get(position).getAe());
+                        xiangQingYe.setAb(list.get(position).getAf());
+                        xiangQingYe.setAc(list.get(position).getAg());
+                        xiangQingYe.setAd(list.get(position).getAh());
+                        xiangQingYe.setAe(list.get(position).getAi());
+                        xiangQingYe.setAf(list.get(position).getAj());
+                        xiangQingYe.setAg(list.get(position).getAk());
+                        xiangQingYe.setAh(list.get(position).getAl());
+
+
+                        Intent intent = new Intent(BuMenHuiZongActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
+                    }
+                });
+
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setMessage("确定查看明细？");
+                builder.setTitle("提示");
+                builder.show();
+            }
+        };
     }
 
     public void onInsertClick(View v) {

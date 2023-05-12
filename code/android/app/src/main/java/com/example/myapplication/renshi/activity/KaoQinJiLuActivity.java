@@ -25,6 +25,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.finance.activity.XianJinLiuLiangActivity;
 import com.example.myapplication.renshi.entity.YhRenShiKaoQinJiLu;
 import com.example.myapplication.renshi.entity.YhRenShiPeiZhiBiao;
@@ -153,6 +155,7 @@ public class KaoQinJiLuActivity extends AppCompatActivity {
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
                         LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
                         linearLayout.setTag(position);
                         return view;
                     }
@@ -163,6 +166,60 @@ public class KaoQinJiLuActivity extends AppCompatActivity {
 
             }
         }).start();
+    }
+
+
+    public View.OnClickListener updateClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(KaoQinJiLuActivity.this);
+                int position = Integer.parseInt(view.getTag().toString());
+
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("姓名:");
+                        xiangQingYe.setB_title("年:");
+                        xiangQingYe.setC_title("月:");
+                        xiangQingYe.setD_title("应到:");
+                        xiangQingYe.setE_title("实到:");
+                        xiangQingYe.setF_title("请假:");
+                        xiangQingYe.setG_title("加班:");
+                        xiangQingYe.setH_title("迟到:");
+
+                        xiangQingYe.setA(list.get(position).getName());
+                        xiangQingYe.setB(list.get(position).getYear());
+                        xiangQingYe.setC(list.get(position).getMoth());
+                        xiangQingYe.setD(list.get(position).getAj());
+                        xiangQingYe.setE(list.get(position).getAk());
+                        xiangQingYe.setF(list.get(position).getAl());
+                        xiangQingYe.setG(list.get(position).getAm());
+                        xiangQingYe.setH(list.get(position).getAn());
+
+
+                        Intent intent = new Intent(KaoQinJiLuActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
+                    }
+                });
+
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setMessage("确定查看明细？");
+                builder.setTitle("提示");
+                builder.show();
+            }
+        };
     }
 
 

@@ -83,6 +83,13 @@ public class OrderCheckChangeActivity extends AppCompatActivity {
 
     }
 
+    public void clearClick(View v) {
+        order_number.setText("");
+        moudle.setText("");
+        riqi.setText("");
+        num.setText("");
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

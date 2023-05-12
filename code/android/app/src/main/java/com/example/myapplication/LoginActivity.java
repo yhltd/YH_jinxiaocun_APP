@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -44,7 +46,9 @@ import com.example.myapplication.finance.activity.FinanceActivity;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceUserService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     private YhJinXiaoCunUserService yhJinXiaoCunUserService;
@@ -63,6 +67,8 @@ public class LoginActivity extends AppCompatActivity {
     private String companyText;
     private String systemText;
 
+    private SharedPreferences loginPreference;
+    private CheckBox remember;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +81,19 @@ public class LoginActivity extends AppCompatActivity {
         company = findViewById(R.id.company);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
+        remember = findViewById(R.id.remember);
+
+        loginPreference = getSharedPreferences("login", MODE_PRIVATE);
+
+        boolean cheched = loginPreference.getBoolean("checked", false);
+        if (cheched) {
+            Map<String, Object> m = readLogin();
+            if (m != null) {
+                username.setText((CharSequence) m.get("userName"));
+                password.setText((CharSequence) m.get("password"));
+                remember.setChecked(cheched);
+            }
+        }
 
         //建立数据源
         String[] systemArray = getResources().getStringArray(R.array.system);
@@ -280,6 +299,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (systemText.equals("云合未来进销存系统")) {
                                 YhJinXiaoCunUser user = (YhJinXiaoCunUser) msg.obj;
                                 if (user.getBtype().equals("正常")) {
+                                    configLoginInfo(remember.isChecked());
                                     MyApplication application = (MyApplication) getApplicationContext();
                                     application.setYhJinXiaoCunUser(user);
                                     ToastUtil.show(LoginActivity.this, "登录成功");
@@ -289,6 +309,7 @@ public class LoginActivity extends AppCompatActivity {
                                     ToastUtil.show(LoginActivity.this, "账号已被禁用");
                                 }
                             } else if (systemText.equals("云合未来财务系统")) {
+                                configLoginInfo(remember.isChecked());
                                 YhFinanceUser user = (YhFinanceUser) msg.obj;
                                 MyApplication application = (MyApplication) getApplicationContext();
                                 application.setYhFinanceUser(user);
@@ -298,6 +319,7 @@ public class LoginActivity extends AppCompatActivity {
                             } else if (systemText.equals("云合排产管理系统")) {
                                 UserInfo user = (UserInfo) msg.obj;
                                 if (user.getState().equals("正常")) {
+                                    configLoginInfo(remember.isChecked());
                                     MyApplication application = (MyApplication) getApplicationContext();
                                     application.setUserInfo(user);
                                     ToastUtil.show(LoginActivity.this, "登录成功");
@@ -309,6 +331,7 @@ public class LoginActivity extends AppCompatActivity {
                             } else if (systemText.equals("云合分权编辑系统")) {
                                 Renyuan renyuan = (Renyuan) msg.obj;
                                 if (renyuan.getZhuangtai().equals("正常")) {
+                                    configLoginInfo(remember.isChecked());
                                     MyApplication application = (MyApplication) getApplicationContext();
                                     application.setRenyuan(renyuan);
                                     ToastUtil.show(LoginActivity.this, "登录成功");
@@ -318,6 +341,7 @@ public class LoginActivity extends AppCompatActivity {
                                     ToastUtil.show(LoginActivity.this, "账号已被禁用");
                                 }
                             }else if (systemText.equals("云合人事管理系统")) {
+                                configLoginInfo(remember.isChecked());
                                 YhRenShiUser user = (YhRenShiUser) msg.obj;
                                 MyApplication application = (MyApplication) getApplicationContext();
                                 application.setYhRenShiUser(user);
@@ -327,6 +351,7 @@ public class LoginActivity extends AppCompatActivity {
                             }else if (systemText.equals("云合教务管理系统")) {
                                 Teacher user = (Teacher) msg.obj;
                                 if (user.getState().equals("正常")) {
+                                    configLoginInfo(remember.isChecked());
                                     MyApplication application = (MyApplication) getApplicationContext();
                                     application.setTeacher(user);
                                     ToastUtil.show(LoginActivity.this, "登录成功");
@@ -336,6 +361,7 @@ public class LoginActivity extends AppCompatActivity {
                                     ToastUtil.show(LoginActivity.this, "账号已被禁用");
                                 }
                             }else if (systemText.equals("云合智慧门店收银系统")) {
+                                configLoginInfo(remember.isChecked());
                                 YhMendianUser user = (YhMendianUser) msg.obj;
                                 MyApplication application = (MyApplication) getApplicationContext();
                                 application.setYhMendianUser(user);
@@ -422,6 +448,27 @@ public class LoginActivity extends AppCompatActivity {
                 }).start();
             }
         };
+    }
+
+    public Map<String, Object> readLogin() {
+        Map<String, Object> m = new HashMap<>();
+        String userName = loginPreference.getString("userName", "");
+        String password = loginPreference.getString("password", "");
+        m.put("userName", userName);
+        m.put("password", password);
+        return m;
+    }
+
+    public void configLoginInfo(boolean checked) {
+        SharedPreferences.Editor editor = loginPreference.edit();
+        editor.putBoolean("checked", remember.isChecked());
+        if (checked) {
+            editor.putString("userName", username.getText().toString());
+            editor.putString("password", password.getText().toString());
+        } else {
+            editor.remove("userName").remove("password");
+        }
+        editor.commit();
     }
 
     public boolean checkForm() {

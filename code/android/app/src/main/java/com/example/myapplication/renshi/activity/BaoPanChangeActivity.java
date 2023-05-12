@@ -102,6 +102,16 @@ public class BaoPanChangeActivity extends AppCompatActivity {
         }
     }
 
+    public void clearClick(View v) {
+        shifa_gongzi.setText("");
+        geren_zhichu.setText("");
+        qiye_zhichu.setText("");
+        yuangong_renshu.setText("");
+        quanqin_tianshu.setText("");
+        shenpiren.setText("");
+        riqi.setText("");
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

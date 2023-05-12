@@ -21,6 +21,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
+import com.example.myapplication.jxc.activity.BiJiActivity;
 import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
 import com.example.myapplication.renshi.entity.YhRenShiPeiZhiBiao;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
@@ -191,6 +194,37 @@ public class BaoShuiActivity extends AppCompatActivity {
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("姓名:");
+                        xiangQingYe.setB_title("证件类型:");
+                        xiangQingYe.setC_title("证件号码:");
+                        xiangQingYe.setD_title("收入金额:");
+                        xiangQingYe.setE_title("基本养老保险金:");
+                        xiangQingYe.setF_title("失业保险金:");
+                        xiangQingYe.setG_title("住房公积金:");
+                        xiangQingYe.setH_title("年金(个人部分):");
+
+                        xiangQingYe.setA(list.get(position).getB());
+                        xiangQingYe.setB("身份证");
+                        xiangQingYe.setC(list.get(position).getE());
+                        xiangQingYe.setD(list.get(position).getU());
+                        xiangQingYe.setE(list.get(position).getAi());
+                        xiangQingYe.setF(list.get(position).getAk());
+                        xiangQingYe.setG(list.get(position).getAn());
+                        xiangQingYe.setH(list.get(position).getAo());
+
+                        Intent intent = new Intent(BaoShuiActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

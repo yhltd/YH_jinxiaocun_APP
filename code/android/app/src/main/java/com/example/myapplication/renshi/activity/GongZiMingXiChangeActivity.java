@@ -205,6 +205,49 @@ public class GongZiMingXiChangeActivity extends AppCompatActivity {
         init_select();
     }
 
+    public void clearClick(View v) {
+        C.setText("");
+        D.setText("");
+        E.setText("");
+        F.setText("");
+        G.setText("");
+        H.setText("");
+        I.setText("");
+        J.setText("");
+        M.setText("");
+        N.setText("");
+        O.setText("");
+        P.setText("");
+        Q.setText("");
+        S.setText("");
+        T.setText("");
+        U.setText("");
+        Z.setText("");
+        AA.setText("");
+        AB.setText("");
+        AC.setText("");
+        AD.setText("");
+        AE.setText("");
+        AF.setText("");
+        AI.setText("");
+        AJ.setText("");
+        AK.setText("");
+        AL.setText("");
+        AM.setText("");
+        AN.setText("");
+        AO.setText("");
+        AR.setText("");
+        ASA.setText("");
+        ATA.setText("");
+        AU.setText("");
+        AV.setText("");
+        AW.setText("");
+        AY.setText("");
+        BA.setText("");
+        BB.setText("");
+        BC.setText("");
+    }
+
     public void init_select() {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override

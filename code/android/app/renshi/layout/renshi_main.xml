@@ -7,13 +7,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".renshi.activity.RenShiActivity">
 
+    <com.example.myapplication.utils.MarqueeTextView
+        android:id="@+id/marquee"
+        android:layout_marginTop="7dp"
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="5%"
+        android:text="hello_world! hello_world! hello_world! hello_world! hello_world! hello_world! hello_world! hello_world! hello_world!"
+        android:textColor="#FF0033"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:marqueeRepeatLimit="marquee_forever"/>
+    >
+
     <com.youth.banner.Banner
         android:id="@+id/main_banner"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_alignParentTop="true"
         app:banner_radius="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         app:banner_loop_time="5000"
@@ -25,8 +37,8 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:id="@+id/main_scollview"
-        app:layout_marginTopPercent="24%"
-        app:layout_heightPercent="78%">
+        app:layout_marginTopPercent="27%"
+        app:layout_heightPercent="61%">
 
         <LinearLayout
             android:layout_width="match_parent"

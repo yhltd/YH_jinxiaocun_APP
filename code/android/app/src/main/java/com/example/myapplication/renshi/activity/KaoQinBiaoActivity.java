@@ -27,6 +27,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.renshi.entity.YhRenShiKaoQinJiLu;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.renshi.service.YhRenShiKaoQinJiLuService;
@@ -240,6 +242,89 @@ public class KaoQinBiaoActivity extends AppCompatActivity {
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();
+                    }
+                });
+
+                builder.setNeutralButton("查看详情", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("年:");
+                        xiangQingYe.setB_title("月:");
+                        xiangQingYe.setC_title("姓名:");
+                        xiangQingYe.setD_title("1:");
+                        xiangQingYe.setE_title("2:");
+                        xiangQingYe.setF_title("3:");
+                        xiangQingYe.setG_title("4:");
+                        xiangQingYe.setH_title("5:");
+                        xiangQingYe.setI_title("6:");
+                        xiangQingYe.setJ_title("7:");
+                        xiangQingYe.setK_title("8:");
+                        xiangQingYe.setL_title("9:");
+                        xiangQingYe.setM_title("10:");
+                        xiangQingYe.setN_title("11:");
+                        xiangQingYe.setO_title("12:");
+                        xiangQingYe.setP_title("13:");
+                        xiangQingYe.setQ_title("14:");
+                        xiangQingYe.setR_title("15:");
+                        xiangQingYe.setS_title("16:");
+                        xiangQingYe.setT_title("17:");
+                        xiangQingYe.setU_title("18:");
+                        xiangQingYe.setV_title("19:");
+                        xiangQingYe.setW_title("20:");
+                        xiangQingYe.setX_title("21:");
+                        xiangQingYe.setY_title("22:");
+                        xiangQingYe.setZ_title("23:");
+                        xiangQingYe.setAa_title("24:");
+                        xiangQingYe.setAb_title("25:");
+                        xiangQingYe.setAc_title("26:");
+                        xiangQingYe.setAd_title("27:");
+                        xiangQingYe.setAe_title("28:");
+                        xiangQingYe.setAf_title("29:");
+                        xiangQingYe.setAg_title("30:");
+                        xiangQingYe.setAh_title("31:");
+
+                        xiangQingYe.setA(list.get(position).getYear());
+                        xiangQingYe.setB(list.get(position).getMoth());
+                        xiangQingYe.setC(list.get(position).getName());
+                        xiangQingYe.setD(list.get(position).getE());
+                        xiangQingYe.setE(list.get(position).getF());
+                        xiangQingYe.setF(list.get(position).getG());
+                        xiangQingYe.setG(list.get(position).getH());
+                        xiangQingYe.setH(list.get(position).getI());
+                        xiangQingYe.setI(list.get(position).getJ());
+                        xiangQingYe.setJ(list.get(position).getK());
+                        xiangQingYe.setK(list.get(position).getL());
+                        xiangQingYe.setL(list.get(position).getM());
+                        xiangQingYe.setM(list.get(position).getN());
+                        xiangQingYe.setN(list.get(position).getO());
+                        xiangQingYe.setO(list.get(position).getP());
+                        xiangQingYe.setP(list.get(position).getQ());
+                        xiangQingYe.setQ(list.get(position).getR());
+                        xiangQingYe.setR(list.get(position).getS());
+                        xiangQingYe.setS(list.get(position).getT());
+                        xiangQingYe.setT(list.get(position).getU());
+                        xiangQingYe.setU(list.get(position).getV());
+                        xiangQingYe.setV(list.get(position).getW());
+                        xiangQingYe.setW(list.get(position).getX());
+                        xiangQingYe.setX(list.get(position).getY());
+                        xiangQingYe.setY(list.get(position).getZ());
+                        xiangQingYe.setZ(list.get(position).getAa());
+                        xiangQingYe.setAa(list.get(position).getAb());
+                        xiangQingYe.setAb(list.get(position).getAc());
+                        xiangQingYe.setAc(list.get(position).getAd());
+                        xiangQingYe.setAd(list.get(position).getAe());
+                        xiangQingYe.setAe(list.get(position).getAf());
+                        xiangQingYe.setAf(list.get(position).getAg());
+                        xiangQingYe.setAg(list.get(position).getAh());
+                        xiangQingYe.setAh(list.get(position).getAi());
+
+                        Intent intent = new Intent(KaoQinBiaoActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
                     }
                 });
 

@@ -1,6 +1,7 @@
 package com.example.myapplication.jiaowu.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.entity.SystemBanner;
 import com.example.myapplication.jiaowu.entity.KeShiDetail;
 import com.example.myapplication.jiaowu.entity.Quanxian;
 import com.example.myapplication.jiaowu.entity.Teacher;
@@ -32,7 +34,14 @@ import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.scheduling.activity.SchedulingActivity;
 import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.service.DepartmentService;
+import com.example.myapplication.service.SystemService;
+import com.example.myapplication.utils.LoadingDialog;
+import com.example.myapplication.utils.MarqueeTextView;
 import com.example.myapplication.utils.ToastUtil;
+import com.youth.banner.Banner;
+import com.youth.banner.adapter.BannerImageAdapter;
+import com.youth.banner.holder.BannerImageHolder;
+import com.youth.banner.indicator.CircleIndicator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,6 +53,13 @@ public class JiaowuActivity extends AppCompatActivity {
     private List<Quanxian> list;
     private boolean pd;
 
+    private SystemService systemService;
+
+    private Banner banner;
+    private List<SystemBanner> list1;
+    private List<SystemBanner> list2;
+    private List<Integer> banner_data;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +69,27 @@ public class JiaowuActivity extends AppCompatActivity {
         teacher = myApplication.getTeacher();
 
         init();
+        systemService = new SystemService();
+        initData();
+        banner = findViewById(R.id.main_banner);
+
+        banner.setAdapter(new BannerImageAdapter<Integer>(banner_data) {
+            @Override
+            public void onBindView(BannerImageHolder holder, Integer data, int position, int size) {
+                holder.imageView.setImageResource(data);
+            }
+        });
+
+        // 开启循环轮播
+        banner.isAutoLoop(true);
+        banner.setIndicator(new CircleIndicator(this));
+        banner.setScrollBarFadeDuration(1000);
+        // 设置指示器颜色(TODO 即选中时那个小点的颜色)
+        banner.setIndicatorSelectedColor(Color.GREEN);
+        // 开始轮播
+        banner.start();
+
+        systeminit();
 
         LinearLayout shezhi = findViewById(R.id.shezhi);
         shezhi.setOnClickListener(new View.OnClickListener() {
@@ -316,6 +353,48 @@ public class JiaowuActivity extends AppCompatActivity {
     }
 
     private long exitTime = 0;
+
+    private void initData(){
+        banner_data = new ArrayList<>();
+        banner_data.add(R.drawable.jiaowu_banner_01);
+        banner_data.add(R.drawable.jiaowu_banner_01);
+        banner_data.add(R.drawable.jiaowu_banner_01);
+    }
+
+    private void systeminit() {
+        LoadingDialog.getInstance(this).show();
+        Handler listLoadHandler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                MarqueeTextView marqueeTextView = findViewById(R.id.marquee);
+                if(list1.size() > 0){
+                    marqueeTextView.setText(list1.get(0).getText());
+                }else if(list2.size() > 0){
+                    marqueeTextView.setText(list2.get(0).getText());
+                }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                return true;
+            }
+        });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<HashMap<String, Object>> data = new ArrayList<>();
+                try {
+                    systemService = new SystemService();
+                    list1 = systemService.getList("教务",teacher.getCompany());
+                    list2 = systemService.getTongYongList("教务");
+                    if (list1 == null && list2 == null) return;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Message msg = new Message();
+                msg.obj = null;
+                listLoadHandler.sendMessage(msg);
+            }
+        }).start();
+    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

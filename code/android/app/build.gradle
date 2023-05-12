@@ -36,7 +36,8 @@ android {
                 'scheduling',
                 'renshi',
                 'fenquan',
-                'mendian'
+                'mendian',
+                'jiaowu'
             ]
         }
     }

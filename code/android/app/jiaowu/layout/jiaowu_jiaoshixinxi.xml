@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".jiaowu.activity.XueShengXinXiActivity">
+    tools:context=".jiaowu.activity.JiaoShiXinXiActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -174,20 +174,6 @@
                     android:layout_height="wrap_content"
                     android:width="150dp"
                     android:text="在职状态"
-                    android:textColor="@color/main_text"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:width="150dp"
-                    android:text="未交费"
                     android:textColor="@color/main_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />

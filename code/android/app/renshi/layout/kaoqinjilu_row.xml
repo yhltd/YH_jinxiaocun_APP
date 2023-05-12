@@ -13,6 +13,7 @@
         android:gravity="center"
         android:background="@drawable/border_bottom">
         <TextView
+            android:gravity="center"
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +21,7 @@
             android:textSize="14sp"
             android:text="姓名"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +37,7 @@
             android:textSize="14sp"
             android:text="年"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="80dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -43,6 +45,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/moth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +53,7 @@
             android:textSize="14sp"
             android:text="月"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="50dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,6 +61,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/AJ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +69,7 @@
             android:textSize="14sp"
             android:text="应到"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -73,6 +77,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/AK"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,7 +85,7 @@
             android:textSize="14sp"
             android:text="实到"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -88,6 +93,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/AL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,7 +101,7 @@
             android:textSize="14sp"
             android:text="请假"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -103,6 +109,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/AM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,7 +117,7 @@
             android:textSize="14sp"
             android:text="加班"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -118,6 +125,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/AN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -125,7 +133,7 @@
             android:textSize="14sp"
             android:text="迟到"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"

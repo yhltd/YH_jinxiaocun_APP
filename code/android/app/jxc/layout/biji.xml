@@ -11,9 +11,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/shape_corner"
+        android:background="@drawable/shape_corner_sel"
         android:gravity="center_vertical"
-        android:layout_marginTop="5dp">
+
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:elevation="3dp"
+        >
 
         <ImageView
             android:layout_width="30dp"
@@ -25,37 +30,41 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint="按商品名称查询" />
+            android:hint="按商品名称查询"
+            android:background="@null"
+            android:gravity="center"
+            />
 
         <Button
             android:id="@+id/sel_button"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="40dp"
             android:text="查询"
-            android:background="@drawable/btn_style"
+            android:background="@null"
             android:textSize="17dp"
-            android:textColor="@color/white"
-            android:layout_marginEnd="10dp"/>
+            android:textColor="@color/blue" />
     </LinearLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="570dp"
+        android:layout_height="595dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp">
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginEnd="3dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@color/title"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:elevation="3dp">
 
                 <TextView
                     android:gravity="center"
@@ -139,7 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:dividerHeight="1dp"
+                android:divider="@null"
                 android:paddingBottom="5dp" />
         </LinearLayout>
 

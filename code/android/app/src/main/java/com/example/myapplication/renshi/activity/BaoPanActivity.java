@@ -25,6 +25,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.XiangQingYeActivity;
+import com.example.myapplication.entity.XiangQingYe;
+import com.example.myapplication.jxc.activity.JinXiaoCunActivity;
 import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.renshi.service.YhRenShiGongZiMingXiService;
@@ -256,6 +259,7 @@ public class BaoPanActivity extends AppCompatActivity {
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
                         LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
                         linearLayout.setTag(position);
                         return view;
                     }
@@ -266,6 +270,54 @@ public class BaoPanActivity extends AppCompatActivity {
 
             }
         }).start();
+    }
+
+    public View.OnClickListener updateClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(BaoPanActivity.this);
+                int position = Integer.parseInt(view.getTag().toString());
+
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        XiangQingYe xiangQingYe = new XiangQingYe();
+
+                        xiangQingYe.setA_title("员工姓名:");
+                        xiangQingYe.setB_title("录入日期:");
+                        xiangQingYe.setC_title("实发工资:");
+                        xiangQingYe.setD_title("全勤天数:");
+                        xiangQingYe.setE_title("个人支出:");
+                        xiangQingYe.setF_title("企业支出:");
+
+                        xiangQingYe.setA(end_list.get(position).getB());
+                        xiangQingYe.setB(end_list.get(position).getC());
+                        xiangQingYe.setC(end_list.get(position).getD());
+                        xiangQingYe.setD(end_list.get(position).getE());
+                        xiangQingYe.setE(end_list.get(position).getF());
+                        xiangQingYe.setF(end_list.get(position).getG());
+
+                        Intent intent = new Intent(BaoPanActivity.this, XiangQingYeActivity.class);
+                        MyApplication myApplication = (MyApplication) getApplication();
+                        myApplication.setObj(xiangQingYe);
+                        startActivityForResult(intent, REQUEST_CODE_CHANG);
+                    }
+                });
+
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setMessage("确定查看明细？");
+                builder.setTitle("提示");
+                builder.show();
+            }
+        };
     }
 
     public void onInsertClick(View v) {

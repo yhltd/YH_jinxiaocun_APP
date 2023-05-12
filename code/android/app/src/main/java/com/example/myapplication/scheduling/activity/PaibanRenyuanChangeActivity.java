@@ -108,6 +108,13 @@ public class PaibanRenyuanChangeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void clearClick(View v) {
+        staffName.setText("");
+        phoneNumber.setText("");
+        idNumber.setText("");
+        banci.setText("");
+    }
+
     private void initList() {
         LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {

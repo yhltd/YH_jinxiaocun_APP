@@ -12,6 +12,7 @@
         android:gravity="center"
         android:background="@drawable/border_bottom">
         <TextView
+            android:gravity="center"
             android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,7 +20,7 @@
             android:textSize="14sp"
             android:text="类别"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -27,6 +28,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +36,7 @@
             android:textSize="14sp"
             android:text="模块名称"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -42,6 +44,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +52,7 @@
             android:textSize="14sp"
             android:text="产量/时"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -57,6 +60,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/parentName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,7 +68,7 @@
             android:textSize="14sp"
             android:text="父模块"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -72,6 +76,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/workNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -79,7 +84,7 @@
             android:textSize="14sp"
             android:text="合计产量"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
