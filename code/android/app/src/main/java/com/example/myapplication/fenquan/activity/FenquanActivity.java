@@ -1,7 +1,10 @@
 package com.example.myapplication.fenquan.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,17 +14,33 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.entity.SystemBanner;
 import com.example.myapplication.fenquan.entity.Department;
 import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.scheduling.activity.ModuleActivity;
 import com.example.myapplication.scheduling.activity.SchedulingActivity;
+import com.example.myapplication.service.SystemService;
+import com.example.myapplication.utils.LoadingDialog;
+import com.example.myapplication.utils.MarqueeTextView;
 import com.example.myapplication.utils.ToastUtil;
+import com.youth.banner.Banner;
+import com.youth.banner.adapter.BannerImageAdapter;
+import com.youth.banner.holder.BannerImageHolder;
+import com.youth.banner.indicator.CircleIndicator;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class FenquanActivity extends AppCompatActivity {
     private Renyuan renyuan;
     private List<Department> list;
+    private SystemService systemService;
+
+    private Banner banner;
+    private List<SystemBanner> list1;
+    private List<SystemBanner> list2;
+    private List<Integer> banner_data;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,6 +49,28 @@ public class FenquanActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         renyuan = myApplication.getRenyuan();
+
+        systemService = new SystemService();
+        initData();
+        banner = findViewById(R.id.main_banner);
+
+        banner.setAdapter(new BannerImageAdapter<Integer>(banner_data) {
+            @Override
+            public void onBindView(BannerImageHolder holder, Integer data, int position, int size) {
+                holder.imageView.setImageResource(data);
+            }
+        });
+
+        // 开启循环轮播
+        banner.isAutoLoop(true);
+        banner.setIndicator(new CircleIndicator(this));
+        banner.setScrollBarFadeDuration(1000);
+        // 设置指示器颜色(TODO 即选中时那个小点的颜色)
+        banner.setIndicatorSelectedColor(Color.GREEN);
+        // 开始轮播
+        banner.start();
+
+        systeminit();
 
         LinearLayout renyuan = findViewById(R.id.renyuan);
         renyuan.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +117,24 @@ public class FenquanActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayout gongsi = findViewById(R.id.gongsi);
+        gongsi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FenquanActivity.this, GongZuoTaiQuanXianChangeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout workbench = findViewById(R.id.workbench);
+        workbench.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FenquanActivity.this, GongZuoTaiActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private long exitTime = 0;
@@ -95,5 +154,47 @@ public class FenquanActivity extends AppCompatActivity {
         }
 
         return super.onKeyDown(keyCode, event);
+    }
+
+    private void initData(){
+        banner_data = new ArrayList<>();
+        banner_data.add(R.drawable.fenquan_banner_01);
+        banner_data.add(R.drawable.fenquan_banner_01);
+        banner_data.add(R.drawable.fenquan_banner_01);
+    }
+
+    private void systeminit() {
+        LoadingDialog.getInstance(this).show();
+        Handler listLoadHandler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                MarqueeTextView marqueeTextView = findViewById(R.id.marquee);
+                if(list1.size() > 0){
+                    marqueeTextView.setText(list1.get(0).getText());
+                }else if(list2.size() > 0){
+                    marqueeTextView.setText(list2.get(0).getText());
+                }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                return true;
+            }
+        });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<HashMap<String, Object>> data = new ArrayList<>();
+                try {
+                    systemService = new SystemService();
+                    list1 = systemService.getList("分权",renyuan.getB());
+                    list2 = systemService.getTongYongList("分权");
+                    if (list1 == null && list2 == null) return;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Message msg = new Message();
+                msg.obj = null;
+                listLoadHandler.sendMessage(msg);
+            }
+        }).start();
     }
 }

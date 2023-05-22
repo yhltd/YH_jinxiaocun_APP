@@ -43,7 +43,7 @@ public class PaymentService {
      * 删除
      */
     public boolean delete(int id) {
-        String sql = "delete from student where id = ?";
+        String sql = "delete from payment where id = ?";
         base = new JiaowuBaseDao();
         return base.execute(sql, id);
     }

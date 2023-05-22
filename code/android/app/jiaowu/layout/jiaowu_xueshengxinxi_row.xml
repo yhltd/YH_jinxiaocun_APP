@@ -8,11 +8,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:elevation="3dp"
+        android:background="@drawable/shape_corner_sel">
+
         <TextView
+            android:gravity="center"
             android:id="@+id/id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +23,7 @@
             android:textSize="14sp"
             android:text="序号"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,6 +31,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/realName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +39,7 @@
             android:textSize="14sp"
             android:text="学生姓名"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -43,6 +47,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/sex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +55,7 @@
             android:textSize="14sp"
             android:text="性别"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,6 +63,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/rgdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +71,7 @@
             android:textSize="14sp"
             android:text="报名日期"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -73,6 +79,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/course"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,7 +87,7 @@
             android:textSize="14sp"
             android:text="培训课程"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -88,6 +95,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/teacher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,7 +103,7 @@
             android:textSize="14sp"
             android:text="责任教师"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -103,6 +111,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/classnum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,7 +119,7 @@
             android:textSize="14sp"
             android:text="班级"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -118,6 +127,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -125,7 +135,7 @@
             android:textSize="14sp"
             android:text="电话"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -133,6 +143,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/fee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -140,7 +151,7 @@
             android:textSize="14sp"
             android:text="学费"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -148,6 +159,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/mall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -155,7 +167,7 @@
             android:textSize="14sp"
             android:text="已缴费"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -163,6 +175,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/nocost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -170,7 +183,7 @@
             android:textSize="14sp"
             android:text="未交费"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -178,6 +191,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/nall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -185,7 +199,7 @@
             android:textSize="14sp"
             android:text="已上课时"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -193,6 +207,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/nohour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -200,7 +215,7 @@
             android:textSize="14sp"
             android:text="剩余课时"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -208,6 +223,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/allhour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -215,7 +231,7 @@
             android:textSize="14sp"
             android:text="总课时"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -223,6 +239,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -230,7 +247,7 @@
             android:textSize="14sp"
             android:text="状态"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -13,14 +13,15 @@
         android:gravity="center"
         android:elevation="3dp"
         android:background="@drawable/shape_corner_sel">
+
         <TextView
             android:gravity="center"
-            android:id="@+id/B"
+            android:id="@+id/renyuan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
             android:textSize="14sp"
-            android:text="姓名"
+            android:text="人员"
             android:textStyle="bold"
             android:width="100dp"/>
         <View
@@ -31,12 +32,60 @@
 
         <TextView
             android:gravity="center"
-            android:id="@+id/chashanquanxian"
+            android:id="@+id/riqi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
             android:textSize="14sp"
-            android:text="权限类型"
+            android:text="添加日期"
+            android:textStyle="bold"
+            android:width="100dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/lastriqi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text"
+            android:textSize="14sp"
+            android:text="最后修改日期"
+            android:textStyle="bold"
+            android:width="120dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text"
+            android:textSize="14sp"
+            android:text="A"
+            android:textStyle="bold"
+            android:width="100dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/B"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text"
+            android:textSize="14sp"
+            android:text="A"
             android:textStyle="bold"
             android:width="100dp"/>
         <View
@@ -54,7 +103,7 @@
             android:textSize="14sp"
             android:text="A"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -70,7 +119,7 @@
             android:textSize="14sp"
             android:text="B"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -86,7 +135,7 @@
             android:textSize="14sp"
             android:text="C"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -102,7 +151,7 @@
             android:textSize="14sp"
             android:text="D"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -118,7 +167,7 @@
             android:textSize="14sp"
             android:text="E"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -134,7 +183,7 @@
             android:textSize="14sp"
             android:text="F"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -150,7 +199,7 @@
             android:textSize="14sp"
             android:text="G"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -166,7 +215,7 @@
             android:textSize="14sp"
             android:text="H"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -182,7 +231,7 @@
             android:textSize="14sp"
             android:text="I"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -198,7 +247,7 @@
             android:textSize="14sp"
             android:text="J"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -214,7 +263,7 @@
             android:textSize="14sp"
             android:text="K"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -230,7 +279,7 @@
             android:textSize="14sp"
             android:text="L"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -246,7 +295,7 @@
             android:textSize="14sp"
             android:text="M"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -262,7 +311,7 @@
             android:textSize="14sp"
             android:text="N"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -278,7 +327,7 @@
             android:textSize="14sp"
             android:text="O"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -294,7 +343,7 @@
             android:textSize="14sp"
             android:text="P"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -310,7 +359,7 @@
             android:textSize="14sp"
             android:text="Q"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -326,7 +375,7 @@
             android:textSize="14sp"
             android:text="R"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -342,7 +391,7 @@
             android:textSize="14sp"
             android:text="S"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -358,7 +407,7 @@
             android:textSize="14sp"
             android:text="T"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -374,7 +423,7 @@
             android:textSize="14sp"
             android:text="U"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -390,7 +439,7 @@
             android:textSize="14sp"
             android:text="V"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -406,7 +455,7 @@
             android:textSize="14sp"
             android:text="W"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -422,7 +471,7 @@
             android:textSize="14sp"
             android:text="X"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -438,7 +487,7 @@
             android:textSize="14sp"
             android:text="Y"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -454,7 +503,7 @@
             android:textSize="14sp"
             android:text="Z"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -470,7 +519,7 @@
             android:textSize="14sp"
             android:text="AA"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -486,7 +535,7 @@
             android:textSize="14sp"
             android:text="AB"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -502,7 +551,7 @@
             android:textSize="14sp"
             android:text="AC"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -518,7 +567,7 @@
             android:textSize="14sp"
             android:text="AD"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -534,7 +583,7 @@
             android:textSize="14sp"
             android:text="AE"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -550,7 +599,7 @@
             android:textSize="14sp"
             android:text="AF"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -566,7 +615,7 @@
             android:textSize="14sp"
             android:text="AG"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -582,7 +631,7 @@
             android:textSize="14sp"
             android:text="AH"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -598,7 +647,7 @@
             android:textSize="14sp"
             android:text="AI"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -614,7 +663,7 @@
             android:textSize="14sp"
             android:text="AJ"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -630,7 +679,7 @@
             android:textSize="14sp"
             android:text="AK"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -646,7 +695,7 @@
             android:textSize="14sp"
             android:text="AL"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -662,7 +711,7 @@
             android:textSize="14sp"
             android:text="AM"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -678,7 +727,7 @@
             android:textSize="14sp"
             android:text="AN"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -694,7 +743,7 @@
             android:textSize="14sp"
             android:text="AO"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -710,7 +759,7 @@
             android:textSize="14sp"
             android:text="AP"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -726,7 +775,7 @@
             android:textSize="14sp"
             android:text="AQ"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -742,7 +791,7 @@
             android:textSize="14sp"
             android:text="AR"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -758,7 +807,7 @@
             android:textSize="14sp"
             android:text="AS"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -774,7 +823,7 @@
             android:textSize="14sp"
             android:text="AT"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -790,7 +839,7 @@
             android:textSize="14sp"
             android:text="AU"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -806,7 +855,7 @@
             android:textSize="14sp"
             android:text="AV"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -822,7 +871,7 @@
             android:textSize="14sp"
             android:text="AW"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -838,7 +887,7 @@
             android:textSize="14sp"
             android:text="AX"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -854,7 +903,7 @@
             android:textSize="14sp"
             android:text="AY"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -870,7 +919,7 @@
             android:textSize="14sp"
             android:text="AZ"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -886,7 +935,7 @@
             android:textSize="14sp"
             android:text="BA"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -902,7 +951,7 @@
             android:textSize="14sp"
             android:text="BB"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -918,7 +967,7 @@
             android:textSize="14sp"
             android:text="BC"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -934,7 +983,7 @@
             android:textSize="14sp"
             android:text="BD"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -950,7 +999,7 @@
             android:textSize="14sp"
             android:text="BE"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -966,7 +1015,7 @@
             android:textSize="14sp"
             android:text="BF"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -982,7 +1031,7 @@
             android:textSize="14sp"
             android:text="BG"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -998,7 +1047,7 @@
             android:textSize="14sp"
             android:text="BH"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1014,7 +1063,7 @@
             android:textSize="14sp"
             android:text="BI"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1030,7 +1079,7 @@
             android:textSize="14sp"
             android:text="BJ"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1046,7 +1095,7 @@
             android:textSize="14sp"
             android:text="BK"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1062,7 +1111,7 @@
             android:textSize="14sp"
             android:text="BL"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1078,7 +1127,7 @@
             android:textSize="14sp"
             android:text="BM"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1094,7 +1143,7 @@
             android:textSize="14sp"
             android:text="BN"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1110,7 +1159,7 @@
             android:textSize="14sp"
             android:text="BO"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1126,7 +1175,7 @@
             android:textSize="14sp"
             android:text="BP"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1142,7 +1191,7 @@
             android:textSize="14sp"
             android:text="BQ"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1158,7 +1207,7 @@
             android:textSize="14sp"
             android:text="BR"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1174,7 +1223,7 @@
             android:textSize="14sp"
             android:text="BS"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1190,7 +1239,7 @@
             android:textSize="14sp"
             android:text="BT"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1206,7 +1255,7 @@
             android:textSize="14sp"
             android:text="BU"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1222,7 +1271,7 @@
             android:textSize="14sp"
             android:text="BV"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1238,7 +1287,7 @@
             android:textSize="14sp"
             android:text="BW"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1254,7 +1303,7 @@
             android:textSize="14sp"
             android:text="BX"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1270,7 +1319,7 @@
             android:textSize="14sp"
             android:text="BY"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1286,7 +1335,7 @@
             android:textSize="14sp"
             android:text="BZ"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1302,7 +1351,7 @@
             android:textSize="14sp"
             android:text="CA"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1318,7 +1367,7 @@
             android:textSize="14sp"
             android:text="CB"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1334,7 +1383,7 @@
             android:textSize="14sp"
             android:text="CC"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1350,7 +1399,7 @@
             android:textSize="14sp"
             android:text="CD"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1366,7 +1415,7 @@
             android:textSize="14sp"
             android:text="CE"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1382,7 +1431,7 @@
             android:textSize="14sp"
             android:text="CF"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1398,7 +1447,7 @@
             android:textSize="14sp"
             android:text="CG"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1414,7 +1463,7 @@
             android:textSize="14sp"
             android:text="CH"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1430,7 +1479,7 @@
             android:textSize="14sp"
             android:text="CI"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1446,7 +1495,7 @@
             android:textSize="14sp"
             android:text="CJ"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1462,7 +1511,7 @@
             android:textSize="14sp"
             android:text="CK"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1478,7 +1527,7 @@
             android:textSize="14sp"
             android:text="CL"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1494,7 +1543,7 @@
             android:textSize="14sp"
             android:text="CM"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1510,7 +1559,7 @@
             android:textSize="14sp"
             android:text="CN"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1526,7 +1575,7 @@
             android:textSize="14sp"
             android:text="CO"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1542,7 +1591,7 @@
             android:textSize="14sp"
             android:text="CP"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1558,7 +1607,7 @@
             android:textSize="14sp"
             android:text="CQ"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1574,7 +1623,7 @@
             android:textSize="14sp"
             android:text="CR"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1590,7 +1639,7 @@
             android:textSize="14sp"
             android:text="CS"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -1606,44 +1655,13 @@
             android:textSize="14sp"
             android:text="CT"
             android:textStyle="bold"
-            android:width="80dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
 
-        <TextView
-            android:gravity="center"
-            android:id="@+id/CW"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
-            android:text="CU"
-            android:textStyle="bold"
-            android:width="80dp"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
-
-        <TextView
-            android:gravity="center"
-            android:id="@+id/CX"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
-            android:text="CV"
-            android:textStyle="bold"
-            android:width="80dp"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
 
     </LinearLayout>
 </LinearLayout>

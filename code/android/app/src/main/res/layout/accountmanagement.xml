@@ -5,45 +5,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".jiaowu.activity.AccountManagementActivity">
+    tools:context=".jiaowu.activity.AccountManagementActivity"
+    android:background="@color/WhiteSmoke">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/border_bottom"
+        android:background="@drawable/shape_corner_sel"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
         android:gravity="center_vertical">
 
         <EditText
-            android:id="@+id/Uname"
+            android:id="@+id/uname"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint="登陆名" />
+            android:hint="登录名"
+            android:background="@null"/>
 
         <EditText
-            android:id="@+id/Realname"
+            android:id="@+id/realname"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint="姓名" />
+            android:hint="姓名"
+            android:background="@null"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_corner_sel"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:gravity="center_vertical">
 
         <EditText
-            android:id="@+id/Phone"
+            android:id="@+id/phone"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint="电话" />
+            android:hint="电话"
+            android:background="@null"/>
 
         <Button
             android:id="@+id/sel_button"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="查询" />
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:text="查询"
+            android:background="@null"
+            android:textSize="17dp"
+            android:textColor="@color/blue"/>
     </LinearLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="570dp">
+        android:layout_height="530dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -52,17 +75,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:background="@drawable/border_bottom"
+                android:layout_height="40dp"
+                android:background="@color/title"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:elevation="3dp">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="登录名"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -72,11 +97,12 @@
                     android:layout_weight="1" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="密码"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -86,11 +112,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="姓名"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -100,11 +127,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="用户类别"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -114,11 +142,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="年龄"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -128,11 +157,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="电话"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -142,11 +172,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="150dp"
                     android:text="家庭住址"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -156,39 +187,12 @@
                     android:layout_weight="2" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:width="150dp"
-                    android:text="电话"
-                    android:textColor="@color/main_text"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:width="150dp"
-                    android:text="家庭住址"
-                    android:textColor="@color/main_text"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2" />
-
-                <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="150dp"
                     android:text="身份证号"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -198,11 +202,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="学历"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -212,11 +217,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="状态"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -224,7 +230,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2" />
-
 
             </LinearLayout>
 
@@ -234,6 +239,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:dividerHeight="1dp"
+                android:divider="@null"
                 android:paddingBottom="5dp" />
         </LinearLayout>
 

@@ -1,15 +1,18 @@
 package com.example.myapplication.jiaowu.activity;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -32,6 +35,7 @@ import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
 
 public class KeShiTongJiChangeActivity extends AppCompatActivity {
@@ -68,6 +72,7 @@ public class KeShiTongJiChangeActivity extends AppCompatActivity {
         sheZhiService = new SheZhiService();
 
         riqi = findViewById(R.id.riqi);
+        showDateOnClick(riqi);
         student_name = findViewById(R.id.student_name);
         course = findViewById(R.id.course);
         keshi = findViewById(R.id.keshi);
@@ -84,8 +89,8 @@ public class KeShiTongJiChangeActivity extends AppCompatActivity {
 
             riqi.setText(keShiDetail.getRiqi().toString());
             student_name.setText(keShiDetail.getStudent_name().toString());
-            keshi.setText(keShiDetail.getKeshi().toString());
-            jine.setText(keShiDetail.getJine().toString());
+            keshi.setText(String.valueOf(keShiDetail.getKeshi()));
+            jine.setText(String.valueOf(keShiDetail.getJine()));
 
         }else{
             keShiDetail = new KeShiDetail();
@@ -266,10 +271,54 @@ public class KeShiTongJiChangeActivity extends AppCompatActivity {
 
 
         keShiDetail.setRiqi(riqi.getText().toString());
-        keShiDetail.setKeshi(keshi.getText().toString());
-        keShiDetail.setJine(jine.getText().toString());
+        if(keshi.getText().toString().equals("")){
+            keShiDetail.setKeshi(Integer.parseInt("0"));
+        }else{
+            keShiDetail.setKeshi(Integer.parseInt(keshi.getText().toString()));
+        }
+        if(jine.getText().toString().equals("")){
+            keShiDetail.setJine(Float.parseFloat("0"));
+        }else{
+            keShiDetail.setJine(Float.parseFloat(jine.getText().toString()));
+        }
         keShiDetail.setCompany(teacher.getCompany());
         return true;
+    }
+
+
+    @SuppressLint("ClickableViewAccessibility")
+    protected void showDateOnClick(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    showDatePickDlg(editText);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    showDatePickDlg(editText);
+                }
+
+            }
+        });
+    }
+
+    protected void showDatePickDlg(final EditText editText) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(KeShiTongJiChangeActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
 

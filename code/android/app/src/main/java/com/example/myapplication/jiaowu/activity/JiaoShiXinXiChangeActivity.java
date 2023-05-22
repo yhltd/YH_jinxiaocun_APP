@@ -1,15 +1,18 @@
 package com.example.myapplication.jiaowu.activity;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -32,6 +35,7 @@ import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
 
 public class JiaoShiXinXiChangeActivity extends AppCompatActivity {
@@ -83,6 +87,7 @@ public class JiaoShiXinXiChangeActivity extends AppCompatActivity {
         education = findViewById(R.id.education);
         phone = findViewById(R.id.phone);
         rz_riqi = findViewById(R.id.rz_riqi);
+        showDateOnClick(rz_riqi);
         state = findViewById(R.id.state);
         shebao = findViewById(R.id.shebao);
         address = findViewById(R.id.address);
@@ -276,6 +281,42 @@ public class JiaoShiXinXiChangeActivity extends AppCompatActivity {
         teacherInfo.setAddress(address.getText().toString());
         teacherInfo.setCompany(teacher.getCompany());
         return true;
+    }
+
+
+    @SuppressLint("ClickableViewAccessibility")
+    protected void showDateOnClick(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    showDatePickDlg(editText);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    showDatePickDlg(editText);
+                }
+
+            }
+        });
+    }
+
+    protected void showDatePickDlg(final EditText editText) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(JiaoShiXinXiChangeActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
 

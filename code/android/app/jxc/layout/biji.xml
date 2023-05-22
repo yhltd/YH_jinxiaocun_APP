@@ -13,7 +13,6 @@
         android:layout_height="50dp"
         android:background="@drawable/shape_corner_sel"
         android:gravity="center_vertical"
-
         android:layout_marginTop="10dp"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"
@@ -32,7 +31,6 @@
             android:layout_weight="1"
             android:hint="按商品名称查询"
             android:background="@null"
-            android:gravity="center"
             />
 
         <Button

@@ -7,8 +7,8 @@ public class Payment implements Serializable {
     private int id;
     private String ksdate;
     private String realname;
-    private String paid;
-    private String money;
+    private int paid;
+    private int money;
     private String paiment;
     private String keeper;
     private String remark;
@@ -38,19 +38,19 @@ public class Payment implements Serializable {
         this.realname = realname;
     }
 
-    public String getPaid() {
+    public int getPaid() {
         return paid;
     }
 
-    public void setPaid(String paid) {
+    public void setPaid(int paid) {
         this.paid = paid;
     }
 
-    public String getMoney() {
+    public int getMoney() {
         return money;
     }
 
-    public void setMoney(String money) {
+    public void setMoney(int money) {
         this.money = money;
     }
 

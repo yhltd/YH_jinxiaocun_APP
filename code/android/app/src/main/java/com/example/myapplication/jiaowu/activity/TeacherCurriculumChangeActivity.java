@@ -29,9 +29,11 @@ import com.example.myapplication.finance.activity.JiJianTaiZhangChangeActivity;
 import com.example.myapplication.finance.activity.ZhangHaoGuanLiChangeActivity;
 import com.example.myapplication.finance.entity.YhFinanceJiJianPeiZhi;
 import com.example.myapplication.jiaowu.entity.Kaoqin;
+import com.example.myapplication.jiaowu.entity.SheZhi;
 import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.entity.TeacherCurriculum;
 import com.example.myapplication.jiaowu.service.KaoqinService;
+import com.example.myapplication.jiaowu.service.SheZhiService;
 import com.example.myapplication.jiaowu.service.TeacherCurriculumService;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
@@ -44,15 +46,12 @@ public class TeacherCurriculumChangeActivity extends AppCompatActivity {
     private Teacher teacher;
     private TeacherCurriculum teacherCurriculum;
     private TeacherCurriculumService teacherCurriculumService;
+    private SheZhiService sheZhiService;
 
     private EditText teacher1;
     private Spinner course;
     private EditText riqi;
     private Spinner xingqi;
-    private String teacher1Text;
-    private String courseText;
-    private String riqiText;
-    private String xingqiText;
 
     String[] course_array;
     String[] xingqi_array;
@@ -73,7 +72,7 @@ public class TeacherCurriculumChangeActivity extends AppCompatActivity {
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
         teacherCurriculumService = new TeacherCurriculumService();
-
+        sheZhiService = new SheZhiService();
         teacher1 = findViewById(R.id.teacher);
         course = findViewById(R.id.course);
         riqi = findViewById(R.id.riqi);
@@ -92,12 +91,12 @@ public class TeacherCurriculumChangeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
         if (id == R.id.insert_btn) {
-            teacher = new Teacher();
+            teacherCurriculum = new TeacherCurriculum();
             init2();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
         } else if (id == R.id.update_btn) {
-            teacher = (Teacher) myApplication.getObj();
+            teacherCurriculum = (TeacherCurriculum) myApplication.getObj();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
             init1();
@@ -113,9 +112,9 @@ public class TeacherCurriculumChangeActivity extends AppCompatActivity {
                 SpinnerAdapter adapter_course = new ArrayAdapter<String>(TeacherCurriculumChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, course_array);
                 course.setAdapter(StringUtils.cast(adapter_course));
                 course.setSelection(getCoursePosition(teacherCurriculum.getCourse()));
-                SpinnerAdapter adapter_xingqi = new ArrayAdapter<String>(TeacherCurriculumChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, xingqi_array);
-                xingqi.setAdapter(StringUtils.cast(adapter_xingqi));
                 xingqi.setSelection(getXingqiPosition(teacherCurriculum.getXingqi()));
+                teacher1.setText(teacherCurriculum.getTeacher());
+                riqi.setText(teacherCurriculum.getRiqi());
                 return true;
             }
         });
@@ -124,18 +123,11 @@ public class TeacherCurriculumChangeActivity extends AppCompatActivity {
             public void run() {
                 SpinnerAdapter adapter = null;
                 try {
-                    List<TeacherCurriculum> CourseList = teacherCurriculumService.getList(teacher1Text,courseText,teacher.getCompany());
+                    List<SheZhi> CourseList = sheZhiService.getList(teacher.getCompany());
                     if (CourseList.size() > 0) {
                         course_array = new String[CourseList.size()];
                         for (int i = 0; i < CourseList.size(); i++) {
                             course_array[i] = CourseList.get(i).getCourse();
-                        }
-                    }
-                    List<TeacherCurriculum> XingList = teacherCurriculumService.getList(teacher1Text,courseText,teacher.getCompany());
-                    if (XingList.size() > 0) {
-                        xingqi_array = new String[XingList.size()];
-                        for (int i = 0; i < XingList.size(); i++) {
-                            xingqi_array[i] = XingList.get(i).getXingqi();
                         }
                     }
                     adapter = new ArrayAdapter<String>(TeacherCurriculumChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, course_array);
@@ -155,8 +147,6 @@ public class TeacherCurriculumChangeActivity extends AppCompatActivity {
             public boolean handleMessage(Message msg) {
                 SpinnerAdapter adapter_course = new ArrayAdapter<String>(TeacherCurriculumChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, course_array);
                 course.setAdapter(StringUtils.cast(adapter_course));
-                SpinnerAdapter adapter_xingqi = new ArrayAdapter<String>(TeacherCurriculumChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, xingqi_array);
-                xingqi.setAdapter(StringUtils.cast(adapter_xingqi));
                 return true;
             }
         });
@@ -165,18 +155,11 @@ public class TeacherCurriculumChangeActivity extends AppCompatActivity {
             public void run() {
                 SpinnerAdapter adapter = null;
                 try {
-                    List<TeacherCurriculum> CourseList = teacherCurriculumService.getList(teacher1Text,courseText,teacherCurriculum.getCompany());
+                    List<SheZhi> CourseList = sheZhiService.getList(teacher.getCompany());
                     if (CourseList.size() > 0) {
                         course_array = new String[CourseList.size()];
                         for (int i = 0; i < CourseList.size(); i++) {
                             course_array[i] = CourseList.get(i).getCourse();
-                        }
-                    }
-                    List<TeacherCurriculum> XingList = teacherCurriculumService.getList(teacher1Text,courseText,teacherCurriculum.getCompany());
-                    if (XingList.size() > 0) {
-                        xingqi_array = new String[XingList.size()];
-                        for (int i = 0; i < XingList.size(); i++) {
-                            xingqi_array[i] = XingList.get(i).getXingqi();
                         }
                     }
                     adapter = new ArrayAdapter<String>(TeacherCurriculumChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, course_array);
@@ -305,7 +288,8 @@ public class TeacherCurriculumChangeActivity extends AppCompatActivity {
             teacherCurriculum.setRiqi(riqi.getText().toString());
         }
 
-
+        teacherCurriculum.setCourse(course.getSelectedItem().toString());
+        teacherCurriculum.setXingqi(xingqi.getSelectedItem().toString());
         teacher.setCompany(teacher.getCompany());
 
         return true;

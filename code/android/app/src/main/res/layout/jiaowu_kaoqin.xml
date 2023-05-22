@@ -5,12 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".jiaowu.activity.KaoqinActivity">
+    tools:context=".jiaowu.activity.KaoqinActivity"
+    android:background="@color/WhiteSmoke">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/border_bottom"
+        android:background="@drawable/shape_corner_sel"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
         android:gravity="center_vertical">
 
         <EditText
@@ -18,18 +22,25 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint="姓名" />
+            android:hint="姓名"
+            android:background="@null"/>
 
         <Button
             android:id="@+id/sel_button"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="查询" />
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:text="查询"
+            android:background="@null"
+            android:textSize="17dp"
+            android:textColor="@color/blue"/>
     </LinearLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="570dp">
+        android:layout_height="530dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -38,17 +49,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:background="@drawable/border_bottom"
+                android:layout_height="40dp"
+                android:background="@color/title"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:elevation="3dp">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="姓名"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -58,11 +71,12 @@
                     android:layout_weight="1" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="年"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -72,11 +86,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="月"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -86,11 +101,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="一"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -100,11 +116,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="二"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -114,11 +131,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="三"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -128,11 +146,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="四"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -142,11 +161,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="五"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -156,11 +176,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="六"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -170,11 +191,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="七"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -184,11 +206,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="八"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -198,11 +221,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="九"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -212,11 +236,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="十"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -226,11 +251,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="十一"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -240,11 +266,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="十二"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -254,11 +281,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="十三"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -268,11 +296,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="十四"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -282,11 +311,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="十五"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -296,11 +326,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="十六"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -310,11 +341,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="十七"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -324,11 +356,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="十八"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -338,11 +371,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="十九"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -352,11 +386,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="二十"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -366,11 +401,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="二十一"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -380,11 +416,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="二十二"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -394,11 +431,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="二十三"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -408,11 +446,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="二十四"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -422,11 +461,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="二十五"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -436,11 +476,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="二十六"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -450,11 +491,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="二十七"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -464,11 +506,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="二十八"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -478,11 +521,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="二十九"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -492,11 +536,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="三十"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -506,11 +551,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="三十一"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -528,7 +574,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:dividerHeight="1dp"
-                android:paddingBottom="5dp" />
+                android:paddingBottom="5dp"
+                android:divider="@null"/>
         </LinearLayout>
 
     </HorizontalScrollView>

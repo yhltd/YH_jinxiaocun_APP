@@ -41,12 +41,12 @@ public class AccountManagementActivity extends AppCompatActivity {
     private AccountManagement accountManagement;
     private AccountManagementService accountManagementService;
     private ListView listView;
-    private EditText Uname;
-    private EditText Realname;
-    private EditText Phone;
-    private String UnameText;
-    private String RealnameText;
-    private String PhoneText;
+    private EditText uname;
+    private EditText realname;
+    private EditText phone;
+    private String unameText;
+    private String realnameText;
+    private String phoneText;
     private Button sel_button;
     private Quanxian quanxian;
 
@@ -66,9 +66,9 @@ public class AccountManagementActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.accountManagement_list);
 
-        Uname = findViewById(R.id.Uname);
-        Realname = findViewById(R.id.Realname);
-        Phone = findViewById(R.id.Phone);
+        uname = findViewById(R.id.uname);
+        realname = findViewById(R.id.realname);
+        phone = findViewById(R.id.phone);
 
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
@@ -101,9 +101,9 @@ public class AccountManagementActivity extends AppCompatActivity {
 
     private void initList() {
 
-        UnameText = Uname.getText().toString();
-        RealnameText = Realname.getText().toString();
-        PhoneText = Phone.getText().toString();
+        unameText = uname.getText().toString();
+        realnameText = realname.getText().toString();
+        phoneText = phone.getText().toString();
 
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
@@ -119,15 +119,15 @@ public class AccountManagementActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     accountManagementService = new AccountManagementService();
-                    list = accountManagementService.getList(UnameText,RealnameText,PhoneText, teacher.getCompany());
+                    list = accountManagementService.getList(unameText,realnameText,phoneText, teacher.getCompany());
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
-                        item.put("userName", list.get(i).getUsername());
+                        item.put("username", list.get(i).getUsername());
                         item.put("password", list.get(i).getPassword());
-                        item.put("realName", list.get(i).getRealname());
-                        item.put("useType", list.get(i).getUseType());
+                        item.put("realname", list.get(i).getRealname());
+                        item.put("useType", list.get(i).getUsetype());
                         item.put("age", list.get(i).getAge());
                         item.put("phone", list.get(i).getPhone());
                         item.put("home", list.get(i).getHome());
@@ -140,7 +140,7 @@ public class AccountManagementActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(AccountManagementActivity.this, data, R.layout.accountmanagement_row, new String[]{"username", "password", "realName", "useType", "age", "phone","home","photo","education","state"}, new int[]{R.id.Username, R.id.password, R.id.Realname, R.id.UseType, R.id.Age, R.id.Phone, R.id.Home,R.id.photo, R.id.Education, R.id.state}) {
+                SimpleAdapter adapter = new SimpleAdapter(AccountManagementActivity.this, data, R.layout.accountmanagement_row, new String[]{"username", "password", "realname", "useType", "age", "phone","home","photo","education","state"}, new int[]{R.id.username, R.id.password, R.id.realName, R.id.useType, R.id.age, R.id.phone, R.id.home,R.id.photo, R.id.education, R.id.state}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);

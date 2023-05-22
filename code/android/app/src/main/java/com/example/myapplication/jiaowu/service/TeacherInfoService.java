@@ -23,7 +23,7 @@ public class TeacherInfoService {
      * 新增
      */
     public boolean insert(TeacherInfo teacherInfo) {
-        String sql = "insert into teacherinfo(t_name,sex,id_code,minzu,birthday,post,education,phone,rz_riqi,state,shebao,address,company) values(?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into teacherinfo(t_name,sex,id_code,minzu,birthday,post,education,phone,rz_riqi,state,shebao,address,company) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         base = new JiaowuBaseDao();
         long result = base.executeOfId(sql, teacherInfo.getT_name(), teacherInfo.getSex(), teacherInfo.getId_code(), teacherInfo.getMinzu(), teacherInfo.getBirthday(), teacherInfo.getPost(), teacherInfo.getEducation(),teacherInfo.getPhone(),teacherInfo.getRz_riqi(),teacherInfo.getState(),teacherInfo.getShebao(),teacherInfo.getAddress(),teacherInfo.getCompany());
         return result > 0;
@@ -43,7 +43,7 @@ public class TeacherInfoService {
      * 删除
      */
     public boolean delete(int id) {
-        String sql = "delete from student where ID = ?";
+        String sql = "delete from teacherinfo where ID = ?";
         base = new JiaowuBaseDao();
         return base.execute(sql, id);
     }

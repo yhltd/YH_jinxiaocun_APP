@@ -1,15 +1,17 @@
 package com.example.myapplication.jiaowu.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class ShouZhiMingXi implements Serializable {
-
+    @SerializedName("ID")
     private int id;
     private String rgdate;
-    private String money;
+    private int money;
     private String msort;
     private String mremark;
-    private String paid;
+    private int paid;
     private String psort;
     private String premark;
     private String handle;
@@ -31,11 +33,11 @@ public class ShouZhiMingXi implements Serializable {
         this.rgdate = rgdate;
     }
 
-    public String getMoney() {
+    public int getMoney() {
         return money;
     }
 
-    public void setMoney(String money) {
+    public void setMoney(int money) {
         this.money = money;
     }
 
@@ -55,11 +57,11 @@ public class ShouZhiMingXi implements Serializable {
         this.mremark = mremark;
     }
 
-    public String getPaid() {
+    public int getPaid() {
         return paid;
     }
 
-    public void setPaid(String paid) {
+    public void setPaid(int paid) {
         this.paid = paid;
     }
 

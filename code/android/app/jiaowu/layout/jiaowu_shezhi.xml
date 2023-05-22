@@ -5,11 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".jiaowu.activity.SheZhiActivity">
+    tools:context=".jiaowu.activity.SheZhiActivity"
+    android:background="@color/WhiteSmoke">
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="570dp">
+        android:layout_height="580dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -18,17 +22,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:background="@drawable/border_bottom"
+                android:layout_height="40dp"
+                android:background="@color/title"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:elevation="3dp">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="80dp"
                     android:text="序号"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -38,11 +44,12 @@
                     android:layout_weight="1" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="课程列表"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -52,11 +59,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="责任教师"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -66,11 +74,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="状态设定"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -80,11 +89,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="缴费方式"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -94,11 +104,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="收入分类"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -108,11 +119,12 @@
                     android:layout_weight="2" />
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:width="150dp"
+                    android:width="100dp"
                     android:text="支出分类"
-                    android:textColor="@color/main_text"
+                    android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -128,7 +140,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:dividerHeight="1dp"
-                android:paddingBottom="5dp" />
+                android:paddingBottom="5dp"
+                android:divider="@null"/>
         </LinearLayout>
 
     </HorizontalScrollView>

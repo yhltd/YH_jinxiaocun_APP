@@ -58,10 +58,14 @@ public class QuanxianActivity extends AppCompatActivity {
         }
 
         listView = findViewById(R.id.account_quanxian_list);
-
+        view_name = findViewById(R.id.view_name);
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
         quanxian = myApplication.getQuanxian();
+
+        sel_button = findViewById(R.id.sel_button);
+        sel_button.setOnClickListener(selClick());
+        sel_button.requestFocus();
 
         initList();
     }
@@ -75,7 +79,17 @@ public class QuanxianActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public View.OnClickListener selClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initList();
+            }
+        };
+    }
+
     private void initList() {
+        view_nameText = view_name.getText().toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -90,14 +104,13 @@ public class QuanxianActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     quanxianService = new QuanxianService();
-                    list = quanxianService.getList(teacher.getCompany());
+                    list = quanxianService.getList(view_nameText,teacher.getCompany());
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
-                        item.put("id", list.get(i).getId());
-                        item.put("t_id", list.get(i).getT_id());
-                        item.put("view_name", list.get(i).getView_name());
+                        item.put("realname", list.get(i).getRealname());
+                        item.put("viewname", list.get(i).getView_name());
                         item.put("add", list.get(i).getAdd());
                         item.put("del", list.get(i).getDel());
                         item.put("upd", list.get(i).getUpd());
@@ -108,7 +121,7 @@ public class QuanxianActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(QuanxianActivity.this, data, R.layout.jiaowu_account_quanxian_row, new String[]{"Username", "Password", "RealName", "UseType", "Age", "Phone","Home","photo","Education","state"}, new int[]{R.id.Username, R.id.password, R.id.Realname, R.id.UseType, R.id.Age, R.id.Phone, R.id.Home,R.id.photo, R.id.Education, R.id.state}) {
+                SimpleAdapter adapter = new SimpleAdapter(QuanxianActivity.this, data, R.layout.jiaowu_account_quanxian_row, new String[]{"realname", "viewname", "add", "del", "upd", "sel"}, new int[]{R.id.RealName, R.id.view_name, R.id.add, R.id.del, R.id.upd, R.id.sel}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);

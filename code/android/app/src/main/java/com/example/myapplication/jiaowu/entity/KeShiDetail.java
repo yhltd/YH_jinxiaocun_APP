@@ -7,9 +7,9 @@ public class KeShiDetail implements Serializable {
     private String riqi;
     private String student_name;
     private String course;
-    private String keshi;
+    private int keshi;
     private String teacher_name;
-    private String jine;
+    private float jine;
     private String company;
 
     public int getId() {
@@ -44,14 +44,6 @@ public class KeShiDetail implements Serializable {
         this.course = course;
     }
 
-    public String getKeshi() {
-        return keshi;
-    }
-
-    public void setKeshi(String keshi) {
-        this.keshi = keshi;
-    }
-
     public String getTeacher_name() {
         return teacher_name;
     }
@@ -60,11 +52,19 @@ public class KeShiDetail implements Serializable {
         this.teacher_name = teacher_name;
     }
 
-    public String getJine() {
+    public int getKeshi() {
+        return keshi;
+    }
+
+    public void setKeshi(int keshi) {
+        this.keshi = keshi;
+    }
+
+    public float getJine() {
         return jine;
     }
 
-    public void setJine(String jine) {
+    public void setJine(float jine) {
         this.jine = jine;
     }
 

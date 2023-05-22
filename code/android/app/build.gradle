@@ -37,7 +37,8 @@ android {
                 'renshi',
                 'fenquan',
                 'mendian',
-                'jiaowu'
+                'jiaowu',
+                'fenquan'
             ]
         }
     }

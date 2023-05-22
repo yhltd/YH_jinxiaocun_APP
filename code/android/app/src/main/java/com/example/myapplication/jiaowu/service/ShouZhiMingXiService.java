@@ -33,7 +33,7 @@ public class ShouZhiMingXiService {
      * 修改
      */
     public boolean update(ShouZhiMingXi shouZhiMingXi) {
-        String sql = "update income set rgdate=?,money=?,msort=?,mremark=?,paid=?,psort=?,premark=?,handle=?,Company=? where ID=? ";
+        String sql = "update income set rgdate=?,money=?,msort=?,mremark=?,paid=?,psort=?,premark=?,handle=? where ID=? ";
         base = new JiaowuBaseDao();
         boolean result = base.execute(sql, shouZhiMingXi.getRgdate(), shouZhiMingXi.getMoney(), shouZhiMingXi.getMsort(), shouZhiMingXi.getMremark(), shouZhiMingXi.getPaid(), shouZhiMingXi.getPsort(), shouZhiMingXi.getPremark(),shouZhiMingXi.getHandle(),shouZhiMingXi.getId());
         return result;

@@ -13,9 +13,9 @@ public class AccountManagement implements Serializable {
     @SerializedName("RealName")
     private String realname;
     @SerializedName("UseType")
-    private String useType;
+    private int usetype;
     @SerializedName("Age")
-    private String age;
+    private int age;
     @SerializedName("Phone")
     private String phone;
     @SerializedName("Home")
@@ -60,19 +60,19 @@ public class AccountManagement implements Serializable {
         this.realname = realname;
     }
 
-    public String getUseType() {
-        return useType;
+    public int getUsetype() {
+        return usetype;
     }
 
-    public void setUseType(String useType) {
-        this.useType = useType;
+    public void setUsetype(int usetype) {
+        this.usetype = usetype;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

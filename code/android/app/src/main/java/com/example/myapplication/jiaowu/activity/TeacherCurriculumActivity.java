@@ -62,6 +62,8 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
         }
 
         listView = findViewById(R.id.teachercurriculum_list);
+        teacher1 = findViewById(R.id.teacher);
+        course = findViewById(R.id.course);
 
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
@@ -79,6 +81,8 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        teacherText = teacher1.getText().toString();
+        courseText = course.getText().toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {

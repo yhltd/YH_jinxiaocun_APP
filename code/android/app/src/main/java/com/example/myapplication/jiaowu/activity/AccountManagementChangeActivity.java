@@ -89,8 +89,8 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
             Username.setText(accountManagement.getUsername());
             Password.setText(accountManagement.getPassword());
             Realname.setText(accountManagement.getRealname());
-            UseType.setText(accountManagement.getUseType());
-            Age.setText(accountManagement.getAge());
+            UseType.setText(String.valueOf(accountManagement.getUsetype()));
+            Age.setText(String.valueOf(accountManagement.getAge()));
             Phone.setText(accountManagement.getPhone());
             Home.setText(accountManagement.getHome());
             photo.setText(accountManagement.getPhoto());
@@ -168,8 +168,17 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
         accountManagement.setUsername(Username.getText().toString());
         accountManagement.setPassword(Password.getText().toString());
         accountManagement.setRealname(Realname.getText().toString());
-        accountManagement.setUseType(UseType.getText().toString());
-        accountManagement.setAge(Age.getText().toString());
+        accountManagement.setRealname(Realname.getText().toString());
+        if(UseType.getText().toString().equals("")){
+            accountManagement.setUsetype(Integer.parseInt("1"));
+        }else{
+            accountManagement.setUsetype(Integer.parseInt(UseType.getText().toString()));
+        }
+        if(Age.getText().toString().equals("")){
+            accountManagement.setAge(Integer.parseInt("0"));
+        }else{
+            accountManagement.setAge(Integer.parseInt(Age.getText().toString()));
+        }
         accountManagement.setPhone(Phone.getText().toString());
         accountManagement.setHome(Home.getText().toString());
         accountManagement.setPhoto(photo.getText().toString());

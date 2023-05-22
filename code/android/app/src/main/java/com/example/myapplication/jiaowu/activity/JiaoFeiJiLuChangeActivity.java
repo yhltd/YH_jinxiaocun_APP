@@ -1,15 +1,18 @@
 package com.example.myapplication.jiaowu.activity;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -32,6 +35,7 @@ import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
 
 public class JiaoFeiJiLuChangeActivity extends AppCompatActivity {
@@ -68,6 +72,7 @@ public class JiaoFeiJiLuChangeActivity extends AppCompatActivity {
         sheZhiService = new SheZhiService();
 
         ksdate = findViewById(R.id.ksdate);
+        showDateOnClick(ksdate);
         realname = findViewById(R.id.realname);
         paid = findViewById(R.id.paid);
         money = findViewById(R.id.money);
@@ -85,8 +90,8 @@ public class JiaoFeiJiLuChangeActivity extends AppCompatActivity {
 
             ksdate.setText(payment.getKsdate().toString());
             realname.setText(payment.getRealname().toString());
-            paid.setText(payment.getPaid().toString());
-            money.setText(payment.getMoney().toString());
+            paid.setText(String.valueOf(payment.getPaid()));
+            money.setText(String.valueOf(payment.getMoney()));
             keeper.setText(payment.getKeeper().toString());
             remark.setText(payment.getRemark().toString());
         }else{
@@ -243,15 +248,58 @@ public class JiaoFeiJiLuChangeActivity extends AppCompatActivity {
         } else {
             payment.setRealname(realname.getText().toString());
         }
+        if(paid.getText().toString().equals("")){
+            payment.setPaid(Integer.parseInt("0"));
+        }else{
+            payment.setPaid(Integer.parseInt(paid.getText().toString()));
+        }
+        if(money.getText().toString().equals("")){
+            payment.setMoney(Integer.parseInt("0"));
+        }else{
+            payment.setMoney(Integer.parseInt(money.getText().toString()));
+        }
 
-        payment.setPaid(paid.getText().toString());
-        payment.setMoney(money.getText().toString());
         payment.setPaiment(paiment.getSelectedItem().toString());
         payment.setKeeper(keeper.getText().toString());
         payment.setRemark(remark.getText().toString());
         payment.setCompany(teacher.getCompany());
 
         return true;
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    protected void showDateOnClick(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    showDatePickDlg(editText);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    showDatePickDlg(editText);
+                }
+
+            }
+        });
+    }
+
+    protected void showDatePickDlg(final EditText editText) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(JiaoFeiJiLuChangeActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
     private int getPaimentPosition(String param) {

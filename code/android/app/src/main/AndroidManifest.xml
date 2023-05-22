@@ -837,6 +837,33 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".fenquan.activity.GongZuoTaiQuanXianChangeActivity"
+            android:label="工作台权限设置">
+            <intent-filter>
+                <action android:name="android.intent.action.GongZuoTaiQuanXianChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fenquan.activity.GongZuoTaiActivity"
+            android:label="工作台">
+            <intent-filter>
+                <action android:name="android.intent.action.GongZuoTaiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fenquan.activity.GongZuoTaiChangeActivity"
+            android:label="工作台">
+            <intent-filter>
+                <action android:name="android.intent.action.GongZuoTaiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
 
         <!--    人事    -->
         <activity

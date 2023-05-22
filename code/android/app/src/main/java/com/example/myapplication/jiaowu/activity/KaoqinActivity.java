@@ -97,48 +97,47 @@ public class KaoqinActivity extends AppCompatActivity {
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
-                        item.put("id", list.get(i).getId());
                         item.put("s_name", list.get(i).getS_name());
                         item.put("nian", list.get(i).getNian());
                         item.put("yue", list.get(i).getYue());
                         item.put("ri1", list.get(i).getRi1());
-                        item.put("ri2", list.get(i).getRi1());
-                        item.put("ri3", list.get(i).getRi1());
-                        item.put("ri4", list.get(i).getRi1());
-                        item.put("ri5", list.get(i).getRi1());
-                        item.put("ri6", list.get(i).getRi1());
-                        item.put("ri7", list.get(i).getRi1());
-                        item.put("ri8", list.get(i).getRi1());
-                        item.put("ri9", list.get(i).getRi1());
-                        item.put("ri10", list.get(i).getRi1());
-                        item.put("ri11", list.get(i).getRi1());
-                        item.put("ri12", list.get(i).getRi1());
-                        item.put("ri13", list.get(i).getRi1());
-                        item.put("ri14", list.get(i).getRi1());
-                        item.put("ri15", list.get(i).getRi1());
-                        item.put("ri16", list.get(i).getRi1());
-                        item.put("ri17", list.get(i).getRi1());
-                        item.put("ri18", list.get(i).getRi1());
-                        item.put("ri19", list.get(i).getRi1());
-                        item.put("ri20", list.get(i).getRi1());
-                        item.put("ri21", list.get(i).getRi1());
-                        item.put("ri22", list.get(i).getRi1());
-                        item.put("ri23", list.get(i).getRi1());
-                        item.put("ri24", list.get(i).getRi1());
-                        item.put("ri25", list.get(i).getRi1());
-                        item.put("ri26", list.get(i).getRi1());
-                        item.put("ri27", list.get(i).getRi1());
-                        item.put("ri28", list.get(i).getRi1());
-                        item.put("ri29", list.get(i).getRi1());
-                        item.put("ri30", list.get(i).getRi1());
-                        item.put("ri31", list.get(i).getRi1());
+                        item.put("ri2", list.get(i).getRi2());
+                        item.put("ri3", list.get(i).getRi3());
+                        item.put("ri4", list.get(i).getRi4());
+                        item.put("ri5", list.get(i).getRi5());
+                        item.put("ri6", list.get(i).getRi6());
+                        item.put("ri7", list.get(i).getRi7());
+                        item.put("ri8", list.get(i).getRi8());
+                        item.put("ri9", list.get(i).getRi9());
+                        item.put("ri10", list.get(i).getRi10());
+                        item.put("ri11", list.get(i).getRi11());
+                        item.put("ri12", list.get(i).getRi12());
+                        item.put("ri13", list.get(i).getRi13());
+                        item.put("ri14", list.get(i).getRi14());
+                        item.put("ri15", list.get(i).getRi15());
+                        item.put("ri16", list.get(i).getRi16());
+                        item.put("ri17", list.get(i).getRi17());
+                        item.put("ri18", list.get(i).getRi18());
+                        item.put("ri19", list.get(i).getRi19());
+                        item.put("ri20", list.get(i).getRi20());
+                        item.put("ri21", list.get(i).getRi21());
+                        item.put("ri22", list.get(i).getRi22());
+                        item.put("ri23", list.get(i).getRi23());
+                        item.put("ri24", list.get(i).getRi24());
+                        item.put("ri25", list.get(i).getRi25());
+                        item.put("ri26", list.get(i).getRi26());
+                        item.put("ri27", list.get(i).getRi27());
+                        item.put("ri28", list.get(i).getRi28());
+                        item.put("ri29", list.get(i).getRi29());
+                        item.put("ri30", list.get(i).getRi30());
+                        item.put("ri31", list.get(i).getRi31());
                         data.add(item);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(KaoqinActivity.this, data, R.layout.jiaowu_kaoqin_row, new String[]{"s_name", "nian", "yue", "ri1", "ri2", "ri3","ri4","ri5","ri6","ri7","ri8","ri9","ri10","ri11","ri12","ri13","ri14","ri15","ri16","ri17","ri18","ri19","ri20","ri21","ri22","ri23","ri24","ri25","ri26","ri27","ri28","ri29","ri30","ri31"}, new int[]{R.id.Username, R.id.password, R.id.Realname, R.id.UseType, R.id.Age, R.id.Phone, R.id.Home,R.id.photo, R.id.Education, R.id.state}) {
+                SimpleAdapter adapter = new SimpleAdapter(KaoqinActivity.this, data, R.layout.jiaowu_kaoqin_row, new String[]{"s_name", "nian", "yue", "ri1", "ri2", "ri3","ri4","ri5","ri6","ri7","ri8","ri9","ri10","ri11","ri12","ri13","ri14","ri15","ri16","ri17","ri18","ri19","ri20","ri21","ri22","ri23","ri24","ri25","ri26","ri27","ri28","ri29","ri30","ri31"}, new int[]{R.id.s_name, R.id.nian, R.id.yue, R.id.ri1, R.id.ri2, R.id.ri3, R.id.ri4,R.id.ri5, R.id.ri6, R.id.ri7, R.id.ri8, R.id.ri9, R.id.ri10, R.id.ri11, R.id.ri12, R.id.ri13, R.id.ri14, R.id.ri15, R.id.ri16, R.id.ri17, R.id.ri18, R.id.ri19, R.id.ri20, R.id.ri21, R.id.ri22, R.id.ri23, R.id.ri24, R.id.ri25, R.id.ri26, R.id.ri27, R.id.ri28, R.id.ri29, R.id.ri30, R.id.ri31}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);

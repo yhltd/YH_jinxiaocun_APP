@@ -8,12 +8,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:elevation="3dp"
+        android:background="@drawable/shape_corner_sel">
 
         <TextView
+            android:gravity="center"
             android:id="@+id/t_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,7 +23,7 @@
             android:textSize="14sp"
             android:text="教师姓名"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -29,6 +31,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/sex"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +39,7 @@
             android:textSize="14sp"
             android:text="性别"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="80dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -44,6 +47,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/id_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,6 +63,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/minzu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +71,7 @@
             android:textSize="14sp"
             android:text="民族"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -74,6 +79,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/birthday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,7 +87,7 @@
             android:textSize="14sp"
             android:text="生日"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -89,6 +95,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,7 +103,7 @@
             android:textSize="14sp"
             android:text="职位"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -104,6 +111,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/education"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -111,7 +119,7 @@
             android:textSize="14sp"
             android:text="学历"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -119,6 +127,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -126,7 +135,7 @@
             android:textSize="14sp"
             android:text="联系电话"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -134,6 +143,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/rz_riqi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -141,7 +151,7 @@
             android:textSize="14sp"
             android:text="入职日期"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -149,6 +159,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -156,7 +167,7 @@
             android:textSize="14sp"
             android:text="在职状态"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -164,6 +175,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/shebao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -171,7 +183,7 @@
             android:textSize="14sp"
             android:text="社保情况"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -179,6 +191,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

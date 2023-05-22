@@ -13,9 +13,9 @@ public class KaoqinService {
      * 查询全部数据
      */
     public List<Kaoqin> getList(String s_name, String company) {
-        String sql = "select * from kaoqin where company = ? and s_name like ?";
+        String sql = "select * from kaoqin where company = ? and s_name like '%' ? '%'";
         base = new JiaowuBaseDao();
-        List<Kaoqin> list = base.query(AccountManagement.class, sql,s_name,company);
+        List<Kaoqin> list = base.query(Kaoqin.class, sql,company,s_name);
         return list;
     }
 

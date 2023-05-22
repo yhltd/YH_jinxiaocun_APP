@@ -24,7 +24,7 @@ public class AccountManagementService {
     public boolean insert(AccountManagement accountManagement) {
         String sql = "insert into teacher(UserName,Password,RealName,UseType,Age,Phone,Home,photo,Education,state,Company) values(?,?,?,?,?,?,?,?,?,?,?)";
         base = new JiaowuBaseDao();
-        long result = base.executeOfId(sql, accountManagement.getUsername(), accountManagement.getPassword(), accountManagement.getRealname(), accountManagement.getUseType(), accountManagement.getAge(), accountManagement.getPhone(), accountManagement.getHome(), accountManagement.getPhoto(), accountManagement.getEducation(), accountManagement.getState(), accountManagement.getCompany());
+        long result = base.executeOfId(sql, accountManagement.getUsername(), accountManagement.getPassword(), accountManagement.getRealname(), accountManagement.getUsetype(), accountManagement.getAge(), accountManagement.getPhone(), accountManagement.getHome(), accountManagement.getPhoto(), accountManagement.getEducation(), accountManagement.getState(), accountManagement.getCompany());
         return result > 0;
     }
 
@@ -32,10 +32,10 @@ public class AccountManagementService {
      * 修改
      */
     public boolean update(AccountManagement accountManagement) {
-        String sql = "update teacher set UserName = ?, Password = ?,RealName = ?,UseType = ?,Age = ?,Phone,Home,photo,Education,state where id=? ";
+        String sql = "update teacher set UserName = ?, Password = ?,RealName = ?,UseType = ?,Age = ?,Phone=?,Home=?,photo=?,Education=?,state=? where id=? ";
 
         base = new JiaowuBaseDao();
-        boolean result = base.execute(sql, accountManagement.getUsername(), accountManagement.getPassword(), accountManagement.getRealname(), accountManagement.getUseType(), accountManagement.getAge(), accountManagement.getPhone(), accountManagement.getHome(), accountManagement.getPhoto(), accountManagement.getEducation(), accountManagement.getState(), accountManagement.getId());
+        boolean result = base.execute(sql, accountManagement.getUsername(), accountManagement.getPassword(), accountManagement.getRealname(), accountManagement.getUsetype(), accountManagement.getAge(), accountManagement.getPhone(), accountManagement.getHome(), accountManagement.getPhoto(), accountManagement.getEducation(), accountManagement.getState(), accountManagement.getId());
         return result;
     }
 

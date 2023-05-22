@@ -1,14 +1,18 @@
 package com.example.myapplication.jiaowu.activity;
 
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -32,6 +36,7 @@ import com.example.myapplication.utils.ToastUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -67,6 +72,8 @@ public class TeacherSalActivity extends AppCompatActivity {
         listView = findViewById(R.id.teachersal_list);
         start_date = findViewById(R.id.startdate);
         end_date = findViewById(R.id.enddate);
+        showDateOnClick(start_date);
+        showDateOnClick(end_date);
         teacher_name = findViewById(R.id.teacher_name);
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
@@ -139,7 +146,7 @@ public class TeacherSalActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(TeacherSalActivity.this, data, R.layout.jiaowu_teachersal_row, new String[]{"teacher_name", "course", "keshi", "jie", "gongzihesuan"}, new int[]{R.id.teacher_name, R.id.course, R.id.keshi, R.id.jine, R.id.gongzihesuan}) {
+                SimpleAdapter adapter = new SimpleAdapter(TeacherSalActivity.this, data, R.layout.jiaowu_teachersal_row, new String[]{"teacher_name", "course", "keshi", "jine", "gongzihesuan"}, new int[]{R.id.teacher_name, R.id.course, R.id.keshi, R.id.jine, R.id.gongzihesuan}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -166,5 +173,40 @@ public class TeacherSalActivity extends AppCompatActivity {
                 initList();
             }
         }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    protected void showDateOnClick(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    showDatePickDlg(editText);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    showDatePickDlg(editText);
+                }
+
+            }
+        });
+    }
+
+    protected void showDatePickDlg(final EditText editText) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(TeacherSalActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 }

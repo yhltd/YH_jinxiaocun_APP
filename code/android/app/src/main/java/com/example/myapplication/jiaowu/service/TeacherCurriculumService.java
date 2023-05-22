@@ -14,9 +14,9 @@ public class TeacherCurriculumService {
      * 查询全部数据
      */
     public List<TeacherCurriculum> getList(String teacher,String course, String company) {
-        String sql = "select * from course where teacher like ? and course like ? and company = ?";
+        String sql = "select * from course where teacher like '%' ? '%' and course like '%' ? '%' and company = ?";
         base = new JiaowuBaseDao();
-        List<TeacherCurriculum> list = base.query(AccountManagement.class, sql,teacher,course,company);
+        List<TeacherCurriculum> list = base.query(TeacherCurriculum.class, sql,teacher,course,company);
         return list;
     }
 

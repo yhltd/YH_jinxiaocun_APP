@@ -2,14 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fenquan.activity.RenyuanQuanXianChangeActivity">
+    tools:context=".fenquan.activity.GongZuoTaiGongShiChangeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="vertical">
+        android:layout_marginRight="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,17 +17,15 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_corner_up"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/shape_corner_up">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginLeft="24dp"
@@ -35,2788 +33,2989 @@
                     android:textSize="18sp"
                     android:text="A" />
 
-                <Spinner
+                <EditText
+                    android:id="@+id/A"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入A"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom_top">
+
+                <TextView
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="B" />
+
+                <EditText
+                    android:id="@+id/B"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="请输入B"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/border_bottom">
+
+                <TextView
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="C" />
+
+                <EditText
                     android:id="@+id/C"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入C"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom_top"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="B" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="D" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/D"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入D"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="C" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="E" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/E"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入E"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="D" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="F" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/F"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入F"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="E" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="G" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/G"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入G"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="F" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="H" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/H"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入H"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="G" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="I" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/I"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入I"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="H" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="J" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/J"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入J"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="I" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="K" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/K"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入K"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="J" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="L" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/L"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入L"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="K" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="M" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/M"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入M"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="L" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="N" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/N"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入N"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="M" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="O" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/O"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入O"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="N" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="P" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/P"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入P"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="O" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="Q" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/Q"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入Q"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="P" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="R" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/RR"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入R"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="Q" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="S" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/S"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入S"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="R" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="T" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/T"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入T"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="S" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="U" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/U"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入U"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="T" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="V" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/V"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入V"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="U" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="W" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/W"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入W"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="V" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="X" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/X"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入X"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="W" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="Y" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/Y"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入Y"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="X" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="Z" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/Z"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入Z"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="Y" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AA" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AA"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AA"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="Z" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AB" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AB"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AB"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AA" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AC" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AC"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AC"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AB" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AD" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AD"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AD"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AC" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AE" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AE"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AE"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AD" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AF" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AF"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AF"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AE" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AG" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AG"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AG"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AF" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AH" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AH"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AH"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AG" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AI" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AI"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AI"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AH" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AJ" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AJ"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AJ"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AI" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AK" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AK"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AK"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AJ" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AL" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AL"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AL"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AK" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AM" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AM"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AM"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AL" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AN" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AN"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AN"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AM" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AO" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AO"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AO"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AN" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AP" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AP"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AP"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AO" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AQ" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AQ"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AQ"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AP" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AR" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AR"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AR"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AQ" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AS" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/ASS"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AS"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AR" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AT" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AT"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AT"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AS" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AU" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AU"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AU"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AT" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AV" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AV"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AV"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AU" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AW" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AW"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AW"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AV" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AX" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AX"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AX"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AW" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AY" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AY"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AY"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AX" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="AZ" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/AZ"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入AZ"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AY" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BA" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BA"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BA"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="AZ" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BB" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BB"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BB"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BA" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BC" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BC"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BC"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BB" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BD" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BD"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BD"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BC" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BE" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BE"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BE"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BD" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BF" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BF"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BF"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BE" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BG" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BG"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BG"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BF" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BH" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BH"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BH"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BG" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BI" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BI"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BI"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BH" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BJ" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BJ"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BJ"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BI" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BK" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BK"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BK"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BJ" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BL" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BL"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BL"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BK" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BM" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BM"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BM"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BL" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BN" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BN"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BN"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BM" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BO" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BO"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BO"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BN" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BP" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BP"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BP"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BO" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BQ" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BQ"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BQ"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BP" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BR" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BR"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BR"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BQ" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BS" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BS"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BS"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BR" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BT" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BT"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BT"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BS" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BU" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BU"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BU"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BT" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BV" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BV"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BV"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BU" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BW" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BW"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BW"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BV" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BX" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BX"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BX"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BW" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BY" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BYY"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BY"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BX" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="BZ" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/BZ"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入BZ"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BY" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CA" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CA"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CA"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="BZ" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CB" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CB"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CB"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CA" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CC" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CC"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CC"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CB" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CD" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CD"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CD"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CC" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CE" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CE"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CE"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CD" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CF" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CF"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CF"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CE" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CG" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CG"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CG"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CF" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CH" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CH"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CH"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CG" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CI" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CI"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CI"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CH" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CJ" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CJ"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CJ"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CI" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CK" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CK"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CK"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CJ" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CL" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CL"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CL"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CK" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CM" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CM"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CM"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CL" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CN" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CN"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CN"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CM" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CO" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CO"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CO"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CN" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CP" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CP"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CP"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CO" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CQ" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CQ"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CQ"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CP" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CR" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CR"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CR"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CQ" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CS" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CS"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CS"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CR" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CT" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CT"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CT"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/border_bottom">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CS" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CU" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CU"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CU"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
+                android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
-
+                android:background="@drawable/shape_corner_down">
 
                 <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CT" />
+                    android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                    android:text="CV" />
 
-                <Spinner
+                <EditText
                     android:id="@+id/CV"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
+                    android:hint="请输入CV"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_bottom"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
-
-                <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CU" />
-
-                <Spinner
-                    android:id="@+id/CW"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:inputType="text"
-                    android:textIsSelectable="false" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_corner_down"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="CV" />
-
-                <Spinner
-                    android:id="@+id/CX"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:inputType="text"
-                    android:textIsSelectable="false" />
-
-            </LinearLayout>
 
         </LinearLayout>
 
@@ -2831,7 +3030,7 @@
 
             <Button
                 android:id="@+id/update_btn"
-                android:layout_width="180dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:onClick="updateClick"
                 android:text="提交"
@@ -2841,6 +3040,17 @@
                 android:textSize="17dp"
                 android:textColor="@color/white"/>
 
+            <Button
+                android:id="@+id/insert_btn"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:onClick="insertClick"
+                android:text="提交"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints"
+                android:background="@drawable/btn_style"
+                android:textSize="17dp"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
     </LinearLayout>

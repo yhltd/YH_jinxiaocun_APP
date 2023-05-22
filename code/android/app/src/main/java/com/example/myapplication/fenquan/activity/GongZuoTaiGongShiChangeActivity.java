@@ -158,7 +158,7 @@ public class GongZuoTaiGongShiChangeActivity extends AppCompatActivity {
             jisuan.setGongshi(gongshi.getText().toString());
         }
 
-        jisuan.setCompany(renyuan.getC());
+        jisuan.setCompany(renyuan.getB());
 
         return true;
     }

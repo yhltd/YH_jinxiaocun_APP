@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class Quanxian implements Serializable {
     private int id;
     private int t_id;
-    @SerializedName("Realname")
+    @SerializedName("RealName")
     private String realname;
     private String view_name;
     private String add;

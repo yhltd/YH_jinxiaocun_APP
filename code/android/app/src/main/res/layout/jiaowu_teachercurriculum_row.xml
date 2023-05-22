@@ -8,11 +8,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:elevation="3dp"
+        android:background="@drawable/shape_corner_sel">
+
         <TextView
+            android:gravity="center"
             android:id="@+id/teacher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +23,7 @@
             android:textSize="14sp"
             android:text="教师"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,6 +31,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/course"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +39,7 @@
             android:textSize="14sp"
             android:text="课程"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -43,6 +47,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/riqi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +55,7 @@
             android:textSize="14sp"
             android:text="日期"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,6 +63,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/xingqi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +71,7 @@
             android:textSize="14sp"
             android:text="星期"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"

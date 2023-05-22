@@ -1,15 +1,18 @@
 package com.example.myapplication.jiaowu.activity;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -40,6 +43,7 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 public class XueShengXinXiChangeActivity extends AppCompatActivity {
@@ -84,6 +88,7 @@ public class XueShengXinXiChangeActivity extends AppCompatActivity {
         realName = findViewById(R.id.realName);
         sex = findViewById(R.id.sex);
         rgdate = findViewById(R.id.rgdate);
+        showDateOnClick(rgdate);
         course = findViewById(R.id.course);
         teacher_sel = findViewById(R.id.teacher);
         classnum = findViewById(R.id.classnum);
@@ -108,8 +113,8 @@ public class XueShengXinXiChangeActivity extends AppCompatActivity {
             rgdate.setText(student.getRgdate().toString());
             classnum.setText(student.getClassnum().toString());
             phone.setText(student.getPhone().toString());
-            fee.setText(student.getFee().toString());
-            allhour.setText(student.getAllhour().toString());
+            fee.setText(String.valueOf(student.getFee()));
+            allhour.setText(String.valueOf(student.getAllhour()));
         }else{
             student = new Student();
             init2();
@@ -313,11 +318,55 @@ public class XueShengXinXiChangeActivity extends AppCompatActivity {
         student.setRgdate(rgdate.getText().toString());
         student.setClassnum(classnum.getText().toString());
         student.setPhone(phone.getText().toString());
-        student.setFee(fee.getText().toString());
-        student.setAllhour(allhour.getText().toString());
+        if(fee.getText().toString().equals("")){
+            student.setFee(Integer.parseInt("0"));
+        }else{
+            student.setFee(Integer.parseInt(fee.getText().toString()));
+        }
+        if(allhour.getText().toString().equals("")){
+            student.setAllhour(Integer.parseInt("0"));
+        }else{
+            student.setAllhour(Integer.parseInt(allhour.getText().toString()));
+        }
         student.setType(type.getSelectedItem().toString());
         student.setCompany(teacher.getCompany());
         return true;
+    }
+
+
+    @SuppressLint("ClickableViewAccessibility")
+    protected void showDateOnClick(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    showDatePickDlg(editText);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    showDatePickDlg(editText);
+                }
+
+            }
+        });
+    }
+
+    protected void showDatePickDlg(final EditText editText) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(XueShengXinXiChangeActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
 

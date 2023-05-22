@@ -1,15 +1,18 @@
 package com.example.myapplication.jiaowu.activity;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -32,6 +35,7 @@ import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
 
 public class ShouZhiMingXiChangeActivity extends AppCompatActivity {
@@ -71,6 +75,7 @@ public class ShouZhiMingXiChangeActivity extends AppCompatActivity {
         sheZhiService = new SheZhiService();
 
         rgdate = findViewById(R.id.rgdate);
+        showDateOnClick(rgdate);
         money = findViewById(R.id.money);
         msort = findViewById(R.id.msort);
         mremark = findViewById(R.id.mremark);
@@ -88,9 +93,9 @@ public class ShouZhiMingXiChangeActivity extends AppCompatActivity {
             btn.setVisibility(View.VISIBLE);
 
             rgdate.setText(shouZhiMingXi.getRgdate().toString());
-            money.setText(shouZhiMingXi.getMoney().toString());
+            money.setText(String.valueOf(shouZhiMingXi.getMoney()));
             mremark.setText(shouZhiMingXi.getMremark().toString());
-            paid.setText(shouZhiMingXi.getPaid().toString());
+            paid.setText(String.valueOf(shouZhiMingXi.getPaid()));
             premark.setText(shouZhiMingXi.getPremark().toString());
 
         }else{
@@ -264,6 +269,14 @@ public class ShouZhiMingXiChangeActivity extends AppCompatActivity {
 
 
     private boolean checkForm() throws ParseException {
+
+        if (rgdate.getText().toString().equals("")) {
+            ToastUtil.show(ShouZhiMingXiChangeActivity.this, "请选择日期");
+            return false;
+        } else {
+            shouZhiMingXi.setRgdate(rgdate.getText().toString());
+        }
+
         if (handle.getSelectedItem().toString().equals("")) {
             ToastUtil.show(ShouZhiMingXiChangeActivity.this, "请选择经手人");
             return false;
@@ -271,15 +284,58 @@ public class ShouZhiMingXiChangeActivity extends AppCompatActivity {
             shouZhiMingXi.setHandle(handle.getSelectedItem().toString());
         }
 
-        shouZhiMingXi.setRgdate(rgdate.getText().toString());
-        shouZhiMingXi.setMoney(money.getText().toString());
+        if(money.getText().toString().equals("")){
+            shouZhiMingXi.setMoney(Integer.parseInt("0"));
+        }else{
+            shouZhiMingXi.setMoney(Integer.parseInt(money.getText().toString()));
+        }
         shouZhiMingXi.setMsort(msort.getSelectedItem().toString());
         shouZhiMingXi.setMremark(mremark.getText().toString());
-        shouZhiMingXi.setPaid(paid.getText().toString());
+        if(paid.getText().toString().equals("")){
+            shouZhiMingXi.setPaid(Integer.parseInt("0"));
+        }else{
+            shouZhiMingXi.setPaid(Integer.parseInt(paid.getText().toString()));
+        }
         shouZhiMingXi.setPsort(psort.getSelectedItem().toString());
         shouZhiMingXi.setPremark(premark.getText().toString());
         shouZhiMingXi.setCompany(teacher.getCompany());
         return true;
+    }
+
+
+    @SuppressLint("ClickableViewAccessibility")
+    protected void showDateOnClick(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    showDatePickDlg(editText);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    showDatePickDlg(editText);
+                }
+
+            }
+        });
+    }
+
+    protected void showDatePickDlg(final EditText editText) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(ShouZhiMingXiChangeActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
 

@@ -71,7 +71,7 @@ public class QuanxianChangeActivity extends AppCompatActivity {
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
 
-            Realname.setText(quanxian.getT_id());
+            Realname.setText(quanxian.getRealname());
             view_name.setText(quanxian.getView_name());
             add.setText(quanxian.getAdd());
             del.setText(quanxian.getDel());

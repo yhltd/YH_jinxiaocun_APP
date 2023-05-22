@@ -1,5 +1,7 @@
 package com.example.myapplication.fenquan.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Workbench {
     private int id;
     private String a;
@@ -105,7 +107,7 @@ public class Workbench {
     private String 人员;
     private String 公司;
     private String 日期;
-    private String 最后修改日期;
+    private String a最后修改日期;
 
     public int getId() {
         return id;
@@ -939,11 +941,11 @@ public class Workbench {
         this.日期 = 日期;
     }
 
-    public String get最后修改日期() {
-        return 最后修改日期;
+    public String getA最后修改日期() {
+        return a最后修改日期;
     }
 
-    public void set最后修改日期(String 最后修改日期) {
-        this.最后修改日期 = 最后修改日期;
+    public void setA最后修改日期(String a最后修改日期) {
+        this.a最后修改日期 = a最后修改日期;
     }
 }

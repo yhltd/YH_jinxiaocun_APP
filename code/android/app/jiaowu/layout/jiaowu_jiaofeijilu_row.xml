@@ -8,12 +8,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:elevation="3dp"
+        android:background="@drawable/shape_corner_sel">
 
         <TextView
+            android:gravity="center"
             android:id="@+id/ksdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,7 +23,7 @@
             android:textSize="14sp"
             android:text="日期"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -29,6 +31,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/realname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +39,7 @@
             android:textSize="14sp"
             android:text="学生姓名"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -44,6 +47,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/paid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +55,7 @@
             android:textSize="14sp"
             android:text="定金金额"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -59,6 +63,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +71,7 @@
             android:textSize="14sp"
             android:text="学费金额"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -74,6 +79,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/paiment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,7 +87,7 @@
             android:textSize="14sp"
             android:text="缴费方式"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -89,6 +95,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/keeper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,7 +103,7 @@
             android:textSize="14sp"
             android:text="收费人"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -104,6 +111,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/remark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -111,7 +119,7 @@
             android:textSize="14sp"
             android:text="备注"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"

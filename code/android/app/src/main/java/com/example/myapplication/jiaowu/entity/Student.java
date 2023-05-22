@@ -3,6 +3,7 @@ package com.example.myapplication.jiaowu.entity;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class Student implements Serializable {
     private int id;
@@ -14,12 +15,12 @@ public class Student implements Serializable {
     private String teacher;
     private String classnum;
     private String phone;
-    private String fee;
-    private String mall;
-    private String nocost;
-    private String nall;
-    private String nohour;
-    private String allhour;
+    private int fee;
+    private BigDecimal mall;
+    private float nocost;
+    private BigDecimal nall;
+    private float nohour;
+    private int allhour;
     private String type;
     @SerializedName("Company")
     private String company;
@@ -96,51 +97,52 @@ public class Student implements Serializable {
         this.phone = phone;
     }
 
-    public String getFee() {
+    public int getFee() {
         return fee;
     }
 
-    public void setFee(String fee) {
+    public void setFee(int fee) {
         this.fee = fee;
     }
 
-    public String getMall() {
+
+    public BigDecimal getMall() {
         return mall;
     }
 
-    public void setMall(String mall) {
+    public void setMall(BigDecimal mall) {
         this.mall = mall;
     }
 
-    public String getNocost() {
-        return nocost;
-    }
-
-    public void setNocost(String nocost) {
-        this.nocost = nocost;
-    }
-
-    public String getNall() {
+    public BigDecimal getNall() {
         return nall;
     }
 
-    public void setNall(String nall) {
+    public void setNall(BigDecimal nall) {
         this.nall = nall;
     }
 
-    public String getNohour() {
+    public float getNocost() {
+        return nocost;
+    }
+
+    public void setNocost(float nocost) {
+        this.nocost = nocost;
+    }
+
+    public float getNohour() {
         return nohour;
     }
 
-    public void setNohour(String nohour) {
+    public void setNohour(float nohour) {
         this.nohour = nohour;
     }
 
-    public String getAllhour() {
+    public int getAllhour() {
         return allhour;
     }
 
-    public void setAllhour(String allhour) {
+    public void setAllhour(int allhour) {
         this.allhour = allhour;
     }
 

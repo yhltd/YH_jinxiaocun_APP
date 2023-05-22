@@ -164,47 +164,47 @@ public class KaoqinChangeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
         if (id == R.id.insert_btn) {
-            teacher = new Teacher();
+            kaoqin = new Kaoqin();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
         } else if (id == R.id.update_btn) {
-            teacher = (Teacher) myApplication.getObj();
+            kaoqin = (Kaoqin) myApplication.getObj();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
             s_name.setText(kaoqin.getS_name());
             nian.setText(kaoqin.getNian());
-            yue.setAdapter(StringUtils.cast(kaoqin.getYue()));
-            ri1.setAdapter(StringUtils.cast(kaoqin.getRi1()));
-            ri2.setAdapter(StringUtils.cast(kaoqin.getRi2()));
-            ri3.setAdapter(StringUtils.cast(kaoqin.getRi3()));
-            ri4.setAdapter(StringUtils.cast(kaoqin.getRi4()));
-            ri5.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri6.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri7.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri8.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri9.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri10.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri11.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri12.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri13.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri14.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri15.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri16.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri17.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri18.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri19.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri20.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri21.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri22.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri23.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri24.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri25.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri26.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri27.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri28.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri29.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri30.setAdapter(StringUtils.cast(kaoqin.getRi31()));
-            ri31.setAdapter(StringUtils.cast(kaoqin.getRi31()));
+            yue.setSelection(getYuePosition(kaoqin.getYue()));
+            ri1.setSelection(getKaoQinPosition(kaoqin.getRi1()));
+            ri2.setSelection(getKaoQinPosition(kaoqin.getRi2()));
+            ri3.setSelection(getKaoQinPosition(kaoqin.getRi3()));
+            ri4.setSelection(getKaoQinPosition(kaoqin.getRi4()));
+            ri5.setSelection(getKaoQinPosition(kaoqin.getRi5()));
+            ri6.setSelection(getKaoQinPosition(kaoqin.getRi6()));
+            ri7.setSelection(getKaoQinPosition(kaoqin.getRi7()));
+            ri8.setSelection(getKaoQinPosition(kaoqin.getRi8()));
+            ri9.setSelection(getKaoQinPosition(kaoqin.getRi9()));
+            ri10.setSelection(getKaoQinPosition(kaoqin.getRi10()));
+            ri11.setSelection(getKaoQinPosition(kaoqin.getRi11()));
+            ri12.setSelection(getKaoQinPosition(kaoqin.getRi12()));
+            ri13.setSelection(getKaoQinPosition(kaoqin.getRi13()));
+            ri14.setSelection(getKaoQinPosition(kaoqin.getRi14()));
+            ri15.setSelection(getKaoQinPosition(kaoqin.getRi15()));
+            ri16.setSelection(getKaoQinPosition(kaoqin.getRi16()));
+            ri17.setSelection(getKaoQinPosition(kaoqin.getRi17()));
+            ri18.setSelection(getKaoQinPosition(kaoqin.getRi18()));
+            ri19.setSelection(getKaoQinPosition(kaoqin.getRi19()));
+            ri20.setSelection(getKaoQinPosition(kaoqin.getRi20()));
+            ri21.setSelection(getKaoQinPosition(kaoqin.getRi21()));
+            ri22.setSelection(getKaoQinPosition(kaoqin.getRi22()));
+            ri23.setSelection(getKaoQinPosition(kaoqin.getRi23()));
+            ri24.setSelection(getKaoQinPosition(kaoqin.getRi24()));
+            ri25.setSelection(getKaoQinPosition(kaoqin.getRi25()));
+            ri26.setSelection(getKaoQinPosition(kaoqin.getRi26()));
+            ri27.setSelection(getKaoQinPosition(kaoqin.getRi27()));
+            ri28.setSelection(getKaoQinPosition(kaoqin.getRi28()));
+            ri29.setSelection(getKaoQinPosition(kaoqin.getRi29()));
+            ri30.setSelection(getKaoQinPosition(kaoqin.getRi30()));
+            ri31.setSelection(getKaoQinPosition(kaoqin.getRi31()));
         }
     }
 
@@ -288,10 +288,65 @@ public class KaoqinChangeActivity extends AppCompatActivity {
             kaoqin.setNian(nian.getText().toString());
         }
 
+        kaoqin.setYue(yue.getSelectedItem().toString());
 
-        teacher.setCompany(teacher.getCompany());
+        kaoqin.setRi1(ri1.getSelectedItem().toString());
+        kaoqin.setRi2(ri2.getSelectedItem().toString());
+        kaoqin.setRi3(ri3.getSelectedItem().toString());
+        kaoqin.setRi4(ri4.getSelectedItem().toString());
+        kaoqin.setRi5(ri5.getSelectedItem().toString());
+        kaoqin.setRi6(ri6.getSelectedItem().toString());
+        kaoqin.setRi7(ri7.getSelectedItem().toString());
+        kaoqin.setRi8(ri8.getSelectedItem().toString());
+        kaoqin.setRi9(ri9.getSelectedItem().toString());
+        kaoqin.setRi10(ri10.getSelectedItem().toString());
+        kaoqin.setRi11(ri11.getSelectedItem().toString());
+        kaoqin.setRi12(ri12.getSelectedItem().toString());
+        kaoqin.setRi13(ri13.getSelectedItem().toString());
+        kaoqin.setRi14(ri14.getSelectedItem().toString());
+        kaoqin.setRi15(ri15.getSelectedItem().toString());
+        kaoqin.setRi16(ri16.getSelectedItem().toString());
+        kaoqin.setRi17(ri17.getSelectedItem().toString());
+        kaoqin.setRi18(ri18.getSelectedItem().toString());
+        kaoqin.setRi19(ri19.getSelectedItem().toString());
+        kaoqin.setRi20(ri20.getSelectedItem().toString());
+        kaoqin.setRi21(ri21.getSelectedItem().toString());
+        kaoqin.setRi22(ri22.getSelectedItem().toString());
+        kaoqin.setRi23(ri23.getSelectedItem().toString());
+        kaoqin.setRi24(ri24.getSelectedItem().toString());
+        kaoqin.setRi25(ri25.getSelectedItem().toString());
+        kaoqin.setRi26(ri26.getSelectedItem().toString());
+        kaoqin.setRi27(ri27.getSelectedItem().toString());
+        kaoqin.setRi28(ri28.getSelectedItem().toString());
+        kaoqin.setRi29(ri29.getSelectedItem().toString());
+        kaoqin.setRi30(ri30.getSelectedItem().toString());
+        kaoqin.setRi31(ri31.getSelectedItem().toString());
+
+        kaoqin.setCompany(teacher.getCompany());
 
         return true;
+    }
+
+    private int getYuePosition(String param) {
+        if (month_array != null) {
+            for (int i = 0; i < month_array.length; i++) {
+                if (param.equals(month_array[i])) {
+                    return i;
+                }
+            }
+        }
+        return 0;
+    }
+
+    private int getKaoQinPosition(String param) {
+        if (ri_array != null) {
+            for (int i = 0; i < ri_array.length; i++) {
+                if (param.equals(ri_array[i])) {
+                    return i;
+                }
+            }
+        }
+        return 0;
     }
 
     private void back() {

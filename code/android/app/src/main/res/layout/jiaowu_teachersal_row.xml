@@ -8,11 +8,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:elevation="3dp"
+        android:background="@drawable/shape_corner_sel">
+
         <TextView
+            android:gravity="center"
             android:id="@+id/teacher_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +23,7 @@
             android:textSize="14sp"
             android:text="教师姓名"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,6 +31,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/course"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +39,7 @@
             android:textSize="14sp"
             android:text="课程名称"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -43,6 +47,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/keshi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +55,7 @@
             android:textSize="14sp"
             android:text="上课课时"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,6 +63,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/jine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +71,7 @@
             android:textSize="14sp"
             android:text="每节金额"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -73,6 +79,7 @@
         </View>
 
         <TextView
+            android:gravity="center"
             android:id="@+id/gongzihesuan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,7 +87,7 @@
             android:textSize="14sp"
             android:text="工资核算"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="100dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
