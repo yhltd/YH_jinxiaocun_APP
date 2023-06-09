@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">云合未来一体化系统</string>
 
-    <string name="sign_in">登录</string>
+    <string name="sign_in">登     录</string>
     <string name="login_title">请登录</string>
     <string name="username">用户名</string>
     <string name="password">密码</string>
@@ -152,5 +152,13 @@
     <string-array name="state_list">
         <item>在职</item>
         <item>离职</item>
+    </string-array>
+
+    <string-array name="column_list">
+        <item>A列-Z列</item>
+        <item>AA列-AZ列</item>
+        <item>BA列-BZ列</item>
+        <item>CA列-CV列</item>
+        <item>A列-CV列</item>
     </string-array>
 </resources>

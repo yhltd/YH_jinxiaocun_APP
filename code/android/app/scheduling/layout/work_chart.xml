@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fenquan.activity.BuMenQuanXianActivity"
+    android:background="@color/WhiteSmoke">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_corner_sel"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:elevation="3dp"
+        >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search" />
+
+        <EditText
+            android:id="@+id/start_date"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="开始日期"
+            android:background="@null"/>
+
+        <EditText
+            android:id="@+id/stop_date"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="结束日期"
+            android:background="@null"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_corner_sel"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:elevation="3dp"
+        >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search" />
+
+        <Spinner
+            android:id="@+id/order_number"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="订单号"
+            />
+
+        <Spinner
+            android:id="@+id/model"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:hint="模块"
+            />
+
+        <Button
+            android:id="@+id/sel_button"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:text="查询"
+            android:background="@null"
+            android:textSize="17dp"
+            android:textColor="@color/blue" />
+
+    </LinearLayout>
+
+    <com.example.myapplication.EChartView
+        android:background="@drawable/shape_corner_sel"
+        android:elevation="3dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/barChart"
+        android:layout_width="380dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center">
+    </com.example.myapplication.EChartView>
+
+</LinearLayout>

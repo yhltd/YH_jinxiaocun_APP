@@ -746,6 +746,24 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".scheduling.activity.OrderChartActivity"
+            android:label="订单折线图">
+            <intent-filter>
+                <action android:name="android.intent.action.OrderChartActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.WorkChartActivity"
+            android:label="排产图表">
+            <intent-filter>
+                <action android:name="android.intent.action.WorkChartActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <!--    分权    -->
         <activity
             android:name=".fenquan.activity.FenquanActivity"
@@ -860,6 +878,24 @@
             android:label="工作台">
             <intent-filter>
                 <action android:name="android.intent.action.GongZuoTaiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fenquan.activity.GongSiChartActivity"
+            android:label="公司数据分析">
+            <intent-filter>
+                <action android:name="android.intent.action.GongSiChartActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".fenquan.activity.RenYuanChartActivity"
+            android:label="人员数据分析">
+            <intent-filter>
+                <action android:name="android.intent.action.RenYuanChartActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -1277,6 +1313,15 @@
             android:label="权限管理">
             <intent-filter>
                 <action android:name="android.intent.action.QuanxianChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.ShouZhiChartActivity"
+            android:label="收支图表">
+            <intent-filter>
+                <action android:name="android.intent.action.ShouZhiChartActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

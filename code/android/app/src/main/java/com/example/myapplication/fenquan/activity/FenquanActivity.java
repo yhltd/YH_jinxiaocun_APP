@@ -135,6 +135,24 @@ public class FenquanActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayout gongsi_chart = findViewById(R.id.gongsi_chart);
+        gongsi_chart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FenquanActivity.this, GongSiChartActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout renyuan_chart = findViewById(R.id.renyuan_chart);
+        renyuan_chart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FenquanActivity.this, RenYuanChartActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private long exitTime = 0;

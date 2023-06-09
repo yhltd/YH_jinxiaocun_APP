@@ -4,25 +4,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/login_background3"
     tools:context=".LoginActivity">
 
 
-    <LinearLayout
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:background="@drawable/login_background"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:src="@drawable/login_user" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/login_title"-->
+<!--            android:textColor="@color/white" />-->
+<!--    </LinearLayout>-->
+
+        <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/login_background"
+        android:layout_height="230dp"
         android:gravity="center"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/login_user" />
-
         <TextView
+            android:layout_marginTop="120dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_title"
+            android:text="Welcome"
+            android:textSize="60dp"
             android:textColor="@color/white" />
     </LinearLayout>
 
@@ -32,47 +48,92 @@
         android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/system"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="24dp"
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="24dp"
-            android:hint="@string/system"
-            android:prompt="@string/system"
-            android:spinnerMode="dialog"/>
+            android:background="@drawable/login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/company"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="24dp"
-            android:hint="@string/company"
-            android:prompt="@string/company"
-            android:spinnerMode="dialog"/>
+            <Spinner
+                android:id="@+id/system"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="15dp"
+                android:hint="@string/system"
+                android:prompt="@string/system"
+                android:spinnerMode="dialog" />
 
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="24dp"
-            android:hint="@string/username"
-            android:inputType="text" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginStart="24dp"
+
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="24dp"
-            android:hint="@string/password"
-            android:inputType="textPassword" />
+            android:background="@drawable/login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/company"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="15dp"
+                android:hint="@string/company"
+                android:prompt="@string/company"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:hint="    @string/username"
+                android:inputType="text"
+                android:background="@null"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:hint="    @string/password"
+                android:inputType="textPassword"
+                android:background="@null"
+                />
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
     <CheckBox
@@ -83,8 +144,11 @@
         android:id="@+id/remember"
         android:layout_marginLeft="5dp"
         android:text="记住密码"
+        android:textColor="@color/white"
         android:textSize="17dp"
-        android:layout_below="@+id/password"/>
+        android:textStyle="bold"
+        android:layout_below="@+id/password"
+        android:theme="@style/MyCheckBox"/>
 
     <LinearLayout
         android:layout_width="match_parent"

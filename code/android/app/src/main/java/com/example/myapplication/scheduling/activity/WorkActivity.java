@@ -314,4 +314,12 @@ public class WorkActivity extends AppCompatActivity {
         intent.putExtra("moduleList", (Serializable) moduleList);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
     }
+
+    public void gotoChart(View v) {
+        Intent intent = new Intent(WorkActivity.this, WorkChartActivity.class);
+        intent.putExtra("type", pc_button.getText().toString());
+        intent.putExtra("list", (Serializable) list);
+        intent.putExtra("moduleList", (Serializable) moduleList);
+        startActivityForResult(intent, REQUEST_CODE_CHANG);
+    }
 }

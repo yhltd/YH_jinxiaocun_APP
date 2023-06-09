@@ -1,11 +1,14 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".jxc.activity.QiChuChangeActivity"
     android:background="@color/WhiteSmoke">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -24,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/shape_corner_up">
+                android:background="@drawable/form_body">
 
                 <TextView
                     android:layout_width="80dp"
@@ -32,10 +35,11 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginLeft="24dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="商品名称:" />
 
                 <EditText
+                    android:textSize="15sp"
                     android:id="@+id/cpname"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
@@ -52,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom_top">
+                android:background="@drawable/form_body">
 
                 <TextView
                     android:layout_width="80dp"
@@ -60,7 +64,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginLeft="24dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="商品代码:" />
 
                 <Spinner
@@ -80,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
                     android:layout_width="80dp"
@@ -88,10 +92,11 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginLeft="24dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="商品类别:" />
 
                 <EditText
+                    android:textSize="15sp"
                     android:id="@+id/cplb"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
@@ -109,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
                     android:layout_width="80dp"
@@ -117,10 +122,11 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginLeft="24dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="商品售价:" />
 
                 <EditText
+                    android:textSize="15sp"
                     android:id="@+id/cpsj"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
@@ -138,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/shape_corner_down">
+                android:background="@drawable/form_body">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -146,10 +152,11 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginLeft="24dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="商品数量:" />
 
                 <EditText
+                    android:textSize="15sp"
                     android:id="@+id/cpsl"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
@@ -166,60 +173,61 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp">
+    </ScrollView>
 
-            <Button
-                android:id="@+id/chear_btn"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:onClick="clearClick"
-                android:text="清空"
-                tools:ignore="MissingConstraints"
-                android:background="@drawable/btn_style"
-                android:textSize="17dp"
-                android:textColor="@color/white"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:layout_alignParentBottom="true">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/search"
-                android:orientation="vertical"
-                android:visibility="invisible"
-                android:gravity="center_horizontal"/>
+        <Button
+            android:id="@+id/chear_btn"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="clearClick"
+            android:text="清空"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
 
-            <Button
-                android:id="@+id/update_btn"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:onClick="updateClick"
-                android:text="提交"
-                android:visibility="gone"
-                tools:ignore="MissingConstraints"
-                android:background="@drawable/btn_style"
-                android:textSize="17dp"
-                android:textColor="@color/white"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
 
-            <Button
-                android:id="@+id/insert_btn"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:onClick="insertClick"
-                android:text="提交"
-                android:visibility="gone"
-                tools:ignore="MissingConstraints"
-                android:background="@drawable/btn_style"
-                android:textSize="17dp"
-                android:textColor="@color/white"/>
-        </LinearLayout>
+        <Button
+            android:id="@+id/update_btn"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="updateClick"
+            android:text="提交"
+            android:visibility="gone"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
 
+        <Button
+            android:id="@+id/insert_btn"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="insertClick"
+            android:text="提交"
+            android:visibility="gone"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
-
-</ScrollView>
+</androidx.percentlayout.widget.PercentRelativeLayout>

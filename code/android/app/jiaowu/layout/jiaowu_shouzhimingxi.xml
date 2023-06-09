@@ -198,19 +198,48 @@
 
     </HorizontalScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/jczl_insert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:onClick="onInsertClick"
-        android:src="@drawable/insert"
-        app:backgroundTint="@color/primary"
-        app:backgroundTintMode="add"
-        app:pressedTranslationZ="10dp"
-        app:tint="@color/white" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <Button
+            android:id="@+id/jisuanClick"
+            android:onClick="onInsertClick"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="添加"
+            tools:ignore="MissingConstraints"
+            android:gravity="center"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/tuClick"
+            android:onClick="tuClick"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="图表"
+            tools:ignore="MissingConstraints"
+            android:gravity="center"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

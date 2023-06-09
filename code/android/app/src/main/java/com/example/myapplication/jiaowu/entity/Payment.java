@@ -13,6 +13,15 @@ public class Payment implements Serializable {
     private String keeper;
     private String remark;
     private String company;
+    private String msort;
+
+    public String getMsort() {
+        return msort;
+    }
+
+    public void setMsort(String msort) {
+        this.msort = msort;
+    }
 
     public int getId() {
         return id;

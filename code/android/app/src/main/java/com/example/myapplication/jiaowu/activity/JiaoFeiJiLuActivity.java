@@ -131,7 +131,6 @@ public class JiaoFeiJiLuActivity extends AppCompatActivity {
                     paymentService = new PaymentService();
                     list = paymentService.getList(teacher.getCompany(),start_dateText,stop_dateText,student_nameText);
                     if (list == null) return;
-
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
                         item.put("ksdate", list.get(i).getKsdate());

@@ -1,6 +1,7 @@
 package com.example.myapplication.scheduling.service;
 
 import com.example.myapplication.scheduling.dao.SchedulingDao;
+import com.example.myapplication.scheduling.entity.LineChart;
 import com.example.myapplication.scheduling.entity.OrderBom;
 import com.example.myapplication.scheduling.entity.OrderInfo;
 
@@ -81,6 +82,13 @@ public class OrderInfoService {
         String sql="select oi.id,oi.is_complete,oi.code,oi.product_name,oi.norms,oi.set_date,oi.company,oi.order_id,oi.set_num-sum(isnull(wd.work_num, 0)) as set_num from order_info as oi left join work_detail as wd on oi.id = wd.order_id group by oi.id,oi.code,oi.product_name,oi.norms,oi.set_date,oi.company,oi.order_id,oi.set_num,oi.is_complete having oi.set_num-sum(isnull(wd.work_num, 0)) > 0";
         base = new SchedulingDao();
         List<OrderInfo> list = base.query(OrderInfo.class, sql);
+        return list;
+    }
+
+    public List<LineChart> getLineChart(String date, String company){
+        String sql="select sum(case when set_date like ? + '-01%' then set_num else 0 end) as month1,sum(case when set_date like ? + '-02%' then set_num else 0 end) as month2,sum(case when set_date like ? + '-03%' then set_num else 0 end) as month3,sum(case when set_date like ? + '-04%' then set_num else 0 end) as month4,sum(case when set_date like ? + '-05%' then set_num else 0 end) as month5,sum(case when set_date like ? + '-06%' then set_num else 0 end) as month6,sum(case when set_date like ? + '-07%' then set_num else 0 end) as month7,sum(case when set_date like ? + '-08%' then set_num else 0 end) as month8,sum(case when set_date like ? + '-09%' then set_num else 0 end) as month9,sum(case when set_date like ? + '-10%' then set_num else 0 end) as month10,sum(case when set_date like ? + '-11%' then set_num else 0 end) as month11,sum(case when set_date like ? + '-12%' then set_num else 0 end) as month12 from order_info where company = ?";
+        base = new SchedulingDao();
+        List<LineChart> list = base.query(LineChart.class, sql,date,date,date,date,date,date,date,date,date,date,date,date,company);
         return list;
     }
 

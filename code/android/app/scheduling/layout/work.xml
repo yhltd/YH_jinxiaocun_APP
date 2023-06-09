@@ -253,6 +253,24 @@
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+        <Button
+            android:onClick="gotoChart"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="图表"
+            tools:ignore="MissingConstraints"
+            android:gravity="center"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
     </LinearLayout>
 
 

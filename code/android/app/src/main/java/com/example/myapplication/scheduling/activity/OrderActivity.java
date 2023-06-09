@@ -23,6 +23,8 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.XiangQingYeActivity;
 import com.example.myapplication.entity.XiangQingYe;
+import com.example.myapplication.jiaowu.activity.ShouZhiChartActivity;
+import com.example.myapplication.jiaowu.activity.ShouZhiMingXiActivity;
 import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.OrderInfo;
 import com.example.myapplication.scheduling.entity.UserInfo;
@@ -45,7 +47,6 @@ public class OrderActivity extends AppCompatActivity {
 
     private EditText product_name_text;
     private EditText order_id_text;
-
 
     private ListView listView;
     private Button sel_button;
@@ -84,6 +85,11 @@ public class OrderActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void gotoChart(View v) {
+        Intent intent = new Intent(OrderActivity.this, OrderChartActivity.class);
+        startActivityForResult(intent, REQUEST_CODE_CHANG);
     }
 
     private void initList() {

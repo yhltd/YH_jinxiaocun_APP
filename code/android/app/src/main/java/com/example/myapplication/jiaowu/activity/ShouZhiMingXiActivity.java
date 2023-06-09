@@ -52,6 +52,9 @@ public class ShouZhiMingXiActivity extends AppCompatActivity {
     List<ShouZhiMingXi> list;
     private Quanxian quanxian;
 
+    private String[] data1;
+    private int[] data2;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +93,16 @@ public class ShouZhiMingXiActivity extends AppCompatActivity {
         };
     }
 
+    public void tuClick(View v) {
+        Intent intent = new Intent(ShouZhiMingXiActivity.this, ShouZhiChartActivity.class);
+        intent.putExtra("data1", data1);
+        intent.putExtra("shouru", data2[0]);
+        intent.putExtra("zhichu", data2[1]);
+        intent.putExtra("xuefei", data2[2]);
+        intent.putExtra("jieyu", data2[3]);
+        startActivityForResult(intent, REQUEST_CODE_CHANG);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -125,7 +138,10 @@ public class ShouZhiMingXiActivity extends AppCompatActivity {
                     shouZhiMingXiService = new ShouZhiMingXiService();
                     list = shouZhiMingXiService.getList(start_dateText,stop_dateText,teacher.getCompany());
                     if (list == null) return;
-
+                    int shouru = 0;
+                    int zhichu = 0;
+                    int xuefei = 0;
+                    int jieyu = 0;
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
                         item.put("rgdate", list.get(i).getRgdate());
@@ -137,7 +153,15 @@ public class ShouZhiMingXiActivity extends AppCompatActivity {
                         item.put("premark", list.get(i).getPremark());
                         item.put("handle", list.get(i).getHandle());
                         data.add(item);
+                        shouru = shouru + list.get(i).getMoney();
+                        zhichu = zhichu + list.get(i).getPaid();
+                        if(list.get(i).getMsort().equals("学费")){
+                            xuefei = xuefei + list.get(i).getMoney();
+                        }
                     }
+                    jieyu = shouru - zhichu;
+                    data1 = new String[] {"累计收入","累计支出","学费收入","累计结余"};
+                    data2 = new int[] {shouru,zhichu,xuefei,jieyu};
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
