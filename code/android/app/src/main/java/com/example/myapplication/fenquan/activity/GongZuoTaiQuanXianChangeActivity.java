@@ -25,6 +25,7 @@ import com.example.myapplication.fenquan.entity.Department;
 import com.example.myapplication.fenquan.entity.Gongsi;
 import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.fenquan.service.GongsiService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -507,7 +508,6 @@ public class GongZuoTaiQuanXianChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -669,6 +669,7 @@ public class GongZuoTaiQuanXianChangeActivity extends AppCompatActivity {
         setResult(RESULT_OK, new Intent());
         finish();
     }
+
 
 
 }

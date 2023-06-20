@@ -1,5 +1,6 @@
 package com.example.myapplication.finance.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.os.Message;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -41,6 +43,12 @@ public class DepartmentActivity extends AppCompatActivity {
     private YhFinanceUser yhFinanceUser;
     private YhFinanceDepartmentService yhFinanceDepartmentService;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private YhFinanceQuanXian yhFinanceQuanXian;
 
     List<YhFinanceDepartment> list;
@@ -58,6 +66,8 @@ public class DepartmentActivity extends AppCompatActivity {
 
         //初始化控件
         listView = findViewById(R.id.department_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
 
         MyApplication myApplication = (MyApplication) getApplication();
         yhFinanceUser = myApplication.getYhFinanceUser();
@@ -75,14 +85,24 @@ public class DepartmentActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
                 return true;
             }
         });
@@ -106,7 +126,7 @@ public class DepartmentActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(DepartmentActivity.this, data, R.layout.department_row, new String[]{"department", "man"}, new int[]{R.id.department, R.id.man}) {
+                adapter = new SimpleAdapter(DepartmentActivity.this, data, R.layout.department_row, new String[]{"department", "man"}, new int[]{R.id.department, R.id.man}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -117,6 +137,19 @@ public class DepartmentActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(DepartmentActivity.this, data, R.layout.department_row_block, new String[]{"department", "man"}, new int[]{R.id.department, R.id.man}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

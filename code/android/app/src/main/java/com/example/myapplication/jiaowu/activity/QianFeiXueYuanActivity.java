@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -28,6 +29,8 @@ import com.example.myapplication.R;
 import com.example.myapplication.jiaowu.entity.Student;
 import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.StudentService;
+import com.example.myapplication.utils.ExcelUtil;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -43,9 +46,16 @@ public class QianFeiXueYuanActivity extends AppCompatActivity {
     private Teacher teacher;
     private StudentService studentService;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private EditText student_name;
     private String student_nameText;
     private Button sel_button;
+    private Button export_button;
     List<Student> list;
 
     @Override
@@ -61,12 +71,16 @@ public class QianFeiXueYuanActivity extends AppCompatActivity {
 
         //初始化控件
         listView = findViewById(R.id.qianfeixueyuan_list);
-
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         student_name = findViewById(R.id.student_name);
 
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+
+        export_button = findViewById(R.id.export_button);
+        export_button.setOnClickListener(exportClick());
 
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
@@ -82,6 +96,18 @@ public class QianFeiXueYuanActivity extends AppCompatActivity {
         };
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -93,11 +119,14 @@ public class QianFeiXueYuanActivity extends AppCompatActivity {
 
 
     private void initList() {
+        sel_button.setEnabled(false);
         student_nameText = student_name.getText().toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -127,7 +156,7 @@ public class QianFeiXueYuanActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(QianFeiXueYuanActivity.this, data, R.layout.jiaowu_qianfeixueyuan_row, new String[]{"realName","nocost","rgdate","course","teacher","classnum","phone","nohour"}, new int[]{R.id.realName, R.id.nocost, R.id.rgdate, R.id.course, R.id.teacher, R.id.classnum, R.id.phone, R.id.nohour}) {
+                adapter = new SimpleAdapter(QianFeiXueYuanActivity.this, data, R.layout.jiaowu_qianfeixueyuan_row, new String[]{"realName","nocost","rgdate","course","teacher","classnum","phone","nohour"}, new int[]{R.id.realName, R.id.nocost, R.id.rgdate, R.id.course, R.id.teacher, R.id.classnum, R.id.phone, R.id.nohour}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -136,12 +165,35 @@ public class QianFeiXueYuanActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(QianFeiXueYuanActivity.this, data, R.layout.jiaowu_qianfeixueyuan_row_block, new String[]{"realName","nocost","rgdate","course","teacher","classnum","phone","nohour"}, new int[]{R.id.realName, R.id.nocost, R.id.rgdate, R.id.course, R.id.teacher, R.id.classnum, R.id.phone, R.id.nohour}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);
 
             }
         }).start();
+    }
+
+    public View.OnClickListener exportClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] title = {"学生姓名", "欠费金额", "报名日期", "培训课程", "责任教师", "班级", "电话", "剩余课时"};
+                String fileName = "欠费学员" + System.currentTimeMillis() + ".xls";
+                ExcelUtil.initExcel(fileName, "欠费学员", title);
+                ExcelUtil.jiaowu_qianfeixueyuanToExcel(list, fileName, MyApplication.getContext());
+            }
+        };
     }
 
     @SuppressLint("ClickableViewAccessibility")

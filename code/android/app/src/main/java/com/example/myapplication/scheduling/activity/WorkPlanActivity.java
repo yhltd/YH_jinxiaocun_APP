@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -54,6 +55,12 @@ public class WorkPlanActivity extends AppCompatActivity {
 
     private EditText riqi;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private Button sel_button;
 
     private List<WorkDetail> list;
@@ -80,6 +87,8 @@ public class WorkPlanActivity extends AppCompatActivity {
         userInfo = myApplication.getUserInfo();
         sel_button=findViewById(R.id.sel_button);
         listView = findViewById(R.id.list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         riqi = findViewById(R.id.riqi);
         workDetail = (WorkDetail) myApplication.getObj();
         Intent intent = getIntent();
@@ -92,6 +101,18 @@ public class WorkPlanActivity extends AppCompatActivity {
         showDateOnClick(riqi);
 
         sel_button.setOnClickListener(selClick());
+    }
+
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
     }
 
     public class Paichan_modoule_time {
@@ -125,12 +146,13 @@ public class WorkPlanActivity extends AppCompatActivity {
             ToastUtil.show(WorkPlanActivity.this, "请选择日期");
             return;
         }
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -422,7 +444,7 @@ public class WorkPlanActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(WorkPlanActivity.this, data, R.layout.work_plan_row, new String[]{"order_number", "module", "num", "work_num"}, new int[]{R.id.order_number, R.id.module, R.id.num, R.id.work_num}) {
+                adapter = new SimpleAdapter(WorkPlanActivity.this, data, R.layout.work_plan_row, new String[]{"order_number", "module", "num", "work_num"}, new int[]{R.id.order_number, R.id.module, R.id.num, R.id.work_num}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -431,6 +453,17 @@ public class WorkPlanActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(WorkPlanActivity.this, data, R.layout.work_plan_row_block, new String[]{"order_number", "module", "num", "work_num"}, new int[]{R.id.order_number, R.id.module, R.id.num, R.id.work_num}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

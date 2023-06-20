@@ -23,28 +23,32 @@
             android:gravity="center">
 
             <LinearLayout
+                android:paddingTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="75dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/form_head">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:text="商品名称:" />
 
                 <EditText
-                    android:textSize="15sp"
                     android:id="@+id/cpname"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入商品名称"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -53,26 +57,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:background="@drawable/form_body">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:text="商品代码:" />
 
                 <Spinner
                     android:id="@+id/cpid"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请选择商品代码"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -81,27 +88,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:background="@drawable/form_body">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:text="商品类别:" />
 
                 <EditText
-                    android:textSize="15sp"
                     android:id="@+id/cplb"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入商品类别"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -111,27 +120,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:background="@drawable/form_body">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:text="商品售价:" />
 
                 <EditText
-                    android:textSize="15sp"
                     android:id="@+id/cpsj"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入商品售价"
                     android:inputType="number"
                     android:digits="1234567890."
@@ -141,27 +152,30 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="75dp"
+                android:paddingBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/form_foot">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:text="商品数量:" />
 
                 <EditText
-                    android:textSize="15sp"
                     android:id="@+id/cpsl"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入商品数量"
                     android:inputType="number"
                     android:digits="1234567890."

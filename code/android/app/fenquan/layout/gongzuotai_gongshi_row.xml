@@ -22,7 +22,7 @@
             android:textSize="14sp"
             android:text="列名"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="200dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
             android:textSize="14sp"
             android:text="计算公式"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="200dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"

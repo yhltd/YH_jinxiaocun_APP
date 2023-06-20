@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -31,6 +32,7 @@ import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.entity.TeacherInfo;
 import com.example.myapplication.jiaowu.service.StudentService;
 import com.example.myapplication.jiaowu.service.TeacherInfoService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -46,6 +48,12 @@ public class JiaoShiXinXiActivity extends AppCompatActivity {
     private Teacher teacher;
     private TeacherInfoService teacherInfoService;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private EditText teacher_name;
     private String teacher_nameText;
     private Button sel_button;
@@ -65,6 +73,10 @@ public class JiaoShiXinXiActivity extends AppCompatActivity {
 
         //初始化控件
         listView = findViewById(R.id.jiaoshixinxi_list);
+
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
+
         teacher_name = findViewById(R.id.teacher_name);
 
         sel_button = findViewById(R.id.sel_button);
@@ -86,6 +98,18 @@ public class JiaoShiXinXiActivity extends AppCompatActivity {
         };
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -97,11 +121,14 @@ public class JiaoShiXinXiActivity extends AppCompatActivity {
 
 
     private void initList() {
+        sel_button.setEnabled(false);
         teacher_nameText = teacher_name.getText().toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -135,7 +162,7 @@ public class JiaoShiXinXiActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(JiaoShiXinXiActivity.this, data, R.layout.jiaowu_jiaoshixinxi_row, new String[]{"t_name","sex","id_code","minzu","birthday","post","education","phone","rz_riqi","state","shebao","address"}, new int[]{R.id.t_name, R.id.sex, R.id.id_code, R.id.minzu, R.id.birthday, R.id.post, R.id.education, R.id.phone, R.id.rz_riqi, R.id.state, R.id.shebao, R.id.address}) {
+                adapter = new SimpleAdapter(JiaoShiXinXiActivity.this, data, R.layout.jiaowu_jiaoshixinxi_row, new String[]{"t_name","sex","id_code","minzu","birthday","post","education","phone","rz_riqi","state","shebao","address"}, new int[]{R.id.t_name, R.id.sex, R.id.id_code, R.id.minzu, R.id.birthday, R.id.post, R.id.education, R.id.phone, R.id.rz_riqi, R.id.state, R.id.shebao, R.id.address}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -146,6 +173,19 @@ public class JiaoShiXinXiActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(JiaoShiXinXiActivity.this, data, R.layout.jiaowu_jiaoshixinxi_row_block, new String[]{"t_name","sex","id_code","minzu","birthday","post","education","phone","rz_riqi","state","shebao","address"}, new int[]{R.id.t_name, R.id.sex, R.id.id_code, R.id.minzu, R.id.birthday, R.id.post, R.id.education, R.id.phone, R.id.rz_riqi, R.id.state, R.id.shebao, R.id.address}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

@@ -13,7 +13,7 @@ public class YhFinanceSimpleAccountingService {
      * 查询全部数据
      */
     public List<YhFinanceJiJianPeiZhi> getList(String company) {
-        String sql = "select id,accounting as peizhi,company from SimpleAccounting where company = ?";
+        String sql = "select id,accounting as peizhi,company from AccountingPeizhi where company = ?";
         base = new financeBaseDao();
         List<YhFinanceJiJianPeiZhi> list = base.query(YhFinanceJiJianPeiZhi.class, sql, company);
         return list;
@@ -23,7 +23,7 @@ public class YhFinanceSimpleAccountingService {
      * 新增
      */
     public boolean insert(YhFinanceJiJianPeiZhi YhFinanceJiJianPeiZhi) {
-        String sql = "insert into SimpleAccounting(accounting,company) values(?,?)";
+        String sql = "insert into AccountingPeizhi(accounting,company) values(?,?)";
         base = new financeBaseDao();
         long result = base.executeOfId(sql, YhFinanceJiJianPeiZhi.getPeizhi(), YhFinanceJiJianPeiZhi.getCompany());
         return result > 0;
@@ -33,7 +33,7 @@ public class YhFinanceSimpleAccountingService {
      * 修改
      */
     public boolean update(YhFinanceJiJianPeiZhi YhFinanceJiJianPeiZhi) {
-        String sql = "update SimpleAccounting set accounting=? where id=? ";
+        String sql = "update AccountingPeizhi set accounting=? where id=? ";
         base = new financeBaseDao();
         boolean result = base.execute(sql, YhFinanceJiJianPeiZhi.getPeizhi(), YhFinanceJiJianPeiZhi.getId());
         return result;
@@ -43,7 +43,7 @@ public class YhFinanceSimpleAccountingService {
      * 删除
      */
     public boolean delete(int id) {
-        String sql = "delete from SimpleAccounting where id = ?";
+        String sql = "delete from AccountingPeizhi where id = ?";
         base = new financeBaseDao();
         return base.execute(sql, id);
     }

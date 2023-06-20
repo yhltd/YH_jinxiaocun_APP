@@ -66,7 +66,7 @@ public class RenShiActivity extends AppCompatActivity {
         banner.setIndicatorSelectedColor(Color.GREEN);
         // 开始轮播
         banner.start();
-
+        systeminit();
         LinearLayout renyuanxinxiguanli = findViewById(R.id.renyuanxinxiguanli);
         renyuanxinxiguanli.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -196,7 +196,6 @@ public class RenShiActivity extends AppCompatActivity {
     }
 
     private void systeminit() {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -206,7 +205,6 @@ public class RenShiActivity extends AppCompatActivity {
                 }else if(list2.size() > 0){
                     marqueeTextView.setText(list2.get(0).getText());
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -217,8 +215,8 @@ public class RenShiActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     systemService = new SystemService();
-                    list1 = systemService.getList("进销存",yhRenShiUser.getL());
-                    list2 = systemService.getTongYongList("进销存");
+                    list1 = systemService.getList("人事",yhRenShiUser.getL());
+                    list2 = systemService.getTongYongList("人事");
                     if (list1 == null && list2 == null) return;
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -24,6 +24,7 @@ import com.example.myapplication.jiaowu.service.SheZhiService;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunJiChuZiLiao;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunJiChuZiLiaoService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 public class SheZhiChangeActivity extends AppCompatActivity {
@@ -92,7 +93,7 @@ public class SheZhiChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -102,7 +103,7 @@ public class SheZhiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(SheZhiChangeActivity.this, "保存失败，请稍后再试");
                 }
-
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -120,7 +121,7 @@ public class SheZhiChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -130,6 +131,7 @@ public class SheZhiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(SheZhiChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

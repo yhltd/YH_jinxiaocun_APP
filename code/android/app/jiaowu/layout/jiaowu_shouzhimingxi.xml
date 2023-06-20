@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="100"
     tools:context=".jiaowu.activity.ShouZhiMingXiActivity"
     android:background="@color/WhiteSmoke">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:background="@drawable/shape_corner_sel"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="7dp"
@@ -45,8 +47,11 @@
     </LinearLayout>
 
     <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="530dp"
+        android:id="@+id/list_table"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="75"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp">
@@ -198,19 +203,50 @@
 
     </HorizontalScrollView>
 
+    <ListView
+        android:id="@+id/list_block"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="75"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:divider="@null"
+        android:paddingBottom="5dp" />
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/chear_btn"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:onClick="switchClick"
+            android:text="切换列表"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
 
         <Button
             android:id="@+id/jisuanClick"
             android:onClick="onInsertClick"
-            android:layout_width="130dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:text="添加"
             tools:ignore="MissingConstraints"
@@ -229,11 +265,33 @@
         <Button
             android:id="@+id/tuClick"
             android:onClick="tuClick"
-            android:layout_width="130dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:text="图表"
             tools:ignore="MissingConstraints"
             android:gravity="center"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/export_button"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="导出"
+            tools:ignore="MissingConstraints"
             android:background="@drawable/btn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>

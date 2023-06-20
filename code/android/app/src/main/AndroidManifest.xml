@@ -33,6 +33,7 @@
 
         <activity
             android:name=".XiangQingYeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="详情">
             <intent-filter>
                 <action android:name="android.intent.action.XiangQingYeActivity" />
@@ -40,7 +41,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginActivity">
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -50,6 +53,7 @@
         <!--    进销存    -->
         <activity
             android:name=".jxc.activity.JxcActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="进销存首页">
             <intent-filter>
                 <action android:name="android.intent.action.JxcActivity" />
@@ -58,6 +62,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.RukuActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="入库">
             <intent-filter>
                 <action android:name="android.intent.action.RukuActivity" />
@@ -66,6 +71,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.RukuChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="入库">
             <intent-filter>
                 <action android:name="android.intent.action.RukuChangeActivity" />
@@ -74,6 +80,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.QiChuActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="期初">
             <intent-filter>
                 <action android:name="android.intent.action.QiChuActivity" />
@@ -82,6 +89,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.QiChuChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="期初">
             <intent-filter>
                 <action android:name="android.intent.action.QiChuChangeActivity" />
@@ -90,6 +98,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.MingXiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="明细">
             <intent-filter>
                 <action android:name="android.intent.action.MingXiActivity" />
@@ -98,6 +107,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.MingXiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="明细">
             <intent-filter>
                 <action android:name="android.intent.action.MingXiChangeActivity" />
@@ -106,6 +116,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.JinXiaoCunActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="进销存">
             <intent-filter>
                 <action android:name="android.intent.action.JinXiaoCunActivity" />
@@ -114,6 +125,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.ProductQueryActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="商品进出查询">
             <intent-filter>
                 <action android:name="android.intent.action.ProductQueryActivity" />
@@ -123,6 +135,7 @@
 
         <activity
             android:name=".jxc.activity.KehuQueryActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="客户/供应商查询">
             <intent-filter>
                 <action android:name="android.intent.action.KehuQueryActivity" />
@@ -131,6 +144,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.JiChuZiLiaoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="基础资料">
             <intent-filter>
                 <action android:name="android.intent.action.JiChuZiLiaoActivity" />
@@ -139,6 +153,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.JiChuZiLiaoChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="基础资料">
             <intent-filter>
                 <action android:name="android.intent.action.JiChuZiLiaoChangeActivity" />
@@ -147,6 +162,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.KehuActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="客户/供应商资料">
             <intent-filter>
                 <action android:name="android.intent.action.KehuActivity" />
@@ -155,6 +171,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.KehuChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="客户/供应商资料">
             <intent-filter>
                 <action android:name="android.intent.action.KehuChangeActivity" />
@@ -163,6 +180,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.BiJiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="笔记">
             <intent-filter>
                 <action android:name="android.intent.action.BiJiActivity" />
@@ -171,6 +189,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.BiJiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="笔记">
             <intent-filter>
                 <action android:name="android.intent.action.BiJiChangeActivity" />
@@ -179,6 +198,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.UserActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="用户管理">
             <intent-filter>
                 <action android:name="android.intent.action.BiJiActivity" />
@@ -187,6 +207,7 @@
         </activity>
         <activity
             android:name=".jxc.activity.UserChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="用户管理">
             <intent-filter>
                 <action android:name="android.intent.action.BiJiChangeActivity" />
@@ -198,6 +219,7 @@
         <!--    财务    -->
         <activity
             android:name=".finance.activity.FinanceActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="首页">
             <intent-filter>
                 <action android:name="android.intent.action.FinanceActivity" />
@@ -207,6 +229,7 @@
 
         <activity
             android:name=".finance.activity.DepartmentActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="部门设置">
             <intent-filter>
                 <action android:name="android.intent.action.DepartmentActivity" />
@@ -216,6 +239,7 @@
 
         <activity
             android:name=".finance.activity.DepartmentChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="部门设置">
             <intent-filter>
                 <action android:name="android.intent.action.DepartmentChangeActivity" />
@@ -225,6 +249,7 @@
 
         <activity
             android:name=".finance.activity.ExpenditureActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="开支项目">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -234,6 +259,7 @@
 
         <activity
             android:name=".finance.activity.ExpenditureChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="开支项目">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -243,6 +269,7 @@
 
         <activity
             android:name=".finance.activity.KeMuZongZhangActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="科目总账">
             <intent-filter>
                 <action android:name="android.intent.action.KeMuZongZhangActivity" />
@@ -252,6 +279,7 @@
 
         <activity
             android:name=".finance.activity.KeMuZongZhangChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="科目总账">
             <intent-filter>
                 <action android:name="android.intent.action.KeMuZongZhangChangeActivity" />
@@ -261,6 +289,7 @@
 
         <activity
             android:name=".finance.activity.VoucherSummaryActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="凭证汇总">
             <intent-filter>
                 <action android:name="android.intent.action.VoucherSummaryActivity" />
@@ -270,6 +299,7 @@
 
         <activity
             android:name=".finance.activity.JiJianPeiZhiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="极简配置">
             <intent-filter>
                 <action android:name="android.intent.action.JiJianPeiZhiActivity" />
@@ -279,6 +309,7 @@
 
         <activity
             android:name=".finance.activity.JiJianPeiZhiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="极简配置">
             <intent-filter>
                 <action android:name="android.intent.action.JiJianPeiZhiChangeActivity" />
@@ -288,6 +319,7 @@
 
         <activity
             android:name=".finance.activity.JiJianTaiZhangActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="极简台账">
             <intent-filter>
                 <action android:name="android.intent.action.JiJianTaiZhangActivity" />
@@ -297,6 +329,7 @@
 
         <activity
             android:name=".finance.activity.JiJianTaiZhangChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="极简台账">
             <intent-filter>
                 <action android:name="android.intent.action.JiJianTaiZhangChangeActivity" />
@@ -306,6 +339,7 @@
 
         <activity
             android:name=".finance.activity.JiJianZongZhangActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="极简总账">
             <intent-filter>
                 <action android:name="android.intent.action.JiJianZongZhangActivity" />
@@ -315,6 +349,7 @@
 
         <activity
             android:name=".finance.activity.XianJinLiuLiangActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="现金流量">
             <intent-filter>
                 <action android:name="android.intent.action.XianJinLiuLiangActivity" />
@@ -324,6 +359,7 @@
 
         <activity
             android:name=".finance.activity.ZiChanFuZhaiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="资产负债">
             <intent-filter>
                 <action android:name="android.intent.action.ZiChanFuZhaiActivity" />
@@ -333,6 +369,7 @@
 
         <activity
             android:name=".finance.activity.LiYiSunYiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="利益损益">
             <intent-filter>
                 <action android:name="android.intent.action.LiYiSunYiActivity" />
@@ -342,6 +379,7 @@
 
         <activity
             android:name=".finance.activity.BaoBiaoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="报表">
             <intent-filter>
                 <action android:name="android.intent.action.BaoBiaoActivity" />
@@ -351,6 +389,7 @@
 
         <activity
             android:name=".finance.activity.YingShouBaoBiaoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="应收报表">
             <intent-filter>
                 <action android:name="android.intent.action.YingShouBaoBiaoActivity" />
@@ -360,6 +399,7 @@
 
         <activity
             android:name=".finance.activity.YingFuBaoBiaoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="应付报表">
             <intent-filter>
                 <action android:name="android.intent.action.YingFuBaoBiaoActivity" />
@@ -369,6 +409,7 @@
 
         <activity
             android:name=".finance.activity.YingShouMingXiZhangActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="应收明细账">
             <intent-filter>
                 <action android:name="android.intent.action.YingShouMingXiZhangActivity" />
@@ -378,6 +419,7 @@
 
         <activity
             android:name=".finance.activity.YingFuMingXiZhangActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="应付明细账">
             <intent-filter>
                 <action android:name="android.intent.action.YingFuMingXiZhangActivity" />
@@ -387,6 +429,7 @@
 
         <activity
             android:name=".finance.activity.FaPiaoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="发票">
             <intent-filter>
                 <action android:name="android.intent.action.FaPiaoActivity" />
@@ -396,6 +439,7 @@
 
         <activity
             android:name=".finance.activity.FaPiaoChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="发票">
             <intent-filter>
                 <action android:name="android.intent.action.FaPiaoChangeActivity" />
@@ -405,6 +449,7 @@
 
         <activity
             android:name=".finance.activity.VoucherSummaryChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="凭证汇总">
             <intent-filter>
                 <action android:name="android.intent.action.VoucherSummaryChangeActivity" />
@@ -414,6 +459,7 @@
 
         <activity
             android:name=".finance.activity.ZhiNengKanBanActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="智能看板">
             <intent-filter>
                 <action android:name="android.intent.action.ZhiNengKanBanActivity" />
@@ -423,6 +469,7 @@
 
         <activity
             android:name=".finance.activity.QuanXianChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="权限管理">
             <intent-filter>
                 <action android:name="android.intent.action.QuanXianChangeActivity" />
@@ -432,6 +479,7 @@
 
         <activity
             android:name=".finance.activity.ZhangHaoGuanLiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="账号管理">
             <intent-filter>
                 <action android:name="android.intent.action.ZhangHaoGuanLiActivity" />
@@ -441,6 +489,7 @@
 
         <activity
             android:name=".finance.activity.ZhangHaoGuanLiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="账号管理">
             <intent-filter>
                 <action android:name="android.intent.action.ZhangHaoGuanLiChangeActivity" />
@@ -451,6 +500,7 @@
         <!--    排产    -->
         <activity
             android:name=".scheduling.activity.SchedulingActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="首页">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -460,6 +510,7 @@
 
         <activity
             android:name=".scheduling.activity.ModuleActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="模块单位">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -469,6 +520,7 @@
 
         <activity
             android:name=".scheduling.activity.ModuleChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="模块单位">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -478,6 +530,7 @@
 
         <activity
             android:name=".scheduling.activity.ModuleTypeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="模块类别">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -487,6 +540,7 @@
 
         <activity
             android:name=".scheduling.activity.ModuleTypeChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="模块类别">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -496,6 +550,7 @@
 
         <activity
             android:name=".scheduling.activity.TimeConfigActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="工作时间">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -505,6 +560,7 @@
 
         <activity
             android:name=".scheduling.activity.TimeConfigChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="工作时间">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -514,6 +570,7 @@
 
         <activity
             android:name=".scheduling.activity.HolidayActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="工作时间">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -523,6 +580,7 @@
 
         <activity
             android:name=".scheduling.activity.HolidayChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="工作时间">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -532,6 +590,7 @@
 
         <activity
             android:name=".scheduling.activity.BomActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="BOM">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -541,6 +600,7 @@
 
         <activity
             android:name=".scheduling.activity.BomChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="BOM">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -550,6 +610,7 @@
 
         <activity
             android:name=".scheduling.activity.OrderActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="订单">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -559,6 +620,7 @@
 
         <activity
             android:name=".scheduling.activity.OrderChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="订单">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -568,6 +630,7 @@
 
         <activity
             android:name=".scheduling.activity.OrderCheckActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="订单核对">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -577,6 +640,7 @@
 
         <activity
             android:name=".scheduling.activity.OrderCheckChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="订单核对">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -586,6 +650,7 @@
 
         <activity
             android:name=".scheduling.activity.DepartmentActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="部门">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -595,6 +660,7 @@
 
         <activity
             android:name=".scheduling.activity.DepartmentChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="部门">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -604,6 +670,7 @@
 
         <activity
             android:name=".scheduling.activity.PaibanRenyuanActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="人员信息">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -613,6 +680,7 @@
 
         <activity
             android:name=".scheduling.activity.PaibanRenyuanChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="人员信息">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -622,6 +690,7 @@
 
         <activity
             android:name=".scheduling.activity.PaibanInfoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="排班">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -631,6 +700,7 @@
 
         <activity
             android:name=".scheduling.activity.PaibanInfoChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="排班">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -640,6 +710,7 @@
 
         <activity
             android:name=".scheduling.activity.PaibanInfoAddActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="排班">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -649,6 +720,7 @@
 
         <activity
             android:name=".scheduling.activity.PaibanDetailActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="排班明细">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -658,6 +730,7 @@
 
         <activity
             android:name=".scheduling.activity.PaibanDetailChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="排班明细">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -667,6 +740,7 @@
 
         <activity
             android:name=".scheduling.activity.UserActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="账号管理">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -676,6 +750,7 @@
 
         <activity
             android:name=".scheduling.activity.UserChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="账号管理">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -685,6 +760,7 @@
 
         <activity
             android:name=".scheduling.activity.WorkActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="排产">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -694,6 +770,7 @@
 
         <activity
             android:name=".scheduling.activity.WorkDetailActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="排产">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -703,6 +780,7 @@
 
         <activity
             android:name=".scheduling.activity.WorkAddActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="排产">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -712,6 +790,7 @@
 
         <activity
             android:name=".scheduling.activity.WorkPlAddActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="排产">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -721,6 +800,7 @@
 
         <activity
             android:name=".scheduling.activity.WorkPlanActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="今日计划">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -730,6 +810,7 @@
 
         <activity
             android:name=".scheduling.activity.WorkTongjiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="统计">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -739,6 +820,7 @@
 
         <activity
             android:name=".scheduling.activity.SummaryActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="汇总">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -748,6 +830,7 @@
 
         <activity
             android:name=".scheduling.activity.OrderChartActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="订单折线图">
             <intent-filter>
                 <action android:name="android.intent.action.OrderChartActivity" />
@@ -757,6 +840,7 @@
 
         <activity
             android:name=".scheduling.activity.WorkChartActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="排产图表">
             <intent-filter>
                 <action android:name="android.intent.action.WorkChartActivity" />
@@ -767,6 +851,7 @@
         <!--    分权    -->
         <activity
             android:name=".fenquan.activity.FenquanActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="首页">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -776,6 +861,7 @@
 
         <activity
             android:name=".fenquan.activity.RenyuanActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="人员管理">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -785,6 +871,7 @@
 
         <activity
             android:name=".fenquan.activity.RenyuanChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="人员管理">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -794,6 +881,7 @@
 
         <activity
             android:name=".fenquan.activity.GongZuoTaiShiYongChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="工作台使用状态">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -803,6 +891,7 @@
 
         <activity
             android:name=".fenquan.activity.RenyuanQuanXianActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="人员权限设置">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -812,6 +901,7 @@
 
         <activity
             android:name=".fenquan.activity.RenyuanQuanXianChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="人员权限设置">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -821,6 +911,7 @@
 
         <activity
             android:name=".fenquan.activity.GongZuoTaiGongShiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="工作台公式设置">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -830,6 +921,7 @@
 
         <activity
             android:name=".fenquan.activity.GongZuoTaiGongShiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="工作台公式设置">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -839,6 +931,7 @@
 
         <activity
             android:name=".fenquan.activity.BuMenQuanXianActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="部门权限设置">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -848,6 +941,7 @@
 
         <activity
             android:name=".fenquan.activity.BuMenQuanXianChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="部门权限设置">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
@@ -857,6 +951,7 @@
 
         <activity
             android:name=".fenquan.activity.GongZuoTaiQuanXianChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="工作台权限设置">
             <intent-filter>
                 <action android:name="android.intent.action.GongZuoTaiQuanXianChangeActivity" />
@@ -866,6 +961,7 @@
 
         <activity
             android:name=".fenquan.activity.GongZuoTaiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="工作台">
             <intent-filter>
                 <action android:name="android.intent.action.GongZuoTaiActivity" />
@@ -875,6 +971,7 @@
 
         <activity
             android:name=".fenquan.activity.GongZuoTaiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="工作台">
             <intent-filter>
                 <action android:name="android.intent.action.GongZuoTaiChangeActivity" />
@@ -884,6 +981,7 @@
 
         <activity
             android:name=".fenquan.activity.GongSiChartActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="公司数据分析">
             <intent-filter>
                 <action android:name="android.intent.action.GongSiChartActivity" />
@@ -893,6 +991,7 @@
 
         <activity
             android:name=".fenquan.activity.RenYuanChartActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="人员数据分析">
             <intent-filter>
                 <action android:name="android.intent.action.RenYuanChartActivity" />
@@ -904,6 +1003,7 @@
         <!--    人事    -->
         <activity
             android:name=".renshi.activity.RenYuanXinXiGuanLiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="人员信息管理">
             <intent-filter>
                 <action android:name="android.intent.action.RenYuanXinXiGuanLiActivity" />
@@ -912,7 +1012,18 @@
         </activity>
 
         <activity
+            android:name=".renshi.activity.RenYuanXinXiGuanLiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="人员信息管理">
+            <intent-filter>
+                <action android:name="android.intent.action.RenYuanXinXiGuanLiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".renshi.activity.RenShiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="首页">
             <intent-filter>
                 <action android:name="android.intent.action.RenShiActivity" />
@@ -922,6 +1033,7 @@
 
         <activity
             android:name=".renshi.activity.PeiZhiBiaoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="配置表">
             <intent-filter>
                 <action android:name="android.intent.action.PeiZhiBiaoActivity" />
@@ -931,6 +1043,7 @@
 
         <activity
             android:name=".renshi.activity.PeiZhiBiaoChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="配置表">
             <intent-filter>
                 <action android:name="android.intent.action.PeiZhiBiaoChangeActivity" />
@@ -940,6 +1053,7 @@
 
         <activity
             android:name=".renshi.activity.KaoQinJiLuActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="考勤记录">
             <intent-filter>
                 <action android:name="android.intent.action.KaoQinJiLuActivity" />
@@ -949,6 +1063,7 @@
 
         <activity
             android:name=".renshi.activity.BaoShuiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="报税">
             <intent-filter>
                 <action android:name="android.intent.action.BaoShuiActivity" />
@@ -958,6 +1073,7 @@
 
         <activity
             android:name=".renshi.activity.BaoShuiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="报税">
             <intent-filter>
                 <action android:name="android.intent.action.BaoShuiChangeActivity" />
@@ -967,6 +1083,7 @@
 
         <activity
             android:name=".renshi.activity.GongZiTiaoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="工资条">
             <intent-filter>
                 <action android:name="android.intent.action.GongZiTiaoActivity" />
@@ -976,6 +1093,7 @@
 
         <activity
             android:name=".renshi.activity.KaoQinBiaoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="考勤表">
             <intent-filter>
                 <action android:name="android.intent.action.KaoQinBiaoActivity" />
@@ -985,6 +1103,7 @@
 
         <activity
             android:name=".renshi.activity.KaoQinBiaoChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="考勤表">
             <intent-filter>
                 <action android:name="android.intent.action.KaoQinBiaoChangeActivity" />
@@ -994,6 +1113,7 @@
 
         <activity
             android:name=".renshi.activity.GeRenSuoDeShuiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="个人所得税">
             <intent-filter>
                 <action android:name="android.intent.action.GeRenSuoDeShuiActivity" />
@@ -1003,6 +1123,7 @@
 
         <activity
             android:name=".renshi.activity.YuanGongDangAnActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="员工档案">
             <intent-filter>
                 <action android:name="android.intent.action.YuanGongDangAnActivity" />
@@ -1012,6 +1133,7 @@
 
         <activity
             android:name=".renshi.activity.SheBaoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="社保">
             <intent-filter>
                 <action android:name="android.intent.action.SheBaoActivity" />
@@ -1021,6 +1143,7 @@
 
         <activity
             android:name=".renshi.activity.SheBaoItemActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="社保">
             <intent-filter>
                 <action android:name="android.intent.action.SheBaoItemActivity" />
@@ -1030,6 +1153,7 @@
 
         <activity
             android:name=".renshi.activity.BuMenHuiZongActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="部门汇总">
             <intent-filter>
                 <action android:name="android.intent.action.BuMenHuiZongActivity" />
@@ -1039,6 +1163,7 @@
 
         <activity
             android:name=".renshi.activity.BuMenHuiZongItemActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="部门汇总">
             <intent-filter>
                 <action android:name="android.intent.action.BuMenHuiZongItemActivity" />
@@ -1048,6 +1173,7 @@
 
         <activity
             android:name=".renshi.activity.GongZiMingXiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="工资明细">
             <intent-filter>
                 <action android:name="android.intent.action.GongZiMingXiActivity" />
@@ -1057,6 +1183,7 @@
 
         <activity
             android:name=".renshi.activity.GongZiMingXiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="工资明细">
             <intent-filter>
                 <action android:name="android.intent.action.GongZiMingXiChangeActivity" />
@@ -1066,6 +1193,7 @@
 
         <activity
             android:name=".renshi.activity.ShengRiTiXingActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="生日提醒">
             <intent-filter>
                 <action android:name="android.intent.action.ShengRiTiXingActivity" />
@@ -1075,6 +1203,7 @@
 
         <activity
             android:name=".renshi.activity.BaoPanActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="报盘">
             <intent-filter>
                 <action android:name="android.intent.action.BaoPanActivity" />
@@ -1084,6 +1213,7 @@
 
         <activity
             android:name=".renshi.activity.BaoPanShenPiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="报盘审批">
             <intent-filter>
                 <action android:name="android.intent.action.BaoPanActivity" />
@@ -1093,6 +1223,7 @@
 
         <activity
             android:name=".renshi.activity.BaoPanChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="报盘审批">
             <intent-filter>
                 <action android:name="android.intent.action.BaoPanActivity" />
@@ -1103,6 +1234,7 @@
         <!--    教务    -->
         <activity
             android:name=".jiaowu.activity.JiaowuActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="首页">
             <intent-filter>
                 <action android:name="android.intent.action.JiaowuActivity" />
@@ -1112,6 +1244,7 @@
 
         <activity
             android:name=".jiaowu.activity.SheZhiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="设置">
             <intent-filter>
                 <action android:name="android.intent.action.SheZhiActivity" />
@@ -1121,6 +1254,7 @@
 
         <activity
             android:name=".jiaowu.activity.SheZhiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="设置">
             <intent-filter>
                 <action android:name="android.intent.action.SheZhiChangeActivity" />
@@ -1130,6 +1264,7 @@
 
         <activity
             android:name=".jiaowu.activity.XueShengXinXiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="学生信息">
             <intent-filter>
                 <action android:name="android.intent.action.XueShengXinXiActivity" />
@@ -1139,6 +1274,7 @@
 
         <activity
             android:name=".jiaowu.activity.XueShengXinXiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="学生信息">
             <intent-filter>
                 <action android:name="android.intent.action.XueShengXinXiChangeActivity" />
@@ -1148,6 +1284,7 @@
 
         <activity
             android:name=".jiaowu.activity.JiaoShiXinXiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="教师信息">
             <intent-filter>
                 <action android:name="android.intent.action.JiaoShiXinXiActivity" />
@@ -1157,6 +1294,7 @@
 
         <activity
             android:name=".jiaowu.activity.JiaoShiXinXiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="教师信息">
             <intent-filter>
                 <action android:name="android.intent.action.JiaoShiXinXiChangeActivity" />
@@ -1166,6 +1304,7 @@
 
         <activity
             android:name=".jiaowu.activity.JiaoFeiJiLuActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="缴费记录">
             <intent-filter>
                 <action android:name="android.intent.action.JiaoFeiJiLuActivity" />
@@ -1175,6 +1314,7 @@
 
         <activity
             android:name=".jiaowu.activity.JiaoFeiJiLuChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="缴费记录">
             <intent-filter>
                 <action android:name="android.intent.action.JiaoFeiJiLuChangeActivity" />
@@ -1184,6 +1324,7 @@
 
         <activity
             android:name=".jiaowu.activity.KeShiTongJiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="课时统计">
             <intent-filter>
                 <action android:name="android.intent.action.KeShiTongJiActivity" />
@@ -1193,6 +1334,7 @@
 
         <activity
             android:name=".jiaowu.activity.KeShiTongJiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="课时统计">
             <intent-filter>
                 <action android:name="android.intent.action.KeShiTongJiChangeActivity" />
@@ -1202,6 +1344,7 @@
 
         <activity
             android:name=".jiaowu.activity.ShouZhiMingXiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="收支明细">
             <intent-filter>
                 <action android:name="android.intent.action.ShouZhiMingXiActivity" />
@@ -1211,6 +1354,7 @@
 
         <activity
             android:name=".jiaowu.activity.ShouZhiMingXiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="收支明细">
             <intent-filter>
                 <action android:name="android.intent.action.ShouZhiMingXiChangeActivity" />
@@ -1220,6 +1364,7 @@
 
         <activity
             android:name=".jiaowu.activity.QianFeiXueYuanActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="欠费学员">
             <intent-filter>
                 <action android:name="android.intent.action.QianFeiXueYuanActivity" />
@@ -1229,6 +1374,7 @@
 
         <activity
             android:name=".jiaowu.activity.TeacherSalActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="教师工资">
             <intent-filter>
                 <action android:name="android.intent.action.TeacherSalActivity" />
@@ -1238,6 +1384,7 @@
 
         <activity
             android:name=".jiaowu.activity.JiaoShiKeShiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="教师课时统计">
             <intent-filter>
                 <action android:name="android.intent.action.JiaoShiKeShiActivity" />
@@ -1247,6 +1394,7 @@
 
         <activity
             android:name=".jiaowu.activity.AccountManagementActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="用户管理">
             <intent-filter>
                 <action android:name="android.intent.action.AccountManagementActivity" />
@@ -1256,6 +1404,7 @@
 
         <activity
             android:name=".jiaowu.activity.AccountManagementChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="用户管理">
             <intent-filter>
                 <action android:name="android.intent.action.AccountManagementChangeActivity" />
@@ -1265,6 +1414,7 @@
 
         <activity
             android:name=".jiaowu.activity.KaoqinActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="考勤表">
             <intent-filter>
                 <action android:name="android.intent.action.KaoqinActivity" />
@@ -1274,6 +1424,7 @@
 
         <activity
             android:name=".jiaowu.activity.KaoqinChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="考勤表">
             <intent-filter>
                 <action android:name="android.intent.action.KaoqinChangeActivity" />
@@ -1283,6 +1434,7 @@
 
         <activity
             android:name=".jiaowu.activity.TeacherCurriculumActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="教师课表">
             <intent-filter>
                 <action android:name="android.intent.action.TeacherCurriculumActivity" />
@@ -1292,6 +1444,7 @@
 
         <activity
             android:name=".jiaowu.activity.TeacherCurriculumChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="教师课表">
             <intent-filter>
                 <action android:name="android.intent.action.TeacherCurriculumChangeActivity" />
@@ -1301,6 +1454,7 @@
 
         <activity
             android:name=".jiaowu.activity.QuanxianActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="权限管理">
             <intent-filter>
                 <action android:name="android.intent.action.QuanxianActivity" />
@@ -1310,6 +1464,7 @@
 
         <activity
             android:name=".jiaowu.activity.QuanxianChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="权限管理">
             <intent-filter>
                 <action android:name="android.intent.action.QuanxianChangeActivity" />
@@ -1319,6 +1474,7 @@
 
         <activity
             android:name=".jiaowu.activity.ShouZhiChartActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="收支图表">
             <intent-filter>
                 <action android:name="android.intent.action.ShouZhiChartActivity" />
@@ -1329,6 +1485,7 @@
         <!--    门店    -->
         <activity
             android:name=".mendian.activity.MendianActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="首页">
             <intent-filter>
                 <action android:name="android.intent.action.MendianActivity" />
@@ -1338,6 +1495,7 @@
 
         <activity
             android:name=".mendian.activity.KehuinfoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="客户信息">
             <intent-filter>
                 <action android:name="android.intent.action.KehuinfoActivity" />
@@ -1347,6 +1505,7 @@
 
         <activity
             android:name=".mendian.activity.KehuinfoChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="客户信息">
             <intent-filter>
                 <action android:name="android.intent.action.KehuinfoChangeActivity" />
@@ -1356,6 +1515,7 @@
 
         <activity
             android:name=".mendian.activity.rijiaoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="日交易额">
             <intent-filter>
                 <action android:name="android.intent.action.rijiaoActivity" />
@@ -1365,6 +1525,7 @@
 
         <activity
             android:name=".mendian.activity.MemberinfoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="会员管理">
             <intent-filter>
                 <action android:name="android.intent.action.MemberinfoActivity" />
@@ -1374,6 +1535,7 @@
 
         <activity
             android:name=".mendian.activity.MemberinfoChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="会员管理">
             <intent-filter>
                 <action android:name="android.intent.action.MemberinfoChangeActivity" />
@@ -1383,6 +1545,7 @@
 
         <activity
             android:name=".mendian.activity.MemberlevelActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="会员等级">
             <intent-filter>
                 <action android:name="android.intent.action.MemberlevelActivity" />
@@ -1392,6 +1555,7 @@
 
         <activity
             android:name=".mendian.activity.MemberlevelChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="会员等级">
             <intent-filter>
                 <action android:name="android.intent.action.MemberlevelChangeActivity" />
@@ -1401,6 +1565,7 @@
 
         <activity
             android:name=".mendian.activity.OrderPanelActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="点单面板">
             <intent-filter>
                 <action android:name="android.intent.action.OrderPanelActivity" />
@@ -1410,6 +1575,7 @@
 
         <activity
             android:name=".mendian.activity.OrdersActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="订单信息">
             <intent-filter>
                 <action android:name="android.intent.action.OrdersActivity" />
@@ -1419,6 +1585,7 @@
 
         <activity
             android:name=".mendian.activity.OrdersChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="订单信息">
             <intent-filter>
                 <action android:name="android.intent.action.OrdersChangeActivity" />
@@ -1428,6 +1595,7 @@
 
         <activity
             android:name=".mendian.activity.ReportFormActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="统计报表">
             <intent-filter>
                 <action android:name="android.intent.action.ReportFormActivity" />
@@ -1436,6 +1604,7 @@
         </activity>
         <activity
             android:name=".mendian.activity.YuejiaoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="月交易额">
             <intent-filter>
                 <action android:name="android.intent.action.YuejiaoActivity" />
@@ -1445,6 +1614,7 @@
 
         <activity
             android:name=".mendian.activity.ZongjiaoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="交易总额">
             <intent-filter>
                 <action android:name="android.intent.action.ZongjiaoActivity" />
@@ -1454,6 +1624,7 @@
 
         <activity
             android:name=".mendian.activity.UsersActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="员工信息">
             <intent-filter>
                 <action android:name="android.intent.action.UsersActivity" />
@@ -1463,6 +1634,7 @@
 
         <activity
             android:name=".mendian.activity.UsersChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="员工信息">
             <intent-filter>
                 <action android:name="android.intent.action.UsersChangeActivity" />
@@ -1472,6 +1644,7 @@
 
         <activity
             android:name=".mendian.activity.ProductshezhiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="商品设置">
             <intent-filter>
                 <action android:name="android.intent.action.ProductshezhiActivity" />
@@ -1481,6 +1654,7 @@
 
         <activity
             android:name=".mendian.activity.ProductshezhiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="商品设置">
             <intent-filter>
                 <action android:name="android.intent.action.ProductshezhiChangeActivity" />
@@ -1490,6 +1664,7 @@
 
         <activity
             android:name=".mendian.activity.ProductInsActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="商品选择">
             <intent-filter>
                 <action android:name="android.intent.action.ProductInsActivity" />
@@ -1499,6 +1674,7 @@
 
         <activity
             android:name=".mendian.activity.GouWuCheActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="购物车">
             <intent-filter>
                 <action android:name="android.intent.action.GouWuCheActivity" />
@@ -1508,6 +1684,7 @@
 
         <activity
             android:name=".mendian.activity.OrderInsActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="选择会员">
             <intent-filter>
                 <action android:name="android.intent.action.OrderInsActivity" />

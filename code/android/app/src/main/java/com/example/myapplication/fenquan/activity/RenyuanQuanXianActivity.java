@@ -1,5 +1,6 @@
 package com.example.myapplication.fenquan.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -27,6 +29,7 @@ import com.example.myapplication.fenquan.entity.Copy1;
 import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.fenquan.service.Copy1Service;
 import com.example.myapplication.fenquan.service.RenyuanService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -41,6 +44,12 @@ public class RenyuanQuanXianActivity extends AppCompatActivity {
 
     private EditText b_text;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private Spinner quanxian_type;
     private Button sel_button;
 
@@ -64,6 +73,10 @@ public class RenyuanQuanXianActivity extends AppCompatActivity {
         b_text = findViewById(R.id.b_text);
         quanxian_type = findViewById(R.id.quanxian_type);
         listView = findViewById(R.id.list);
+
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
+
         sel_button = findViewById(R.id.sel_button);
 
         quanxian_typeArray = getResources().getStringArray(R.array.quanxian_type_list);
@@ -86,11 +99,27 @@ public class RenyuanQuanXianActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     private void initList() {
+        sel_button.setEnabled(false);
+        listView.setAdapter(StringUtils.cast(adapter));
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -217,7 +246,7 @@ public class RenyuanQuanXianActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(RenyuanQuanXianActivity.this, data, R.layout.renyuan_quanxian_row, new String[]{"B", "chashanquanxian", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "RR", "S", "T", "U", "V", "W", "X", "Y", "Z","AA","AB" ,"AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "ASS", "AT", "AU", "AV", "AW", "AX", "AY", "AZ","BA","BB","BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BK", "BL", "BM", "BN", "BO", "BP", "BQ", "BR", "BS", "BT", "BU", "BV", "BW", "BX", "BYY", "BZ" ,"CA","CB", "CC", "CD", "CE", "CF", "CG", "CH", "CI", "CJ", "CK", "CL", "CM", "CN", "CO", "CP", "CQ", "CR", "CS", "CT", "CU", "CV", "CW", "CX"}, new int[]{R.id.B, R.id.chashanquanxian, R.id.C, R.id.D, R.id.E, R.id.F, R.id.G, R.id.H, R.id.I, R.id.J, R.id.K, R.id.L, R.id.M, R.id.N, R.id.O, R.id.P, R.id.Q, R.id.RR, R.id.S, R.id.T, R.id.U, R.id.V, R.id.W, R.id.X, R.id.Y, R.id.Z, R.id.AA, R.id.AB, R.id.AC, R.id.AD, R.id.AE, R.id.AF, R.id.AG, R.id.AH, R.id.AI, R.id.AJ, R.id.AK, R.id.AL, R.id.AM, R.id.AN, R.id.AO, R.id.AP, R.id.AQ, R.id.AR, R.id.ASS, R.id.AT, R.id.AU, R.id.AV, R.id.AW, R.id.AX, R.id.AY, R.id.AZ, R.id.BA, R.id.BB, R.id.BC, R.id.BD, R.id.BE, R.id.BF, R.id.BG, R.id.BH, R.id.BI, R.id.BJ, R.id.BK, R.id.BL, R.id.BM, R.id.BN, R.id.BO, R.id.BP, R.id.BQ, R.id.BR, R.id.BS, R.id.BT, R.id.BU, R.id.BV, R.id.BW, R.id.BX, R.id.BYY, R.id.BZ, R.id.CA, R.id.CB, R.id.CC, R.id.CD, R.id.CE, R.id.CF, R.id.CG, R.id.CH, R.id.CI, R.id.CJ, R.id.CK, R.id.CL, R.id.CM, R.id.CN, R.id.CO, R.id.CP, R.id.CQ, R.id.CR, R.id.CS, R.id.CT, R.id.CU, R.id.CV, R.id.CW, R.id.CX}) {
+                adapter = new SimpleAdapter(RenyuanQuanXianActivity.this, data, R.layout.renyuan_quanxian_row, new String[]{"B", "chashanquanxian", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "RR", "S", "T", "U", "V", "W", "X", "Y", "Z","AA","AB" ,"AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "ASS", "AT", "AU", "AV", "AW", "AX", "AY", "AZ","BA","BB","BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BK", "BL", "BM", "BN", "BO", "BP", "BQ", "BR", "BS", "BT", "BU", "BV", "BW", "BX", "BYY", "BZ" ,"CA","CB", "CC", "CD", "CE", "CF", "CG", "CH", "CI", "CJ", "CK", "CL", "CM", "CN", "CO", "CP", "CQ", "CR", "CS", "CT", "CU", "CV", "CW", "CX"}, new int[]{R.id.B, R.id.chashanquanxian, R.id.C, R.id.D, R.id.E, R.id.F, R.id.G, R.id.H, R.id.I, R.id.J, R.id.K, R.id.L, R.id.M, R.id.N, R.id.O, R.id.P, R.id.Q, R.id.RR, R.id.S, R.id.T, R.id.U, R.id.V, R.id.W, R.id.X, R.id.Y, R.id.Z, R.id.AA, R.id.AB, R.id.AC, R.id.AD, R.id.AE, R.id.AF, R.id.AG, R.id.AH, R.id.AI, R.id.AJ, R.id.AK, R.id.AL, R.id.AM, R.id.AN, R.id.AO, R.id.AP, R.id.AQ, R.id.AR, R.id.ASS, R.id.AT, R.id.AU, R.id.AV, R.id.AW, R.id.AX, R.id.AY, R.id.AZ, R.id.BA, R.id.BB, R.id.BC, R.id.BD, R.id.BE, R.id.BF, R.id.BG, R.id.BH, R.id.BI, R.id.BJ, R.id.BK, R.id.BL, R.id.BM, R.id.BN, R.id.BO, R.id.BP, R.id.BQ, R.id.BR, R.id.BS, R.id.BT, R.id.BU, R.id.BV, R.id.BW, R.id.BX, R.id.BYY, R.id.BZ, R.id.CA, R.id.CB, R.id.CC, R.id.CD, R.id.CE, R.id.CF, R.id.CG, R.id.CH, R.id.CI, R.id.CJ, R.id.CK, R.id.CL, R.id.CM, R.id.CN, R.id.CO, R.id.CP, R.id.CQ, R.id.CR, R.id.CS, R.id.CT, R.id.CU, R.id.CV, R.id.CW, R.id.CX}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -227,6 +256,18 @@ public class RenyuanQuanXianActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(RenyuanQuanXianActivity.this, data, R.layout.renyuan_quanxian_row_block, new String[]{"B", "chashanquanxian", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "RR", "S", "T", "U", "V", "W", "X", "Y", "Z","AA","AB" ,"AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "ASS", "AT", "AU", "AV", "AW", "AX", "AY", "AZ","BA","BB","BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BK", "BL", "BM", "BN", "BO", "BP", "BQ", "BR", "BS", "BT", "BU", "BV", "BW", "BX", "BYY", "BZ" ,"CA","CB", "CC", "CD", "CE", "CF", "CG", "CH", "CI", "CJ", "CK", "CL", "CM", "CN", "CO", "CP", "CQ", "CR", "CS", "CT", "CU", "CV", "CW", "CX"}, new int[]{R.id.B, R.id.chashanquanxian, R.id.C, R.id.D, R.id.E, R.id.F, R.id.G, R.id.H, R.id.I, R.id.J, R.id.K, R.id.L, R.id.M, R.id.N, R.id.O, R.id.P, R.id.Q, R.id.RR, R.id.S, R.id.T, R.id.U, R.id.V, R.id.W, R.id.X, R.id.Y, R.id.Z, R.id.AA, R.id.AB, R.id.AC, R.id.AD, R.id.AE, R.id.AF, R.id.AG, R.id.AH, R.id.AI, R.id.AJ, R.id.AK, R.id.AL, R.id.AM, R.id.AN, R.id.AO, R.id.AP, R.id.AQ, R.id.AR, R.id.ASS, R.id.AT, R.id.AU, R.id.AV, R.id.AW, R.id.AX, R.id.AY, R.id.AZ, R.id.BA, R.id.BB, R.id.BC, R.id.BD, R.id.BE, R.id.BF, R.id.BG, R.id.BH, R.id.BI, R.id.BJ, R.id.BK, R.id.BL, R.id.BM, R.id.BN, R.id.BO, R.id.BP, R.id.BQ, R.id.BR, R.id.BS, R.id.BT, R.id.BU, R.id.BV, R.id.BW, R.id.BX, R.id.BYY, R.id.BZ, R.id.CA, R.id.CB, R.id.CC, R.id.CD, R.id.CE, R.id.CF, R.id.CG, R.id.CH, R.id.CI, R.id.CJ, R.id.CK, R.id.CL, R.id.CM, R.id.CN, R.id.CO, R.id.CP, R.id.CQ, R.id.CR, R.id.CS, R.id.CT, R.id.CU, R.id.CV, R.id.CW, R.id.CX}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

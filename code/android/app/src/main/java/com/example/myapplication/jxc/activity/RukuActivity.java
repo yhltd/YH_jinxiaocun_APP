@@ -237,13 +237,13 @@ public class RukuActivity extends AppCompatActivity {
 
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 MyApplication myApplication = (MyApplication) getApplication();
                 listView.setAdapter(new MyAdapter(myApplication.getApplicationContext()));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                sel_button.setEnabled(true);
                 return true;
             }
         });

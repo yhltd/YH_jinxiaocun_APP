@@ -1,13 +1,25 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".renshi.activity.KaoQinBiaoChangeActivity">
+    android:orientation="vertical"
+    tools:context=".renshi.activity.GongZiMingXiChangeActivity"
+    android:background="@color/WhiteSmoke">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginBottom="80dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -16,84 +28,92 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:paddingTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="75dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_head">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="姓名:" />
 
                 <EditText
                     android:id="@+id/B"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入姓名"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="部门:" />
 
                 <Spinner
                     android:id="@+id/C"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:textIsSelectable="false" />
-
-
 
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="职务:" />
 
                 <EditText
                     android:id="@+id/D"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入职务"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -102,58 +122,64 @@
 
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:text="身份证号:" />
+                    android:textSize="15sp"
+                    android:text="身份证:" />
 
                 <EditText
                     android:id="@+id/E"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:hint="请输入身份证号"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入身份证"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
 
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="民族:" />
 
                 <EditText
                     android:id="@+id/M"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入民族"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -161,28 +187,32 @@
             </LinearLayout>
 
 
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="籍贯:" />
 
                 <EditText
                     android:id="@+id/N"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入籍贯"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -190,115 +220,135 @@
             </LinearLayout>
 
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="手机号:" />
 
                 <EditText
                     android:id="@+id/O"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入手机号"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="学历:" />
 
                 <EditText
                     android:id="@+id/P"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:hint="请输入身份证号"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入学历"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="出生日期:" />
 
                 <EditText
                     android:id="@+id/Q"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:hint="请输入身份证号"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入出生日期"
                     android:inputType="text"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
 
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="婚姻状况:" />
 
                 <EditText
-                    android:id="@+id/R"
+                    android:id="@+id/RR"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入婚姻状况"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -306,28 +356,33 @@
             </LinearLayout>
 
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="就职状态:" />
 
                 <EditText
                     android:id="@+id/S"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入就职状态"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -335,242 +390,592 @@
             </LinearLayout>
 
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="基本工资:" />
 
                 <EditText
                     android:id="@+id/F"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入基本工资"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
+
+
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
-                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="绩效工资:" />
 
                 <EditText
                     android:id="@+id/AC"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入绩效工资"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:textIsSelectable="false" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/border_bottom">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginLeft="24dp"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:text="银行卡号:" />
-
-                    <EditText
-                        android:id="@+id/G"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginEnd="24dp"
-                        android:hint="请输入银行卡号"
-                        android:inputType="text"
-                        android:textIsSelectable="false" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/border_bottom">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginLeft="24dp"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:text="入职时间:" />
-
-                    <EditText
-                        android:id="@+id/H"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginEnd="24dp"
-                        android:hint="请输入入职时间"
-                        android:inputType="text"
-                        android:textIsSelectable="false" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/border_bottom">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginLeft="24dp"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:text="工龄:" />
-
-                    <EditText
-                        android:id="@+id/K"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginEnd="24dp"
-                        android:hint="请输入工龄"
-                        android:inputType="text"
-                        android:textIsSelectable="false" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/border_bottom">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginLeft="24dp"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:text="账号:" />
-
-                    <EditText
-                        android:id="@+id/I"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginEnd="24dp"
-                        android:hint="请输入账号"
-                        android:inputType="text"
-                        android:textIsSelectable="false" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/border_bottom">
-
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginLeft="24dp"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:text="密码:" />
-
-                    <EditText
-                        android:id="@+id/J"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginEnd="24dp"
-                        android:hint="请输入密码"
-                        android:inputType="text"
-                        android:textIsSelectable="false" />
-
-                </LinearLayout>
-
 
             </LinearLayout>
 
 
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
 
-            <Button
-                android:id="@+id/update_btn"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:onClick="updateClick"
-                android:text="提交"
-                android:visibility="gone"
-                tools:ignore="MissingConstraints" />
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="银行卡号:" />
 
-            <Button
-                android:id="@+id/insert_btn"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:onClick="insertClick"
-                android:text="提交"
-                android:visibility="gone"
-                tools:ignore="MissingConstraints" />
+                <EditText
+                    android:id="@+id/G"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入银行卡号"
+                    android:inputType="number"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="入职时间:" />
+
+                <EditText
+                    android:id="@+id/H"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入入职时间"
+                    android:inputType="number"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="工龄:" />
+
+                <EditText
+                    android:id="@+id/K"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入工龄"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="账号:" />
+
+                <EditText
+                    android:id="@+id/I"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入账号"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="密码:" />
+
+                <EditText
+                    android:id="@+id/J"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入密码"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="现住址:" />
+
+                <EditText
+                    android:id="@+id/T"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入现住址"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="家庭地址:" />
+
+                <EditText
+                    android:id="@+id/U"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入家庭地址"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="银行卡支行:" />
+
+                <EditText
+                    android:id="@+id/V"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入银行卡支行"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="是否购买社保:" />
+
+                <EditText
+                    android:id="@+id/W"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入是否购买社保"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="公积金账号:" />
+
+                <EditText
+                    android:id="@+id/X"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入公积金账号"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="社保账号:" />
+
+                <EditText
+                    android:id="@+id/Y"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入社保账号"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="劳动合同签订有效期限:" />
+
+                <EditText
+                    android:id="@+id/Z"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入劳动合同签订有效期限"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="劳动合同第二次续签:" />
+
+                <EditText
+                    android:id="@+id/AA"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入劳动合同第二次续签"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="备注:" />
+
+                <EditText
+                    android:id="@+id/AB"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入备注"
+                    android:inputType="text"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
     </LinearLayout>
 
 
 </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/update_btn"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="updateClick"
+            android:text="提交"
+            android:visibility="gone"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/insert_btn"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="insertClick"
+            android:text="提交"
+            android:visibility="gone"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

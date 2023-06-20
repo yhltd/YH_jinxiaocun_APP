@@ -161,7 +161,7 @@
                 android:layout_marginTop="20dp"
                 android:text="是否停用" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/tingyong"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"

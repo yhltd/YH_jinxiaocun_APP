@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
             android:textSize="14sp"
-            android:text="身份证号"
+            android:text="早上结束时间"
             android:textStyle="bold"
             android:width="150dp"/>
         <View

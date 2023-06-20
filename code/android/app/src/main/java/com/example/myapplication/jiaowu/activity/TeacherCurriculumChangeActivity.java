@@ -35,6 +35,7 @@ import com.example.myapplication.jiaowu.entity.TeacherCurriculum;
 import com.example.myapplication.jiaowu.service.KaoqinService;
 import com.example.myapplication.jiaowu.service.SheZhiService;
 import com.example.myapplication.jiaowu.service.TeacherCurriculumService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -184,7 +185,7 @@ public class TeacherCurriculumChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) throws ParseException {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -194,7 +195,7 @@ public class TeacherCurriculumChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(TeacherCurriculumChangeActivity.this, "保存失败，请稍后再试");
                 }
-
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -212,7 +213,7 @@ public class TeacherCurriculumChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) throws ParseException {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -222,6 +223,7 @@ public class TeacherCurriculumChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(TeacherCurriculumChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

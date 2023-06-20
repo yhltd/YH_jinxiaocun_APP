@@ -1,5 +1,6 @@
 package com.example.myapplication.scheduling.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -43,6 +45,12 @@ public class UserActivity extends AppCompatActivity {
     private EditText user_code_text;
 
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private Button sel_button;
 
     private List<UserInfo> list;
@@ -59,6 +67,10 @@ public class UserActivity extends AppCompatActivity {
         }
 
         listView = findViewById(R.id.bom_list);
+
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
+
         user_code_text = findViewById(R.id.user_code_text);
         sel_button = findViewById(R.id.sel_button);
 
@@ -79,13 +91,26 @@ public class UserActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -111,7 +136,7 @@ public class UserActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(UserActivity.this, data, R.layout.pc_user_row, new String[]{"user_code", "password", "department_name", "state"}, new int[]{R.id.user_code, R.id.password, R.id.department_name, R.id.state}) {
+                adapter = new SimpleAdapter(UserActivity.this, data, R.layout.pc_user_row, new String[]{"user_code", "password", "department_name", "state"}, new int[]{R.id.user_code, R.id.password, R.id.department_name, R.id.state}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -122,6 +147,19 @@ public class UserActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(UserActivity.this, data, R.layout.pc_user_row_block, new String[]{"user_code", "password", "department_name", "state"}, new int[]{R.id.user_code, R.id.password, R.id.department_name, R.id.state}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

@@ -1,42 +1,59 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".jiaowu.activity.JiaoShiXinXiChangeActivity">
+    android:orientation="vertical"
+    tools:context=".jiaowu.activity.JiaoShiXinXiChangeActivity"
+    android:background="@color/WhiteSmoke">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginBottom="80dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <LinearLayout
+                android:paddingTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="75dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/shape_corner_up">
+                android:background="@drawable/form_head">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="教师姓名" />
 
                 <Spinner
                     android:id="@+id/t_name"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
@@ -45,26 +62,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom_top">
+                android:background="@drawable/form_body">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="性别" />
 
                 <Spinner
                     android:id="@+id/sex"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
@@ -73,28 +93,32 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="身份证" />
 
                 <EditText
                     android:id="@+id/id_code"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入身份证号码"
-                    android:inputType="text"
+                    android:inputType="numberSigned"
+                    android:digits="0123456789X"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
@@ -103,26 +127,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="民族" />
 
                 <EditText
                     android:id="@+id/minzu"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入民族"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -133,26 +160,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="生日" />
 
                 <EditText
                     android:id="@+id/birthday"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入生日"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -163,26 +193,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="职位" />
 
                 <EditText
                     android:id="@+id/post"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入职位"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -193,26 +226,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="学历" />
 
                 <EditText
                     android:id="@+id/education"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入学历"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -223,26 +259,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="联系电话" />
 
                 <EditText
                     android:id="@+id/phone"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入联系电话"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -253,26 +292,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="入职日期" />
 
                 <EditText
                     android:id="@+id/rz_riqi"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入入职日期"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -283,26 +325,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="在职状态" />
 
                 <Spinner
                     android:id="@+id/state"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:textIsSelectable="false" />
 
             </LinearLayout>
@@ -311,26 +356,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/border_bottom">
+                android:background="@drawable/form_body">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="社保情况" />
 
                 <EditText
                     android:id="@+id/shebao"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入社保情况"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -341,26 +389,30 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="75dp"
+                android:paddingBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/shape_corner_down">
+                android:background="@drawable/form_foot">
 
                 <TextView
+                    android:gravity="center"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="地址" />
 
                 <EditText
                     android:id="@+id/address"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
                     android:hint="请输入地址"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -371,41 +423,47 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp">
 
-            <Button
-                android:id="@+id/update_btn"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:onClick="updateClick"
-                android:text="提交"
-                android:visibility="gone"
-                tools:ignore="MissingConstraints"
-                android:background="@drawable/btn_style"
-                android:textSize="17dp"
-                android:textColor="@color/white"/>
-
-            <Button
-                android:id="@+id/insert_btn"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:onClick="insertClick"
-                android:text="提交"
-                android:visibility="gone"
-                tools:ignore="MissingConstraints"
-                android:background="@drawable/btn_style"
-                android:textSize="17dp"
-                android:textColor="@color/white"/>
-        </LinearLayout>
 
     </LinearLayout>
 
 
 </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/update_btn"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="updateClick"
+            android:text="提交"
+            android:visibility="gone"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/insert_btn"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="insertClick"
+            android:text="提交"
+            android:visibility="gone"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

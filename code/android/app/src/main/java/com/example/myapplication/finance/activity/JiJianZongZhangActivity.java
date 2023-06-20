@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -54,6 +55,11 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
     private EditText project;
     private ListView listView;
 
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private String kehu_selectText;
     private String projectText;
 
@@ -85,10 +91,24 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
         project = findViewById(R.id.project);
         kehu_select = findViewById(R.id.kehu_select);
         listView = findViewById(R.id.jijianzongzhang_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
         init_select();
+
+    }
+
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
 
     }
 
@@ -140,12 +160,15 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
 
 
     private void initList() {
+        sel_button.setEnabled(false);
         projectText = project.getText().toString();
         kehu_selectText = kehu_select.getSelectedItem().toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -176,7 +199,7 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(JiJianZongZhangActivity.this, data, R.layout.jijianzongzhang_row, new String[]{"kehu","project","receivable","receipts","weishou","cope","payment","weifu"}, new int[]{R.id.kehu,R.id.project,R.id.receivable,R.id.receipts,R.id.weishou,R.id.cope,R.id.payment,R.id.weifu}) {
+                adapter = new SimpleAdapter(JiJianZongZhangActivity.this, data, R.layout.jijianzongzhang_row, new String[]{"kehu","project","receivable","receipts","weishou","cope","payment","weifu"}, new int[]{R.id.kehu,R.id.project,R.id.receivable,R.id.receipts,R.id.weishou,R.id.cope,R.id.payment,R.id.weifu}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -186,6 +209,18 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(JiJianZongZhangActivity.this, data, R.layout.jijianzongzhang_row_block, new String[]{"kehu","project","receivable","receipts","weishou","cope","payment","weifu"}, new int[]{R.id.kehu,R.id.project,R.id.receivable,R.id.receipts,R.id.weishou,R.id.cope,R.id.payment,R.id.weifu}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

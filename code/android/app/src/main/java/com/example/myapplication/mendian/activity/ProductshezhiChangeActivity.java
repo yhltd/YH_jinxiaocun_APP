@@ -8,8 +8,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -44,12 +46,12 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
     private EditText chengben;
     private EditText specifications;
     private EditText practice;
-    private EditText tingyong;
+    private Spinner tingyong;
     private EditText photo;
 
     List<YhMendianProductshezhi> List;
 
-
+    String[] tingyong_selectArray;
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,9 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
         tingyong = findViewById(R.id.tingyong);
         photo = findViewById(R.id.photo);
 
+        tingyong_selectArray = getResources().getStringArray(R.array.tingyong_list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tingyong_selectArray);
+        tingyong.setAdapter(adapter);
 
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
@@ -97,7 +102,7 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
             chengben.setText(yhMendianProductshezhi.getChengben());
             specifications.setText(yhMendianProductshezhi.getSpecifications());
             practice.setText(yhMendianProductshezhi.getPractice());
-            tingyong.setText(yhMendianProductshezhi.getTingyong());
+            tingyong.setSelection(gettingyongPosition(yhMendianProductshezhi.getTingyong()));
 //            photo.setText(yhMendianProductshezhi.getPhoto());
 
         }
@@ -220,19 +225,12 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
         } else {
             yhMendianProductshezhi.setPractice(practice.getText().toString());
         }
-        if (tingyong.getText().toString().equals("")) {
+        if (tingyong.getSelectedItem().toString().equals("")) {
             ToastUtil.show(ProductshezhiChangeActivity.this, "请输入是否停用");
             return false;
         } else {
-            yhMendianProductshezhi.setTingyong(tingyong.getText().toString());
+            yhMendianProductshezhi.setTingyong(tingyong.getSelectedItem().toString());
         }
-//        if (photo.getText().toString().equals("")) {
-//            ToastUtil.show(ProductshezhiChangeActivity.this, "请输入图片");
-//            return false;
-//        } else {
-//            yhMendianProductshezhi.setPhoto(photo.getText().toString());
-//        }
-
 
         yhMendianProductshezhi.setCompany(yhMendianUser.getCompany());
 
@@ -243,6 +241,17 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
     private void back() {
         setResult(RESULT_OK, new Intent());
         finish();
+    }
+
+    private int gettingyongPosition(String param) {
+        if (tingyong_selectArray != null) {
+            for (int i = 0; i < tingyong_selectArray.length; i++) {
+                if (param.equals(tingyong_selectArray[i])) {
+                    return i;
+                }
+            }
+        }
+        return 0;
     }
 
 }

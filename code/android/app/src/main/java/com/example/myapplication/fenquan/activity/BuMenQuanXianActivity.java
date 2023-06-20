@@ -1,5 +1,6 @@
 package com.example.myapplication.fenquan.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -26,6 +28,7 @@ import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.fenquan.service.Copy1Service;
 import com.example.myapplication.fenquan.service.DepartmentService;
 import com.example.myapplication.fenquan.service.RenyuanService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -40,6 +43,12 @@ public class BuMenQuanXianActivity extends AppCompatActivity {
 
     private EditText department_text;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private Button sel_button;
 
     private List<Department> list;
@@ -59,13 +68,26 @@ public class BuMenQuanXianActivity extends AppCompatActivity {
 
         department_text = findViewById(R.id.department_text);
         listView = findViewById(R.id.list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         sel_button = findViewById(R.id.sel_button);
-
         MyApplication myApplication = (MyApplication) getApplication();
         renyuan = myApplication.getRenyuan();
 
         initList();
         sel_button.setOnClickListener(selClick());
+    }
+
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
     }
 
     @Override
@@ -78,10 +100,13 @@ public class BuMenQuanXianActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -109,7 +134,7 @@ public class BuMenQuanXianActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(BuMenQuanXianActivity.this, data, R.layout.bumen_quanxian_row, new String[]{"department_name", "view_name", "ins", "del", "upd", "sel"}, new int[]{R.id.department_name, R.id.view_name, R.id.ins, R.id.del, R.id.upd, R.id.sel}) {
+                adapter = new SimpleAdapter(BuMenQuanXianActivity.this, data, R.layout.bumen_quanxian_row, new String[]{"department_name", "view_name", "ins", "del", "upd", "sel"}, new int[]{R.id.department_name, R.id.view_name, R.id.ins, R.id.del, R.id.upd, R.id.sel}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -120,6 +145,19 @@ public class BuMenQuanXianActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(BuMenQuanXianActivity.this, data, R.layout.bumen_quanxian_row_block, new String[]{"department_name", "view_name", "ins", "del", "upd", "sel"}, new int[]{R.id.department_name, R.id.view_name, R.id.ins, R.id.del, R.id.upd, R.id.sel}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

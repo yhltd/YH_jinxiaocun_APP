@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -28,6 +29,7 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.XiangQingYeActivity;
 import com.example.myapplication.entity.XiangQingYe;
+import com.example.myapplication.fenquan.activity.GongZuoTaiActivity;
 import com.example.myapplication.finance.entity.YhFinanceBaoBiao;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceBaoBiaoService;
@@ -52,6 +54,11 @@ public class BaoBiaoActivity extends AppCompatActivity {
     private Spinner class_select;
     private EditText this_date;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
 
     private String this_dateText;
     private String class_selectText;
@@ -89,6 +96,9 @@ public class BaoBiaoActivity extends AppCompatActivity {
         class_select.setAdapter(adapter);
 
         listView = findViewById(R.id.baobiao_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
+
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
@@ -104,6 +114,18 @@ public class BaoBiaoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     public View.OnClickListener selClick() {
         return new View.OnClickListener() {
             @Override
@@ -116,7 +138,7 @@ public class BaoBiaoActivity extends AppCompatActivity {
 
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         this_dateText = this_date.getText().toString();
         class_selectText = class_select.getSelectedItem().toString();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
@@ -163,8 +185,9 @@ public class BaoBiaoActivity extends AppCompatActivity {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -210,7 +233,7 @@ public class BaoBiaoActivity extends AppCompatActivity {
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(BaoBiaoActivity.this, data, R.layout.baobiao_row, new String[]{"zhaiyao","kehu","receivable","zhaiyao2","kehu2","cope"}, new int[]{R.id.zhaiyao,R.id.kehu,R.id.receivable,R.id.zhaiyao2,R.id.kehu2,R.id.cope}) {
+                adapter = new SimpleAdapter(BaoBiaoActivity.this, data, R.layout.baobiao_row, new String[]{"zhaiyao","kehu","receivable","zhaiyao2","kehu2","cope"}, new int[]{R.id.zhaiyao,R.id.kehu,R.id.receivable,R.id.zhaiyao2,R.id.kehu2,R.id.cope}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -220,6 +243,18 @@ public class BaoBiaoActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(BaoBiaoActivity.this, data, R.layout.baobiao_row_block, new String[]{"zhaiyao","kehu","receivable","zhaiyao2","kehu2","cope"}, new int[]{R.id.zhaiyao,R.id.kehu,R.id.receivable,R.id.zhaiyao2,R.id.kehu2,R.id.cope}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);
@@ -267,20 +302,19 @@ public class BaoBiaoActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                String this_month = "";
-                if (monthOfYear + 1 < 10){
-                    this_month = "0" + String.format("%s",monthOfYear + 1);
+                String mon = "";
+                String day = "";
+                if(monthOfYear + 1 < 10){
+                    mon = "0" + (monthOfYear + 1);
                 }else{
-                    this_month = String.format("%s",monthOfYear + 1);
+                    mon = "" + (monthOfYear + 1);
                 }
-
-                String this_day = "";
-                if (dayOfMonth + 1 < 10){
-                    this_day = "0" + String.format("%s",dayOfMonth);
+                if(dayOfMonth < 10){
+                    day = "0" + dayOfMonth;
                 }else{
-                    this_day = String.format("%s",dayOfMonth);
+                    day = "" + dayOfMonth;
                 }
-                editText.setText(year + "-" + this_month + "-" + this_day);
+                editText.setText(year + "-" + mon + "-" + day);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

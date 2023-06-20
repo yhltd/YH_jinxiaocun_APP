@@ -1,5 +1,6 @@
 package com.example.myapplication.jiaowu.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -28,6 +30,8 @@ import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.AccountManagementService;
 import com.example.myapplication.jiaowu.service.SheZhiService;
 import com.example.myapplication.scheduling.activity.BomActivity;
+import com.example.myapplication.utils.ExcelUtil;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -41,6 +45,12 @@ public class AccountManagementActivity extends AppCompatActivity {
     private AccountManagement accountManagement;
     private AccountManagementService accountManagementService;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private EditText uname;
     private EditText realname;
     private EditText phone;
@@ -48,6 +58,7 @@ public class AccountManagementActivity extends AppCompatActivity {
     private String realnameText;
     private String phoneText;
     private Button sel_button;
+    private Button export_button;
     private Quanxian quanxian;
 
     List<AccountManagement> list;
@@ -65,6 +76,8 @@ public class AccountManagementActivity extends AppCompatActivity {
         }
 
         listView = findViewById(R.id.accountManagement_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
 
         uname = findViewById(R.id.uname);
         realname = findViewById(R.id.realname);
@@ -75,7 +88,9 @@ public class AccountManagementActivity extends AppCompatActivity {
         quanxian = myApplication.getQuanxian();
 
         sel_button = findViewById(R.id.sel_button);
+        export_button = findViewById(R.id.export_button);
         sel_button.setOnClickListener(selClick());
+        export_button.setOnClickListener(exportClick());
         sel_button.requestFocus();
 
         initList();
@@ -90,6 +105,18 @@ public class AccountManagementActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     public View.OnClickListener selClick() {
         return new View.OnClickListener() {
             @Override
@@ -100,7 +127,7 @@ public class AccountManagementActivity extends AppCompatActivity {
     }
 
     private void initList() {
-
+        sel_button.setEnabled(false);
         unameText = uname.getText().toString();
         realnameText = realname.getText().toString();
         phoneText = phone.getText().toString();
@@ -108,7 +135,9 @@ public class AccountManagementActivity extends AppCompatActivity {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -140,7 +169,7 @@ public class AccountManagementActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(AccountManagementActivity.this, data, R.layout.accountmanagement_row, new String[]{"username", "password", "realname", "useType", "age", "phone","home","photo","education","state"}, new int[]{R.id.username, R.id.password, R.id.realName, R.id.useType, R.id.age, R.id.phone, R.id.home,R.id.photo, R.id.education, R.id.state}) {
+                adapter = new SimpleAdapter(AccountManagementActivity.this, data, R.layout.accountmanagement_row, new String[]{"username", "password", "realname", "useType", "age", "phone","home","photo","education","state"}, new int[]{R.id.username, R.id.password, R.id.realName, R.id.useType, R.id.age, R.id.phone, R.id.home,R.id.photo, R.id.education, R.id.state}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -151,12 +180,37 @@ public class AccountManagementActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(AccountManagementActivity.this, data, R.layout.accountmanagement_row_block, new String[]{"username", "password", "realname", "useType", "age", "phone","home","photo","education","state"}, new int[]{R.id.username, R.id.password, R.id.realName, R.id.useType, R.id.age, R.id.phone, R.id.home,R.id.photo, R.id.education, R.id.state}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);
 
             }
         }).start();
+    }
+
+    public View.OnClickListener exportClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] title = {"登录名", "密码", "姓名", "用户类别", "年龄", "电话", "家庭住址", "身份证号", "学历", "状态"};
+                String fileName = "用户管理" + System.currentTimeMillis() + ".xls";
+                ExcelUtil.initExcel(fileName, "用户管理", title);
+                ExcelUtil.jiaowu_zhanghaoToExcel(list, fileName, MyApplication.getContext());
+            }
+        };
     }
 
     public void onInsertClick(View v) {

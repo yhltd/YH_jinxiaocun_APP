@@ -104,14 +104,12 @@ public class WorkPlAddActivity extends AppCompatActivity {
     }
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 module.setAdapter(moduleAdapter);
                 MyApplication myApplication = (MyApplication) getApplication();
                 listView.setAdapter(new MyAdapter(myApplication.getApplicationContext()));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

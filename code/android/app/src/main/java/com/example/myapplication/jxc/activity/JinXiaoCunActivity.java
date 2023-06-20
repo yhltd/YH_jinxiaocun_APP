@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -48,7 +49,13 @@ public class JinXiaoCunActivity extends AppCompatActivity {
     private EditText spDm_text;
     private EditText ks;
     private EditText js;
+    private String start_dateText;
+    private String stop_dateText;
     private ListView listView;
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
     private Button sel_button;
     private Button export_button;
 
@@ -67,6 +74,8 @@ public class JinXiaoCunActivity extends AppCompatActivity {
 
         spDm_text = findViewById(R.id.spDm_text);
         listView = findViewById(R.id.jinxiaocun_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         sel_button = findViewById(R.id.sel_button);
         export_button=findViewById(R.id.export);
         ks = findViewById(R.id.ks);
@@ -84,6 +93,18 @@ public class JinXiaoCunActivity extends AppCompatActivity {
         showDateOnClick(ks);
         showDateOnClick(js);
 
+
+    }
+
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
 
     }
 
@@ -132,12 +153,21 @@ public class JinXiaoCunActivity extends AppCompatActivity {
     }
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
+        start_dateText = ks.getText().toString();
+        stop_dateText = js.getText().toString();
+        if(start_dateText.equals("")){
+            start_dateText = "1900/01/01";
+        }
+        if(stop_dateText.equals("")){
+            stop_dateText = "2100/12/31";
+        }
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -148,11 +178,7 @@ public class JinXiaoCunActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     yhJinXiaoCunService = new YhJinXiaoCunService();
-                    if (spDm_text.getText().toString().equals("") && ks.getText().toString().equals("") && js.getText().toString().equals("")) {
-                        list = yhJinXiaoCunService.getJxc(yhJinXiaoCunUser.getGongsi());
-                    } else {
-                        list = yhJinXiaoCunService.queryJxc(yhJinXiaoCunUser.getGongsi(), ks.getText().toString(), js.getText().toString(), spDm_text.getText().toString());
-                    }
+                    list = yhJinXiaoCunService.queryJxc(yhJinXiaoCunUser.getGongsi(), start_dateText, stop_dateText, spDm_text.getText().toString());
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {
@@ -175,7 +201,7 @@ public class JinXiaoCunActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(JinXiaoCunActivity.this, data, R.layout.jinxiaocun_row, new String[]{"spDm", "name", "leiBie", "jq_cpsl", "jq_price", "mx_ruku_cpsl", "mx_ruku_price", "mx_chuku_cpsl", "mx_chuku_price", "jc_sl", "jc_price"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.jq_cpsl, R.id.jq_price, R.id.mx_ruku_cpsl, R.id.mx_ruku_price, R.id.mx_chuku_cpsl, R.id.mx_chuku_price, R.id.jc_sl, R.id.jc_price}) {
+                adapter = new SimpleAdapter(JinXiaoCunActivity.this, data, R.layout.jinxiaocun_row, new String[]{"spDm", "name", "leiBie", "jq_cpsl", "jq_price", "mx_ruku_cpsl", "mx_ruku_price", "mx_chuku_cpsl", "mx_chuku_price", "jc_sl", "jc_price"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.jq_cpsl, R.id.jq_price, R.id.mx_ruku_cpsl, R.id.mx_ruku_price, R.id.mx_chuku_cpsl, R.id.mx_chuku_price, R.id.jc_sl, R.id.jc_price}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -185,6 +211,18 @@ public class JinXiaoCunActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(JinXiaoCunActivity.this, data, R.layout.jinxiaocun_row_block, new String[]{"spDm", "name", "leiBie", "jq_cpsl", "jq_price", "mx_ruku_cpsl", "mx_ruku_price", "mx_chuku_cpsl", "mx_chuku_price", "jc_sl", "jc_price"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.jq_cpsl, R.id.jq_price, R.id.mx_ruku_cpsl, R.id.mx_ruku_price, R.id.mx_chuku_cpsl, R.id.mx_chuku_price, R.id.jc_sl, R.id.jc_price}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

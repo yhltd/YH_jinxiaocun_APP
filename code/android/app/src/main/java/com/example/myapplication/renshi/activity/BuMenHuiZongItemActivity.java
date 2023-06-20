@@ -93,13 +93,13 @@ public class BuMenHuiZongItemActivity extends AppCompatActivity {
 
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         yuangong_nameText = yuangong_name.getText().toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                sel_button.setEnabled(true);
                 return true;
             }
         });

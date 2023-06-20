@@ -38,9 +38,11 @@ import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ZhangHaoGuanLiChangeActivity extends AppCompatActivity {
@@ -244,10 +246,10 @@ public class ZhangHaoGuanLiChangeActivity extends AppCompatActivity {
         }
 
         yhFinanceUserNow.setCompany(yhFinanceUser.getCompany());
-        LocalDate now = LocalDate.now();
+        Date now = new Date();
         System.out.println(now);
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyymmddhhmmss");
-        String bianhao = now.format(dateTimeFormatter);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String bianhao = sdf.format(now);
         yhFinanceUserNow.setBianhao(bianhao);
         yhFinanceQuanXian.setBianhao(bianhao);
         return true;

@@ -100,6 +100,13 @@ public class ZongjiaoActivity extends AppCompatActivity {
         start_dateText = start_date.getText().toString();
         end_dateText = end_date.getText().toString();
 
+        if(start_dateText.equals("")){
+            start_dateText = "1900-01-01";
+        }
+        if(end_dateText.equals("")){
+            end_dateText = "2100-12-31";
+        }
+
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -123,15 +130,15 @@ public class ZongjiaoActivity extends AppCompatActivity {
 
                 for (int i = 0; i < list.size(); i++) {
                     HashMap<String, Object> item = new HashMap<>();
-                    item.put("riqi", list.get(i).getRiqi());
-                    item.put("jiaoyie", list.get(i).getJiaoyie());
-                    item.put("yishuae", list.get(i).getYishuae());
-                    item.put("shouxufei", list.get(i).getShouxufei());
+                    item.put("riqi", list.get(i).getDate_time());
+                    item.put("jiaoyie", list.get(i).getRepayment());
+                    item.put("yishuae", list.get(i).getSwipe());
+                    item.put("shouxufei", list.get(i).getThe_total_fee());
                     item.put("profit", list.get(i).getProfit());
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(ZongjiaoActivity.this, data, R.layout.zongjiao_row, new String[]{"recipient","cardholder","drawee"}, new int[]{R.id.recipient,R.id.cardholder,R.id.drawee}) {
+                SimpleAdapter adapter = new SimpleAdapter(ZongjiaoActivity.this, data, R.layout.zongjiao_row, new String[]{"riqi","jiaoyie","yishuae","shouxufei","profit"}, new int[]{R.id.riqi,R.id.jiaoyie,R.id.yishuae,R.id.shouxufei,R.id.profit}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);

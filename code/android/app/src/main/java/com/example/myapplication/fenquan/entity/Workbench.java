@@ -2,6 +2,8 @@ package com.example.myapplication.fenquan.entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 public class Workbench {
     private int id;
     private String a;
@@ -106,8 +108,8 @@ public class Workbench {
     private String cv;
     private String 人员;
     private String 公司;
-    private String 日期;
-    private String a最后修改日期;
+    private Date 日期;
+    private Date a最后修改日期;
 
     public int getId() {
         return id;
@@ -933,19 +935,19 @@ public class Workbench {
         this.公司 = 公司;
     }
 
-    public String get日期() {
+    public Date get日期() {
         return 日期;
     }
 
-    public void set日期(String 日期) {
+    public void set日期(Date 日期) {
         this.日期 = 日期;
     }
 
-    public String getA最后修改日期() {
+    public Date getA最后修改日期() {
         return a最后修改日期;
     }
 
-    public void setA最后修改日期(String a最后修改日期) {
+    public void setA最后修改日期(Date a最后修改日期) {
         this.a最后修改日期 = a最后修改日期;
     }
 }

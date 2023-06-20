@@ -35,10 +35,14 @@ import com.example.myapplication.R;
 import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.fenquan.entity.Workbench;
 import com.example.myapplication.fenquan.service.WorkbenchService;
+import com.example.myapplication.finance.activity.VoucherSummaryChangeActivity;
 import com.example.myapplication.renshi.activity.BuMenHuiZongActivity;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -52,6 +56,14 @@ public class GongSiChartActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
     private Renyuan renyuan;
     private WorkbenchService workbenchService;
+
+    private Handler mHandler =  new Handler();
+    private Runnable mRunnable = new Runnable() {
+        public void run() {
+            //为了方便 查看，我们用Log打印出来
+            initList();
+        }
+    };
 
     private EditText start_date;
     private EditText stop_date;
@@ -96,8 +108,8 @@ public class GongSiChartActivity extends AppCompatActivity {
         MyApplication myApplication = (MyApplication) getApplication();
         renyuan = myApplication.getRenyuan();
 
-        initList();
         sel_button.setOnClickListener(selClick());
+        sel_button.callOnClick();
     }
 
     @Override
@@ -110,6 +122,7 @@ public class GongSiChartActivity extends AppCompatActivity {
     }
 
     private void initList() {
+
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         class_selectText = class_select.getSelectedItem().toString();
@@ -120,10 +133,17 @@ public class GongSiChartActivity extends AppCompatActivity {
         if(stop_dateText.equals("")){
             stop_dateText = "2100-12-31";
         }
+
+        if(start_dateText.compareTo(stop_dateText) > 0){
+            ToastUtil.show(GongSiChartActivity.this, "开始日期不能晚于结束日期");
+            return;
+        }
+        sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 barChart.refreshEchartsWithOption(EChartOptionUtil.getBarChartOptions(data1, data2));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -211,7 +231,19 @@ public class GongSiChartActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                String mon = "";
+                String day = "";
+                if(monthOfYear + 1 < 10){
+                    mon = "0" + (monthOfYear + 1);
+                }else{
+                    mon = "" + (monthOfYear + 1);
+                }
+                if(dayOfMonth < 10){
+                    day = "0" + dayOfMonth;
+                }else{
+                    day = "" + dayOfMonth;
+                }
+                editText.setText(year + "-" + mon + "-" + day);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
@@ -221,7 +253,7 @@ public class GongSiChartActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initList();
+                mHandler.post(mRunnable);
             }
         };
     }
@@ -234,6 +266,14 @@ public class GongSiChartActivity extends AppCompatActivity {
                 initList();
             }
         }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        //将线程销毁掉
+        mHandler.removeCallbacks(mRunnable);
+        super.onDestroy();
     }
 
 

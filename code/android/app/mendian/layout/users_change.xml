@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="20dp"
-                android:text="消费额度门槛" />
+                android:text="姓名" />
 
             <EditText
                 android:id="@+id/uname"

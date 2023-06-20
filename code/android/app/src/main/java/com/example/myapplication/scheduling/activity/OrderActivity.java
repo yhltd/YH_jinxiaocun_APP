@@ -1,5 +1,6 @@
 package com.example.myapplication.scheduling.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -49,6 +51,12 @@ public class OrderActivity extends AppCompatActivity {
     private EditText order_id_text;
 
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private Button sel_button;
 
     List<OrderInfo> list;
@@ -69,6 +77,10 @@ public class OrderActivity extends AppCompatActivity {
         department = myApplication.getPcDepartment();
 
         listView = findViewById(R.id.order_list);
+
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
+
         product_name_text = findViewById(R.id.product_name_text);
         order_id_text = findViewById(R.id.order_id_text);
 
@@ -87,18 +99,31 @@ public class OrderActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     public void gotoChart(View v) {
         Intent intent = new Intent(OrderActivity.this, OrderChartActivity.class);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
     }
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -127,7 +152,7 @@ public class OrderActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(OrderActivity.this, data, R.layout.order_row, new String[]{"order_id", "code", "product_name", "norms", "set_date", "set_num", "is_complete"}, new int[]{R.id.order_id, R.id.code, R.id.product_name, R.id.norms, R.id.set_date, R.id.set_num, R.id.is_complete}) {
+                adapter = new SimpleAdapter(OrderActivity.this, data, R.layout.order_row, new String[]{"order_id", "code", "product_name", "norms", "set_date", "set_num", "is_complete"}, new int[]{R.id.order_id, R.id.code, R.id.product_name, R.id.norms, R.id.set_date, R.id.set_num, R.id.is_complete}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -138,6 +163,19 @@ public class OrderActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(OrderActivity.this, data, R.layout.order_row_block, new String[]{"order_id", "code", "product_name", "norms", "set_date", "set_num", "is_complete"}, new int[]{R.id.order_id, R.id.code, R.id.product_name, R.id.norms, R.id.set_date, R.id.set_num, R.id.is_complete}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

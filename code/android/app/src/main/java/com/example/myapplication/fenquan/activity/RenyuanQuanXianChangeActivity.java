@@ -27,6 +27,7 @@ import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.fenquan.service.Copy1Service;
 import com.example.myapplication.fenquan.service.DepartmentService;
 import com.example.myapplication.fenquan.service.RenyuanService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -499,7 +500,6 @@ public class RenyuanQuanXianChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -646,6 +646,12 @@ public class RenyuanQuanXianChangeActivity extends AppCompatActivity {
             }
         }
         return 0;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LoadingDialog.getInstance(getApplicationContext()).dismiss();
     }
 
 }

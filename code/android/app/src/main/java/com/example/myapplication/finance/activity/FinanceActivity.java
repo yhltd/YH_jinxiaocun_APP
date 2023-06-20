@@ -73,7 +73,7 @@ public class FinanceActivity extends AppCompatActivity {
         banner.start();
 
         init();
-
+        systeminit();
         LinearLayout bumenshezhi = findViewById(R.id.bumenshezhi);
         bumenshezhi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -360,11 +360,9 @@ public class FinanceActivity extends AppCompatActivity {
     }
 
     private void init() {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -397,7 +395,6 @@ public class FinanceActivity extends AppCompatActivity {
     }
 
     private void systeminit() {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -407,7 +404,6 @@ public class FinanceActivity extends AppCompatActivity {
                 }else if(list2.size() > 0){
                     marqueeTextView.setText(list2.get(0).getText());
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

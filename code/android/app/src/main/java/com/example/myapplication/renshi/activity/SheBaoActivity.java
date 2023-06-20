@@ -1,5 +1,6 @@
 package com.example.myapplication.renshi.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -38,6 +40,10 @@ public class SheBaoActivity extends AppCompatActivity {
     private YhRenShiUser yhRenShiUser;
     private YhRenShiGongZiMingXiService yhRenShiGongZiMingXiService;
     private ListView listView;
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
     private Spinner bumen_select;
     private String bumen_selectText;
     private Button sel_button;
@@ -58,6 +64,8 @@ public class SheBaoActivity extends AppCompatActivity {
 
         //初始化控件
         listView = findViewById(R.id.shebao_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         bumen_select = findViewById(R.id.bumen_select);
 
         sel_button = findViewById(R.id.sel_button);
@@ -85,6 +93,18 @@ public class SheBaoActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
     }
 
     public void init_select() {
@@ -126,13 +146,14 @@ public class SheBaoActivity extends AppCompatActivity {
 
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         bumen_selectText = bumen_select.getSelectedItem().toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -165,7 +186,7 @@ public class SheBaoActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(SheBaoActivity.this, data, R.layout.shebao_row, new String[]{"C","D","E","F","G","H","I","J","K","L","M"}, new int[]{R.id.C, R.id.D, R.id.E, R.id.F, R.id.G, R.id.H, R.id.I, R.id.J, R.id.K, R.id.L, R.id.M}) {
+                adapter = new SimpleAdapter(SheBaoActivity.this, data, R.layout.shebao_row, new String[]{"C","D","E","F","G","H","I","J","K","L","M"}, new int[]{R.id.C, R.id.D, R.id.E, R.id.F, R.id.G, R.id.H, R.id.I, R.id.J, R.id.K, R.id.L, R.id.M}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -174,6 +195,17 @@ public class SheBaoActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(SheBaoActivity.this, data, R.layout.shebao_row_block, new String[]{"C","D","E","F","G","H","I","J","K","L","M"}, new int[]{R.id.C, R.id.D, R.id.E, R.id.F, R.id.G, R.id.H, R.id.I, R.id.J, R.id.K, R.id.L, R.id.M}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

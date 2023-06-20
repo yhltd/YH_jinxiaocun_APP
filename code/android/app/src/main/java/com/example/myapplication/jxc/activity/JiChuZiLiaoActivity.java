@@ -1,5 +1,6 @@
 package com.example.myapplication.jxc.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -56,7 +58,12 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
     private YhJinXiaoCunJiChuZiLiaoService yhJinXiaoCunJiChuZiLiaoService;
     private EditText cpname_text;
     private ListView listView;
+    private ListView listView_block;
     private Button sel_button;
+
+    private HorizontalScrollView jichuziliao_list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
 
     List<YhJinXiaoCunJiChuZiLiao> list;
 
@@ -74,6 +81,8 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
 
         cpname_text = findViewById(R.id.cpname_text);
         listView = findViewById(R.id.jichuziliao_list);
+        listView_block = findViewById(R.id.jichuziliao_list_block);
+        jichuziliao_list_table = findViewById(R.id.jichuziliao_list_table);
         sel_button = findViewById(R.id.sel_button);
 
         MyApplication myApplication = (MyApplication) getApplication();
@@ -81,6 +90,19 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
 
         initList();
         sel_button.setOnClickListener(selClick());
+    }
+
+
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            jichuziliao_list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            jichuziliao_list_table.setVisibility(8);
+        }
+
     }
 
     @Override
@@ -93,11 +115,10 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
     }
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                SimpleAdapter adapter = StringUtils.cast(msg.obj);
                 adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
                     public boolean setViewValue(View view, Object data,
                                                 String textRepresentation) {
@@ -109,8 +130,21 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                         return false;
                     }
                 });
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+
+                adapter_block.setViewBinder(new SimpleAdapter.ViewBinder() {
+                    public boolean setViewValue(View view, Object data,
+                                                String textRepresentation) {
+                        if (view instanceof ImageView && data instanceof Bitmap) {
+                            ImageView image = (ImageView) view;
+                            image.setImageBitmap((Bitmap) data);
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -126,9 +160,13 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
-                        byte[] decodedString = Base64.decode(list.get(i).getMark1(), Base64.DEFAULT);
-                        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                        item.put("mark1", decodedByte);
+                        if(list.get(i).getMark1() == null){
+                            item.put("mark1", "");
+                        }else{
+                            byte[] decodedString = Base64.decode(list.get(i).getMark1(), Base64.DEFAULT);
+                            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                            item.put("mark1", decodedByte);
+                        }
                         item.put("spDm", list.get(i).getSpDm());
                         item.put("name", list.get(i).getName());
                         item.put("leiBie", list.get(i).getLeiBie());
@@ -141,7 +179,7 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row, new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"}, new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
+                adapter = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row, new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"}, new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -152,6 +190,19 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row_block, new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"}, new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);
@@ -167,7 +218,31 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                 Handler listLoadHandler = new Handler(new Handler.Callback() {
                     @Override
                     public boolean handleMessage(@NonNull Message msg) {
-                        listView.setAdapter(StringUtils.cast(msg.obj));
+                        adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
+                            public boolean setViewValue(View view, Object data,
+                                                        String textRepresentation) {
+                                if (view instanceof ImageView && data instanceof Bitmap) {
+                                    ImageView image = (ImageView) view;
+                                    image.setImageBitmap((Bitmap) data);
+                                    return true;
+                                }
+                                return false;
+                            }
+                        });
+                        listView.setAdapter(StringUtils.cast(adapter));
+
+                        adapter_block.setViewBinder(new SimpleAdapter.ViewBinder() {
+                            public boolean setViewValue(View view, Object data,
+                                                        String textRepresentation) {
+                                if (view instanceof ImageView && data instanceof Bitmap) {
+                                    ImageView image = (ImageView) view;
+                                    image.setImageBitmap((Bitmap) data);
+                                    return true;
+                                }
+                                return false;
+                            }
+                        });
+                        listView_block.setAdapter(StringUtils.cast(adapter_block));
                         return true;
                     }
                 });
@@ -183,6 +258,13 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
 
                             for (int i = 0; i < list.size(); i++) {
                                 HashMap<String, Object> item = new HashMap<>();
+                                if(list.get(i).getMark1() == null){
+                                    item.put("mark1", "");
+                                }else{
+                                    byte[] decodedString = Base64.decode(list.get(i).getMark1(), Base64.DEFAULT);
+                                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                                    item.put("mark1", decodedByte);
+                                }
                                 item.put("spDm", list.get(i).getSpDm());
                                 item.put("name", list.get(i).getName());
                                 item.put("leiBie", list.get(i).getLeiBie());
@@ -195,7 +277,7 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        SimpleAdapter adapter = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row, new String[]{"spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
+                        adapter = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row, new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"}, new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
                             @Override
                             public View getView(int position, View convertView, ViewGroup parent) {
                                 final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -203,7 +285,18 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                                 linearLayout.setOnLongClickListener(onItemLongClick());
                                 linearLayout.setOnClickListener(updateClick());
                                 linearLayout.setTag(position);
+                                return view;
+                            }
+                        };
 
+                        adapter_block = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row_block, new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"}, new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
+                            @Override
+                            public View getView(int position, View convertView, ViewGroup parent) {
+                                final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                                LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                                linearLayout.setOnLongClickListener(onItemLongClick());
+                                linearLayout.setOnClickListener(updateClick());
+                                linearLayout.setTag(position);
                                 return view;
                             }
                         };

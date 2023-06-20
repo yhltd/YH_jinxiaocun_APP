@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.fenquan.activity.GongZuoTaiActivity;
 import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
 import com.example.myapplication.renshi.entity.YhRenShiShengRiTiXing;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
@@ -100,7 +101,7 @@ public class ShengRiTiXingActivity extends AppCompatActivity {
 
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         this_dateText = this_date.getText().toString();
         if(this_dateText.equals("")){
             Calendar now = Calendar.getInstance();
@@ -122,7 +123,7 @@ public class ShengRiTiXingActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -364,7 +365,19 @@ public class ShengRiTiXingActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                editText.setText(year + "-" + (monthOfYear + 1));
+                String mon = "";
+                String day = "";
+                if(monthOfYear + 1 < 10){
+                    mon = "0" + (monthOfYear + 1);
+                }else{
+                    mon = "" + (monthOfYear + 1);
+                }
+                if(dayOfMonth < 10){
+                    day = "0" + dayOfMonth;
+                }else{
+                    day = "" + dayOfMonth;
+                }
+                editText.setText(year + "-" + mon + "-" + day);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

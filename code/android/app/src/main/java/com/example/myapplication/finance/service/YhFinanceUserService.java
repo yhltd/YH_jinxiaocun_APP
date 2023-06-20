@@ -53,9 +53,9 @@ public class YhFinanceUserService {
      * 修改
      */
     public boolean update(YhFinanceUser YhFinanceUser) {
-        String sql = "update Account set name=?,pwd=?,[do]=?,bianhao=?,company=? where id=? ";
+        String sql = "update Account set name=?,pwd=?,[do]=?,company=? where id=? ";
         base = new financeBaseDao();
-        boolean result = base.execute(sql, YhFinanceUser.getName(), YhFinanceUser.getPwd(),YhFinanceUser.getDoo(),YhFinanceUser.getBianhao(),YhFinanceUser.getCompany());
+        boolean result = base.execute(sql, YhFinanceUser.getName(), YhFinanceUser.getPwd(),YhFinanceUser.getDoo(),YhFinanceUser.getCompany(),YhFinanceUser.getId());
         return result;
     }
 

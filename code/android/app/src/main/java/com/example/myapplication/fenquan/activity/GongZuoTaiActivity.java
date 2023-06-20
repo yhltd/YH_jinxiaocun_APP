@@ -1,5 +1,7 @@
 package com.example.myapplication.fenquan.activity;
 
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -7,11 +9,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -30,11 +35,14 @@ import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.fenquan.entity.Workbench;
 import com.example.myapplication.fenquan.service.Copy1Service;
 import com.example.myapplication.fenquan.service.WorkbenchService;
+import com.example.myapplication.utils.ExcelUtil;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -47,7 +55,14 @@ public class GongZuoTaiActivity extends AppCompatActivity {
     private EditText start_date;
     private EditText stop_date;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private Button sel_button;
+    private Button export_button;
 
     private String start_dateText;
     private String stop_dateText;
@@ -69,14 +84,22 @@ public class GongZuoTaiActivity extends AppCompatActivity {
 
         start_date = findViewById(R.id.start_date);
         stop_date = findViewById(R.id.stop_date);
+        showDateOnClick(start_date);
+        showDateOnClick(stop_date);
         listView = findViewById(R.id.list);
+
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
+
         sel_button = findViewById(R.id.sel_button);
+        export_button = findViewById(R.id.export_button);
 
         MyApplication myApplication = (MyApplication) getApplication();
         renyuan = myApplication.getRenyuan();
 
         initList();
         sel_button.setOnClickListener(selClick());
+        export_button.setOnClickListener(exportClick());
     }
 
     @Override
@@ -88,7 +111,20 @@ public class GongZuoTaiActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     private void initList() {
+
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         if(start_dateText.equals("")){
@@ -97,10 +133,19 @@ public class GongZuoTaiActivity extends AppCompatActivity {
         if(stop_dateText.equals("")){
             stop_dateText = "2100-12-31";
         }
+
+        if(start_dateText.compareTo(stop_dateText) > 0){
+            ToastUtil.show(GongZuoTaiActivity.this, "开始日期不能晚于结束日期");
+            return;
+        }
+
+        sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -116,9 +161,12 @@ public class GongZuoTaiActivity extends AppCompatActivity {
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
                         item.put("renyuan", list.get(i).get人员());
-                        item.put("riqi", list.get(i).get日期());
-                        item.put("lastriqi", list.get(i).getA最后修改日期());
+                        item.put("riqi", sdf.format(list.get(i).get日期()));
+                        item.put("lastriqi", sdf.format(list.get(i).getA最后修改日期()));
                         item.put("A", list.get(i).getA());
                         item.put("B", list.get(i).getB());
                         item.put("C", list.get(i).getC());
@@ -228,7 +276,7 @@ public class GongZuoTaiActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(GongZuoTaiActivity.this, data, R.layout.gongzuotai_row, new String[]{"renyuan", "riqi","lastriqi","A","B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "RR", "S", "T", "U", "V", "W", "X", "Y", "Z","AA","AB" ,"AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "ASS", "AT", "AU", "AV", "AW", "AX", "AY", "AZ","BA","BB","BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BK", "BL", "BM", "BN", "BO", "BP", "BQ", "BR", "BS", "BT", "BU", "BV", "BW", "BX", "BYY", "BZ" ,"CA","CB", "CC", "CD", "CE", "CF", "CG", "CH", "CI", "CJ", "CK", "CL", "CM", "CN", "CO", "CP", "CQ", "CR", "CS", "CT", "CU", "CV"}, new int[]{R.id.renyuan, R.id.riqi, R.id.lastriqi, R.id.A, R.id.B, R.id.C, R.id.D, R.id.E, R.id.F, R.id.G, R.id.H, R.id.I, R.id.J, R.id.K, R.id.L, R.id.M, R.id.N, R.id.O, R.id.P, R.id.Q, R.id.RR, R.id.S, R.id.T, R.id.U, R.id.V, R.id.W, R.id.X, R.id.Y, R.id.Z, R.id.AA, R.id.AB, R.id.AC, R.id.AD, R.id.AE, R.id.AF, R.id.AG, R.id.AH, R.id.AI, R.id.AJ, R.id.AK, R.id.AL, R.id.AM, R.id.AN, R.id.AO, R.id.AP, R.id.AQ, R.id.AR, R.id.ASS, R.id.AT, R.id.AU, R.id.AV, R.id.AW, R.id.AX, R.id.AY, R.id.AZ, R.id.BA, R.id.BB, R.id.BC, R.id.BD, R.id.BE, R.id.BF, R.id.BG, R.id.BH, R.id.BI, R.id.BJ, R.id.BK, R.id.BL, R.id.BM, R.id.BN, R.id.BO, R.id.BP, R.id.BQ, R.id.BR, R.id.BS, R.id.BT, R.id.BU, R.id.BV, R.id.BW, R.id.BX, R.id.BYY, R.id.BZ, R.id.CA, R.id.CB, R.id.CC, R.id.CD, R.id.CE, R.id.CF, R.id.CG, R.id.CH, R.id.CI, R.id.CJ, R.id.CK, R.id.CL, R.id.CM, R.id.CN, R.id.CO, R.id.CP, R.id.CQ, R.id.CR, R.id.CS, R.id.CT, R.id.CU, R.id.CV}) {
+                adapter = new SimpleAdapter(GongZuoTaiActivity.this, data, R.layout.gongzuotai_row, new String[]{"renyuan", "riqi","lastriqi","A","B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "RR", "S", "T", "U", "V", "W", "X", "Y", "Z","AA","AB" ,"AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "ASS", "AT", "AU", "AV", "AW", "AX", "AY", "AZ","BA","BB","BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BK", "BL", "BM", "BN", "BO", "BP", "BQ", "BR", "BS", "BT", "BU", "BV", "BW", "BX", "BYY", "BZ" ,"CA","CB", "CC", "CD", "CE", "CF", "CG", "CH", "CI", "CJ", "CK", "CL", "CM", "CN", "CO", "CP", "CQ", "CR", "CS", "CT", "CU", "CV"}, new int[]{R.id.renyuan, R.id.riqi, R.id.lastriqi, R.id.A, R.id.B, R.id.C, R.id.D, R.id.E, R.id.F, R.id.G, R.id.H, R.id.I, R.id.J, R.id.K, R.id.L, R.id.M, R.id.N, R.id.O, R.id.P, R.id.Q, R.id.RR, R.id.S, R.id.T, R.id.U, R.id.V, R.id.W, R.id.X, R.id.Y, R.id.Z, R.id.AA, R.id.AB, R.id.AC, R.id.AD, R.id.AE, R.id.AF, R.id.AG, R.id.AH, R.id.AI, R.id.AJ, R.id.AK, R.id.AL, R.id.AM, R.id.AN, R.id.AO, R.id.AP, R.id.AQ, R.id.AR, R.id.ASS, R.id.AT, R.id.AU, R.id.AV, R.id.AW, R.id.AX, R.id.AY, R.id.AZ, R.id.BA, R.id.BB, R.id.BC, R.id.BD, R.id.BE, R.id.BF, R.id.BG, R.id.BH, R.id.BI, R.id.BJ, R.id.BK, R.id.BL, R.id.BM, R.id.BN, R.id.BO, R.id.BP, R.id.BQ, R.id.BR, R.id.BS, R.id.BT, R.id.BU, R.id.BV, R.id.BW, R.id.BX, R.id.BYY, R.id.BZ, R.id.CA, R.id.CB, R.id.CC, R.id.CD, R.id.CE, R.id.CF, R.id.CG, R.id.CH, R.id.CI, R.id.CJ, R.id.CK, R.id.CL, R.id.CM, R.id.CN, R.id.CO, R.id.CP, R.id.CQ, R.id.CR, R.id.CS, R.id.CT, R.id.CU, R.id.CV}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -239,6 +287,19 @@ public class GongZuoTaiActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(GongZuoTaiActivity.this, data, R.layout.gongzuotai_row_block, new String[]{"renyuan", "riqi","lastriqi","A","B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "RR", "S", "T", "U", "V", "W", "X", "Y", "Z","AA","AB" ,"AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "ASS", "AT", "AU", "AV", "AW", "AX", "AY", "AZ","BA","BB","BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BK", "BL", "BM", "BN", "BO", "BP", "BQ", "BR", "BS", "BT", "BU", "BV", "BW", "BX", "BYY", "BZ" ,"CA","CB", "CC", "CD", "CE", "CF", "CG", "CH", "CI", "CJ", "CK", "CL", "CM", "CN", "CO", "CP", "CQ", "CR", "CS", "CT", "CU", "CV"}, new int[]{R.id.renyuan, R.id.riqi, R.id.lastriqi, R.id.A, R.id.B, R.id.C, R.id.D, R.id.E, R.id.F, R.id.G, R.id.H, R.id.I, R.id.J, R.id.K, R.id.L, R.id.M, R.id.N, R.id.O, R.id.P, R.id.Q, R.id.RR, R.id.S, R.id.T, R.id.U, R.id.V, R.id.W, R.id.X, R.id.Y, R.id.Z, R.id.AA, R.id.AB, R.id.AC, R.id.AD, R.id.AE, R.id.AF, R.id.AG, R.id.AH, R.id.AI, R.id.AJ, R.id.AK, R.id.AL, R.id.AM, R.id.AN, R.id.AO, R.id.AP, R.id.AQ, R.id.AR, R.id.ASS, R.id.AT, R.id.AU, R.id.AV, R.id.AW, R.id.AX, R.id.AY, R.id.AZ, R.id.BA, R.id.BB, R.id.BC, R.id.BD, R.id.BE, R.id.BF, R.id.BG, R.id.BH, R.id.BI, R.id.BJ, R.id.BK, R.id.BL, R.id.BM, R.id.BN, R.id.BO, R.id.BP, R.id.BQ, R.id.BR, R.id.BS, R.id.BT, R.id.BU, R.id.BV, R.id.BW, R.id.BX, R.id.BYY, R.id.BZ, R.id.CA, R.id.CB, R.id.CC, R.id.CD, R.id.CE, R.id.CF, R.id.CG, R.id.CH, R.id.CI, R.id.CJ, R.id.CK, R.id.CL, R.id.CM, R.id.CN, R.id.CO, R.id.CP, R.id.CQ, R.id.CR, R.id.CS, R.id.CT, R.id.CU, R.id.CV}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);
@@ -269,6 +330,18 @@ public class GongZuoTaiActivity extends AppCompatActivity {
         };
     }
 
+    public View.OnClickListener exportClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] title = {"人员", "添加日期", "最后修改日期", "A", "B", "C", "D", "E", "F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "AA", "AB", "AC", "AD", "AE", "AF","AG","AH","AI","AJ","AK","AL","AM","AN","AO","AP","AQ","AR","AS","AT","AU","AV","AW","AX","AY","AZ", "BA", "BB", "BC", "BD", "BE", "BF","BG","BH","BI","BJ","BK","BL","BM","BN","BO","BP","BQ","BR","BS","BT","BU","BV","BW","BX","BY","BZ", "CA", "CB", "CC", "CD", "CE", "CF","CG","CH","CI","CJ","CK","CL","CM","CN","CO","CP","CQ","CR","CS","CT","CU","CV"};
+                String fileName = "工作台" + System.currentTimeMillis() + ".xls";
+                ExcelUtil.initExcel(fileName, "工作台", title);
+                ExcelUtil.gongzuotaiToExcel(list, fileName, MyApplication.getContext());
+            }
+        };
+    }
+
     public void onInsertClick(View v) {
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
@@ -293,8 +366,8 @@ public class GongZuoTaiActivity extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
                 Date date = new Date();
                 String this_year = sdf.format(date);
-                workbench.set日期(this_year);
-                workbench.setA最后修改日期(this_year);
+                workbench.set日期(date);
+                workbench.setA最后修改日期(date);
                 workbench.set公司(renyuan.getB());
                 msg.obj = workbenchService.insert(workbench);
                 saveHandler.sendMessage(msg);
@@ -348,6 +421,53 @@ public class GongZuoTaiActivity extends AppCompatActivity {
         };
     }
 
+    @SuppressLint("ClickableViewAccessibility")
+    protected void showDateOnClick(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    showDatePickDlg(editText);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    showDatePickDlg(editText);
+                }
+
+            }
+        });
+    }
+
+    protected void showDatePickDlg(final EditText editText) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(GongZuoTaiActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                String mon = "";
+                String day = "";
+                if(monthOfYear + 1 < 10){
+                    mon = "0" + (monthOfYear + 1);
+                }else{
+                    mon = "" + (monthOfYear + 1);
+                }
+                if(dayOfMonth < 10){
+                    day = "0" + dayOfMonth;
+                }else{
+                    day = "" + dayOfMonth;
+                }
+                editText.setText(year + "-" + mon + "-" + day);
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -356,6 +476,12 @@ public class GongZuoTaiActivity extends AppCompatActivity {
                 initList();
             }
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LoadingDialog.getInstance(getApplicationContext()).dismiss();
     }
 
 

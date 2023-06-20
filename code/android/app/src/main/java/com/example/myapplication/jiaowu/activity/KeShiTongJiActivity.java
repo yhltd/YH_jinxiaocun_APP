@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -25,12 +26,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.fenquan.activity.GongZuoTaiActivity;
 import com.example.myapplication.jiaowu.entity.KeShiDetail;
 import com.example.myapplication.jiaowu.entity.Quanxian;
 import com.example.myapplication.jiaowu.entity.Student;
 import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.KeShiDetailService;
 import com.example.myapplication.jiaowu.service.StudentService;
+import com.example.myapplication.utils.ExcelUtil;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -46,6 +50,10 @@ public class KeShiTongJiActivity extends AppCompatActivity {
     private Teacher teacher;
     private KeShiDetailService keShiDetailService;
     private ListView listView;
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
     private EditText start_date;
     private EditText stop_date;
     private EditText teacher_name;
@@ -55,6 +63,7 @@ public class KeShiTongJiActivity extends AppCompatActivity {
     private String teacher_nameText;
     private String class_nameText;
     private Button sel_button;
+    private Button export_button;
     List<KeShiDetail> list;
     private Quanxian quanxian;
 
@@ -71,7 +80,8 @@ public class KeShiTongJiActivity extends AppCompatActivity {
 
         //初始化控件
         listView = findViewById(R.id.keshitongji_list);
-
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         start_date = findViewById(R.id.start_date);
         stop_date = findViewById(R.id.stop_date);
         showDateOnClick(start_date);
@@ -82,6 +92,9 @@ public class KeShiTongJiActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+
+        export_button = findViewById(R.id.export_button);
+        export_button.setOnClickListener(exportClick());
 
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
@@ -98,6 +111,18 @@ public class KeShiTongJiActivity extends AppCompatActivity {
         };
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -109,6 +134,7 @@ public class KeShiTongJiActivity extends AppCompatActivity {
 
 
     private void initList() {
+
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         teacher_nameText = teacher_name.getText().toString();
@@ -119,10 +145,18 @@ public class KeShiTongJiActivity extends AppCompatActivity {
         if(stop_dateText.equals("")){
             stop_dateText = "2100-12-31";
         }
+
+        if(start_dateText.compareTo(stop_dateText) > 0){
+            ToastUtil.show(KeShiTongJiActivity.this, "开始日期不能晚于结束日期");
+            return;
+        }
+        sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -150,7 +184,7 @@ public class KeShiTongJiActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(KeShiTongJiActivity.this, data, R.layout.jiaowu_keshitongji_row, new String[]{"riqi","student_name","course","keshi","teacher_name","jine"}, new int[]{R.id.riqi, R.id.student_name, R.id.course, R.id.keshi, R.id.teacher_name, R.id.jine}) {
+                adapter = new SimpleAdapter(KeShiTongJiActivity.this, data, R.layout.jiaowu_keshitongji_row, new String[]{"riqi","student_name","course","keshi","teacher_name","jine"}, new int[]{R.id.riqi, R.id.student_name, R.id.course, R.id.keshi, R.id.teacher_name, R.id.jine}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -161,6 +195,19 @@ public class KeShiTongJiActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(KeShiTongJiActivity.this, data, R.layout.jiaowu_keshitongji_row_block, new String[]{"riqi","student_name","course","keshi","teacher_name","jine"}, new int[]{R.id.riqi, R.id.student_name, R.id.course, R.id.keshi, R.id.teacher_name, R.id.jine}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);
@@ -177,6 +224,18 @@ public class KeShiTongJiActivity extends AppCompatActivity {
         Intent intent = new Intent(KeShiTongJiActivity.this, KeShiTongJiChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
+    }
+
+    public View.OnClickListener exportClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] title = {"日期", "学生姓名", "培训课程", "课时", "每节课时金额"};
+                String fileName = "课时统计" + System.currentTimeMillis() + ".xls";
+                ExcelUtil.initExcel(fileName, "课时统计", title);
+                ExcelUtil.jiaowu_keshitongjiToExcel(list, fileName, MyApplication.getContext());
+            }
+        };
     }
 
     public View.OnClickListener updateClick() {
@@ -276,7 +335,19 @@ public class KeShiTongJiActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                String mon = "";
+                String day = "";
+                if(monthOfYear + 1 < 10){
+                    mon = "0" + (monthOfYear + 1);
+                }else{
+                    mon = "" + (monthOfYear + 1);
+                }
+                if(dayOfMonth < 10){
+                    day = "0" + dayOfMonth;
+                }else{
+                    day = "" + dayOfMonth;
+                }
+                editText.setText(year + "-" + mon + "-" + day);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

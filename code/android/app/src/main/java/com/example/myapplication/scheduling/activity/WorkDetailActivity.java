@@ -106,12 +106,10 @@ public class WorkDetailActivity extends AppCompatActivity {
     }
 
     private void initList(String type) {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

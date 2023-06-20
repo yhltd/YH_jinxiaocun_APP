@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".jiaowu.activity.TeacherSalActivity"
+    android:weightSum="100"
+    tools:context=".jiaowu.activity.TeacherCurriculumActivity"
     android:background="@color/WhiteSmoke">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:background="@drawable/shape_corner_sel"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="7dp"
@@ -18,38 +20,19 @@
         android:gravity="center_vertical">
 
         <EditText
-            android:id="@+id/startdate"
+            android:id="@+id/teacher"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint="起始时间"
+            android:hint="教师"
             android:background="@null"/>
 
         <EditText
-            android:id="@+id/enddate"
+            android:id="@+id/course"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint="结束时间"
-            android:background="@null"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/shape_corner_sel"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp"
-        android:gravity="center_vertical">
-
-        <EditText
-            android:id="@+id/teacher_name"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:hint="教师姓名"
+            android:hint="课程"
             android:background="@null"/>
 
         <Button
@@ -63,8 +46,11 @@
     </LinearLayout>
 
     <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="530dp"
+        android:id="@+id/list_table"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="85"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp">
@@ -87,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="100dp"
-                    android:text="教师姓名"
+                    android:text="教师"
                     android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -102,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="100dp"
-                    android:text="课程名称"
+                    android:text="课程"
                     android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -117,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="100dp"
-                    android:text="上课课时"
+                    android:text="日期"
                     android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -132,22 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="100dp"
-                    android:text="每节金额"
-                    android:textColor="@color/title_text"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2" />
-
-                <TextView
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:width="100dp"
-                    android:text="工资核算"
+                    android:text="星期"
                     android:textColor="@color/title_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -161,7 +132,7 @@
             </LinearLayout>
 
             <ListView
-                android:id="@+id/teachersal_list"
+                android:id="@+id/teachercurriculum_list"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -171,5 +142,74 @@
         </LinearLayout>
 
     </HorizontalScrollView>
+
+    <ListView
+        android:id="@+id/list_block"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="85"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:divider="@null"
+        android:paddingBottom="5dp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/chear_btn"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="switchClick"
+            android:text="切换列表"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/biji_insert"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="onInsertClick"
+            android:text="添加"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/jczl_insert"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="end"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:onClick="onInsertClick"-->
+<!--        android:src="@drawable/insert"-->
+<!--        app:backgroundTint="@color/primary"-->
+<!--        app:backgroundTintMode="add"-->
+<!--        app:pressedTranslationZ="10dp"-->
+<!--        app:tint="@color/white" />-->
 
 </LinearLayout>

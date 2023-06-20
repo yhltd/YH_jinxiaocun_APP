@@ -208,7 +208,7 @@ public class WorkChartActivity extends AppCompatActivity {
     }
 
     private void initList(String type) {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
 
@@ -225,7 +225,7 @@ public class WorkChartActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 barChart.refreshEchartsWithOption(EChartOptionUtil.getBarChartOptions(data1, data2));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                sel_button.setEnabled(true);
                 return true;
             }
         });

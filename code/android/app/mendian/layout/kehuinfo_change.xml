@@ -140,7 +140,7 @@
                 android:layout_marginEnd="50dp"
                 android:gravity="center"
                 android:hint="请输入总金额"
-                android:inputType="text"
+                android:inputType="number"
                 android:textIsSelectable="false" />
 
             <TextView
@@ -158,7 +158,7 @@
                 android:layout_marginEnd="50dp"
                 android:gravity="center"
                 android:hint="请输入应还款"
-                android:inputType="text"
+                android:inputType="number"
                 android:textIsSelectable="false" />
 
             <TextView
@@ -176,7 +176,7 @@
                 android:layout_marginEnd="50dp"
                 android:gravity="center"
                 android:hint="请输入剩余额"
-                android:inputType="text"
+                android:inputType="number"
                 android:textIsSelectable="false" />
 
             <TextView
@@ -194,7 +194,7 @@
                 android:layout_marginEnd="50dp"
                 android:gravity="center"
                 android:hint="请输入借款额"
-                android:inputType="text"
+                android:inputType="number"
                 android:textIsSelectable="false" />
 
             <TextView
@@ -212,7 +212,7 @@
                 android:layout_marginEnd="50dp"
                 android:gravity="center"
                 android:hint="请输入手续费"
-                android:inputType="text"
+                android:inputType="number"
                 android:textIsSelectable="false" />
 
             <TextView
@@ -230,7 +230,7 @@
                 android:layout_marginEnd="50dp"
                 android:gravity="center"
                 android:hint="请输入电话"
-                android:inputType="text"
+                android:inputType="number"
                 android:textIsSelectable="false" />
 
             <TextView

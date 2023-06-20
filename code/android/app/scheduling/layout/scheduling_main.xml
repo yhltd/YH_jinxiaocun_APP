@@ -9,6 +9,7 @@
     android:background="@color/WhiteSmoke">
 
     <com.example.myapplication.utils.MarqueeTextView
+        android:id="@+id/marquee"
         android:layout_marginTop="7dp"
         app:layout_widthPercent="100%"
         app:layout_heightPercent="5%"

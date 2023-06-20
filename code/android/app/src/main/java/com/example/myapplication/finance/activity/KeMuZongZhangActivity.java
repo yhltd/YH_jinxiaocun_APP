@@ -1,5 +1,6 @@
 package com.example.myapplication.finance.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -52,6 +54,12 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
 
     private EditText code_text;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private Spinner type_select;
     private String type_selectText;
     private Button sel_button;
@@ -79,6 +87,8 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
         //初始化控件
         code_text = findViewById(R.id.code_text);
         listView = findViewById(R.id.kemuzongzhang_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
 
@@ -99,6 +109,18 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     private class typeSelectSelectedListener implements AdapterView.OnItemSelectedListener {
 
         @Override
@@ -108,7 +130,8 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
             Handler listLoadHandler = new Handler(new Handler.Callback() {
                 @Override
                 public boolean handleMessage(@NonNull Message msg) {
-                    listView.setAdapter(StringUtils.cast(msg.obj));
+                    listView.setAdapter(StringUtils.cast(adapter));
+                    listView_block.setAdapter(StringUtils.cast(adapter_block));
                     return true;
                 }
             });
@@ -195,7 +218,7 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
                         data.add(item);
                     }
 
-                    SimpleAdapter adapter = new SimpleAdapter(KeMuZongZhangActivity.this, data, R.layout.kemuzongzhang_row, new String[]{"code","name","grade","name1","direction_text","money","mingxi","load","borrowed"}, new int[]{R.id.code,R.id.name,R.id.grade,R.id.name1,R.id.direction_text,R.id.money,R.id.mingxi,R.id.load,R.id.borrowed}) {
+                    adapter = new SimpleAdapter(KeMuZongZhangActivity.this, data, R.layout.kemuzongzhang_row, new String[]{"code","name","grade","name1","direction_text","money","mingxi","load","borrowed"}, new int[]{R.id.code,R.id.name,R.id.grade,R.id.name1,R.id.direction_text,R.id.money,R.id.mingxi,R.id.load,R.id.borrowed}) {
                         @Override
                         public View getView(int position, View convertView, ViewGroup parent) {
                             final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -206,6 +229,19 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
                             return view;
                         }
                     };
+
+                    adapter_block = new SimpleAdapter(KeMuZongZhangActivity.this, data, R.layout.kemuzongzhang_row_block, new String[]{"code","name","grade","name1","direction_text","money","mingxi","load","borrowed"}, new int[]{R.id.code,R.id.name,R.id.grade,R.id.name1,R.id.direction_text,R.id.money,R.id.mingxi,R.id.load,R.id.borrowed}) {
+                        @Override
+                        public View getView(int position, View convertView, ViewGroup parent) {
+                            final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                            LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                            linearLayout.setOnLongClickListener(onItemLongClick());
+                            linearLayout.setOnClickListener(updateClick());
+                            linearLayout.setTag(position);
+                            return view;
+                        }
+                    };
+
                     Message msg = new Message();
                     msg.obj = adapter;
                     listLoadHandler.sendMessage(msg);
@@ -333,12 +369,13 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
 
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -431,7 +468,7 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(KeMuZongZhangActivity.this, data, R.layout.kemuzongzhang_row, new String[]{"code","name","grade","name1","direction_text","money","mingxi","load","borrowed"}, new int[]{R.id.code,R.id.name,R.id.grade,R.id.name1,R.id.direction_text,R.id.money,R.id.mingxi,R.id.load,R.id.borrowed}) {
+                adapter = new SimpleAdapter(KeMuZongZhangActivity.this, data, R.layout.kemuzongzhang_row, new String[]{"code","name","grade","name1","direction_text","money","mingxi","load","borrowed"}, new int[]{R.id.code,R.id.name,R.id.grade,R.id.name1,R.id.direction_text,R.id.money,R.id.mingxi,R.id.load,R.id.borrowed}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -442,6 +479,19 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(KeMuZongZhangActivity.this, data, R.layout.kemuzongzhang_row_block, new String[]{"code","name","grade","name1","direction_text","money","mingxi","load","borrowed"}, new int[]{R.id.code,R.id.name,R.id.grade,R.id.name1,R.id.direction_text,R.id.money,R.id.mingxi,R.id.load,R.id.borrowed}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

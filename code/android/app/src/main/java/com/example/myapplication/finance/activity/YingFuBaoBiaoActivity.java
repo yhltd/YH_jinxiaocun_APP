@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -55,6 +56,11 @@ public class YingFuBaoBiaoActivity extends AppCompatActivity {
     private EditText stop_date;
     private ListView listView;
 
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private String class_selectText;
     private String start_dateText;
     private String stop_dateText;
@@ -91,6 +97,9 @@ public class YingFuBaoBiaoActivity extends AppCompatActivity {
         class_select = findViewById(R.id.kehu_select);
 
         listView = findViewById(R.id.yingfubaobiao_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
+
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
@@ -107,6 +116,18 @@ public class YingFuBaoBiaoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     public View.OnClickListener selClick() {
         return new View.OnClickListener() {
             @Override
@@ -117,12 +138,10 @@ public class YingFuBaoBiaoActivity extends AppCompatActivity {
     }
 
     public void init_select() {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 class_select.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -154,7 +173,7 @@ public class YingFuBaoBiaoActivity extends AppCompatActivity {
 
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         class_selectText = class_select.getSelectedItem().toString();
@@ -169,8 +188,9 @@ public class YingFuBaoBiaoActivity extends AppCompatActivity {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -230,7 +250,7 @@ public class YingFuBaoBiaoActivity extends AppCompatActivity {
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(YingFuBaoBiaoActivity.this, data, R.layout.yingfubaobiao_row, new String[]{"kehu","project","zhaiyao","jine1","unit","invoice_type","invoice_no","jine2"}, new int[]{R.id.kehu,R.id.project,R.id.zhaiyao,R.id.jine1,R.id.unit,R.id.invoice_type,R.id.invoice_no,R.id.jine2}) {
+                adapter = new SimpleAdapter(YingFuBaoBiaoActivity.this, data, R.layout.yingfubaobiao_row, new String[]{"kehu","project","zhaiyao","jine1","unit","invoice_type","invoice_no","jine2"}, new int[]{R.id.kehu,R.id.project,R.id.zhaiyao,R.id.jine1,R.id.unit,R.id.invoice_type,R.id.invoice_no,R.id.jine2}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -240,6 +260,18 @@ public class YingFuBaoBiaoActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(YingFuBaoBiaoActivity.this, data, R.layout.yingfubaobiao_row_block, new String[]{"kehu","project","zhaiyao","jine1","unit","invoice_type","invoice_no","jine2"}, new int[]{R.id.kehu,R.id.project,R.id.zhaiyao,R.id.jine1,R.id.unit,R.id.invoice_type,R.id.invoice_no,R.id.jine2}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);
@@ -318,12 +350,15 @@ public class YingFuBaoBiaoActivity extends AppCompatActivity {
                         xiangQingYe.setA(list.get(position).getKehu());
                         xiangQingYe.setB(list.get(position).getProject());
                         xiangQingYe.setC(list.get(position).getZhaiyao());
-                        xiangQingYe.setC(list.get(position).getJine1().toString());
-                        xiangQingYe.setC(list.get(position).getUnit());
-                        xiangQingYe.setC(list.get(position).getInvoice_type());
-                        xiangQingYe.setC(list.get(position).getInvoice_no());
-                        xiangQingYe.setC(list.get(position).getJine2().toString());
-
+                        if(list.get(position).getJine1() != null) {
+                            xiangQingYe.setD(list.get(position).getJine1().toString());
+                        }
+                        xiangQingYe.setE(list.get(position).getUnit());
+                        xiangQingYe.setF(list.get(position).getInvoice_type());
+                        xiangQingYe.setG(list.get(position).getInvoice_no());
+                        if(list.get(position).getJine2() != null){
+                            xiangQingYe.setH(list.get(position).getJine2().toString());
+                        }
                         Intent intent = new Intent(YingFuBaoBiaoActivity.this, XiangQingYeActivity.class);
                         MyApplication myApplication = (MyApplication) getApplication();
                         myApplication.setObj(xiangQingYe);

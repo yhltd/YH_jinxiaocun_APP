@@ -13,7 +13,7 @@ public class YhJinXiaoCunKeHuService {
      * 查询全部客户数据
      */
     public List<YhJinXiaoCunKeHu> getListByKehu(String company, String beizhu) {
-        String sql = "select * from yh_jinxiaocun_jinhuofang where gongsi = ? and beizhu like '%' ? '%' ";
+        String sql = "select * from yh_jinxiaocun_chuhuofang where gongsi = ? and beizhu like '%' ? '%' ";
         base = new JxcBaseDao();
         List<YhJinXiaoCunKeHu> list = base.query(YhJinXiaoCunKeHu.class, sql, company, beizhu);
         return list;
@@ -23,7 +23,7 @@ public class YhJinXiaoCunKeHuService {
      * 新增客户
      */
     public boolean insertByKehu(YhJinXiaoCunKeHu yhJinXiaoCunKeHu) {
-        String sql = "insert into yh_jinxiaocun_jinhuofang (beizhu,lianxidizhi,lianxifangshi,gongsi) values(?,?,?,?)";
+        String sql = "insert into yh_jinxiaocun_chuhuofang (beizhu,lianxidizhi,lianxifangshi,gongsi) values(?,?,?,?)";
         base = new JxcBaseDao();
         long result = base.executeOfId(sql, yhJinXiaoCunKeHu.getBeizhu(), yhJinXiaoCunKeHu.getLianxidizhi(), yhJinXiaoCunKeHu.getLianxifangshi(), yhJinXiaoCunKeHu.getGongsi());
         return result > 0;
@@ -33,7 +33,7 @@ public class YhJinXiaoCunKeHuService {
      * 修改客户
      */
     public boolean updateByKehu(YhJinXiaoCunKeHu yhJinXiaoCunKeHu) {
-        String sql = "update yh_jinxiaocun_jinhuofang set beizhu=?,lianxidizhi=?,lianxifangshi=? where _id=? ";
+        String sql = "update yh_jinxiaocun_chuhuofang set beizhu=?,lianxidizhi=?,lianxifangshi=? where _id=? ";
         base = new JxcBaseDao();
         boolean result = base.execute(sql, yhJinXiaoCunKeHu.getBeizhu(), yhJinXiaoCunKeHu.getLianxidizhi(), yhJinXiaoCunKeHu.getLianxifangshi(), yhJinXiaoCunKeHu.get_id());
         return result;
@@ -43,7 +43,7 @@ public class YhJinXiaoCunKeHuService {
      * 删除客户
      */
     public boolean deleteByKehu(int id) {
-        String sql = "delete from yh_jinxiaocun_jinhuofang where _id = ?";
+        String sql = "delete from yh_jinxiaocun_chuhuofang where _id = ?";
         base = new JxcBaseDao();
         return base.execute(sql, id);
     }
@@ -52,7 +52,7 @@ public class YhJinXiaoCunKeHuService {
      * 查询全部供应商数据
      */
     public List<YhJinXiaoCunKeHu> getListByGys(String company, String beizhu) {
-        String sql = "select * from yh_jinxiaocun_chuhuofang where gongsi = ? and beizhu like '%' ? '%' ";
+        String sql = "select * from yh_jinxiaocun_jinhuofang where gongsi = ? and beizhu like '%' ? '%' ";
         base = new JxcBaseDao();
         List<YhJinXiaoCunKeHu> list = base.query(YhJinXiaoCunKeHu.class, sql, company, beizhu);
         return list;
@@ -62,7 +62,7 @@ public class YhJinXiaoCunKeHuService {
      * 新增供应商
      */
     public boolean insertByGys(YhJinXiaoCunKeHu yhJinXiaoCunKeHu) {
-        String sql = "insert into yh_jinxiaocun_chuhuofang (beizhu,lianxidizhi,lianxifangshi,gongsi) values(?,?,?,?)";
+        String sql = "insert into yh_jinxiaocun_jinhuofang (beizhu,lianxidizhi,lianxifangshi,gongsi) values(?,?,?,?)";
         base = new JxcBaseDao();
         long result = base.executeOfId(sql, yhJinXiaoCunKeHu.getBeizhu(), yhJinXiaoCunKeHu.getLianxidizhi(), yhJinXiaoCunKeHu.getLianxifangshi(), yhJinXiaoCunKeHu.getGongsi());
         return result > 0;
@@ -72,7 +72,7 @@ public class YhJinXiaoCunKeHuService {
      * 修改供应商
      */
     public boolean updateByGys(YhJinXiaoCunKeHu yhJinXiaoCunKeHu) {
-        String sql = "update yh_jinxiaocun_chuhuofang set beizhu=?,lianxidizhi=?,lianxifangshi=? where _id=? ";
+        String sql = "update yh_jinxiaocun_jinhuofang set beizhu=?,lianxidizhi=?,lianxifangshi=? where _id=? ";
         base = new JxcBaseDao();
         boolean result = base.execute(sql, yhJinXiaoCunKeHu.getBeizhu(), yhJinXiaoCunKeHu.getLianxidizhi(), yhJinXiaoCunKeHu.getLianxifangshi(), yhJinXiaoCunKeHu.get_id());
         return result;
@@ -82,7 +82,7 @@ public class YhJinXiaoCunKeHuService {
      * 删除供应商
      */
     public boolean deleteByGys(int id) {
-        String sql = "delete from yh_jinxiaocun_chuhuofang where _id = ?";
+        String sql = "delete from yh_jinxiaocun_jinhuofang where _id = ?";
         base = new JxcBaseDao();
         return base.execute(sql, id);
     }

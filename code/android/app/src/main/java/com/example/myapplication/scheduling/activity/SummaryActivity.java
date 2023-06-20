@@ -1,5 +1,6 @@
 package com.example.myapplication.scheduling.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -42,6 +44,12 @@ public class SummaryActivity extends AppCompatActivity {
     private Spinner type_spinner;
 
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private Button sel_button;
 
     List<ModuleType> typeList;
@@ -62,6 +70,8 @@ public class SummaryActivity extends AppCompatActivity {
         }
 
         listView = findViewById(R.id.list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         order_id_text = findViewById(R.id.order_id_text);
         type_spinner = findViewById(R.id.type_spinner);
         sel_button = findViewById(R.id.sel_button);
@@ -84,14 +94,25 @@ public class SummaryActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     private void initList1() {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 type_spinner.setAdapter(typeAdapter);
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
                 return true;
             }
         });
@@ -130,7 +151,7 @@ public class SummaryActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    SimpleAdapter adapter = new SimpleAdapter(SummaryActivity.this, data, R.layout.summary_row, new String[]{"type", "name", "num", "parentName", "workNum"}, new int[]{R.id.type, R.id.name, R.id.num, R.id.parentName, R.id.workNum}) {
+                    adapter = new SimpleAdapter(SummaryActivity.this, data, R.layout.summary_row, new String[]{"type", "name", "num", "parentName", "workNum"}, new int[]{R.id.type, R.id.name, R.id.num, R.id.parentName, R.id.workNum}) {
                         @Override
                         public View getView(int position, View convertView, ViewGroup parent) {
                             final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -139,6 +160,17 @@ public class SummaryActivity extends AppCompatActivity {
                             return view;
                         }
                     };
+
+                    adapter_block = new SimpleAdapter(SummaryActivity.this, data, R.layout.summary_row_block, new String[]{"type", "name", "num", "parentName", "workNum"}, new int[]{R.id.type, R.id.name, R.id.num, R.id.parentName, R.id.workNum}) {
+                        @Override
+                        public View getView(int position, View convertView, ViewGroup parent) {
+                            final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                            LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                            linearLayout.setTag(position);
+                            return view;
+                        }
+                    };
+
                     msg.obj = adapter;
                     
                     listLoadHandler.sendMessage(msg);
@@ -150,12 +182,13 @@ public class SummaryActivity extends AppCompatActivity {
     }
 
     private void initList2() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         Handler handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -191,7 +224,7 @@ public class SummaryActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(SummaryActivity.this, data, R.layout.summary_row, new String[]{"type", "name", "num", "parentName", "workNum"}, new int[]{R.id.type, R.id.name, R.id.num, R.id.parentName, R.id.workNum}) {
+                adapter = new SimpleAdapter(SummaryActivity.this, data, R.layout.summary_row, new String[]{"type", "name", "num", "parentName", "workNum"}, new int[]{R.id.type, R.id.name, R.id.num, R.id.parentName, R.id.workNum}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -200,6 +233,17 @@ public class SummaryActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(SummaryActivity.this, data, R.layout.summary_row_block, new String[]{"type", "name", "num", "parentName", "workNum"}, new int[]{R.id.type, R.id.name, R.id.num, R.id.parentName, R.id.workNum}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 handler.sendMessage(msg);

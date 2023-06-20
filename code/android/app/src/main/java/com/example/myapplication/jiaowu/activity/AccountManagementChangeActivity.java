@@ -27,6 +27,7 @@ import com.example.myapplication.jiaowu.entity.SheZhi;
 import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.AccountManagementService;
 import com.example.myapplication.jiaowu.service.SheZhiService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.text.ParseException;
@@ -110,7 +111,7 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -120,7 +121,7 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(AccountManagementChangeActivity.this, "保存失败，请稍后再试");
                 }
-
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -138,7 +139,7 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -148,6 +149,7 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(AccountManagementChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

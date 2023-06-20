@@ -596,7 +596,7 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
     }
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         start_dateText = start_date.getText().toString();
         end_dateText = end_date.getText().toString();
 
@@ -620,7 +620,7 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
                 setZiChanFuZhai();
                 setLiRunHeJi();
                 setXianJinLiuLiang();
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                sel_button.setEnabled(true);
                 return true;
             }
         });

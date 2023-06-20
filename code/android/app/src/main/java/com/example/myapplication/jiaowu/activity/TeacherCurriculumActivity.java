@@ -1,5 +1,6 @@
 package com.example.myapplication.jiaowu.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -27,6 +29,7 @@ import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.entity.TeacherCurriculum;
 import com.example.myapplication.jiaowu.service.KaoqinService;
 import com.example.myapplication.jiaowu.service.TeacherCurriculumService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -40,6 +43,12 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
     private Teacher teacher;
     private TeacherCurriculumService teacherCurriculumService;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private EditText teacher1;
     private EditText course;
     private String teacherText;
@@ -62,6 +71,10 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
         }
 
         listView = findViewById(R.id.teachercurriculum_list);
+
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
+
         teacher1 = findViewById(R.id.teacher);
         course = findViewById(R.id.course);
 
@@ -80,13 +93,28 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     private void initList() {
+        sel_button.setEnabled(false);
         teacherText = teacher1.getText().toString();
         courseText = course.getText().toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -114,7 +142,7 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(TeacherCurriculumActivity.this, data, R.layout.jiaowu_teachercurriculum_row, new String[]{"teacher", "course", "riqi", "xingqi"}, new int[]{R.id.teacher, R.id.course, R.id.riqi, R.id.xingqi}) {
+                adapter = new SimpleAdapter(TeacherCurriculumActivity.this, data, R.layout.jiaowu_teachercurriculum_row, new String[]{"teacher", "course", "riqi", "xingqi"}, new int[]{R.id.teacher, R.id.course, R.id.riqi, R.id.xingqi}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -125,6 +153,19 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(TeacherCurriculumActivity.this, data, R.layout.jiaowu_teachercurriculum_row_block, new String[]{"teacher", "course", "riqi", "xingqi"}, new int[]{R.id.teacher, R.id.course, R.id.riqi, R.id.xingqi}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

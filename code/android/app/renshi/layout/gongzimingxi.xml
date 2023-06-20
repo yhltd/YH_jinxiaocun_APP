@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="100"
     tools:context=".renshi.activity.GongZiMingXiActivity"
     android:background="@color/WhiteSmoke">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:gravity="center_vertical"
         android:background="@drawable/shape_corner"
         android:layout_marginTop="5dp">
@@ -43,8 +45,11 @@
     </LinearLayout>
 
     <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="584dp"
+        android:id="@+id/list_table"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="85"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp">
@@ -884,19 +889,73 @@
 
     </HorizontalScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/jczl_insert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
+    <ListView
+        android:id="@+id/list_block"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="85"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:onClick="onInsertClick"
-        android:src="@drawable/insert"
-        app:backgroundTint="@color/primary"
-        app:backgroundTintMode="add"
-        app:pressedTranslationZ="10dp"
-        app:tint="@color/white" />
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:divider="@null"
+        android:paddingBottom="5dp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/chear_btn"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="switchClick"
+            android:text="切换列表"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/biji_insert"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="onInsertClick"
+            android:text="添加"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/jczl_insert"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="end"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:onClick="onInsertClick"-->
+<!--        android:src="@drawable/insert"-->
+<!--        app:backgroundTint="@color/primary"-->
+<!--        app:backgroundTintMode="add"-->
+<!--        app:pressedTranslationZ="10dp"-->
+<!--        app:tint="@color/white" />-->
 
 </LinearLayout>

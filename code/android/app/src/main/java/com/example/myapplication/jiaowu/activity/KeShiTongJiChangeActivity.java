@@ -31,6 +31,7 @@ import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.KeShiDetailService;
 import com.example.myapplication.jiaowu.service.SheZhiService;
 import com.example.myapplication.jiaowu.service.StudentService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -192,7 +193,7 @@ public class KeShiTongJiChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) throws ParseException {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -202,6 +203,7 @@ public class KeShiTongJiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(KeShiTongJiChangeActivity.this, "保存失败，请稍后再试");
                 }
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -220,7 +222,7 @@ public class KeShiTongJiChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) throws ParseException {
         if (!checkForm()) return;
-
+        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -230,7 +232,7 @@ public class KeShiTongJiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(KeShiTongJiChangeActivity.this, "保存失败，请稍后再试");
                 }
-
+                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

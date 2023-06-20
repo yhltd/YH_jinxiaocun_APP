@@ -23,7 +23,7 @@ public class YhRenShiKaoQinJiLuService {
      * 条件查询
      */
     public List<YhRenShiKaoQinJiLu> queryList(String company,String start_date,String stop_date) {
-        String sql = "select * from gongzi_kaoqinjilu where AO = ? and year+moth >= ? and year+moth <= ? order by year desc,moth desc";
+        String sql = "select * from gongzi_kaoqinjilu where AO = ? and year+'-'+moth >= ? and year+'-'+moth <= ? order by year desc,moth desc";
         base = new renshiBaseDao();
         List<YhRenShiKaoQinJiLu> list = base.query(YhRenShiKaoQinJiLu.class, sql,company.replace("_hr",""),start_date,stop_date);
         return list;

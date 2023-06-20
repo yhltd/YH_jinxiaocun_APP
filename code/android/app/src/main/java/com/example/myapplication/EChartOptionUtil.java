@@ -88,7 +88,8 @@ public class EChartOptionUtil {
 
         Bar bar = new Bar();
         //设置饼图的相关属性
-        bar.name("数量").data(yAxis).itemStyle().normal().setBarBorderColor("rgba(0,0,0,0.4)");
+        bar.name("数量").data(yAxis).itemStyle().normal().setColor0("#143fb7");
+        bar.name("数量").data(yAxis).itemStyle().normal().setColor("#65adcb");
         option.series(bar);
         option.dataZoom(new DataZoom().type(DataZoomType.inside).start(0).end(30),
                 new DataZoom().show(true).type(DataZoomType.slider).y("90%").start(0).end(30));

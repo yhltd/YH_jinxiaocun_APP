@@ -34,9 +34,9 @@ public class YhMendianMemberinfoService {
      * 新增客户
      */
     public boolean insertByMember(YhMendianMemberinfo yhMendianMemberinfo) {
-        String sql = "insert into member_info (username,password,name,gender,state,phone,birthday,company,points) values(?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into member_info (username,password,name,gender,state,phone,birthday,company) values(?,?,?,?,?,?,?,?)";
         base = new MendianDao();
-        long result = base.executeOfId(sql, yhMendianMemberinfo.getUsername(), yhMendianMemberinfo.getPassword(), yhMendianMemberinfo.getName(), yhMendianMemberinfo.getGender(), yhMendianMemberinfo.getState(), yhMendianMemberinfo.getPhone(), yhMendianMemberinfo.getBirthday(),yhMendianMemberinfo.getCompany(), yhMendianMemberinfo.getPoints());
+        long result = base.executeOfId(sql, yhMendianMemberinfo.getUsername(), yhMendianMemberinfo.getPassword(), yhMendianMemberinfo.getName(), yhMendianMemberinfo.getGender(), yhMendianMemberinfo.getState(), yhMendianMemberinfo.getPhone(), yhMendianMemberinfo.getBirthday(),yhMendianMemberinfo.getCompany());
         return result > 0;
     }
 
@@ -44,9 +44,9 @@ public class YhMendianMemberinfoService {
      * 修改客户
      */
     public boolean updateByMember(YhMendianMemberinfo yhMendianMemberinfo) {
-        String sql = "update member_info set username=?,password=?,name=?,gender=?,state=?,phone=?,birthday=?,points=? where id=? ";
+        String sql = "update member_info set username=?,password=?,name=?,gender=?,state=?,phone=?,birthday=? where id=? ";
         base = new MendianDao();
-        boolean result = base.execute(sql,yhMendianMemberinfo.getUsername(), yhMendianMemberinfo.getPassword(), yhMendianMemberinfo.getName(), yhMendianMemberinfo.getGender(), yhMendianMemberinfo.getState(), yhMendianMemberinfo.getPhone(), yhMendianMemberinfo.getBirthday(), yhMendianMemberinfo.getPoints(), yhMendianMemberinfo.getId());
+        boolean result = base.execute(sql,yhMendianMemberinfo.getUsername(), yhMendianMemberinfo.getPassword(), yhMendianMemberinfo.getName(), yhMendianMemberinfo.getGender(), yhMendianMemberinfo.getState(), yhMendianMemberinfo.getPhone(), yhMendianMemberinfo.getBirthday(), yhMendianMemberinfo.getId());
         return result;
     }
 

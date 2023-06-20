@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -56,6 +57,11 @@ public class XianJinLiuLiangActivity extends AppCompatActivity {
     private EditText stop_date;
     private ListView listView;
 
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private String start_dateText;
     private String stop_dateText;
 
@@ -86,6 +92,8 @@ public class XianJinLiuLiangActivity extends AppCompatActivity {
         showDateOnClick(start_date);
         showDateOnClick(stop_date);
         listView = findViewById(R.id.xianjinliuliang_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
@@ -102,6 +110,18 @@ public class XianJinLiuLiangActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     public View.OnClickListener selClick() {
         return new View.OnClickListener() {
             @Override
@@ -114,7 +134,7 @@ public class XianJinLiuLiangActivity extends AppCompatActivity {
 
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
@@ -129,8 +149,9 @@ public class XianJinLiuLiangActivity extends AppCompatActivity {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -156,7 +177,7 @@ public class XianJinLiuLiangActivity extends AppCompatActivity {
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(XianJinLiuLiangActivity.this, data, R.layout.xianjinliuliang_row, new String[]{"expenditure","money_month","money_year"}, new int[]{R.id.expenditure,R.id.money_month,R.id.money_year}) {
+                adapter = new SimpleAdapter(XianJinLiuLiangActivity.this, data, R.layout.xianjinliuliang_row, new String[]{"expenditure","money_month","money_year"}, new int[]{R.id.expenditure,R.id.money_month,R.id.money_year}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -166,6 +187,18 @@ public class XianJinLiuLiangActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(XianJinLiuLiangActivity.this, data, R.layout.xianjinliuliang_row_block, new String[]{"expenditure","money_month","money_year"}, new int[]{R.id.expenditure,R.id.money_month,R.id.money_year}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

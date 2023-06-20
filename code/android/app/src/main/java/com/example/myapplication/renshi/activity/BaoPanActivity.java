@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -27,6 +28,7 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.XiangQingYeActivity;
 import com.example.myapplication.entity.XiangQingYe;
+import com.example.myapplication.fenquan.activity.GongZuoTaiActivity;
 import com.example.myapplication.jxc.activity.JinXiaoCunActivity;
 import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
@@ -47,6 +49,11 @@ public class BaoPanActivity extends AppCompatActivity {
     private YhRenShiUser yhRenShiUser;
     private YhRenShiGongZiMingXiService yhRenShiGongZiMingXiService;
     private ListView listView;
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private EditText start_date;
     private EditText stop_date;
     private String start_dateText;
@@ -75,6 +82,9 @@ public class BaoPanActivity extends AppCompatActivity {
 
         //初始化控件
         listView = findViewById(R.id.baopan_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
+
         start_date = findViewById(R.id.start_date);
         stop_date = findViewById(R.id.stop_date);
         showDateOnClick(start_date);
@@ -108,6 +118,18 @@ public class BaoPanActivity extends AppCompatActivity {
         };
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -119,7 +141,6 @@ public class BaoPanActivity extends AppCompatActivity {
 
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         if(start_dateText.equals("")){
@@ -129,11 +150,19 @@ public class BaoPanActivity extends AppCompatActivity {
             stop_dateText = "2100-12-31";
         }
 
+        if(start_dateText.compareTo(stop_dateText) > 0){
+            ToastUtil.show(BaoPanActivity.this, "开始日期不能晚于结束日期");
+            return;
+        }
+
+        sel_button.setEnabled(false);
+
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -254,7 +283,7 @@ public class BaoPanActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(BaoPanActivity.this, data, R.layout.baopan_row, new String[]{"B","C","D","E","F","G"}, new int[]{R.id.B, R.id.C, R.id.D, R.id.E, R.id.F, R.id.G}) {
+                adapter = new SimpleAdapter(BaoPanActivity.this, data, R.layout.baopan_row, new String[]{"B","C","D","E","F","G"}, new int[]{R.id.B, R.id.C, R.id.D, R.id.E, R.id.F, R.id.G}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -264,6 +293,18 @@ public class BaoPanActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(BaoPanActivity.this, data, R.layout.baopan_row_block, new String[]{"B","C","D","E","F","G"}, new int[]{R.id.B, R.id.C, R.id.D, R.id.E, R.id.F, R.id.G}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);
@@ -360,7 +401,19 @@ public class BaoPanActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                String mon = "";
+                String day = "";
+                if(monthOfYear + 1 < 10){
+                    mon = "0" + (monthOfYear + 1);
+                }else{
+                    mon = "" + (monthOfYear + 1);
+                }
+                if(dayOfMonth < 10){
+                    day = "0" + dayOfMonth;
+                }else{
+                    day = "" + dayOfMonth;
+                }
+                editText.setText(year + "-" + mon + "-" + day);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

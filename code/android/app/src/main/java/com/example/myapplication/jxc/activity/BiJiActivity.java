@@ -1,5 +1,6 @@
 package com.example.myapplication.jxc.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -42,7 +44,11 @@ public class BiJiActivity extends AppCompatActivity {
     private YhJinXiaoCunZhengLiService yhJinXiaoCunZhengLiService;
     private EditText cpname_text;
     private ListView listView;
+    private ListView listView_block;
     private Button sel_button;
+    private HorizontalScrollView biji_list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
 
     List<YhJinXiaoCunZhengLi> list;
 
@@ -58,7 +64,11 @@ public class BiJiActivity extends AppCompatActivity {
         }
 
         cpname_text = findViewById(R.id.cpname_text);
+
         listView = findViewById(R.id.biji_list);
+        listView_block = findViewById(R.id.biji_list_block);
+        biji_list_table = findViewById(R.id.biji_list_table);
+
         sel_button = findViewById(R.id.sel_button);
 
         MyApplication myApplication = (MyApplication) getApplication();
@@ -78,12 +88,13 @@ public class BiJiActivity extends AppCompatActivity {
     }
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -110,7 +121,7 @@ public class BiJiActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(BiJiActivity.this, data, R.layout.biji_row, new String[]{"spDm", "name", "leiBie", "danWei", "beizhu"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.beizhu}) {
+                adapter = new SimpleAdapter(BiJiActivity.this, data, R.layout.biji_row, new String[]{"spDm", "name", "leiBie", "danWei", "beizhu"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.beizhu}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -121,6 +132,19 @@ public class BiJiActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(BiJiActivity.this, data, R.layout.biji_row_block, new String[]{"spDm", "name", "leiBie", "danWei", "beizhu"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.beizhu}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);
@@ -142,6 +166,18 @@ public class BiJiActivity extends AppCompatActivity {
         Intent intent = new Intent(BiJiActivity.this, BiJiChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
+    }
+
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            biji_list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            biji_list_table.setVisibility(8);
+        }
+
     }
 
     public View.OnClickListener updateClick() {

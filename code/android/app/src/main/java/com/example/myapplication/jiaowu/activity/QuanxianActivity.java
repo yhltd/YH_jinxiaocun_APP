@@ -1,5 +1,6 @@
 package com.example.myapplication.jiaowu.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -26,6 +28,7 @@ import com.example.myapplication.jiaowu.entity.Quanxian;
 import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.AccountManagementService;
 import com.example.myapplication.jiaowu.service.QuanxianService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -39,6 +42,12 @@ public class QuanxianActivity extends AppCompatActivity {
     private Quanxian quanxian;
     private QuanxianService quanxianService;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private EditText view_name;
     private String view_nameText;
     private Button sel_button;
@@ -58,6 +67,8 @@ public class QuanxianActivity extends AppCompatActivity {
         }
 
         listView = findViewById(R.id.account_quanxian_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         view_name = findViewById(R.id.view_name);
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
@@ -79,6 +90,18 @@ public class QuanxianActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     public View.OnClickListener selClick() {
         return new View.OnClickListener() {
             @Override
@@ -89,11 +112,14 @@ public class QuanxianActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        sel_button.setEnabled(false);
         view_nameText = view_name.getText().toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -121,7 +147,7 @@ public class QuanxianActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(QuanxianActivity.this, data, R.layout.jiaowu_account_quanxian_row, new String[]{"realname", "viewname", "add", "del", "upd", "sel"}, new int[]{R.id.RealName, R.id.view_name, R.id.add, R.id.del, R.id.upd, R.id.sel}) {
+                adapter = new SimpleAdapter(QuanxianActivity.this, data, R.layout.jiaowu_account_quanxian_row, new String[]{"realname", "viewname", "add", "del", "upd", "sel"}, new int[]{R.id.RealName, R.id.view_name, R.id.add, R.id.del, R.id.upd, R.id.sel}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -132,6 +158,19 @@ public class QuanxianActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(QuanxianActivity.this, data, R.layout.jiaowu_account_quanxian_row_block, new String[]{"realname", "viewname", "add", "del", "upd", "sel"}, new int[]{R.id.RealName, R.id.view_name, R.id.add, R.id.del, R.id.upd, R.id.sel}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

@@ -1,5 +1,6 @@
 package com.example.myapplication.renshi.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.os.Message;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -41,6 +43,10 @@ public class PeiZhiBiaoActivity extends AppCompatActivity {
     private YhRenShiUser yhRenShiUser;
     private YhRenShiPeiZhiBiaoService yhRenShiPeiZhiBiaoService;
     private ListView listView;
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
 
     List<YhRenShiPeiZhiBiao> list;
 
@@ -57,7 +63,8 @@ public class PeiZhiBiaoActivity extends AppCompatActivity {
 
         //初始化控件
         listView = findViewById(R.id.peizhibiao_list);
-
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         MyApplication myApplication = (MyApplication) getApplication();
         yhRenShiUser = myApplication.getYhRenShiUser();
 
@@ -73,14 +80,24 @@ public class PeiZhiBiaoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
                 return true;
             }
         });
@@ -133,7 +150,7 @@ public class PeiZhiBiaoActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(PeiZhiBiaoActivity.this, data, R.layout.peizhibiao_row, new String[]{"kaoqin","kaoqin_peizhi","bumen","zhiwu","chidao_koukuan","geren_yiliao","qiye_yiliao","geren_shengyu","qiye_shengyu","geren_gongjijin","qiye_gongjijin","yiliao_jishu","geren_nianjin","qiye_nianjin","zhinajin","nianjin_jishu","lixi","geren_yanglao","qiye_yanglao","gangwei","gangwei_gongzi","qiye_shiye","gongzi","shuilv","kuadu_gongzi","qiye_gongshang","jintie","nianjin1","jiabanfei","yansuangongshi","queqin_koukuan"}, new int[]{R.id.kaoqin, R.id.kaoqin_peizhi, R.id.bumen, R.id.zhiwu, R.id.chidao_koukuan, R.id.geren_yiliao, R.id.qiye_yiliao, R.id.geren_shengyu, R.id.qiye_shengyu, R.id.geren_gongjijin, R.id.qiye_gongjijin, R.id.yiliao_jishu, R.id.geren_nianjin, R.id.qiye_nianjin, R.id.zhinajin, R.id.nianjin_jishu, R.id.lixi, R.id.geren_yanglao, R.id.qiye_yanglao, R.id.gangwei, R.id.gangwei_gongzi, R.id.qiye_shiye, R.id.gongzi, R.id.shuilv, R.id.kuadu_gongzi, R.id.qiye_gongshang, R.id.jintie, R.id.nianjin1, R.id.jiabanfei, R.id.yansuangongshi, R.id.queqin_koukuan}) {
+                adapter = new SimpleAdapter(PeiZhiBiaoActivity.this, data, R.layout.peizhibiao_row, new String[]{"kaoqin","kaoqin_peizhi","bumen","zhiwu","chidao_koukuan","geren_yiliao","qiye_yiliao","geren_shengyu","qiye_shengyu","geren_gongjijin","qiye_gongjijin","yiliao_jishu","geren_nianjin","qiye_nianjin","zhinajin","nianjin_jishu","lixi","geren_yanglao","qiye_yanglao","gangwei","gangwei_gongzi","qiye_shiye","gongzi","shuilv","kuadu_gongzi","qiye_gongshang","jintie","nianjin1","jiabanfei","yansuangongshi","queqin_koukuan"}, new int[]{R.id.kaoqin, R.id.kaoqin_peizhi, R.id.bumen, R.id.zhiwu, R.id.chidao_koukuan, R.id.geren_yiliao, R.id.qiye_yiliao, R.id.geren_shengyu, R.id.qiye_shengyu, R.id.geren_gongjijin, R.id.qiye_gongjijin, R.id.yiliao_jishu, R.id.geren_nianjin, R.id.qiye_nianjin, R.id.zhinajin, R.id.nianjin_jishu, R.id.lixi, R.id.geren_yanglao, R.id.qiye_yanglao, R.id.gangwei, R.id.gangwei_gongzi, R.id.qiye_shiye, R.id.gongzi, R.id.shuilv, R.id.kuadu_gongzi, R.id.qiye_gongshang, R.id.jintie, R.id.nianjin1, R.id.jiabanfei, R.id.yansuangongshi, R.id.queqin_koukuan}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -144,6 +161,19 @@ public class PeiZhiBiaoActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(PeiZhiBiaoActivity.this, data, R.layout.peizhibiao_row_block, new String[]{"kaoqin","kaoqin_peizhi","bumen","zhiwu","chidao_koukuan","geren_yiliao","qiye_yiliao","geren_shengyu","qiye_shengyu","geren_gongjijin","qiye_gongjijin","yiliao_jishu","geren_nianjin","qiye_nianjin","zhinajin","nianjin_jishu","lixi","geren_yanglao","qiye_yanglao","gangwei","gangwei_gongzi","qiye_shiye","gongzi","shuilv","kuadu_gongzi","qiye_gongshang","jintie","nianjin1","jiabanfei","yansuangongshi","queqin_koukuan"}, new int[]{R.id.kaoqin, R.id.kaoqin_peizhi, R.id.bumen, R.id.zhiwu, R.id.chidao_koukuan, R.id.geren_yiliao, R.id.qiye_yiliao, R.id.geren_shengyu, R.id.qiye_shengyu, R.id.geren_gongjijin, R.id.qiye_gongjijin, R.id.yiliao_jishu, R.id.geren_nianjin, R.id.qiye_nianjin, R.id.zhinajin, R.id.nianjin_jishu, R.id.lixi, R.id.geren_yanglao, R.id.qiye_yanglao, R.id.gangwei, R.id.gangwei_gongzi, R.id.qiye_shiye, R.id.gongzi, R.id.shuilv, R.id.kuadu_gongzi, R.id.qiye_gongshang, R.id.jintie, R.id.nianjin1, R.id.jiabanfei, R.id.yansuangongshi, R.id.queqin_koukuan}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

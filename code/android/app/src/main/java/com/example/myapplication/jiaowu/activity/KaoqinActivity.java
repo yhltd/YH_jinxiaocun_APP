@@ -1,5 +1,6 @@
 package com.example.myapplication.jiaowu.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -27,6 +29,7 @@ import com.example.myapplication.jiaowu.entity.Quanxian;
 import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.AccountManagementService;
 import com.example.myapplication.jiaowu.service.KaoqinService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -40,6 +43,12 @@ public class KaoqinActivity extends AppCompatActivity {
     private Teacher teacher;
     private KaoqinService kaoqinService;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private EditText s_name;
     private String s_nameText;
     private Button sel_button;
@@ -60,12 +69,25 @@ public class KaoqinActivity extends AppCompatActivity {
         }
 
         listView = findViewById(R.id.kaoqin_list);
-
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
         quanxian = myApplication.getQuanxian();
 
         initList();
+    }
+
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
     }
 
     @Override
@@ -81,7 +103,8 @@ public class KaoqinActivity extends AppCompatActivity {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
                 return true;
             }
         });
@@ -137,7 +160,7 @@ public class KaoqinActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(KaoqinActivity.this, data, R.layout.jiaowu_kaoqin_row, new String[]{"s_name", "nian", "yue", "ri1", "ri2", "ri3","ri4","ri5","ri6","ri7","ri8","ri9","ri10","ri11","ri12","ri13","ri14","ri15","ri16","ri17","ri18","ri19","ri20","ri21","ri22","ri23","ri24","ri25","ri26","ri27","ri28","ri29","ri30","ri31"}, new int[]{R.id.s_name, R.id.nian, R.id.yue, R.id.ri1, R.id.ri2, R.id.ri3, R.id.ri4,R.id.ri5, R.id.ri6, R.id.ri7, R.id.ri8, R.id.ri9, R.id.ri10, R.id.ri11, R.id.ri12, R.id.ri13, R.id.ri14, R.id.ri15, R.id.ri16, R.id.ri17, R.id.ri18, R.id.ri19, R.id.ri20, R.id.ri21, R.id.ri22, R.id.ri23, R.id.ri24, R.id.ri25, R.id.ri26, R.id.ri27, R.id.ri28, R.id.ri29, R.id.ri30, R.id.ri31}) {
+                adapter = new SimpleAdapter(KaoqinActivity.this, data, R.layout.jiaowu_kaoqin_row, new String[]{"s_name", "nian", "yue", "ri1", "ri2", "ri3","ri4","ri5","ri6","ri7","ri8","ri9","ri10","ri11","ri12","ri13","ri14","ri15","ri16","ri17","ri18","ri19","ri20","ri21","ri22","ri23","ri24","ri25","ri26","ri27","ri28","ri29","ri30","ri31"}, new int[]{R.id.s_name, R.id.nian, R.id.yue, R.id.ri1, R.id.ri2, R.id.ri3, R.id.ri4,R.id.ri5, R.id.ri6, R.id.ri7, R.id.ri8, R.id.ri9, R.id.ri10, R.id.ri11, R.id.ri12, R.id.ri13, R.id.ri14, R.id.ri15, R.id.ri16, R.id.ri17, R.id.ri18, R.id.ri19, R.id.ri20, R.id.ri21, R.id.ri22, R.id.ri23, R.id.ri24, R.id.ri25, R.id.ri26, R.id.ri27, R.id.ri28, R.id.ri29, R.id.ri30, R.id.ri31}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -148,6 +171,19 @@ public class KaoqinActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(KaoqinActivity.this, data, R.layout.jiaowu_kaoqin_row_block, new String[]{"s_name", "nian", "yue", "ri1", "ri2", "ri3","ri4","ri5","ri6","ri7","ri8","ri9","ri10","ri11","ri12","ri13","ri14","ri15","ri16","ri17","ri18","ri19","ri20","ri21","ri22","ri23","ri24","ri25","ri26","ri27","ri28","ri29","ri30","ri31"}, new int[]{R.id.s_name, R.id.nian, R.id.yue, R.id.ri1, R.id.ri2, R.id.ri3, R.id.ri4,R.id.ri5, R.id.ri6, R.id.ri7, R.id.ri8, R.id.ri9, R.id.ri10, R.id.ri11, R.id.ri12, R.id.ri13, R.id.ri14, R.id.ri15, R.id.ri16, R.id.ri17, R.id.ri18, R.id.ri19, R.id.ri20, R.id.ri21, R.id.ri22, R.id.ri23, R.id.ri24, R.id.ri25, R.id.ri26, R.id.ri27, R.id.ri28, R.id.ri29, R.id.ri30, R.id.ri31}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

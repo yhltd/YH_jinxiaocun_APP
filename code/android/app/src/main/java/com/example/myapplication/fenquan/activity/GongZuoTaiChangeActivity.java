@@ -23,7 +23,10 @@ import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.fenquan.entity.Workbench;
 import com.example.myapplication.fenquan.service.JisuanService;
 import com.example.myapplication.fenquan.service.WorkbenchService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
+
+import java.util.Date;
 
 public class GongZuoTaiChangeActivity extends AppCompatActivity {
     private Renyuan renyuan;
@@ -373,7 +376,6 @@ public class GongZuoTaiChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
-
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -400,7 +402,6 @@ public class GongZuoTaiChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -426,7 +427,8 @@ public class GongZuoTaiChangeActivity extends AppCompatActivity {
     }
 
     private boolean checkForm() {
-
+        Date date = new Date();
+        workbench.setA最后修改日期(date);
         workbench.setC(A.getText().toString());
         workbench.setC(B.getText().toString());
         workbench.setC(C.getText().toString());
@@ -538,5 +540,6 @@ public class GongZuoTaiChangeActivity extends AppCompatActivity {
         setResult(RESULT_OK, new Intent());
         finish();
     }
+
 
 }

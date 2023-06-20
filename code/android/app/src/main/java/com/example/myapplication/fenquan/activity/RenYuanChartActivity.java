@@ -28,7 +28,9 @@ import com.example.myapplication.fenquan.entity.Workbench;
 import com.example.myapplication.fenquan.service.RenyuanService;
 import com.example.myapplication.fenquan.service.WorkbenchService;
 import com.example.myapplication.renshi.activity.GongZiMingXiChangeActivity;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
+import com.example.myapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -103,6 +105,7 @@ public class RenYuanChartActivity extends AppCompatActivity {
     }
 
     private void initList() {
+
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         class_selectText = class_select.getSelectedItem().toString();
@@ -114,10 +117,18 @@ public class RenYuanChartActivity extends AppCompatActivity {
         if(stop_dateText.equals("")){
             stop_dateText = "2100-12-31";
         }
+
+        if(start_dateText.compareTo(stop_dateText) > 0){
+            ToastUtil.show(RenYuanChartActivity.this, "开始日期不能晚于结束日期");
+            return;
+        }
+
+        sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 barChart.refreshEchartsWithOption(EChartOptionUtil.getBarChartOptions(data1, data2));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -252,7 +263,19 @@ public class RenYuanChartActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                String mon = "";
+                String day = "";
+                if(monthOfYear + 1 < 10){
+                    mon = "0" + (monthOfYear + 1);
+                }else{
+                    mon = "" + (monthOfYear + 1);
+                }
+                if(dayOfMonth < 10){
+                    day = "0" + dayOfMonth;
+                }else{
+                    day = "" + dayOfMonth;
+                }
+                editText.setText(year + "-" + mon + "-" + day);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

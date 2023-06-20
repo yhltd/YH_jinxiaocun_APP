@@ -1,5 +1,6 @@
 package com.example.myapplication.fenquan.activity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -27,6 +29,7 @@ import com.example.myapplication.fenquan.service.RenyuanService;
 import com.example.myapplication.jxc.activity.BiJiActivity;
 import com.example.myapplication.jxc.activity.BiJiChangeActivity;
 import com.example.myapplication.jxc.service.YhJinXiaoCunZhengLiService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -42,6 +45,12 @@ public class RenyuanActivity extends AppCompatActivity {
 
     private EditText c_text;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private Button sel_button;
 
     private List<Renyuan> list;
@@ -61,6 +70,10 @@ public class RenyuanActivity extends AppCompatActivity {
 
         c_text = findViewById(R.id.c_text);
         listView = findViewById(R.id.list);
+
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
+
         sel_button = findViewById(R.id.sel_button);
 
         MyApplication myApplication = (MyApplication) getApplication();
@@ -79,11 +92,26 @@ public class RenyuanActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
+
     private void initList() {
+        sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -113,7 +141,7 @@ public class RenyuanActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(RenyuanActivity.this, data, R.layout.renyuan_row, new String[]{"c", "d", "e", "bumen", "zhuangtai", "email", "phone", "bianhao"}, new int[]{R.id.c, R.id.d, R.id.e, R.id.bumen, R.id.zhuangtai, R.id.email, R.id.phone, R.id.bianhao}) {
+                adapter = new SimpleAdapter(RenyuanActivity.this, data, R.layout.renyuan_row, new String[]{"c", "d", "e", "bumen", "zhuangtai", "email", "phone", "bianhao"}, new int[]{R.id.c, R.id.d, R.id.e, R.id.bumen, R.id.zhuangtai, R.id.email, R.id.phone, R.id.bianhao}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -124,6 +152,19 @@ public class RenyuanActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(RenyuanActivity.this, data, R.layout.renyuan_row_block, new String[]{"c", "d", "e", "bumen", "zhuangtai", "email", "phone", "bianhao"}, new int[]{R.id.c, R.id.d, R.id.e, R.id.bumen, R.id.zhuangtai, R.id.email, R.id.phone, R.id.bianhao}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);
@@ -215,6 +256,12 @@ public class RenyuanActivity extends AppCompatActivity {
                 initList();
             }
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LoadingDialog.getInstance(getApplicationContext()).dismiss();
     }
 
 

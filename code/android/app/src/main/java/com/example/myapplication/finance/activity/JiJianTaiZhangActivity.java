@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -59,6 +60,11 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
     private EditText stop_date;
     private ListView listView;
 
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private String projectText;
     private String start_dateText;
     private String stop_dateText;
@@ -88,6 +94,8 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
         start_date = findViewById(R.id.start_date);
         stop_date = findViewById(R.id.stop_date);
         listView = findViewById(R.id.jijiantaizhang_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
@@ -103,6 +111,18 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -150,7 +170,7 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
     }
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         projectText = project.getText().toString();
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
@@ -164,8 +184,9 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -203,7 +224,7 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(JiJianTaiZhangActivity.this, data, R.layout.jijiantaizhang_row, new String[]{"insert_date","kehu","project","receivable","receipts","weishou","cope","payment","weifu","accounting","zhaiyao"}, new int[]{R.id.insert_date,R.id.kehu,R.id.project,R.id.receivable,R.id.receipts,R.id.weishou,R.id.cope,R.id.payment,R.id.weifu,R.id.accounting,R.id.zhaiyao}) {
+                adapter = new SimpleAdapter(JiJianTaiZhangActivity.this, data, R.layout.jijiantaizhang_row, new String[]{"insert_date","kehu","project","receivable","receipts","weishou","cope","payment","weifu","accounting","zhaiyao"}, new int[]{R.id.insert_date,R.id.kehu,R.id.project,R.id.receivable,R.id.receipts,R.id.weishou,R.id.cope,R.id.payment,R.id.weifu,R.id.accounting,R.id.zhaiyao}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -214,6 +235,19 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(JiJianTaiZhangActivity.this, data, R.layout.jijiantaizhang_row_block, new String[]{"insert_date","kehu","project","receivable","receipts","weishou","cope","payment","weifu","accounting","zhaiyao"}, new int[]{R.id.insert_date,R.id.kehu,R.id.project,R.id.receivable,R.id.receipts,R.id.weishou,R.id.cope,R.id.payment,R.id.weifu,R.id.accounting,R.id.zhaiyao}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

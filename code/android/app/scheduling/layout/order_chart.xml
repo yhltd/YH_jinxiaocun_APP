@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="100"
     tools:context=".fenquan.activity.BuMenQuanXianActivity"
     android:background="@color/WhiteSmoke">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:background="@drawable/shape_corner_sel"
         android:gravity="center_vertical"
         android:layout_marginTop="10dp"
@@ -43,18 +45,29 @@
 
     </LinearLayout>
 
-    <com.example.myapplication.EChartView
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90"
         android:background="@drawable/shape_corner_sel"
-        android:elevation="3dp"
+        android:gravity="center_vertical"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"
         android:layout_marginBottom="30dp"
-        android:id="@+id/lineChart"
-        android:layout_width="380dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_gravity="center">
-    </com.example.myapplication.EChartView>
+        android:elevation="3dp">
+
+        <com.example.myapplication.EChartView
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/lineChart"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+        </com.example.myapplication.EChartView>
+
+    </LinearLayout>
 
 </LinearLayout>

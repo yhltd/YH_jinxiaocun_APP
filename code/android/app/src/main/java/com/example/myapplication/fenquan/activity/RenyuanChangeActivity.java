@@ -34,6 +34,7 @@ import com.example.myapplication.renshi.entity.YhRenShiPeiZhiBiao;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.renshi.service.YhRenShiPeiZhiBiaoService;
 import com.example.myapplication.renshi.service.YhRenShiUserService;
+import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
@@ -128,7 +129,6 @@ public class RenyuanChangeActivity extends AppCompatActivity {
                     }
 
                 }
-
                 return true;
             }
         });
@@ -170,7 +170,6 @@ public class RenyuanChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
-
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -199,7 +198,6 @@ public class RenyuanChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -273,6 +271,12 @@ public class RenyuanChangeActivity extends AppCompatActivity {
             }
         }
         return 0;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LoadingDialog.getInstance(getApplicationContext()).dismiss();
     }
 
 }

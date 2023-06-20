@@ -14,7 +14,7 @@ public class YhMendianOrdersService {
      * 查询全部等级数据
      */
     public List<YhMendianOrders> getList(String ddh,String syy,String hyxm,String startdate,String enddate, String company) {
-        String sql = "select * from orders where company = ? and ddh like '%' ? '%' and syy like '%' ? '%' and hyxm like '%' ? '%' and riqi>=? and riqi <= ? ";
+        String sql = "select id,riqi,ddh,hyzh,hyxm,hyjf,yhfa,heji.xfje,heji.ssje,heji.yhje,syy,ord.company from orders as ord left join(select ddid,company,sum(convert(dj,float) * convert(gs,float)) as xfje,sum(convert(zhdj,float) * convert(gs,float)) as ssje,round(sum(convert(dj,float) * convert(gs,float)) - sum(convert(zhdj,float) * convert(gs,float)),2) as yhje from orders_details group by ddid) as heji on ord.ddh = heji.ddid and ord.company = heji.company  where ord.company = ?  and ddh like '%' ? '%' and ifnull(syy,'') like '%' ? '%' and ifnull(hyxm,'') like '%' ? '%' and riqi>= ? and riqi<= ? order by id desc";
         base = new MendianDao();
         List<YhMendianOrders> list = base.query(YhMendianOrders.class, sql, company, ddh,syy,hyxm,startdate,enddate);
         return list;

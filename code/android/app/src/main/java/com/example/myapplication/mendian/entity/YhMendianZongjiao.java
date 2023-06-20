@@ -1,52 +1,42 @@
 package com.example.myapplication.mendian.entity;
 
 public class YhMendianZongjiao {
-    private int id;
-    private String riqi;
-    private String jiaoyie;
-    private String yishuae;
-    private String shouxufei;
+    private String date_time;
+    private String repayment;
+    private String swipe;
+    private String the_total_fee;
     private String profit;
-    private String gongsi;
 
-    public int getId() {
-        return id;
+    public String getDate_time() {
+        return date_time;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDate_time(String date_time) {
+        this.date_time = date_time;
     }
 
-    public String getRiqi() {
-        return riqi;
+    public String getRepayment() {
+        return repayment;
     }
 
-    public void setRiqi(String riqi) {
-        this.riqi = riqi;
+    public void setRepayment(String repayment) {
+        this.repayment = repayment;
     }
 
-    public String getJiaoyie() {
-        return jiaoyie;
+    public String getSwipe() {
+        return swipe;
     }
 
-    public void setJiaoyie(String jiaoyie) {
-        this.jiaoyie = jiaoyie;
+    public void setSwipe(String swipe) {
+        this.swipe = swipe;
     }
 
-    public String getYishuae() {
-        return yishuae;
+    public String getThe_total_fee() {
+        return the_total_fee;
     }
 
-    public void setYishuae(String yishuae) {
-        this.yishuae = yishuae;
-    }
-
-    public String getShouxufei() {
-        return shouxufei;
-    }
-
-    public void setShouxufei(String shouxufei) {
-        this.shouxufei = shouxufei;
+    public void setThe_total_fee(String the_total_fee) {
+        this.the_total_fee = the_total_fee;
     }
 
     public String getProfit() {
@@ -55,13 +45,5 @@ public class YhMendianZongjiao {
 
     public void setProfit(String profit) {
         this.profit = profit;
-    }
-
-    public String getGongsi() {
-        return gongsi;
-    }
-
-    public void setGongsi(String gongsi) {
-        this.gongsi = gongsi;
     }
 }

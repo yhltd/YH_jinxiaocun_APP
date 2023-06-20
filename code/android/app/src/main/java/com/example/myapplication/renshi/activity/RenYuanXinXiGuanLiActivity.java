@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -25,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.fenquan.activity.GongZuoTaiActivity;
 import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.renshi.service.YhRenShiGongZiMingXiService;
@@ -45,6 +47,10 @@ public class RenYuanXinXiGuanLiActivity extends AppCompatActivity {
     private YhRenShiUser yhRenShiUser;
     private YhRenShiUserService yhRenShiUserService;
     private ListView listView;
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
     private EditText name;
     private EditText phone;
     private String nameText;
@@ -66,6 +72,8 @@ public class RenYuanXinXiGuanLiActivity extends AppCompatActivity {
 
         //初始化控件
         listView = findViewById(R.id.renyuanxinxiguanli_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         name = findViewById(R.id.name);
         phone = findViewById(R.id.phone);
 
@@ -97,17 +105,29 @@ public class RenYuanXinXiGuanLiActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         nameText = name.getText().toString();
         phoneText = phone.getText().toString();
 
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -134,7 +154,7 @@ public class RenYuanXinXiGuanLiActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(RenYuanXinXiGuanLiActivity.this, data, R.layout.renyuanxinxiguanli_row, new String[]{"B","C","D"}, new int[]{R.id.B, R.id.C, R.id.D}) {
+                adapter = new SimpleAdapter(RenYuanXinXiGuanLiActivity.this, data, R.layout.renyuanxinxiguanli_row, new String[]{"B","C","D"}, new int[]{R.id.B, R.id.C, R.id.D}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -145,6 +165,19 @@ public class RenYuanXinXiGuanLiActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(RenYuanXinXiGuanLiActivity.this, data, R.layout.renyuanxinxiguanli_row_block, new String[]{"B","C","D"}, new int[]{R.id.B, R.id.C, R.id.D}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);
@@ -155,7 +188,7 @@ public class RenYuanXinXiGuanLiActivity extends AppCompatActivity {
 
 
     public void onInsertClick(View v) {
-        Intent intent = new Intent(RenYuanXinXiGuanLiActivity.this, GongZiMingXiChangeActivity.class);
+        Intent intent = new Intent(RenYuanXinXiGuanLiActivity.this, RenYuanXinXiGuanLiChangeActivity.class);
         intent.putExtra("type", R.id.insert_btn);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
     }
@@ -165,7 +198,7 @@ public class RenYuanXinXiGuanLiActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int position = Integer.parseInt(view.getTag().toString());
-                Intent intent = new Intent(RenYuanXinXiGuanLiActivity.this, GongZiMingXiChangeActivity.class);
+                Intent intent = new Intent(RenYuanXinXiGuanLiActivity.this, RenYuanXinXiGuanLiChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
                 MyApplication myApplication = (MyApplication) getApplication();
                 myApplication.setObj(list.get(position));
@@ -250,7 +283,19 @@ public class RenYuanXinXiGuanLiActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                String mon = "";
+                String day = "";
+                if(monthOfYear + 1 < 10){
+                    mon = "0" + (monthOfYear + 1);
+                }else{
+                    mon = "" + (monthOfYear + 1);
+                }
+                if(dayOfMonth < 10){
+                    day = "0" + dayOfMonth;
+                }else{
+                    day = "" + dayOfMonth;
+                }
+                editText.setText(year + "-" + mon + "-" + day);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

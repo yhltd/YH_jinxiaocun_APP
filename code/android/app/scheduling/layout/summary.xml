@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="100"
     tools:context=".scheduling.activity.SummaryActivity"
     android:background="@color/WhiteSmoke">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:background="@drawable/shape_corner_up"
         android:gravity="center_vertical"
         android:layout_marginTop="5dp">
@@ -29,8 +31,10 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:background="@drawable/shape_corner_down"
         android:gravity="center_vertical">
 
@@ -47,8 +51,11 @@
     </LinearLayout>
 
     <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:id="@+id/list_table"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="75"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp">
@@ -146,12 +153,44 @@
         </LinearLayout>
     </HorizontalScrollView>
 
+    <ListView
+        android:id="@+id/list_block"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="75"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:divider="@null"
+        android:paddingBottom="5dp" />
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/chear_btn"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="switchClick"
+            android:text="切换列表"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+
         <Button
             android:id="@+id/sel_button"
             android:layout_width="130dp"

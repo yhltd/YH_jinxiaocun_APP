@@ -1,15 +1,20 @@
 package com.example.myapplication.mendian.activity;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -25,6 +30,7 @@ import com.example.myapplication.mendian.service.YhMendianUserService;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
 
 public class MemberinfoChangeActivity extends AppCompatActivity {
@@ -37,12 +43,14 @@ public class MemberinfoChangeActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private EditText name;
-    private EditText gender;
-    private EditText state;
+    private Spinner gender;
+    private Spinner state;
     private EditText phone;
     private EditText birthday;
     private EditText points;
 
+    String[] sex_selectArray;
+    String[] zhanghao_selectArray;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -69,8 +77,16 @@ public class MemberinfoChangeActivity extends AppCompatActivity {
         state = findViewById(R.id.state);
         phone = findViewById(R.id.phone);
         birthday = findViewById(R.id.birthday);
-        points = findViewById(R.id.points);
 
+        showDateOnClick(birthday);
+
+        sex_selectArray = getResources().getStringArray(R.array.sex_list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, sex_selectArray);
+        gender.setAdapter(adapter);
+
+        zhanghao_selectArray = getResources().getStringArray(R.array.zhanghao_list);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, zhanghao_selectArray);
+        state.setAdapter(adapter);
 
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
@@ -85,11 +101,10 @@ public class MemberinfoChangeActivity extends AppCompatActivity {
             username.setText(yhMendianMemberinfo.getUsername());
             password.setText(yhMendianMemberinfo.getPassword());
             name.setText(yhMendianMemberinfo.getName());
-            gender.setText(yhMendianMemberinfo.getGender());
-            state.setText(yhMendianMemberinfo.getState());
+            gender.setSelection(getSexPosition(yhMendianMemberinfo.getGender()));
+            state.setSelection(getZhanghaoPosition(yhMendianMemberinfo.getState()));
             phone.setText(yhMendianMemberinfo.getPhone());
             birthday.setText(yhMendianMemberinfo.getBirthday());
-            points.setText(yhMendianMemberinfo.getPoints());
         }
     }
 
@@ -180,17 +195,17 @@ public class MemberinfoChangeActivity extends AppCompatActivity {
         } else {
             yhMendianMemberinfo.setName(name.getText().toString());
         }
-        if (gender.getText().toString().equals("")) {
+        if (gender.getSelectedItem().toString().equals("")) {
             ToastUtil.show(MemberinfoChangeActivity.this, "请输入性别");
             return false;
         } else {
-            yhMendianMemberinfo.setGender(gender.getText().toString());
+            yhMendianMemberinfo.setGender(gender.getSelectedItem().toString());
         }
-        if (state.getText().toString().equals("")) {
+        if (state.getSelectedItem().toString().equals("")) {
             ToastUtil.show(MemberinfoChangeActivity.this, "请输入账号状态");
             return false;
         } else {
-            yhMendianMemberinfo.setState(state.getText().toString());
+            yhMendianMemberinfo.setState(state.getSelectedItem().toString());
         }
         if (phone.getText().toString().equals("")) {
             ToastUtil.show(MemberinfoChangeActivity.this, "请输入电话");
@@ -206,11 +221,80 @@ public class MemberinfoChangeActivity extends AppCompatActivity {
             yhMendianMemberinfo.setBirthday(birthday.getText().toString());
         }
 
-        yhMendianMemberinfo.setPoints(points.getText().toString());
-
         yhMendianMemberinfo.setCompany(yhMendianUser.getCompany());
 
         return true;
+    }
+
+    private int getSexPosition(String param) {
+        if (sex_selectArray != null) {
+            for (int i = 0; i < sex_selectArray.length; i++) {
+                if (param.equals(sex_selectArray[i])) {
+                    return i;
+                }
+            }
+        }
+        return 0;
+    }
+
+    private int getZhanghaoPosition(String param) {
+        if (zhanghao_selectArray != null) {
+            for (int i = 0; i < zhanghao_selectArray.length; i++) {
+                if (param.equals(zhanghao_selectArray[i])) {
+                    return i;
+                }
+            }
+        }
+        return 0;
+    }
+
+
+    @SuppressLint("ClickableViewAccessibility")
+    protected void showDateOnClick(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    showDatePickDlg(editText);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    showDatePickDlg(editText);
+                }
+
+            }
+        });
+    }
+
+    protected void showDatePickDlg(final EditText editText) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(MemberinfoChangeActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                String this_month = "";
+                if (monthOfYear + 1 < 10){
+                    this_month = "0" + String.format("%s",monthOfYear + 1);
+                }else{
+                    this_month = String.format("%s",monthOfYear + 1);
+                }
+
+                String this_day = "";
+                if (dayOfMonth + 1 < 10){
+                    this_day = "0" + String.format("%s",dayOfMonth);
+                }else{
+                    this_day = String.format("%s",dayOfMonth);
+                }
+                editText.setText(year + "-" + this_month + "-" + this_day);
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
 

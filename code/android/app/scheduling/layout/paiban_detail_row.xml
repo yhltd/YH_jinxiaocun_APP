@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
             android:textSize="14sp"
-            android:text="班次"
+            android:text="日期"
             android:textStyle="bold"
             android:width="120dp"/>
         <View

@@ -105,6 +105,7 @@ public class OrderChartActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        sel_button.setEnabled(false);
         start_dateText = start_date.getText().toString();
 
         if(start_dateText.equals("")){
@@ -114,6 +115,7 @@ public class OrderChartActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 lineChart.refreshEchartsWithOption(EChartOptionUtil.getLineChartOptions(data1, data2,"数量"));
+                sel_button.setEnabled(true);
                 return true;
             }
         });

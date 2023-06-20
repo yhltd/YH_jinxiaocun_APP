@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -51,6 +52,12 @@ public class BaoPanShenPiActivity extends AppCompatActivity {
     private YhRenShiUser yhRenShiUser;
     private YhRenShiBaoPanShenPiService yhRenShiBaoPanShenPiService;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private EditText name;
     private EditText start_date;
     private EditText stop_date;
@@ -73,6 +80,10 @@ public class BaoPanShenPiActivity extends AppCompatActivity {
 
         //初始化控件
         listView = findViewById(R.id.baopanshenpi_list);
+
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
+
         name = findViewById(R.id.name);
         start_date = findViewById(R.id.start_date);
         stop_date = findViewById(R.id.stop_date);
@@ -105,10 +116,20 @@ public class BaoPanShenPiActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
 
+    }
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         nameText = name.getText().toString();
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
@@ -120,11 +141,19 @@ public class BaoPanShenPiActivity extends AppCompatActivity {
             stop_dateText = "2100-12-31";
         }
 
+        if(start_dateText.compareTo(stop_dateText) > 0){
+            ToastUtil.show(BaoPanShenPiActivity.this, "开始日期不能晚于结束日期");
+            return;
+        }
+
+        sel_button.setEnabled(false);
+
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -153,7 +182,7 @@ public class BaoPanShenPiActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(BaoPanShenPiActivity.this, data, R.layout.baopanshenpi_row, new String[]{"shifa_gongzi","geren_zhichu","qiye_zhichu","yuangong_renshu","quanqin_tianshu","shenpiren","riqi"}, new int[]{R.id.shifa_gongzi,R.id.geren_zhichu, R.id.qiye_zhichu, R.id.yuangong_renshu, R.id.quanqin_tianshu, R.id.shenpiren, R.id.riqi}) {
+                adapter = new SimpleAdapter(BaoPanShenPiActivity.this, data, R.layout.baopanshenpi_row, new String[]{"shifa_gongzi","geren_zhichu","qiye_zhichu","yuangong_renshu","quanqin_tianshu","shenpiren","riqi"}, new int[]{R.id.shifa_gongzi,R.id.geren_zhichu, R.id.qiye_zhichu, R.id.yuangong_renshu, R.id.quanqin_tianshu, R.id.shenpiren, R.id.riqi}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -164,6 +193,19 @@ public class BaoPanShenPiActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(BaoPanShenPiActivity.this, data, R.layout.baopanshenpi_row_block, new String[]{"shifa_gongzi","geren_zhichu","qiye_zhichu","yuangong_renshu","quanqin_tianshu","shenpiren","riqi"}, new int[]{R.id.shifa_gongzi,R.id.geren_zhichu, R.id.qiye_zhichu, R.id.yuangong_renshu, R.id.quanqin_tianshu, R.id.shenpiren, R.id.riqi}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);
@@ -290,7 +332,19 @@ public class BaoPanShenPiActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                editText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                String mon = "";
+                String day = "";
+                if(monthOfYear + 1 < 10){
+                    mon = "0" + (monthOfYear + 1);
+                }else{
+                    mon = "" + (monthOfYear + 1);
+                }
+                if(dayOfMonth < 10){
+                    day = "0" + dayOfMonth;
+                }else{
+                    day = "" + dayOfMonth;
+                }
+                editText.setText(year + "-" + mon + "-" + day);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

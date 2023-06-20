@@ -11,7 +11,7 @@ public class YhFinanceYingShouBaoBiao {
     private String unit;
     private String invoice_type;
     private String invoice_no;
-    private BigDecimal jine2;
+    private String jine2;
 
     public String getKehu() {
         return kehu;
@@ -69,11 +69,11 @@ public class YhFinanceYingShouBaoBiao {
         this.invoice_no = invoice_no;
     }
 
-    public BigDecimal getJine2() {
+    public String getJine2() {
         return jine2;
     }
 
-    public void setJine2(BigDecimal jine2) {
+    public void setJine2(String jine2) {
         this.jine2 = jine2;
     }
 }

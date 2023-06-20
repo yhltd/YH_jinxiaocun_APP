@@ -14,13 +14,12 @@
         <TextView
             android:gravity="center"
             android:id="@+id/riqi"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/main_text"
             android:textSize="14sp"
             android:text="休息日"
-            android:textStyle="bold"
-            android:width="200dp"/>
+            android:textStyle="bold"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"

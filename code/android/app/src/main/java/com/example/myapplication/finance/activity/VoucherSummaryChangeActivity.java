@@ -253,16 +253,15 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
                         }
                     }
 
-
-                    if (list.size() > 0) {
-                        name_array = new String[list.size() + 1];
-                        name_array[0] = "";
-                        for (int i = 0; i < list.size(); i++) {
-                            name_array[i+1] = list.get(i).getName();
+                    if(list != null){
+                        if (list.size() > 0) {
+                            name_array = new String[list.size() + 1];
+                            name_array[0] = "";
+                            for (int i = 0; i < list.size(); i++) {
+                                name_array[i+1] = list.get(i).getName();
+                            }
                         }
                     }
-
-
                     Message msg = new Message();
                     msg.obj = "";
                     listLoadHandler.sendMessage(msg);
@@ -279,9 +278,11 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             nameText = kemu_name.getItemAtPosition(position).toString();
-            for(int i=0; i< list.size(); i++){
-                if(nameText.equals(list.get(i).getName())){
-                    code.setText(list.get(i).getCode());
+            if(list != null){
+                for(int i=0; i< list.size(); i++){
+                    if(nameText.equals(list.get(i).getName())){
+                        code.setText(list.get(i).getCode());
+                    }
                 }
             }
         }

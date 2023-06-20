@@ -990,7 +990,8 @@ public class GongZiMingXiChangeActivity extends AppCompatActivity {
         } else {
             yhRenShiGongZiMingXi.setB(B.getSelectedItem().toString());
         }
-
+        yhRenShiGongZiMingXi.setC(C.getText().toString());
+        yhRenShiGongZiMingXi.setD(D.getText().toString());
         yhRenShiGongZiMingXi.setE(E.getText().toString());
         yhRenShiGongZiMingXi.setF(F.getText().toString());
         yhRenShiGongZiMingXi.setG(G.getText().toString());

@@ -5,12 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="100"
     tools:context=".scheduling.activity.ModuleTypeActivity"
     android:background="@color/WhiteSmoke">
 
     <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:fillViewport="true"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp">
@@ -29,9 +32,8 @@
 
                 <TextView
                     android:gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:width="200dp"
                     android:text="模块类别"
                     android:textColor="@color/title_text"
                     android:textSize="18sp"
@@ -54,18 +56,28 @@
 
     </HorizontalScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:onClick="onInsertClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/insert"
-        app:backgroundTint="@color/primary"
-        app:backgroundTintMode="add"
-        app:pressedTranslationZ="10dp"
-        app:tint="@color/white" />
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/biji_insert"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="onInsertClick"
+            android:text="添加"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
     <!--        -->
 </LinearLayout>

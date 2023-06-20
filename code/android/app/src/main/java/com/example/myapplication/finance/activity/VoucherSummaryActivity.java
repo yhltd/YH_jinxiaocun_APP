@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -59,6 +60,12 @@ public class VoucherSummaryActivity extends AppCompatActivity {
     private EditText start_date;
     private EditText stop_date;
     private ListView listView;
+
+    private ListView listView_block;
+    private HorizontalScrollView list_table;
+    private SimpleAdapter adapter;
+    private SimpleAdapter adapter_block;
+
     private Spinner type_select;
     private String type_selectText;
     private String start_dateText;
@@ -89,6 +96,8 @@ public class VoucherSummaryActivity extends AppCompatActivity {
         start_date = findViewById(R.id.start_date);
         stop_date = findViewById(R.id.stop_date);
         listView = findViewById(R.id.voucher_summary_list);
+        listView_block = findViewById(R.id.list_block);
+        list_table = findViewById(R.id.list_table);
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
@@ -108,16 +117,25 @@ public class VoucherSummaryActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("WrongConstant")
+    public void switchClick(View v) {
+        if(listView_block.getVisibility() == 0){
+            listView_block.setVisibility(8);
+            list_table.setVisibility(0);
+        }else if(listView_block.getVisibility() == 8){
+            listView_block.setVisibility(0);
+            list_table.setVisibility(8);
+        }
+
+    }
 
     private void selectListShow() {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 if (msg.obj != null) {
                     type_select.setAdapter((SpinnerAdapter) msg.obj);
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
 //                initList();
                 return true;
             }
@@ -171,7 +189,8 @@ public class VoucherSummaryActivity extends AppCompatActivity {
             Handler listLoadHandler = new Handler(new Handler.Callback() {
                 @Override
                 public boolean handleMessage(@NonNull Message msg) {
-                    listView.setAdapter(StringUtils.cast(msg.obj));
+                    listView.setAdapter(StringUtils.cast(adapter));
+                    listView_block.setAdapter(StringUtils.cast(adapter_block));
                     return true;
                 }
             });
@@ -212,7 +231,7 @@ public class VoucherSummaryActivity extends AppCompatActivity {
                     }
 
 
-                    SimpleAdapter adapter = new SimpleAdapter(VoucherSummaryActivity.this, data, R.layout.voucher_summary_row, new String[]{"word","no","insert_date","zhaiyao","code","full_name","load","borrowed","department","expenditure","note","man","money","real","not_get"}, new int[]{R.id.word,R.id.no,R.id.insert_date,R.id.zhaiyao,R.id.code,R.id.full_name,R.id.load,R.id.borrowed,R.id.department,R.id.expenditure,R.id.note,R.id.man,R.id.money,R.id.real,R.id.not_get}) {
+                    adapter = new SimpleAdapter(VoucherSummaryActivity.this, data, R.layout.voucher_summary_row, new String[]{"word","no","insert_date","zhaiyao","code","full_name","load","borrowed","department","expenditure","note","man","money","real","not_get"}, new int[]{R.id.word,R.id.no,R.id.insert_date,R.id.zhaiyao,R.id.code,R.id.full_name,R.id.load,R.id.borrowed,R.id.department,R.id.expenditure,R.id.note,R.id.man,R.id.money,R.id.real,R.id.not_get}) {
                         @Override
                         public View getView(int position, View convertView, ViewGroup parent) {
                             final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -223,6 +242,19 @@ public class VoucherSummaryActivity extends AppCompatActivity {
                             return view;
                         }
                     };
+
+                    adapter_block = new SimpleAdapter(VoucherSummaryActivity.this, data, R.layout.voucher_summary_row_block, new String[]{"word","no","insert_date","zhaiyao","code","full_name","load","borrowed","department","expenditure","note","man","money","real","not_get"}, new int[]{R.id.word,R.id.no,R.id.insert_date,R.id.zhaiyao,R.id.code,R.id.full_name,R.id.load,R.id.borrowed,R.id.department,R.id.expenditure,R.id.note,R.id.man,R.id.money,R.id.real,R.id.not_get}) {
+                        @Override
+                        public View getView(int position, View convertView, ViewGroup parent) {
+                            final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                            LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                            linearLayout.setOnLongClickListener(onItemLongClick());
+                            linearLayout.setOnClickListener(updateClick());
+                            linearLayout.setTag(position);
+                            return view;
+                        }
+                    };
+
                     Message msg = new Message();
                     msg.obj = adapter;
                     listLoadHandler.sendMessage(msg);
@@ -396,7 +428,7 @@ public class VoucherSummaryActivity extends AppCompatActivity {
 
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+        sel_button.setEnabled(false);
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         if(start_dateText.equals("")){
@@ -409,8 +441,9 @@ public class VoucherSummaryActivity extends AppCompatActivity {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                listView.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });
@@ -448,7 +481,7 @@ public class VoucherSummaryActivity extends AppCompatActivity {
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(VoucherSummaryActivity.this, data, R.layout.voucher_summary_row, new String[]{"word","no","insert_date","zhaiyao","code","full_name","load","borrowed","department","expenditure","note","man","money","real","not_get"}, new int[]{R.id.word,R.id.no,R.id.insert_date,R.id.zhaiyao,R.id.code,R.id.full_name,R.id.load,R.id.borrowed,R.id.department,R.id.expenditure,R.id.note,R.id.man,R.id.money,R.id.real,R.id.not_get}) {
+                adapter = new SimpleAdapter(VoucherSummaryActivity.this, data, R.layout.voucher_summary_row, new String[]{"word","no","insert_date","zhaiyao","code","full_name","load","borrowed","department","expenditure","note","man","money","real","not_get"}, new int[]{R.id.word,R.id.no,R.id.insert_date,R.id.zhaiyao,R.id.code,R.id.full_name,R.id.load,R.id.borrowed,R.id.department,R.id.expenditure,R.id.note,R.id.man,R.id.money,R.id.real,R.id.not_get}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -459,6 +492,19 @@ public class VoucherSummaryActivity extends AppCompatActivity {
                         return view;
                     }
                 };
+
+                adapter_block = new SimpleAdapter(VoucherSummaryActivity.this, data, R.layout.voucher_summary_row_block, new String[]{"word","no","insert_date","zhaiyao","code","full_name","load","borrowed","department","expenditure","note","man","money","real","not_get"}, new int[]{R.id.word,R.id.no,R.id.insert_date,R.id.zhaiyao,R.id.code,R.id.full_name,R.id.load,R.id.borrowed,R.id.department,R.id.expenditure,R.id.note,R.id.man,R.id.money,R.id.real,R.id.not_get}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnLongClickListener(onItemLongClick());
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);

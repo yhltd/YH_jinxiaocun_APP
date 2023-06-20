@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="100"
     tools:context=".finance.activity.ZhiNengKanBanActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:gravity="center_vertical"
         android:background="@drawable/shape_corner">
 
@@ -40,8 +42,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:gravity="center_vertical"
         android:background="@drawable/shape_corner"
         android:layout_marginTop="10dp"
@@ -69,8 +72,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:gravity="center_vertical"
         android:background="@drawable/shape_corner"
         android:layout_marginTop="10dp"
@@ -98,8 +102,9 @@
     </LinearLayout>
 
     <ScrollView
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="75"
         android:id="@+id/main_scollview" >
 
         <LinearLayout
@@ -198,7 +203,7 @@
                 android:layout_marginTop="50dp"
                 android:textSize="24dp"
                 android:textColor="@color/black"
-                android:text="利润合计" />
+                android:text="现金流量" />
 
             <com.github.mikephil.charting.charts.BarChart
                 android:layout_marginTop="10dp"

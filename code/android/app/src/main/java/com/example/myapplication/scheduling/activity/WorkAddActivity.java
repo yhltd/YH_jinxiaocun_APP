@@ -175,14 +175,12 @@ public class WorkAddActivity extends AppCompatActivity {
     }
 
     private void init() {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 order_id.setAdapter(orderAdapter);
                 module.setAdapter(moduleAdapter);
                 row_num.setAdapter(rowNumAdapter);
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
