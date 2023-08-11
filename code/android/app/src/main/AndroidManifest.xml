@@ -214,6 +214,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".jxc.activity.ScanActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="扫码">
+            <intent-filter>
+                <action android:name="android.intent.action.ScanActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="打印">
+            <intent-filter>
+                <action android:name="android.intent.action.MainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
 
         <!--    财务    -->

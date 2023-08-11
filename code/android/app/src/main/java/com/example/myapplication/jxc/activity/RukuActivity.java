@@ -19,11 +19,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,11 +34,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunJiChuZiLiao;
+import com.example.myapplication.jxc.entity.YhJinXiaoCunMingXi;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunJiChuZiLiaoService;
+import com.example.myapplication.jxc.service.YhJinXiaoCunMingXiService;
 import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
+import com.journeyapps.barcodescanner.CaptureManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -45,16 +51,22 @@ import java.util.List;
 
 public class RukuActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 100;
+    //商品二维码
+    private static final int REQUEST_CODE_SCAN = 101;
+    //订单二维码
+    private static final int ORDER_CODE_SCAN = 102;
 
     private YhJinXiaoCunUser yhJinXiaoCunUser;
     private YhJinXiaoCunJiChuZiLiaoService yhJinXiaoCunJiChuZiLiaoService;
+    private YhJinXiaoCunMingXiService yhJinXiaoCunMingXiService;
 
     private List<YhJinXiaoCunJiChuZiLiao> list;
+    private List<YhJinXiaoCunMingXi> order_list;
 
     private String churuku;
-
     private ListView listView;
     private Button sel_button;
+    private Button product_qr;
     private EditText search_text;
 
     HashMap<Integer, Boolean> state = new HashMap<Integer, Boolean>();
@@ -82,6 +94,7 @@ public class RukuActivity extends AppCompatActivity {
         listView = findViewById(R.id.product_list);
         listView.setCacheColorHint(Color.TRANSPARENT);
         sel_button = findViewById(R.id.sel_button);
+        product_qr = findViewById(R.id.product_qr);
         search_text = findViewById(R.id.product_search);
 
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -235,6 +248,67 @@ public class RukuActivity extends AppCompatActivity {
         }
     }
 
+    public void onScanClick(View view) {
+        Intent intent = new Intent(this, ScanActivity.class);
+        startActivityForResult(intent, REQUEST_CODE_SCAN);
+    }
+
+    public void onOrderScanClick(View view) {
+        Intent intent = new Intent(this, ScanActivity.class);
+        startActivityForResult(intent, ORDER_CODE_SCAN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_SCAN && data != null) {
+            String result = data.getStringExtra("qr_code");
+            int row = 0;
+            for(int i=0; i<list.size(); i++){
+                if(result.equals(list.get(i).getSpDm())){
+                    int this_num = 0;
+                    if(list.get(i).getNum() != null) {
+                        if (!list.get(i).getNum().equals("")) {
+                            this_num = Integer.parseInt(list.get(i).getNum());
+                        }
+                    }
+                    list.get(i).setNum(String.valueOf(this_num + 1));
+                    row = i;
+                    break;
+                }
+            }
+            MyApplication myApplication = (MyApplication) getApplication();
+            listView.setAdapter(new MyAdapter(myApplication.getApplicationContext()));
+            listView.setSelection(row);
+            Toast.makeText(this, "商品识别完成", Toast.LENGTH_SHORT).show();
+        }else if (requestCode == ORDER_CODE_SCAN && data != null) {
+            String result = data.getStringExtra("qr_code");
+            for(int i=0; i<order_list.size(); i++){
+                if(result.equals(order_list.get(i).getOrderid())){
+                    String this_sp = order_list.get(i).getSpDm();
+                    int order_num = 0;
+                    if(!order_list.get(i).getCpsl().equals("")){
+                        order_num = Integer.parseInt(order_list.get(i).getCpsl());
+                    }
+                    for(int j=0; j<list.size(); j++){
+                        if(list.get(j).getSpDm().equals(this_sp)){
+                            int this_num = 0;
+                            if(list.get(j).getNum() != null){
+                                if(!list.get(j).getNum().equals("")){
+                                    this_num = Integer.parseInt(list.get(j).getNum());
+                                }
+                            }
+                            list.get(j).setNum(String.valueOf(this_num + order_num));
+                            break;
+                        }
+                    }
+                }
+            }
+            MyApplication myApplication = (MyApplication) getApplication();
+            listView.setAdapter(new MyAdapter(myApplication.getApplicationContext()));
+            Toast.makeText(this, "订单识别完成", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void initList() {
         sel_button.setEnabled(false);
@@ -252,7 +326,9 @@ public class RukuActivity extends AppCompatActivity {
             @Override
             public void run() {
                 yhJinXiaoCunJiChuZiLiaoService = new YhJinXiaoCunJiChuZiLiaoService();
+                yhJinXiaoCunMingXiService = new YhJinXiaoCunMingXiService();
                 list = yhJinXiaoCunJiChuZiLiaoService.getList(yhJinXiaoCunUser.getGongsi(), search_text.getText().toString());
+                order_list = yhJinXiaoCunMingXiService.getList(yhJinXiaoCunUser.getGongsi());
                 Message msg = new Message();
                 msg.obj = list;
                 listLoadHandler.sendMessage(msg);
@@ -287,8 +363,6 @@ public class RukuActivity extends AppCompatActivity {
         intent.putExtra("churuku", churuku);
         startActivityForResult(intent, REQUEST_CODE_CHANG);
     }
-
-
 
 
 }

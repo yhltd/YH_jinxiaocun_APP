@@ -194,16 +194,52 @@
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
         android:layout_alignParentBottom="true">
 
         <Button
             android:id="@+id/biji_insert"
-            android:layout_width="130dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:onClick="onInsertClick"
             android:text="添加"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/product_qr"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:onClick="onScanClick"
+            android:text="商品扫码"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/btn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/order_qr"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:onClick="onOrderScanClick"
+            android:text="订单扫码"
             tools:ignore="MissingConstraints"
             android:background="@drawable/btn_style"
             android:textSize="17dp"

@@ -11,6 +11,7 @@ import com.example.myapplication.finance.entity.YhFinanceQuanXian;
 import com.example.myapplication.jiaowu.entity.AccountManagement;
 import com.example.myapplication.jiaowu.entity.Quanxian;
 import com.example.myapplication.jiaowu.entity.Teacher;
+import com.example.myapplication.jxc.entity.YhJinXiaoCunMingXi;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.mendian.entity.YhMendianOrderDetail;
@@ -37,6 +38,15 @@ public class MyApplication extends Application {
     private AccountManagement accountManagement;
     private Quanxian quanxian;
     private YhFinanceQuanXian yhFinanceQuanXian;
+    private List<YhJinXiaoCunMingXi> mingxiList;
+
+    public List<YhJinXiaoCunMingXi> getMingxiList() {
+        return mingxiList;
+    }
+
+    public void setMingxiList(List<YhJinXiaoCunMingXi> mingxiList) {
+        this.mingxiList = mingxiList;
+    }
 
     public YhFinanceQuanXian getYhFinanceQuanXian() {
         return yhFinanceQuanXian;

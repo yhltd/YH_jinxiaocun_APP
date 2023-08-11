@@ -2,6 +2,7 @@ package com.example.myapplication.jxc.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +14,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
@@ -53,6 +56,8 @@ public class MingXiChangeActivity extends AppCompatActivity {
     private EditText cpsl;
     private Spinner mxtype;
     private Spinner shou_h;
+    private LinearLayout qr_code_line;
+    private ImageView qr_code;
 
     List<YhJinXiaoCunJiChuZiLiao> getList;
 
@@ -87,6 +92,8 @@ public class MingXiChangeActivity extends AppCompatActivity {
         cpsl = findViewById(R.id.cpsl);
         mxtype = findViewById(R.id.mxtype);
         shou_h = findViewById(R.id.shou_h);
+        qr_code_line = findViewById(R.id.qr_code_line);
+        qr_code = findViewById(R.id.qr_code);
 
         SpinnerAdapter adapter = new ArrayAdapter<String>(MingXiChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, mxtype_array);
 
@@ -101,13 +108,16 @@ public class MingXiChangeActivity extends AppCompatActivity {
             init1();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
-
+            qr_code_line.setVisibility(View.VISIBLE);
             orderid.setText(yhJinXiaoCunMingXi.getOrderid());
-
             cpname.setText(yhJinXiaoCunMingXi.getCpname());
             cplb.setText(yhJinXiaoCunMingXi.getCplb());
             cpsj.setText(yhJinXiaoCunMingXi.getCpsj());
             cpsl.setText(yhJinXiaoCunMingXi.getCpsl());
+
+            QRcode qrcode = new QRcode();
+            Bitmap bitmap= qrcode.qrcode(yhJinXiaoCunMingXi.getOrderid());
+            qr_code.setImageBitmap(bitmap);
 
             spDm.setOnItemSelectedListener(new spDmItemSelectedListener());
             mxtype.setOnItemSelectedListener(new mxtypeItemSelectedListener());

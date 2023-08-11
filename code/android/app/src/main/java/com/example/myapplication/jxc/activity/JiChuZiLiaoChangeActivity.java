@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -35,6 +36,9 @@ import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunJiChuZiLiaoService;
 import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -42,6 +46,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 
 public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
     private YhJinXiaoCunUser yhJinXiaoCunUser;
@@ -55,6 +60,9 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
     private EditText kehu;
     private EditText gongyingshang;
     private ImageView mark1;
+    private LinearLayout qr_code_line;
+    private ImageView qr_code;
+
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -79,6 +87,8 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
         danWei = findViewById(R.id.danWei);
         kehu = findViewById(R.id.kehu);
         gongyingshang = findViewById(R.id.gongyingshang);
+        qr_code_line = findViewById(R.id.qr_code_line);
+        qr_code = findViewById(R.id.qr_code);
 
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
@@ -90,6 +100,7 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
             yhJinXiaoCunJiChuZiLiao = (YhJinXiaoCunJiChuZiLiao) myApplication.getObj();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
+            qr_code_line.setVisibility(View.VISIBLE);
             byte[] decodedString = Base64.decode(yhJinXiaoCunJiChuZiLiao.getMark1(), Base64.DEFAULT);
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             mark1.setImageBitmap(decodedByte);
@@ -99,11 +110,15 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
             danWei.setText(yhJinXiaoCunJiChuZiLiao.getDanWei());
             kehu.setText(yhJinXiaoCunJiChuZiLiao.getShouHuo());
             gongyingshang.setText(yhJinXiaoCunJiChuZiLiao.getGongHuo());
-
+            QRcode qrcode = new QRcode();
+            Bitmap bitmap= qrcode.qrcode(yhJinXiaoCunJiChuZiLiao.getSpDm());
+            qr_code.setImageBitmap(bitmap);
         }
 
         mark1.setOnClickListener(imageSel());
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

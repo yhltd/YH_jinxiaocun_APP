@@ -37,6 +37,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.XiangQingYeActivity;
 import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunJiChuZiLiao;
+import com.example.myapplication.jxc.entity.YhJinXiaoCunMingXi;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunJiChuZiLiaoService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunMingXiService;
@@ -53,7 +54,8 @@ import java.util.List;
 
 public class JiChuZiLiaoActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
-
+    //商品二维码
+    private static final int REQUEST_CODE_SCAN = 101;
     private YhJinXiaoCunUser yhJinXiaoCunUser;
     private YhJinXiaoCunJiChuZiLiaoService yhJinXiaoCunJiChuZiLiaoService;
     private EditText cpname_text;
@@ -400,6 +402,24 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                 return true;
             }
         };
+    }
+
+    public void onOrderScanClick(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        MyApplication myApplication = (MyApplication) getApplication();
+        List<YhJinXiaoCunMingXi> mingxi_list = new ArrayList<>();
+        for(int i=0; i<list.size(); i++){
+            YhJinXiaoCunMingXi this_mingxi = new YhJinXiaoCunMingXi();
+            this_mingxi.setSpDm(list.get(i).getSpDm());
+            this_mingxi.setCpname(list.get(i).getName());
+            mingxi_list.add(this_mingxi);
+        }
+        if(mingxi_list.size()>0){
+            myApplication.setMingxiList(mingxi_list);
+            intent.putExtra("title1", "商品代码：");
+            intent.putExtra("title2", "商品名称：");
+            startActivityForResult(intent, REQUEST_CODE_SCAN);
+        }
     }
 
     @Override

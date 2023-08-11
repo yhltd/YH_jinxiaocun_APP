@@ -18,8 +18,10 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +31,9 @@ import com.example.myapplication.R;
 import com.example.myapplication.XiangQingYeActivity;
 import com.example.myapplication.entity.XiangQingYe;
 import com.example.myapplication.jxc.entity.YhJinXiaoCun;
+import com.example.myapplication.jxc.entity.YhJinXiaoCunMingXi;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
+import com.example.myapplication.jxc.service.YhJinXiaoCunMingXiService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunService;
 import com.example.myapplication.utils.ExcelUtil;
 import com.example.myapplication.utils.LoadingDialog;
@@ -43,9 +47,16 @@ import java.util.List;
 
 public class JinXiaoCunActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
+
+    //订单二维码
+    private static final int ORDER_CODE_SCAN = 102;
+
     private YhJinXiaoCunUser yhJinXiaoCunUser;
     private YhJinXiaoCunService yhJinXiaoCunService;
+    private YhJinXiaoCunMingXiService yhJinXiaoCunMingXiService;
+    private List<YhJinXiaoCunMingXi> order_list;
 
+    private String where_sql;
     private EditText spDm_text;
     private EditText ks;
     private EditText js;
@@ -60,6 +71,7 @@ public class JinXiaoCunActivity extends AppCompatActivity {
     private Button export_button;
 
     List<YhJinXiaoCun> list;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -178,7 +190,77 @@ public class JinXiaoCunActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     yhJinXiaoCunService = new YhJinXiaoCunService();
+                    yhJinXiaoCunMingXiService = new YhJinXiaoCunMingXiService();
                     list = yhJinXiaoCunService.queryJxc(yhJinXiaoCunUser.getGongsi(), start_dateText, stop_dateText, spDm_text.getText().toString());
+                    order_list = yhJinXiaoCunMingXiService.getList(yhJinXiaoCunUser.getGongsi());
+                    if (list == null) return;
+
+                    for (int i = 0; i < list.size(); i++) {
+                        HashMap<String, Object> item = new HashMap<>();
+                        item.put("spDm", list.get(i).getSp_dm());
+                        item.put("name", list.get(i).getName());
+                        item.put("leiBie", list.get(i).getLei_bie());
+                        item.put("jq_cpsl", list.get(i).getJq_cpsl());
+                        item.put("jq_price", list.get(i).getJq_price());
+                        item.put("mx_ruku_cpsl", list.get(i).getMx_ruku_cpsl());
+                        item.put("mx_ruku_price", list.get(i).getMx_ruku_price());
+                        item.put("mx_chuku_cpsl", list.get(i).getMx_chuku_cpsl());
+                        item.put("mx_chuku_price", list.get(i).getMx_chuku_price());
+                        item.put("jc_sl", list.get(i).getJc_sl());
+                        item.put("jc_price", list.get(i).getJc_price());
+
+                        data.add(item);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                adapter = new SimpleAdapter(JinXiaoCunActivity.this, data, R.layout.jinxiaocun_row, new String[]{"spDm", "name", "leiBie", "jq_cpsl", "jq_price", "mx_ruku_cpsl", "mx_ruku_price", "mx_chuku_cpsl", "mx_chuku_price", "jc_sl", "jc_price"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.jq_cpsl, R.id.jq_price, R.id.mx_ruku_cpsl, R.id.mx_ruku_price, R.id.mx_chuku_cpsl, R.id.mx_chuku_price, R.id.jc_sl, R.id.jc_price}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
+                adapter_block = new SimpleAdapter(JinXiaoCunActivity.this, data, R.layout.jinxiaocun_row_block, new String[]{"spDm", "name", "leiBie", "jq_cpsl", "jq_price", "mx_ruku_cpsl", "mx_ruku_price", "mx_chuku_cpsl", "mx_chuku_price", "jc_sl", "jc_price"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.jq_cpsl, R.id.jq_price, R.id.mx_ruku_cpsl, R.id.mx_ruku_price, R.id.mx_chuku_cpsl, R.id.mx_chuku_price, R.id.jc_sl, R.id.jc_price}) {
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
+                        LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
+                        linearLayout.setOnClickListener(updateClick());
+                        linearLayout.setTag(position);
+                        return view;
+                    }
+                };
+
+                Message msg = new Message();
+                msg.obj = adapter;
+                listLoadHandler.sendMessage(msg);
+            }
+        }).start();
+    }
+
+    private void orderList() {
+        Handler listLoadHandler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                listView.setAdapter(StringUtils.cast(adapter));
+                listView_block.setAdapter(StringUtils.cast(adapter_block));
+                return true;
+            }
+        });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<HashMap<String, Object>> data = new ArrayList<>();
+                try {
+                    yhJinXiaoCunService = new YhJinXiaoCunService();
+                    list = yhJinXiaoCunService.orderQueryJxc(yhJinXiaoCunUser.getGongsi(), where_sql);
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {
@@ -295,6 +377,31 @@ public class JinXiaoCunActivity extends AppCompatActivity {
                 initList();
             }
         };
+    }
+
+    public void onOrderScanClick(View view) {
+        Intent intent = new Intent(this, ScanActivity.class);
+        startActivityForResult(intent, ORDER_CODE_SCAN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ORDER_CODE_SCAN && data != null) {
+            String result = data.getStringExtra("qr_code");
+            where_sql = "";
+            for(int i=0; i<order_list.size(); i++){
+                if(result.equals(order_list.get(i).getOrderid())){
+                    String this_sp = order_list.get(i).getSpDm();
+                    if(where_sql.equals("")){
+                        where_sql = " where cpid = '" + this_sp + "'";
+                    }else{
+                        where_sql = where_sql + " or cpid = '" + this_sp + "'";
+                    }
+                }
+            }
+            orderList();
+        }
     }
 
     public View.OnClickListener exportClick() {
