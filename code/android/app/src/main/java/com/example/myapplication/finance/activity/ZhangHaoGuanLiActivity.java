@@ -39,6 +39,8 @@ import com.example.myapplication.finance.service.YhFinanceFaPiaoService;
 import com.example.myapplication.finance.service.YhFinanceKehuPeizhiService;
 import com.example.myapplication.finance.service.YhFinanceQuanXianService;
 import com.example.myapplication.finance.service.YhFinanceUserService;
+import com.example.myapplication.renshi.activity.RenYuanXinXiGuanLiActivity;
+import com.example.myapplication.renshi.activity.RenYuanXinXiGuanLiChangeActivity;
 import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
@@ -70,6 +72,7 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
     private Button sel_button;
 
     List<YhFinanceUser> list;
+    List<YhFinanceUser> all_list;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -151,6 +154,7 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
                 try {
                     yhFinanceUserService = new YhFinanceUserService();
                     list = yhFinanceUserService.getList(yhFinanceUser.getCompany(),usernameText);
+                    all_list = yhFinanceUserService.getList(yhFinanceUser.getCompany(),"");
                     if (list == null) return;
 
                 } catch (Exception e) {
@@ -293,9 +297,22 @@ public class ZhangHaoGuanLiActivity extends AppCompatActivity {
             ToastUtil.show(ZhangHaoGuanLiActivity.this, "无权限！");
             return;
         }
-        Intent intent = new Intent(ZhangHaoGuanLiActivity.this, ZhangHaoGuanLiChangeActivity.class);
-        intent.putExtra("type", R.id.insert_btn);
-        startActivityForResult(intent, REQUEST_CODE_CHANG);
+        MyApplication myApplication = (MyApplication) getApplication();
+        String userNum = myApplication.getUserNum();
+        if(!userNum.equals("") && all_list != null){
+            int thisNum = Integer.parseInt(userNum);
+            if(all_list.size() >= thisNum){
+                ToastUtil.show(ZhangHaoGuanLiActivity.this, "已有账号数量过多，请删除无用账号后再试！");
+            }else{
+                Intent intent = new Intent(ZhangHaoGuanLiActivity.this, ZhangHaoGuanLiChangeActivity.class);
+                intent.putExtra("type", R.id.insert_btn);
+                startActivityForResult(intent, REQUEST_CODE_CHANG);
+            }
+        }else{
+            Intent intent = new Intent(ZhangHaoGuanLiActivity.this, ZhangHaoGuanLiChangeActivity.class);
+            intent.putExtra("type", R.id.insert_btn);
+            startActivityForResult(intent, REQUEST_CODE_CHANG);
+        }
     }
 
     @Override

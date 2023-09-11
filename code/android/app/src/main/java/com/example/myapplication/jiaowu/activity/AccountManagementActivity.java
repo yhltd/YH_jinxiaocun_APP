@@ -30,6 +30,8 @@ import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.AccountManagementService;
 import com.example.myapplication.jiaowu.service.SheZhiService;
 import com.example.myapplication.scheduling.activity.BomActivity;
+import com.example.myapplication.scheduling.activity.UserActivity;
+import com.example.myapplication.scheduling.activity.UserChangeActivity;
 import com.example.myapplication.utils.ExcelUtil;
 import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
@@ -62,7 +64,7 @@ public class AccountManagementActivity extends AppCompatActivity {
     private Quanxian quanxian;
 
     List<AccountManagement> list;
-
+    List<AccountManagement> all_list;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -149,6 +151,7 @@ public class AccountManagementActivity extends AppCompatActivity {
                 try {
                     accountManagementService = new AccountManagementService();
                     list = accountManagementService.getList(unameText,realnameText,phoneText, teacher.getCompany());
+                    all_list = accountManagementService.getList("","","", teacher.getCompany());
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {
@@ -218,9 +221,23 @@ public class AccountManagementActivity extends AppCompatActivity {
             ToastUtil.show(AccountManagementActivity.this, "无权限！");
             return;
         }
-        Intent intent = new Intent(AccountManagementActivity.this, AccountManagementChangeActivity.class);
-        intent.putExtra("type", R.id.insert_btn);
-        startActivityForResult(intent, REQUEST_CODE_CHANG);
+
+        MyApplication myApplication = (MyApplication) getApplication();
+        String userNum = myApplication.getUserNum();
+        if(!userNum.equals("") && all_list != null){
+            int thisNum = Integer.parseInt(userNum);
+            if(all_list.size() >= thisNum){
+                ToastUtil.show(AccountManagementActivity.this, "已有账号数量过多，请删除无用账号后再试！");
+            }else{
+                Intent intent = new Intent(AccountManagementActivity.this, AccountManagementChangeActivity.class);
+                intent.putExtra("type", R.id.insert_btn);
+                startActivityForResult(intent, REQUEST_CODE_CHANG);
+            }
+        }else{
+            Intent intent = new Intent(AccountManagementActivity.this, AccountManagementChangeActivity.class);
+            intent.putExtra("type", R.id.insert_btn);
+            startActivityForResult(intent, REQUEST_CODE_CHANG);
+        }
     }
 
     public View.OnClickListener updateClick() {

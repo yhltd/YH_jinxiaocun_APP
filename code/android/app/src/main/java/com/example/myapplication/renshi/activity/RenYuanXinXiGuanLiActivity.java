@@ -27,6 +27,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.fenquan.activity.GongZuoTaiActivity;
+import com.example.myapplication.jxc.activity.UserActivity;
+import com.example.myapplication.jxc.activity.UserChangeActivity;
 import com.example.myapplication.renshi.entity.YhRenShiGongZiMingXi;
 import com.example.myapplication.renshi.entity.YhRenShiUser;
 import com.example.myapplication.renshi.service.YhRenShiGongZiMingXiService;
@@ -58,6 +60,7 @@ public class RenYuanXinXiGuanLiActivity extends AppCompatActivity {
     private Button sel_button;
 
     List<YhRenShiUser> list;
+    List<YhRenShiUser> all_list;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -139,6 +142,7 @@ public class RenYuanXinXiGuanLiActivity extends AppCompatActivity {
                 try {
                     yhRenShiUserService = new YhRenShiUserService();
                     list = yhRenShiUserService.getList(yhRenShiUser.getL(),nameText,phoneText);
+                    all_list = yhRenShiUserService.getList(yhRenShiUser.getL(),"","");
                     if (list == null){
                         return;
                     }
@@ -188,9 +192,22 @@ public class RenYuanXinXiGuanLiActivity extends AppCompatActivity {
 
 
     public void onInsertClick(View v) {
-        Intent intent = new Intent(RenYuanXinXiGuanLiActivity.this, RenYuanXinXiGuanLiChangeActivity.class);
-        intent.putExtra("type", R.id.insert_btn);
-        startActivityForResult(intent, REQUEST_CODE_CHANG);
+        MyApplication myApplication = (MyApplication) getApplication();
+        String userNum = myApplication.getUserNum();
+        if(!userNum.equals("") && all_list != null){
+            int thisNum = Integer.parseInt(userNum);
+            if(all_list.size() >= thisNum){
+                ToastUtil.show(RenYuanXinXiGuanLiActivity.this, "已有账号数量过多，请删除无用账号后再试！");
+            }else{
+                Intent intent = new Intent(RenYuanXinXiGuanLiActivity.this, RenYuanXinXiGuanLiChangeActivity.class);
+                intent.putExtra("type", R.id.insert_btn);
+                startActivityForResult(intent, REQUEST_CODE_CHANG);
+            }
+        }else{
+            Intent intent = new Intent(RenYuanXinXiGuanLiActivity.this, RenYuanXinXiGuanLiChangeActivity.class);
+            intent.putExtra("type", R.id.insert_btn);
+            startActivityForResult(intent, REQUEST_CODE_CHANG);
+        }
     }
 
     public View.OnClickListener updateClick() {

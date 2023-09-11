@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
+import com.example.myapplication.entity.SoftTime;
 import com.example.myapplication.fenquan.activity.FenquanActivity;
 import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.fenquan.service.RenyuanService;
@@ -43,12 +44,15 @@ import com.example.myapplication.renshi.service.YhRenShiUserService;
 import com.example.myapplication.scheduling.activity.SchedulingActivity;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.UserInfoService;
+import com.example.myapplication.service.SystemService;
 import com.example.myapplication.utils.InputUtil;
 import com.example.myapplication.utils.ToastUtil;
 import com.example.myapplication.finance.activity.FinanceActivity;
 import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceUserService;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
     private RenyuanService renyuanService;
     private TeacherService teacherService;
     private YhMendianUserService yhMendianUserService;
+    private SystemService systemService;
 
     private Spinner system;
     private Spinner company;
@@ -72,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private SharedPreferences loginPreference;
     private CheckBox remember;
-
+    List<SoftTime> softTimeList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
         if (getSupportActionBar() != null){
             getSupportActionBar().hide();
         }
+        systemService = new SystemService();
         //初始化控件
         system = findViewById(R.id.system);
         signBtn = findViewById(R.id.sign_in);
@@ -305,79 +311,111 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public boolean handleMessage(@NonNull Message msg) {
                         signBtn.setEnabled(true);
+                        boolean panduan = true;
                         if (msg.obj != null) {
-                            if (systemText.equals("云合未来进销存系统")) {
-                                YhJinXiaoCunUser user = (YhJinXiaoCunUser) msg.obj;
-                                if (user.getBtype().equals("正常")) {
-                                    configLoginInfo(remember.isChecked());
-                                    MyApplication application = (MyApplication) getApplicationContext();
-                                    application.setYhJinXiaoCunUser(user);
-                                    ToastUtil.show(LoginActivity.this, "登录成功");
-                                    Intent intent = new Intent(LoginActivity.this, JxcActivity.class);
-                                    startActivity(intent);
-                                } else {
-                                    ToastUtil.show(LoginActivity.this, "账号已被禁用");
+                            String thisNum = "";
+                            if(softTimeList == null){
+                                panduan = false;
+                                ToastUtil.show(LoginActivity.this, "工具到期，请联系我公司续费");
+                            }else{
+                                if (!softTimeList.get(0).getMark1().trim().equals("a8xd2s")){
+                                    if(softTimeList.get(0).getEndtime().trim().equals("1")){
+                                        panduan = false;
+                                        ToastUtil.show(LoginActivity.this, "工具到期，请联系我公司续费");
+                                    }else if(softTimeList.get(0).getMark2().trim().equals("1")){
+                                        panduan = false;
+                                        ToastUtil.show(LoginActivity.this, "服务器到期，请联系我公司续费");
+                                    }
+                                    thisNum = softTimeList.get(0).getMark3().trim();
+                                    if(!thisNum.equals("")){
+                                        thisNum = thisNum.split(":")[1];
+                                        thisNum = thisNum.replace("(","");
+                                        thisNum = thisNum.replace(")","");
+                                    }
                                 }
-                            } else if (systemText.equals("云合未来财务系统")) {
-                                configLoginInfo(remember.isChecked());
-                                YhFinanceUser user = (YhFinanceUser) msg.obj;
-                                MyApplication application = (MyApplication) getApplicationContext();
-                                application.setYhFinanceUser(user);
-                                ToastUtil.show(LoginActivity.this, "登录成功");
-                                Intent intent = new Intent(LoginActivity.this, FinanceActivity.class);
-                                startActivity(intent);
-                            } else if (systemText.equals("云合排产管理系统")) {
-                                UserInfo user = (UserInfo) msg.obj;
-                                if (user.getState().equals("正常")) {
+                            }
+                            System.out.println(thisNum);
+                            if(panduan){
+                                if (systemText.equals("云合未来进销存系统")) {
+                                    YhJinXiaoCunUser user = (YhJinXiaoCunUser) msg.obj;
+                                    if (user.getBtype().equals("正常")) {
+                                        configLoginInfo(remember.isChecked());
+                                        MyApplication application = (MyApplication) getApplicationContext();
+                                        application.setYhJinXiaoCunUser(user);
+                                        application.setUserNum(thisNum);
+                                        ToastUtil.show(LoginActivity.this, "登录成功");
+                                        Intent intent = new Intent(LoginActivity.this, JxcActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        ToastUtil.show(LoginActivity.this, "账号已被禁用");
+                                    }
+                                } else if (systemText.equals("云合未来财务系统")) {
                                     configLoginInfo(remember.isChecked());
+                                    YhFinanceUser user = (YhFinanceUser) msg.obj;
                                     MyApplication application = (MyApplication) getApplicationContext();
-                                    application.setUserInfo(user);
+                                    application.setYhFinanceUser(user);
+                                    application.setUserNum(thisNum);
                                     ToastUtil.show(LoginActivity.this, "登录成功");
-                                    Intent intent = new Intent(LoginActivity.this, SchedulingActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, FinanceActivity.class);
                                     startActivity(intent);
-                                } else {
-                                    ToastUtil.show(LoginActivity.this, "账号已被禁用");
-                                }
-                            } else if (systemText.equals("云合分权编辑系统")) {
-                                Renyuan renyuan = (Renyuan) msg.obj;
-                                if (renyuan.getZhuangtai().equals("正常")) {
+                                } else if (systemText.equals("云合排产管理系统")) {
+                                    UserInfo user = (UserInfo) msg.obj;
+                                    if (user.getState().equals("正常")) {
+                                        configLoginInfo(remember.isChecked());
+                                        MyApplication application = (MyApplication) getApplicationContext();
+                                        application.setUserInfo(user);
+                                        application.setUserNum(thisNum);
+                                        ToastUtil.show(LoginActivity.this, "登录成功");
+                                        Intent intent = new Intent(LoginActivity.this, SchedulingActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        ToastUtil.show(LoginActivity.this, "账号已被禁用");
+                                    }
+                                } else if (systemText.equals("云合分权编辑系统")) {
+                                    Renyuan renyuan = (Renyuan) msg.obj;
+                                    if (renyuan.getZhuangtai().equals("正常")) {
+                                        configLoginInfo(remember.isChecked());
+                                        MyApplication application = (MyApplication) getApplicationContext();
+                                        application.setRenyuan(renyuan);
+                                        application.setUserNum(thisNum);
+                                        ToastUtil.show(LoginActivity.this, "登录成功");
+                                        Intent intent = new Intent(LoginActivity.this, FenquanActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        ToastUtil.show(LoginActivity.this, "账号已被禁用");
+                                    }
+                                }else if (systemText.equals("云合人事管理系统")) {
                                     configLoginInfo(remember.isChecked());
+                                    YhRenShiUser user = (YhRenShiUser) msg.obj;
                                     MyApplication application = (MyApplication) getApplicationContext();
-                                    application.setRenyuan(renyuan);
+                                    application.setYhRenShiUser(user);
+                                    application.setUserNum(thisNum);
                                     ToastUtil.show(LoginActivity.this, "登录成功");
-                                    Intent intent = new Intent(LoginActivity.this, FenquanActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, RenShiActivity.class);
                                     startActivity(intent);
-                                } else {
-                                    ToastUtil.show(LoginActivity.this, "账号已被禁用");
-                                }
-                            }else if (systemText.equals("云合人事管理系统")) {
-                                configLoginInfo(remember.isChecked());
-                                YhRenShiUser user = (YhRenShiUser) msg.obj;
-                                MyApplication application = (MyApplication) getApplicationContext();
-                                application.setYhRenShiUser(user);
-                                ToastUtil.show(LoginActivity.this, "登录成功");
-                                Intent intent = new Intent(LoginActivity.this, RenShiActivity.class);
-                                startActivity(intent);
-                            }else if (systemText.equals("云合教务管理系统")) {
-                                Teacher user = (Teacher) msg.obj;
-                                if (user.getState().equals("正常")) {
+                                }else if (systemText.equals("云合教务管理系统")) {
+                                    Teacher user = (Teacher) msg.obj;
+                                    if (user.getState().equals("正常")) {
+                                        configLoginInfo(remember.isChecked());
+                                        MyApplication application = (MyApplication) getApplicationContext();
+                                        application.setTeacher(user);
+                                        application.setUserNum(thisNum);
+                                        ToastUtil.show(LoginActivity.this, "登录成功");
+                                        Intent intent = new Intent(LoginActivity.this, JiaowuActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        ToastUtil.show(LoginActivity.this, "账号已被禁用");
+                                    }
+                                }else if (systemText.equals("云合智慧门店收银系统")) {
                                     configLoginInfo(remember.isChecked());
+                                    YhMendianUser user = (YhMendianUser) msg.obj;
                                     MyApplication application = (MyApplication) getApplicationContext();
-                                    application.setTeacher(user);
+                                    application.setYhMendianUser(user);
+                                    application.setUserNum(thisNum);
                                     ToastUtil.show(LoginActivity.this, "登录成功");
-                                    Intent intent = new Intent(LoginActivity.this, JiaowuActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, MendianActivity.class);
                                     startActivity(intent);
-                                } else {
-                                    ToastUtil.show(LoginActivity.this, "账号已被禁用");
                                 }
-                            }else if (systemText.equals("云合智慧门店收银系统")) {
-                                configLoginInfo(remember.isChecked());
-                                YhMendianUser user = (YhMendianUser) msg.obj;
-                                MyApplication application = (MyApplication) getApplicationContext();
-                                application.setYhMendianUser(user);
-                                ToastUtil.show(LoginActivity.this, "登录成功");
-                                Intent intent = new Intent(LoginActivity.this, MendianActivity.class);
-                                startActivity(intent);
                             }
                         } else {
                             ToastUtil.show(LoginActivity.this, "用户名密码错误");
@@ -390,10 +428,14 @@ public class LoginActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                        Date date = new Date();
+                        String formattedDate = formatter.format(date);
                         if (systemText.equals("云合未来进销存系统")) {
                             Message msg = new Message();
                             try {
                                 yhJinXiaoCunUserService = new YhJinXiaoCunUserService();
+                                softTimeList = systemService.getSoftTime(formattedDate,companyText,"进销存");
                                 msg.obj = yhJinXiaoCunUserService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -403,6 +445,7 @@ public class LoginActivity extends AppCompatActivity {
                             Message msg = new Message();
                             try {
                                 yhFinanceUserService = new YhFinanceUserService();
+                                softTimeList = systemService.getSoftTime(formattedDate,companyText,"财务");
                                 msg.obj = yhFinanceUserService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -412,6 +455,7 @@ public class LoginActivity extends AppCompatActivity {
                             Message msg = new Message();
                             try {
                                 userInfoService = new UserInfoService();
+                                softTimeList = systemService.getSoftTime(formattedDate,companyText,"排产");
                                 msg.obj = userInfoService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -421,6 +465,7 @@ public class LoginActivity extends AppCompatActivity {
                             Message msg = new Message();
                             try {
                                 renyuanService = new RenyuanService();
+                                softTimeList = systemService.getSoftTime(formattedDate,companyText,"分权");
                                 msg.obj = renyuanService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -430,6 +475,7 @@ public class LoginActivity extends AppCompatActivity {
                             Message msg = new Message();
                             try {
                                 yhRenShiUserService = new YhRenShiUserService();
+                                softTimeList = systemService.getSoftTime(formattedDate,companyText,"人事");
                                 msg.obj = yhRenShiUserService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -439,6 +485,7 @@ public class LoginActivity extends AppCompatActivity {
                             Message msg = new Message();
                             try {
                                 teacherService = new TeacherService();
+                                softTimeList = systemService.getSoftTime(formattedDate,companyText,"教务");
                                 msg.obj = teacherService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -448,6 +495,7 @@ public class LoginActivity extends AppCompatActivity {
                             Message msg = new Message();
                             try {
                                 yhMendianUserService = new YhMendianUserService();
+                                softTimeList = systemService.getSoftTime(formattedDate,companyText,"门店");
                                 msg.obj = yhMendianUserService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();

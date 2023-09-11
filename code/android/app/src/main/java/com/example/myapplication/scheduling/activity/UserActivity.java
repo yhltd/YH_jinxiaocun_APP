@@ -25,6 +25,8 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.XiangQingYeActivity;
 import com.example.myapplication.entity.XiangQingYe;
+import com.example.myapplication.mendian.activity.UsersActivity;
+import com.example.myapplication.mendian.activity.UsersChangeActivity;
 import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.UserInfoService;
@@ -54,6 +56,7 @@ public class UserActivity extends AppCompatActivity {
     private Button sel_button;
 
     private List<UserInfo> list;
+    private List<UserInfo> all_list;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -122,6 +125,7 @@ public class UserActivity extends AppCompatActivity {
                 try {
                     userInfoService = new UserInfoService();
                     list = userInfoService.getList(userInfo.getCompany(), user_code_text.getText().toString());
+                    all_list = userInfoService.getList(userInfo.getCompany(), "");
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {
@@ -181,9 +185,23 @@ public class UserActivity extends AppCompatActivity {
             ToastUtil.show(UserActivity.this, "无权限！");
             return;
         }
-        Intent intent = new Intent(UserActivity.this, UserChangeActivity.class);
-        intent.putExtra("type", R.id.insert_btn);
-        startActivityForResult(intent, REQUEST_CODE_CHANG);
+
+        MyApplication myApplication = (MyApplication) getApplication();
+        String userNum = myApplication.getUserNum();
+        if(!userNum.equals("") && all_list != null){
+            int thisNum = Integer.parseInt(userNum);
+            if(all_list.size() >= thisNum){
+                ToastUtil.show(UserActivity.this, "已有账号数量过多，请删除无用账号后再试！");
+            }else{
+                Intent intent = new Intent(UserActivity.this, UserChangeActivity.class);
+                intent.putExtra("type", R.id.insert_btn);
+                startActivityForResult(intent, REQUEST_CODE_CHANG);
+            }
+        }else{
+            Intent intent = new Intent(UserActivity.this, UserChangeActivity.class);
+            intent.putExtra("type", R.id.insert_btn);
+            startActivityForResult(intent, REQUEST_CODE_CHANG);
+        }
     }
 
     public View.OnClickListener updateClick() {

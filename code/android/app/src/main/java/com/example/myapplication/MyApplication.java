@@ -39,6 +39,15 @@ public class MyApplication extends Application {
     private Quanxian quanxian;
     private YhFinanceQuanXian yhFinanceQuanXian;
     private List<YhJinXiaoCunMingXi> mingxiList;
+    private String userNum;
+
+    public String getUserNum() {
+        return userNum;
+    }
+
+    public void setUserNum(String userNum) {
+        this.userNum = userNum;
+    }
 
     public List<YhJinXiaoCunMingXi> getMingxiList() {
         return mingxiList;
