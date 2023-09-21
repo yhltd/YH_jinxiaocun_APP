@@ -116,7 +116,7 @@ public class MingXiChangeActivity extends AppCompatActivity {
             cpsl.setText(yhJinXiaoCunMingXi.getCpsl());
 
             QRcode qrcode = new QRcode();
-            Bitmap bitmap= qrcode.qrcode(yhJinXiaoCunMingXi.getOrderid());
+            Bitmap bitmap= qrcode.qrcode(yhJinXiaoCunMingXi.getOrderid(),"qrcode");
             qr_code.setImageBitmap(bitmap);
 
             spDm.setOnItemSelectedListener(new spDmItemSelectedListener());

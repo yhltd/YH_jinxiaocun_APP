@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private Bitmap print_bitmap;
     private String title1;
     private String title2;
+    private String type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,13 +54,18 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         title1 = intent.getStringExtra("title1");
         title2 = intent.getStringExtra("title2");
+        type = intent.getStringExtra("type");
         onOrderScanClick();
     }
 
     private void onOrderScanClick() {
 
         //这边直接用canvas画，然后保存
-        print_bitmap = Bitmap.createBitmap(600,10+mingxi_list.size()*500, Bitmap.Config.ARGB_8888);
+        if(type.equals("qrcode")){
+            print_bitmap = Bitmap.createBitmap(600,10+mingxi_list.size()*500, Bitmap.Config.ARGB_8888);
+        }else if(type.equals("barcode")){
+            print_bitmap = Bitmap.createBitmap(600,10+mingxi_list.size()*300, Bitmap.Config.ARGB_8888);
+        }
         Canvas canvas = new Canvas(print_bitmap);
         canvas.drawColor(Color.WHITE);
 
@@ -72,15 +78,28 @@ public class MainActivity extends AppCompatActivity {
         String fontPath = "yuan.ttf";//导入字体（路径assets目录下yuan.tff;如果没有assets目录需要右键main，new--folder--Assets folder创建assets目录）
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
         paint.setTypeface(tf);
-        for(int i=0; i<mingxi_list.size(); i++){
-            QRcode qrcode = new QRcode();
-            Bitmap bitmap= qrcode.qrcode(mingxi_list.get(i).getSpDm());
-            Matrix matrix = new Matrix();
-            matrix.postTranslate(100f, 100f);
-            canvas.drawBitmap(bitmap, 100,10+ i * 500,null);
-            canvas.drawText(title1 + mingxi_list.get(i).getSpDm(), 50, 440 + i * 500, paint);
-            canvas.drawText(title2 + mingxi_list.get(i).getCpname(), 50, 490 + i * 500, paint);
+        if(type.equals("qrcode")){
+            for(int i=0; i<mingxi_list.size(); i++){
+                QRcode qrcode = new QRcode();
+                Bitmap bitmap= qrcode.qrcode(mingxi_list.get(i).getSpDm(),type);
+                Matrix matrix = new Matrix();
+                matrix.postTranslate(100f, 100f);
+                canvas.drawBitmap(bitmap, 100,10+ i * 500,null);
+                canvas.drawText(title1 + mingxi_list.get(i).getSpDm(), 50, 440 + i * 500, paint);
+                canvas.drawText(title2 + mingxi_list.get(i).getCpname(), 50, 490 + i * 500, paint);
+            }
+        }else if(type.equals("barcode")){
+            for(int i=0; i<mingxi_list.size(); i++){
+                QRcode qrcode = new QRcode();
+                Bitmap bitmap= qrcode.qrcode(mingxi_list.get(i).getSpDm(),type);
+                Matrix matrix = new Matrix();
+                matrix.postTranslate(100f, 100f);
+                canvas.drawBitmap(bitmap, 100,10+ i * 300,null);
+                canvas.drawText(title1 + mingxi_list.get(i).getSpDm(), 50, 240 + i * 300, paint);
+                canvas.drawText(title2 + mingxi_list.get(i).getCpname(), 50, 290 + i * 300, paint);
+            }
         }
+
 
         canvas.save(); //保存
         canvas.restore(); // 存储

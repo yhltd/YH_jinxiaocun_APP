@@ -111,7 +111,7 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
             kehu.setText(yhJinXiaoCunJiChuZiLiao.getShouHuo());
             gongyingshang.setText(yhJinXiaoCunJiChuZiLiao.getGongHuo());
             QRcode qrcode = new QRcode();
-            Bitmap bitmap= qrcode.qrcode(yhJinXiaoCunJiChuZiLiao.getSpDm());
+            Bitmap bitmap= qrcode.qrcode(yhJinXiaoCunJiChuZiLiao.getSpDm(),"qrcode");
             qr_code.setImageBitmap(bitmap);
         }
 

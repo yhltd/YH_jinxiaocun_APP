@@ -9,9 +9,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class QRcode{
-  public Bitmap qrcode(String content){
+  public Bitmap qrcode(String content,String type){
   int width = 400;
   int height = 400;
+  int height2 = 200;
     //HashMap设置二维码参数
     Map map = new HashMap();
     //  设置容错率 L>M>Q>H 等级越高扫描时间越长,准确率越高
@@ -24,7 +25,11 @@ public class QRcode{
     BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
     Bitmap bitmap = null;
     try {
-      bitmap = barcodeEncoder.encodeBitmap(content, BarcodeFormat.QR_CODE, width, height,map);
+      if(type.equals("qrcode")){
+        bitmap = barcodeEncoder.encodeBitmap(content, BarcodeFormat.QR_CODE, width, height,map);
+      }else if(type.equals("barcode")){
+        bitmap = barcodeEncoder.encodeBitmap(content, BarcodeFormat.CODE_128, width, height2,map);
+      }
     } catch (WriterException e) {
       e.printStackTrace();
     }

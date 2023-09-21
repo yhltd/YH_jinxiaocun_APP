@@ -405,6 +405,26 @@ public class MingXiActivity extends AppCompatActivity {
         }
         if(mingxi_list.size()>0){
             myApplication.setMingxiList(mingxi_list);
+            intent.putExtra("type", "qrcode");
+            intent.putExtra("title1", "订单号：");
+            intent.putExtra("title2", "时间：");
+            startActivityForResult(intent, REQUEST_CODE_SCAN);
+        }
+    }
+
+    public void onOrderScanClick2(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        MyApplication myApplication = (MyApplication) getApplication();
+        List<YhJinXiaoCunMingXi> mingxi_list = new ArrayList<>();
+        for(int i=0; i<list.size(); i++){
+            YhJinXiaoCunMingXi this_mingxi = new YhJinXiaoCunMingXi();
+            this_mingxi.setSpDm(list.get(i).getOrderid());
+            this_mingxi.setCpname(list.get(i).getShijian());
+            mingxi_list.add(this_mingxi);
+        }
+        if(mingxi_list.size()>0){
+            myApplication.setMingxiList(mingxi_list);
+            intent.putExtra("type", "barcode");
             intent.putExtra("title1", "订单号：");
             intent.putExtra("title2", "时间：");
             startActivityForResult(intent, REQUEST_CODE_SCAN);
