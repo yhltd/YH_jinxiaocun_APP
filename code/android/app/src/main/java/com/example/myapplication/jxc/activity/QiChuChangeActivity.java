@@ -77,25 +77,6 @@ public class QiChuChangeActivity extends AppCompatActivity {
         init();
 
         cpid.setOnItemSelectedListener(new cpidItemSelectedListener());
-
-        Intent intent = getIntent();
-        int id = intent.getIntExtra("type", 0);
-        if (id == R.id.insert_btn) {
-            yhJinXiaoCunQiChuShu = new YhJinXiaoCunQiChuShu();
-            Button btn = findViewById(id);
-            btn.setVisibility(View.VISIBLE);
-            cpid.setSelection(0, true);
-        } else if (id == R.id.update_btn) {
-            yhJinXiaoCunQiChuShu = (YhJinXiaoCunQiChuShu) myApplication.getObj();
-            Button btn = findViewById(id);
-            btn.setVisibility(View.VISIBLE);
-
-            cpname.setText(yhJinXiaoCunQiChuShu.getCpname());
-            cpid.setSelection(getPosition(yhJinXiaoCunQiChuShu.getCpid()), true);
-            cplb.setText(yhJinXiaoCunQiChuShu.getCplb());
-            cpsj.setText(yhJinXiaoCunQiChuShu.getCpsj());
-            cpsl.setText(yhJinXiaoCunQiChuShu.getCpsl());
-        }
     }
 
     @Override
@@ -115,12 +96,30 @@ public class QiChuChangeActivity extends AppCompatActivity {
     }
 
     public void init() {
-        LoadingDialog.getInstance(this).show();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 cpid.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+                MyApplication myApplication = (MyApplication) getApplication();
+                Intent intent = getIntent();
+                int id = intent.getIntExtra("type", 0);
+                if (id == R.id.insert_btn) {
+                    yhJinXiaoCunQiChuShu = new YhJinXiaoCunQiChuShu();
+                    Button btn = findViewById(id);
+                    btn.setVisibility(View.VISIBLE);
+                    cpid.setSelection(0, true);
+                } else if (id == R.id.update_btn) {
+                    yhJinXiaoCunQiChuShu = (YhJinXiaoCunQiChuShu) myApplication.getObj();
+                    Button btn = findViewById(id);
+                    btn.setVisibility(View.VISIBLE);
+
+                    cpname.setText(yhJinXiaoCunQiChuShu.getCpname());
+                    cpid.setSelection(getPosition(yhJinXiaoCunQiChuShu.getCpid()), true);
+
+                    cplb.setText(yhJinXiaoCunQiChuShu.getCplb());
+                    cpsj.setText(yhJinXiaoCunQiChuShu.getCpsj());
+                    cpsl.setText(yhJinXiaoCunQiChuShu.getCpsl());
+                }
                 return true;
             }
         });
@@ -132,10 +131,30 @@ public class QiChuChangeActivity extends AppCompatActivity {
                 try {
                     List<String> cpidList = yhJinXiaoCunJiChuZiLiaoService.getCpid(yhJinXiaoCunUser.getGongsi());
                     if (cpidList == null) return;
+                    MyApplication myApplication = (MyApplication) getApplication();
+                    Intent intent = getIntent();
+                    int id = intent.getIntExtra("type", 0);
                     cpid_array = new String[cpidList.size() + 1];
                     cpid_array[0] = "";
                     for (int i = 0; i < cpidList.size(); i++) {
                         cpid_array[i + 1] = cpidList.get(i);
+                    }
+                    if (id == R.id.update_btn) {
+                        yhJinXiaoCunQiChuShu = (YhJinXiaoCunQiChuShu) myApplication.getObj();
+                        boolean panduan = false;
+                        for (int i = 0; i < cpidList.size(); i++) {
+                            if(cpidList.get(i).equals(yhJinXiaoCunQiChuShu.getCpid())){
+                                panduan = true;
+                            }
+                        }
+                        if(panduan == false){
+                            cpid_array = new String[cpidList.size() + 2];
+                            cpid_array[0] = "";
+                            for (int i = 0; i < cpidList.size(); i++) {
+                                cpid_array[i + 1] = cpidList.get(i);
+                            }
+                            cpid_array[cpidList.size() + 1] = yhJinXiaoCunQiChuShu.getCpid();
+                        }
                     }
                     adapter = new ArrayAdapter<String>(QiChuChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, cpid_array);
                 } catch (Exception e) {
@@ -150,7 +169,6 @@ public class QiChuChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -160,7 +178,6 @@ public class QiChuChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(QiChuChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });
@@ -178,7 +195,6 @@ public class QiChuChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -188,7 +204,6 @@ public class QiChuChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(QiChuChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
                 return true;
             }
         });

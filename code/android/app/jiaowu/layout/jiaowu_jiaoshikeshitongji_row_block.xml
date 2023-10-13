@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:orientation="vertical"
         android:gravity="center"
         android:elevation="2dp"
@@ -82,36 +82,10 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/list_block"
                         android:textSize="14sp"
-                        android:text="上课课时:"/>
+                        android:text="学生姓名:" />
 
                     <TextView
-                        android:id="@+id/keshi"
-                        android:layout_marginLeft="7dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
-                        android:text="上课课时"/>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
-                        android:text="每节金额:" />
-
-                    <TextView
-                        android:id="@+id/jine"
+                        android:id="@+id/student_name"
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -133,18 +107,19 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/list_block"
                         android:textSize="14sp"
-                        android:text="工资核算:"/>
+                        android:text="上课课时:"/>
 
                     <TextView
-                        android:id="@+id/gongzihesuan"
+                        android:id="@+id/keshi"
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/list_block"
                         android:textSize="14sp"
-                        android:text="工资核算"/>
+                        android:text="上课课时"/>
 
                 </LinearLayout>
+
 
             </LinearLayout>
 

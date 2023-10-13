@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
@@ -51,6 +52,7 @@ public class OrderPanelActivity extends AppCompatActivity {
     private YhMendianUser yhMendianUser;
     private YhMendianOrdersService yhMendianOrdersService;
     private EditText ddh;
+    private TextView textView;
     private String ddhText;
     private Button clear_button;
     private Button sel_button;
@@ -93,6 +95,8 @@ public class OrderPanelActivity extends AppCompatActivity {
         yhMendianProductshezhiService = new YhMendianProductshezhiService();
 
         //初始化控件
+
+        textView = findViewById(R.id.textView);
 
         ddh = findViewById(R.id.ddh);
         clear_button = findViewById(R.id.clear_button);
@@ -224,6 +228,7 @@ public class OrderPanelActivity extends AppCompatActivity {
                 MyApplication myApplication = (MyApplication) getApplication();
                 myApplication.setYhMendianOrderDetail(new YhMendianOrderDetail());
                 myApplication.setOrderDetails(new ArrayList<>());
+                textView.setText("0");
                 ToastUtil.show(OrderPanelActivity.this, "已作废");
             }
         };
@@ -348,6 +353,7 @@ public class OrderPanelActivity extends AppCompatActivity {
             }
             myApplication.setYhMendianOrderDetail(new YhMendianOrderDetail());
             myApplication.setOrderDetails(list);
+            textView.setText(list.size() + "");
         }
     }
 

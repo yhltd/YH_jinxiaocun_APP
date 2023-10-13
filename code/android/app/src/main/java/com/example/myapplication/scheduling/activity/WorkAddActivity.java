@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -21,6 +22,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -270,6 +272,11 @@ public class WorkAddActivity extends AppCompatActivity {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
+                if (Boolean.valueOf(msg.obj.toString())) {
+                    ToastUtil.show(WorkAddActivity.this, "产能足够！");
+                } else {
+                    ToastUtil.show(WorkAddActivity.this, "产能不足！");
+                }
                 return true;
             }
         });
@@ -282,7 +289,7 @@ public class WorkAddActivity extends AppCompatActivity {
                 DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 timeList = new ArrayList<>();
                 timeList = timeConfigService.getList(userInfo.getCompany());
-
+                boolean panduan = true;
                 try {
                     List<Pc> pcList = new ArrayList<>();
                     //模块最后的开始时间
@@ -405,15 +412,17 @@ public class WorkAddActivity extends AppCompatActivity {
 
                     if (pcList.get(pcList.size() - 1).riqi.compareTo(df.format(df.parse(js_riqi.getText().toString()))) < 0) {
                         ToastUtil.show(WorkAddActivity.this, "产能足够！");
+                        panduan = true;
                     } else {
                         ToastUtil.show(WorkAddActivity.this, "产能不足！");
+                        panduan = false;
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
                 Message msg = new Message();
-                msg.obj = null;
+                msg.obj = panduan;
                 listLoadHandler.sendMessage(msg);
             }
         }).start();

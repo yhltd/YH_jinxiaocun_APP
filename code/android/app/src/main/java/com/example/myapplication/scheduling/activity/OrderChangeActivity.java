@@ -136,13 +136,13 @@ public class OrderChangeActivity extends AppCompatActivity {
     }
 
     private void initList() {
-        LoadingDialog.getInstance(this).show();
+
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 MyApplication myApplication = (MyApplication) getApplication();
                 listView.setAdapter(new MyAdapter(myApplication.getApplicationContext()));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });
@@ -302,7 +302,7 @@ public class OrderChangeActivity extends AppCompatActivity {
             ToastUtil.show(OrderChangeActivity.this, "请选择物料！");
             return;
         }
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -312,7 +312,7 @@ public class OrderChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(OrderChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });
@@ -348,7 +348,7 @@ public class OrderChangeActivity extends AppCompatActivity {
             ToastUtil.show(OrderChangeActivity.this, "请选择物料！");
             return;
         }
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -358,7 +358,7 @@ public class OrderChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(OrderChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });

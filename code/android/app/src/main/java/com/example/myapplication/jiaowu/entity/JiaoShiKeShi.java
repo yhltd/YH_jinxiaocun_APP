@@ -7,8 +7,7 @@ public class JiaoShiKeShi implements Serializable {
     private String teacher_name;
     private String course;
     private String keshi;
-    private String jine;
-    private String gongzihesuan;
+    private String student_name;
 
     public String getTeacher_name() {
         return teacher_name;
@@ -34,20 +33,11 @@ public class JiaoShiKeShi implements Serializable {
         this.keshi = keshi;
     }
 
-    public String getJine() {
-        return jine;
+    public String getStudent_name() {
+        return student_name;
     }
 
-    public void setJine(String jine) {
-        this.jine = jine;
+    public void setStudent_name(String student_name) {
+        this.student_name = student_name;
     }
-
-    public String getGongzihesuan() {
-        return gongzihesuan;
-    }
-
-    public void setGongzihesuan(String gongzihesuan) {
-        this.gongzihesuan = gongzihesuan;
-    }
-
 }

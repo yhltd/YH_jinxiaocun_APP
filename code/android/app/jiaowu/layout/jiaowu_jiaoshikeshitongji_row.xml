@@ -48,6 +48,22 @@
 
         <TextView
             android:gravity="center"
+            android:id="@+id/student_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text"
+            android:textSize="14sp"
+            android:text="学生姓名"
+            android:textStyle="bold"
+            android:width="100dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+        <TextView
+            android:gravity="center"
             android:id="@+id/keshi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,37 +78,7 @@
             android:layout_weight="2">
         </View>
 
-        <TextView
-            android:gravity="center"
-            android:id="@+id/jine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
-            android:text="每节金额"
-            android:textStyle="bold"
-            android:width="100dp"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
 
-        <TextView
-            android:gravity="center"
-            android:id="@+id/gongzihesuan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
-            android:text="工资核算"
-            android:textStyle="bold"
-            android:width="100dp"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
 
     </LinearLayout>
 </LinearLayout>

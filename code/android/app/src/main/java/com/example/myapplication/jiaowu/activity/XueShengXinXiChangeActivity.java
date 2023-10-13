@@ -231,7 +231,7 @@ public class XueShengXinXiChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) throws ParseException {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -241,7 +241,7 @@ public class XueShengXinXiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(XueShengXinXiChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });
@@ -260,7 +260,7 @@ public class XueShengXinXiChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) throws ParseException {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -270,7 +270,7 @@ public class XueShengXinXiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(XueShengXinXiChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });

@@ -182,7 +182,7 @@ public class FenquanActivity extends AppCompatActivity {
     }
 
     private void systeminit() {
-        LoadingDialog.getInstance(this).show();
+
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -192,7 +192,7 @@ public class FenquanActivity extends AppCompatActivity {
                 }else if(list2.size() > 0){
                     marqueeTextView.setText(list2.get(0).getText());
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });

@@ -31,7 +31,7 @@ public class EChartOptionUtil {
         option.title("折线图");//折线图的标题
         option.legend(name);//添加图例
         option.tooltip().trigger(Trigger.axis);//提示框（详见tooltip），鼠标悬浮交互时的信息提示
-
+        option.grid().containLabel(true);
         ValueAxis valueAxis = new ValueAxis();
         option.yAxis(valueAxis);//添加y轴
 
@@ -61,7 +61,7 @@ public class EChartOptionUtil {
         option.title("饼图");
         option.legend("输出");
         option.tooltip().trigger(Trigger.axis);
-
+        option.grid().containLabel(true);
         Pie pie = new Pie();
         pie.name("hello");
         pie.type(SeriesType.pie);
@@ -78,7 +78,7 @@ public class EChartOptionUtil {
         option.title("柱状图");
         option.legend("年龄");
         option.tooltip().trigger(Trigger.axis);
-
+        option.grid().containLabel(true);
         ValueAxis valueAxis = new ValueAxis();
         option.yAxis(valueAxis);//添加y轴，将y轴设置为值轴
 

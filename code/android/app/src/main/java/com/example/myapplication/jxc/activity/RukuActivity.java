@@ -349,6 +349,16 @@ public class RukuActivity extends AppCompatActivity {
         List<YhJinXiaoCunJiChuZiLiao> jczlList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).isCheck()) {
+                if(list.get(i).getNum() == null || list.get(i).getJine() == null){
+                    ToastUtil.show(RukuActivity.this, "请将第 " + (i*1+1) + " 行的商品数量和单价补全！");
+                    return;
+                } else if(list.get(i).getNum().equals("") || list.get(i).getJine().equals("")){
+                    ToastUtil.show(RukuActivity.this, "请将第 " + (i*1+1) + " 行的商品数量和单价补全！");
+                    return;
+                } else if(Float.parseFloat(list.get(i).getNum()) <= 0){
+                    ToastUtil.show(RukuActivity.this, "第 " + (i*1+1) + " 行的商品数量需要大于0！");
+                    return;
+                }
                 jczlList.add(list.get(i));
             }
         }

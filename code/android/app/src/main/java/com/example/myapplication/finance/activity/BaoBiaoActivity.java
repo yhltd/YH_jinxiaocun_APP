@@ -314,7 +314,14 @@ public class BaoBiaoActivity extends AppCompatActivity {
                 }else{
                     day = "" + dayOfMonth;
                 }
-                editText.setText(year + "-" + mon + "-" + day);
+                class_selectText = class_select.getSelectedItem().toString();
+                if(class_selectText.equals("年")){
+                    editText.setText(year + "");
+                }else if(class_selectText.equals("月")){
+                    editText.setText(year + "-" + mon);
+                }else if(class_selectText.equals("日")){
+                    editText.setText(year + "-" + mon + "-" + day);
+                }
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

@@ -87,7 +87,7 @@ public class HolidayChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -97,7 +97,7 @@ public class HolidayChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(HolidayChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });
@@ -115,7 +115,7 @@ public class HolidayChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -125,7 +125,7 @@ public class HolidayChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(HolidayChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });

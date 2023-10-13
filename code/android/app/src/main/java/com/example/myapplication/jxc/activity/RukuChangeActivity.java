@@ -104,12 +104,12 @@ public class RukuChangeActivity extends AppCompatActivity {
     }
 
     public void init() {
-        LoadingDialog.getInstance(this).show();
+
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 kehu.setAdapter(StringUtils.cast(msg.obj));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });
@@ -146,7 +146,7 @@ public class RukuChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -156,7 +156,7 @@ public class RukuChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(RukuChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });

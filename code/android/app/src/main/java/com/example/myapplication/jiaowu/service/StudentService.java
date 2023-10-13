@@ -13,9 +13,9 @@ public class StudentService {
      * 查询全部数据
      */
     public List<Student> getList(String company, String student, String teacher, String kecheng, String start_date, String stop_date) {
-        String sql = "select ID,RealName,Sex,rgdate,Course,Teacher,Classnum,phone,Fee,(select SUM(case when Company =? and realname=student.realname then paid else 0 end) from payment ) mall ,ifnull(ifnull(Fee,0) -ifnull(Cost,0),0) as Nocost,(select SUM(case when Company=? and student_name=student.realname and course=student.Course then keshi else 0 end ) from keshi_detail ) nall,ifnull(Allhour,0) - ifnull(Hour,0) as Nohour,Allhour,Type FROM student where RealName LIKE '%' ? '%' AND Teacher LIKE '%' ? '%' AND Course LIKE '%' ? '%' AND rgdate >= ? AND rgdate <= ?";
+        String sql = "select ID,RealName,Sex,rgdate,Course,Teacher,Classnum,phone,Fee,(select SUM(case when Company =? and realname=student.realname then paid + money else 0 end) from payment ) mall ,ifnull(ifnull(Fee,0) -ifnull((select SUM(case when Company =? and realname=student.realname then paid + money else 0 end) from payment ),0),0) as Nocost,(select SUM(case when Company=? and student_name=student.realname and course=student.Course then keshi else 0 end ) from keshi_detail ) nall,ifnull(Allhour,0) - ifnull((select SUM(case when Company=? and student_name=student.realname and course=student.Course then keshi else 0 end ) from keshi_detail ),0) as Nohour,Allhour,Type FROM student where RealName LIKE '%' ? '%' AND Teacher LIKE '%' ? '%' AND Course LIKE '%' ? '%' AND rgdate >= ? AND rgdate <= ?";
         base = new JiaowuBaseDao();
-        List<Student> list = base.query(Student.class, sql, company,company,student,teacher,kecheng,start_date,stop_date);
+        List<Student> list = base.query(Student.class, sql, company,company,company,company,student,teacher,kecheng,start_date,stop_date);
         return list;
     }
 

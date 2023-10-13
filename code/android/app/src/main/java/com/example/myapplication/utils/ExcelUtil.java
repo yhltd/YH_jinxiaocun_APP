@@ -2,6 +2,7 @@ package com.example.myapplication.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.widget.Toast;
@@ -830,9 +831,8 @@ public class ExcelUtil {
                 for(int i=0;i<list.size();i++){
                     sheet.addCell(new Label(0, i + 1, list.get(i).getTeacher_name(), arial12format));
                     sheet.addCell(new Label(1, i + 1, list.get(i).getCourse(), arial12format));
-                    sheet.addCell(new Label(2, i + 1, list.get(i).getKeshi(), arial12format));
-                    sheet.addCell(new Label(3, i + 1, list.get(i).getJine(), arial12format));
-                    sheet.addCell(new Label(4, i + 1, list.get(i).getGongzihesuan(), arial12format));
+                    sheet.addCell(new Label(2, i + 1, list.get(i).getStudent_name(), arial12format));
+                    sheet.addCell(new Label(3, i + 1, list.get(i).getKeshi(), arial12format));
                     //设置行高
                     sheet.setRowView(i + 1, 350);
                 }

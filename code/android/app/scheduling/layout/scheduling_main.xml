@@ -106,7 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="工作时间及休息日"
+                        android:text="工作及休息时间"
                         android:textColor="@color/main_text"
                         android:textSize="12sp"
                         tools:ignore="RtlSymmetry" />

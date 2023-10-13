@@ -278,7 +278,7 @@ public class RenyuanActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
     }
 
 

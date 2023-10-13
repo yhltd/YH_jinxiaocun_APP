@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
@@ -38,6 +40,7 @@ import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -234,6 +237,16 @@ public class KeShiTongJiActivity extends AppCompatActivity {
                 String fileName = "课时统计" + System.currentTimeMillis() + ".xls";
                 ExcelUtil.initExcel(fileName, "课时统计", title);
                 ExcelUtil.jiaowu_keshitongjiToExcel(list, fileName, MyApplication.getContext());
+                String filePath = null;
+                try {
+                    filePath = Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统/" + fileName;
+                    Uri uri = Uri.parse("file://" + filePath);
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(uri);
+                    startActivity(intent);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         };
     }

@@ -75,7 +75,7 @@
             android:id="@+id/set_num"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:inputType="number"
             android:hint="下单数量"/>
 
@@ -85,11 +85,20 @@
             android:src="@drawable/search"
             android:visibility="invisible"/>
 
+        <TextView
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:text="是否完成:"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <Spinner
             android:id="@+id/is_complete"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
 
     </LinearLayout>
 

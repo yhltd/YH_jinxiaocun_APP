@@ -163,7 +163,7 @@ public class ZhangHaoGuanLiChangeActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void updateClick(View v) throws ParseException {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -173,7 +173,7 @@ public class ZhangHaoGuanLiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(ZhangHaoGuanLiChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });
@@ -193,7 +193,7 @@ public class ZhangHaoGuanLiChangeActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void insertClick(View v) throws ParseException {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -203,7 +203,7 @@ public class ZhangHaoGuanLiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(ZhangHaoGuanLiChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });

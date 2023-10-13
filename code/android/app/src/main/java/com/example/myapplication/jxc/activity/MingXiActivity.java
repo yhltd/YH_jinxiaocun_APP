@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -258,6 +259,16 @@ public class MingXiActivity extends AppCompatActivity {
                 String fileName = "明细" + System.currentTimeMillis() + ".xls";
                 ExcelUtil.initExcel(fileName, "明细", title);
                 ExcelUtil.mingxiToExcel(list, fileName, MyApplication.getContext());
+                String filePath = null;
+                try {
+                    filePath = Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统/" + fileName;
+                    Uri uri = Uri.parse("file://" + filePath);
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(uri);
+                    startActivity(intent);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         };
     }

@@ -106,7 +106,7 @@ public class JiaowuActivity extends AppCompatActivity {
                     ToastUtil.show(JiaowuActivity.this, "无权限！");
                 } else {
                     Intent intent = new Intent(JiaowuActivity.this, SheZhiActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
             }
         });
@@ -126,7 +126,7 @@ public class JiaowuActivity extends AppCompatActivity {
                     ToastUtil.show(JiaowuActivity.this, "无权限！");
                 } else {
                     Intent intent = new Intent(JiaowuActivity.this, XueShengXinXiActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
             }
         });
@@ -146,7 +146,7 @@ public class JiaowuActivity extends AppCompatActivity {
                     ToastUtil.show(JiaowuActivity.this, "无权限！");
                 } else {
                     Intent intent = new Intent(JiaowuActivity.this, JiaoShiXinXiActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
             }
         });
@@ -166,7 +166,7 @@ public class JiaowuActivity extends AppCompatActivity {
                     ToastUtil.show(JiaowuActivity.this, "无权限！");
                 } else {
                     Intent intent = new Intent(JiaowuActivity.this, JiaoFeiJiLuActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
             }
         });
@@ -186,7 +186,7 @@ public class JiaowuActivity extends AppCompatActivity {
                     ToastUtil.show(JiaowuActivity.this, "无权限！");
                 } else {
                     Intent intent = new Intent(JiaowuActivity.this, KeShiTongJiActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
             }
         });
@@ -206,7 +206,7 @@ public class JiaowuActivity extends AppCompatActivity {
                     ToastUtil.show(JiaowuActivity.this, "无权限！");
                 } else {
                     Intent intent = new Intent(JiaowuActivity.this, ShouZhiMingXiActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
             }
         });
@@ -226,7 +226,7 @@ public class JiaowuActivity extends AppCompatActivity {
                     ToastUtil.show(JiaowuActivity.this, "无权限！");
                 } else {
                     Intent intent = new Intent(JiaowuActivity.this, QianFeiXueYuanActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
             }
         });
@@ -246,7 +246,7 @@ public class JiaowuActivity extends AppCompatActivity {
                     ToastUtil.show(JiaowuActivity.this, "无权限！");
                 } else {
                     Intent intent = new Intent(JiaowuActivity.this, TeacherSalActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
             }
         });
@@ -266,7 +266,7 @@ public class JiaowuActivity extends AppCompatActivity {
                     ToastUtil.show(JiaowuActivity.this, "无权限！");
                 } else {
                     Intent intent = new Intent(JiaowuActivity.this, JiaoShiKeShiActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
             }
         });
@@ -286,7 +286,7 @@ public class JiaowuActivity extends AppCompatActivity {
                     ToastUtil.show(JiaowuActivity.this, "无权限！");
                 } else {
                     Intent intent = new Intent(JiaowuActivity.this, AccountManagementActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
             }
         });
@@ -306,7 +306,7 @@ public class JiaowuActivity extends AppCompatActivity {
                     ToastUtil.show(JiaowuActivity.this, "无权限！");
                 } else {
                     Intent intent = new Intent(JiaowuActivity.this, KaoqinActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
             }
         });
@@ -326,7 +326,7 @@ public class JiaowuActivity extends AppCompatActivity {
                     ToastUtil.show(JiaowuActivity.this, "无权限！");
                 } else {
                     Intent intent = new Intent(JiaowuActivity.this, TeacherCurriculumActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
             }
         });
@@ -346,7 +346,7 @@ public class JiaowuActivity extends AppCompatActivity {
                     ToastUtil.show(JiaowuActivity.this, "无权限！");
                 } else {
                     Intent intent = new Intent(JiaowuActivity.this, QuanxianActivity.class);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
             }
         });
@@ -435,5 +435,11 @@ public class JiaowuActivity extends AppCompatActivity {
                 listLoadHandler.sendMessage(msg);
             }
         }).start();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        init();
     }
 }

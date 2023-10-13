@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
@@ -37,6 +39,7 @@ import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -171,16 +174,15 @@ public class JiaoShiKeShiActivity extends AppCompatActivity {
                         HashMap<String, Object> item = new HashMap<>();
                         item.put("teacher_name", list.get(i).getTeacher_name());
                         item.put("course", list.get(i).getCourse());
+                        item.put("student_name", list.get(i).getStudent_name());
                         item.put("keshi", list.get(i).getKeshi());
-                        item.put("jine", list.get(i).getJine());
-                        item.put("gongzihesuan", list.get(i).getGongzihesuan());
                         data.add(item);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                adapter = new SimpleAdapter(JiaoShiKeShiActivity.this, data, R.layout.jiaowu_jiaoshikeshitongji_row, new String[]{"teacher_name","course","keshi","jine","gongzihesuan"}, new int[]{R.id.teacher_name, R.id.course, R.id.keshi, R.id.jine, R.id.gongzihesuan}) {
+                adapter = new SimpleAdapter(JiaoShiKeShiActivity.this, data, R.layout.jiaowu_jiaoshikeshitongji_row, new String[]{"teacher_name","course","student_name","keshi"}, new int[]{R.id.teacher_name, R.id.course, R.id.student_name, R.id.keshi}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -190,7 +192,7 @@ public class JiaoShiKeShiActivity extends AppCompatActivity {
                     }
                 };
 
-                adapter_block = new SimpleAdapter(JiaoShiKeShiActivity.this, data, R.layout.jiaowu_jiaoshikeshitongji_row_block, new String[]{"teacher_name","course","keshi","jine","gongzihesuan"}, new int[]{R.id.teacher_name, R.id.course, R.id.keshi, R.id.jine, R.id.gongzihesuan}) {
+                adapter_block = new SimpleAdapter(JiaoShiKeShiActivity.this, data, R.layout.jiaowu_jiaoshikeshitongji_row_block, new String[]{"teacher_name","course","student_name","keshi"}, new int[]{R.id.teacher_name, R.id.course, R.id.student_name, R.id.keshi}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -212,10 +214,20 @@ public class JiaoShiKeShiActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] title = {"教师姓名", "课程名称", "上课课时", "每节金额", "工资核算"};
+                String[] title = {"教师姓名", "课程名称","学生姓名", "上课课时"};
                 String fileName = "教师课时统计" + System.currentTimeMillis() + ".xls";
                 ExcelUtil.initExcel(fileName, "教师课时统计", title);
                 ExcelUtil.jiaowu_jiaoshikeshitongji(list, fileName, MyApplication.getContext());
+                String filePath = null;
+                try {
+                    filePath = Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统/" + fileName;
+                    Uri uri = Uri.parse("file://" + filePath);
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(uri);
+                    startActivity(intent);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         };
     }

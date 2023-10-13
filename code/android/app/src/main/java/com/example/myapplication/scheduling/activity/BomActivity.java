@@ -34,6 +34,7 @@ import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -137,7 +138,8 @@ public class BomActivity extends AppCompatActivity {
                         item.put("comment", list.get(i).getComment());
                         item.put("size", list.get(i).getSize());
                         item.put("unit", list.get(i).getUnit());
-                        item.put("use_num", list.get(i).getUse_num());
+                        DecimalFormat df = new DecimalFormat("0");
+                        item.put("use_num", df.format(list.get(i).getUse_num()));
                         data.add(item);
                     }
                 } catch (Exception e) {

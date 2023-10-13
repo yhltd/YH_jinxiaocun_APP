@@ -143,7 +143,7 @@ public class OrderActivity extends AppCompatActivity {
                         item.put("code", list.get(i).getCode());
                         item.put("product_name", list.get(i).getProduct_name());
                         item.put("norms", list.get(i).getNorms());
-                        item.put("set_date", list.get(i).getSet_date());
+                        item.put("set_date", list.get(i).getSet_date().replace(".0000000",""));
                         item.put("set_num", list.get(i).getSet_num());
                         item.put("is_complete", list.get(i).getIs_complete());
                         data.add(item);

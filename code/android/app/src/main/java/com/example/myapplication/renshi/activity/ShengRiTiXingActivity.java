@@ -377,7 +377,7 @@ public class ShengRiTiXingActivity extends AppCompatActivity {
                 }else{
                     day = "" + dayOfMonth;
                 }
-                editText.setText(year + "-" + mon + "-" + day);
+                editText.setText(year + "-" + mon);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

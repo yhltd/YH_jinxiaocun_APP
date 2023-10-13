@@ -303,7 +303,7 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
     }
 
     public void init1() {
-        LoadingDialog.getInstance(this).show();
+
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -319,7 +319,7 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
                 adapter = new ArrayAdapter<String>(VoucherSummaryChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, lv_array);
                 kemu_lv.setAdapter(adapter);
 
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });
@@ -354,7 +354,7 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
     }
 
     public void init2() {
-        LoadingDialog.getInstance(this).show();
+
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -368,7 +368,7 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
                 adapter = new ArrayAdapter<String>(VoucherSummaryChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, lv_array);
                 kemu_lv.setAdapter(adapter);
 
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });
@@ -413,7 +413,7 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
 
     public void updateClick(View v) throws ParseException {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -423,7 +423,7 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
                 } else {
                     ToastUtil.show(VoucherSummaryChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });
@@ -441,7 +441,7 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
 
     public void insertClick(View v) throws ParseException {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -451,7 +451,7 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
                 } else {
                     ToastUtil.show(VoucherSummaryChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });

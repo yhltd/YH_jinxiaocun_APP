@@ -81,6 +81,7 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
         quanxian = myApplication.getQuanxian();
+        sel_button = findViewById(R.id.sel_button);
         initList();
     }
 

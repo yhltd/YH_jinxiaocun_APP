@@ -3,7 +3,9 @@ package com.example.myapplication.jiaowu.activity;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
@@ -37,6 +39,7 @@ import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -212,6 +215,16 @@ public class AccountManagementActivity extends AppCompatActivity {
                 String fileName = "用户管理" + System.currentTimeMillis() + ".xls";
                 ExcelUtil.initExcel(fileName, "用户管理", title);
                 ExcelUtil.jiaowu_zhanghaoToExcel(list, fileName, MyApplication.getContext());
+                String filePath = null;
+                try {
+                    filePath = Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统/" + fileName;
+                    Uri uri = Uri.parse("file://" + filePath);
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(uri);
+                    startActivity(intent);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         };
     }

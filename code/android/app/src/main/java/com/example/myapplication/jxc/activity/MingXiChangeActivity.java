@@ -228,13 +228,13 @@ public class MingXiChangeActivity extends AppCompatActivity {
     }
 
     public void init1() {
-        LoadingDialog.getInstance(this).show();
+
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 spDm.setAdapter(StringUtils.cast(msg.obj));
                 spDm.setSelection(getSpDmPosition(yhJinXiaoCunMingXi.getSpDm()));
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });
@@ -311,7 +311,7 @@ public class MingXiChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -321,7 +321,7 @@ public class MingXiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(MingXiChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });

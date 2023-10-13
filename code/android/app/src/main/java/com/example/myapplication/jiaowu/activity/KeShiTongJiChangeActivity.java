@@ -193,7 +193,7 @@ public class KeShiTongJiChangeActivity extends AppCompatActivity {
 
     public void updateClick(View v) throws ParseException {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -203,7 +203,7 @@ public class KeShiTongJiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(KeShiTongJiChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });
@@ -222,7 +222,7 @@ public class KeShiTongJiChangeActivity extends AppCompatActivity {
 
     public void insertClick(View v) throws ParseException {
         if (!checkForm()) return;
-        LoadingDialog.getInstance(this).show();
+
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -232,7 +232,7 @@ public class KeShiTongJiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(KeShiTongJiChangeActivity.this, "保存失败，请稍后再试");
                 }
-                LoadingDialog.getInstance(getApplicationContext()).dismiss();
+
                 return true;
             }
         });
