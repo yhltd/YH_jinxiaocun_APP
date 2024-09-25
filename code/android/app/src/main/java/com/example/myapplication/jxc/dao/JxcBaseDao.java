@@ -43,7 +43,9 @@ public class JxcBaseDao<T> {
             preparedStatement = conn.prepareStatement(sql);
 
             if (params != null) for (int i = 0; i < params.length; i++) {
-                preparedStatement.setString(i + 1, params[i] != null ? handlerParam(params[i]) : "");
+
+                    preparedStatement.setString(i + 1, params[i] != null ? handlerParam(params[i]) : "");
+
             }
 
             resultSet = preparedStatement.executeQuery();

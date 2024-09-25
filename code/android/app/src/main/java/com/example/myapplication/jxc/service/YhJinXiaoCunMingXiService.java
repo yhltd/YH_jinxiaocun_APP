@@ -79,7 +79,7 @@ public class YhJinXiaoCunMingXiService {
      */
     public List<YhJinXiaoCunMingXi> getList(String company) {
         base = new JxcBaseDao();
-        String sql = "select * from yh_jinxiaocun_mingxi where gs_name=? order by _id";
+        String sql = "select * from yh_jinxiaocun_mingxi where gs_name=? order by _id ";
         List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company);
         return list;
     }
@@ -89,7 +89,8 @@ public class YhJinXiaoCunMingXiService {
      */
     public List<YhJinXiaoCunMingXi> getQuery(String company, String ks, String js) {
         base = new JxcBaseDao();
-        String sql = "select * from yh_jinxiaocun_mingxi where gs_name=? and shijian between ? and ? order by _id ";
+        String sql = "select * from yh_jinxiaocun_mingxi where gs_name=? and shijian between ? and ? order by _id;";
+
         List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company, ks, js);
         return list;
     }

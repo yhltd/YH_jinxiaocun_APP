@@ -50,6 +50,42 @@
         </LinearLayout>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/chear_btn"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:onClick="switchClick"
+            android:text="切换列表"
+            tools:ignore="MissingConstraints"
+            android:background="#90EE90"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+        <Button
+            android:id="@+id/sel_button"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="查询"
+            tools:ignore="MissingConstraints"
+            android:gravity="center"
+            android:background="#90EE90"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
 
     <HorizontalScrollView
         android:id="@+id/list_table"
@@ -228,58 +264,110 @@
     <ListView
         android:id="@+id/list_block"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="75"
-        android:layout_marginTop="10dp"
+        android:layout_height="300dp"
         android:layout_marginLeft="3dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="3dp"
+        android:layout_weight="75"
         android:divider="@null"
         android:paddingBottom="5dp" />
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="5"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/up_button"-->
+<!--            android:layout_width="110dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:onClick="switchClick"-->
+<!--            android:text="上一页"-->
+<!--            tools:ignore="MissingConstraints"-->
+<!--            android:background="@drawable/btn_style"-->
+<!--            android:textSize="17dp"-->
+<!--            android:textColor="@color/white"/>-->
+
+
+<!--        <EditText-->
+<!--            android:id="@+id/ye"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:gravity="center"-->
+<!--            android:text="1"-->
+<!--           />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/down_button"-->
+<!--            android:layout_width="110dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="下一页"-->
+<!--            tools:ignore="MissingConstraints"-->
+<!--            android:gravity="center"-->
+<!--            android:background="@drawable/btn_style"-->
+<!--            android:textSize="17dp"-->
+<!--            android:textColor="@color/white"/>-->
+<!--        <EditText-->
+<!--            android:id="@+id/yea"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:gravity="center"-->
+<!--            android:text="1"-->
+<!--            />-->
+<!--    </LinearLayout>-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="5"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/chear_btn"-->
+<!--            android:layout_width="110dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:onClick="switchClick"-->
+<!--            android:text="切换列表"-->
+<!--            tools:ignore="MissingConstraints"-->
+<!--            android:background="@drawable/btn_style"-->
+<!--            android:textSize="17dp"-->
+<!--            android:textColor="@color/white"/>-->
+<!--        <ImageView-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:src="@drawable/search"-->
+<!--            android:orientation="vertical"-->
+<!--            android:visibility="invisible"-->
+<!--            android:gravity="center_horizontal"/>-->
+<!--        <Button-->
+<!--            android:id="@+id/sel_button"-->
+<!--            android:layout_width="110dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="查询"-->
+<!--            tools:ignore="MissingConstraints"-->
+<!--            android:gravity="center"-->
+<!--            android:background="@drawable/btn_style"-->
+<!--            android:textSize="17dp"-->
+<!--            android:textColor="@color/white"/>-->
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
-        android:layout_marginTop="20dp"
+        android:layout_weight="5"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/chear_btn"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:onClick="switchClick"
-            android:text="切换列表"
-            tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
-            android:textSize="17dp"
-            android:textColor="@color/white"/>
         <ImageView
-            android:layout_width="30dp"
+            android:layout_width="10dp"
             android:layout_height="30dp"
             android:src="@drawable/search"
             android:orientation="vertical"
             android:visibility="invisible"
             android:gravity="center_horizontal"/>
-        <Button
-            android:id="@+id/sel_button"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:text="查询"
-            tools:ignore="MissingConstraints"
-            android:gravity="center"
-            android:background="@drawable/btn_style"
-            android:textSize="17dp"
-            android:textColor="@color/white"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="7"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
         <Button
             android:id="@+id/export_button"
             android:layout_width="110dp"
@@ -324,5 +412,74 @@
             android:background="@drawable/btn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/up_button"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:onClick="switchClick"
+            android:text="上一页"
+            tools:ignore="MissingConstraints"
+            android:background="#808080"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+
+        <EditText
+            android:id="@+id/ye"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="1"
+            />
+
+        <Button
+            android:id="@+id/down_button"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="下一页"
+            tools:ignore="MissingConstraints"
+            android:gravity="center"
+            android:background="#808080"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+        <EditText
+            android:id="@+id/yea"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="1"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
     </LinearLayout>
 </LinearLayout>
