@@ -464,67 +464,68 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
 
         barChart5=findViewById(R.id.bc_5);
         lirun_list = new ArrayList<>();
+        if(list5.size()>1) {
+            lirun_list.add(new DictModel("收入", list5.get(0).getLoad(), list5.get(0).getBorrowed()));
+            lirun_list.add(new DictModel("支出", list5.get(1).getLoad(), list5.get(1).getBorrowed()));
 
-        lirun_list.add(new DictModel("收入",list5.get(0).getLoad(),list5.get(0).getBorrowed()));
-        lirun_list.add(new DictModel("支出",list5.get(1).getLoad(),list5.get(1).getBorrowed()));
+            nianchuLiRunList = new ArrayList<>();
+            nianmoLiRunList = new ArrayList<>();
 
-        nianchuLiRunList = new ArrayList<>();
-        nianmoLiRunList = new ArrayList<>();
-
-        for(int i=0;i<lirun_list.size();i++){
-            nianchuLiRunList.add(new BarEntry((float) (i+1),toFloat(lirun_list.get(i).boyCnt)));
-            nianmoLiRunList.add(new BarEntry((float) (i+1),toFloat(lirun_list.get(i).girlCnt)));
-        }
-
-
-        BarDataSet barDataSet=new BarDataSet(nianchuLiRunList,"月");
-        barDataSet.setColor(Color.parseColor("#0066CC"));    //为第一组柱子设置颜色
-        BarDataSet barDataSet2=new BarDataSet(nianmoLiRunList,"年");
-        barDataSet2.setColor(Color.parseColor("#66CCFF"));   //为第二组柱子设置颜色
-        BarData barData=new BarData(barDataSet);   //加上第一组
-        barData.addDataSet(barDataSet2);    //加上第二组   （多组也可以用同样的方法）
-
-        barDataSet.setHighLightAlpha(0);
-        barDataSet2.setHighLightAlpha(0);
-
-        barChart5.setData(
-                barData);
-
-        barData.setBarWidth(0.2f);//柱子的宽度
-        //重点！   三个参数   分别代表   X轴起点     组与组之间的间隔      组内柱子的间隔
-        barData.groupBars(1f,0.4f,0.1f);
-
-        barChart5.getXAxis().setCenterAxisLabels(true);   //设置柱子（柱子组）居中对齐X轴上的点
-        barChart5.setScaleEnabled(false);//禁止缩放
-        barChart5.getXAxis().setAxisMaximum(nianchuLiRunList.size()+1);   //X轴最大数值
-        barChart5.getXAxis().setAxisMinimum(1);   //X轴最小数值
-        //X轴坐标的个数    第二个参数一般填false     true表示强制设置标签数 可能会导致X轴坐标显示不全等问题
-        barChart5.getXAxis().setLabelCount(nianmoLiRunList.size()+1,false);
-        barChart5.getDescription().setEnabled(false);    //右下角一串英文字母不显示
-        barChart5.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);   //X轴的位置设置为下  默认为上
-        barChart5.getAxisRight().setEnabled(false);     //右侧Y轴不显示   默认为显示
-        XAxis xl = barChart5.getXAxis();
-        xl.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xl.setDrawAxisLine(true);
-        xl.setDrawGridLines(false);
-        xl.setGranularity(1f);
-
-        xl.setValueFormatter(new ValueFormatter() {
-            @Override
-            public String getFormattedValue(float value) {
-                if((int)value<=lirun_list.size() && (int)value-1 > 0){
-                    return lirun_list.get((int) value-1).title;
-                }else {
-                    return lirun_list.get(0).title;
-                }
+            for (int i = 0; i < lirun_list.size(); i++) {
+                nianchuLiRunList.add(new BarEntry((float) (i + 1), toFloat(lirun_list.get(i).boyCnt)));
+                nianmoLiRunList.add(new BarEntry((float) (i + 1), toFloat(lirun_list.get(i).girlCnt)));
             }
-        });
 
-        Legend l = barChart5.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
 
-        barChart5.invalidate();
+            BarDataSet barDataSet = new BarDataSet(nianchuLiRunList, "月");
+            barDataSet.setColor(Color.parseColor("#0066CC"));    //为第一组柱子设置颜色
+            BarDataSet barDataSet2 = new BarDataSet(nianmoLiRunList, "年");
+            barDataSet2.setColor(Color.parseColor("#66CCFF"));   //为第二组柱子设置颜色
+            BarData barData = new BarData(barDataSet);   //加上第一组
+            barData.addDataSet(barDataSet2);    //加上第二组   （多组也可以用同样的方法）
+
+            barDataSet.setHighLightAlpha(0);
+            barDataSet2.setHighLightAlpha(0);
+
+            barChart5.setData(
+                    barData);
+
+            barData.setBarWidth(0.2f);//柱子的宽度
+            //重点！   三个参数   分别代表   X轴起点     组与组之间的间隔      组内柱子的间隔
+            barData.groupBars(1f, 0.4f, 0.1f);
+
+            barChart5.getXAxis().setCenterAxisLabels(true);   //设置柱子（柱子组）居中对齐X轴上的点
+            barChart5.setScaleEnabled(false);//禁止缩放
+            barChart5.getXAxis().setAxisMaximum(nianchuLiRunList.size() + 1);   //X轴最大数值
+            barChart5.getXAxis().setAxisMinimum(1);   //X轴最小数值
+            //X轴坐标的个数    第二个参数一般填false     true表示强制设置标签数 可能会导致X轴坐标显示不全等问题
+            barChart5.getXAxis().setLabelCount(nianmoLiRunList.size() + 1, false);
+            barChart5.getDescription().setEnabled(false);    //右下角一串英文字母不显示
+            barChart5.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);   //X轴的位置设置为下  默认为上
+            barChart5.getAxisRight().setEnabled(false);     //右侧Y轴不显示   默认为显示
+            XAxis xl = barChart5.getXAxis();
+            xl.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xl.setDrawAxisLine(true);
+            xl.setDrawGridLines(false);
+            xl.setGranularity(1f);
+
+            xl.setValueFormatter(new ValueFormatter() {
+                @Override
+                public String getFormattedValue(float value) {
+                    if ((int) value <= lirun_list.size() && (int) value - 1 > 0) {
+                        return lirun_list.get((int) value - 1).title;
+                    } else {
+                        return lirun_list.get(0).title;
+                    }
+                }
+            });
+
+            Legend l = barChart5.getLegend();
+            l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+            l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
+
+            barChart5.invalidate();
+        }
     }
 
     private void setXianJinLiuLiang(){
