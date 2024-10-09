@@ -83,6 +83,9 @@ public class KaoQinBiaoChangeActivity extends AppCompatActivity {
 
     String[] kaoqin_typeArray;
 
+
+
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onCreate(Bundle savedInstanceState) {

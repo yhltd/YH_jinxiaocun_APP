@@ -90,7 +90,8 @@ public class YhRenShiGongZiMingXiService {
      * 个人所得税-查询
      */
     public List<YhRenShiGongZiMingXi> gerensuodeshuiQueryList(String company) {
-        String sql = "select AU as B,CONVERT(varchar,sum((cast(ATA as money)*cast(AU as money)))) AS C,convert(varchar,COUNT(id)) as D, convert(varchar,sum((cast(AW AS money)*cast(AU AS money)))) AS E FROM gongzi_gongzimingxi WHERE AU is not null and ([BD] = ?) GROUP BY AU";
+       // String sql = "select AU as B,CONVERT(varchar,sum((cast(ATA as money)*cast(AU as money)))) AS C,convert(varchar,COUNT(id)) as D, convert(varchar,sum((cast(AW AS money)*cast(AU AS money)))) AS E FROM gongzi_gongzimingxi WHERE AU is not null and ([BD] = ?) GROUP BY AU";
+        String sql = "select B,C,D,G,AU as H,CONVERT(varchar,sum((cast(ATA as money)*cast(AU as money)))) AS I,convert(varchar,COUNT(id)) as J, convert(varchar,sum((cast(AW AS money)*cast(AU AS money)))) AS K FROM gongzi_gongzimingxi WHERE AU is not null and ([BD] = ?) GROUP BY B,C,D,G,AU";
         base = new renshiBaseDao();
         List<YhRenShiGongZiMingXi> list = base.query(YhRenShiGongZiMingXi.class, sql,company.replace("_hr",""));
         return list;

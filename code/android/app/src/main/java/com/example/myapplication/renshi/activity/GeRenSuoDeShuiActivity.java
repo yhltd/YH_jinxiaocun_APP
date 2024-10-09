@@ -108,14 +108,19 @@ public class GeRenSuoDeShuiActivity extends AppCompatActivity {
                 try {
                     yhRenShiGongZiMingXiService = new YhRenShiGongZiMingXiService();
                     list = yhRenShiGongZiMingXiService.gerensuodeshuiQueryList(yhRenShiUser.getL());
+
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
-                        item.put("B", list.get(i).getB());
-                        item.put("C", list.get(i).getC());
-                        item.put("D", list.get(i).getD());
-                        item.put("E", list.get(i).getE());
+//                        item.put("B", list.get(i).getB());
+//                        item.put("C", list.get(i).getC());
+//                        item.put("D", list.get(i).getD());
+//                        item.put("E", list.get(i).getE());
+                        item.put("B", list.get(i).getH());
+                        item.put("C", list.get(i).getI());
+                        item.put("D", list.get(i).getJ());
+                        item.put("E", list.get(i).getK());
                         data.add(item);
                     }
                 } catch (Exception e) {
@@ -152,6 +157,46 @@ public class GeRenSuoDeShuiActivity extends AppCompatActivity {
         }).start();
     }
 
+//    public View.OnClickListener updateClick() {
+//        return new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//               AlertDialog.Builder builder = new AlertDialog.Builder(GeRenSuoDeShuiActivity.this);
+//                int position = Integer.parseInt(view.getTag().toString());
+//                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                        XiangQingYe xiangQingYe = new XiangQingYe();
+//                        xiangQingYe.setA_title("姓名:");
+//                        xiangQingYe.setB_title("部门:");
+//                        xiangQingYe.setC_title("岗位:");
+//                        xiangQingYe.setD_title("基本工资:");
+//
+//                        xiangQingYe.setA(list.get(position).getB());
+//                        xiangQingYe.setB(list.get(position).getC());
+//                        xiangQingYe.setC(list.get(position).getD());
+//                        xiangQingYe.setD(list.get(position).getG());
+//                        Intent intent = new Intent(GeRenSuoDeShuiActivity.this, XiangQingYeActivity.class);
+//                        MyApplication myApplication = (MyApplication) getApplication();
+//                        myApplication.setObj(xiangQingYe);
+//                        startActivityForResult(intent, REQUEST_CODE_CHANG);
+//                    }
+//                });
+//
+//                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//                builder.setMessage("确定查看明细？");
+//                builder.setTitle("提示");
+//                builder.show();
+//            }
+//        };
+//    }
     public View.OnClickListener updateClick() {
         return new View.OnClickListener() {
             @Override

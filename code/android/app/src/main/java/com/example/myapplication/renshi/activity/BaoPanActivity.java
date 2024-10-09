@@ -194,7 +194,7 @@ public class BaoPanActivity extends AppCompatActivity {
                         this_item.setD(list.get(i).getAy());//实发工资
                         this_item.setE(list.get(i).getM());//全勤天数
 
-                        if (!list.get(i).getAj().equals("") && list.get(i).getAj() != null)
+                        if (!list.get(i).getAj().equals("") && list.get(i).getAj() != null )
                         {
                             geren = geren + Double.parseDouble(list.get(i).getAj());
                         }

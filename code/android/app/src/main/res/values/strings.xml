@@ -71,6 +71,7 @@
         <item>请假</item>
         <item>迟到</item>
         <item>早退</item>
+        <item>休</item>
         <item></item>
     </string-array>
 
