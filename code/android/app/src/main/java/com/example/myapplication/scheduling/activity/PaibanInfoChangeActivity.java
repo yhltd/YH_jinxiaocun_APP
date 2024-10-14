@@ -124,11 +124,11 @@ public class PaibanInfoChangeActivity extends AppCompatActivity {
                     departmentList = new ArrayList<>();
                     departmentList = departmentService.getDepartment(userInfo.getCompany());
                     adapter = new ArrayAdapter<String>(PaibanInfoChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, departmentList);
-                    if (departmentList.size() > 0) {
+//                    if (departmentList.size() > 0) {
                         msg.obj = adapter;
-                    } else {
-                        msg.obj = null;
-                    }
+//                    } else {
+//                        msg.obj = null;
+//                    }
                     listLoadHandler.sendMessage(msg);
                 } catch (Exception e) {
                     e.printStackTrace();

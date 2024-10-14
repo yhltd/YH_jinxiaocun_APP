@@ -91,7 +91,7 @@ public class WorkTongjiActivity extends AppCompatActivity {
         list_table = findViewById(R.id.list_table);
         ks = findViewById(R.id.ks);
         js = findViewById(R.id.js);
-        workDetail = (WorkDetail) myApplication.getObj();
+       // workDetail = (WorkDetail) myApplication.getObj();
         Intent intent = getIntent();
         type = intent.getStringExtra("type");
         list = (List<WorkDetail>) getIntent().getSerializableExtra("list");
