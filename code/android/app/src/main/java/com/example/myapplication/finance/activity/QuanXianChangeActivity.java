@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,6 +88,7 @@ public class QuanXianChangeActivity extends AppCompatActivity {
     private Spinner jjzzDelete;
     private Spinner jjzzUpdate;
     private Spinner jjzzSelect;
+    private  String bianhao;
 
     private String[] type_selectArray;
     List<YhFinanceQuanXian> list;
@@ -305,7 +307,7 @@ public class QuanXianChangeActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Message msg = new Message();
-                msg.obj = yhFinanceUserService.update(yhFinanceUserNow);
+                msg.obj = yhFinanceQuanXianService.update(yhFinanceQuanXian);
                 saveHandler.sendMessage(msg);
             }
         }).start();
@@ -354,6 +356,8 @@ public class QuanXianChangeActivity extends AppCompatActivity {
         yhFinanceQuanXian.setJjzzUpdate(jjzzUpdate.getSelectedItem().toString());
         yhFinanceQuanXian.setJjzzSelect(jjzzSelect.getSelectedItem().toString());
 
+
+        yhFinanceQuanXian.setBianhao(yhFinanceUserNow.getBianhao());
         return true;
     }
 

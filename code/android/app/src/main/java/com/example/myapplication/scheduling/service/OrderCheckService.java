@@ -1,5 +1,7 @@
 package com.example.myapplication.scheduling.service;
 
+import android.util.Log;
+
 import com.example.myapplication.scheduling.dao.SchedulingDao;
 import com.example.myapplication.scheduling.entity.BomInfo;
 import com.example.myapplication.scheduling.entity.OrderCheck;
@@ -20,8 +22,15 @@ public class OrderCheckService {
         if (js.equals("")) {
             js = "2200-01-01";
         }
-        String sql = "select * from order_check where company=? and order_number like '%' + ? + '%' and moudle like '%' + ? + '%' and riqi between ? and ? ";
+        String sql = "select * from order_check where company=? and order_number like '%' + ? + '%' and moudle like '%' + ? + '%' and CONVERT(date,riqi) between ? and ? ";
+
         List<OrderCheck> list = base.query(OrderCheck.class, sql, company, order_number, moudle, ks, js);
+        Log.d("ksksksksksk",ks);
+        Log.d("ksksksksksk",js);
+        Log.d("sql",sql);
+        Log.d("sql",company);
+        Log.d("sql",order_number);
+        Log.d("sql",moudle);
         return list;
     }
 

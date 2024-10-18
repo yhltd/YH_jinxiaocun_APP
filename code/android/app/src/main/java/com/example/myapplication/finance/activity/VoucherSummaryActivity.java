@@ -226,7 +226,10 @@ public class VoucherSummaryActivity extends AppCompatActivity {
                         item.put("man", list.get(i).getMan());
                         item.put("money", list.get(i).getMoney());
                         item.put("real", list.get(i).getReal());
-                        item.put("not_get", list.get(i).getMoney().subtract(list.get(i).getReal()));
+                        if (list.get(i).getMoney() != null && list.get(i).getReal()!=null ) {
+                            item.put("not_get", list.get(i).getMoney().subtract(list.get(i).getReal()));
+                            // 使用result进行后续操作
+                        }
                         data.add(item);
                     }
 

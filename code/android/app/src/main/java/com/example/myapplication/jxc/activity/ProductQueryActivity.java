@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -166,6 +167,8 @@ public class ProductQueryActivity extends AppCompatActivity {
                             item.put("chuku_num", list.get(i).getChukuNum());
                             item.put("chuku_price", list.get(i).getChukuPrice());
                             data.add(item);
+                            Log.d("!!!!!!!",list.get(i).getChukuNum());
+                            Log.d("!1111111",list.get(i).getChukuPrice());
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

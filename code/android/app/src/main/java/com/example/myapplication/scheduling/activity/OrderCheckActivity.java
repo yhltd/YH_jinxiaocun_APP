@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -83,6 +84,7 @@ public class OrderCheckActivity extends AppCompatActivity {
         moudle_text = findViewById(R.id.moudle_text);
         ks = findViewById(R.id.ks);
         js = findViewById(R.id.js);
+
         sel_button = findViewById(R.id.sel_button);
 
         initList();
@@ -131,7 +133,7 @@ public class OrderCheckActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     orderCheckService = new OrderCheckService();
-                    list = orderCheckService.getList(userInfo.getCompany(), order_number_text.getText().toString(), moudle_text.getText().toString(), ks.getText().toString(), js.getText().toString());
+                    list = orderCheckService.getList(userInfo.getCompany(), order_number_text.getText().toString(), moudle_text.getText().toString(), ks.getText().toString().replace("/","-"), js.getText().toString().replace("/","-"));
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {

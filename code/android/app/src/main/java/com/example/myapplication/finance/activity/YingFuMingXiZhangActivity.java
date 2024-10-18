@@ -120,10 +120,10 @@ public class YingFuMingXiZhangActivity extends AppCompatActivity {
 
     @SuppressLint("WrongConstant")
     public void switchClick(View v) {
-        if(listView_block.getVisibility() == 0){
+        if (listView_block.getVisibility() == 0) {
             listView_block.setVisibility(8);
             list_table.setVisibility(0);
-        }else if(listView_block.getVisibility() == 8){
+        } else if (listView_block.getVisibility() == 8) {
             listView_block.setVisibility(0);
             list_table.setVisibility(8);
         }
@@ -172,16 +172,15 @@ public class YingFuMingXiZhangActivity extends AppCompatActivity {
     }
 
 
-
     private void initList() {
         sel_button.setEnabled(false);
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         class_selectText = class_select.getSelectedItem().toString();
-        if(start_dateText.equals("")){
+        if (start_dateText.equals("")) {
             start_dateText = "1900-01-01";
         }
-        if(stop_dateText.equals("")){
+        if (stop_dateText.equals("")) {
             stop_dateText = "2100-12-31";
         }
 
@@ -202,16 +201,16 @@ public class YingFuMingXiZhangActivity extends AppCompatActivity {
                 try {
                     list = new ArrayList<>();
                     yhFinanceYingShouMingXiZhangService = new YhFinanceYingShouMingXiZhangService();
-                    list1 = yhFinanceYingShouMingXiZhangService.getList_fuLast(yhFinanceUser.getCompany(),class_selectText,start_dateText,stop_dateText);
-                    list2 = yhFinanceYingShouMingXiZhangService.getList_fu(yhFinanceUser.getCompany(),class_selectText,start_dateText,stop_dateText);
-                    list3 = yhFinanceYingShouMingXiZhangService.getList_fuSecond(yhFinanceUser.getCompany(),class_selectText,start_dateText,stop_dateText);
+                    list1 = yhFinanceYingShouMingXiZhangService.getList_fuLast(yhFinanceUser.getCompany(), class_selectText, start_dateText, stop_dateText);
+                    list2 = yhFinanceYingShouMingXiZhangService.getList_fu(yhFinanceUser.getCompany(), class_selectText, start_dateText, stop_dateText);
+                    list3 = yhFinanceYingShouMingXiZhangService.getList_fuSecond(yhFinanceUser.getCompany(), class_selectText, start_dateText, stop_dateText);
 //                    if (list1 == null && list2 == null) return;
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                if(list1.size() == 0){
+                if (list1.size() == 0) {
                     YhFinanceYingShouMingXiZhang this_start = new YhFinanceYingShouMingXiZhang();
                     this_start.setProject("上期合计");
                     this_start.setKehu(class_selectText);
@@ -220,18 +219,18 @@ public class YingFuMingXiZhangActivity extends AppCompatActivity {
                     this_start.setPayment(price);
                     this_start.setWeifu(price);
                     list.add(this_start);
-                }else{
+                } else {
                     list1.get(0).setProject("上期合计");
                     list.add(list1.get(0));
                 }
 
-                if(list2 != null){
-                    for(int i=0; i<list2.size(); i++){
+                if (list2 != null) {
+                    for (int i = 0; i < list2.size(); i++) {
                         list.add(list2.get(i));
                     }
                 }
 
-                if(list3.size() == 0){
+                if (list3.size() == 0) {
                     YhFinanceYingShouMingXiZhang this_start = new YhFinanceYingShouMingXiZhang();
                     this_start.setProject("结余合计");
                     this_start.setKehu(class_selectText);
@@ -240,7 +239,7 @@ public class YingFuMingXiZhangActivity extends AppCompatActivity {
                     this_start.setPayment(price);
                     this_start.setWeifu(price);
                     list.add(this_start);
-                }else{
+                } else {
                     list3.get(0).setProject("结余合计");
                     list.add(list3.get(0));
                 }
@@ -257,7 +256,7 @@ public class YingFuMingXiZhangActivity extends AppCompatActivity {
                     data.add(item);
                 }
 
-                adapter = new SimpleAdapter(YingFuMingXiZhangActivity.this, data, R.layout.yingfumingxizhang_row, new String[]{"insert_date","kehu","accounting","project","cope","payment","weifu",}, new int[]{R.id.insert_date,R.id.kehu,R.id.accounting,R.id.project,R.id.cope,R.id.payment,R.id.weifu}) {
+                adapter = new SimpleAdapter(YingFuMingXiZhangActivity.this, data, R.layout.yingfumingxizhang_row, new String[]{"insert_date", "kehu", "accounting", "project", "cope", "payment", "weifu",}, new int[]{R.id.insert_date, R.id.kehu, R.id.accounting, R.id.project, R.id.cope, R.id.payment, R.id.weifu}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -268,7 +267,7 @@ public class YingFuMingXiZhangActivity extends AppCompatActivity {
                     }
                 };
 
-                adapter_block = new SimpleAdapter(YingFuMingXiZhangActivity.this, data, R.layout.yingfumingxizhang_row_block, new String[]{"insert_date","kehu","accounting","project","cope","payment","weifu",}, new int[]{R.id.insert_date,R.id.kehu,R.id.accounting,R.id.project,R.id.cope,R.id.payment,R.id.weifu}) {
+                adapter_block = new SimpleAdapter(YingFuMingXiZhangActivity.this, data, R.layout.yingfumingxizhang_row_block, new String[]{"insert_date", "kehu", "accounting", "project", "cope", "payment", "weifu",}, new int[]{R.id.insert_date, R.id.kehu, R.id.accounting, R.id.project, R.id.cope, R.id.payment, R.id.weifu}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -353,8 +352,9 @@ public class YingFuMingXiZhangActivity extends AppCompatActivity {
                         xiangQingYe.setE_title("应付:");
                         xiangQingYe.setF_title("实付:");
                         xiangQingYe.setG_title("未付:");
-
-                        xiangQingYe.setA(list.get(position).getInsert_date().toString());
+                        if (list.get(position).getInsert_date() != null) {
+                            xiangQingYe.setA(list.get(position).getInsert_date().toString());
+                        }
                         xiangQingYe.setB(list.get(position).getKehu());
                         xiangQingYe.setC(list.get(position).getAccounting());
                         xiangQingYe.setD(list.get(position).getProject());

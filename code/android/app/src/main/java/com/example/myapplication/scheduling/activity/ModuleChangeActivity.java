@@ -147,6 +147,7 @@ public class ModuleChangeActivity extends AppCompatActivity {
 
                     moduleInfoService = new ModuleInfoService();
                     moduleInfoList = moduleInfoService.getList(userInfo.getCompany(), "全部");
+
                     parentList.add("");
                     parent_idList.add(0);
                     for (ModuleInfo moduleInfo : moduleInfoList) {

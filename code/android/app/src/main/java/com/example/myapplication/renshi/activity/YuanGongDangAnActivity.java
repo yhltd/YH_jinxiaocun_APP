@@ -205,6 +205,7 @@ public class YuanGongDangAnActivity extends AppCompatActivity {
 
                 Message msg = new Message();
                 msg.obj = adapter;
+             
                 listLoadHandler.sendMessage(msg);
 
             }
@@ -220,6 +221,7 @@ public class YuanGongDangAnActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(msg.obj));
+                listView_block.setAdapter(StringUtils.cast(msg.obj));
                 return true;
             }
         });

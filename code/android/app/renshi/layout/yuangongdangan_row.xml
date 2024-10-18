@@ -23,7 +23,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="1">
         </View>
@@ -37,9 +37,9 @@
             android:textSize="14sp"
             android:text="部门"
             android:textStyle="bold"
-            android:width="100dp"/>
+            android:width="80dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -55,7 +55,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="110px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -71,9 +71,9 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
+            android:layout_weight="3">
         </View>
 
         <TextView
@@ -85,9 +85,9 @@
             android:textSize="14sp"
             android:text="基本工资"
             android:textStyle="bold"
-            android:width="100dp"/>
+            android:width="90dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -103,7 +103,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -119,7 +119,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -135,7 +135,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -151,7 +151,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -167,7 +167,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -183,7 +183,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -199,7 +199,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -215,7 +215,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -231,7 +231,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -247,7 +247,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -263,7 +263,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -279,7 +279,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -295,7 +295,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -311,7 +311,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -327,7 +327,7 @@
             android:textStyle="bold"
             android:width="125dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -343,7 +343,7 @@
             android:textStyle="bold"
             android:width="150dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -359,7 +359,7 @@
             android:textStyle="bold"
             android:width="125dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -375,7 +375,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -391,7 +391,7 @@
             android:textStyle="bold"
             android:width="250dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -407,7 +407,7 @@
             android:textStyle="bold"
             android:width="225dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
@@ -423,7 +423,7 @@
             android:textStyle="bold"
             android:width="100dp"/>
         <View
-            android:layout_width="0dp"
+            android:layout_width="100px"
             android:layout_height="wrap_content"
             android:layout_weight="2">
         </View>
