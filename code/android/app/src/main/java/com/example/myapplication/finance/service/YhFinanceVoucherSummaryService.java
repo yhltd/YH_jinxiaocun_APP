@@ -1,5 +1,7 @@
 package com.example.myapplication.finance.service;
 
+import android.util.Log;
+
 import com.example.myapplication.finance.dao.financeBaseDao;
 import com.example.myapplication.finance.entity.YhFinanceVoucherSummary;
 
@@ -23,7 +25,11 @@ public class YhFinanceVoucherSummaryService {
     public boolean insert(YhFinanceVoucherSummary YhFinanceVoucherSummary) {
         String sql = "insert into VoucherSummary(word,no,abstract,code,department,expenditure,note,man,money,company,voucherDate,real) values(?,?,?,?,?,?,?,?,?,?,?,?)";
         base = new financeBaseDao();
-        long result = base.executeOfId(sql, YhFinanceVoucherSummary.getWord(), YhFinanceVoucherSummary.getNo(),YhFinanceVoucherSummary.get_abstract(),YhFinanceVoucherSummary.getCode(),YhFinanceVoucherSummary.getDepartment(),YhFinanceVoucherSummary.getExpenditure(),YhFinanceVoucherSummary.getNote(),YhFinanceVoucherSummary.getMan(),YhFinanceVoucherSummary.getMoney(),YhFinanceVoucherSummary.getCompany(),YhFinanceVoucherSummary.getVoucherDate(),YhFinanceVoucherSummary.getReal());
+        long result = base.executeOfId(sql, YhFinanceVoucherSummary.getWord(), YhFinanceVoucherSummary.getNo(),YhFinanceVoucherSummary.getZhaiyao(),YhFinanceVoucherSummary.getCode(),YhFinanceVoucherSummary.getDepartment(),YhFinanceVoucherSummary.getExpenditure(),YhFinanceVoucherSummary.getNote(),YhFinanceVoucherSummary.getMan(),YhFinanceVoucherSummary.getMoney(),YhFinanceVoucherSummary.getCompany(),YhFinanceVoucherSummary.getInsert_date(),YhFinanceVoucherSummary.getReal().toString());
+        Log.d("sqlsqlsql",sql);
+        Log.d("sqlsqlsql",YhFinanceVoucherSummary.getZhaiyao());
+        Log.d("sqlsqlsql",YhFinanceVoucherSummary.getReal().toString());
+        Log.d("sqlsqlsql",YhFinanceVoucherSummary.getInsert_date().toString());
         return result > 0;
     }
 
@@ -33,7 +39,11 @@ public class YhFinanceVoucherSummaryService {
     public boolean update(YhFinanceVoucherSummary YhFinanceVoucherSummary) {
         String sql = "update VoucherSummary set word=?,no=?,abstract=?,code=?,department=?,expenditure=?,note=?,man=?,money=?,voucherDate=?,real=? where id=? ";
         base = new financeBaseDao();
-        boolean result = base.execute(sql, YhFinanceVoucherSummary.getWord(), YhFinanceVoucherSummary.getNo(),YhFinanceVoucherSummary.get_abstract(),YhFinanceVoucherSummary.getCode(),YhFinanceVoucherSummary.getDepartment(),YhFinanceVoucherSummary.getExpenditure(),YhFinanceVoucherSummary.getNote(),YhFinanceVoucherSummary.getMan(),YhFinanceVoucherSummary.getMoney(),YhFinanceVoucherSummary.getVoucherDate(),YhFinanceVoucherSummary.getReal(),YhFinanceVoucherSummary.getId());
+        boolean result = base.execute(sql,  YhFinanceVoucherSummary.getWord(), YhFinanceVoucherSummary.getNo(),YhFinanceVoucherSummary.getZhaiyao(),YhFinanceVoucherSummary.getCode(),YhFinanceVoucherSummary.getDepartment(),YhFinanceVoucherSummary.getExpenditure(),YhFinanceVoucherSummary.getNote(),YhFinanceVoucherSummary.getMan(),YhFinanceVoucherSummary.getMoney(),YhFinanceVoucherSummary.getInsert_date(),YhFinanceVoucherSummary.getReal().toString(),YhFinanceVoucherSummary.getId());
+        Log.d("sqlsqlsql",sql);
+        Log.d("sqlsqlsql",YhFinanceVoucherSummary.getZhaiyao());
+        Log.d("sqlsqlsql",YhFinanceVoucherSummary.getReal().toString());
+        Log.d("sqlsqlsql",YhFinanceVoucherSummary.getInsert_date().toString());
         return result;
     }
 

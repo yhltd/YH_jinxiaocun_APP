@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -340,6 +341,7 @@ public class VoucherSummaryActivity extends AppCompatActivity {
                         xiangQingYe.setK(list.get(position).getNote());
                         xiangQingYe.setL(list.get(position).getMan());
                         xiangQingYe.setM(list.get(position).getMoney().toString());
+
                         xiangQingYe.setN(list.get(position).getReal().toString());
                         xiangQingYe.setN(list.get(position).getMoney().subtract(list.get(position).getReal()).toString());
 
@@ -479,8 +481,14 @@ public class VoucherSummaryActivity extends AppCompatActivity {
                     item.put("note", list.get(i).getNote());
                     item.put("man", list.get(i).getMan());
                     item.put("money", list.get(i).getMoney());
-                    item.put("real", list.get(i).getReal());
-                    item.put("not_get", list.get(i).getMoney().subtract(list.get(i).getReal()));
+                    if (list.get(i).getReal()!=null) {
+                        item.put("real", list.get(i).getReal());
+                        item.put("not_get", list.get(i).getMoney().subtract(list.get(i).getReal()));
+                    }else{
+                        item.put("real", 0);
+                        item.put("not_get", 0);
+                    }
+                   // item.put("not_get", list.get(i).getMoney().subtract(list.get(i).getReal()));
                     data.add(item);
                 }
 

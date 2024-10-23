@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -148,7 +149,11 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
             money.setText(yhFinanceVoucherSummary.getMoney().toString());
             expenditure.setText(yhFinanceVoucherSummary.getExpenditure().toString());
             note.setText(yhFinanceVoucherSummary.getNote().toString());
-            real.setText(yhFinanceVoucherSummary.getReal().toString());
+            if (yhFinanceVoucherSummary.getReal()!=null) {
+                real.setText(yhFinanceVoucherSummary.getReal().toString());
+            }else{
+                real.setText("0");
+            }
         }
     }
 
@@ -156,7 +161,9 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             typeText = kemu_type.getItemAtPosition(position).toString();
-            lvText = kemu_lv.getItemAtPosition(position).toString();
+
+                lvText = kemu_lv.getItemAtPosition(position).toString();
+
             Handler listLoadHandler = new Handler(new Handler.Callback() {
                 @Override
                 public boolean handleMessage(@NonNull Message msg) {
@@ -487,6 +494,7 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
             return false;
         } else {
             yhFinanceVoucherSummary.setInsert_date(CovertStrTODate(voucherDate.getText().toString()));
+
         }
 
         if (zhaiyao.getText().toString().equals("")) {
@@ -530,7 +538,8 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
             return false;
         } else {
             BigDecimal B4 = new BigDecimal(real.getText().toString());
-            yhFinanceVoucherSummary.setMoney(B4);
+           // yhFinanceVoucherSummary.setMoney(B4);
+            yhFinanceVoucherSummary.setReal(B4);
         }
 
         yhFinanceVoucherSummary.setNote(note.getText().toString());
