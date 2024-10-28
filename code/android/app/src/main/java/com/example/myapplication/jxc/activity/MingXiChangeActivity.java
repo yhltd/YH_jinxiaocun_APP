@@ -105,7 +105,8 @@ public class MingXiChangeActivity extends AppCompatActivity {
         int id = intent.getIntExtra("type", 0);
         if (id == R.id.update_btn) {
             yhJinXiaoCunMingXi = (YhJinXiaoCunMingXi) myApplication.getObj();
-            init1();
+            init();
+//            init2();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
             qr_code_line.setVisibility(View.VISIBLE);
@@ -226,23 +227,28 @@ public class MingXiChangeActivity extends AppCompatActivity {
 
         }
     }
-
-    public void init1() {
-
+    public void init() {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                spDm.setAdapter(StringUtils.cast(msg.obj));
-                spDm.setSelection(getSpDmPosition(yhJinXiaoCunMingXi.getSpDm()));
-
+                if (msg.what == 0) {
+                    spDm.setAdapter(StringUtils.cast(msg.obj));
+                    spDm.setSelection(getSpDmPosition(yhJinXiaoCunMingXi.getSpDm()));
+                } else if (msg.what == 1) {
+                    shou_h.setAdapter(StringUtils.cast(msg.obj));
+                    shou_h.setSelection(getShouhPosition(yhJinXiaoCunMingXi.getShou_h()));
+                }
                 return true;
             }
         });
+
         new Thread(new Runnable() {
             @Override
             public void run() {
-                SpinnerAdapter adapter = null;
+                SpinnerAdapter adapter1 = null;
+                SpinnerAdapter adapter2 = null;
                 try {
+                    // Initialize spDm
                     List<String> spDmList = yhJinXiaoCunJiChuZiLiaoService.getCpid(yhJinXiaoCunUser.getGongsi());
                     if (spDmList != null) {
                         spDm_array = new String[spDmList.size() + 1];
@@ -251,17 +257,84 @@ public class MingXiChangeActivity extends AppCompatActivity {
                             spDm_array[i + 1] = spDmList.get(i);
                         }
                     }
-                    adapter = new ArrayAdapter<String>(MingXiChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, spDm_array);
+                    adapter1 = new ArrayAdapter<String>(MingXiChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, spDm_array);
+
+                    // Initialize shou_h
+                    List<YhJinXiaoCunKeHu> shouhList = yhJinXiaoCunKeHuService.getListByGys(yhJinXiaoCunUser.getGongsi(), "");
+                    List<YhJinXiaoCunKeHu> shouhList2 = yhJinXiaoCunKeHuService.getListByKehu(yhJinXiaoCunUser.getGongsi(), "");
+
+                    List<YhJinXiaoCunKeHu> list1 = new ArrayList<>();
+                    if (shouhList != null) {
+                        for (int i = 0; i < shouhList.size(); i++) {
+                            list1.add(shouhList.get(i));
+                        }
+                    }
+
+                    if (shouhList2 != null) {
+                        for (int i = 0; i < shouhList2.size(); i++) {
+                            list1.add(shouhList2.get(i));
+                        }
+                    }
+
+                    if (list1 != null) {
+                        shou_h_array = new String[list1.size()];
+                        for (int i = 0; i < list1.size(); i++) {
+                            shou_h_array[i] = list1.get(i).getBeizhu();
+                        }
+                    }
+                    adapter2 = new ArrayAdapter<String>(MingXiChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, shou_h_array);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                Message msg = new Message();
-                msg.obj = adapter;
-                listLoadHandler.sendMessage(msg);
+                Message msg1 = new Message();
+                msg1.what = 0;
+                msg1.obj = adapter1;
+                listLoadHandler.sendMessage(msg1);
+
+                Message msg2 = new Message();
+                msg2.what = 1;
+                msg2.obj = adapter2;
+                listLoadHandler.sendMessage(msg2);
             }
         }).start();
     }
 
+
+//    public void init1() {
+//
+//        Handler listLoadHandler = new Handler(new Handler.Callback() {
+//            @Override
+//            public boolean handleMessage(Message msg) {
+//                spDm.setAdapter(StringUtils.cast(msg.obj));
+//                spDm.setSelection(getSpDmPosition(yhJinXiaoCunMingXi.getSpDm()));
+//
+//                return true;
+//            }
+//        });
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                SpinnerAdapter adapter = null;
+//                try {
+//                    List<String> spDmList = yhJinXiaoCunJiChuZiLiaoService.getCpid(yhJinXiaoCunUser.getGongsi());
+//                    if (spDmList != null) {
+//                        spDm_array = new String[spDmList.size() + 1];
+//                        spDm_array[0] = "";
+//                        for (int i = 0; i < spDmList.size(); i++) {
+//                            spDm_array[i + 1] = spDmList.get(i);
+//                        }
+//                    }
+//                    adapter = new ArrayAdapter<String>(MingXiChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, spDm_array);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                Message msg = new Message();
+//                msg.obj = adapter;
+//                listLoadHandler.sendMessage(msg);
+//            }
+//        }).start();
+//    }
+//
 //    public void init2() {
 //        Handler listLoadHandler = new Handler(new Handler.Callback() {
 //            @Override

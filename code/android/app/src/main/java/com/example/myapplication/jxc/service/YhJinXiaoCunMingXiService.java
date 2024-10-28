@@ -57,7 +57,36 @@ public class YhJinXiaoCunMingXiService {
         }
         return list;
     }
-
+    public List<YhJinXiaoCunMingXi> getListByCpid1(String company, String cpid) {
+        String sql = "select * from yh_jinxiaocun_mingxi where gs_name = ? and sp_dm=? ";
+        base = new JxcBaseDao();
+        List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company, cpid);
+        return list;
+    }
+    public List<String> getspid(String company) {
+        String sql = "select sp_dm from yh_jinxiaocun_mingxi where gs_name = ? group by sp_dm";
+        base = new JxcBaseDao();
+        List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company);
+        List<String> cpidList = new ArrayList<>();
+        if (cpidList!=null){
+            for (int i = 0; i < list.size(); i++) {
+                cpidList.add(list.get(i).getSpDm());
+            }
+        }
+        return cpidList != null && cpidList.size() > 0 ? cpidList : null;
+    }
+    public List<String> getshouh(String company) {
+        String sql = "select shou_h from yh_jinxiaocun_mingxi where gs_name = ? group by shou_h";
+        base = new JxcBaseDao();
+        List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company);
+        List<String> shouhList = new ArrayList<>();
+        if (shouhList!=null){
+            for (int i = 0; i < list.size(); i++) {
+                shouhList.add(list.get(i).getShou_h());
+            }
+        }
+        return shouhList != null && shouhList.size() > 0 ? shouhList : null;
+    }
     /**
      * 客户供应商查询
      */
@@ -65,10 +94,10 @@ public class YhJinXiaoCunMingXiService {
         List<YhJinXiaoCunMingXi> list;
         base = new JxcBaseDao();
         if (kehu.equals("全部")) {
-            String sql = "select shou_h,sp_dm,cpname,cplb,ifnull(sum(cpsl),0) as ruku_num,ifnull(sum(cpsj),0) as ruku_price from yh_jinxiaocun_mingxi where gs_name = ? group by shou_h,sp_dm,cpname,cplb having shou_h != '' order by shou_h";
+            String sql = "select shou_h,sp_dm,cpname,cplb,ifnull(sum(cpsl),0) as ruku_num,ifnull(sum(cpsj*cpsl),0) as ruku_price from yh_jinxiaocun_mingxi where gs_name = ? group by shou_h,sp_dm,cpname,cplb having shou_h != '' order by shou_h";
             list = base.query(YhJinXiaoCunMingXi.class, sql, company);
         } else {
-            String sql = "select shou_h,sp_dm,cpname,cplb,ifnull(sum(cpsl),0) as ruku_num,ifnull(sum(cpsj),0) as ruku_price from yh_jinxiaocun_mingxi where gs_name = ? and shou_h = ? group by shou_h,sp_dm,cpname,cplb having shou_h != '' order by shou_h";
+            String sql = "select shou_h,sp_dm,cpname,cplb,ifnull(sum(cpsl),0) as ruku_num,ifnull(sum(cpsj*cpsl),0) as ruku_price from yh_jinxiaocun_mingxi where gs_name = ? and shou_h = ? group by shou_h,sp_dm,cpname,cplb having shou_h != '' order by shou_h";
             list = base.query(YhJinXiaoCunMingXi.class, sql, company, kehu);
         }
         return list;

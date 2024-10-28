@@ -203,11 +203,13 @@ public class KeMuZongZhangActivity extends AppCompatActivity {
                         if(list.get(i).getName2() == null){
                             list.get(i).setName2(list.get(i).getName3());
                         }
-                        if(!list.get(i).getName1().equals(list.get(i).getName2())){
-                            list.get(i).setName1(list.get(i).getName1() + "-" + list.get(i).getName2());
-                        }
-                        if(!list.get(i).getName2().equals(list.get(i).getName3())){
-                            list.get(i).setName1(list.get(i).getName1() + "-" + list.get(i).getName3());
+                        if(list.get(i).getName1()!=null && list.get(i).getName2()!=null) {
+                            if (!list.get(i).getName1().equals(list.get(i).getName2())) {
+                                list.get(i).setName1(list.get(i).getName1() + "-" + list.get(i).getName2());
+                            }
+                            if (!list.get(i).getName2().equals(list.get(i).getName3())) {
+                                list.get(i).setName1(list.get(i).getName1() + "-" + list.get(i).getName3());
+                            }
                         }
                         item.put("name1", list.get(i).getName1());
                         item.put("direction_text", list.get(i).getDirection_text());

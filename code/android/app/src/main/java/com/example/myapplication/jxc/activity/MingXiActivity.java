@@ -68,8 +68,8 @@ public class MingXiActivity extends AppCompatActivity {
 
     private EditText ks;
     private EditText js;
-    private EditText ye;
-    private EditText yea;
+//    private EditText ye;
+//    private EditText yea;
     private ListView listView;
 
     private ListView listView_block;
@@ -79,8 +79,8 @@ public class MingXiActivity extends AppCompatActivity {
 
     private Button sel_button;
     private Button export_button;
-    private Button up_button;
-    private Button down_button;
+//    private Button up_button;
+//    private Button down_button;
     List<YhJinXiaoCunMingXi> list;
 
 
@@ -99,21 +99,21 @@ public class MingXiActivity extends AppCompatActivity {
         listView_block = findViewById(R.id.list_block);
         list_table = findViewById(R.id.list_table);
         sel_button = findViewById(R.id.sel_button);
-        up_button = findViewById(R.id.up_button);
-        down_button=findViewById(R.id.down_button);
+//        up_button = findViewById(R.id.up_button);
+//        down_button=findViewById(R.id.down_button);
         export_button = findViewById(R.id.export_button);
         ks = findViewById(R.id.ks);
         js = findViewById(R.id.js);
-        ye = findViewById(R.id.ye);
-        yea=findViewById(R.id.yea);
+//        ye = findViewById(R.id.ye);
+//        yea=findViewById(R.id.yea);
         MyApplication myApplication = (MyApplication) getApplication();
         yhJinXiaoCunUser = myApplication.getYhJinXiaoCunUser();
 
         initList();
         sel_button.setOnClickListener(selClick());
         export_button.setOnClickListener(exportClick());
-        up_button.setOnClickListener(upClick());
-        down_button.setOnClickListener(downClick());
+//        up_button.setOnClickListener(upClick());
+//        down_button.setOnClickListener(downClick());
         showDateOnClick(ks);
         showDateOnClick(js);
        
@@ -193,20 +193,26 @@ public class MingXiActivity extends AppCompatActivity {
             public void run() {
                 List<HashMap<String, Object>> data = new ArrayList<>();
 
-                int a1 = Integer.parseInt(ye.getText().toString());
-                if(a1!=1){
-                    a1=a1+5;
-                }
+//                int a1 = Integer.parseInt(ye.getText().toString());
+//                if(a1!=1){
+//                    a1=a1+5;
+//                }
 
                 try {
                     yhJinXiaoCunMingXiService = new YhJinXiaoCunMingXiService();
                     if (ks.getText().toString().equals("") && js.getText().toString().equals("")) {
-                        list = yhJinXiaoCunMingXiService.getList(yhJinXiaoCunUser.getGongsi());
+                        if(yhJinXiaoCunUser.getGongsi()!=null) {
+                            list = yhJinXiaoCunMingXiService.getList(yhJinXiaoCunUser.getGongsi());
+                        }
                     } else {
+                        if(yhJinXiaoCunUser.getGongsi()!=null) {
                         list = yhJinXiaoCunMingXiService.getQuery(yhJinXiaoCunUser.getGongsi(), ks.getText().toString(), js.getText().toString());
+                        }
                     }
+                    if (list == null) return;
 
-                    for (int i = a1;  i < a1+5; i++) {
+                    for (int i = 0; i < list.size(); i++) {
+//                    for (int i = a1;  i < a1+5; i++) {
                         HashMap<String, Object> item = new HashMap<>();
                         item.put("orderid", list.get(i).getOrderid());
                         item.put("spDm", list.get(i).getSpDm());
@@ -264,29 +270,29 @@ public class MingXiActivity extends AppCompatActivity {
             }
         };
     }
-    public View.OnClickListener downClick() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int currentValue = Integer.parseInt(ye.getText().toString());
-                ye.setText(String.valueOf(currentValue + 1));
-
-                initList();
-            }
-        };
-    }
-    public View.OnClickListener upClick() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int currentValue = Integer.parseInt(ye.getText().toString());
-                if (currentValue > 0) {
-                    ye.setText(String.valueOf(currentValue - 1));
-                    initList();
-                }
-            }
-        };
-    }
+//    public View.OnClickListener downClick() {
+//        return new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int currentValue = Integer.parseInt(ye.getText().toString());
+//                ye.setText(String.valueOf(currentValue + 1));
+//
+//                initList();
+//            }
+//        };
+//    }
+//    public View.OnClickListener upClick() {
+//        return new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int currentValue = Integer.parseInt(ye.getText().toString());
+//                if (currentValue > 0) {
+//                    ye.setText(String.valueOf(currentValue - 1));
+//                    initList();
+//                }
+//            }
+//        };
+//    }
     public View.OnClickListener exportClick() {
         return new View.OnClickListener() {
             @Override

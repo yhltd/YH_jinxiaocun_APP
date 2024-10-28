@@ -163,6 +163,7 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
 
         barChart1=findViewById(R.id.bc_1);
         list = new ArrayList<>();
+
         list.add(new DictModel("资产类",list1.get(0).getLoad(),list1.get(0).getBorrowed()));
         list.add(new DictModel("负债类",list1.get(1).getLoad(),list1.get(1).getBorrowed()));
         list.add(new DictModel("权益类",list1.get(2).getLoad(),list1.get(2).getBorrowed()));

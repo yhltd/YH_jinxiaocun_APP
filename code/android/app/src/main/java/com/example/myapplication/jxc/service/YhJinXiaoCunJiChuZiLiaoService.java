@@ -35,7 +35,6 @@ public class YhJinXiaoCunJiChuZiLiaoService {
         }
         return cpidList != null && cpidList.size() > 0 ? cpidList : null;
     }
-
     /**
      * 根据商品代码查询
      */
@@ -45,6 +44,8 @@ public class YhJinXiaoCunJiChuZiLiaoService {
         List<YhJinXiaoCunJiChuZiLiao> list = base.query(YhJinXiaoCunJiChuZiLiao.class, sql, company, cpid);
         return list;
     }
+
+
 
     /**
      * 新增
