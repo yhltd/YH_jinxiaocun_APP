@@ -193,7 +193,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:text="版本号:5.1.0.6"
+            android:text="版本号:5.1.0.7"
             android:textSize="13dp"
             tools:ignore="MissingConstraints" />
     </LinearLayout>
