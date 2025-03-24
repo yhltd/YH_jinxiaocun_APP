@@ -168,7 +168,7 @@ public class MemberlevelChangeActivity extends AppCompatActivity {
         }
 
 
-        yhMendianMemberlevel.setCompany(yhMendianMemberlevel.getCompany());
+        yhMendianMemberlevel.setCompany(yhMendianUser.getCompany());
 
         return true;
     }

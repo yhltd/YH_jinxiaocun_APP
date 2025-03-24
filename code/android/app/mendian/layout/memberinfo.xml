@@ -10,7 +10,7 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="500dp">
+        android:layout_height="390dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="40dp"
                 android:background="#58bd2c"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -32,12 +32,12 @@
                     android:gravity="center"
                     android:text="账号"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
                     android:layout_width="3dp"
-                    android:layout_height="25dp"
+                    android:layout_height="20dp"
                     android:background="#FFFFFF" />
 
                 <TextView
@@ -47,12 +47,12 @@
                     android:gravity="center"
                     android:text="密码"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
                     android:layout_width="3dp"
-                    android:layout_height="25dp"
+                    android:layout_height="20dp"
                     android:background="#FFFFFF" />
 
                 <TextView
@@ -62,12 +62,12 @@
                     android:gravity="center"
                     android:text="姓名"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
                     android:layout_width="3dp"
-                    android:layout_height="25dp"
+                    android:layout_height="20dp"
                     android:background="#FFFFFF" />
 
                 <TextView
@@ -77,12 +77,12 @@
                     android:gravity="center"
                     android:text="性别"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
                     android:layout_width="3dp"
-                    android:layout_height="25dp"
+                    android:layout_height="20dp"
                     android:background="#FFFFFF" />
 
                 <TextView
@@ -92,12 +92,12 @@
                     android:gravity="center"
                     android:text="账号状态"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
                     android:layout_width="3dp"
-                    android:layout_height="25dp"
+                    android:layout_height="20dp"
                     android:background="#FFFFFF" />
 
                 <TextView
@@ -107,12 +107,12 @@
                     android:gravity="center"
                     android:text="电话号"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
                     android:layout_width="3dp"
-                    android:layout_height="25dp"
+                    android:layout_height="20dp"
                     android:background="#FFFFFF" />
 
                 <TextView
@@ -122,12 +122,12 @@
                     android:gravity="center"
                     android:text="生日"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
                     android:layout_width="3dp"
-                    android:layout_height="25dp"
+                    android:layout_height="20dp"
                     android:background="#FFFFFF" />
 
                 <TextView
@@ -137,7 +137,7 @@
                     android:gravity="center"
                     android:text="积分"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -167,14 +167,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
             android:background="@drawable/border_bottom">
 
             <EditText
                 android:id="@+id/name"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:hint="会员姓名"
                 android:textSize="10dp"
@@ -184,13 +184,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
             android:background="@drawable/border_bottom">
             <EditText
                 android:id="@+id/phone"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:hint="会员电话"
                 android:textSize="10dp"
@@ -203,22 +203,38 @@
                 android:background="@drawable/search"
                 android:gravity="center_horizontal" />
         </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/huiyuan_insert"
+            android:onClick="onInsertClick"
+            android:layout_width="70px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/insert"
+            app:backgroundTint="@color/primary"
+            app:backgroundTintMode="add"
+            app:pressedTranslationZ="10dp"
+            app:tint="@color/white" />
+
     </LinearLayout>
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/huiyuan_insert"
-        android:onClick="onInsertClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/insert"
-        app:backgroundTint="@color/primary"
-        app:backgroundTintMode="add"
-        app:pressedTranslationZ="10dp"
-        app:tint="@color/white" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/huiyuan_insert"-->
+<!--        android:onClick="onInsertClick"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="end"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:src="@drawable/insert"-->
+<!--        app:backgroundTint="@color/primary"-->
+<!--        app:backgroundTintMode="add"-->
+<!--        app:pressedTranslationZ="10dp"-->
+<!--        app:tint="@color/white" />-->
 
 </LinearLayout>

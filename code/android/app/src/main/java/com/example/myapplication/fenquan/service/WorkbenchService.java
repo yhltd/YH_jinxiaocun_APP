@@ -1,7 +1,6 @@
 package com.example.myapplication.fenquan.service;
 
 import com.example.myapplication.fenquan.dao.FenquanDao;
-import com.example.myapplication.fenquan.entity.Copy1;
 import com.example.myapplication.fenquan.entity.Workbench;
 
 import java.util.List;
@@ -61,6 +60,1213 @@ public class WorkbenchService {
         base = new FenquanDao();
         List<Workbench> list = base.query(Workbench.class, sql, company, start_date,stop_date,name);
         return list;
+    }
+
+    public boolean updatezyA(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set A = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyA(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set A = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyB(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set B = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyB(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set B = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyC(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set C = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyC(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set C = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyD(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set D = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyD(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set D = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyE(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set E = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyE(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set E = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyF(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set F = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyF(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set F = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyG(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set G = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyG(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set G = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyH(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set H = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyH(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set H = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyI(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set I = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyI(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set I = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyJ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set J = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyJ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set J = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyK(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set K = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyK(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set K = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyL(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set L = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyL(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set L = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyM(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set M = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyM(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set M = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyN(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set N = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyN(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set N = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyO(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set O = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyO(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set O = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyP(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set P = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyP(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set P = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyQ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set Q = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyQ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set Q = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyR(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set R = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyR(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set R = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyS(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set S = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyS(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set S = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyT(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set T = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyT(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set T = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyU(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set U = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyU(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set U = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyV(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set V = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyV(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set V = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyW(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set W = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyW(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set W = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyX(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set X = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyX(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set X = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyY(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set Y = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyY(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set Y = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyZ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set Z = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyZ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set Z = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAA(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AA = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAA(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AA = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAB(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AB = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAB(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AB = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAC(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AC = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAC(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AC = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAD(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AD = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAD(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AD = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAE(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AE = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAE(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AE = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAF(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AF = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAF(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AF = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAG(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AG = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAG(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AG = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAH(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AH = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAH(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AH = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAI(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AI = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAI(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AI = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAJ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AJ = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAJ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AJ = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAK(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AK = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAK(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AK = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAL(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AL = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAL(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AL = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAM(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AM = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAM(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AM = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAN(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AN = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAN(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AN = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAO(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AO = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAO(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AO = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAP(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AP = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAP(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AP = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAQ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AQ = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAQ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AQ = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAR(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AR = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAR(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AR = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyASS(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set ASS = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyASS(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set ASS = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAT(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AT = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAT(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AT = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAU(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AU = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAU(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AU = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAV(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AV = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAV(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AV = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAW(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AW = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAW(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AW = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAX(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AX = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAX(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AX = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAY(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AY = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAY(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AY = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyAZ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AZ = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyAZ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set AZ = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBA(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BA = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBA(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BA = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBB(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BB = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBB(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BB = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBC(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BC = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBC(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BC = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBD(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BD = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBD(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BD = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBE(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BE = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBE(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BE = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBF(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BF = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBF(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BF = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBG(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BG = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBG(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BG = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBH(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BH = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBH(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BH = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBI(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BI = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBI(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BI = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBJ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BJ = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBJ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BJ = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBK(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BK = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBK(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BK = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBL(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BL = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBL(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BL = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBM(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BM = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBM(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BM = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBN(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BN = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBN(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BN = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBO(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BO = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBO(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BO = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBP(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BP = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBP(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BP = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBQ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BQ = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBQ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BQ = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBR(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BR = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBR(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BR = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBS(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BS = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBS(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BS = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBT(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BT = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBT(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BT = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBU(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BU = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBU(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BU = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBV(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BV = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBV(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BV = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBW(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BW = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBW(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BW = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBX(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BX = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBX(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BX = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBYY(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BYY = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBYY(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BYY = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyBZ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BZ = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyBZ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set BZ = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCA(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CA = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCA(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CA = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCB(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CB = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCB(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CB = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCC(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CC = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCC(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CC = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCD(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CD = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCD(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CD = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCE(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CE = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCE(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CE = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCF(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CF = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCF(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CF = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCG(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CG = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCG(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CG = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCH(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CH = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCH(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CH = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCI(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CI = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCI(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CI = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCJ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CJ = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCJ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CJ = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCK(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CK = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCK(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CK = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCL(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CL = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCL(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CL = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCM(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CM = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCM(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CM = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCN(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CN = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCN(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CN = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCO(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CO = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCO(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CO = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCP(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CP = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCP(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CP = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCQ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CQ = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCQ(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CQ = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCR(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CR = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCR(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CR = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCS(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CS = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCS(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CS = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCT(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CT = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCT(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CT = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCU(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CU = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCU(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CU = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updatezyCV(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CV = ? where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get人员(), workbench.get公司());
+    }
+
+    public boolean updateqxzyCV(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set CV = '' where 公司 = ?";
+        base = new FenquanDao();
+        return base.execute(sql, workbench.get公司());
+    }
+
+    public boolean updateClearAll(Workbench workbench) {
+        String sql = "update baitaoquanxian_copy2 set A='',B='',C='',D='',E='',F='',G='',H='',I='',J='',K='',L='',M='',N='',O='',P='',Q='',R='',S='',T='',U='',V='',W='',X='',Y='',Z='',AA='',AB='',AC='',AD='',AE='',AF='',AG='',AH='',AI='',AJ='',AK='',AL='',AM='',AN='',AO='',AP='',AQ='',AR='',ASS='',AT='',AU='',AV='',AW='',AX='',AY='',AZ='',BA='',BB='',BC='',BD='',BE='',BF='',BG='',BH='',BI='',BJ='',BK='',BL='',BM='',BN='',BO='',BP='',BQ='',BR='',BS='',BT='',BU='',BV='',BW='',BX='',BYY='',BZ='',CA='',CB='',CC='',CD='',CE='',CF='',CG='',CH='',CI='',CJ='',CK='',CL='',CM='',CN='',CO='',CP='',CQ='',CR='',CS='',CT='',CU='',CV='' where 公司=?";
+        base = new FenquanDao();
+        boolean result = base.execute(sql,workbench.get公司());
+        return result;
     }
 
 }

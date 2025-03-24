@@ -10,7 +10,7 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="500dp">
+        android:layout_height="320dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="40dp"
                 android:background="#58bd2c"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -106,7 +106,7 @@
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
             android:background="@drawable/border_bottom">
 
@@ -123,7 +123,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
             android:background="@drawable/border_bottom">
             <EditText
@@ -138,14 +138,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
             android:background="@drawable/border_bottom">
 
             <EditText
                 android:id="@+id/account"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:hint="员工账号"
                 android:textSize="10dp"
@@ -166,9 +166,9 @@
         android:id="@+id/users_insert"
         android:onClick="onInsertClick"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="70px"
         android:layout_gravity="end"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/insert"

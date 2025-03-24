@@ -140,7 +140,7 @@ public class QianFeiXueYuanActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     studentService = new StudentService();
-                    list = studentService.getListQianFei(teacher.getCompany(),student_nameText);
+                    list = studentService.getListQianFei(teacher.getCompany(),teacher.getCompany(),student_nameText,teacher.getCompany());
                     if (list == null) return;
 
                     for (int i = 0; i < list.size(); i++) {

@@ -72,7 +72,7 @@
             <ListView
                 android:id="@+id/memberlevel_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="360dp"
                 android:animationCache="false"
                 android:cacheColorHint="#000000"
                 android:choiceMode="multipleChoice"
@@ -86,7 +86,8 @@
     <LinearLayout
         android:id="@+id/sele_out"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="-200dp"
         android:background="@drawable/border_bottom"
         android:gravity="center_vertical"
         android:orientation="vertical">
@@ -116,20 +117,35 @@
 
         </LinearLayout>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/memberlevel_insert"
+            android:onClick="onInsertClick"
+            android:layout_width="70px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/insert"
+            app:backgroundTint="@color/primary"
+            app:backgroundTintMode="add"
+            app:pressedTranslationZ="10dp"
+            app:tint="@color/white" />
+
     </LinearLayout>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/memberlevel_insert"
-        android:onClick="onInsertClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/insert"
-        app:backgroundTint="@color/primary"
-        app:backgroundTintMode="add"
-        app:pressedTranslationZ="10dp"
-        app:tint="@color/white" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/memberlevel_insert"-->
+<!--        android:onClick="onInsertClick"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="end"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:src="@drawable/insert"-->
+<!--        app:backgroundTint="@color/primary"-->
+<!--        app:backgroundTintMode="add"-->
+<!--        app:pressedTranslationZ="10dp"-->
+<!--        app:tint="@color/white" />-->
 
 </LinearLayout>

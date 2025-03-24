@@ -12,6 +12,7 @@ public class Renyuan {
     private String phone;
     private String bianhao;
     private String bumen;
+    private String company;
 
     public int getId() {
         return id;
@@ -99,5 +100,13 @@ public class Renyuan {
 
     public void setBumen(String bumen) {
         this.bumen = bumen;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 }

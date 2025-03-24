@@ -22,10 +22,11 @@ public class StudentService {
     /**
      * 查询全部数据
      */
-    public List<Student> getListQianFei(String company, String student) {
-        String sql = "select * from student where Nocost is not null and Nocost>0 and RealName like '%' ? '%' and Company= ?";
+    public List<Student> getListQianFei(String s, String teacherCompany, String student, String company) {
+//        String sql = "select * from student where Nocost is not null and Nocost>0 and RealName like '%' ? '%' and Company= ?";
+        String sql = "select ID,RealName,ifnull(ifnull(Fee,0) -ifnull((select SUM(case when Company = ? and realname=student.realname then paid+money else 0 end) from payment ),0),0) as Nocost,rgdate,Course,Teacher,Classnum,phone,ifnull(Allhour,0) - ifnull((select SUM(case when Company= ? and student_name=student.realname and course=student.Course then keshi else 0 end ) from keshi_detail ),0) as Nohour FROM student where RealName like '%' ? '%' and ifnull(ifnull(Fee,0) -ifnull((select SUM(case when Company = ? and realname=student.realname then paid+money else 0 end) from payment ),0),0) > 0";
         base = new JiaowuBaseDao();
-        List<Student> list = base.query(Student.class, sql, student,company);
+        List<Student> list = base.query(Student.class, sql, s, teacherCompany, student, company);
         return list;
     }
 

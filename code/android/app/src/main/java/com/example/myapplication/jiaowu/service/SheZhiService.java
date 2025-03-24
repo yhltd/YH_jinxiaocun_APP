@@ -21,6 +21,13 @@ public class SheZhiService {
         return list;
     }
 
+    public List<SheZhi> getjffs(String company) {
+        String sql = "select distinct paiment from shezhi where Company = ?";
+        base = new JiaowuBaseDao();
+        List<SheZhi> list = base.query(SheZhi.class, sql, company);
+        return list;
+    }
+
     /**
      * 新增
      */

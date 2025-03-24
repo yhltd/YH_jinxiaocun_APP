@@ -1,5 +1,7 @@
 package com.example.myapplication.mendian.service;
 
+import android.util.Log;
+
 import com.example.myapplication.mendian.dao.MendianDao;
 import com.example.myapplication.mendian.entity.YhMendianMemberinfo;
 import com.example.myapplication.mendian.entity.YhMendianMemberlevel;
@@ -23,9 +25,10 @@ public class YhMendianMemberlevelService {
      * 新增等级
      */
     public boolean insertBylevel(YhMendianMemberlevel yhMendianMemberlevel) {
-        String sql = "insert into member_jibie (company,jibie,menkan,bili) values(?,?,?,?)";
+        String sql = "insert into member_jibie (jibie,menkan,bili,company) values(?,?,?,?)";
         base = new MendianDao();
-        long result = base.executeOfId(sql, yhMendianMemberlevel.getCompany() ,yhMendianMemberlevel.getJibie(), yhMendianMemberlevel.getMenkan(), yhMendianMemberlevel.getBili());
+        Log.i("YhMendianMemberlevel", yhMendianMemberlevel.getCompany());
+        long result = base.executeOfId(sql, yhMendianMemberlevel.getJibie(), yhMendianMemberlevel.getMenkan(), yhMendianMemberlevel.getBili(), yhMendianMemberlevel.getCompany());
         return result > 0;
     }
 

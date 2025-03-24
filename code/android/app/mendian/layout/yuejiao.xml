@@ -9,7 +9,7 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="500dp">
+        android:layout_height="330dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -18,7 +18,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:background="#58bd2c"
                 android:gravity="center"
@@ -280,62 +280,62 @@
     <LinearLayout
         android:id="@+id/sele_out"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="200dp"
         android:background="@drawable/border_bottom"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
             android:gravity="center_vertical"
             android:background="@drawable/border_bottom">
 
             <EditText
                 android:id="@+id/shouka"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:hint="收卡人"
-                android:textSize="10dp"
+                android:textSize="15dp"
                 android:gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
             android:gravity="center_vertical"
             android:background="@drawable/border_bottom">
             <EditText
                 android:id="@+id/fukuan"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:hint="付款人"
-                android:textSize="10dp"
+                android:textSize="15dp"
                 android:gravity="center"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
             android:gravity="center_vertical"
             android:background="@drawable/border_bottom">
             <EditText
                 android:id="@+id/chika"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:hint="持卡人"
-                android:textSize="10dp"
+                android:textSize="15dp"
                 android:gravity="center"/>
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
             android:gravity="center_vertical"
             android:background="@drawable/border_bottom">
 
@@ -343,18 +343,18 @@
                 android:id="@+id/start_date"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:hint="起始日期"
-                android:textSize="10dp"
+                android:textSize="15dp"
                 android:gravity="center"/>
 
             <EditText
                 android:id="@+id/end_date"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:hint="终止日期"
-                android:textSize="10dp"
+                android:textSize="15dp"
                 android:gravity="center"/>
 
             <Button

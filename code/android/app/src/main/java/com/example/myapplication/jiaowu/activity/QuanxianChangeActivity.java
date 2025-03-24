@@ -8,8 +8,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -33,10 +35,15 @@ public class QuanxianChangeActivity extends AppCompatActivity {
 
     private EditText Realname;
     private EditText view_name;
-    private EditText add;
-    private EditText del;
-    private EditText upd;
-    private EditText sel;
+    private Spinner add;
+    private Spinner del;
+    private Spinner upd;
+    private Spinner sel;
+
+    String[] add_array;
+    String[] del_array;
+    String[] upd_array;
+    String[] sel_array;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -61,6 +68,16 @@ public class QuanxianChangeActivity extends AppCompatActivity {
         upd = findViewById(R.id.Upd);
         sel = findViewById(R.id.Sel);
 
+        String[] add_selectArray = getResources().getStringArray(R.array.jiaowu_quanxian_list);
+        String[] Del_selectArray = getResources().getStringArray(R.array.jiaowu_quanxian_list);
+        String[] Upd_selectArray = getResources().getStringArray(R.array.jiaowu_quanxian_list);
+        String[] Sel_selectArray = getResources().getStringArray(R.array.jiaowu_quanxian_list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, add_selectArray);
+        add.setAdapter(adapter);
+        del.setAdapter(adapter);
+        upd.setAdapter(adapter);
+        sel.setAdapter(adapter);
+
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
         if (id == R.id.insert_btn) {
@@ -74,10 +91,10 @@ public class QuanxianChangeActivity extends AppCompatActivity {
 
             Realname.setText(quanxian.getRealname());
             view_name.setText(quanxian.getView_name());
-            add.setText(quanxian.getAdd());
-            del.setText(quanxian.getDel());
-            upd.setText(quanxian.getUpd());
-            sel.setText(quanxian.getSel());
+//            add.setText(quanxian.getAdd());
+//            del.setText(quanxian.getDel());
+//            upd.setText(quanxian.getUpd());
+//            sel.setText(quanxian.getSel());
         }
     }
 
@@ -150,10 +167,14 @@ public class QuanxianChangeActivity extends AppCompatActivity {
 
         quanxian.setRealname(Realname.getText().toString());
         quanxian.setView_name(view_name.getText().toString());
-        quanxian.setAdd(add.getText().toString());
-        quanxian.setDel(del.getText().toString());
-        quanxian.setUpd(upd.getText().toString());
-        quanxian.setSel(sel.getText().toString());
+//        quanxian.setAdd(add.getText().toString());
+//        quanxian.setDel(del.getText().toString());
+//        quanxian.setUpd(upd.getText().toString());
+//        quanxian.setSel(sel.getText().toString());
+        quanxian.setAdd(add.getSelectedItem().toString());
+        quanxian.setDel(del.getSelectedItem().toString());
+        quanxian.setUpd(upd.getSelectedItem().toString());
+        quanxian.setSel(sel.getSelectedItem().toString());
         quanxian.setCompany(teacher.getCompany());
         return true;
     }

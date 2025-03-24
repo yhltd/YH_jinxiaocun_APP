@@ -26,7 +26,7 @@ public class DepartmentService {
     public boolean insert(Department Department) {
         String sql = "insert into baitaoquanxian_department(department_name,view_name,ins,del,upd,sel,company) values(?,?,?,?,?,?,?)";
         base = new FenquanDao();
-        long result = base.executeOfId(sql, Department.getDepartment_name(), Department.getView_name(), Department.getIns(),Department.getDel(),Department.getUpd(),Department.getSel(),Department.getDepartment_name());
+        long result = base.executeOfId(sql, Department.getDepartment_name(), Department.getView_name(), Department.getIns(),Department.getDel(),Department.getUpd(),Department.getSel(),Department.getCompany());
         return result > 0;
     }
 

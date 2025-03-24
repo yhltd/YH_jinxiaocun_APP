@@ -242,7 +242,7 @@ public class RenyuanActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 Message msg = new Message();
-                                copy1Service.delete(list.get(position).getRenyuan_id());
+                                msg.obj = copy1Service.delete(list.get(position).getRenyuan_id());
                                 msg.obj = renyuanService.delete(list.get(position).getId());
                                 deleteHandler.sendMessage(msg);
                             }

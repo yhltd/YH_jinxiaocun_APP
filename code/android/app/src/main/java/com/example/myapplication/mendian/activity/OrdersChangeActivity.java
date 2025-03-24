@@ -1,14 +1,17 @@
 package com.example.myapplication.mendian.activity;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -27,6 +30,7 @@ import com.example.myapplication.mendian.service.YhMendianUserService;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
 
 public class OrdersChangeActivity extends AppCompatActivity {
@@ -66,6 +70,7 @@ public class OrdersChangeActivity extends AppCompatActivity {
         yhMendianOrdersService = new YhMendianOrdersService();
 
         riqi = findViewById(R.id.riqi);
+        showDateOnClick(riqi);
         ddh = findViewById(R.id.ddh);
         hyzh = findViewById(R.id.hyzh);
         hyxm = findViewById(R.id.hyxm);
@@ -125,6 +130,54 @@ public class OrdersChangeActivity extends AppCompatActivity {
                 saveHandler.sendMessage(msg);
             }
         }).start();
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    protected void showDateOnClick(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    showDatePickDlg(editText);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    showDatePickDlg(editText);
+                }
+
+            }
+        });
+    }
+
+    protected void showDatePickDlg(final EditText editText) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(OrdersChangeActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                String this_month = "";
+                if (monthOfYear + 1 < 10){
+                    this_month = "0" + String.format("%s",monthOfYear + 1);
+                }else{
+                    this_month = String.format("%s",monthOfYear + 1);
+                }
+
+                String this_day = "";
+                if (dayOfMonth + 1 < 10){
+                    this_day = "0" + String.format("%s",dayOfMonth);
+                }else{
+                    this_day = String.format("%s",dayOfMonth);
+                }
+                editText.setText(year + "/" + this_month + "/" + this_day);
+            }
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
 

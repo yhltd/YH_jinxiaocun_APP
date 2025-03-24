@@ -24,9 +24,9 @@ public class TeacherCurriculumService {
      * 新增
      */
     public boolean insert(TeacherCurriculum teacherCurriculum) {
-        String sql = "insert into course(teacher,course,riqi,xingqi) values(?,?,?,?)";
+        String sql = "insert into course(teacher,course,riqi,xingqi,company) values(?,?,?,?,?)";
         base = new JiaowuBaseDao();
-        long result = base.executeOfId(sql, teacherCurriculum.getTeacher(), teacherCurriculum.getCourse(), teacherCurriculum.getRiqi(), teacherCurriculum.getXingqi());
+        long result = base.executeOfId(sql, teacherCurriculum.getTeacher(), teacherCurriculum.getCourse(), teacherCurriculum.getRiqi(), teacherCurriculum.getXingqi(), teacherCurriculum.getCompany());
         return result > 0;
     }
 

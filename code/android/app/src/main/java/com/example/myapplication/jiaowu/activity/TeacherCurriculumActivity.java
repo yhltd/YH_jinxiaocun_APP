@@ -82,7 +82,17 @@ public class TeacherCurriculumActivity extends AppCompatActivity {
         teacher = myApplication.getTeacher();
         quanxian = myApplication.getQuanxian();
         sel_button = findViewById(R.id.sel_button);
+        sel_button.setOnClickListener(selClick());
         initList();
+    }
+
+    public View.OnClickListener selClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initList();
+            }
+        };
     }
 
     @Override

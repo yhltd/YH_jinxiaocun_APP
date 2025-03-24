@@ -6,7 +6,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -139,6 +141,1907 @@ public class GongZuoTaiChangeActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gongzuotai_change);
+
+        EditText editTextA = findViewById(R.id.A);
+        EditText editTextB = findViewById(R.id.B);
+        EditText editTextC = findViewById(R.id.C);
+        EditText editTextD = findViewById(R.id.D);
+        EditText editTextE = findViewById(R.id.E);
+        EditText editTextF = findViewById(R.id.F);
+        EditText editTextG = findViewById(R.id.G);
+        EditText editTextH = findViewById(R.id.H);
+        EditText editTextI = findViewById(R.id.I);
+        EditText editTextJ = findViewById(R.id.J);
+        EditText editTextK = findViewById(R.id.K);
+        EditText editTextL = findViewById(R.id.L);
+        EditText editTextM = findViewById(R.id.M);
+        EditText editTextN = findViewById(R.id.N);
+        EditText editTextO = findViewById(R.id.O);
+        EditText editTextP = findViewById(R.id.P);
+        EditText editTextQ = findViewById(R.id.Q);
+        EditText editTextRR = findViewById(R.id.RR);
+        EditText editTextS = findViewById(R.id.S);
+        EditText editTextT = findViewById(R.id.T);
+        EditText editTextU = findViewById(R.id.U);
+        EditText editTextV = findViewById(R.id.V);
+        EditText editTextW = findViewById(R.id.W);
+        EditText editTextX = findViewById(R.id.X);
+        EditText editTextY = findViewById(R.id.Y);
+        EditText editTextZ = findViewById(R.id.Z);
+        EditText editTextAA = findViewById(R.id.AA);
+        EditText editTextAB = findViewById(R.id.AB);
+        EditText editTextAC = findViewById(R.id.AC);
+        EditText editTextAD = findViewById(R.id.AD);
+        EditText editTextAE = findViewById(R.id.AE);
+        EditText editTextAF = findViewById(R.id.AF);
+        EditText editTextAG = findViewById(R.id.AG);
+        EditText editTextAH = findViewById(R.id.AH);
+        EditText editTextAI = findViewById(R.id.AI);
+        EditText editTextAJ = findViewById(R.id.AJ);
+        EditText editTextAK = findViewById(R.id.AK);
+        EditText editTextAL = findViewById(R.id.AL);
+        EditText editTextAM = findViewById(R.id.AM);
+        EditText editTextAN = findViewById(R.id.AN);
+        EditText editTextAO = findViewById(R.id.AO);
+        EditText editTextAP = findViewById(R.id.AP);
+        EditText editTextAQ = findViewById(R.id.AQ);
+        EditText editTextAR = findViewById(R.id.AR);
+        EditText editTextASS = findViewById(R.id.ASS);
+        EditText editTextAT = findViewById(R.id.AT);
+        EditText editTextAU = findViewById(R.id.AU);
+        EditText editTextAV = findViewById(R.id.AV);
+        EditText editTextAW = findViewById(R.id.AW);
+        EditText editTextAX = findViewById(R.id.AX);
+        EditText editTextAY = findViewById(R.id.AY);
+        EditText editTextAZ = findViewById(R.id.AZ);
+        EditText editTextBA = findViewById(R.id.BA);
+        EditText editTextBB = findViewById(R.id.BB);
+        EditText editTextBC = findViewById(R.id.BC);
+        EditText editTextBD = findViewById(R.id.BD);
+        EditText editTextBE = findViewById(R.id.BE);
+        EditText editTextBF = findViewById(R.id.BF);
+        EditText editTextBG = findViewById(R.id.BG);
+        EditText editTextBH = findViewById(R.id.BH);
+        EditText editTextBI = findViewById(R.id.BI);
+        EditText editTextBJ = findViewById(R.id.BJ);
+        EditText editTextBK = findViewById(R.id.BK);
+        EditText editTextBL = findViewById(R.id.BL);
+        EditText editTextBM = findViewById(R.id.BM);
+        EditText editTextBN = findViewById(R.id.BN);
+        EditText editTextBO = findViewById(R.id.BO);
+        EditText editTextBP = findViewById(R.id.BP);
+        EditText editTextBQ = findViewById(R.id.BQ);
+        EditText editTextBR = findViewById(R.id.BR);
+        EditText editTextBS = findViewById(R.id.BS);
+        EditText editTextBT = findViewById(R.id.BT);
+        EditText editTextBU = findViewById(R.id.BU);
+        EditText editTextBV = findViewById(R.id.BV);
+        EditText editTextBW = findViewById(R.id.BW);
+        EditText editTextBX = findViewById(R.id.BX);
+        EditText editTextBYY = findViewById(R.id.BYY);
+        EditText editTextBZ = findViewById(R.id.BZ);
+        EditText editTextCA = findViewById(R.id.CA);
+        EditText editTextCB = findViewById(R.id.CB);
+        EditText editTextCC = findViewById(R.id.CC);
+        EditText editTextCD = findViewById(R.id.CD);
+        EditText editTextCE = findViewById(R.id.CE);
+        EditText editTextCF = findViewById(R.id.CF);
+        EditText editTextCG = findViewById(R.id.CG);
+        EditText editTextCH = findViewById(R.id.CH);
+        EditText editTextCI = findViewById(R.id.CI);
+        EditText editTextCJ = findViewById(R.id.CJ);
+        EditText editTextCK = findViewById(R.id.CK);
+        EditText editTextCL = findViewById(R.id.CL);
+        EditText editTextCM = findViewById(R.id.CM);
+        EditText editTextCN = findViewById(R.id.CN);
+        EditText editTextCO = findViewById(R.id.CO);
+        EditText editTextCP = findViewById(R.id.CP);
+        EditText editTextCQ = findViewById(R.id.CQ);
+        EditText editTextCR = findViewById(R.id.CR);
+        EditText editTextCS = findViewById(R.id.CS);
+        EditText editTextCT = findViewById(R.id.CT);
+        EditText editTextCU = findViewById(R.id.CU);
+        EditText editTextCV = findViewById(R.id.CV);
+
+        editTextA.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyA(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyA(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextB.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyB(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyB(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextC.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyC(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyC(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextD.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyD(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyD(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextE.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyE(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyE(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextF.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyF(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyF(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextG.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyG(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyG(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextH.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyH(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyH(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextI.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyI(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyI(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextJ.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyJ(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyJ(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextK.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyK(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyK(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextL.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyL(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyL(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextM.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyM(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyM(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextN.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyN(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyN(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextO.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyO(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyO(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextP.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyP(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyP(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextQ.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyQ(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyQ(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextRR.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyR(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyR(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextS.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyS(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyS(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextT.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyT(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyT(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextU.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyU(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyU(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextV.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyV(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyV(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextW.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyW(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyW(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextX.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyX(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyX(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextY.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyY(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyY(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextZ.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyZ(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyZ(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAA.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAA(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAA(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAB.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAB(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAB(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAC.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAC(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAC(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAD.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAD(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAD(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAE.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAE(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAE(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAF.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAF(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAF(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAG.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAG(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAG(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAH.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAH(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAH(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAI.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAI(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAI(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAJ.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAJ(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAJ(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAK.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAK(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAK(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAL.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAL(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAL(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAM.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAM(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAM(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAN.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAN(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAN(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAO.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAO(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAO(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAP.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAP(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAP(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAQ.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAQ(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAQ(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAR.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAR(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAR(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextASS.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyASS(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyASS(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAT.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAT(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAT(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAU.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAU(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAU(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAV.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAV(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAV(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAW.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAW(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAW(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAX.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAX(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAX(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAY.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAY(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAY(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextAZ.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyAZ(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyAZ(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBA.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBA(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBA(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBB.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBB(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBB(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBC.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBC(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBC(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBD.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBD(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBD(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBE.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBE(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBE(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBF.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBF(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBF(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBG.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBG(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBG(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBH.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBH(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBH(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBI.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBI(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBI(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBJ.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBJ(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBJ(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBK.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBK(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBK(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBL.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBL(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBL(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBM.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBM(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBM(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBN.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBN(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBN(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBO.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBO(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBO(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBP.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBP(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBP(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBQ.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBQ(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBQ(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBR.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBR(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBR(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBS.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBS(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBS(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBT.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBT(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBT(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBU.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBU(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBU(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBV.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBV(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBV(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBW.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBW(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBW(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBX.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBX(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBX(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBYY.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBYY(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBYY(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextBZ.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyBZ(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyBZ(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCA.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCA(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCA(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCB.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCB(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCB(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCC.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCC(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCC(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCD.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCD(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCD(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCE.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCE(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCE(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCF.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCF(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCF(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCG.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCG(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCG(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCH.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCH(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCH(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCI.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCI(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCI(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCJ.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCJ(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCJ(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCK.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCK(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCK(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCL.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCL(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCL(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCM.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCM(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCM(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCN.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCN(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCN(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCO.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCO(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCO(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCP.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCP(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCP(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCQ.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCQ(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCQ(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCR.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCR(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCR(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCS.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCS(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCS(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCT.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCT(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCT(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCU.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCU(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCU(workbench);
+                    }).start();
+                }
+            }
+        });
+
+        editTextCV.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 获得焦点时的处理
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updatezyCV(workbench);
+                    }).start();
+                } else {
+                    new Thread(() -> {
+                        Message msg = new Message();
+                        workbenchService.updateqxzyCV(workbench);
+                    }).start();
+                }
+            }
+        });
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -429,8 +2332,8 @@ public class GongZuoTaiChangeActivity extends AppCompatActivity {
     private boolean checkForm() {
         Date date = new Date();
         workbench.setA最后修改日期(date);
-        workbench.setC(A.getText().toString());
-        workbench.setC(B.getText().toString());
+        workbench.setA(A.getText().toString());
+        workbench.setB(B.getText().toString());
         workbench.setC(C.getText().toString());
         workbench.setD(D.getText().toString());
         workbench.setE(E.getText().toString());
@@ -534,6 +2437,16 @@ public class GongZuoTaiChangeActivity extends AppCompatActivity {
         workbench.setCv(CV.getText().toString());
 
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 在这里执行你的方法
+        new Thread(() -> {
+            Message msg = new Message();
+            workbenchService.updateClearAll(workbench);
+        }).start();
     }
 
     private void back() {

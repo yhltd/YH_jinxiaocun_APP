@@ -10,7 +10,7 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="503dp">
+        android:layout_height="500dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="45dp"
                 android:background="#58bd2c"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -32,12 +32,12 @@
                     android:text="收卡人"
                     android:textColor="#FFFFFF"
                     android:gravity="center"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
                     android:layout_width="3dp"
-                    android:layout_height="25dp"
+                    android:layout_height="20dp"
                     android:background="#FFFFFF" />
 
                 <TextView
@@ -47,12 +47,12 @@
                     android:gravity="center"
                     android:text="付款人"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
                     android:layout_width="3dp"
-                    android:layout_height="25dp"
+                    android:layout_height="20dp"
                     android:background="#FFFFFF" />
 
                 <TextView
@@ -62,12 +62,12 @@
                     android:gravity="center"
                     android:text="持卡人"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
                     android:layout_width="3dp"
-                    android:layout_height="25dp"
+                    android:layout_height="20dp"
                     android:background="#FFFFFF" />
 
                 <TextView
@@ -77,7 +77,7 @@
                     android:gravity="center"
                     android:text="发卡行"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
@@ -92,7 +92,7 @@
                     android:gravity="center"
                     android:text="账单日"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
@@ -107,7 +107,7 @@
                     android:gravity="center"
                     android:text="还款日"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
@@ -122,7 +122,7 @@
                     android:gravity="center"
                     android:text="总金额"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:inputType="number"
                     android:textStyle="bold" />
 
@@ -138,7 +138,7 @@
                     android:gravity="center"
                     android:text="应还款"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:inputType="number"
                     android:textStyle="bold" />
 
@@ -154,7 +154,7 @@
                     android:gravity="center"
                     android:text="剩余金额"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:inputType="number"
                     android:textStyle="bold" />
 
@@ -170,7 +170,7 @@
                     android:gravity="center"
                     android:text="借款金额"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:inputType="number"
                     android:textStyle="bold" />
 
@@ -186,7 +186,7 @@
                     android:gravity="center"
                     android:text="手续费"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:inputType="number"
                     android:textStyle="bold" />
 
@@ -202,7 +202,7 @@
                     android:gravity="center"
                     android:text="电话号"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:inputType="number"
                     android:textStyle="bold" />
 
@@ -218,7 +218,7 @@
                     android:gravity="center"
                     android:text="密码"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
@@ -233,7 +233,7 @@
                     android:gravity="center"
                     android:text="员工"
                     android:textColor="#FFFFFF"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -242,7 +242,7 @@
             <ListView
                 android:id="@+id/kehu_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="290dp"
                 android:animationCache="false"
                 android:cacheColorHint="#000000"
                 android:choiceMode="multipleChoice"
@@ -256,7 +256,8 @@
     <LinearLayout
         android:id="@+id/sele_out"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="-170dp"
         android:background="@drawable/border_bottom"
         android:gravity="center_vertical"
         android:orientation="vertical">
@@ -271,7 +272,7 @@
             <EditText
                 android:id="@+id/shouka"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:hint="收卡人"
                 android:textSize="10dp"
@@ -283,13 +284,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
             android:background="@drawable/border_bottom">
             <EditText
                 android:id="@+id/fukuan"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:hint="付款人"
                 android:textSize="10dp"
@@ -298,7 +299,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:gravity="center_vertical"
             android:background="@drawable/border_bottom">
 
@@ -306,7 +307,7 @@
                 android:id="@+id/chika"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:hint="持卡人"
                 android:textSize="10dp"
                 android:gravity="center"/>
@@ -319,15 +320,13 @@
                 android:gravity="center_horizontal" />
         </LinearLayout>
 
-    </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/kehu_insert"
         android:onClick="onInsertClick"
-        android:layout_width="wrap_content"
+        android:layout_width="70px"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/insert"
@@ -335,5 +334,22 @@
         app:backgroundTintMode="add"
         app:pressedTranslationZ="10dp"
         app:tint="@color/white" />
+
+    </LinearLayout>
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/kehu_insert"-->
+<!--        android:onClick="onInsertClick"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="end"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:src="@drawable/insert"-->
+<!--        app:backgroundTint="@color/primary"-->
+<!--        app:backgroundTintMode="add"-->
+<!--        app:pressedTranslationZ="10dp"-->
+<!--        app:tint="@color/white" />-->
 
 </LinearLayout>

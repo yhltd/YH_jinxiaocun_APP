@@ -9,8 +9,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -47,7 +49,9 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
     private EditText Home;
     private EditText photo;
     private EditText Education;
-    private EditText state;
+    private Spinner state;
+
+    String[] state_array;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -76,6 +80,10 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
         Education = findViewById(R.id.Education);
         state = findViewById(R.id.state);
 
+        String[] state_selectArray = getResources().getStringArray(R.array.jiaowu_zhuangtai_list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, state_selectArray);
+        state.setAdapter(adapter);
+
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
         if (id == R.id.insert_btn) {
@@ -96,7 +104,7 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
             Home.setText(accountManagement.getHome());
             photo.setText(accountManagement.getPhoto());
             Education.setText(accountManagement.getEducation());
-            state.setText(accountManagement.getState());
+//            state.setText(accountManagement.getState());
         }
     }
 
@@ -185,7 +193,8 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
         accountManagement.setHome(Home.getText().toString());
         accountManagement.setPhoto(photo.getText().toString());
         accountManagement.setEducation(Education.getText().toString());
-        accountManagement.setState(state.getText().toString());
+//        accountManagement.setState(state.getText().toString());
+        accountManagement.setState(state.getSelectedItem().toString());
         accountManagement.setCompany(teacher.getCompany());
         return true;
     }

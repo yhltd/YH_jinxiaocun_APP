@@ -111,7 +111,7 @@
                     android:textSize="15sp"
                     android:text="增" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/add"
                     android:textSize="15sp"
                     android:background="@drawable/form_input"
@@ -119,9 +119,19 @@
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
-                    android:hint="增加权限"
-                    android:inputType="text"
                     android:textIsSelectable="false" />
+
+<!--                <EditText-->
+<!--                    android:id="@+id/add"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:background="@drawable/form_input"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="45dp"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    android:hint="增加权限"-->
+<!--                    android:inputType="text"-->
+<!--                    android:textIsSelectable="false" />-->
 
             </LinearLayout>
 
@@ -144,7 +154,7 @@
                     android:textSize="15sp"
                     android:text="删" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/Del"
                     android:textSize="15sp"
                     android:background="@drawable/form_input"
@@ -152,9 +162,19 @@
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
-                    android:hint="删除权限"
-                    android:inputType="text"
                     android:textIsSelectable="false" />
+
+<!--                <EditText-->
+<!--                    android:id="@+id/Del"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:background="@drawable/form_input"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="45dp"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    android:hint="删除权限"-->
+<!--                    android:inputType="text"-->
+<!--                    android:textIsSelectable="false" />-->
 
             </LinearLayout>
 
@@ -177,7 +197,7 @@
                     android:textSize="15sp"
                     android:text="改" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/Upd"
                     android:textSize="15sp"
                     android:background="@drawable/form_input"
@@ -185,9 +205,19 @@
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
-                    android:hint="修改权限"
-                    android:inputType="text"
                     android:textIsSelectable="false" />
+
+<!--                <EditText-->
+<!--                    android:id="@+id/Upd"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:background="@drawable/form_input"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="45dp"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    android:hint="修改权限"-->
+<!--                    android:inputType="text"-->
+<!--                    android:textIsSelectable="false" />-->
 
             </LinearLayout>
 
@@ -211,7 +241,7 @@
                     android:textSize="15sp"
                     android:text="查" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/Sel"
                     android:textSize="15sp"
                     android:background="@drawable/form_input"
@@ -219,9 +249,19 @@
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
-                    android:hint="查询权限"
-                    android:inputType="text"
                     android:textIsSelectable="false" />
+
+<!--                <EditText-->
+<!--                    android:id="@+id/Sel"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:background="@drawable/form_input"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="45dp"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    android:hint="查询权限"-->
+<!--                    android:inputType="text"-->
+<!--                    android:textIsSelectable="false" />-->
 
             </LinearLayout>
 

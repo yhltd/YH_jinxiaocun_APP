@@ -128,7 +128,8 @@ public class JiaoFeiJiLuChangeActivity extends AppCompatActivity {
             public void run() {
                 SpinnerAdapter adapter = null;
                 try {
-                    List<SheZhi> courseList = sheZhiService.getList(teacher.getCompany());
+//                    List<SheZhi> courseList = sheZhiService.getList(teacher.getCompany());
+                    List<SheZhi> courseList = sheZhiService.getjffs(teacher.getCompany());
                     if (courseList.size() > 0) {
                         paiment_array = new String[courseList.size()];
                         for (int i = 0; i < courseList.size(); i++) {
@@ -160,7 +161,7 @@ public class JiaoFeiJiLuChangeActivity extends AppCompatActivity {
             public void run() {
                 SpinnerAdapter adapter = null;
                 try {
-                    List<SheZhi> courseList = sheZhiService.getList(teacher.getCompany());
+                    List<SheZhi> courseList = sheZhiService.getjffs(teacher.getCompany());
                     if (courseList.size() > 0) {
                         paiment_array = new String[courseList.size()];
                         for (int i = 0; i < courseList.size(); i++) {

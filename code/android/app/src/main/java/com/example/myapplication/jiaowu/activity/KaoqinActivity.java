@@ -50,6 +50,7 @@ public class KaoqinActivity extends AppCompatActivity {
     private SimpleAdapter adapter_block;
 
     private EditText s_name;
+    private EditText s_name1;
     private String s_nameText;
     private Button sel_button;
 
@@ -71,11 +72,25 @@ public class KaoqinActivity extends AppCompatActivity {
         listView = findViewById(R.id.kaoqin_list);
         listView_block = findViewById(R.id.list_block);
         list_table = findViewById(R.id.list_table);
+
+        s_name1 = findViewById(R.id.s_name);
+
         MyApplication myApplication = (MyApplication) getApplication();
         teacher = myApplication.getTeacher();
         quanxian = myApplication.getQuanxian();
+        sel_button = findViewById(R.id.sel_button);
+        sel_button.setOnClickListener(selClick());
 
         initList();
+    }
+
+    public View.OnClickListener selClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initList();
+            }
+        };
     }
 
     @SuppressLint("WrongConstant")
@@ -100,11 +115,14 @@ public class KaoqinActivity extends AppCompatActivity {
     }
 
     private void initList() {
+        sel_button.setEnabled(false);
+        s_nameText = s_name1.getText().toString();
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 listView.setAdapter(StringUtils.cast(adapter));
                 listView_block.setAdapter(StringUtils.cast(adapter_block));
+                sel_button.setEnabled(true);
                 return true;
             }
         });

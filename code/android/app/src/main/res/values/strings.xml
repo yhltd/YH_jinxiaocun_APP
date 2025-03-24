@@ -172,4 +172,14 @@
         <item>正常</item>
         <item>冻结</item>
     </string-array>
+
+    <string-array name="jiaowu_zhuangtai_list">
+        <item>正常</item>
+        <item>禁用</item>
+    </string-array>
+
+    <string-array name="jiaowu_quanxian_list">
+        <item>√</item>
+        <item>×</item>
+    </string-array>
 </resources>

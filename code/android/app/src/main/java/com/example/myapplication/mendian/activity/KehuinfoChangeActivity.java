@@ -227,7 +227,7 @@ public class KehuinfoChangeActivity extends AppCompatActivity {
                 }else{
                     this_day = String.format("%s",dayOfMonth);
                 }
-                editText.setText(year + "-" + this_month + "-" + this_day);
+                editText.setText(year + "/" + this_month + "/" + this_day);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

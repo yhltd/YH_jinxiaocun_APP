@@ -292,7 +292,7 @@ public class TeacherCurriculumChangeActivity extends AppCompatActivity {
 
         teacherCurriculum.setCourse(course.getSelectedItem().toString());
         teacherCurriculum.setXingqi(xingqi.getSelectedItem().toString());
-        teacher.setCompany(teacher.getCompany());
+        teacherCurriculum.setCompany(teacher.getCompany());
 
         return true;
     }

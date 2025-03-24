@@ -10,7 +10,7 @@
 
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="1450px"
     android:orientation="vertical">
 
     <LinearLayout
@@ -343,7 +343,7 @@
                     android:textSize="15sp"
                     android:text="状态" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/state"
                     android:textSize="15sp"
                     android:background="@drawable/form_input"
@@ -351,9 +351,19 @@
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
-                    android:hint="请输入状态"
-                    android:inputType="text"
                     android:textIsSelectable="false" />
+
+<!--                <EditText-->
+<!--                    android:id="@+id/state"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:background="@drawable/form_input"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="45dp"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    android:hint="请输入状态"-->
+<!--                    android:inputType="text"-->
+<!--                    android:textIsSelectable="false" />-->
 
             </LinearLayout>
 
@@ -370,7 +380,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"

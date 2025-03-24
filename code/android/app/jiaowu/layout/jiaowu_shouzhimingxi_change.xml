@@ -27,10 +27,10 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:paddingTop="20dp"
-                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="65dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:background="@drawable/form_head">
@@ -96,7 +96,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="60dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:background="@drawable/form_body">
@@ -298,8 +298,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:orientation="horizontal"
@@ -310,7 +310,7 @@
         <Button
             android:id="@+id/update_btn"
             android:layout_width="130dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:onClick="updateClick"
             android:text="提交"
             android:visibility="gone"
@@ -322,7 +322,7 @@
         <Button
             android:id="@+id/insert_btn"
             android:layout_width="130dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:onClick="insertClick"
             android:text="提交"
             android:visibility="gone"

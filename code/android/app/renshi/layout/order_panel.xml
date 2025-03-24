@@ -10,9 +10,9 @@
     <com.youth.banner.Banner
         android:id="@+id/main_banner"
         android:layout_width="match_parent"
-        android:layout_height="113dp"
+        android:layout_height="80dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="3dp"
         android:layout_marginBottom="5dp"
         app:banner_loop_time="5000"
         app:banner_radius="15dp"
@@ -21,12 +21,12 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:background="@drawable/border_bottom"
         android:gravity="center_vertical"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="-5dp">
 
         <TextView
             android:id="@+id/textView4"
@@ -37,7 +37,7 @@
         <EditText
             android:id="@+id/ddh"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:hint="订单编号"
             android:gravity="center"/>
@@ -47,7 +47,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="378dp"
+        android:layout_height="300dp"
         android:layout_above="@+id/rela_button"
         android:layout_below="@+id/linear_top"
         android:layout_marginTop="10dp"
@@ -57,7 +57,7 @@
         <ListView
             android:id="@+id/left_listview"
             android:layout_width="84dp"
-            android:layout_height="match_parent"
+            android:layout_height="300dp"
             android:background="#EFEFEF"
             android:divider="@null"
             android:scrollbars="none" />
@@ -65,7 +65,7 @@
         <com.example.myapplication.mendian.entity.PinnedHeaderListView
             android:id="@+id/pinnedListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="300dp"
             android:layout_marginLeft="10dp"
             android:background="#DFDFDF"
             >
@@ -76,7 +76,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="51dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="8dp"
         android:gravity="center">
 
         <Button

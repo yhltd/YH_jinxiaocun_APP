@@ -217,8 +217,7 @@ public class GongZuoTaiGongShiActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 Message msg = new Message();
-                                jisuanService.delete(list.get(position).getId());
-                                msg.obj = renyuanService.delete(list.get(position).getId());
+                                msg.obj = jisuanService.delete(list.get(position).getId());
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();

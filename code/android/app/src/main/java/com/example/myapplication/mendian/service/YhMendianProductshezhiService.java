@@ -44,7 +44,7 @@ public class YhMendianProductshezhiService {
      * 新增员工
      */
     public boolean insertByProductshezhi(YhMendianProductshezhi yhMendianProductshezhi) {
-        String sql = "insert into product(company,product_bianhao,type,product_name,unit,price,chengben,specifications,practice,tingyong) values(?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into product(company,product_bianhao,type,product_name,unit,price,chengben,specifications,practice,tingyong) values(?,?,?,?,?,?,?,?,?,?)";
         base = new MendianDao();
         long result = base.executeOfId(sql,yhMendianProductshezhi.getCompany(), yhMendianProductshezhi.getProduct_bianhao(), yhMendianProductshezhi.getType(), yhMendianProductshezhi.getProduct_name(), yhMendianProductshezhi.getUnit(), yhMendianProductshezhi.getPrice(), yhMendianProductshezhi.getChengben(), yhMendianProductshezhi.getSpecifications(), yhMendianProductshezhi.getPractice(), yhMendianProductshezhi.getTingyong());
         return result > 0;

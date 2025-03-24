@@ -10,7 +10,7 @@
 
     <com.example.myapplication.utils.MarqueeTextView
         android:id="@+id/marquee"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="3dp"
         app:layout_widthPercent="100%"
         app:layout_heightPercent="5%"
         android:text="hello_world! hello_world! hello_world! hello_world! hello_world! hello_world! hello_world! hello_world! hello_world!"
@@ -30,7 +30,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         app:banner_loop_time="5000"
-        app:layout_heightPercent="20%"
+        app:layout_heightPercent="28%"
         app:layout_widthPercent="100%"
         />
 
@@ -38,8 +38,8 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:id="@+id/main_scollview"
-        app:layout_marginTopPercent="26%"
-        app:layout_heightPercent="78%">
+        app:layout_marginTopPercent="33%"
+        app:layout_heightPercent="75%">
 
 
         <LinearLayout
@@ -392,9 +392,10 @@
                         android:background="@drawable/shoufamingxi" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
                         android:text="工作台使用状态"
                         android:textColor="@color/main_text"
                         android:textSize="13sp"

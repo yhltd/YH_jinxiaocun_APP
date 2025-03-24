@@ -162,6 +162,7 @@ public class rijiaoActivity extends AppCompatActivity {
                     item.put("repayment", list.get(i).getRepayment());
                     item.put("date_time", list.get(i).getDate_time());
                     item.put("commercial_tenant", list.get(i).getCommercial_tenant());
+                    item.put("swipe", list.get(i).getSwipe());
                     item.put("rate", list.get(i).getRate());
                     item.put("arrival_amount", list.get(i).getArrival_amount());
                     item.put("basics_service_charge", list.get(i).getBasics_service_charge());
@@ -170,7 +171,7 @@ public class rijiaoActivity extends AppCompatActivity {
                     data.add(item);
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(rijiaoActivity.this, data, R.layout.rijiao_row, new String[]{"recipient","cardholder","drawee","issuing_bank","bill_day","repayment_date","total","repayable","balance","loan","repayment","date_time","commercial_tenant","rate","arrival_amount","basics_service_charge","other_service_charge"}, new int[]{R.id.recipient,R.id.cardholder,R.id.drawee,R.id.issuing_bank,R.id.bill_day,R.id.repayment_date,R.id.total,R.id.repayable,R.id.balance,R.id.loan,R.id.repayment,R.id.date_time,R.id.commercial_tenant,R.id.rate,R.id.arrival_amount,R.id.basics_service_charge,R.id.other_service_charge}) {
+                SimpleAdapter adapter = new SimpleAdapter(rijiaoActivity.this, data, R.layout.rijiao_row, new String[]{"recipient","cardholder","drawee","issuing_bank","bill_day","repayment_date","total","repayable","balance","loan","repayment","date_time","commercial_tenant","rate","arrival_amount","basics_service_charge","other_service_charge","swipe"}, new int[]{R.id.recipient,R.id.cardholder,R.id.drawee,R.id.issuing_bank,R.id.bill_day,R.id.repayment_date,R.id.total,R.id.repayable,R.id.balance,R.id.loan,R.id.repayment,R.id.date_time,R.id.commercial_tenant,R.id.rate,R.id.arrival_amount,R.id.basics_service_charge,R.id.other_service_charge,R.id.swipe}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
