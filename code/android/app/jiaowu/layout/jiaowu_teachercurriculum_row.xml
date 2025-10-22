@@ -12,14 +12,14 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:elevation="3dp"
-        android:background="@drawable/shape_corner_sel">
+        android:background="@drawable/jiaowu_table_liebiao">
 
         <TextView
             android:gravity="center"
             android:id="@+id/teacher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="教师"
             android:textStyle="bold"
@@ -35,7 +35,7 @@
             android:id="@+id/course"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="课程"
             android:textStyle="bold"
@@ -51,7 +51,7 @@
             android:id="@+id/riqi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="日期"
             android:textStyle="bold"
@@ -67,7 +67,7 @@
             android:id="@+id/xingqi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="星期"
             android:textStyle="bold"

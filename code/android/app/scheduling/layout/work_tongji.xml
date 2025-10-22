@@ -55,12 +55,13 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="@drawable/pcbeijing1"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@color/title"
+                android:background="@drawable/pcrow_header"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -113,6 +114,7 @@
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"
         android:divider="@null"
+        android:background="@drawable/pcbeijing1"
         android:paddingBottom="5dp" />
 
     <LinearLayout
@@ -130,7 +132,7 @@
             android:onClick="switchClick"
             android:text="切换列表"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/pcbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -147,7 +149,7 @@
             android:layout_width="130dp"
             android:layout_height="match_parent"
             android:text="查询"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/pcbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
     </LinearLayout>

@@ -12,7 +12,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:elevation="3dp"
-        android:background="@drawable/shape_corner_sel">
+        android:background="@drawable/jiaowu_table_liebiao">
 
 
         <TextView
@@ -20,7 +20,7 @@
             android:id="@+id/RealName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="姓名"
             android:textStyle="bold"
@@ -36,7 +36,7 @@
             android:id="@+id/view_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="页面名称"
             android:textStyle="bold"
@@ -52,7 +52,7 @@
             android:id="@+id/add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="增"
             android:textStyle="bold"
@@ -68,7 +68,7 @@
             android:id="@+id/del"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="删"
             android:textStyle="bold"
@@ -84,7 +84,7 @@
             android:id="@+id/upd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="改"
             android:textStyle="bold"
@@ -100,7 +100,7 @@
             android:id="@+id/sel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="查"
             android:textStyle="bold"

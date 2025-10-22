@@ -9,120 +9,121 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:orientation="horizontal"
+        android:background="@drawable/shape_corner_sel"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:orientation="horizontal">
+
         <TextView
-            android:gravity="center"
             android:id="@+id/shifa_gongzi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:width="100dp"
+            android:gravity="center"
             android:text="实发工资"
-            android:textStyle="bold"
-            android:width="100dp"/>
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
-        </View>
+            android:layout_weight="1"></View>
 
         <TextView
-            android:gravity="center"
             android:id="@+id/geren_zhichu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:width="100dp"
+            android:gravity="center"
             android:text="个人支出"
-            android:textStyle="bold"
-            android:width="100dp"/>
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_weight="2"></View>
 
         <TextView
-            android:gravity="center"
             android:id="@+id/qiye_zhichu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:width="100dp"
+            android:gravity="center"
             android:text="企业支出"
-            android:textStyle="bold"
-            android:width="100dp"/>
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_weight="2"></View>
 
         <TextView
-            android:gravity="center"
             android:id="@+id/yuangong_renshu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:width="100dp"
+            android:gravity="center"
             android:text="员工人数"
-            android:textStyle="bold"
-            android:width="100dp"/>
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_weight="2"></View>
 
         <TextView
-            android:gravity="center"
             android:id="@+id/quanqin_tianshu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:width="100dp"
+            android:gravity="center"
             android:text="全勤天数"
-            android:textStyle="bold"
-            android:width="100dp"/>
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_weight="2"></View>
 
         <TextView
-            android:gravity="center"
             android:id="@+id/shenpiren"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:width="100dp"
+            android:gravity="center"
             android:text="审批人"
-            android:textStyle="bold"
-            android:width="100dp"/>
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_weight="2"></View>
 
         <TextView
-            android:gravity="center"
             android:id="@+id/riqi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:width="100dp"
+            android:gravity="center"
             android:text="日期"
-            android:textStyle="bold"
-            android:width="100dp"/>
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
+            android:layout_weight="2"></View>
 
     </LinearLayout>
 </LinearLayout>

@@ -11,6 +11,7 @@
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/pcbeijing1"
     android:orientation="vertical">
 
     <LinearLayout
@@ -24,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:background="@drawable/pcchange_card"
             android:orientation="vertical">
 
             <LinearLayout
@@ -32,8 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/form_head">
+                android:gravity="center_vertical">
 
                 <TextView
                     android:gravity="center"
@@ -41,12 +42,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="创建日期:" />
                 <EditText
                     android:id="@+id/riqi"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -65,7 +67,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                >
 
                 <TextView
                     android:gravity="center"
@@ -73,12 +75,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="计划名称:" />
                 <EditText
                     android:id="@+id/plan_name"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -97,7 +100,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                >
 
                 <TextView
                     android:gravity="center"
@@ -105,14 +108,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="人数:"/>
 <!--                    android:text="身份证号:"-->
 
                 <EditText
                     android:id="@+id/renshu"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -131,8 +135,7 @@
                 android:layout_height="75dp"
                 android:paddingBottom="20dp"
                 android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/form_foot">
+                android:gravity="center_vertical">
 
                 <TextView
                     android:gravity="center"
@@ -140,12 +143,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="部门:" />
                 <Spinner
                     android:id="@+id/department_name"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -181,7 +185,9 @@
             android:id="@+id/update_btn"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/pcbtn_style"
             android:onClick="updateClick"
+            android:textColor="@color/white"
             android:text="提交"
             android:visibility="gone"
             tools:ignore="MissingConstraints" />

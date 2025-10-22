@@ -11,14 +11,14 @@
         android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/shape_corner_sel">
         <TextView
             android:gravity="center"
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="姓名"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -33,8 +33,8 @@
             android:id="@+id/year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="年"
             android:textStyle="bold"
             android:width="80dp"/>
@@ -49,8 +49,8 @@
             android:id="@+id/moth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="月"
             android:textStyle="bold"
             android:width="50dp"/>
@@ -65,8 +65,8 @@
             android:id="@+id/AJ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="应到"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -81,8 +81,8 @@
             android:id="@+id/AK"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="实到"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -97,8 +97,8 @@
             android:id="@+id/AL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="请假"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -113,8 +113,8 @@
             android:id="@+id/AM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="加班"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -129,8 +129,8 @@
             android:id="@+id/AN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="迟到"
             android:textStyle="bold"
             android:width="100dp"/>

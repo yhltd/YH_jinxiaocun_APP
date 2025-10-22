@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="680dp"
+        android:layout_height="830dp"
         android:orientation="vertical"
         android:gravity="center"
         android:elevation="2dp"
@@ -28,11 +28,12 @@
                 android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:textSize="24sp"
                 android:text="姓名" />
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,8 +56,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="部门:"/>
 
                     <TextView
@@ -64,11 +65,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="部门"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -80,8 +86,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="职务:"/>
 
                     <TextView
@@ -89,11 +95,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="职务"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -105,8 +116,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="身份证号:"/>
 
                     <TextView
@@ -114,11 +125,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="身份证号"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -130,8 +146,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="基本工资:"/>
 
                     <TextView
@@ -139,11 +155,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="基本工资"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -155,8 +176,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="银行卡号:"/>
 
                     <TextView
@@ -164,11 +185,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="银行卡号"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -180,8 +206,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="入职时间:"/>
 
                     <TextView
@@ -189,11 +215,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="入职时间"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -205,8 +236,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="工龄:"/>
 
                     <TextView
@@ -214,11 +245,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="工龄"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -230,8 +266,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="民族:"/>
 
                     <TextView
@@ -239,11 +275,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="民族"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -255,8 +296,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="籍贯:"/>
 
                     <TextView
@@ -264,11 +305,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="籍贯"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -280,8 +326,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="手机号:"/>
 
                     <TextView
@@ -289,11 +335,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="手机号"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -305,8 +356,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="学历:"/>
 
                     <TextView
@@ -314,11 +365,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="学历"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -330,8 +386,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="出生日期:"/>
 
                     <TextView
@@ -339,11 +395,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="出生日期"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -355,8 +416,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="婚姻状况:"/>
 
                     <TextView
@@ -364,11 +425,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="婚姻状况"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -380,8 +446,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="就职状态:"/>
 
                     <TextView
@@ -389,11 +455,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="就职状态"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -405,8 +476,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="绩效工资:"/>
 
                     <TextView
@@ -414,11 +485,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="绩效工资"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -430,8 +506,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="调薪时间:"/>
 
                     <TextView
@@ -439,11 +515,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="调薪时间"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -455,8 +536,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="现住址:"/>
 
                     <TextView
@@ -464,11 +545,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="现住址"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -480,8 +566,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="家庭住址:"/>
 
                     <TextView
@@ -489,11 +575,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="家庭住址"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -505,8 +596,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="银行卡支行:"/>
 
                     <TextView
@@ -514,11 +605,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="银行卡支行"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -530,8 +626,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="是否购买社保:"/>
 
                     <TextView
@@ -539,11 +635,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="是否购买社保"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -555,8 +656,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="公积金账号:"/>
 
                     <TextView
@@ -564,11 +665,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="公积金账号"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -580,8 +686,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="社保账号:"/>
 
                     <TextView
@@ -589,11 +695,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="社保账号"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -605,8 +716,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="劳动合同签订有效期限:"/>
 
                     <TextView
@@ -614,11 +725,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="劳动合同签订有效期限"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -630,8 +746,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="劳动合同第二次续签:"/>
 
                     <TextView
@@ -639,11 +755,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="劳动合同第二次续签"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -655,8 +776,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="备注:"/>
 
                     <TextView
@@ -664,8 +785,8 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="备注"/>
 
                 </LinearLayout>
@@ -688,5 +809,8 @@
 
         </LinearLayout>
 
+
     </LinearLayout>
+
 </LinearLayout>
+

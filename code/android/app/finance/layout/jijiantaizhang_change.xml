@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".finance.activity.JiJianTaiZhangChangeActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/caiwu_biaoge_bg4">
 
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginBottom="80dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -330,9 +331,9 @@
             android:onClick="clearClick"
             android:text="清空"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/caiwu_btn_bg"
             android:textSize="17dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"/>
 
         <ImageView
             android:layout_width="30dp"
@@ -350,9 +351,9 @@
             android:text="提交"
             android:visibility="gone"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/caiwu_btn_bg"
             android:textSize="17dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"/>
 
 
         <Button
@@ -363,9 +364,9 @@
             android:text="提交"
             android:visibility="gone"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/caiwu_btn_bg"
             android:textSize="17dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 

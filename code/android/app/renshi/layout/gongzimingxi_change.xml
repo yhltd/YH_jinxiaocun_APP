@@ -12,6 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/yemianbeijing"
     android:layout_marginBottom="80dp">
 
     <LinearLayout
@@ -34,7 +35,7 @@
                 android:layout_height="75dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_head">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -42,13 +43,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="姓名:" />
 
                 <Spinner
                     android:id="@+id/B"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -63,7 +64,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -71,18 +72,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="部门:" />
 
                 <EditText
                     android:id="@+id/C"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入部门"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -94,7 +97,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -102,18 +105,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="岗位:" />
 
                 <EditText
                     android:id="@+id/D"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入岗位"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -127,7 +132,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -135,18 +140,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="身份证号:" />
 
                 <EditText
                     android:id="@+id/E"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入身份证号"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -160,7 +167,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -168,18 +175,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="入职时间:" />
 
                 <EditText
                     android:id="@+id/F"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入入职时间"
                     android:inputType="text"
                     android:textIsSelectable="false" />
@@ -193,7 +202,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -201,18 +210,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="基本工资:" />
 
                 <EditText
                     android:id="@+id/G"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入基本工资"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -227,7 +238,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -235,18 +246,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="绩效工资:" />
 
                 <EditText
                     android:id="@+id/H"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入绩效工资"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -261,7 +274,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -269,18 +282,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="岗位工资:" />
 
                 <EditText
                     android:id="@+id/I"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入岗位工资"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -295,7 +310,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -303,18 +318,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="当月合计工资:" />
 
                 <EditText
                     android:id="@+id/J"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入当月合计工资"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -329,7 +346,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -337,13 +354,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="跨度工资:" />
 
                 <Spinner
                     android:id="@+id/K"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -361,7 +378,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -369,13 +386,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="职称津贴:" />
 
                 <Spinner
                     android:id="@+id/L"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -393,7 +410,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -401,18 +418,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="月出勤天数:" />
 
                 <EditText
                     android:id="@+id/M"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入月出勤天数"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -427,7 +446,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -435,18 +454,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="加班时间:" />
 
                 <EditText
                     android:id="@+id/N"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入加班时间"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -461,7 +482,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -469,18 +490,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="加班费:" />
 
                 <EditText
                     android:id="@+id/O"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入加班费"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -495,7 +518,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -503,18 +526,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="全勤应发:" />
 
                 <EditText
                     android:id="@+id/P"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入全勤应发"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -529,7 +554,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -537,18 +562,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="缺勤天数:" />
 
                 <EditText
                     android:id="@+id/Q"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入缺勤天数"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -563,7 +590,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -571,18 +598,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="缺勤扣款:" />
 
                 <EditText
                     android:id="@+id/RR"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入缺勤扣款"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -597,7 +626,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -605,18 +634,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="迟到天数:" />
 
                 <EditText
                     android:id="@+id/S"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入迟到天数"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -631,7 +662,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -639,18 +670,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="迟到扣款:" />
 
                 <EditText
                     android:id="@+id/T"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入迟到扣款"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -665,7 +698,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -673,18 +706,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="应发工资:" />
 
                 <EditText
                     android:id="@+id/U"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入应发工资"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -699,7 +734,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -707,13 +742,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="社保基数:" />
 
                 <Spinner
                     android:id="@+id/V"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -731,7 +766,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -739,13 +774,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="医疗基数:" />
 
                 <Spinner
                     android:id="@+id/W"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -763,7 +798,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -771,13 +806,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="公积金基数:" />
 
                 <Spinner
                     android:id="@+id/X"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -795,7 +830,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -803,13 +838,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="年金基数:" />
 
                 <Spinner
                     android:id="@+id/Y"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -827,7 +862,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -835,18 +870,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="企业养老:" />
 
                 <EditText
                     android:id="@+id/Z"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入企业养老"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -861,7 +898,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -869,18 +906,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="企业失业:" />
 
                 <EditText
                     android:id="@+id/AA"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入企业失业"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -895,7 +934,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -903,18 +942,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="企业医疗:" />
 
                 <EditText
                     android:id="@+id/AB"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入企业医疗"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -929,7 +970,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -937,18 +978,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="企业工伤:" />
 
                 <EditText
                     android:id="@+id/AC"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入企业工伤"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -963,7 +1006,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -971,18 +1014,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="企业生育:" />
 
                 <EditText
                     android:id="@+id/AD"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入企业生育"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -997,7 +1042,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1005,18 +1050,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="企业公积金:" />
 
                 <EditText
                     android:id="@+id/AE"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入企业公积金"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1031,7 +1078,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1039,18 +1086,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="企业年金:" />
 
                 <EditText
                     android:id="@+id/AF"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入企业年金"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1065,7 +1114,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1073,13 +1122,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="企业滞纳金:" />
 
                 <Spinner
                     android:id="@+id/AG"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -1097,7 +1146,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1105,13 +1154,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="企业利息:" />
 
                 <Spinner
                     android:id="@+id/AH"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -1129,7 +1178,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1137,18 +1186,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="企业小计:" />
 
                 <EditText
                     android:id="@+id/AI"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入企业小计"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1163,7 +1214,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1171,18 +1222,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="个人养老:" />
 
                 <EditText
                     android:id="@+id/AJ"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入个人养老"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1197,7 +1250,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1205,18 +1258,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="个人失业:" />
 
                 <EditText
                     android:id="@+id/AK"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入个人失业"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1231,7 +1286,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1239,18 +1294,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="个人医疗:" />
 
                 <EditText
                     android:id="@+id/AL"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入个人医疗"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1265,7 +1322,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1273,18 +1330,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="个人生育:" />
 
                 <EditText
                     android:id="@+id/AM"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入个人生育"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1299,7 +1358,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1307,18 +1366,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="个人公积金:" />
 
                 <EditText
                     android:id="@+id/AN"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入个人公积金"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1333,7 +1394,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1341,18 +1402,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="个人年金4%:" />
 
                 <EditText
                     android:id="@+id/AO"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入个人年金4%"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1367,7 +1430,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1375,13 +1438,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="个人滞纳金:" />
 
                 <Spinner
                     android:id="@+id/AP"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -1399,7 +1462,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1407,13 +1470,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="个人利息:" />
 
                 <Spinner
                     android:id="@+id/AQ"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -1431,7 +1494,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1439,18 +1502,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="个人小计:" />
 
                 <EditText
                     android:id="@+id/AR"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入个人小计"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1465,7 +1530,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1473,18 +1538,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="税前工资:" />
 
                 <EditText
                     android:id="@+id/ASA"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入税前工资"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1499,7 +1566,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1507,18 +1574,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="应税工资:" />
 
                 <EditText
                     android:id="@+id/ATA"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入应税工资"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1533,7 +1602,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1541,18 +1610,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="税率:" />
 
                 <EditText
                     android:id="@+id/AU"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入税率"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1567,7 +1638,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1575,18 +1646,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="扣除数:" />
 
                 <EditText
                     android:id="@+id/AV"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入扣除数"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1601,7 +1674,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1609,18 +1682,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="代扣个人所得税:" />
 
                 <EditText
                     android:id="@+id/AW"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入代扣个人所得税"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1635,7 +1710,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1643,13 +1718,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="年金1%:" />
 
                 <Spinner
                     android:id="@+id/AX"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -1667,7 +1742,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1675,18 +1750,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="实发工资:" />
 
                 <EditText
                     android:id="@+id/AY"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入实发工资"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1701,7 +1778,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1709,13 +1786,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="验算公式:" />
 
                 <Spinner
                     android:id="@+id/AZ"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -1733,7 +1810,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1741,18 +1818,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="银行账号:" />
 
                 <EditText
                     android:id="@+id/BA"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入银行账号"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1767,7 +1846,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1775,18 +1854,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="调薪时间:" />
 
                 <EditText
                     android:id="@+id/BB"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入调薪时间"
                     android:inputType="number"
                     android:textIsSelectable="false" />
@@ -1800,7 +1881,7 @@
                 android:paddingBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_foot">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1808,18 +1889,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="录入时间:" />
 
                 <EditText
                     android:id="@+id/BC"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
+                    
+                    
                     android:hint="请输入录入时间"
                     android:inputType="number"
                     android:textIsSelectable="false" />

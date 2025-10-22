@@ -10,13 +10,13 @@
         android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/caiwu_table_liebiao">
         <TextView
             android:gravity="center"
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="账号"
             android:textStyle="bold"
@@ -24,7 +24,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="2">
         </View>
 
         <TextView
@@ -32,7 +32,7 @@
             android:id="@+id/pwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="密码"
             android:textStyle="bold"
@@ -48,7 +48,7 @@
             android:id="@+id/doo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="操作密码"
             android:textStyle="bold"

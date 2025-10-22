@@ -11,13 +11,13 @@
         android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/caiwu_table_liebiao">
         <TextView
             android:gravity="center"
             android:id="@+id/shouru"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="经营收入"
             android:textStyle="bold" />

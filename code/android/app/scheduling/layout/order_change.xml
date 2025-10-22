@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".scheduling.activity.OrderChangeActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/pcbeijing1">
 
     <LinearLayout
         android:layout_marginTop="7dp"
@@ -117,7 +117,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@color/title"
+                android:background="@drawable/pcrow_header"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -198,7 +198,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -206,25 +206,25 @@
             android:id="@+id/update_btn"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/pcbtn_style"
             android:onClick="updateClick"
             android:text="提交"
-            android:visibility="gone"
-            tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:textColor="@color/white"
             android:textSize="17dp"
-            android:textColor="@color/white"/>
+            android:visibility="gone"
+            tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/insert_btn"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/pcbtn_style"
             android:onClick="insertClick"
             android:text="提交"
-            android:visibility="gone"
-            tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:textColor="@color/white"
             android:textSize="17dp"
-            android:textColor="@color/white"/>
+            android:visibility="gone"
+            tools:ignore="MissingConstraints" />
     </LinearLayout>
 
 </LinearLayout>

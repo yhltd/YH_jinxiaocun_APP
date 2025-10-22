@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mendian.activity.ZongjiaoActivity"
-    android:orientation="vertical">
+    tools:context=".mendian.activity.KehuinfoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100"
+        android:background="@drawable/mendian_biaoge_bg3">
 
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="669dp">
+        android:layout_height="0dp"
+        android:layout_weight="100">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -108,7 +115,9 @@
                 android:choiceMode="multipleChoice"
                 android:divider="@color/cardview_shadow_start_color"
                 android:dividerHeight="2dp"
-                android:scrollingCache="false" />
+                android:scrollingCache="false"
+
+                />
         </LinearLayout>
 
     </HorizontalScrollView>
@@ -117,34 +126,45 @@
         android:id="@+id/sele_out"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="-200dp"
-        android:background="@drawable/border_bottom"
+
+        android:layout_marginTop="10dp"
+
+        android:background="@drawable/mendian_chaxun_bg"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center_vertical"
-            android:background="@drawable/border_bottom">
+          >
 
             <EditText
                 android:id="@+id/start_date"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:hint="起始日期"
-                android:textSize="15dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:hint="起始时间"
+                android:textSize="10dp"
+                android:textColorHint="#DCDCDC"
+                android:textColor="#FFFFFF"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
             <EditText
                 android:id="@+id/end_date"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:hint="终止日期"
-                android:textSize="15dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:hint="终止时间"
+                android:textSize="10dp"
+                android:textColorHint="#DCDCDC"
+                android:textColor="#FFFFFF"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
             <Button
                 android:id="@+id/sel_button"
@@ -158,3 +178,17 @@
     </LinearLayout>
 
 </LinearLayout>
+
+<Button
+android:id="@+id/toggle_button"
+android:layout_width="40dp"
+android:layout_height="40dp"
+android:text="收起"
+android:textColor="@color/white"
+android:textSize="12sp"
+android:background="@drawable/mendian_shouqi"
+android:layout_gravity="bottom|start"
+android:layout_marginBottom="5dp"
+android:layout_marginStart="10dp" />
+
+    </FrameLayout>

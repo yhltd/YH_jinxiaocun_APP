@@ -171,6 +171,15 @@ public class JiaowuActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayout grzx = findViewById(R.id.grzx);
+        grzx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(JiaowuActivity.this, GrzxActivity.class);
+                startActivity(intent);
+            }
+        });
+
         LinearLayout keshitongji = findViewById(R.id.keshitongji);
         keshitongji.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -356,9 +365,9 @@ public class JiaowuActivity extends AppCompatActivity {
 
     private void initData(){
         banner_data = new ArrayList<>();
-        banner_data.add(R.drawable.jiaowu_banner_01);
-        banner_data.add(R.drawable.jiaowu_banner_01);
-        banner_data.add(R.drawable.jiaowu_banner_01);
+        banner_data.add(R.drawable.jiaowu_lunbo1);
+        banner_data.add(R.drawable.jiaowu_lunbo2);
+        banner_data.add(R.drawable.jiaowu_lunbo3);
     }
 
     private void systeminit() {

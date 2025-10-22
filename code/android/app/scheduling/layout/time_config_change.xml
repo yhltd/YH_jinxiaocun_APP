@@ -11,6 +11,7 @@
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/pcbeijing1"
     android:orientation="vertical">
 
     <LinearLayout
@@ -24,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:background="@drawable/pcchange_card"
             android:orientation="vertical">
 
             <LinearLayout
@@ -32,8 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/form_head">
+                android:gravity="center_vertical">
 
                 <TextView
                     android:gravity="center"
@@ -41,12 +42,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="星期:" />
                 <EditText
                     android:id="@+id/week"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -64,7 +66,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                >
 
                 <TextView
                     android:gravity="center"
@@ -72,12 +74,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="早上起始时间:" />
                 <Spinner
                     android:id="@+id/morning_start"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -94,7 +97,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                >
 
                 <TextView
                     android:gravity="center"
@@ -102,12 +105,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="早上结束时间:" />
                 <Spinner
                     android:id="@+id/morning_end"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -124,7 +128,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                >
 
                 <TextView
                     android:gravity="center"
@@ -132,12 +136,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="中午起始时间:" />
                 <Spinner
                     android:id="@+id/noon_start"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -154,7 +159,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                >
 
                 <TextView
                     android:gravity="center"
@@ -162,12 +167,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="中午结束时间:" />
                 <Spinner
                     android:id="@+id/noon_end"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -184,7 +190,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                >
 
                 <TextView
                     android:gravity="center"
@@ -192,12 +198,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="晚上开始时间:" />
                 <Spinner
                     android:id="@+id/night_start"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -214,8 +221,7 @@
                 android:layout_height="75dp"
                 android:paddingBottom="20dp"
                 android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/form_foot">
+                android:gravity="center_vertical">
 
                 <TextView
                     android:gravity="center"
@@ -223,12 +229,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="晚上结束时间:" />
                 <Spinner
                     android:id="@+id/night_end"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -267,7 +274,7 @@
             android:text="提交"
             android:visibility="gone"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/pcbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 

@@ -11,15 +11,15 @@
         android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/shape_corner_sel">
 
         <TextView
             android:gravity="center"
             android:id="@+id/B"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="姓名"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -34,8 +34,8 @@
             android:id="@+id/C"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="部门"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -50,8 +50,8 @@
             android:id="@+id/D"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="岗位"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -66,8 +66,8 @@
             android:id="@+id/E"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="企业养老"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -82,8 +82,8 @@
             android:id="@+id/F"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="个人养老"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -98,8 +98,8 @@
             android:id="@+id/G"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="养老小计"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -114,8 +114,8 @@
             android:id="@+id/H"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="企业失业"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -130,8 +130,8 @@
             android:id="@+id/I"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="个人失业"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -146,8 +146,8 @@
             android:id="@+id/J"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="失业小计"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -162,8 +162,8 @@
             android:id="@+id/K"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="企业工伤"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -178,8 +178,8 @@
             android:id="@+id/L"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="企业生育"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -194,8 +194,8 @@
             android:id="@+id/M"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="企业合计"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -210,8 +210,8 @@
             android:id="@+id/N"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="个人合计"
             android:textStyle="bold"
             android:width="100dp"/>

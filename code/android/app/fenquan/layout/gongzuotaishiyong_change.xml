@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fenquan.activity.GongZuoTaiShiYongChangeActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/biaoge_bg">
 
 <ScrollView
     android:layout_width="match_parent"
@@ -39,17 +39,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="A" />
+                    android:text="A"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/A"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -75,17 +76,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="B" />
+                    android:text="B"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/B"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -111,17 +113,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="C" />
+                    android:text="C"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/C"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -147,17 +150,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="D" />
+                    android:text="D"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/D"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -183,17 +187,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="E" />
+                    android:text="E"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/E"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -219,17 +224,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="F" />
+                    android:text="F"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/F"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -255,17 +261,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="G" />
+                    android:text="G"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/G"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -291,17 +298,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="H" />
+                    android:text="H"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/H"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -327,17 +335,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="I" />
+                    android:text="I"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/I"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -363,17 +372,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="J" />
+                    android:text="J"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/J"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -399,17 +409,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="K" />
+                    android:text="K"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/K"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -435,17 +446,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="L" />
+                    android:text="L"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/L"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -471,17 +483,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="M" />
+                    android:text="M"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/M"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -507,17 +520,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="N" />
+                    android:text="N"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/N"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -543,17 +557,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="O" />
+                    android:text="O"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/O"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -579,17 +594,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="P" />
+                    android:text="P"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/P"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -615,17 +631,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="Q" />
+                    android:text="Q"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/Q"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -651,17 +668,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="RR" />
+                    android:text="R"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/RR"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -687,17 +705,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="S" />
+                    android:text="S"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/S"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -723,17 +742,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="T" />
+                    android:text="T"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/T"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -759,17 +779,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="U" />
+                    android:text="U"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/U"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -795,17 +816,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="V" />
+                    android:text="V"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/V"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -831,17 +853,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="W" />
+                    android:text="W"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/W"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -867,17 +890,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="X" />
+                    android:text="X"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/X"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -903,17 +927,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="Y" />
+                    android:text="Y"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/Y"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -939,17 +964,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="Z" />
+                    android:text="Z"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/Z"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -975,17 +1001,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AA" />
+                    android:text="AA"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AA"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1011,17 +1038,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AB" />
+                    android:text="AB"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AB"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1047,17 +1075,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AC" />
+                    android:text="AC"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AC"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1083,17 +1112,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AD" />
+                    android:text="AD"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AD"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1119,17 +1149,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AE" />
+                    android:text="AE"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AE"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1155,17 +1186,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AF" />
+                    android:text="AF"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AF"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1191,17 +1223,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AG" />
+                    android:text="AG"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AG"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1227,17 +1260,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AH" />
+                    android:text="AH"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AH"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1263,17 +1297,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AI" />
+                    android:text="AI"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AI"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1299,17 +1334,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AJ" />
+                    android:text="AJ"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AJ"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1335,17 +1371,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AK" />
+                    android:text="AK"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AK"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1371,17 +1408,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AL" />
+                    android:text="AL"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AL"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1407,17 +1445,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AM" />
+                    android:text="AM"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AM"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1443,17 +1482,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AN" />
+                    android:text="AN"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AN"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1479,17 +1519,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AO" />
+                    android:text="AO"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AO"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1515,17 +1556,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AP" />
+                    android:text="AP"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AP"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1551,17 +1593,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AQ" />
+                    android:text="AQ"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AQ"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1587,17 +1630,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AR" />
+                    android:text="AR"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AR"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1623,17 +1667,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="ASS" />
+                    android:text="ASS"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/ASS"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1659,17 +1704,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AT" />
+                    android:text="AT"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AT"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1695,17 +1741,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AU" />
+                    android:text="AU"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AU"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1731,17 +1778,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AV" />
+                    android:text="AV"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AV"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1767,17 +1815,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AW" />
+                    android:text="AW"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AW"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1803,17 +1852,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AX" />
+                    android:text="AX"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AX"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1839,17 +1889,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AY" />
+                    android:text="AY"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AY"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1875,17 +1926,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="AZ" />
+                    android:text="AZ"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/AZ"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1911,17 +1963,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BA" />
+                    android:text="BA"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BA"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1947,17 +2000,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BB" />
+                    android:text="BB"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BB"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1983,17 +2037,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BC" />
+                    android:text="BC"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BC"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2019,17 +2074,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BD" />
+                    android:text="BD"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BD"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2055,17 +2111,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BE" />
+                    android:text="BE"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BE"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2091,17 +2148,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BF" />
+                    android:text="BF"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BF"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2127,17 +2185,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BG" />
+                    android:text="BG"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BG"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2163,17 +2222,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BH" />
+                    android:text="BH"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BH"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2199,17 +2259,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BI" />
+                    android:text="BI"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BI"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2235,17 +2296,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BJ" />
+                    android:text="BJ"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BJ"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2271,17 +2333,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BK" />
+                    android:text="BK"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BK"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2307,17 +2370,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BL" />
+                    android:text="BL"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BL"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2343,17 +2407,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BM" />
+                    android:text="BM"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BM"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2379,17 +2444,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BN" />
+                    android:text="BN"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BN"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2415,17 +2481,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BO" />
+                    android:text="BO"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BO"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2451,17 +2518,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BP" />
+                    android:text="BP"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BP"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2487,17 +2555,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BQ" />
+                    android:text="BQ"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BQ"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2523,17 +2592,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BR" />
+                    android:text="BR"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BR"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2559,17 +2629,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BS" />
+                    android:text="BS"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BS"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2595,17 +2666,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BT" />
+                    android:text="BT"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BT"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2631,17 +2703,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BU" />
+                    android:text="BU"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BU"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2667,17 +2740,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BV" />
+                    android:text="BV"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BV"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2703,17 +2777,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BW" />
+                    android:text="BW"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BW"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2739,17 +2814,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BX" />
+                    android:text="BX"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BX"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2775,17 +2851,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BYY" />
+                    android:text="BYY"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BYY"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2811,17 +2888,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="BZ" />
+                    android:text="BZ"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/BZ"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2847,17 +2925,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CA" />
+                    android:text="CA"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CA"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2883,17 +2962,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CB" />
+                    android:text="CB"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CB"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2919,17 +2999,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CC" />
+                    android:text="CC"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CC"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2955,17 +3036,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CD" />
+                    android:text="CD"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CD"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -2991,17 +3073,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CE" />
+                    android:text="CE"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CE"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3027,17 +3110,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CF" />
+                    android:text="CF"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CF"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3063,17 +3147,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CG" />
+                    android:text="CG"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CG"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3099,17 +3184,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CH" />
+                    android:text="CH"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CH"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3135,17 +3221,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CI" />
+                    android:text="CI"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CI"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3171,17 +3258,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CJ" />
+                    android:text="CJ"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CJ"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3207,17 +3295,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CK" />
+                    android:text="CK"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CK"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3243,17 +3332,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CL" />
+                    android:text="CL"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CL"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3279,17 +3369,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CM" />
+                    android:text="CM"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CM"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3315,17 +3406,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CN" />
+                    android:text="CN"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CN"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3351,17 +3443,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CO" />
+                    android:text="CO"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CO"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3387,17 +3480,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CP" />
+                    android:text="CP"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CP"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3423,17 +3517,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CQ" />
+                    android:text="CQ"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CQ"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3459,17 +3554,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CR" />
+                    android:text="CR"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CR"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3495,17 +3591,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CS" />
+                    android:text="CS"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CS"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3531,17 +3628,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CT" />
+                    android:text="CT"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CT"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3567,17 +3665,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CU" />
+                    android:text="CU"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CU"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3604,17 +3703,18 @@
                 <TextView
                     android:gravity="center"
                     android:layout_width="80dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
+                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="CV" />
+                    android:text="CV"
+                    android:background="@drawable/fenquan_table_body"/>
 
                 <EditText
                     android:id="@+id/CV"
                     android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                    android:background="@drawable/fenquan_add_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -3653,11 +3753,11 @@
         <Button
             android:id="@+id/jiechuClick"
             android:layout_width="130dp"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:gravity="center"
             android:text="一键解除"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/fenquan_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 

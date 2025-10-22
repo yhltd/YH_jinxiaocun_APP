@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mendian.activity.YuejiaoActivity"
-    android:orientation="vertical">
+    tools:context=".mendian.activity.KehuinfoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100"
+        android:background="@drawable/mendian_biaoge_bg3">
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="330dp">
+        android:layout_height="0dp"
+        android:layout_weight="100">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -281,7 +288,7 @@
         android:id="@+id/sele_out"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/border_bottom"
+        android:background="@drawable/mendian_chaxun_bg"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
@@ -289,7 +296,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="center_vertical"
-            android:background="@drawable/border_bottom">
+            >
 
             <EditText
                 android:id="@+id/shouka"
@@ -298,7 +305,9 @@
                 android:layout_weight="1"
                 android:hint="收卡人"
                 android:textSize="15dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColorHint="#DCDCDC"
+                android:textColor="#FFFFFF"/>
 
         </LinearLayout>
 
@@ -306,7 +315,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="center_vertical"
-            android:background="@drawable/border_bottom">
+          >
             <EditText
                 android:id="@+id/fukuan"
                 android:layout_width="0dp"
@@ -314,14 +323,16 @@
                 android:layout_weight="1"
                 android:hint="付款人"
                 android:textSize="15dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColorHint="#DCDCDC"
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="center_vertical"
-            android:background="@drawable/border_bottom">
+           >
             <EditText
                 android:id="@+id/chika"
                 android:layout_width="0dp"
@@ -329,7 +340,9 @@
                 android:layout_weight="1"
                 android:hint="持卡人"
                 android:textSize="15dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColorHint="#DCDCDC"
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
 
 
@@ -337,25 +350,29 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:gravity="center_vertical"
-            android:background="@drawable/border_bottom">
+           >
 
             <EditText
                 android:id="@+id/start_date"
                 android:layout_width="0dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_height="45dp"
-                android:hint="起始日期"
-                android:textSize="15dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:hint="起始时间"
+                android:textSize="10dp"
+                android:textColorHint="#DCDCDC"
+                android:textColor="#FFFFFF"/>
 
             <EditText
                 android:id="@+id/end_date"
                 android:layout_width="0dp"
-                android:layout_height="45dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:hint="终止日期"
-                android:textSize="15dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:hint="终止时间"
+                android:textSize="10dp"
+                android:textColorHint="#DCDCDC"
+                android:textColor="#FFFFFF"/>
 
             <Button
                 android:id="@+id/sel_button"
@@ -369,3 +386,17 @@
 
 
 </LinearLayout>
+
+    <Button
+        android:id="@+id/toggle_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="收起"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:background="@drawable/mendian_shouqi"
+        android:layout_gravity="bottom|start"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp" />
+
+</FrameLayout>

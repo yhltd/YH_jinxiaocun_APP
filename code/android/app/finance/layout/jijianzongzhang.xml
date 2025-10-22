@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".finance.activity.JiJianZongZhangActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/caiwu_biaoge_bg4">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -30,7 +30,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="5dp"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
@@ -46,13 +45,12 @@
 
         <Button
             android:id="@+id/sel_button"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="40dp"
             android:text="查询"
-            android:background="@drawable/btn_style"
+            android:background="@null"
             android:textSize="17dp"
-            android:textColor="@color/white"
-            android:layout_marginEnd="10dp"/>
+            android:textColor="@color/blue" />
     </LinearLayout>
 
     <HorizontalScrollView
@@ -73,7 +71,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@color/title"
+                android:background="#637375"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -241,9 +239,9 @@
             android:onClick="switchClick"
             android:text="切换列表"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/caiwu_btn_bg"
             android:textSize="17dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"/>
     </LinearLayout>
 
 </LinearLayout>

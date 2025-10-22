@@ -44,6 +44,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 public class OrderPanelActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
 
@@ -281,7 +283,9 @@ public class OrderPanelActivity extends AppCompatActivity {
                     BigDecimal danhao = new BigDecimal(max_order.get(0).getDdh());
                     ddh.setText(danhao.toString());
                 }else{
-                    String this_ddh = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                    String this_ddh = sdf.format(Calendar.getInstance().getTime());
+//                    String this_ddh = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
                     ddh.setText(this_ddh + "0001");
                 }
 
@@ -324,7 +328,10 @@ public class OrderPanelActivity extends AppCompatActivity {
             public void run() {
                 SpinnerAdapter adapter = null;
                 try {
-                    String this_ddh = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                    String this_ddh = sdf.format(Calendar.getInstance().getTime());
+//                    String this_ddh = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
                     max_order = yhMendianOrdersService.getListDDH(this_ddh,yhMendianUser.getCompany());
                     type_list = yhMendianProductshezhiService.getTypeList(yhMendianUser.getCompany());
                     product_list = yhMendianProductshezhiService.getList("","",yhMendianUser.getCompany());

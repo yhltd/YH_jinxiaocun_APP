@@ -11,6 +11,7 @@
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/pcbeijing1"
     android:orientation="vertical">
 
     <LinearLayout
@@ -18,6 +19,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/pcchange_card"
         android:layout_marginRight="10dp">
 
         <LinearLayout
@@ -32,8 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/form_head">
+                android:gravity="center_vertical">
 
                 <TextView
                     android:gravity="center"
@@ -41,12 +43,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="部门名称:" />
                 <EditText
                     android:id="@+id/department_name_text"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -64,8 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:gravity="center_vertical">
 
                 <TextView
                     android:gravity="center"
@@ -73,12 +75,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="页面名称:" />
                 <EditText
                     android:id="@+id/view_name_text"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -97,7 +100,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                >
 
                 <TextView
                     android:gravity="center"
@@ -105,12 +108,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="添加:" />
                 <Spinner
                     android:id="@+id/add"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -128,7 +132,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                >
 
                 <TextView
                     android:gravity="center"
@@ -136,12 +140,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="删除:" />
                 <Spinner
                     android:id="@+id/del"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -158,7 +163,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                >
 
                 <TextView
                     android:gravity="center"
@@ -166,12 +171,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="修改:" />
                 <Spinner
                     android:id="@+id/upd"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -180,7 +186,6 @@
                     android:textIsSelectable="false" />
 
             </LinearLayout>
-
 
 
             <LinearLayout
@@ -189,7 +194,7 @@
                 android:paddingBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_foot">
+                >
 
                 <TextView
                     android:gravity="center"
@@ -197,12 +202,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
                     android:text="查询:" />
                 <Spinner
                     android:id="@+id/sel"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -241,7 +247,7 @@
             android:onClick="clearClick"
             android:text="清空"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/pcbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -261,7 +267,7 @@
             android:text="提交"
             android:visibility="gone"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/pcbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -273,7 +279,7 @@
             android:text="提交"
             android:visibility="gone"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/pcbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
     </LinearLayout>

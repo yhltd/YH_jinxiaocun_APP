@@ -14,7 +14,7 @@
         android:layout_height="0dp"
         android:layout_weight="8"
         android:gravity="center_vertical"
-        android:background="@drawable/shape_corner_up"
+        android:background="@drawable/shape_corner"
         android:layout_marginTop="5dp">
         <ImageView
             android:layout_width="30dp"
@@ -25,6 +25,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
+            android:textColor="#4DC5D5"
             android:hint="部门"
             android:spinnerMode="dialog"/>
     </LinearLayout>
@@ -41,6 +42,8 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:textColorHint="#4DC5D5"
+            android:textColor="#4DC5D5"
             android:hint=" 选择开始时间" />
 
         <ImageView
@@ -53,6 +56,8 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:textColorHint="#4DC5D5"
+            android:textColor="#4DC5D5"
             android:hint=" 选择结束时间" />
 
         <Button
@@ -60,7 +65,7 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:text="查询"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/newbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"
             android:layout_marginEnd="10dp"/>
@@ -79,6 +84,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="@drawable/yemianbeijing"
             android:orientation="vertical">
 
             <LinearLayout
@@ -815,6 +821,7 @@
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"
         android:divider="@null"
+        android:background="@drawable/yemianbeijing"
         android:paddingBottom="5dp" />
 
     <LinearLayout
@@ -823,6 +830,7 @@
         android:layout_weight="7"
         android:layout_marginTop="20dp"
         android:gravity="center"
+        android:background="@drawable/shape_corner"
         android:orientation="horizontal">
 
         <Button
@@ -832,7 +840,7 @@
             android:onClick="switchClick"
             android:text="切换列表"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/newbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -851,7 +859,7 @@
             android:layout_height="wrap_content"
             android:text="部门详情"
             android:gravity="center"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/newbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
     </LinearLayout>

@@ -50,6 +50,8 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:textColorHint="#4DC5D5"
+            android:textColor="#4DC5D5"
             android:hint="选择年月" />
 
         <Button
@@ -76,6 +78,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="@drawable/yemianbeijing"
             android:orientation="vertical">
 
             <LinearLayout
@@ -872,6 +875,7 @@
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"
         android:divider="@null"
+        android:background="@drawable/yemianbeijing"
         android:paddingBottom="5dp" />
 
     <LinearLayout

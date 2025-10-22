@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".mendian.activity.ReportFormActivity">
+    tools:context=".mendian.activity.KehuinfoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100"
+        android:background="@drawable/mendian_biaoge_bg3">
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="130dp">
+        android:layout_height="180dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -126,27 +132,44 @@
 
     </HorizontalScrollView>
 
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textSize="24dp"
+            android:textColor="@color/white"
+            android:text="营收金额"
+            android:background="@drawable/mendian_table_body"
+            android:gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"/>
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/bc_1"
         android:layout_width="match_parent"
-        android:layout_height="340dp"
-        android:layout_marginTop="0dp" />
+
+        android:layout_marginTop="10dp"
+        android:background="@drawable/mendian_report_tubiao"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_height="0dp"
+        android:layout_weight="100"/>
 
 
     <LinearLayout
         android:id="@+id/sele_out"
         android:layout_width="match_parent"
         android:layout_height="49dp"
-        android:background="@drawable/border_bottom"
+        android:background="@drawable/mendian_chaxun_bg"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/border_bottom"
+
             android:gravity="center_vertical">
 
             <EditText
@@ -156,7 +179,11 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="起始时间"
-                android:textSize="10dp" />
+                android:textSize="10dp"
+                android:textColorHint="#DCDCDC"
+                android:textColor="#FFFFFF"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
             <EditText
                 android:id="@+id/end_date"
@@ -165,7 +192,11 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="终止时间"
-                android:textSize="10dp" />
+                android:textSize="10dp"
+                android:textColorHint="#DCDCDC"
+                android:textColor="#FFFFFF"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
             <Button
                 android:id="@+id/sel_button"
@@ -179,3 +210,17 @@
     </LinearLayout>
 
 </LinearLayout>
+
+<!--    <Button-->
+<!--        android:id="@+id/toggle_button"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:text="收起"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="12sp"-->
+<!--        android:background="@drawable/mendian_shouqi"-->
+<!--        android:layout_gravity="bottom|start"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        android:layout_marginStart="10dp" />-->
+
+</FrameLayout>

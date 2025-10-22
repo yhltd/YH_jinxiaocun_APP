@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="270dp"
         android:orientation="vertical"
         android:gravity="center"
         android:elevation="2dp"
@@ -28,8 +28,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:textSize="24sp"
                 android:text="姓名" />
 
         </LinearLayout>
@@ -55,8 +55,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="年:"/>
 
                     <TextView
@@ -64,11 +64,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="年"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -80,8 +85,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="月:"/>
 
                     <TextView
@@ -89,11 +94,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="月"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
 
                 <LinearLayout
@@ -106,8 +116,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="应到:"/>
 
                     <TextView
@@ -115,11 +125,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="应到"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -131,8 +146,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="实到:"/>
 
                     <TextView
@@ -140,11 +155,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="实到"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -156,8 +176,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="请假:"/>
 
                     <TextView
@@ -165,11 +185,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="请假"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -181,8 +206,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="加班:"/>
 
                     <TextView
@@ -190,11 +215,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="加班"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -206,8 +236,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="迟到:"/>
 
                     <TextView
@@ -215,8 +245,8 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="迟到"/>
 
                 </LinearLayout>
@@ -240,4 +270,6 @@
         </LinearLayout>
 
     </LinearLayout>
+
 </LinearLayout>
+

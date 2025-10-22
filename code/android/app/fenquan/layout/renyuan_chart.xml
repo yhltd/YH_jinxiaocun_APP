@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fenquan.activity.BuMenQuanXianActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/biaoge_bg">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -31,7 +31,9 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:hint="开始日期"
-            android:background="@null"/>
+            android:background="@null"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <EditText
             android:id="@+id/stop_date"
@@ -39,7 +41,10 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:hint="结束日期"
-            android:background="@null"/>
+            android:background="@null"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            />
 
     </LinearLayout>
 
@@ -85,7 +90,26 @@
             android:textSize="17dp"
             android:textColor="@color/blue" />
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_weight="8"
+        android:background="@drawable/fenquan_table_body"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:elevation="3dp"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:text="选择日期区间,列区间和用户名之后点击查询并调整底部滑块以查看各列的数据"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            tools:ignore="RtlSymmetry" />
+    </LinearLayout>
 
     <LinearLayout
         android:background="@drawable/shape_corner_sel"
@@ -93,7 +117,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="85"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"
         android:layout_marginBottom="30dp"
@@ -109,6 +133,7 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent">
         </com.example.myapplication.EChartView>
+
 
     </LinearLayout>
 

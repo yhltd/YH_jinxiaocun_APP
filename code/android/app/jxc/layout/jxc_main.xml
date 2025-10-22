@@ -17,8 +17,9 @@
         android:textColor="#FF0033"
         android:ellipsize="marquee"
         android:singleLine="true"
-        android:marqueeRepeatLimit="marquee_forever"/>
-        >
+        android:marqueeRepeatLimit="marquee_forever"
+        android:gravity="center"/>
+
 
     <com.youth.banner.Banner
         android:id="@+id/main_banner"
@@ -39,25 +40,26 @@
         android:layout_height="match_parent"
         android:id="@+id/main_scollview"
         app:layout_marginTopPercent="27%"
-        app:layout_heightPercent="61%">
+        app:layout_heightPercent="63%"
+        android:background="@drawable/jxc_main_bg4" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="start"
             android:orientation="vertical"
-            android:background="@drawable/shape_corner">
+           >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="27dp"
                 android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="0dp"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="进销存" />
+              />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -70,7 +72,8 @@
                     android:layout_width="0dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-
+                    android:background="@drawable/jxc_main_tubiaobg"
+                    android:layout_margin="10dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -84,8 +87,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="入库"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
 
@@ -95,7 +98,9 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="@drawable/jxc_main_tubiaobg"
+                    android:layout_margin="10dp">
 
                     <ImageView
                         android:layout_width="55dp"
@@ -107,8 +112,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="出库"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
 
@@ -118,7 +123,9 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="@drawable/jxc_main_tubiaobg"
+                    android:layout_margin="10dp">
 
                     <ImageView
                         android:layout_width="55dp"
@@ -130,8 +137,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="期初"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
 
@@ -141,7 +148,9 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="@drawable/jxc_main_tubiaobg"
+                    android:layout_margin="10dp">
 
                     <ImageView
                         android:layout_width="55dp"
@@ -152,124 +161,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="商品进出查询"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
+                        android:text="进出查询"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
 
             </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/kehu_query"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/kehu_chuhuo" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="客户/供应商查询"
-                        android:textColor="@color/main_text"
-                        android:textSize="13sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text=""
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text=""
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                         />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text=""
-                        android:textColor="@color/main_text"
-                        android:textSize="13sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
 
 
-            </LinearLayout>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="23dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="30dp"
-                android:text="基础配置"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:layout_marginBottom="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -283,7 +187,9 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="@drawable/jxc_main_tubiaobg"
+                    android:layout_margin="10dp">
 
                     <ImageView
                         android:layout_width="55dp"
@@ -295,8 +201,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="客户资料"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
 
@@ -306,7 +212,9 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="@drawable/jxc_main_tubiaobg"
+                    android:layout_margin="10dp">
 
                     <ImageView
                         android:layout_width="55dp"
@@ -318,8 +226,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="供应商资料"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
 
@@ -329,20 +237,22 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="@drawable/jxc_main_tubiaobg"
+                    android:layout_margin="10dp">
 
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/yonghu" />
+                        android:background="@drawable/jxc_yonghuguanli" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="用户管理"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
 
@@ -352,7 +262,9 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="@drawable/jxc_main_tubiaobg"
+                    android:layout_margin="10dp">
 
                     <ImageView
                         android:layout_width="55dp"
@@ -364,13 +276,123 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="基础资料"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
 
-            </LinearLayout>
 
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <LinearLayout
+                    android:id="@+id/kehu_query"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/jxc_main_tubiaobg"
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:background="@drawable/kehu_chuhuo" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="客户/供应商查询"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        tools:ignore="RtlSymmetry"
+                        android:layout_marginLeft="5dp"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/grzx"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/jxc_main_tubiaobg"
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:background="@drawable/fenquan_grzx" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="个人中心"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+
+                        android:textColor="@color/main_text"
+                        android:textSize="13sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                       />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/main_text"
+                        android:textSize="13sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -400,7 +422,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
                 android:text="明细"
                 android:textColor="@color/main_text"
                 android:textSize="15sp"
@@ -423,7 +445,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
                 android:text="进销存"
                 android:textColor="@color/main_text"
                 android:textSize="15sp"
@@ -446,7 +468,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="0dp"
                 android:text="笔记"
                 android:textColor="@color/main_text"
                 android:textSize="15sp"

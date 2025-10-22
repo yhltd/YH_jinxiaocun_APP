@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fenquan.activity.GongZuoTaiGongShiChangeActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/biaoge_bg">
 
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -123,7 +124,7 @@
             android:text="提交"
             android:visibility="gone"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/fenquan_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -135,7 +136,7 @@
             android:text="提交"
             android:visibility="gone"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/fenquan_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
     </LinearLayout>

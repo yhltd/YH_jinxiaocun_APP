@@ -17,8 +17,8 @@
         android:textColor="#FF0033"
         android:ellipsize="marquee"
         android:singleLine="true"
-        android:marqueeRepeatLimit="marquee_forever"/>
-    >
+        android:marqueeRepeatLimit="marquee_forever"
+        android:gravity="center"/>
 
     <com.youth.banner.Banner
         android:id="@+id/main_banner"
@@ -39,21 +39,28 @@
         android:layout_height="match_parent"
         android:id="@+id/main_scollview"
         app:layout_marginTopPercent="27%"
-        app:layout_heightPercent="78%">
+        app:layout_heightPercent="78%"
+        android:background="@drawable/jiaowu_bg">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="start"
             android:orientation="vertical"
-            android:background="@drawable/shape_corner">
+            >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="16dp"
+            android:background="@drawable/jiaowu_border_light">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="基础信息" />
@@ -67,146 +74,139 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:background="@drawable/shape_corner_main_01"
+
                     android:layout_marginRight="10dp"
                     android:id="@+id/shezhi"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/rukuguanli" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_shezhi" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="设置"
-                        android:textColor="@color/main_text"
-                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="基础信息配置"
-                        android:textSize="11sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/shape_corner_main_02"
+
                     android:layout_marginRight="10dp"
                     android:id="@+id/xueshengxinxi"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/chuku" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_xueshenginfo" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:layout_marginLeft="5dp"
                         android:text="学生信息"
-                        android:textColor="@color/main_text"
-                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="学员档案管理"
-                        android:textSize="11sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/shape_corner_main_03"
+
                     android:layout_marginRight="10dp"
                     android:id="@+id/jiaoshixinxi"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/qichukucun" />
+
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_teacherinfo" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:layout_marginLeft="5dp"
                         android:text="教师信息"
-                        android:textColor="@color/main_text"
-                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="教师基础资料"
-                        android:textSize="11sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/shape_corner_main_02"
+
                     android:id="@+id/keshitongji"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/jinxiaocun" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_kstj" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:layout_marginLeft="5dp"
                         android:text="课时统计"
-                        android:textColor="@color/main_text"
-                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="学员课时记录"
-                        android:textSize="11sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -221,156 +221,289 @@
 
                 <LinearLayout
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/shape_corner_main_02"
+
                     android:id="@+id/jiaoshikeshitongji"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/kehu" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_teacherkeshi" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:layout_marginLeft="5dp"
                         android:text="教师课时"
-                        android:textColor="@color/main_text"
-                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="教师课时统计"
-                        android:textSize="11sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/shape_corner_main_04"
+
                     android:id="@+id/jiaoshikebiao"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/gys" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_kebiao" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:layout_marginLeft="5dp"
                         android:text="教师课表"
-                        android:textColor="@color/main_text"
-                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="每日课程管理"
-                        android:textSize="11sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/shape_corner_main_02"
+
                     android:id="@+id/yonghuguanli"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/gys" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_yonghuguanli" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:layout_marginLeft="5dp"
                         android:text="用户管理"
-                        android:textColor="@color/main_text"
-                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="系统账号设置"
-                        android:textSize="11sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/shape_corner_main_03"
+
                     android:id="@+id/quanxianguanli"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/kehu" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_quanxian" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:layout_marginLeft="5dp"
                         android:text="权限管理"
-                        android:textColor="@color/main_text"
-                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="账号权限设置"
-                        android:textSize="11sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
                 </LinearLayout>
 
-
             </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <LinearLayout
 
+                    android:id="@+id/grzx"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_teacherinfo" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="个人中心"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="个人信息查询"
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
+                </LinearLayout>
+                <LinearLayout
+
+
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
+                </LinearLayout>
+                <LinearLayout
+
+
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
+                </LinearLayout>
+                <LinearLayout
+
+
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
+                </LinearLayout>
+            </LinearLayout>
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="16dp"
+            android:background="@drawable/jiaowu_border_light">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="财务相关" />
@@ -385,145 +518,137 @@
 
                 <LinearLayout
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/shape_corner_main_04"
+
                     android:id="@+id/jiaofeijilu"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/shoufamingxi" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_jiaofei" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:layout_marginLeft="5dp"
                         android:text="缴费记录"
-                        android:textColor="@color/main_text"
-                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="学费缴纳记录"
-                        android:textSize="11sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/shape_corner_main_02"
+
                     android:id="@+id/shouzhimingxi"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/shangpin_jinchu" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_shouzhi" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:layout_marginLeft="5dp"
                         android:text="收支明细"
-                        android:textColor="@color/main_text"
-                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="收支记录填写"
-                        android:textSize="11sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/shape_corner_main_01"
+
                     android:id="@+id/qianfeixueyuan"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/kehu_chuhuo" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_qianfei" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:layout_marginLeft="5dp"
                         android:text="欠费学员"
-                        android:textColor="@color/main_text"
-                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="未缴学费学员"
-                        android:textSize="11sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="@drawable/shape_corner_main_02"
+
                     android:id="@+id/jiaoshigongzi"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/shangpinguanli" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_teachergongzi" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:layout_marginLeft="5dp"
                         android:text="教师工资"
-                        android:textColor="@color/main_text"
-                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="教师工资查询"
-                        android:textSize="11sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -537,39 +662,37 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:background="@drawable/shape_corner_main_01"
+
                     android:layout_marginRight="10dp"
                     android:id="@+id/kaoqinbiao"
                     android:layout_width="0dp"
                     android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/kehu" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/jiaowu_kaoqin" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:layout_marginLeft="5dp"
                         android:text="考勤表"
-                        android:textColor="@color/main_text"
-                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:text="教师考勤记录"
-                        android:textSize="11sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:textSize="10sp"
+                        tools:ignore="RtlSymmetry"
+                        android:textColor="#E6E6E6"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -577,7 +700,8 @@
                     android:layout_height="110dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    >
 
                     <ImageView
                         android:layout_width="55dp"
@@ -634,7 +758,7 @@
                         android:textSize="17sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
-
+            </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>

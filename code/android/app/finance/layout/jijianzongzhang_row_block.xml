@@ -13,14 +13,13 @@
         android:orientation="vertical"
         android:gravity="center"
         android:elevation="2dp"
-        android:background="@drawable/shape_corner_sel"
+        android:background="@drawable/caiwu_table_body"
         android:layout_margin="5dp">
 
         <LinearLayout
-            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/border_bottom"
+            android:background="@drawable/caiwu_table_head"
             android:gravity="center_vertical">
 
             <TextView
@@ -28,7 +27,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:text="客户/供应商" />
 
@@ -55,7 +54,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="项目名称:"/>
 
@@ -64,7 +63,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="项目名称"/>
 
@@ -80,7 +79,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="应收:"/>
 
@@ -89,7 +88,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="应收"/>
 
@@ -105,7 +104,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="实收:"/>
 
@@ -114,7 +113,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="实收"/>
 
@@ -130,7 +129,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="未收:"/>
 
@@ -139,7 +138,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="未收"/>
 
@@ -155,7 +154,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="应付:"/>
 
@@ -164,7 +163,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="应付"/>
 
@@ -180,7 +179,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="实付:"/>
 
@@ -189,7 +188,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="实付"/>
 
@@ -205,7 +204,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="未付:"/>
 
@@ -214,7 +213,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="未付"/>
 
@@ -232,7 +231,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    app:srcCompat="@drawable/right_arrow"/>
+                    app:srcCompat="@drawable/right_jiantou"/>
 
             </LinearLayout>
 

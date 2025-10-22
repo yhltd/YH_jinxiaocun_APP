@@ -1,45 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.percentlayout.widget.PercentRelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".mendian.activity.MendianActivity">
+    tools:context=".mendian.activity.MendianActivity"
+    android:background="@color/white">
 
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="#E4B268"
+            android:text="欢迎使用云合未来智慧门店系统" />
+
+    </LinearLayout>
+    <com.youth.banner.Banner
+        android:id="@+id/main_banner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"
+        app:banner_radius="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:banner_loop_time="5000"
+        app:layout_heightPercent="28%"
+        app:layout_widthPercent="100%"
+        />
 
 <!--    整体滑动屏幕-->
     <ScrollView
-        android:id="@+id/main_scollview"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_heightPercent="100%"
-        >
+        android:layout_width="match_parent"
+        android:id="@+id/main_scollview"
+        app:layout_marginTopPercent="35%"
+        app:layout_heightPercent="75%"
+        android:background="@drawable/mendian_bg">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="start"
             android:orientation="vertical">
-            <!--    轮播图-->
-            <com.youth.banner.Banner
-                android:id="@+id/main_banner"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_alignParentTop="true"
-                app:banner_radius="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="5dp"
-                app:banner_loop_time="5000"
-                app:layout_heightPercent="40%"
-                app:layout_widthPercent="100%"
-                />
+
+
 
             <LinearLayout
                 android:id="@+id/tongzhi"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@color/white">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -54,18 +76,87 @@
 
             </LinearLayout>
 
+
+                  <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="16dp"
+                android:background="@drawable/mendian_main_head"
+                android:clickable="true"
+                android:focusable="true"
+                      android:clipChildren="true"
+                      android:clipToPadding="true"
+                >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="交易总览" />
+                android:layout_marginTop="10dp"
+                android:text="即时配送"
+                android:textColor="@color/white"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+
+                <LinearLayout
+                    android:id="@+id/Diandan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/mendian_ddmb_style"
+                    android:gravity="center"
+                    android:orientation="vertical"
+
+
+                    >
+
+                    <ImageView
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:background="@drawable/mendian_diandan" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="点单面板"
+                        android:textColor="@color/main_text"
+                        android:textSize="15sp"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="16dp"
+                android:background="@drawable/mendian_main_head"
+                android:clickable="true"
+                android:focusable="true"
+                >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="交易总览"
+                android:textColor="@color/white"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:gravity="center"
-                android:background="@drawable/border_top"
+                android:background="@drawable/mendian_main_bg"
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp">
 
@@ -140,21 +231,33 @@
                 </LinearLayout>
             </LinearLayout>
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="16dp"
+            android:background="@drawable/mendian_main_head"
+            android:clickable="true"
+            android:focusable="true"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="信息设置" />
+                android:layout_marginTop="10dp"
+                android:text="信息设置"
+                android:textColor="@color/white"/>
 
 <!--            android:background="#F6F6DC"-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
-                android:background="@drawable/border_top"
+                android:background="@drawable/mendian_main_bg"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
 
                 <LinearLayout
                     android:id="@+id/Kehuinfo"
@@ -223,26 +326,39 @@
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
-            </LinearLayout>
 
+            </LinearLayout>
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="16dp"
+                android:background="@drawable/mendian_main_head"
+                android:clickable="true"
+                android:focusable="true"
+                >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="会员信息" />
+                android:layout_marginTop="10dp"
+                android:text="会员信息"
+                android:textColor="@color/white"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:background="@drawable/border_top"
+                android:layout_height="110dp"
+                android:background="@drawable/mendian_main_bg"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
 
                 <LinearLayout
                     android:id="@+id/Memberinfo"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="110dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -265,7 +381,7 @@
                 <LinearLayout
                     android:id="@+id/Memberlevel"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="110dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -285,25 +401,37 @@
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
             </LinearLayout>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="16dp"
+            android:background="@drawable/mendian_main_head"
+            android:clickable="true"
+            android:focusable="true"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="订单报表" />
+                android:layout_marginTop="10dp"
+                android:text="订单报表"
+                android:textColor="@color/white"/>
 <!--            #F6F6DC-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:background="@drawable/border_top"
+                android:layout_height="110dp"
+                android:background="@drawable/mendian_main_bg"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
 
                 <LinearLayout
                     android:id="@+id/Orders"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="110dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -326,7 +454,7 @@
                 <LinearLayout
                     android:id="@+id/Reportform"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="110dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -345,49 +473,34 @@
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="即时配送" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
                 <LinearLayout
-                    android:id="@+id/Diandan"
+                    android:id="@+id/grzx"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="110dp"
                     android:layout_weight="1"
-                    android:background="@drawable/border_bottom_top"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/diandan" />
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/grzx_ygmc" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="点单面板"
+                        android:text="个人中心"
                         android:textColor="@color/main_text"
                         android:textSize="15sp"
+                        android:layout_marginTop="10dp"
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
-
             </LinearLayout>
         </LinearLayout>
 
 
+        </LinearLayout>
+
     </ScrollView>
 
-</RelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>

@@ -10,14 +10,14 @@
         android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/pcrow_main">
         <TextView
             android:gravity="center"
             android:id="@+id/row_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="编号"
             android:textStyle="bold"
             android:width="80dp"/>
@@ -32,8 +32,8 @@
             android:id="@+id/orderId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="订单号"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -48,8 +48,8 @@
             android:id="@+id/module"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="所属模块"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -64,8 +64,8 @@
             android:id="@+id/num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="模块效率/时"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -80,8 +80,8 @@
             android:id="@+id/work_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="生产数量"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -96,8 +96,8 @@
             android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="类型"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -112,8 +112,8 @@
             android:id="@+id/work_start_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="开始生产日期"
             android:textStyle="bold"
             android:width="150dp"/>

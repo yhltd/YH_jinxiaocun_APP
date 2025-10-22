@@ -11,14 +11,14 @@
         android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/pcrow_main">
         <TextView
             android:gravity="center"
             android:id="@+id/order_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="订单号"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -33,8 +33,8 @@
             android:id="@+id/moudle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="模块"
             android:textStyle="bold"
             android:width="120dp"/>
@@ -49,8 +49,8 @@
             android:id="@+id/riqi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="日期"
             android:textStyle="bold"
             android:width="120dp"/>
@@ -65,8 +65,8 @@
             android:id="@+id/num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="数量"
             android:textStyle="bold"
             android:width="100dp"/>

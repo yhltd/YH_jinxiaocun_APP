@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".renshi.activity.BaoPanActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/shape_corner">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -21,7 +21,9 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint=" 选择开始时间" />
+            android:textColorHint="#4DC5D5"
+            android:textColor="#4DC5D5"
+            android:hint="选择开始时间" />
 
         <ImageView
             android:layout_width="30dp"
@@ -33,14 +35,16 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint=" 选择结束时间" />
+            android:textColorHint="#4DC5D5"
+            android:textColor="#4DC5D5"
+            android:hint="选择结束时间" />
 
         <Button
             android:id="@+id/sel_button"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:text="查询"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/newbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"
             android:layout_marginEnd="10dp"/>
@@ -59,20 +63,20 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="@drawable/yemianbeijing"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@color/title"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:gravity="center">
 
                 <TextView
-                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="100dp"
+                    android:gravity="center"
                     android:text="员工姓名"
                     android:textColor="@color/title_text"
                     android:textSize="18sp"
@@ -84,10 +88,10 @@
                     android:layout_weight="1" />
 
                 <TextView
-                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="120dp"
+                    android:gravity="center"
                     android:text="录入日期"
                     android:textColor="@color/title_text"
                     android:textSize="18sp"
@@ -99,10 +103,10 @@
                     android:layout_weight="2" />
 
                 <TextView
-                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="100dp"
+                    android:gravity="center"
                     android:text="实发工资"
                     android:textColor="@color/title_text"
                     android:textSize="18sp"
@@ -114,10 +118,10 @@
                     android:layout_weight="2" />
 
                 <TextView
-                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="100dp"
+                    android:gravity="center"
                     android:text="全勤天数"
                     android:textColor="@color/title_text"
                     android:textSize="18sp"
@@ -129,10 +133,10 @@
                     android:layout_weight="2" />
 
                 <TextView
-                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="100dp"
+                    android:gravity="center"
                     android:text="个人支出"
                     android:textColor="@color/title_text"
                     android:textSize="18sp"
@@ -144,10 +148,10 @@
                     android:layout_weight="2" />
 
                 <TextView
-                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:width="100dp"
+                    android:gravity="center"
                     android:text="企业支出"
                     android:textColor="@color/title_text"
                     android:textSize="18sp"
@@ -180,6 +184,7 @@
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"
         android:divider="@null"
+        android:background="@drawable/yemianbeijing"
         android:paddingBottom="5dp" />
 
     <LinearLayout
@@ -197,7 +202,7 @@
             android:onClick="switchClick"
             android:text="切换列表"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/newbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -217,7 +222,7 @@
             android:text="审批"
             tools:ignore="MissingConstraints"
             android:gravity="center"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/newbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
         <ImageView
@@ -234,7 +239,7 @@
             android:text="审批记录"
             tools:ignore="MissingConstraints"
             android:gravity="center"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/newbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
     </LinearLayout>

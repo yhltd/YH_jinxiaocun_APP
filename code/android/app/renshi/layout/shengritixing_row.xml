@@ -11,14 +11,14 @@
         android:layout_height="85dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/shape_corner_sel">
         <TextView
             android:gravity="center"
             android:id="@+id/zhou1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="周一"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -33,8 +33,8 @@
             android:id="@+id/zhou2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="周二"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -49,8 +49,8 @@
             android:id="@+id/zhou3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="周三"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -65,8 +65,8 @@
             android:id="@+id/zhou4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="周四"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -81,8 +81,8 @@
             android:id="@+id/zhou5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="周五"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -97,8 +97,8 @@
             android:id="@+id/zhou6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="周六"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -113,8 +113,8 @@
             android:id="@+id/zhou7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:text="周日"
             android:textStyle="bold"
             android:width="150dp"/>

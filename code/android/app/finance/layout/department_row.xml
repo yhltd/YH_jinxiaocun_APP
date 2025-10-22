@@ -11,13 +11,13 @@
         android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/caiwu_table_liebiao">
         <TextView
             android:gravity="center"
             android:id="@+id/department"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="部门"
             android:textStyle="bold"
@@ -33,7 +33,7 @@
             android:id="@+id/man"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:text="负责人"
             android:textStyle="bold"

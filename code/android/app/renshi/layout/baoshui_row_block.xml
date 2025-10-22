@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="225dp"
+        android:layout_height="265dp"
         android:orientation="vertical"
         android:gravity="center"
         android:elevation="2dp"
@@ -28,11 +28,12 @@
                 android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:textSize="24sp"
                 android:text="姓名" />
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,14 +50,14 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="20sp"
                     android:gravity="center_vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="证件类型:"/>
 
                     <TextView
@@ -64,11 +65,17 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="证件类型"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
+
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -80,8 +87,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="证件号码:"/>
 
                     <TextView
@@ -89,11 +96,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="证件号码"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
 
                 <LinearLayout
@@ -106,8 +118,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="收入金额:" />
 
                     <TextView
@@ -115,11 +127,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="收入金额" />
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -131,8 +148,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="基本养老保险金:"/>
 
                     <TextView
@@ -140,11 +157,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="基本养老保险金"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -156,8 +178,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="失业保险金:"/>
 
                     <TextView
@@ -165,11 +187,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="失业保险金"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -181,8 +208,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="住房公积金:"/>
 
                     <TextView
@@ -190,11 +217,16 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="住房公积金"/>
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0"
+                    android:layout_marginTop="5dp" />
 
                 <LinearLayout
                     android:layout_marginTop="5dp"
@@ -206,8 +238,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="年金（个人部分）:"/>
 
                     <TextView
@@ -215,8 +247,8 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
                         android:text="年金（个人部分）"/>
 
                 </LinearLayout>
@@ -237,7 +269,11 @@
 
             </LinearLayout>
 
+
         </LinearLayout>
 
+
     </LinearLayout>
+
 </LinearLayout>
+

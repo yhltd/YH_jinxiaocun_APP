@@ -11,14 +11,14 @@
         android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/pcrow_main">
         <TextView
             android:gravity="center"
             android:id="@+id/week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="星期"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -33,8 +33,8 @@
             android:id="@+id/morning_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="早上起始时间"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -49,8 +49,8 @@
             android:id="@+id/morning_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="早上结束时间"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -65,8 +65,8 @@
             android:id="@+id/noon_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="中午起始时间"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -81,8 +81,8 @@
             android:id="@+id/noon_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="中午结束时间"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -97,8 +97,8 @@
             android:id="@+id/night_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="晚上起始时间"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -113,8 +113,8 @@
             android:id="@+id/night_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="晚上结束时间"
             android:textStyle="bold"
             android:width="150dp"/>

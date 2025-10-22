@@ -10,14 +10,14 @@
         android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/pcrow_main">
         <TextView
             android:gravity="center"
             android:id="@+id/user_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="账号"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -32,8 +32,8 @@
             android:id="@+id/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="密码"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -48,8 +48,8 @@
             android:id="@+id/department_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="部门"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -64,8 +64,8 @@
             android:id="@+id/state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="状态"
             android:textStyle="bold"
             android:width="100dp"/>

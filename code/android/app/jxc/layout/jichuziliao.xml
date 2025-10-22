@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".jxc.activity.JiChuZiLiaoActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/jxc_biaoge_bg2">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -34,9 +34,9 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:text="查询"
-            android:background="@drawable/btn_style"
+            android:background="@null"
             android:textSize="17dp"
-            android:textColor="@color/white"
+            android:textColor="@color/blue"
             android:layout_marginEnd="10dp"/>
     </LinearLayout>
 
@@ -58,7 +58,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@color/title"
+                android:background="#0D35FD"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -207,7 +207,7 @@
             android:onClick="switchClick"
             android:text="切换列表"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/jxc_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -226,7 +226,7 @@
             android:onClick="onInsertClick"
             android:text="添加"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/jxc_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -248,7 +248,7 @@
             android:onClick="onOrderScanClick"
             android:text="打印二维码"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/jxc_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -266,7 +266,7 @@
             android:onClick="onOrderScanClick2"
             android:text="打印条形码"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/jxc_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
     </LinearLayout>

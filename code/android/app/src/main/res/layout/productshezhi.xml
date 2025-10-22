@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mendian.activity.ProductshezhiActivity"
-    android:orientation="vertical">
+    tools:context=".mendian.activity.KehuinfoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100"
+        android:background="@drawable/mendian_biaoge_bg3">
 
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="380dp">
+        android:layout_height="0dp"
+        android:layout_weight="100">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -132,7 +139,7 @@
             <ListView
                 android:id="@+id/productshezhi_list"
                 android:layout_width="match_parent"
-                android:layout_height="330dp"
+                android:layout_height="match_parent"
                 android:animationCache="false"
                 android:cacheColorHint="#000000"
                 android:choiceMode="multipleChoice"
@@ -146,9 +153,9 @@
     <LinearLayout
         android:id="@+id/sele_out"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="140dp"
         android:layout_marginTop="0dp"
-        android:background="@drawable/border_bottom"
+        android:background="@drawable/mendian_chaxun_bg"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
@@ -156,7 +163,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center_vertical"
-            android:background="@drawable/border_bottom">
+            >
 
             <EditText
                 android:id="@+id/product_name"
@@ -164,8 +171,10 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:hint="商品名称"
-                android:textSize="10dp"
-                android:gravity="center"/>
+                android:textSize="13dp"
+                android:gravity="center"
+                android:textColorHint="#DCDCDC"
+                android:textColor="#FFFFFF"/>
 
 
         </LinearLayout>
@@ -174,38 +183,81 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center_vertical"
-            android:background="@drawable/border_bottom">
+           >
             <EditText
                 android:id="@+id/type"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:hint="商品类别"
-                android:textSize="10dp"
-                android:gravity="center"/>
+                android:textSize="13dp"
+                android:gravity="center"
+                android:textColorHint="#DCDCDC"
+                android:textColor="#FFFFFF"/>
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center">
             <Button
                 android:id="@+id/sel_button"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/search"
-                android:gravity="center_horizontal" />
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:text="查询"
+                android:background="@drawable/mendian_btn_bg"
+
+                android:textSize="17dp"
+                android:textColor="@color/white"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/search"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                android:gravity="center_horizontal"/>
+            <Button
+                android:id="@+id/users_insert"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:onClick="onInsertClick"
+                android:text="添加"
+                tools:ignore="MissingConstraints"
+                android:background="@drawable/mendian_btn_bg"
+                android:textSize="17dp"
+                android:textColor="@color/white"/>
         </LinearLayout>
     </LinearLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/users_insert"
-        android:onClick="onInsertClick"
-        android:layout_width="wrap_content"
-        android:layout_height="70px"
-        android:layout_gravity="end"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/insert"
-        app:backgroundTint="@color/primary"
-        app:backgroundTintMode="add"
-        app:pressedTranslationZ="10dp"
-        app:tint="@color/white" />
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/users_insert"-->
+<!--        android:onClick="onInsertClick"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="70px"-->
+<!--        android:layout_gravity="end"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:src="@drawable/insert"-->
+<!--        app:backgroundTint="@color/primary"-->
+<!--        app:backgroundTintMode="add"-->
+<!--        app:pressedTranslationZ="10dp"-->
+<!--        app:tint="@color/white" />-->
 
 </LinearLayout>
+
+<Button
+android:id="@+id/toggle_button"
+android:layout_width="40dp"
+android:layout_height="40dp"
+android:text="收起"
+android:textColor="@color/white"
+android:textSize="12sp"
+android:background="@drawable/mendian_shouqi"
+android:layout_gravity="bottom|start"
+android:layout_marginBottom="5dp"
+android:layout_marginStart="10dp" />
+
+    </FrameLayout>

@@ -10,14 +10,14 @@
         android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/pcrow_main">
         <TextView
             android:gravity="center"
             android:id="@+id/code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="物料编码"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -32,8 +32,8 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="物料名称"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -48,8 +48,8 @@
             android:id="@+id/type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="类别"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -64,8 +64,8 @@
             android:id="@+id/norms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="规格"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -80,8 +80,8 @@
             android:id="@+id/comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="描述"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -96,8 +96,8 @@
             android:id="@+id/size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="大小"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -112,8 +112,8 @@
             android:id="@+id/unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="单位"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -128,8 +128,8 @@
             android:id="@+id/use_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="使用数量"
             android:textStyle="bold"
             android:width="150dp"/>

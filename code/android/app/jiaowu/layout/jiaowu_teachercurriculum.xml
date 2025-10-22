@@ -7,13 +7,13 @@
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".jiaowu.activity.TeacherCurriculumActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/biaoge_bg2">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
-        android:background="@drawable/shape_corner_sel"
+        android:background="@drawable/jxc_shape_corner_sel"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"
@@ -25,7 +25,8 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:hint="教师"
-            android:background="@null"/>
+            android:background="@null"
+            android:textColorHint="#616161"/>
 
         <EditText
             android:id="@+id/course"
@@ -33,7 +34,8 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:hint="课程"
-            android:background="@null"/>
+            android:background="@null"
+            android:textColorHint="#616161"/>
 
         <Button
             android:id="@+id/sel_button"
@@ -63,7 +65,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@color/title"
+                android:background="#04B7BD"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:elevation="3dp">
@@ -173,7 +175,7 @@
             android:onClick="switchClick"
             android:text="切换列表"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/jiaowu_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -192,7 +194,7 @@
             android:onClick="onInsertClick"
             android:text="添加"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/jiaowu_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
     </LinearLayout>

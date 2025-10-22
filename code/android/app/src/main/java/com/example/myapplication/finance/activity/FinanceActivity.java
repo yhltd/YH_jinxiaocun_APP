@@ -357,6 +357,26 @@ public class FinanceActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayout grzx = findViewById(R.id.grzx);
+        grzx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pd = false;
+                for (YhFinanceQuanXian yhFinanceQuanXian : list) {
+                    if (yhFinanceQuanXian.getKzxmSelect().equals("是")) {
+                        myApplication.setYhFinanceQuanXian(yhFinanceQuanXian);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(FinanceActivity.this, "无权限！");
+                }else {
+                    Intent intent = new Intent(FinanceActivity.this, GrzxActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
     }
 
     private void init() {
@@ -390,8 +410,8 @@ public class FinanceActivity extends AppCompatActivity {
     private void initData(){
         banner_data = new ArrayList<>();
         banner_data.add(R.drawable.finance_banner_01);
-        banner_data.add(R.drawable.finance_banner_01);
-        banner_data.add(R.drawable.finance_banner_01);
+        banner_data.add(R.drawable.caiwu_lunbo1);
+        banner_data.add(R.drawable.caiwu_lunbo2);
     }
 
     private void systeminit() {

@@ -11,7 +11,7 @@
         android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/pcrow_main">
 
         <CheckBox
             android:id="@+id/cb"
@@ -29,8 +29,8 @@
             android:id="@+id/staffName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="姓名"
             android:textStyle="bold"
             android:width="100dp"/>
@@ -45,8 +45,8 @@
             android:id="@+id/phoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="电话"
             android:textStyle="bold"
             android:width="120dp"/>
@@ -61,8 +61,8 @@
             android:id="@+id/idNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="身份证号"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -77,8 +77,8 @@
             android:id="@+id/departmentName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="部门"
             android:textStyle="bold"
             android:width="120dp"/>
@@ -93,8 +93,8 @@
             android:id="@+id/banci"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="班次"
             android:textStyle="bold"
             android:width="100dp"/>

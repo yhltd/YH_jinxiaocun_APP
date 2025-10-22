@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".finance.activity.ExpenditureActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/caiwu_biaoge_bg4">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -46,7 +46,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@color/title"
+                android:background="#637375"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -101,9 +101,9 @@
             android:onClick="onInsertClick"
             android:text="添加"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/caiwu_btn_bg"
             android:textSize="17dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"/>
     </LinearLayout>
 
 </LinearLayout>

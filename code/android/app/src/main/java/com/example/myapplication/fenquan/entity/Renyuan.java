@@ -101,12 +101,12 @@ public class Renyuan {
     public void setBumen(String bumen) {
         this.bumen = bumen;
     }
+    public void setCompany(String company) {
+        this.company = company;
+    }
 
     public String getCompany() {
         return company;
     }
 
-    public void setCompany(String company) {
-        this.company = company;
-    }
 }

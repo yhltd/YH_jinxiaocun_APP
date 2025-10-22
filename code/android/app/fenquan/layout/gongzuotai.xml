@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".fenquan.activity.GongZuoTaiActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/biaoge_bg">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -32,7 +32,10 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:hint="开始日期"
-            android:background="@null"/>
+            android:background="@null"
+            android:textColorHint="#616161"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <EditText
             android:id="@+id/stop_date"
@@ -40,7 +43,10 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:hint="结束日期"
-            android:background="@null"/>
+            android:background="@null"
+            android:textColorHint="#616161"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <Button
             android:id="@+id/sel_button"
@@ -70,7 +76,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@color/title"
+                android:background="@color/teal_200"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:elevation="3dp">
@@ -1661,7 +1667,7 @@
             android:onClick="switchClick"
             android:text="切换列表"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/fenquan_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -1679,7 +1685,7 @@
             android:layout_height="wrap_content"
             android:text="导出"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/fenquan_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -1698,7 +1704,7 @@
             android:onClick="onInsertClick"
             android:text="添加"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/fenquan_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
     </LinearLayout>

@@ -1,0 +1,25 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This is the main color -->
+    <item>
+        <shape>
+            <corners
+                android:topLeftRadius="5dp"
+                android:topRightRadius="5dp"/>
+            <solid android:color="@color/border_level_1" />
+        </shape>
+    </item>
+    <!-- This is the line -->
+    <item android:bottom="2dp">
+        <shape android:shape="rectangle">
+<!--            <gradient-->
+<!--            #EA6F11-->
+<!--            android:startColor="#E4781A"-->
+<!--            android:endColor="#F67614"-->
+<!--            android:angle="0"/>-->
+            <gradient
+                android:startColor="#0D35FD"
+                android:endColor="#3E89E4"
+                android:angle="0"/>
+        </shape>
+    </item>
+</layer-list>

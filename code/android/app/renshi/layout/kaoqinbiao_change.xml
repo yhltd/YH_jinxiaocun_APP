@@ -12,6 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/yemianbeijing"
     android:layout_marginBottom="80dp">
 
     <LinearLayout
@@ -34,7 +35,7 @@
                 android:layout_height="75dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_head">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -42,14 +43,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="年:" />
 
                 <EditText
                     android:id="@+id/year"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -68,7 +71,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -76,14 +79,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="月:" />
 
                 <EditText
                     android:id="@+id/moth"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -102,7 +107,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -110,14 +115,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="姓名:" />
 
                 <EditText
                     android:id="@+id/name"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -136,7 +143,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -144,14 +151,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="1:" />
 
                 <Spinner
                     android:id="@+id/E"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -168,7 +177,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -176,14 +185,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="2:" />
 
                 <Spinner
                     android:id="@+id/F"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -199,7 +210,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -207,14 +218,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="3:" />
 
                 <Spinner
                     android:id="@+id/G"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -231,7 +244,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -239,14 +252,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="4:" />
 
                 <Spinner
                     android:id="@+id/H"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -263,7 +278,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -271,14 +286,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="5:" />
 
                 <Spinner
                     android:id="@+id/I"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -295,7 +312,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -303,14 +320,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="6:" />
 
                 <Spinner
                     android:id="@+id/J"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -327,7 +346,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -335,14 +354,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="7:" />
 
                 <Spinner
                     android:id="@+id/K"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -359,7 +380,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -367,14 +388,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="8:" />
 
                 <Spinner
                     android:id="@+id/L"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -391,7 +414,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -399,14 +422,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="9:" />
 
                 <Spinner
                     android:id="@+id/M"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -423,7 +448,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -431,14 +456,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="10:" />
 
                 <Spinner
                     android:id="@+id/N"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -455,7 +482,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -463,14 +490,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="11:" />
 
                 <Spinner
                     android:id="@+id/O"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -487,7 +516,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -495,14 +524,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="12:" />
 
                 <Spinner
                     android:id="@+id/P"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -519,7 +550,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -527,14 +558,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="13:" />
 
                 <Spinner
                     android:id="@+id/Q"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -551,7 +584,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -559,14 +592,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="14:" />
 
                 <Spinner
                     android:id="@+id/RR"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -583,7 +618,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -591,14 +626,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="15:" />
 
                 <Spinner
                     android:id="@+id/S"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -615,7 +652,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -623,14 +660,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="16:" />
 
                 <Spinner
                     android:id="@+id/T"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -647,7 +686,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -655,14 +694,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="17:" />
 
                 <Spinner
                     android:id="@+id/U"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -679,7 +720,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -687,14 +728,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="18:" />
 
                 <Spinner
                     android:id="@+id/V"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -711,7 +754,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -719,14 +762,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="19:" />
 
                 <Spinner
                     android:id="@+id/W"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -743,7 +788,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -751,14 +796,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="20:" />
 
                 <Spinner
                     android:id="@+id/X"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -775,7 +822,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -783,14 +830,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="21:" />
 
                 <Spinner
                     android:id="@+id/Y"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -807,7 +856,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -815,14 +864,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="22:" />
 
                 <Spinner
                     android:id="@+id/Z"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -839,7 +890,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -847,14 +898,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="23:" />
 
                 <Spinner
                     android:id="@+id/AA"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -871,7 +924,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -879,14 +932,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="24:" />
 
                 <Spinner
                     android:id="@+id/AB"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -903,7 +958,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -911,14 +966,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="25:" />
 
                 <Spinner
                     android:id="@+id/AC"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -935,7 +992,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -943,14 +1000,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="26:" />
 
                 <Spinner
                     android:id="@+id/AD"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -967,7 +1026,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -975,14 +1034,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="27:" />
 
                 <Spinner
                     android:id="@+id/AE"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -999,7 +1060,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1007,14 +1068,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="28:" />
 
                 <Spinner
                     android:id="@+id/AF"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1031,7 +1094,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1039,14 +1102,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="29:" />
 
                 <Spinner
                     android:id="@+id/AG"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1063,7 +1128,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1071,14 +1136,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="30:" />
 
                 <Spinner
                     android:id="@+id/AH"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1095,7 +1162,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1103,14 +1170,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="31:" />
 
                 <Spinner
                     android:id="@+id/AI"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1127,7 +1196,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1135,14 +1204,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="全勤:" />
 
                 <EditText
                     android:id="@+id/AJ"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1161,7 +1232,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1169,14 +1240,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="实际:" />
 
                 <EditText
                     android:id="@+id/AK"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1195,7 +1268,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1203,14 +1276,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="请假:" />
 
                 <EditText
                     android:id="@+id/AL"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1229,7 +1304,7 @@
                 android:layout_height="55dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_body">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1237,14 +1312,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="加班:" />
 
                 <EditText
                     android:id="@+id/AM"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
@@ -1264,7 +1341,7 @@
                 android:paddingBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_foot">
+                android:background="@drawable/shape_corner_sel">
 
                 <TextView
                     android:gravity="center"
@@ -1272,14 +1349,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
                     android:text="迟到:" />
 
                 <EditText
                     android:id="@+id/AN"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:background="@drawable/form_input"
+                    
+                    
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"

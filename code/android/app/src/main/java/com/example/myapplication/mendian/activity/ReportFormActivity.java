@@ -1,5 +1,8 @@
 package com.example.myapplication.mendian.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -60,6 +63,12 @@ public class ReportFormActivity extends AppCompatActivity {
     private BarChart mBarChart;
     List<YhMendianReportForm> list;
     List<YhMendianReportForm> list2;
+
+//    private boolean isExpanded = true;
+//    private LinearLayout seleOut;
+//    private Button toggleButton;
+//    private int originalHeight;
+//    private boolean isAnimating = false; // 防止重复点击
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

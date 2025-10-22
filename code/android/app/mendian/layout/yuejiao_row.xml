@@ -11,7 +11,7 @@
         android:layout_height="55dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/mendian_border_bottom">
 
         <TextView
             android:id="@+id/recipient"

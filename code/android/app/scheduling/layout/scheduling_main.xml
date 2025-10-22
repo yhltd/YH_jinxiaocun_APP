@@ -6,10 +6,101 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".scheduling.activity.SchedulingActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/pcshouye">
+    <!-- 🆕 悬浮图片容器 - 放在所有视图的最前面 -->
+    <RelativeLayout
+        android:id="@+id/floating_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:elevation="20dp">
 
+        <ImageView
+            android:id="@+id/floating_image"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart" />
+
+        <TextView
+            android:id="@+id/dialog_close_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="top|end"
+            android:background="@drawable/close_button_bg"
+            android:gravity="center"
+            android:text="×"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+    <!-- 第一个内容展示区 - 轮播图位置 -->
+    <RelativeLayout
+        android:id="@+id/top_content_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/white"
+        android:elevation="8dp">
+
+        <ImageView
+            android:id="@+id/carousel_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:background="#f0f0f0" />
+
+        <TextView
+            android:id="@+id/indicator_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/carousel_image"
+            android:layout_centerHorizontal="true"
+            android:background="#80000000"
+            android:padding="8dp"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/carousel_close_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignTop="@id/carousel_image"
+            android:layout_alignEnd="@id/carousel_image"
+            android:background="@drawable/close_button_bg"
+            android:gravity="center"
+            android:text="×"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <!-- 第二个内容展示区 - 跑马灯位置 -->
+    <TextView
+        android:id="@+id/top_content_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_content_1"
+        android:padding="12dp"
+        android:background="#f0f0f0"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scrollHorizontally="true"
+        android:text="加载中..."
+        android:textSize="16sp"
+        android:textColor="#333333" />
+
+    <!-- MarqueeTextView - 现在在第二个内容区下面 -->
     <com.example.myapplication.utils.MarqueeTextView
         android:id="@+id/marquee"
+        android:layout_below="@id/top_content_2"
         android:layout_marginTop="7dp"
         app:layout_widthPercent="100%"
         app:layout_heightPercent="5%"
@@ -18,15 +109,15 @@
         android:ellipsize="marquee"
         android:singleLine="true"
         android:marqueeRepeatLimit="marquee_forever"/>
-    >
 
+    <!-- Banner - 现在在MarqueeTextView下面 -->
     <com.youth.banner.Banner
         android:id="@+id/main_banner"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/marquee"
         app:banner_radius="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="3dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         app:banner_loop_time="5000"
@@ -34,12 +125,14 @@
         app:layout_widthPercent="100%"
         />
 
+    <!-- ScrollView - 现在在Banner下面 -->
     <ScrollView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:id="@+id/main_scollview"
-        app:layout_marginTopPercent="26%"
+        android:layout_below="@id/main_banner"
         app:layout_heightPercent="78%">
+
 
 
         <LinearLayout
@@ -47,18 +140,109 @@
             android:layout_height="match_parent"
             android:gravity="start"
             android:orientation="vertical"
-            android:background="@drawable/shape_corner">
+            android:background="@drawable/pc_mian_background">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="基础配置"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:layout_marginBottom="10dp"/>
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingVertical="30dp">
+
+                <!-- 左侧图形装饰 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!-- 装饰组合 -->
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_triangle_left" />
+
+                    <View
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_primary" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_diamond" />
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_accent" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_square" />
+
+                </LinearLayout>
+
+                <!-- 标题 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="基础配置"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:background="@drawable/title_background"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp" />
+
+                <!-- 右侧图形装饰 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!-- 装饰组合 -->
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_square" />
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_accent" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_diamond" />
+
+                    <View
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_primary" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_triangle_right" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,7 +261,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/mokuaidanwei" />
+                        android:background="@drawable/pcmkdw" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -100,7 +284,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/gongzuoshijianjixiuxiri" />
+                        android:background="@drawable/pcgzsj" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -123,7 +307,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/bom" />
+                        android:background="@drawable/pcbom" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -144,9 +328,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/yonghu" />
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/pczhgl" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -160,16 +344,107 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="订单及部门"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:layout_marginBottom="10dp"/>
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingVertical="30dp">
+
+                <!-- 左侧图形装饰 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!-- 装饰组合 -->
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_triangle_left" />
+
+                    <View
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_primary" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_diamond" />
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_accent" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_square" />
+
+                </LinearLayout>
+
+                <!-- 标题 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="订单部门"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:background="@drawable/title_background"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp" />
+
+                <!-- 右侧图形装饰 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!-- 装饰组合 -->
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_square" />
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_accent" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_diamond" />
+
+                    <View
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_primary" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_triangle_right" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -186,9 +461,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/shoufamingxi" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/pcdd" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -209,9 +484,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/bumen" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/pcbm" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -267,16 +542,107 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="排产及排班"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:layout_marginBottom="10dp"/>
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingVertical="30dp">
+
+                <!-- 左侧图形装饰 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!-- 装饰组合 -->
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_triangle_left" />
+
+                    <View
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_primary" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_diamond" />
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_accent" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_square" />
+
+                </LinearLayout>
+
+                <!-- 标题 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="排产排班"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:background="@drawable/title_background"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp" />
+
+                <!-- 右侧图形装饰 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!-- 装饰组合 -->
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_square" />
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_accent" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_diamond" />
+
+                    <View
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_primary" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_triangle_right" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -295,7 +661,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/paichan" />
+                        android:background="@drawable/pcpc" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -318,7 +684,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/paiban" />
+                        android:background="@drawable/pcpb" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -341,7 +707,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/renyuanxinxi" />
+                        android:background="@drawable/pcryxx" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -364,7 +730,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/paibanmingxi" />
+                        android:background="@drawable/pcpbmx" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -397,7 +763,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/paichanhedui" />
+                        android:background="@drawable/pcpchd" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -475,16 +841,107 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="汇总"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:layout_marginBottom="10dp"/>
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingVertical="30dp">
+
+                <!-- 左侧图形装饰 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!-- 装饰组合 -->
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_triangle_left" />
+
+                    <View
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_primary" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_diamond" />
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_accent" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_square" />
+
+                </LinearLayout>
+
+                <!-- 标题 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="汇总"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:background="@drawable/title_background"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp" />
+
+                <!-- 右侧图形装饰 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!-- 装饰组合 -->
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_square" />
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_accent" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_diamond" />
+
+                    <View
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/circle_decor_primary" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_triangle_right" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -503,7 +960,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/huizong" />
+                        android:background="@drawable/pchz" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -516,6 +973,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/grzx"
                     android:layout_width="0dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
@@ -525,12 +983,13 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        />
+                        android:background="@drawable/pchz" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:text="个人中心"
                         android:textColor="@color/main_text"
                         android:textSize="15sp"
                         tools:ignore="RtlSymmetry" />

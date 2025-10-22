@@ -13,14 +13,13 @@
         android:orientation="vertical"
         android:gravity="center"
         android:elevation="2dp"
-        android:background="@drawable/shape_corner_sel"
+        android:background="@drawable/jiaowu_table_body"
         android:layout_margin="5dp">
 
         <LinearLayout
-            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/border_bottom"
+            android:background="@drawable/jiaowu_table_head"
             android:gravity="center_vertical">
 
             <TextView
@@ -28,7 +27,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:text="姓名" />
 
@@ -55,7 +54,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="年:"/>
 
@@ -64,7 +63,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="年"/>
 
@@ -80,7 +79,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="月:"/>
 
@@ -89,7 +88,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="月"/>
 
@@ -106,7 +105,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="一:" />
 
@@ -115,7 +114,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="一" />
 
@@ -131,7 +130,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二:"/>
 
@@ -140,7 +139,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二"/>
 
@@ -156,7 +155,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="三:"/>
 
@@ -165,7 +164,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="三"/>
 
@@ -181,7 +180,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="四:"/>
 
@@ -190,7 +189,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="四"/>
 
@@ -206,7 +205,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="五:"/>
 
@@ -215,7 +214,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="五"/>
 
@@ -231,7 +230,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="六:"/>
 
@@ -240,7 +239,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="六"/>
 
@@ -256,7 +255,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="七:"/>
 
@@ -265,7 +264,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="七"/>
 
@@ -281,7 +280,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="八:"/>
 
@@ -290,7 +289,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="八"/>
 
@@ -306,7 +305,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="九:"/>
 
@@ -315,7 +314,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="九"/>
 
@@ -331,7 +330,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十:"/>
 
@@ -340,7 +339,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十"/>
 
@@ -356,7 +355,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十一:"/>
 
@@ -365,7 +364,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十一"/>
 
@@ -381,7 +380,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十二:"/>
 
@@ -390,7 +389,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十二"/>
 
@@ -406,7 +405,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十三:"/>
 
@@ -415,7 +414,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十三"/>
 
@@ -431,7 +430,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十四:"/>
 
@@ -440,7 +439,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十四"/>
 
@@ -456,7 +455,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十五:"/>
 
@@ -465,7 +464,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十五"/>
 
@@ -481,7 +480,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十六:"/>
 
@@ -490,7 +489,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十六"/>
 
@@ -506,7 +505,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十七:"/>
 
@@ -515,7 +514,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十七"/>
 
@@ -531,7 +530,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十八:"/>
 
@@ -540,7 +539,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十八"/>
 
@@ -556,7 +555,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十九:"/>
 
@@ -565,7 +564,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="十九"/>
 
@@ -581,7 +580,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十:"/>
 
@@ -590,7 +589,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十"/>
 
@@ -606,7 +605,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十一:"/>
 
@@ -615,7 +614,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十一"/>
 
@@ -631,7 +630,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十二:"/>
 
@@ -640,7 +639,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十二"/>
 
@@ -656,7 +655,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十三:"/>
 
@@ -665,7 +664,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十三"/>
 
@@ -681,7 +680,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十四:"/>
 
@@ -690,7 +689,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十四"/>
 
@@ -706,7 +705,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十五:"/>
 
@@ -715,7 +714,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十五"/>
 
@@ -731,7 +730,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十六:"/>
 
@@ -740,7 +739,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十六"/>
 
@@ -756,7 +755,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十七:"/>
 
@@ -765,7 +764,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十七"/>
 
@@ -781,7 +780,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十八:"/>
 
@@ -790,7 +789,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十八"/>
 
@@ -806,7 +805,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十九:"/>
 
@@ -815,7 +814,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="二十九"/>
 
@@ -831,7 +830,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="三十:"/>
 
@@ -840,7 +839,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="三十"/>
 
@@ -856,7 +855,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="三十一:"/>
 
@@ -865,7 +864,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="三十一"/>
 
@@ -883,7 +882,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    app:srcCompat="@drawable/right_arrow"/>
+                    app:srcCompat="@drawable/right_jiantou"/>
 
             </LinearLayout>
 

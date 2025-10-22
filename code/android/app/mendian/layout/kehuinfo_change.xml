@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mendian.activity.KehuinfoChangeActivity">
+    tools:context=".mendian.activity.KehuinfoChangeActivity"
+    android:background="@drawable/mendian_biaoge_bg3">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,263 +13,473 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:background="@drawable/fenquan_table_body"
+            android:layout_margin="16dp"
             android:orientation="vertical">
-
-            <TextView
+            <LinearLayout
+                android:paddingTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+               >
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="45dp"
                 android:gravity="center"
-                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 android:text="收卡人"
-                />
+                android:textColor="@color/white"
+               />
 
             <EditText
                 android:id="@+id/recipient"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入收卡人"
                 android:inputType="text"
-                android:textIsSelectable="false"/>
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
 
-            <TextView
+
+            </LinearLayout>
+            <LinearLayout
+                android:paddingTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="45dp"
                 android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="付款人" />
+                android:text="付款人"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"/>
 
             <EditText
                 android:id="@+id/cardholder"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入付款人"
                 android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="持卡人" />
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+            </LinearLayout>
+                <LinearLayout
+                    android:paddingTop="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    >
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="45dp"
+                        android:gravity="center"
+                        android:textSize="15sp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="持卡人"
+                        android:textColor="@color/white"
+                        />
 
             <EditText
                 android:id="@+id/drawee"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入持卡人"
                 android:inputType="text"
-                android:textIsSelectable="false" />
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                </LinearLayout>
+                    <LinearLayout
+                        android:paddingTop="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
 
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="发卡行" />
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:textSize="15sp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:text="发卡行"
+                            android:textColor="@color/white"
+                            />
 
             <EditText
                 android:id="@+id/issuing_bank"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入发卡行"
                 android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="账单日" />
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                    </LinearLayout>
+                        <LinearLayout
+                            android:paddingTop="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            >
+                            <TextView
+                                android:layout_width="80dp"
+                                android:layout_height="45dp"
+                                android:gravity="center"
+                                android:textSize="15sp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:text="账单日"
+                                android:textColor="@color/white"
+                                />
 
             <EditText
                 android:id="@+id/bill_day"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入账单日"
                 android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="还款日" />
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                        </LinearLayout>
+                            <LinearLayout
+                                android:paddingTop="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="55dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                >
+                                <TextView
+                                    android:layout_width="80dp"
+                                    android:layout_height="45dp"
+                                    android:gravity="center"
+                                    android:textSize="15sp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="还款日"
+                                    android:textColor="@color/white"
+                                    />
 
             <EditText
                 android:id="@+id/repayment_date"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入还款日"
                 android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="总金额" />
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                            </LinearLayout>
+                                <LinearLayout
+                                    android:paddingTop="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="55dp"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    >
+                                    <TextView
+                                        android:layout_width="80dp"
+                                        android:layout_height="45dp"
+                                        android:gravity="center"
+                                        android:textSize="15sp"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:text="总金额"
+                                        android:textColor="@color/white"
+                                        />
 
             <EditText
                 android:id="@+id/total"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入总金额"
-                android:inputType="number"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="应还款" />
+                android:inputType="text"
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                                </LinearLayout>
+                                    <LinearLayout
+                                        android:paddingTop="20dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="55dp"
+                                        android:orientation="horizontal"
+                                        android:gravity="center_vertical"
+                                        >
+                                        <TextView
+                                            android:layout_width="80dp"
+                                            android:layout_height="45dp"
+                                            android:gravity="center"
+                                            android:textSize="15sp"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:text="应还款"
+                                            android:textColor="@color/white"
+                                            />
 
             <EditText
                 android:id="@+id/repayable"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入应还款"
-                android:inputType="number"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="剩余额" />
+                android:inputType="text"
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                                    </LinearLayout>
+                                        <LinearLayout
+                                            android:paddingTop="20dp"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="55dp"
+                                            android:orientation="horizontal"
+                                            android:gravity="center_vertical"
+                                            >
+                                            <TextView
+                                                android:layout_width="80dp"
+                                                android:layout_height="45dp"
+                                                android:gravity="center"
+                                                android:textSize="15sp"
+                                                android:layout_marginStart="10dp"
+                                                android:layout_marginLeft="10dp"
+                                                android:text="剩余额"
+                                                android:textColor="@color/white"
+                                                />
 
             <EditText
                 android:id="@+id/balance"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入剩余额"
-                android:inputType="number"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="借款额" />
+                android:inputType="text"
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                                        </LinearLayout>
+                                            <LinearLayout
+                                                android:paddingTop="20dp"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="55dp"
+                                                android:orientation="horizontal"
+                                                android:gravity="center_vertical"
+                                                >
+                                                <TextView
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="45dp"
+                                                    android:gravity="center"
+                                                    android:textSize="15sp"
+                                                    android:layout_marginStart="10dp"
+                                                    android:layout_marginLeft="10dp"
+                                                    android:text="借贷款"
+                                                    android:textColor="@color/white"
+                                                    />
 
             <EditText
                 android:id="@+id/loan"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
-                android:hint="请输入借款额"
-                android:inputType="number"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="手续费" />
+                android:hint="请输入借贷款"
+                android:inputType="text"
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                                            </LinearLayout>
+                                                <LinearLayout
+                                                    android:paddingTop="20dp"
+                                                    android:layout_marginTop="10dp"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="55dp"
+                                                    android:orientation="horizontal"
+                                                    android:gravity="center_vertical"
+                                                    >
+                                                    <TextView
+                                                        android:layout_width="80dp"
+                                                        android:layout_height="45dp"
+                                                        android:gravity="center"
+                                                        android:textSize="15sp"
+                                                        android:layout_marginStart="10dp"
+                                                        android:layout_marginLeft="10dp"
+                                                        android:text="手续费"
+                                                        android:textColor="@color/white"
+                                                        />
 
             <EditText
                 android:id="@+id/service_charge"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入手续费"
-                android:inputType="number"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="电话号" />
+                android:inputType="text"
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                                                </LinearLayout>
+                                                    <LinearLayout
+                                                        android:paddingTop="20dp"
+                                                        android:layout_marginTop="10dp"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="55dp"
+                                                        android:orientation="horizontal"
+                                                        android:gravity="center_vertical"
+                                                        >
+                                                        <TextView
+                                                            android:layout_width="80dp"
+                                                            android:layout_height="45dp"
+                                                            android:gravity="center"
+                                                            android:textSize="15sp"
+                                                            android:layout_marginStart="10dp"
+                                                            android:layout_marginLeft="10dp"
+                                                            android:text="电话号"
+                                                            android:textColor="@color/white"
+                                                            />
 
             <EditText
                 android:id="@+id/telephone"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
-                android:hint="请输入电话"
-                android:inputType="number"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="密码" />
+                android:hint="请输入电话号"
+                android:inputType="text"
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                                                    </LinearLayout>
+                                                        <LinearLayout
+                                                            android:paddingTop="20dp"
+                                                            android:layout_marginTop="10dp"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="55dp"
+                                                            android:orientation="horizontal"
+                                                            android:gravity="center_vertical"
+                                                            >
+                                                            <TextView
+                                                                android:layout_width="80dp"
+                                                                android:layout_height="45dp"
+                                                                android:gravity="center"
+                                                                android:textSize="15sp"
+                                                                android:layout_marginStart="10dp"
+                                                                android:layout_marginLeft="10dp"
+                                                                android:text="密码"
+                                                                android:textColor="@color/white"
+                                                                />
 
             <EditText
                 android:id="@+id/password"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入密码"
                 android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="员工" />
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                                                        </LinearLayout>
+                                                            <LinearLayout
+                                                                android:paddingTop="20dp"
+                                                                android:layout_marginTop="10dp"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="55dp"
+                                                                android:orientation="horizontal"
+                                                                android:gravity="center_vertical"
+                                                                >
+                                                                <TextView
+                                                                    android:layout_width="80dp"
+                                                                    android:layout_height="45dp"
+                                                                    android:gravity="center"
+                                                                    android:textSize="15sp"
+                                                                    android:layout_marginStart="10dp"
+                                                                    android:layout_marginLeft="10dp"
+                                                                    android:text="员工"
+                                                                    android:textColor="@color/white"
+                                                                    />
 
             <EditText
                 android:id="@+id/staff"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入员工"
                 android:inputType="text"
-                android:textIsSelectable="false" />
-
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                                                            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -286,7 +497,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="updateClick"
                 android:text="提交"
-                android:background="#65AA68"
+                android:background="@drawable/mendian_btn_bg"
                 android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />
@@ -297,7 +508,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="insertClick"
                 android:text="提交"
-                android:background="#65AA68"
+                android:background="@drawable/mendian_btn_bg"
                 android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />

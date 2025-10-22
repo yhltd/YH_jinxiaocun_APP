@@ -146,6 +146,15 @@ public class MendianActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayout grzx = findViewById(R.id.grzx);
+        grzx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MendianActivity.this, GrzxActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void initData(){

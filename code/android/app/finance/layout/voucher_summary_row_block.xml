@@ -13,14 +13,14 @@
         android:orientation="vertical"
         android:gravity="center"
         android:elevation="2dp"
-        android:background="@drawable/shape_corner_sel"
+        android:background="@drawable/caiwu_table_body"
         android:layout_margin="5dp">
 
         <LinearLayout
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="0dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/border_bottom"
+            android:background="@drawable/caiwu_table_head"
             android:gravity="center_vertical">
 
             <TextView
@@ -28,7 +28,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:text="凭证字" />
 
@@ -55,7 +55,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="凭证号:"/>
 
@@ -64,7 +64,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="凭证号"/>
 
@@ -80,7 +80,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="录入时间:"/>
 
@@ -89,7 +89,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="录入时间"/>
 
@@ -105,7 +105,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="摘要:"/>
 
@@ -114,7 +114,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="摘要"/>
 
@@ -130,7 +130,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="科目代码:"/>
 
@@ -139,7 +139,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="科目代码"/>
 
@@ -155,7 +155,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="科目名称:"/>
 
@@ -164,7 +164,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="科目名称"/>
 
@@ -180,7 +180,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="借方金额:"/>
 
@@ -189,7 +189,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="借方金额"/>
 
@@ -205,7 +205,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="贷方金额:"/>
 
@@ -214,7 +214,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="贷方金额"/>
 
@@ -230,7 +230,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="部门:"/>
 
@@ -239,7 +239,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="部门"/>
 
@@ -255,7 +255,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="开支项目:"/>
 
@@ -264,7 +264,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="开支项目"/>
 
@@ -280,7 +280,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="备注:"/>
 
@@ -289,7 +289,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="备注"/>
 
@@ -305,7 +305,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="审核人:"/>
 
@@ -314,7 +314,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="审核人"/>
 
@@ -330,7 +330,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="应收/付:"/>
 
@@ -339,7 +339,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="应收/付"/>
 
@@ -355,7 +355,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="实收/付:"/>
 
@@ -364,7 +364,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="实收/付"/>
 
@@ -380,7 +380,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="未收/付:"/>
 
@@ -389,7 +389,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="未收/付"/>
 
@@ -407,7 +407,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    app:srcCompat="@drawable/right_arrow"/>
+                    app:srcCompat="@drawable/right_jiantou"/>
 
             </LinearLayout>
 

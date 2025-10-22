@@ -11,14 +11,14 @@
         android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@drawable/border_bottom">
+        android:background="@drawable/pcrow_main">
         <TextView
             android:gravity="center"
             android:id="@+id/department_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="部门名称"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -33,8 +33,8 @@
             android:id="@+id/view_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="页面名称"
             android:textStyle="bold"
             android:width="150dp"/>
@@ -49,8 +49,8 @@
             android:id="@+id/add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="添加"
             android:textStyle="bold"
             android:width="80dp"/>
@@ -65,8 +65,8 @@
             android:id="@+id/del"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="删除"
             android:textStyle="bold"
             android:width="80dp"/>
@@ -81,8 +81,8 @@
             android:id="@+id/upd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="修改"
             android:textStyle="bold"
             android:width="80dp"/>
@@ -97,8 +97,8 @@
             android:id="@+id/sel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             android:text="查询"
             android:textStyle="bold"
             android:width="80dp"/>

@@ -13,14 +13,14 @@
         android:orientation="vertical"
         android:gravity="center"
         android:elevation="2dp"
-        android:background="@drawable/shape_corner_sel"
+        android:background="@drawable/caiwu_table_body"
         android:layout_margin="5dp">
 
         <LinearLayout
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="0dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/border_bottom"
+            android:background="@drawable/caiwu_table_head"
             android:gravity="center_vertical">
 
             <TextView
@@ -28,7 +28,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:text="科目名称" />
 
@@ -55,7 +55,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="科目代码:"/>
 
@@ -64,7 +64,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="科目代码"/>
 
@@ -80,7 +80,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="科目等级:"/>
 
@@ -89,7 +89,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="科目等级"/>
 
@@ -105,7 +105,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="科目全称:"/>
 
@@ -114,7 +114,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="科目全称"/>
 
@@ -130,7 +130,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="方向:"/>
 
@@ -139,7 +139,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="方向"/>
 
@@ -155,7 +155,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="借贷合计:"/>
 
@@ -164,7 +164,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="借贷合计"/>
 
@@ -180,7 +180,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="明细:"/>
 
@@ -189,7 +189,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="明细"/>
 
@@ -205,7 +205,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="年初借金:"/>
 
@@ -214,7 +214,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="年初借金"/>
 
@@ -230,7 +230,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="年初贷金:"/>
 
@@ -239,7 +239,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="年初贷金"/>
 
@@ -257,7 +257,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    app:srcCompat="@drawable/right_arrow"/>
+                    app:srcCompat="@drawable/right_jiantou"/>
 
             </LinearLayout>
 

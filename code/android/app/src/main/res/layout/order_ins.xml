@@ -5,37 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mendian.activity.OrderInsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="@drawable/mendian_biaoge_bg3">
 
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@drawable/border_bottom"
-        android:gravity="center_vertical"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="20dp">
 
-        <EditText
-            android:id="@+id/this_where"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:hint="手机号/卡号/姓名"
-            android:textSize="10dp"
-            android:gravity="center"/>
-
-        <Button
-            android:id="@+id/sel_button"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:background="@drawable/search"
-            android:gravity="center_horizontal" />
-    </LinearLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="100">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -138,4 +117,40 @@
 
     </HorizontalScrollView>
 
+    <LinearLayout
+        android:id="@+id/sele_out"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/mendian_chaxun_bg"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:animateLayoutChanges="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            >
+
+        <EditText
+            android:id="@+id/this_where"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:hint="手机号/卡号/姓名"
+            android:textSize="13dp"
+            android:gravity="center"
+            android:textColorHint="#DCDCDC"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/sel_button"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/search"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

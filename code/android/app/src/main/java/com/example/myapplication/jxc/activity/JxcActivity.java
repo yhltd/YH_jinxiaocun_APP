@@ -179,6 +179,17 @@ public class JxcActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayout grzx = findViewById(R.id.grzx);
+        grzx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(JxcActivity.this, GrzxActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
         LinearLayout kehu = findViewById(R.id.kehu);
         kehu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -225,8 +236,8 @@ public class JxcActivity extends AppCompatActivity {
     private void initData(){
         banner_data = new ArrayList<>();
         banner_data.add(R.drawable.jxc_banner_01);
-        banner_data.add(R.drawable.jxc_banner_01);
-        banner_data.add(R.drawable.jxc_banner_01);
+        banner_data.add(R.drawable.jxc_lunbo1);
+        banner_data.add(R.drawable.jxc_lunbo2);
     }
 
 

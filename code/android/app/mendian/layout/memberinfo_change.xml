@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mendian.activity.MemberinfoChangeActivity">
+    tools:context=".mendian.activity.MemberinfoChangeActivity"
+    android:background="@drawable/mendian_biaoge_bg3">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,135 +14,242 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/fenquan_table_body"
+            android:layout_margin="16dp">
 
-            <TextView
+            <LinearLayout
+                android:paddingTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="账号" />
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="45dp"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="账号"
+                    android:textColor="@color/white"
+                    />
 
             <EditText
                 android:id="@+id/username"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入账号"
                 android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="密码" />
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+            </LinearLayout>
+                <LinearLayout
+                    android:paddingTop="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    >
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="45dp"
+                        android:gravity="center"
+                        android:textSize="15sp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="密码"
+                        android:textColor="@color/white"
+                        />
 
             <EditText
                 android:id="@+id/password"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入密码"
                 android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="姓名" />
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                </LinearLayout>
+                    <LinearLayout
+                        android:paddingTop="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:textSize="15sp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:text="姓名"
+                            android:textColor="@color/white"
+                            />
 
             <EditText
                 android:id="@+id/name"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入姓名"
                 android:inputType="text"
-                android:textIsSelectable="false" />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="性别" />
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                    </LinearLayout>
+                        <LinearLayout
+                            android:paddingTop="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            >
+                            <TextView
+                                android:layout_width="80dp"
+                                android:layout_height="45dp"
+                                android:gravity="center"
+                                android:textSize="15sp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:text="性别"
+                                android:textColor="@color/white"
+                                />
 
             <Spinner
                 android:id="@+id/gender"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入性别"
                 android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="账号状态" />
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                        </LinearLayout>
+                            <LinearLayout
+                                android:paddingTop="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="55dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                >
+                                <TextView
+                                    android:layout_width="80dp"
+                                    android:layout_height="45dp"
+                                    android:gravity="center"
+                                    android:textSize="15sp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="账号状态"
+                                    android:textColor="@color/white"
+                                    />
 
             <Spinner
                 android:id="@+id/state"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入账号状态"
                 android:inputType="text"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="电话号" />
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                            </LinearLayout>
+                                <LinearLayout
+                                    android:paddingTop="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="55dp"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    >
+                                    <TextView
+                                        android:layout_width="80dp"
+                                        android:layout_height="45dp"
+                                        android:gravity="center"
+                                        android:textSize="15sp"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:text="电话号"
+                                        android:textColor="@color/white"
+                                        />
 
             <EditText
                 android:id="@+id/phone"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入电话号"
-                android:inputType="number"
-                android:textIsSelectable="false" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="生日" />
+                android:inputType="text"
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                                </LinearLayout>
+                                    <LinearLayout
+                                        android:paddingTop="20dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="55dp"
+                                        android:orientation="horizontal"
+                                        android:gravity="center_vertical"
+                                        >
+                                        <TextView
+                                            android:layout_width="80dp"
+                                            android:layout_height="45dp"
+                                            android:gravity="center"
+                                            android:textSize="15sp"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:text="生日"
+                                            android:textColor="@color/white"
+                                            />
 
             <EditText
                 android:id="@+id/birthday"
+                android:textSize="15sp"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:hint="请输入生日"
                 android:inputType="text"
-                android:textIsSelectable="false" />
-
+                android:textIsSelectable="false"
+                android:textColorHint="#3A3A3A"
+                android:textColor="@color/white"/>
+                                    </LinearLayout>
 <!--            <TextView-->
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="wrap_content"-->
@@ -179,7 +287,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="updateClick"
                 android:text="提交"
-                android:background="#65AA68"
+                android:background="@drawable/mendian_btn_bg"
                 android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />
@@ -190,7 +298,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="insertClick"
                 android:text="提交"
-                android:background="#65AA68"
+                android:background="@drawable/mendian_btn_bg"
                 android:textColor="#ffffff"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />

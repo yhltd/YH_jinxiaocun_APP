@@ -6,6 +6,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -15,15 +17,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 
 import com.example.myapplication.entity.SoftTime;
 import com.example.myapplication.fenquan.activity.FenquanActivity;
@@ -56,6 +62,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private YhJinXiaoCunUserService yhJinXiaoCunUserService;
@@ -78,6 +91,10 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences loginPreference;
     private CheckBox remember;
     List<SoftTime> softTimeList;
+
+    private TextView welcomeText;
+    private ObjectAnimator colorAnimator;
+    private ObjectAnimator breathAnimator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,8 +115,25 @@ public class LoginActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         remember = findViewById(R.id.remember);
-
+        ImageView logoImage = findViewById(R.id.logoImage);
         loginPreference = getSharedPreferences("login", MODE_PRIVATE);
+
+
+        setupButtonEffects();
+// 创建上下浮动的属性动画
+        ObjectAnimator floatAnimation = ObjectAnimator.ofFloat(logoImage, "translationY", -10f, 10f);
+        floatAnimation.setDuration(1500); // 动画时长1秒
+        floatAnimation.setRepeatCount(ValueAnimator.INFINITE); // 无限重复
+        floatAnimation.setRepeatMode(ValueAnimator.REVERSE); // 往返运动
+        floatAnimation.start();
+
+
+        initView();
+        startColorAnimation();
+        startRotatingMask();
+
+
+
 
         boolean cheched = loginPreference.getBoolean("checked", false);
         if (cheched) {
@@ -124,6 +158,127 @@ public class LoginActivity extends AppCompatActivity {
 
         checkNeedPermissions();
 
+    }
+
+
+    private void startRotatingMask() {
+        View rotatingMask = findViewById(R.id.rotating_mask);
+
+        ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(
+                rotatingMask,
+                "rotation",
+                0f, 360f
+        );
+
+        rotationAnimator.setDuration(6000);
+        rotationAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        rotationAnimator.setRepeatMode(ValueAnimator.RESTART);
+        rotationAnimator.setInterpolator(new LinearInterpolator());
+        rotationAnimator.start();
+    }
+
+    private void initView() {
+        welcomeText = findViewById(R.id.welcome_text);
+    }
+
+    private void startColorAnimation() {
+        // 定义颜色数组 - 可以自定义你喜欢的颜色
+        int[] colors = {
+                Color.WHITE,                    // 白色
+                Color.parseColor("#3F51B5"),    // 蓝色
+                Color.parseColor("#4CAF50"),    // 绿色
+                Color.parseColor("#FF9800"),    // 橙色
+                Color.WHITE                     // 回到白色
+        };
+
+        // 创建 ObjectAnimator
+        colorAnimator = ObjectAnimator.ofInt(
+                welcomeText,
+                "textColor",
+                colors
+        );
+
+        // 设置动画属性
+        colorAnimator.setDuration(8000); // 4秒完成所有颜色变化
+        colorAnimator.setRepeatCount(ValueAnimator.INFINITE); // 无限循环
+        colorAnimator.setRepeatMode(ValueAnimator.RESTART); // 重新开始
+
+        // 设置颜色评估器，实现平滑过渡
+        colorAnimator.setEvaluator(new ArgbEvaluator());
+
+        // 启动动画
+        colorAnimator.start();
+    }
+
+
+    private void setupButtonEffects() {
+        Log.d("Debug", "setupButtonEffects() 方法被调用了");
+        // 1. 呼吸效果
+        setupBreathingEffect();
+
+
+
+
+    }
+
+    private void setupBreathingEffect() {
+        // 创建 X 轴缩放动画
+        ObjectAnimator scaleXAnimator = ObjectAnimator.ofFloat(signBtn, "scaleX", 1f, 1.05f, 1f);
+        scaleXAnimator.setDuration(5000);
+        scaleXAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        scaleXAnimator.setRepeatMode(ValueAnimator.RESTART);
+
+        // 创建 Y 轴缩放动画
+        ObjectAnimator scaleYAnimator = ObjectAnimator.ofFloat(signBtn, "scaleY", 1f, 1.05f, 1f);
+        scaleYAnimator.setDuration(5000);
+        scaleYAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        scaleYAnimator.setRepeatMode(ValueAnimator.RESTART);
+
+        // 同时启动两个动画
+        scaleXAnimator.start();
+        scaleYAnimator.start();
+    }
+
+    private void animateButtonClick(View view) {
+        // 停止呼吸动画
+        if (breathAnimator != null) {
+            breathAnimator.cancel();
+        }
+
+        // 点击动画序列
+        view.animate()
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(80)
+                .withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.animate()
+                                .scaleX(1f)
+                                .scaleY(1f)
+                                .setDuration(80)
+                                .withEndAction(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        // 重新开始呼吸动画
+                                        if (breathAnimator != null) {
+                                            breathAnimator.start();
+                                        }
+                                    }
+                                })
+                                .start();
+                    }
+                })
+                .start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 在 Activity 销毁时停止动画，避免内存泄漏
+        if (colorAnimator != null && colorAnimator.isRunning()) {
+            colorAnimator.cancel();
+        }
     }
 
     private void checkNeedPermissions() {
@@ -216,6 +371,14 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             renyuanService = new RenyuanService();
                             List<String> list = renyuanService.getCompany();
+
+                            // 添加调试日志
+                            Log.d("LoginActivity", "分权系统公司列表: " + (list != null ? list.size() : "null"));
+                            if (list != null) {
+                                for (String comp : list) {
+                                    Log.d("LoginActivity", "公司: " + comp);
+                                }
+                            }
                             adapter = new ArrayAdapter<String>(LoginActivity.this, android.R.layout.simple_spinner_dropdown_item, list);
                             if (list.size() > 0) {
                                 msg.obj = adapter;
@@ -300,6 +463,9 @@ public class LoginActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // 缩放动画
+                animateButtonClick(v);
                 if (!checkForm()) return;
 
                 InputUtil.hideInput(LoginActivity.this);

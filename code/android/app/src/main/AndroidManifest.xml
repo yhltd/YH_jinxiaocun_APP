@@ -19,7 +19,7 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".MyApplication"
@@ -29,6 +29,7 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/yhlogo"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/Theme.MyApplication">
 
         <activity
@@ -57,6 +58,26 @@
             android:label="进销存首页">
             <intent-filter>
                 <action android:name="android.intent.action.JxcActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jxc.activity.GsxqActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="公司详情">
+            <intent-filter>
+                <action android:name="android.intent.action.GsxqActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jxc.activity.GrzxActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="个人中心">
+            <intent-filter>
+                <action android:name="android.intent.action.GrzxActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -515,6 +536,16 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".finance.activity.GrzxActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="个人中心">
+            <intent-filter>
+                <action android:name="android.intent.action.GrzxActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <!--    排产    -->
         <activity
             android:name=".scheduling.activity.SchedulingActivity"
@@ -522,6 +553,16 @@
             android:label="首页">
             <intent-filter>
                 <action android:name="android.intent.action.ExpenditureActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.GrzxActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="个人中心">
+            <intent-filter>
+                <action android:name="android.intent.action.GrzxActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -908,6 +949,16 @@
         </activity>
 
         <activity
+            android:name=".fenquan.activity.GrzxActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="个人中心">
+            <intent-filter>
+                <action android:name="android.intent.action.GrzxActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".fenquan.activity.RenyuanQuanXianActivity"
             android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="人员权限设置">
@@ -1025,6 +1076,16 @@
             android:label="人员信息管理">
             <intent-filter>
                 <action android:name="android.intent.action.RenYuanXinXiGuanLiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.GrzxActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="个人中心">
+            <intent-filter>
+                <action android:name="android.intent.action.GrzxActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -1256,6 +1317,16 @@
             android:label="首页">
             <intent-filter>
                 <action android:name="android.intent.action.JiaowuActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiaowu.activity.GrzxActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="个人中心">
+            <intent-filter>
+                <action android:name="android.intent.action.GrzxActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -1507,6 +1578,16 @@
             android:label="首页">
             <intent-filter>
                 <action android:name="android.intent.action.MendianActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".mendian.activity.GrzxActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="个人中心">
+            <intent-filter>
+                <action android:name="android.intent.action.GrzxActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

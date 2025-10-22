@@ -7,12 +7,12 @@
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".jxc.activity.MingXiActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/jxc_biaoge_bg2">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_weight="10">
+        >
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -39,7 +39,8 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:hint=" 选择开始时间" />
+                android:hint=" 选择开始时间"
+                android:textSize="13dp"/>
 
             <ImageView
                 android:layout_width="30dp"
@@ -51,54 +52,30 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:hint=" 选择结束时间" />
+                android:hint=" 选择结束时间"
+                android:textSize="13dp"/>
+
+            <Button
+                android:id="@+id/sel_button"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:text="查询"
+                tools:ignore="MissingConstraints"
+                android:gravity="center"
+                android:background="@null"
+                android:textSize="17dp"
+                android:textColor="@color/blue"/>
         </LinearLayout>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_weight="8"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        android:gravity="center"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/chear_btn"
-            android:layout_width="110dp"
-            android:layout_height="35dp"
-            android:onClick="switchClick"
-            android:text="切换列表"
-            tools:ignore="MissingConstraints"
-            android:background="#90EE90"
-            android:textSize="17dp"
-            android:textColor="@color/white"/>
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            android:gravity="center_horizontal"/>
-        <Button
-            android:id="@+id/sel_button"
-            android:layout_width="110dp"
-            android:layout_height="35dp"
-            android:text="查询"
-            tools:ignore="MissingConstraints"
-            android:gravity="center"
-            android:background="#90EE90"
-            android:textSize="17dp"
-            android:textColor="@color/white"/>
-    </LinearLayout>
     </LinearLayout>
     <HorizontalScrollView
         android:id="@+id/list_table"
         android:visibility="gone"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="75"
+        android:layout_weight="100"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp">
@@ -111,7 +88,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@color/title"
+                android:background="#0D35FD"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -353,11 +330,11 @@
     <ListView
         android:id="@+id/list_block"
         android:layout_width="fill_parent"
-        android:layout_height="300dp"
+        android:layout_height="0dp"
         android:layout_marginLeft="3dp"
         android:layout_marginTop="1dp"
         android:layout_marginRight="3dp"
-        android:layout_weight="65"
+        android:layout_weight="100"
         android:divider="@null"
         android:paddingBottom="5dp" />
 
@@ -367,7 +344,7 @@
         android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:layout_weight="10"
         android:layout_marginTop="10dp"
         android:gravity="center"
@@ -383,11 +360,11 @@
         <Button
             android:id="@+id/export_button"
             android:layout_width="100dp"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:text="导出excel"
             tools:ignore="MissingConstraints"
             android:gravity="center"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/jxc_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -400,11 +377,11 @@
             android:gravity="center_horizontal"/>
         <Button
             android:layout_width="100dp"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:onClick="onOrderScanClick"
             android:text="打印二维码"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/jxc_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -417,11 +394,11 @@
             android:gravity="center_horizontal"/>
         <Button
             android:layout_width="100dp"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:onClick="onOrderScanClick2"
             android:text="打印条形码"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/jxc_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
         <ImageView
@@ -432,6 +409,7 @@
             android:visibility="invisible"
             android:gravity="center_horizontal"/>
     </LinearLayout>
+
 <!--    <LinearLayout-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="30dp"-->
@@ -494,5 +472,27 @@
             android:orientation="vertical"
             android:visibility="invisible"
             android:gravity="center_horizontal"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/chear_btn"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
+            android:onClick="switchClick"
+            android:text="切换列表"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/jxc_btn_bg"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+
     </LinearLayout>
 </LinearLayout>

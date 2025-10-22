@@ -417,7 +417,7 @@ public class GongZuoTaiShiYongChangeActivity extends AppCompatActivity {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                if(list != null){
+                if(list != null && !list.isEmpty() && list.get(0) != null){
                     A.setText(list.get(0).getA());
                     B.setText(list.get(0).getB());
                     C.setText(list.get(0).getC());

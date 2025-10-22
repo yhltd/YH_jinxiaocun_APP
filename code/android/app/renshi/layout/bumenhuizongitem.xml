@@ -800,6 +800,7 @@
                 android:layout_height="539dp"
                 android:layout_weight="1"
                 android:dividerHeight="1dp"
+                android:background="@drawable/yemianbeijing"
                 android:paddingBottom="5dp" />
         </LinearLayout>
 

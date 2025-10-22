@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import com.example.myapplication.R;
 
 
@@ -61,9 +63,14 @@ public class LeftListAdapter extends BaseAdapter {
         public void updataView(final int position) {
             left_list_item.setText(leftStr[position]);
             if (flagArray[position]) {
-                left_list_item.setBackgroundColor(Color.rgb(255, 255, 255));
+                // 选中状态 - 设置背景颜色和文字颜色
+                left_list_item.setBackgroundResource(R.drawable.mendian_diandian_left_xuanzhong);
+
+                left_list_item.setTextColor(Color.WHITE); // 选中文字颜色
             } else {
-                left_list_item.setBackgroundColor(Color.TRANSPARENT);
+                // 未选中状态 - 设置背景颜色和文字颜色
+                left_list_item.setBackgroundColor(Color.TRANSPARENT); // 默认背景
+                left_list_item.setTextColor(Color.BLACK); // 默认文字颜色
             }
         }
 

@@ -1,5 +1,8 @@
 package com.example.myapplication.mendian.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -50,6 +53,12 @@ public class ZongjiaoActivity extends AppCompatActivity {
 
     List<YhMendianZongjiao> list;
 
+    private boolean isExpanded = true;
+    private LinearLayout seleOut;
+    private Button toggleButton;
+    private int originalHeight;
+    private boolean isAnimating = false; // 防止重复点击
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -76,7 +85,78 @@ public class ZongjiaoActivity extends AppCompatActivity {
         showDateOnClick(start_date);
         showDateOnClick(end_date);
         initList();
+
+        seleOut = findViewById(R.id.sele_out);
+        toggleButton = findViewById(R.id.toggle_button);
+
+        // 获取原始高度
+        seleOut.post(new Runnable() {
+            @Override
+            public void run() {
+                originalHeight = seleOut.getHeight();
+                updateButtonText();
+            }
+        });
+        // 或者通过代码设置点击监听
+        toggleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isAnimating) {
+                    toggleContainer();
+                }
+            }
+        });
     }
+
+    private void toggleContainer() {
+        if (isAnimating) return;
+
+        isAnimating = true;
+        int startHeight = seleOut.getHeight();
+        int endHeight = isExpanded ? 0 : originalHeight;
+
+        ValueAnimator animator = ValueAnimator.ofInt(startHeight, endHeight);
+        animator.setDuration(300);
+
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int val = (int) animation.getAnimatedValue();
+                ViewGroup.LayoutParams layoutParams = seleOut.getLayoutParams();
+                layoutParams.height = val;
+                seleOut.setLayoutParams(layoutParams);
+            }
+        });
+
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                isAnimating = false;
+                isExpanded = !isExpanded;
+                updateButtonText();
+
+                // 动画结束后，如果完全收起，可以设置visibility为GONE（可选）
+                if (seleOut.getHeight() == 0) {
+                    // seleOut.setVisibility(View.GONE);
+                } else {
+                    // seleOut.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        animator.start();
+
+        // 立即更新按钮文本，提供即时反馈
+        updateButtonText();
+    }
+
+    private void updateButtonText() {
+        if (toggleButton != null) {
+            toggleButton.setText(isExpanded ? "收起" : "展开");
+        }
+    }
+
 
     public View.OnClickListener selClick() {
         return new View.OnClickListener() {

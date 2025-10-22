@@ -13,14 +13,13 @@
         android:orientation="vertical"
         android:gravity="center"
         android:elevation="2dp"
-        android:background="@drawable/shape_corner_sel"
+        android:background="@drawable/jxc_table_body_bg2"
         android:layout_margin="5dp">
 
         <LinearLayout
-            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/border_bottom"
+            android:background="@drawable/jxc_table_head"
             android:gravity="center_vertical">
 
             <TextView
@@ -28,7 +27,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:text="商品名称" />
 
@@ -55,7 +54,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="商品代码:"/>
 
@@ -64,7 +63,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="商品代码"/>
 
@@ -80,7 +79,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="商品类别:"/>
 
@@ -89,7 +88,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="商品类别"/>
 
@@ -106,7 +105,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="期初数量:" />
 
@@ -115,7 +114,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="期初数量" />
 
@@ -131,7 +130,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="期初金额:"/>
 
@@ -140,7 +139,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="期初金额"/>
 
@@ -156,7 +155,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="入库数量:"/>
 
@@ -165,7 +164,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="入库数量"/>
 
@@ -181,7 +180,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="入库金额:"/>
 
@@ -190,7 +189,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="入库金额"/>
 
@@ -206,7 +205,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="出库数量:"/>
 
@@ -215,7 +214,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="出库数量"/>
 
@@ -231,7 +230,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="出库金额:"/>
 
@@ -240,7 +239,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="出库金额"/>
 
@@ -256,7 +255,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="结存数量:"/>
 
@@ -265,7 +264,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="结存数量"/>
 
@@ -281,7 +280,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="结存金额:"/>
 
@@ -290,7 +289,7 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/list_block"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:text="结存金额"/>
 
@@ -308,7 +307,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    app:srcCompat="@drawable/right_arrow"/>
+                    app:srcCompat="@drawable/right_jiantou"/>
 
             </LinearLayout>
 

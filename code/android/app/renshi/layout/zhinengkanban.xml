@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="100"
-    tools:context=".finance.activity.ZhiNengKanBanActivity">
+    tools:context=".finance.activity.ZhiNengKanBanActivity"
+    android:background="@drawable/biaoge_bg">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -20,24 +21,27 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint="起始时间" />
+            android:hint="起始时间"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <EditText
             android:id="@+id/end_date"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:hint="终止时间" />
+            android:hint="终止时间"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <Button
             android:id="@+id/sel_button"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="40dp"
             android:text="查询"
-            android:background="@drawable/btn_style"
+            android:background="@null"
             android:textSize="17dp"
-            android:textColor="@color/white"
-            android:layout_marginEnd="10dp"/>
+            android:textColor="@color/blue" />
 
     </LinearLayout>
 
@@ -46,27 +50,29 @@
         android:layout_height="0dp"
         android:layout_weight="8"
         android:gravity="center_vertical"
-        android:background="@drawable/shape_corner"
+        android:background="@drawable/caiwu_kanban_zongjie"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp">
 
         <TextView
-            android:gravity="center"
+            android:gravity="start|center_vertical"
             android:id="@+id/jiejin_sum"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:textSize="17dp"
+            android:textColor="@color/white"
             />
 
         <TextView
-            android:gravity="center"
+            android:gravity="start|center_vertical"
             android:id="@+id/daijin_sum"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:textSize="17dp"
+            android:textColor="@color/white"
             />
 
     </LinearLayout>
@@ -76,27 +82,30 @@
         android:layout_height="0dp"
         android:layout_weight="8"
         android:gravity="center_vertical"
-        android:background="@drawable/shape_corner"
-        android:layout_marginTop="10dp"
+        android:background="@drawable/caiwu_kanban_zongjie"
+
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp">
 
         <TextView
-            android:gravity="center"
+            android:gravity="start|center_vertical"
             android:id="@+id/jiefang_sum"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:textSize="17dp"
+            android:textColor="@color/white"
             />
 
         <TextView
-            android:gravity="center"
+            android:gravity="start|center_vertical"
             android:id="@+id/daifang_sum"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:textSize="17dp"
+            android:textColor="@color/white"
+
             />
 
     </LinearLayout>
@@ -113,103 +122,146 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                android:text="年初余额" />
+                android:textColor="@color/white"
+                android:text="年初余额"
+                android:background="@drawable/caiwu_table_body"
+                android:gravity="center"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:layout_marginTop="10dp"
                 android:id="@+id/bc_1"
                 android:layout_width="match_parent"
-                android:layout_height="400dp" />
+                android:layout_height="400dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/caiwu_form_body"/>
 
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                android:text="凭证金额" />
+                android:textColor="@color/white"
+                android:text="凭证金额"
+                android:background="@drawable/caiwu_table_body"
+                android:gravity="center"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
 
             <com.github.mikephil.charting.charts.HorizontalBarChart
                 android:layout_marginTop="10dp"
                 android:id="@+id/bc_2"
                 android:layout_width="match_parent"
-                android:layout_height="400dp" />
+                android:layout_height="400dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+
+                android:background="@drawable/caiwu_form_body"/>
 
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                android:text="科目余额" />
+                android:textColor="@color/white"
+                android:text="科目余额"
+                android:background="@drawable/caiwu_table_body"
+                android:gravity="center"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:layout_marginTop="10dp"
                 android:id="@+id/bc_3"
                 android:layout_width="match_parent"
-                android:layout_height="400dp" />
+                android:layout_height="400dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/caiwu_form_body"/>
 
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                android:text="资产负债" />
+                android:textColor="@color/white"
+                android:text="资产负债"
+                android:background="@drawable/caiwu_table_body"
+                android:gravity="center"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:layout_marginTop="10dp"
                 android:id="@+id/bc_4"
                 android:layout_width="match_parent"
-                android:layout_height="400dp" />
+                android:layout_height="400dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/caiwu_form_body"/>
 
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                android:text="利润合计" />
+                android:textColor="@color/white"
+                android:text="利润合计"
+                android:background="@drawable/caiwu_table_body"
+                android:gravity="center"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:layout_marginTop="10dp"
                 android:id="@+id/bc_5"
                 android:layout_width="match_parent"
-                android:layout_height="400dp" />
+                android:layout_height="400dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/caiwu_form_body"/>
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:textSize="24dp"
-                android:textColor="@color/black"
-                android:text="现金流量" />
+                android:textColor="@color/white"
+                android:text="现金流量"
+                android:background="@drawable/caiwu_table_body"
+                android:gravity="center"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:layout_marginTop="10dp"
                 android:id="@+id/bc_6"
                 android:layout_width="match_parent"
-                android:layout_height="400dp" />
+                android:layout_height="400dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/caiwu_form_body"/>
 
         </LinearLayout>
 

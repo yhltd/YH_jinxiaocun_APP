@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".jxc.activity.JiChuZiLiaoChangeActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/jxc_biaoge_bg2">
 
 <ScrollView
     android:layout_width="match_parent"
@@ -189,7 +189,7 @@
                 android:paddingBottom="20dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:background="@drawable/form_foot">
+                android:background="@drawable/form_body">
 
                 <TextView
                     android:gravity="center"
@@ -217,34 +217,57 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:orientation="vertical"
-                android:background="@drawable/shape_corner"
-                android:gravity="center">
+                android:layout_height="235dp"
 
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="商品图片:" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
                 <ImageView
                     android:id="@+id/mark1"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:background="@drawable/image_border"
-                    android:padding="3dp"/>
-
+                    android:padding="3dp"
+                   />
+            </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/qr_code_line"
                 android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:orientation="vertical"
-                android:background="@drawable/shape_corner"
-                android:gravity="center">
+                android:layout_height="235dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_foot">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="商品二维码:" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
 
                 <ImageView
                     android:id="@+id/qr_code"
@@ -252,7 +275,7 @@
                     android:layout_height="200dp"
                     android:background="@drawable/image_border"
                     android:padding="3dp"/>
-
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -275,7 +298,7 @@
                 android:onClick="clearClick"
                 android:text="清空"
                 tools:ignore="MissingConstraints"
-                android:background="@drawable/btn_style"
+                android:background="@drawable/jxc_btn_bg"
                 android:textSize="17dp"
                 android:textColor="@color/white"/>
 
@@ -295,7 +318,7 @@
                 android:text="提交"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints"
-                android:background="@drawable/btn_style"
+                android:background="@drawable/jxc_btn_bg"
                 android:textSize="17dp"
                 android:textColor="@color/white"/>
 
@@ -307,7 +330,7 @@
                 android:text="提交"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints"
-                android:background="@drawable/btn_style"
+                android:background="@drawable/jxc_btn_bg"
                 android:textSize="17dp"
                 android:textColor="@color/white"/>
         </LinearLayout>

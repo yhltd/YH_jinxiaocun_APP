@@ -5,10 +5,103 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/zhuyebeijing"
     tools:context=".renshi.activity.RenShiActivity">
+
+    <!-- 🆕 悬浮图片容器 - 放在所有视图的最前面 -->
+    <RelativeLayout
+        android:id="@+id/floating_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:elevation="20dp">
+
+        <ImageView
+            android:id="@+id/floating_image"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart" />
+
+        <TextView
+            android:id="@+id/dialog_close_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="top|end"
+            android:background="@drawable/close_button_bg"
+            android:gravity="center"
+            android:text="×"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+    <!-- 第一个内容展示区 - 轮播图位置 -->
+    <RelativeLayout
+        android:id="@+id/top_content_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/white"
+        android:elevation="8dp">
+
+        <ImageView
+            android:id="@+id/carousel_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:background="#f0f0f0" />
+
+        <TextView
+            android:id="@+id/indicator_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/carousel_image"
+            android:layout_centerHorizontal="true"
+            android:background="#80000000"
+            android:padding="8dp"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/carousel_close_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignTop="@id/carousel_image"
+            android:layout_alignEnd="@id/carousel_image"
+            android:background="@drawable/close_button_bg"
+            android:gravity="center"
+            android:text="×"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <!-- 第二个内容展示区 - 跑马灯位置 -->
+    <TextView
+        android:id="@+id/top_content_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_content_1"
+        android:padding="12dp"
+        android:background="#f0f0f0"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scrollHorizontally="true"
+        android:text="加载中..."
+        android:textSize="16sp"
+        android:textColor="#333333" />
+
 
     <com.example.myapplication.utils.MarqueeTextView
         android:id="@+id/marquee"
+        android:layout_below="@id/top_content_2"
         android:layout_marginTop="7dp"
         app:layout_widthPercent="100%"
         app:layout_heightPercent="5%"
@@ -17,15 +110,15 @@
         android:ellipsize="marquee"
         android:singleLine="true"
         android:marqueeRepeatLimit="marquee_forever"/>
-    >
 
+    <!-- Banner - 现在在MarqueeTextView下面 -->
     <com.youth.banner.Banner
         android:id="@+id/main_banner"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/marquee"
         app:banner_radius="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="3dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         app:banner_loop_time="5000"
@@ -33,11 +126,12 @@
         app:layout_widthPercent="100%"
         />
 
+    <!-- ScrollView - 现在在Banner下面 -->
     <ScrollView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:id="@+id/main_scollview"
-        app:layout_marginTopPercent="27%"
+        android:layout_below="@id/main_banner"
         app:layout_heightPercent="78%">
 
         <LinearLayout
@@ -52,7 +146,13 @@
                 android:layout_marginStart="27dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif-medium"
                 android:text="基础数据" />
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -69,9 +169,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/kaoqinbiao" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/kqb" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -92,9 +192,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/renyuanxinxiguanli" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/ryxxgl" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -115,9 +215,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/baopan" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/bp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -138,9 +238,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/peizhibiao" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/pzb" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -169,9 +269,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:background="@drawable/gongzimingxi" />
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/gzmx" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -181,9 +281,11 @@
                     android:textColor="@color/main_text"
                     android:textSize="15sp"
                     tools:ignore="RtlSymmetry" />
+
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/grzx"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -191,18 +293,19 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                     />
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/gzmx" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text=""
+                    android:text="个人中心"
                     android:textColor="@color/main_text"
                     android:textSize="15sp"
                     tools:ignore="RtlSymmetry" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -251,12 +354,23 @@
 
         </LinearLayout>
 
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="27dp"-->
+<!--                android:layout_marginLeft="24dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:text="查询/汇总" />-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="27dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif-medium"
                 android:text="查询/汇总" />
 
             <LinearLayout
@@ -274,9 +388,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/baoshui" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/bs" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -297,9 +411,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/kaoqinjilu" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/kqjl" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -320,9 +434,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/bumenhuizong" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/bmhz" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -343,9 +457,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/shebao" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/sb" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -374,9 +488,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/yuangongdangan" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/ygda" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -397,9 +511,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/gerensuodeshui" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/grsds" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -420,9 +534,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/gongzitiao" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/gzt" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -443,9 +557,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/shengritixing" />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:background="@drawable/srtx" />
 
                     <TextView
                         android:layout_width="wrap_content"

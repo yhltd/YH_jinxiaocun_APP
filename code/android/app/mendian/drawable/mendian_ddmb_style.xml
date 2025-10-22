@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 圆角遮罩 -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners    android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp" />
+            <solid android:color="@android:color/white" />
+        </shape>
+    </item>
+
+    <!-- 图片，使用 inset 控制边距 -->
+    <item
+        android:left="3dp"
+        android:top="0dp"
+        android:right="3dp"
+        android:bottom="3dp">
+        <bitmap
+            android:src="@drawable/mendian_ddmb_bg2"
+            android:gravity="center|fill" />
+    </item>
+</layer-list>

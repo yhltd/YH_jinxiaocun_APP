@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/WhiteSmoke"
+    android:background="@drawable/jxc_biaoge_bg2"
     tools:context=".jxc.activity.KehuChangeActivity">
 
 <ScrollView
@@ -153,7 +153,7 @@
             android:onClick="clearClick"
             android:text="清空"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/jxc_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -173,7 +173,7 @@
             android:text="提交"
             android:visibility="gone"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/jxc_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -185,7 +185,7 @@
             android:text="提交"
             android:visibility="gone"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/jxc_btn_bg"
             android:textSize="17dp"
             android:textColor="@color/white"/>
     </LinearLayout>

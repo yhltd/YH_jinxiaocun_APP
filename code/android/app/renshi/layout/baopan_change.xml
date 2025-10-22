@@ -8,266 +8,270 @@
     tools:context=".renshi.activity.BaoPanChangeActivity"
     android:background="@color/WhiteSmoke">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:background="@drawable/yemianbeijing"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+
             android:orientation="vertical">
 
             <LinearLayout
-                android:paddingTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/form_head">
+                android:orientation="vertical">
 
-                <TextView
-                    android:gravity="center"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:text="实发工资:" />
-
-                <EditText
-                    android:id="@+id/shifa_gongzi"
-                    android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:hint="请输入实发工资"
-                    android:inputType="text"
-                    android:textIsSelectable="false" />
+                    android:layout_height="75dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_corner_sel"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="20dp">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="实发工资:"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/shifa_gongzi"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/form_input"
+                        android:hint="请输入实发工资"
+                        android:inputType="text"
+                        android:textIsSelectable="false"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/shape_corner_sel"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="个人支出:"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/geren_zhichu"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/form_input"
+                        android:hint="请输入个人支出"
+                        android:inputType="text"
+                        android:textIsSelectable="false"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/shape_corner_sel"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="企业支出:"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/qiye_zhichu"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/form_input"
+                        
+                        android:hint="请输入企业支出"
+                        
+                        android:inputType="text"
+                        android:textIsSelectable="false"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/shape_corner_sel"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="员工人数:"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/yuangong_renshu"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/form_input"
+                        
+                        android:hint="请输入员工人数"
+                        
+                        android:inputType="text"
+                        android:textIsSelectable="false"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/shape_corner_sel"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="全勤天数:"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/quanqin_tianshu"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/form_input"
+                        
+                        android:hint="请输入全勤天数"
+                        
+                        android:inputType="text"
+                        android:textIsSelectable="false"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/shape_corner_sel"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="审批人:"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/shenpiren"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/form_input"
+                        
+                        android:hint="请输入审批人"
+                        
+                        android:inputType="text"
+                        android:textIsSelectable="false"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:background="@drawable/shape_corner_sel"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="20sp">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="日期:"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/riqi"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/form_input"
+                        
+                        android:hint="请输入日期"
+                        
+                        android:inputType="text"
+                        android:textIsSelectable="false"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/form_body">
-
-                <TextView
-                    android:gravity="center"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:text="个人支出:" />
-
-                <EditText
-                    android:id="@+id/geren_zhichu"
-                    android:textSize="15sp"
-                    android:background="@drawable/form_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:hint="请输入个人支出"
-                    android:inputType="text"
-                    android:textIsSelectable="false" />
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/form_body">
-
-                <TextView
-                    android:gravity="center"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:text="企业支出:" />
-
-                <EditText
-                    android:id="@+id/qiye_zhichu"
-                    android:textSize="15sp"
-                    android:background="@drawable/form_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:hint="请输入企业支出"
-                    android:inputType="text"
-                    android:textIsSelectable="false" />
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/form_body">
-
-                <TextView
-                    android:gravity="center"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:text="员工人数:" />
-
-                <EditText
-                    android:id="@+id/yuangong_renshu"
-                    android:textSize="15sp"
-                    android:background="@drawable/form_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:hint="请输入员工人数"
-                    android:inputType="text"
-                    android:textIsSelectable="false" />
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/form_body">
-
-                <TextView
-                    android:gravity="center"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:text="全勤天数:" />
-
-                <EditText
-                    android:id="@+id/quanqin_tianshu"
-                    android:textSize="15sp"
-                    android:background="@drawable/form_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:hint="请输入全勤天数"
-                    android:inputType="text"
-                    android:textIsSelectable="false" />
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/form_body">
-
-                <TextView
-                    android:gravity="center"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:text="审批人:" />
-
-                <EditText
-                    android:id="@+id/shenpiren"
-                    android:textSize="15sp"
-                    android:background="@drawable/form_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:hint="请输入审批人"
-                    android:inputType="text"
-                    android:textIsSelectable="false" />
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:paddingBottom="20dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/form_foot">
-
-                <TextView
-                    android:gravity="center"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:text="日期:" />
-
-                <EditText
-                    android:id="@+id/riqi"
-                    android:textSize="15sp"
-                    android:background="@drawable/form_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:hint="请输入日期"
-                    android:inputType="text"
-                    android:textIsSelectable="false" />
-
-            </LinearLayout>
-
 
 
         </LinearLayout>
 
 
-
-    </LinearLayout>
-
-
-</ScrollView>
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -287,7 +291,7 @@
             android:onClick="clearClick"
             android:text="清空"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/newbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -307,7 +311,7 @@
             android:text="提交"
             android:visibility="gone"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/newbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 
@@ -319,7 +323,7 @@
             android:text="提交"
             android:visibility="gone"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/newbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
     </LinearLayout>

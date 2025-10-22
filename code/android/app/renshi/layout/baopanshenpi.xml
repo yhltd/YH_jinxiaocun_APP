@@ -14,13 +14,14 @@
         android:layout_height="0dp"
         android:layout_weight="8"
         android:gravity="center_vertical"
-        android:background="@drawable/shape_corner_up"
+        android:background="@drawable/shape_corner"
         android:layout_marginTop="5dp">
         <EditText
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:textColorHint="#4DC5D5"
             android:hint=" 姓名" />
     </LinearLayout>
 
@@ -30,12 +31,14 @@
         android:layout_height="0dp"
         android:layout_weight="8"
         android:gravity="center_vertical"
-        android:background="@drawable/shape_corner_down">
+        android:background="@drawable/shape_corner">
         <EditText
             android:id="@+id/start_date"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:textColorHint="#4DC5D5"
+            android:textColor="#4DC5D5"
             android:hint=" 选择开始时间" />
 
         <ImageView
@@ -48,6 +51,8 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:textColorHint="#4DC5D5"
+            android:textColor="#4DC5D5"
             android:hint=" 选择结束时间" />
 
         <Button
@@ -55,7 +60,7 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:text="查询"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/newbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"
             android:layout_marginEnd="10dp"/>
@@ -89,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:width="100dp"
                     android:text="实发工资"
-                    android:textColor="@color/title_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -104,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:width="100dp"
                     android:text="个人支出"
-                    android:textColor="@color/title_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -119,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:width="100dp"
                     android:text="企业支出"
-                    android:textColor="@color/title_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -134,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:width="100dp"
                     android:text="员工人数"
-                    android:textColor="@color/title_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -149,7 +154,7 @@
                     android:layout_height="wrap_content"
                     android:width="100dp"
                     android:text="全勤天数"
-                    android:textColor="@color/title_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -164,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:width="100dp"
                     android:text="审批人"
-                    android:textColor="@color/title_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -179,7 +184,7 @@
                     android:layout_height="wrap_content"
                     android:width="100dp"
                     android:text="日期"
-                    android:textColor="@color/title_text"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -209,6 +214,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"
+        android:background="@drawable/yemianbeijing"
         android:divider="@null"
         android:paddingBottom="5dp" />
 
@@ -231,7 +237,7 @@
             android:onClick="switchClick"
             android:text="切换列表"
             tools:ignore="MissingConstraints"
-            android:background="@drawable/btn_style"
+            android:background="@drawable/newbtn_style"
             android:textSize="17dp"
             android:textColor="@color/white"/>
 

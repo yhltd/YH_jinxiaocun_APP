@@ -3,6 +3,7 @@ package com.example.myapplication.mendian.entity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -94,11 +95,16 @@ public class MainSectionedAdapter extends SectionedBaseAdapter {
             LayoutInflater inflator = (LayoutInflater) parent.getContext()
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             layout = (LinearLayout) inflator.inflate(R.layout.header_item, null);
+            // 设置悬浮栏背景颜色
+            layout.setBackgroundResource(R.drawable.mendian_diandan_xuanfubg);
         } else {
             layout = (LinearLayout) convertView;
         }
         layout.setClickable(false);
         ((TextView) layout.findViewById(R.id.textItem)).setText(leftStr[section]);
+        // 设置文字颜色
+
+        ((TextView) layout.findViewById(R.id.textItem)).setTextColor(Color.WHITE);
         return layout;
     }
 

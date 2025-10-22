@@ -12,7 +12,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:elevation="3dp"
-        android:background="@drawable/shape_corner_sel">
+        android:background="@drawable/jxc_table_body">
         <TextView
             android:gravity="center"
             android:id="@+id/spDm"

@@ -153,6 +153,15 @@ public class FenquanActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayout grzx = findViewById(R.id.grzx);
+        grzx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FenquanActivity.this, GrzxActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private long exitTime = 0;
@@ -177,8 +186,8 @@ public class FenquanActivity extends AppCompatActivity {
     private void initData(){
         banner_data = new ArrayList<>();
         banner_data.add(R.drawable.fenquan_banner_01);
-        banner_data.add(R.drawable.fenquan_banner_01);
-        banner_data.add(R.drawable.fenquan_banner_01);
+        banner_data.add(R.drawable.fenquan_lunbo1);
+        banner_data.add(R.drawable.fenquan_lunbo2);
     }
 
     private void systeminit() {

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".jiaowu.activity.KeShiTongJiChangeActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@drawable/biaoge_bg2">
 
 <ScrollView
     android:layout_width="match_parent"
@@ -119,7 +119,8 @@
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
-                    android:textIsSelectable="false" />
+                    android:textIsSelectable="false"
+                    android:paddingLeft="10dp"/>
 
             </LinearLayout>
 
@@ -183,7 +184,8 @@
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
-                    android:textIsSelectable="false" />
+                    android:textIsSelectable="false"
+                    android:paddingLeft="10dp"/>
 
             </LinearLayout>
 
@@ -250,7 +252,10 @@
             android:onClick="updateClick"
             android:text="提交"
             android:visibility="gone"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            android:textSize="17dp"
+            android:background="@drawable/jiaowu_btn_bg"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/insert_btn"
@@ -259,7 +264,10 @@
             android:onClick="insertClick"
             android:text="提交"
             android:visibility="gone"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            android:textSize="17dp"
+            android:background="@drawable/jiaowu_btn_bg"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
 </androidx.percentlayout.widget.PercentRelativeLayout>
