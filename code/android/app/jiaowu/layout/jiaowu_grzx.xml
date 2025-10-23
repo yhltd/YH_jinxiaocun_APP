@@ -99,6 +99,7 @@
             android:background="@drawable/grzx_huanyingbg"
             android:layout_margin="10dp">
             <TextView
+                android:id="@+id/welcome_text"
                 android:layout_width="match_parent"
                 android:textSize="20dp"
                 android:layout_height="40dp"

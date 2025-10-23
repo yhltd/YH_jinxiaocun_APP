@@ -65,7 +65,7 @@ public class RenShiActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.renshi_main);
 
-        pushNewsService = new com.example.myapplication.renshi.service.PushNewsService();
+        pushNewsService = new com.example.myapplication.renshi.service.PushNewsService(this);
         loadPushNewsData();
 
 

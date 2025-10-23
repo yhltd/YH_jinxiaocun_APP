@@ -8,14 +8,19 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -40,6 +45,7 @@ import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.TeacherService;
 import com.example.myapplication.jxc.activity.JxcActivity;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
+import com.example.myapplication.service.PushNewsService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunUserService;
 import com.example.myapplication.mendian.activity.MendianActivity;
 import com.example.myapplication.mendian.entity.YhMendianUser;
@@ -58,6 +64,7 @@ import com.example.myapplication.finance.entity.YhFinanceUser;
 import com.example.myapplication.finance.service.YhFinanceUserService;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -79,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
     private TeacherService teacherService;
     private YhMendianUserService yhMendianUserService;
     private SystemService systemService;
+    private PushNewsService pushNewsService;
 
     private Spinner system;
     private Spinner company;
@@ -107,6 +115,12 @@ public class LoginActivity extends AppCompatActivity {
         if (getSupportActionBar() != null){
             getSupportActionBar().hide();
         }
+
+
+        pushNewsService = new com.example.myapplication.service.PushNewsService(this);
+        loadPushNewsData();
+
+
         systemService = new SystemService();
         //初始化控件
         system = findViewById(R.id.system);
@@ -473,6 +487,14 @@ public class LoginActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle("正在登录...");
                 signBtn.setEnabled(false);
 
+                saveSystemAndCompanyToCache();
+
+                SharedPreferences testPref = getSharedPreferences("my_cache", MODE_PRIVATE);
+                String testSystem = testPref.getString("systemName", "");
+                String testCompany = testPref.getString("companyName", "");
+                Log.d("CacheTest", "验证保存 - 系统: " + testSystem + ", 公司: " + testCompany);
+
+
                 Handler signHandler = new Handler(new Handler.Callback() {
                     @Override
                     public boolean handleMessage(@NonNull Message msg) {
@@ -711,6 +733,120 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    private void saveSystemAndCompanyToCache() {
+        try {
+            SharedPreferences sharedPref = getSharedPreferences("my_cache", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+
+            // 保存系统名称
+            if (systemText != null && !systemText.isEmpty()) {
+                editor.putString("systemName", systemText);
+            }
+
+            // 保存公司名称
+            if (companyText != null && !companyText.isEmpty()) {
+                editor.putString("companyName", companyText);
+            }
+
+            // 保存数据版本和时间戳
+            editor.putInt("dataVersion", 1);
+            editor.putLong("saveTime", System.currentTimeMillis());
+
+            editor.apply();
+
+            Log.d("Cache", "保存成功 - 系统: " + systemText + ", 公司: " + companyText);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("Cache", "保存缓存失败: " + e.getMessage());
+        }
+    }
+
+
+    private void loadPushNewsData() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    List<com.example.myapplication.entity.PushNews> result = pushNewsService.getList();
+
+                    if (result != null && !result.isEmpty()) {
+                        com.example.myapplication.entity.PushNews news = result.get(0);
+
+                        // 处理 beizhu3 - 更新欢迎文本
+                        if (news.getBeizhu3() != null && !news.getBeizhu3().trim().isEmpty()) {
+                            final String beizhu3Value = news.getBeizhu3();
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    TextView welcomeText = findViewById(R.id.welcome_text);
+                                    if (welcomeText != null) {
+                                        welcomeText.setText(beizhu3Value);
+                                    }
+                                }
+                            });
+
+                            Log.d("PushNewsDebug", "beizhu3内容已设置: " + beizhu3Value);
+                        }
+
+                        // 处理 beizhu2 - 更新 logo 图片
+                        if (news.getBeizhu2() != null && !news.getBeizhu2().trim().isEmpty()) {
+                            final String beizhu2Value = news.getBeizhu2();
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    updateLogoWithBase64(beizhu2Value);
+                                }
+                            });
+
+                            Log.d("PushNewsDebug", "beizhu2内容已获取，准备设置logo");
+                        }
+
+                    }
+
+                } catch (Exception e) {
+                    Log.e("PushNewsDebug", "查询异常: " + e.getMessage(), e);
+                }
+            }
+        }).start();
+    }
+
+    /**
+     * 使用 base64 字符串更新 logo 图片
+     */
+    private void updateLogoWithBase64(String base64String) {
+        ImageView logoImage = findViewById(R.id.logoImage);
+        if (logoImage == null) {
+            Log.e("PushNewsDebug", "未找到 logoImage ImageView");
+            return;
+        }
+
+        try {
+            // 🆕 关键：清除所有之前的图片设置
+            logoImage.setImageDrawable(null);
+            logoImage.setBackgroundResource(0);
+
+            String cleanBase64 = base64String.trim().replaceAll("\\s", "");
+            byte[] decodedBytes = Base64.decode(cleanBase64, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+
+            if (bitmap != null) {
+                logoImage.setImageBitmap(bitmap);
+                Log.d("PushNewsDebug", "logo图片更新成功");
+            } else {
+                throw new Exception("Bitmap解码为null");
+            }
+
+        } catch (Exception e) {
+            Log.e("PushNewsDebug", "设置logo失败: " + e.getMessage());
+            // 🆕 失败时完全重置为默认图片
+            logoImage.setImageDrawable(null);
+            logoImage.setBackgroundResource(R.drawable.companylogo);
+        }
     }
 
 }

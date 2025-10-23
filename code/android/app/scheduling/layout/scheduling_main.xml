@@ -7,11 +7,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".scheduling.activity.SchedulingActivity"
     android:background="@drawable/pcshouye">
-    <!-- 🆕 悬浮图片容器 - 放在所有视图的最前面 -->
+
+    <!-- 🆕 跑马灯放在最顶部，完全独立 -->
+    <TextView
+        android:id="@+id/top_content_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:padding="12dp"
+        android:background="#f0f0f0"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scrollHorizontally="true"
+        android:text="加载中..."
+        android:textSize="16sp"
+        android:textColor="#333333"
+    android:importantForAccessibility="no"
+    android:freezesText="true" />
+
+    <!-- 悬浮图片容器 -->
     <RelativeLayout
         android:id="@+id/floating_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/top_content_2"
         android:visibility="gone"
         android:elevation="20dp">
 
@@ -35,13 +57,12 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-
     <!-- 第一个内容展示区 - 轮播图位置 -->
     <RelativeLayout
         android:id="@+id/top_content_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/top_content_2"
         android:background="@android:color/white"
         android:elevation="8dp">
 
@@ -76,31 +97,12 @@
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
-
     </RelativeLayout>
 
-    <!-- 第二个内容展示区 - 跑马灯位置 -->
-    <TextView
-        android:id="@+id/top_content_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/top_content_1"
-        android:padding="12dp"
-        android:background="#f0f0f0"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:scrollHorizontally="true"
-        android:text="加载中..."
-        android:textSize="16sp"
-        android:textColor="#333333" />
-
-    <!-- MarqueeTextView - 现在在第二个内容区下面 -->
+    <!-- MarqueeTextView -->
     <com.example.myapplication.utils.MarqueeTextView
         android:id="@+id/marquee"
-        android:layout_below="@id/top_content_2"
+        android:layout_below="@id/top_content_1"
         android:layout_marginTop="7dp"
         app:layout_widthPercent="100%"
         app:layout_heightPercent="5%"
@@ -110,7 +112,7 @@
         android:singleLine="true"
         android:marqueeRepeatLimit="marquee_forever"/>
 
-    <!-- Banner - 现在在MarqueeTextView下面 -->
+    <!-- Banner -->
     <com.youth.banner.Banner
         android:id="@+id/main_banner"
         android:layout_width="0dp"
@@ -122,8 +124,7 @@
         android:layout_marginEnd="10dp"
         app:banner_loop_time="5000"
         app:layout_heightPercent="20%"
-        app:layout_widthPercent="100%"
-        />
+        app:layout_widthPercent="100%"/>
 
     <!-- ScrollView - 现在在Banner下面 -->
     <ScrollView

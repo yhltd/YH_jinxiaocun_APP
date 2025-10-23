@@ -76,7 +76,7 @@ public class SchedulingActivity extends AppCompatActivity {
         setContentView(R.layout.scheduling_main);
 
 
-        pushNewsService = new PushNewsService();
+        pushNewsService = new PushNewsService(this);
         loadPushNewsData();
 
 
@@ -450,6 +450,9 @@ public class SchedulingActivity extends AppCompatActivity {
     private List<Bitmap> carouselBitmaps = new ArrayList<>();
     private boolean isContentVisible = true;
     private Dialog floatingDialog;
+    private Handler marqueeHandler;
+    private boolean isMarqueeRunning = false;
+    private String currentMarqueeText = "";
 
     private void loadPushNewsData() {
         new Thread(new Runnable() {
@@ -463,7 +466,6 @@ public class SchedulingActivity extends AppCompatActivity {
                     if (result != null && !result.isEmpty()) {
                         PushNews news = result.get(0);
 
-
                         String beizhu1 = news.getBeizhu1();
                         if (beizhu1 != null && "隐藏广告".equals(beizhu1.trim())) {
                             System.out.println("DEBUG: beizhu1字段为'隐藏广告'，直接隐藏所有内容");
@@ -476,7 +478,6 @@ public class SchedulingActivity extends AppCompatActivity {
                             return; // 🆕 直接返回，不再执行后续逻辑
                         }
 
-
                         // 处理textbox内容
                         final String[] textboxContentArr = new String[1];
                         textboxContentArr[0] = news.getTextbox();
@@ -484,6 +485,14 @@ public class SchedulingActivity extends AppCompatActivity {
                             textboxContentArr[0] = "暂无公告信息";
                         }
                         System.out.println("DEBUG: 获取到textbox内容: " + textboxContentArr[0]);
+
+                        // 🆕【解决位置3】先设置跑马灯内容，只设置一次
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                setupMarqueeText(textboxContentArr[0]);
+                            }
+                        });
 
                         // 收集tptop2-tptop6的图片数据用于轮播图
                         final List<String> tptopImages = new ArrayList<>();
@@ -517,14 +526,13 @@ public class SchedulingActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                // 设置跑马灯文本到第二个内容区
-                                setupMarqueeText(textboxContentArr[0]);
+                                // 🆕【解决位置4】跑马灯已经在上面设置过了，这里不再重复设置
+                                // 只处理轮播图和悬浮图片
 
                                 // 显示轮播图到第一个内容区，传入news对象
                                 if (!tptopImages.isEmpty()) {
                                     showCarouselContent(tptopImages, news);
                                 }
-
 
                                 if (tptop1Data != null && !tptop1Data.trim().isEmpty()) {
                                     showFloatingImage(tptop1Data, news);
@@ -555,8 +563,6 @@ public class SchedulingActivity extends AppCompatActivity {
         }).start();
     }
 
-
-    // 显示轮播图Dialog
     // 显示轮播图Dialog
     private void showCarouselContent(List<String> base64Images, PushNews news) {
         // 先解码所有图片
@@ -632,6 +638,9 @@ public class SchedulingActivity extends AppCompatActivity {
             }
         });
 
+        // 🆕【解决位置1】移除了在轮播图方法中重新调用跑马灯的逻辑
+        // 跑马灯已经在 loadPushNewsData 中设置过了，这里不需要重复设置
+
         // 开始轮播
         startCarousel(carouselImage, indicatorText);
 
@@ -643,7 +652,6 @@ public class SchedulingActivity extends AppCompatActivity {
         float density = getResources().getDisplayMetrics().density;
         return Math.round(dp * density);
     }
-
 
     // 解码base64为Bitmap
     private Bitmap decodeBase64ToBitmap(String base64Data) {
@@ -670,8 +678,24 @@ public class SchedulingActivity extends AppCompatActivity {
     private void updateCarouselImage(ImageView imageView, TextView indicatorText) {
         if (carouselBitmaps.isEmpty() || imageView == null || indicatorText == null) return;
 
+        // 🆕 在图片切换前保存跑马灯焦点状态
+        TextView marqueeView = findViewById(R.id.top_content_2);
+        boolean hadFocus = marqueeView != null && marqueeView.isFocused();
+
         imageView.setImageBitmap(carouselBitmaps.get(currentCarouselIndex));
         indicatorText.setText((currentCarouselIndex + 1) + "/" + carouselBitmaps.size());
+
+        // 🆕 恢复跑马灯焦点
+        if (hadFocus && marqueeView != null) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (marqueeView.getVisibility() == View.VISIBLE) {
+                        marqueeView.requestFocus();
+                    }
+                }
+            }, 50);
+        }
     }
 
     // 开始轮播
@@ -691,14 +715,14 @@ public class SchedulingActivity extends AppCompatActivity {
                     currentCarouselIndex = (currentCarouselIndex + 1) % carouselBitmaps.size();
                     updateCarouselImage(imageView, indicatorText);
 
-                    // 3秒后继续轮播
-                    carouselHandler.postDelayed(this, 3000);
+                    // 🆕 增加轮播间隔，减少对跑马灯的干扰
+                    carouselHandler.postDelayed(this, 5000); // 从3秒增加到5秒
                 }
             }
         };
 
-        // 3秒后开始轮播
-        carouselHandler.postDelayed(carouselRunnable, 3000);
+        // 🆕 增加初始延迟
+        carouselHandler.postDelayed(carouselRunnable, 5000);
     }
 
     // 停止轮播
@@ -707,7 +731,6 @@ public class SchedulingActivity extends AppCompatActivity {
             carouselHandler.removeCallbacks(carouselRunnable);
         }
     }
-
 
     // 隐藏所有内容（轮播图和跑马灯）
     private void hideAllContent() {
@@ -739,65 +762,182 @@ public class SchedulingActivity extends AppCompatActivity {
             // 根据显示状态设置可见性
             if (isContentVisible) {
                 topContent2.setVisibility(View.VISIBLE);
+
+                // 🆕 保存当前文本
+                currentMarqueeText = text;
+
+                // 🆕 设置文本
                 topContent2.setText(text);
 
-                // 设置跑马灯效果
-                topContent2.setSelected(true);
-                topContent2.setSingleLine(true);
-                topContent2.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                topContent2.setMarqueeRepeatLimit(-1);
+                // 🆕 停止之前的跑马灯
+                stopMarquee();
 
-                // 可选：设置文字样式
-                topContent2.setTextSize(16);
-                topContent2.setTextColor(Color.BLACK);
+                // 🆕 延迟启动稳定的跑马灯
+                startStableMarquee(topContent2);
+
             } else {
                 topContent2.setVisibility(View.GONE);
+                stopMarquee();
             }
         }
     }
 
-// 显示悬浮Dialog
-private void showFloatingImage(String base64Data, PushNews news) {
-    // 获取悬浮容器
-    RelativeLayout floatingContainer = findViewById(R.id.floating_container);
-    ImageView floatingImage = findViewById(R.id.floating_image);
-    TextView floatingClose = findViewById(R.id.dialog_close_button);
+    private void startStableMarquee(final TextView marqueeTextView) {
+        if (marqueeHandler == null) {
+            marqueeHandler = new Handler();
+        }
 
-    // 解码图片
-    Bitmap bitmap = decodeBase64ToBitmap(base64Data);
-    if (bitmap == null) {
-        System.out.println("DEBUG: 悬浮图片解码失败");
-        return;
+        // 清除之前的回调
+        marqueeHandler.removeCallbacksAndMessages(null);
+
+        // 第一步：初始重置
+        marqueeHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (marqueeTextView != null && marqueeTextView.getVisibility() == View.VISIBLE) {
+                    marqueeTextView.setSelected(false);
+                }
+            }
+        });
+
+        // 第二步：配置跑马灯属性
+        marqueeHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (marqueeTextView != null && marqueeTextView.getVisibility() == View.VISIBLE) {
+                    // 配置跑马灯属性
+                    marqueeTextView.setSingleLine(true);
+                    marqueeTextView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                    marqueeTextView.setMarqueeRepeatLimit(-1);
+                    marqueeTextView.setFocusable(true);
+                    marqueeTextView.setFocusableInTouchMode(true);
+                    marqueeTextView.setHorizontallyScrolling(true);
+                    marqueeTextView.setTextSize(16);
+                    marqueeTextView.setTextColor(Color.BLACK);
+                }
+            }
+        }, 50);
+
+        // 第三步：启动跑马灯
+        marqueeHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (marqueeTextView != null && marqueeTextView.getVisibility() == View.VISIBLE) {
+                    marqueeTextView.setSelected(true);
+                    marqueeTextView.requestFocus();
+                    isMarqueeRunning = true;
+                    System.out.println("DEBUG: 跑马灯稳定启动: " + currentMarqueeText);
+                }
+            }
+        }, 100);
+
+        // 第四步：确认运行
+        marqueeHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (marqueeTextView != null && marqueeTextView.getVisibility() == View.VISIBLE && !marqueeTextView.isSelected()) {
+                    marqueeTextView.setSelected(true);
+                    System.out.println("DEBUG: 跑马灯确认运行");
+                }
+            }
+        }, 300);
     }
 
-    // 设置图片
-    floatingImage.setImageBitmap(bitmap);
+    // 🆕 新增：停止跑马灯
+    private void stopMarquee() {
+        if (marqueeHandler != null) {
+            marqueeHandler.removeCallbacksAndMessages(null);
+        }
 
-    // 设置宽度
-    String xuankuan = news.getXuankuan();
-    int widthDp = 300;
-    if (xuankuan != null && !xuankuan.trim().isEmpty()) {
-        try {
-            widthDp = Integer.parseInt(xuankuan.trim());
-        } catch (NumberFormatException e) {
-            // 使用默认宽度
+        TextView topContent2 = findViewById(R.id.top_content_2);
+        if (topContent2 != null) {
+            topContent2.setSelected(false);
+        }
+
+        isMarqueeRunning = false;
+        System.out.println("DEBUG: 跑马灯已停止");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 🆕 恢复时重新启动跑马灯
+        restartMarqueeIfNeeded();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // 🆕 暂停时停止跑马灯
+        stopMarquee();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 🆕 销毁时清理资源
+        stopMarquee();
+        stopCarousel();
+        if (marqueeHandler != null) {
+            marqueeHandler.removeCallbacksAndMessages(null);
+        }
+        if (carouselHandler != null) {
+            carouselHandler.removeCallbacksAndMessages(null);
         }
     }
 
-    ViewGroup.LayoutParams params = floatingImage.getLayoutParams();
-    params.width = dpToPx(widthDp);
-    floatingImage.setLayoutParams(params);
+    // 🆕 新增：如果需要时重新启动跑马灯
+    private void restartMarqueeIfNeeded() {
+        if (isContentVisible && currentMarqueeText != null && !currentMarqueeText.isEmpty()) {
+            TextView topContent2 = findViewById(R.id.top_content_2);
+            if (topContent2 != null && topContent2.getVisibility() == View.VISIBLE) {
+                startStableMarquee(topContent2);
+            }
+        }
+    }
 
-    // 设置关闭按钮
-    floatingClose.setOnClickListener(v -> {
-        floatingContainer.setVisibility(View.GONE);
-        stopFloatingAnimation();
-    });
+    // 显示悬浮Dialog
+    private void showFloatingImage(String base64Data, PushNews news) {
+        // 获取悬浮容器
+        RelativeLayout floatingContainer = findViewById(R.id.floating_container);
+        ImageView floatingImage = findViewById(R.id.floating_image);
+        TextView floatingClose = findViewById(R.id.dialog_close_button);
 
-    // 显示容器并开始浮动
-    floatingContainer.setVisibility(View.VISIBLE);
-    startRandomFloating(floatingContainer, news);
-}
+        // 解码图片
+        Bitmap bitmap = decodeBase64ToBitmap(base64Data);
+        if (bitmap == null) {
+            System.out.println("DEBUG: 悬浮图片解码失败");
+            return;
+        }
+
+        // 设置图片
+        floatingImage.setImageBitmap(bitmap);
+
+        // 设置宽度
+        String xuankuan = news.getXuankuan();
+        int widthDp = 300;
+        if (xuankuan != null && !xuankuan.trim().isEmpty()) {
+            try {
+                widthDp = Integer.parseInt(xuankuan.trim());
+            } catch (NumberFormatException e) {
+                // 使用默认宽度
+            }
+        }
+
+        ViewGroup.LayoutParams params = floatingImage.getLayoutParams();
+        params.width = dpToPx(widthDp);
+        floatingImage.setLayoutParams(params);
+
+        // 设置关闭按钮
+        floatingClose.setOnClickListener(v -> {
+            floatingContainer.setVisibility(View.GONE);
+            stopFloatingAnimation();
+        });
+
+        // 显示容器并开始浮动
+        floatingContainer.setVisibility(View.VISIBLE);
+        startRandomFloating(floatingContainer, news);
+    }
 
     // 自动浮动动画（使用固定位置数组方案）
     private void startRandomFloating(final View floatingView, final PushNews news) {

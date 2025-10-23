@@ -3,6 +3,7 @@ package com.example.myapplication.scheduling.activity;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -38,6 +39,9 @@ public class GrzxActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         userInfo = myApplication.getUserInfo();
+
+        // 设置欢迎文本
+        setWelcomeText();
 
         String username = userInfo.getUser_code();
         String company = userInfo.getCompany();
@@ -84,6 +88,34 @@ public class GrzxActivity extends AppCompatActivity {
 
 
     }
+
+
+    /**
+     * 设置欢迎文本：欢迎使用 + 公司名前4位 + 排产系统
+     */
+    private void setWelcomeText() {
+        TextView welcomeText = findViewById(R.id.welcome_text); // 需要给TextView添加id
+
+        // 从缓存读取公司名称
+        SharedPreferences sharedPref = getSharedPreferences("my_cache", MODE_PRIVATE);
+        String companyName = sharedPref.getString("companyName", "");
+
+        String welcomeMessage;
+        if (companyName != null && !companyName.isEmpty()) {
+            // 截取公司名前4位，如果公司名称长度不足4位，则使用全称
+            String shortCompanyName = companyName.length() >= 4 ?
+                    companyName.substring(0, 4) : companyName;
+            welcomeMessage = "欢迎使用" + shortCompanyName + "排产系统";
+        } else {
+            // 如果缓存中没有公司名称，使用默认文本
+            welcomeMessage = "欢迎使用云合未来排产系统";
+        }
+
+        welcomeText.setText(welcomeMessage);
+    }
+
+
+
     private void exitToLogin() {
         // 跳转到登录页面
         Intent intent = new Intent(this, LoginActivity.class);

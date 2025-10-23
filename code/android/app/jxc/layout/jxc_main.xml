@@ -8,8 +8,101 @@
     tools:context=".jxc.activity.JxcActivity"
     android:background="@color/WhiteSmoke">
 
+    <!-- 🆕 跑马灯放在最顶部，完全独立 -->
+    <TextView
+        android:id="@+id/top_content_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:padding="12dp"
+        android:background="#f0f0f0"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scrollHorizontally="true"
+        android:text="加载中..."
+        android:textSize="16sp"
+        android:textColor="#333333"
+        android:importantForAccessibility="no"
+        android:freezesText="true" />
+
+    <!-- 悬浮图片容器 -->
+    <RelativeLayout
+        android:id="@+id/floating_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_content_2"
+        android:visibility="gone"
+        android:elevation="20dp">
+
+        <ImageView
+            android:id="@+id/floating_image"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart" />
+
+        <TextView
+            android:id="@+id/dialog_close_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="top|end"
+            android:background="@drawable/close_button_bg"
+            android:gravity="center"
+            android:text="×"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- 第一个内容展示区 - 轮播图位置 -->
+    <RelativeLayout
+        android:id="@+id/top_content_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_content_2"
+        android:background="@android:color/white"
+        android:elevation="8dp">
+
+        <ImageView
+            android:id="@+id/carousel_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:background="#f0f0f0" />
+
+        <TextView
+            android:id="@+id/indicator_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/carousel_image"
+            android:layout_centerHorizontal="true"
+            android:background="#80000000"
+            android:padding="8dp"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/carousel_close_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignTop="@id/carousel_image"
+            android:layout_alignEnd="@id/carousel_image"
+            android:background="@drawable/close_button_bg"
+            android:gravity="center"
+            android:text="×"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- MarqueeTextView -->
     <com.example.myapplication.utils.MarqueeTextView
         android:id="@+id/marquee"
+        android:layout_below="@id/top_content_1"
         android:layout_marginTop="7dp"
         app:layout_widthPercent="100%"
         app:layout_heightPercent="5%"
@@ -17,23 +110,21 @@
         android:textColor="#FF0033"
         android:ellipsize="marquee"
         android:singleLine="true"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:gravity="center"/>
+        android:marqueeRepeatLimit="marquee_forever"/>
 
-
+    <!-- Banner -->
     <com.youth.banner.Banner
         android:id="@+id/main_banner"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/marquee"
         app:banner_radius="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="3dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         app:banner_loop_time="5000"
         app:layout_heightPercent="20%"
-        app:layout_widthPercent="100%"
-        />
+        app:layout_widthPercent="100%"/>
 
     <ScrollView
         android:layout_width="match_parent"

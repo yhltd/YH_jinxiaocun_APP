@@ -3,6 +3,7 @@ package com.example.myapplication.finance.activity;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,6 +54,9 @@ public class GrzxActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.caiwu_grzx);
+
+        // 设置欢迎文本
+        setWelcomeText();
 
         MyApplication myApplication = (MyApplication) getApplication();
         yhFinanceUser = myApplication.getYhFinanceUser();
@@ -124,6 +128,31 @@ public class GrzxActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     * 设置欢迎文本：欢迎使用 + 公司名前4位 + 排产系统
+     */
+    private void setWelcomeText() {
+        TextView welcomeText = findViewById(R.id.welcome_text); // 需要给TextView添加id
+
+        // 从缓存读取公司名称
+        SharedPreferences sharedPref = getSharedPreferences("my_cache", MODE_PRIVATE);
+        String companyName = sharedPref.getString("companyName", "");
+
+        String welcomeMessage;
+        if (companyName != null && !companyName.isEmpty()) {
+            // 截取公司名前4位，如果公司名称长度不足4位，则使用全称
+            String shortCompanyName = companyName.length() >= 4 ?
+                    companyName.substring(0, 4) : companyName;
+            welcomeMessage = "欢迎使用" + shortCompanyName + "财务系统";
+        } else {
+            // 如果缓存中没有公司名称，使用默认文本
+            welcomeMessage = "欢迎使用云合未来财务系统";
+        }
+
+        welcomeText.setText(welcomeMessage);
+    }
+
     private void exitToLogin() {
         // 跳转到登录页面
         Intent intent = new Intent(this, LoginActivity.class);
