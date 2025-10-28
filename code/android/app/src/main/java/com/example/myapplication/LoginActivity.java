@@ -492,7 +492,13 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences testPref = getSharedPreferences("my_cache", MODE_PRIVATE);
                 String testSystem = testPref.getString("systemName", "");
                 String testCompany = testPref.getString("companyName", "");
-                Log.d("CacheTest", "验证保存 - 系统: " + testSystem + ", 公司: " + testCompany);
+                String testAccount = testPref.getString("userAccount", "");
+                String testPassword = testPref.getString("userPassword", "");
+
+                Log.d("CacheTest", "验证保存 - 系统: " + testSystem +
+                        ", 公司: " + testCompany +
+                        ", 账号: " + testAccount +
+                        ", 密码: " + testPassword);
 
 
                 Handler signHandler = new Handler(new Handler.Callback() {
@@ -750,13 +756,23 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putString("companyName", companyText);
             }
 
+            // 🆕 新增：保存账号密码
+            if (username.getText() != null && !username.getText().toString().isEmpty()) {
+                editor.putString("userAccount", username.getText().toString());
+            }
+
+            if (password.getText() != null && !password.getText().toString().isEmpty()) {
+                editor.putString("userPassword", password.getText().toString());
+            }
+
             // 保存数据版本和时间戳
             editor.putInt("dataVersion", 1);
             editor.putLong("saveTime", System.currentTimeMillis());
 
             editor.apply();
 
-            Log.d("Cache", "保存成功 - 系统: " + systemText + ", 公司: " + companyText);
+            Log.d("Cache", "保存成功 - 系统: " + systemText + ", 公司: " + companyText +
+                    ", 账号: " + username.getText().toString() + ", 密码: " + password.getText().toString());
 
         } catch (Exception e) {
             e.printStackTrace();

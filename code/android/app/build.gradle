@@ -73,6 +73,7 @@ dependencies {
     implementation 'androidx.percentlayout:percentlayout:1.0.0'
 
     implementation 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
+//    implementation 'com.github.jzxiang:TimePickerDialog:1.0.1'
 
     implementation 'androidx.appcompat:appcompat:1.0.0'
 

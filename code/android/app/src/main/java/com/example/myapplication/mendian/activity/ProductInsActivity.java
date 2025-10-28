@@ -116,19 +116,77 @@ public class ProductInsActivity extends AppCompatActivity {
         guige.setOnItemSelectedListener(new typeSelectSelectedListener());
     }
 
-    private class typeSelectSelectedListener implements AdapterView.OnItemSelectedListener {
+//    private class typeSelectSelectedListener implements AdapterView.OnItemSelectedListener {
+//
+//        @Override
+//        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//
+//            int this_row = getGuiGePosition(guige.getSelectedItem().toString());
+//            price.setText(price_array[this_row]);
+//            price_text = price_array[this_row];
+//        }
+//
+//        @Override
+//        public void onNothingSelected(AdapterView<?> parent) {}
+//    }
+private class typeSelectSelectedListener implements AdapterView.OnItemSelectedListener {
 
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        try {
+            // 🆕 1. 检查 guige Spinner 是否有选中项
+            if (guige.getSelectedItem() == null) {
+                System.out.println("规格未选择");
+                price.setText("0");
+                price_text = "0";
+                return;
+            }
 
-            int this_row = getGuiGePosition(guige.getSelectedItem().toString());
-            price.setText(price_array[this_row]);
-            price_text = price_array[this_row];
+            String selectedGuige = guige.getSelectedItem().toString();
+            System.out.println("选中规格: " + selectedGuige);
+
+            // 🆕 2. 安全地获取位置
+            int this_row = getGuiGePosition(selectedGuige);
+            System.out.println("计算出的位置: " + this_row + ", 价格数组长度: " +
+                    (price_array != null ? price_array.length : "null"));
+
+            // 🆕 3. 完整的边界检查
+            if (price_array == null) {
+                System.out.println("价格数组为null");
+                price.setText("0");
+                price_text = "0";
+                return;
+            }
+
+            if (this_row < 0 || this_row >= price_array.length) {
+                System.out.println("位置越界: this_row=" + this_row +
+                        ", 数组长度=" + price_array.length);
+                price.setText("0");
+                price_text = "0";
+                return;
+            }
+
+            // 🆕 4. 安全访问数组
+            String priceValue = price_array[this_row];
+            System.out.println("设置价格: " + priceValue);
+
+            price.setText(priceValue);
+            price_text = priceValue;
+
+        } catch (Exception e) {
+            System.out.println("类型选择异常: " + e.getMessage());
+            e.printStackTrace();
+            // 🆕 异常处理
+            price.setText("0");
+            price_text = "0";
         }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {}
     }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        System.out.println("未选择类型");
+    }
+}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

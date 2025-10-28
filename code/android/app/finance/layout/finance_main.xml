@@ -127,12 +127,14 @@
         app:layout_widthPercent="100%"/>
 
     <ScrollView
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:id="@+id/main_scollview"
-        app:layout_marginTopPercent="26%"
+        android:layout_below="@id/main_banner"
         app:layout_heightPercent="78%"
-        android:background="@drawable/caiwu_main_bg5">
+        android:background="@drawable/caiwu_main_bg5"
+        android:fillViewport="true">
+
 
         <LinearLayout
             android:layout_width="match_parent"

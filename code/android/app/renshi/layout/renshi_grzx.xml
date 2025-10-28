@@ -39,6 +39,7 @@
                     android:visibility="visible"
                     android:scaleX="1.5" />
                 <ImageView
+                    android:id="@+id/company_logo"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/companylogo"

@@ -542,25 +542,83 @@ public class GongZuoTaiShiYongChangeActivity extends AppCompatActivity {
         }).start();
     }
 
-    public View.OnClickListener onItemClick(final EditText editText,String this_column) {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editText.setFocusableInTouchMode(true);
-                editText.requestFocus();
-                editText.requestFocusFromTouch();
-                //你的处理逻辑
-                AlertDialog.Builder builder = new AlertDialog.Builder(GongZuoTaiShiYongChangeActivity.this);
-                Handler deleteHandler = new Handler(new Handler.Callback() {
-                    @Override
-                    public boolean handleMessage(@NonNull Message msg) {
-                        if ((boolean) msg.obj) {
-                            ToastUtil.show(GongZuoTaiShiYongChangeActivity.this, "解除成功");
-                            initList();
+//    public View.OnClickListener onItemClick(final EditText editText,String this_column) {
+//        return new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                editText.setFocusableInTouchMode(true);
+//                editText.requestFocus();
+//                editText.requestFocusFromTouch();
+//                //你的处理逻辑
+//                AlertDialog.Builder builder = new AlertDialog.Builder(GongZuoTaiShiYongChangeActivity.this);
+//                Handler deleteHandler = new Handler(new Handler.Callback() {
+//                    @Override
+//                    public boolean handleMessage(@NonNull Message msg) {
+//                        if ((boolean) msg.obj) {
+//                            ToastUtil.show(GongZuoTaiShiYongChangeActivity.this, "解除成功");
+//                            initList();
+//                        }
+//                        return true;
+//                    }
+//                });
+public View.OnClickListener onItemClick(final EditText editText, String this_column) {
+    return new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            editText.setFocusableInTouchMode(true);
+            editText.requestFocus();
+            editText.requestFocusFromTouch();
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(GongZuoTaiShiYongChangeActivity.this);
+
+            // 🆕 修复Handler的类型处理
+            Handler deleteHandler = new Handler(new Handler.Callback() {
+                @Override
+                public boolean handleMessage(@NonNull Message msg) {
+                    try {
+                        // 🆕 安全地处理消息对象
+                        Object result = msg.obj;
+
+                        if (result instanceof Boolean) {
+                            // 如果是Boolean类型
+                            boolean success = (Boolean) result;
+                            if (success) {
+                                ToastUtil.show(GongZuoTaiShiYongChangeActivity.this, "解除成功");
+                                initList();
+                            }
+                        } else if (result instanceof String) {
+                            // 🆕 如果是String类型，检查内容
+                            String resultStr = (String) result;
+                            if ("true".equals(resultStr) || "success".equals(resultStr)) {
+                                ToastUtil.show(GongZuoTaiShiYongChangeActivity.this, "解除成功");
+                                initList();
+                            } else {
+                                ToastUtil.show(GongZuoTaiShiYongChangeActivity.this, "操作失败: " + resultStr);
+                            }
+                        } else {
+                            System.out.println("未知的返回类型: " + (result != null ? result.getClass().getSimpleName() : "null"));
                         }
-                        return true;
+                    } catch (Exception e) {
+                        System.out.println("Handler处理异常: " + e.getMessage());
+                        ToastUtil.show(GongZuoTaiShiYongChangeActivity.this, "处理结果时发生错误");
                     }
-                });
+                    return true;
+                }
+            });
+
+//                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        new Thread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                Message msg = new Message();
+//                                msg.obj = copy2Service.update(list.get(0).getId(),this_column);
+//                                deleteHandler.sendMessage(msg);
+//                            }
+//                        }).start();
+//                    }
+//                });
 
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
@@ -568,9 +626,33 @@ public class GongZuoTaiShiYongChangeActivity extends AppCompatActivity {
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
-                                Message msg = new Message();
-                                msg.obj = copy2Service.update(list.get(0).getId(),this_column);
-                                deleteHandler.sendMessage(msg);
+                                try {
+                                    // 🆕 检查列表是否为空
+                                    if (list == null || list.isEmpty()) {
+                                        System.out.println("列表为空，无法执行更新操作");
+
+                                        // 🆕 发送错误消息到Handler
+                                        Message errorMsg = new Message();
+                                        errorMsg.obj = "列表为空，无法更新";
+                                        errorMsg.what = -1; // 🆕 设置错误标识
+                                        deleteHandler.sendMessage(errorMsg);
+                                        return;
+                                    }
+
+                                    Message msg = new Message();
+                                    msg.obj = copy2Service.update(list.get(0).getId(),this_column);
+                                    deleteHandler.sendMessage(msg);
+
+                                } catch (Exception e) {
+                                    System.out.println("更新操作异常: " + e.getMessage());
+                                    e.printStackTrace();
+
+                                    // 🆕 发送异常消息到Handler
+                                    Message errorMsg = new Message();
+                                    errorMsg.obj = "更新失败: " + e.getMessage();
+                                    errorMsg.what = -1;
+                                    deleteHandler.sendMessage(errorMsg);
+                                }
                             }
                         }).start();
                     }
