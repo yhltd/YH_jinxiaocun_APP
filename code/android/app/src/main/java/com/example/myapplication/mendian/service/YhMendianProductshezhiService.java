@@ -21,6 +21,17 @@ public class YhMendianProductshezhiService {
     }
 
     /**
+     * 查询商品详情
+     */
+
+    public List<YhMendianProductshezhi> getProduct(String produce_name) {
+        String sql = "select * from product where product_name = ? ";
+        base = new MendianDao();
+        List<YhMendianProductshezhi> list = base.query(YhMendianProductshezhi.class, sql,produce_name);
+        return list;
+    }
+
+    /**
      * 查询全部商品类别
      */
     public List<YhMendianProductshezhi> getTypeList(String company) {
@@ -44,19 +55,51 @@ public class YhMendianProductshezhiService {
      * 新增员工
      */
     public boolean insertByProductshezhi(YhMendianProductshezhi yhMendianProductshezhi) {
-        String sql = "insert into product(company,product_bianhao,type,product_name,unit,price,chengben,specifications,practice,tingyong) values(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into product(company,product_bianhao,type,product_name,unit,price,chengben,specifications,practice,tingyong,xiangqing,photo,photo1,photo2,beizhu1) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         base = new MendianDao();
-        long result = base.executeOfId(sql,yhMendianProductshezhi.getCompany(), yhMendianProductshezhi.getProduct_bianhao(), yhMendianProductshezhi.getType(), yhMendianProductshezhi.getProduct_name(), yhMendianProductshezhi.getUnit(), yhMendianProductshezhi.getPrice(), yhMendianProductshezhi.getChengben(), yhMendianProductshezhi.getSpecifications(), yhMendianProductshezhi.getPractice(), yhMendianProductshezhi.getTingyong());
+        long result = base.executeOfId(sql,
+                yhMendianProductshezhi.getCompany(),
+                yhMendianProductshezhi.getProduct_bianhao(),
+                yhMendianProductshezhi.getType(),
+                yhMendianProductshezhi.getProduct_name(),
+                yhMendianProductshezhi.getUnit(),
+                yhMendianProductshezhi.getPrice(),
+                yhMendianProductshezhi.getChengben(),
+                yhMendianProductshezhi.getSpecifications(),
+                yhMendianProductshezhi.getPractice(),
+                yhMendianProductshezhi.getTingyong(),
+                yhMendianProductshezhi.getXiangqing(),  // 新增详情字段
+                yhMendianProductshezhi.getPhoto(),      // 新增图片1字段
+                yhMendianProductshezhi.getPhoto1(),     // 新增图片2字段
+                yhMendianProductshezhi.getPhoto2() ,
+                yhMendianProductshezhi.getBeizhu1()
+                );
         return result > 0;
     }
 
     /**
-     * 修改员工
+     * 修改商品设置
      */
     public boolean updateByProductshezhi(YhMendianProductshezhi yhMendianProductshezhi) {
-        String sql = "update product set product_bianhao=?,type=?,product_name=?,unit=?,price=?,chengben=?,specifications=?,practice=?,tingyong=? where id=? ";
+        String sql = "update product set product_bianhao=?,type=?,product_name=?,unit=?,price=?,chengben=?,specifications=?,practice=?,tingyong=?,xiangqing=?,photo=?,photo1=?,photo2=?,beizhu1=? where id=? ";
         base = new MendianDao();
-        boolean result = base.execute(sql, yhMendianProductshezhi.getProduct_bianhao(), yhMendianProductshezhi.getType(), yhMendianProductshezhi.getProduct_name(), yhMendianProductshezhi.getUnit(), yhMendianProductshezhi.getPrice(), yhMendianProductshezhi.getChengben(), yhMendianProductshezhi.getSpecifications(), yhMendianProductshezhi.getPractice(), yhMendianProductshezhi.getTingyong(),yhMendianProductshezhi.getId());
+        boolean result = base.execute(sql,
+                yhMendianProductshezhi.getProduct_bianhao(),
+                yhMendianProductshezhi.getType(),
+                yhMendianProductshezhi.getProduct_name(),
+                yhMendianProductshezhi.getUnit(),
+                yhMendianProductshezhi.getPrice(),
+                yhMendianProductshezhi.getChengben(),
+                yhMendianProductshezhi.getSpecifications(),
+                yhMendianProductshezhi.getPractice(),
+                yhMendianProductshezhi.getTingyong(),
+                yhMendianProductshezhi.getXiangqing(),  // 新增详情字段
+                yhMendianProductshezhi.getPhoto(),      // 新增图片1字段
+                yhMendianProductshezhi.getPhoto1(),     // 新增图片2字段
+                yhMendianProductshezhi.getPhoto2(),     // 新增图片3字段
+                yhMendianProductshezhi.getBeizhu1(),
+                yhMendianProductshezhi.getId()
+        );
         return result;
     }
 

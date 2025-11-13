@@ -1,37 +1,37 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- 阴影层 -->
     <!-- 模糊阴影层 -->
-    <item>
-        <shape android:shape="rectangle">
-            <corners
-                android:topRightRadius="15dp"
-                android:topLeftRadius="15dp"/>
-            <solid android:color="#A1681805"/>
-            <padding
+<!--    <item>-->
+<!--        <shape android:shape="rectangle">-->
+<!--            <corners-->
+<!--                android:topRightRadius="15dp"-->
+<!--                android:topLeftRadius="15dp"/>-->
+<!--            <solid android:color="#A14A4A4A"/>-->
+<!--            <padding-->
 
-                android:top="1dp"/>
-        </shape>
-    </item>
+<!--                android:top="1dp"/>-->
+<!--        </shape>-->
+<!--    </item>-->
 
-    <!-- 次级模糊阴影层（增强模糊效果） -->
-    <item>
-        <shape android:shape="rectangle">
-            <corners
-                android:topRightRadius="15dp"
-                android:topLeftRadius="15dp"/>
-            <solid android:color="#11C33F08"/>
-            <padding
+<!--    &lt;!&ndash; 次级模糊阴影层（增强模糊效果） &ndash;&gt;-->
+<!--    <item>-->
+<!--        <shape android:shape="rectangle">-->
+<!--            <corners-->
+<!--                android:topRightRadius="15dp"-->
+<!--                android:topLeftRadius="15dp"/>-->
+<!--            <solid android:color="#111E1E1E"/>-->
+<!--            <padding-->
 
-                android:top="3dp"/>
-        </shape>
-    </item>
+<!--                android:top="3dp"/>-->
+<!--        </shape>-->
+<!--    </item>-->
 
     <!-- 原始白色矩形层 -->
     <item>
         <shape android:shape="rectangle">
             <gradient
-                android:startColor="#E6E2BA"
-                android:endColor="#EABA72"
+                android:startColor="#DF8950"
+                android:endColor="#D56B4A"
                 android:angle="0"/>
             <corners
                 android:topRightRadius="15dp"

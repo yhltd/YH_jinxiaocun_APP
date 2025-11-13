@@ -1,34 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-
-    android:padding="6dp">
-
+    android:layout_height="130dp"
+    android:background="#C6FBFBFB"
+    android:paddingLeft="10dp"
+    >
     <ImageView
         android:id="@+id/imageItem"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:scaleType="fitXY"
+        android:src="@drawable/mendian_diandan"
+        android:layout_marginTop="10dp"
         />
 <!--        android:src="@drawable/pic"-->
 
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:gravity="top"
         android:paddingLeft="6dp"
         android:layout_toRightOf="@+id/imageItem"
-        android:textColor="#FFFFFF" />
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:text="商品"
+        android:layout_marginTop="20dp"
 
+
+        />
+<LinearLayout
+    android:id="@+id/jiage_xiaokuang"
+    android:layout_width="120dp"
+    android:layout_height="30dp"
+    android:layout_toRightOf="@+id/imageItem"
+    android:layout_below="@id/name">
+
+    <TextView
+        android:id="@+id/jiage"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+
+        android:gravity="center"
+        android:paddingLeft="6dp"
+        android:textColor="#E6650F"
+        android:text="￥"
+        android:textSize="17dp"
+
+
+        />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:paddingLeft="3dp"
+        android:textColor="#E6650F"
+        android:text="10"
+        android:textSize="17dp"
+        />
+
+    <TextView
+        android:id="@+id/xiegang"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:paddingLeft="2dp"
+        android:textColor="#E6650F"
+        android:text="元/"
+        android:textSize="17dp"
+
+
+        />
     <TextView
         android:id="@+id/danwei"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_toRightOf="@+id/imageItem"
-        android:gravity="center_vertical"
+        android:layout_height="30dp"
+
+        android:gravity="center"
+        android:paddingLeft="2dp"
+        android:textColor="#E6650F"
+        android:text="个"
+        android:textSize="17dp"
+
+        />
+</LinearLayout>
+    <ImageView
+        android:id="@+id/addbtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:paddingTop="5dp"
+        android:src="@drawable/mendian_diandan_addbtn"
+
+        android:layout_toRightOf="@+id/jiage_xiaokuang"
+        android:layout_alignBottom="@id/jiage_xiaokuang"
+        />
+    <TextView
+
+        android:layout_width="120dp"
+        android:layout_height="10dp"
+        android:gravity="top"
         android:paddingLeft="6dp"
-        android:textColor="#FF9800" />
+        android:layout_toRightOf="@+id/imageItem"
+        android:textColor="#000000"
+        android:textSize="15dp"
+
+
+        android:layout_below="@id/addbtn"
+
+        />
+
+    <!-- 只在底部添加分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="#E6650F"
+        />
 </RelativeLayout>

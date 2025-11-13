@@ -65,10 +65,14 @@ import com.example.myapplication.finance.service.YhFinanceUserService;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -337,8 +341,21 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             yhJinXiaoCunUserService = new YhJinXiaoCunUserService();
                             List<String> list = yhJinXiaoCunUserService.getCompany();
-                            adapter = new ArrayAdapter<String>(LoginActivity.this, android.R.layout.simple_spinner_dropdown_item, list);
-                            if (list.size() > 0) {
+                            List<String> list2 = yhJinXiaoCunUserService.getCompany2();
+
+                            // 合并两个列表并去重
+                            Set<String> combinedSet = new HashSet<>();
+                            if (list != null) combinedSet.addAll(list);
+                            if (list2 != null) combinedSet.addAll(list2);
+
+                            // 转换回List并排序（可选）
+                            List<String> combinedList = new ArrayList<>(combinedSet);
+                            Collections.sort(combinedList); // 按字母顺序排序
+
+                            adapter = new ArrayAdapter<String>(LoginActivity.this,
+                                    android.R.layout.simple_spinner_dropdown_item, combinedList);
+
+                            if (combinedList.size() > 0) {
                                 msg.obj = adapter;
                             } else {
                                 msg.obj = null;
@@ -425,8 +442,20 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             teacherService = new TeacherService();
                             List<String> list = teacherService.getCompany();
-                            adapter = new ArrayAdapter<String>(LoginActivity.this, android.R.layout.simple_spinner_dropdown_item, list);
-                            if (list.size() > 0) {
+                            List<String> list2 = teacherService.getCompany1();
+                            // 合并两个列表并去重
+                            Set<String> combinedSet = new HashSet<>();
+                            if (list != null) combinedSet.addAll(list);
+                            if (list2 != null) combinedSet.addAll(list2);
+
+                            // 转换回List并排序（可选）
+                            List<String> combinedList = new ArrayList<>(combinedSet);
+                            Collections.sort(combinedList); // 按字母顺序排序
+
+                            adapter = new ArrayAdapter<String>(LoginActivity.this,
+                                    android.R.layout.simple_spinner_dropdown_item, combinedList);
+
+                            if (combinedList.size() > 0) {
                                 msg.obj = adapter;
                             } else {
                                 msg.obj = null;
@@ -477,7 +506,7 @@ public class LoginActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                performQueryByCompanyAndAccount();
                 // 缩放动画
                 animateButtonClick(v);
                 if (!checkForm()) return;
@@ -488,6 +517,9 @@ public class LoginActivity extends AppCompatActivity {
                 signBtn.setEnabled(false);
 
                 saveSystemAndCompanyToCache();
+
+
+
 
                 SharedPreferences testPref = getSharedPreferences("my_cache", MODE_PRIVATE);
                 String testSystem = testPref.getString("systemName", "");
@@ -700,6 +732,95 @@ public class LoginActivity extends AppCompatActivity {
                 }).start();
             }
         };
+    }
+
+
+    /**
+     * 根据公司名称、账号、密码执行查询
+     */
+    private void performQueryByCompanyAndAccount() {
+        String companyName = companyText;
+        String account = username.getText().toString();
+        String pwd = password.getText().toString();
+
+        Log.d("QueryDebug", "开始查询 - 公司: " + companyName + ", 账号: " + account + ", 密码: " + pwd);
+
+        // 根据不同的系统类型执行不同的查询
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Object result = null;
+
+                    if (systemText.equals("云合未来进销存系统")) {
+                        yhJinXiaoCunUserService = new YhJinXiaoCunUserService();
+                        result = yhJinXiaoCunUserService.queryByCompanyAndAccount(companyName, account, pwd);
+                    }
+
+                    if (systemText.equals("云合教务管理系统")) {
+                        teacherService = new TeacherService();
+                        result = teacherService.queryByCompanyAndAccount(companyName, account, pwd);
+                    }
+
+                    // 🆕 使用缓存管理器存储 shujuku 字段和查询结果
+                    int shujukuValue = (result != null) ? 1 : 0;
+                    CacheManager.getInstance().setShujukuValue(shujukuValue);
+                    CacheManager.getInstance().setQueryResult(result);
+
+                    // 🆕 可选：保持原有的 SharedPreferences 存储（用于持久化）
+                    SharedPreferences sharedPref = getSharedPreferences("my_cache", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putInt("shujuku", shujukuValue);
+                    editor.apply();
+
+                    Log.d("QueryDebug", "存储 shujuku 值: " + shujukuValue);
+
+                    // 处理查询结果
+                    final Object finalResult = result;
+                    final int finalShujukuValue = shujukuValue;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (finalResult != null) {
+                                Log.d("QueryDebug", "查询成功: " + finalResult.toString());
+                            } else {
+                                Log.d("QueryDebug", "查询结果为空");
+                            }
+
+                            // 🆕 验证缓存的值
+                            int cachedShujuku = CacheManager.getInstance().getShujukuValue();
+                            Object cachedResult = CacheManager.getInstance().getQueryResult();
+
+                            Log.d("QueryDebug", "缓存设置完成，时间: " + System.currentTimeMillis());
+                            Log.d("CacheTest", "缓存验证 - shujuku: " + cachedShujuku +
+                                    ", 结果: " + (cachedResult != null ? "非空" : "空"));
+                        }
+                    });
+
+                } catch (Exception e) {
+                    // 🆕 查询异常时也存储 shujuku 为 0
+                    CacheManager.getInstance().setShujukuValue(0);
+                    CacheManager.getInstance().setQueryResult(null);
+
+                    // 可选：保持原有的 SharedPreferences 存储
+                    SharedPreferences sharedPref = getSharedPreferences("my_cache", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putInt("shujuku", 0);
+                    editor.apply();
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ToastUtil.show(LoginActivity.this, "查询失败: " + e.getMessage());
+
+                            // 🆕 验证异常情况下的缓存
+                            int cachedShujuku = CacheManager.getInstance().getShujukuValue();
+                            Log.d("CacheTest", "异常情况 - shujuku: " + cachedShujuku);
+                        }
+                    });
+                }
+            }
+        }).start();
     }
 
     public Map<String, Object> readLogin() {

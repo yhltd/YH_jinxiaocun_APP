@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,71 +9,223 @@
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".mendian.activity.OrderPanelActivity"
-    android:background="@drawable/mendian_diandantupian_bg">
+   >
 
-    <com.youth.banner.Banner
-        android:id="@+id/main_banner"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="3dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
-        app:banner_loop_time="5000"
-        app:banner_radius="15dp"
-        app:layout_heightPercent="40%"
-        app:layout_widthPercent="100%" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="-5dp"
-        android:layout_marginEnd="50dp"
+    <LinearLayout  android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           >
+            <ImageView
+                android:id="@+id/diandantupian"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:src="@drawable/mendian_diandanbg4"
+                android:scaleType="centerCrop" />
 
-        android:gravity="center_vertical">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/ddbh"
+            android:layout_width="match_parent"
+            android:gravity="center"
+
+
+
+            android:layout_height="40dp">
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="欢迎使用"
+                android:gravity="left|center"
+                android:textSize="17dp"
+                android:textColor="@color/white"
+                />
+            <TextView
+                android:id="@+id/huanying"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="云合未来"
+                android:gravity="left|center"
+                android:textSize="17dp"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="智慧门店系统"
+                android:gravity="left|center"
+                android:textSize="17dp"
+                android:textColor="@color/white"
+                />
+
+
+        </LinearLayout>
+<!--<com.youth.banner.Banner-->
+<!--        android:id="@+id/main_banner"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginTop="3dp"-->
+<!--        android:layout_marginRight="5dp"-->
+<!--        android:layout_marginLeft="5dp"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        app:banner_loop_time="5000"-->
+<!--        app:banner_radius="15dp"-->
+<!--        app:layout_heightPercent="40%"-->
+<!--        app:layout_widthPercent="100%" />-->
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:gravity="center"
+
+
+            android:layout_height="40dp">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="40dp"-->
+
+
+<!--       android:background="@null"-->
+<!--      -->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:paddingRight="20dp">-->
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="订单编号"
-            android:textColor="@color/black"/>
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="订单编号:"
+            android:gravity="center"
+            android:textSize="17dp"
+            android:textColor="@color/white"
+            />
 
         <EditText
             android:id="@+id/ddh"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_weight="1"
+            android:textSize="17dp"
             android:gravity="center"
             android:hint="订单编号"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"/>
+            android:background="@null"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
+<!--    </LinearLayout>-->
     </LinearLayout>
 
-
     <LinearLayout
+
+        android:layout_width="match_parent"
+        android:gravity="center"
+
+
+        android:layout_height="40dp">
+
+        <Button
+            android:id="@+id/quanbu"
+            android:layout_width="wrap_content"
+            android:minWidth="60dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:textSize="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@drawable/mendian_dingbu_xuanzhongbtn"
+            android:text="全部"
+            android:textColor="#E6650F" />
+        <Button
+            android:id="@+id/zhekou"
+            android:layout_width="wrap_content"
+            android:minWidth="60dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:textSize="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@drawable/mendian_dingbu_btn"
+            android:text="折扣"
+            android:textColor="@color/black" />
+        <Button
+            android:id="@+id/rexiao"
+            android:layout_width="wrap_content"
+            android:minWidth="60dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:textSize="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@drawable/mendian_dingbu_btn"
+            android:text="热销"
+            android:textColor="@color/black" />
+        <Button
+            android:id="@+id/xinpin"
+            android:layout_width="wrap_content"
+            android:minWidth="60dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:textSize="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@drawable/mendian_dingbu_btn"
+            android:text="新品"
+            android:textColor="@color/black" />
+    </LinearLayout>
+            </LinearLayout>
+
+        </FrameLayout>
+    <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_above="@+id/rela_button"
         android:layout_below="@+id/linear_top"
-        android:layout_marginTop="5dp"
-        android:layout_weight="100"
-android:layout_margin="10dp"
-       android:padding="3dp"
-        android:background="@drawable/mendian_diandan_bg"
-        android:orientation="horizontal">
 
+        android:layout_weight="100"
+
+
+        android:background="@drawable/mendian_diandan_bg1"
+        android:orientation="horizontal">
+        <LinearLayout
+
+            android:layout_width="64dp"
+            android:layout_height="match_parent"
+
+
+
+            android:background="@drawable/mendian_diandan_bg1"
+            android:orientation="vertical">
         <ListView
             android:id="@+id/left_listview"
-            android:layout_width="84dp"
-            android:layout_height="match_parent"
+            android:layout_width="64dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:background="@drawable/mendian_diandan_leftbg"
             android:divider="@null"
             android:scrollbars="none"
-            />
 
+            />
+        <LinearLayout
+
+            android:layout_width="64dp"
+            android:layout_height="50dp"
+            android:background="@drawable/mendian_diandan_leftbg"
+
+
+            >
+        </LinearLayout>
+        </LinearLayout>
         <com.example.myapplication.mendian.entity.PinnedHeaderListView
             android:id="@+id/pinnedListView"
             android:layout_width="match_parent"
@@ -84,62 +238,7 @@ android:layout_margin="10dp"
         </com.example.myapplication.mendian.entity.PinnedHeaderListView>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
 
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/clear_button"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-
-            android:background="@drawable/mendian_btn_bg"
-            android:text="作废"
-            android:textColor="@color/white" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:src="@drawable/search"
-            android:visibility="invisible" />
-
-        <Button
-            android:id="@+id/sel_button"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="25dp"
-            android:background="@drawable/gouwuche"
-            android:textColor="#838383" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="#F44336"
-            android:gravity="center"
-            android:text="0"
-            android:textColor="#ffffff" />
-
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:src="@drawable/search"
-            android:visibility="invisible" />
-
-        <Button
-            android:id="@+id/ins_button"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/mendian_btn_jiezhang"
-            android:text="结账"
-            android:textColor="#ffffff" />
-    </LinearLayout>
 
     <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
     <!--        android:id="@+id/jczl_insert"-->
@@ -155,5 +254,67 @@ android:layout_margin="10dp"
     <!--        app:backgroundTintMode="add"-->
     <!--        app:pressedTranslationZ="10dp"-->
     <!--        app:tint="@color/white" />-->
-
 </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/mendian_btn_dakuang"
+        android:gravity="center"
+        android:elevation="18dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="10dp">
+
+        <Button
+            android:id="@+id/clear_button"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+
+            android:background="@drawable/mendian_diandan_btn"
+            android:text="作废"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:src="@drawable/search"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/sel_button"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+
+            android:background="@drawable/gouwuche"
+            android:textColor="#838383" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="#F44336"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:src="@drawable/search"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/ins_button"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+
+            android:background="@drawable/mendian_jiezhang_huise"
+            android:text="结账"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+    </FrameLayout>

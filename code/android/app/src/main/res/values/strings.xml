@@ -182,4 +182,11 @@
         <item>√</item>
         <item>×</item>
     </string-array>
+
+    <string-array name="beizhu1_list">
+        <item>折扣</item>
+        <item>热销</item>
+        <item>新品</item>
+    </string-array>
+
 </resources>

@@ -1,170 +1,237 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mendian.activity.ProductInsActivity"
     android:fillViewport="true"
-    android:background="@drawable/mendian_diandantupian_bg">
+   >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
+
+        >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="fill_parent"
-            android:layout_height="200dp"
-            app:srcCompat="@drawable/product_img01"
-            android:layout_marginTop="10dp"/>
-        <View
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+<!--        android:background="@drawable/mendian_diandan_chanpinxuanze"-->
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="290dp"
+
             android:orientation="vertical"
-            android:background="@drawable/mendian_spxz_body">
 
+           >
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView"-->
+<!--            android:layout_width="fill_parent"-->
+<!--            android:layout_height="match_parent"-->
 
+<!--           android:background="@drawable/mendian_diandan_shangpin"-->
+
+<!--           />-->
+
+            <com.youth.banner.Banner
+                android:id="@+id/main_banner"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                app:banner_loop_time="5000"
+                app:banner_indicator_marginBottom="45dp"
+                />
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/mendian_spxz_head">
+                android:gravity="left"
+                android:layout_gravity="bottom"
+                android:background="@drawable/mendian_spxz_head"
+                android:elevation="4dp"
+                >
 
                 <!-- 商品名称（左对齐） -->
                 <TextView
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
-                    android:layout_height="35dp"
+                    android:layout_height="40dp"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="0dp"
                     android:text="商品名称"
-                    android:textColor="#ffffff"
-                    android:textSize="25dp"/>
+                    android:textColor="@color/black"
+                    android:textSize="23sp"
+                    android:gravity="center"
+                    android:textStyle="bold"/>
 
-                <!-- 价格数值（在符号右侧） -->
-                <TextView
-                    android:id="@+id/price"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginTop="5dp"
-                    android:text="价格"
-                    android:textColor="#ffffff"
-                    android:textSize="25dp"/>
+                    android:layout_marginEnd="15dp">
 
-                <!-- 价格符号（固定在价格左侧） -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_toStartOf="@id/price"
-                    android:layout_alignBaseline="@id/price"
-                    android:text="￥"
-                    android:textColor="#ffffff"
-                    android:textSize="20dp"/>
+                    <!-- 价格符号 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="￥"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:paddingBottom="6dp"
+                        android:gravity="center|bottom"/>
+
+                    <!-- 价格数值 -->
+                    <TextView
+                        android:id="@+id/price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="价格"
+                        android:textColor="@color/black"
+                        android:textSize="23sp"
+                        android:gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:textSize="23sp"
+                        android:gravity="center"
+                        android:text="/"
+                        android:textColor="@color/black"
+                        />
+
+                    <!-- 价格数值（在符号右侧） -->
+                    <TextView
+                        android:id="@+id/danwei"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:textSize="21sp"
+                        android:gravity="center"
+                        android:text="袋"
+                        android:textColor="@color/black"
+                        />
+
+                </LinearLayout>
+
+
 
 
             </RelativeLayout>
+        </FrameLayout>
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="1"/>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mendian_diandan_product_main"
+
+            android:orientation="vertical"
+          >
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="@drawable/mendian_diandan_bodytupian2">
-                <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
 
 
-                android:gravity="center"
-                >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-
-                    android:background="@drawable/mendian_diandan_xiangqing_xiaokuang"
-                    >
-
-                    <TextView
-                        android:layout_width="100dp"
-
-                        android:textSize="20dp"
-                        android:layout_height="40dp"
 
 
-                        android:text="商品类型:"
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
 
-                        />
-
-                    <TextView
-                        android:id="@+id/type"
-                        android:layout_width="80dp"
-
-                        android:textSize="20dp"
-                        android:layout_height="40dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
 
 
-                        android:text="商品类型"
-                        android:gravity="center"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        />
-                </LinearLayout>
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_weight="1"/>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+       >
+<!--                <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                android:gravity="center"-->
+<!--                >-->
 
-                    android:gravity="center"
-                    android:background="@drawable/mendian_diandan_xiangqing_xiaokuang"
-                   >
-                    <TextView
-                        android:layout_width="100dp"
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:background="@drawable/mendian_diandan_xiangqing_xiaokuang"-->
+<!--                    >-->
 
-                        android:textSize="20dp"
-                        android:layout_height="40dp"
+<!--                    <TextView-->
+<!--                        android:layout_width="100dp"-->
 
-
-                        android:text="单位:"
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
-                        />
-
-                    <TextView
-                        android:id="@+id/danwei"
-                        android:layout_width="80dp"
-
-                        android:textSize="20dp"
-                        android:layout_height="40dp"
+<!--                        android:textSize="18dp"-->
+<!--                        android:layout_height="40dp"-->
 
 
-                        android:text="单位"
-                        android:gravity="center"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        />
-                </LinearLayout>
+<!--                        android:text="商品类型:"-->
+<!--                        android:gravity="right|center"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textColorHint="@color/white"-->
+
+<!--                        />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/type"-->
+<!--                        android:layout_width="120dp"-->
+
+<!--                        android:textSize="18dp"-->
+<!--                        android:layout_height="40dp"-->
+
+<!--                        android:paddingLeft="10dp"-->
+<!--                        android:text="商品类型"-->
+<!--                        android:gravity="left|center"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textColorHint="@color/white"-->
+<!--                        />-->
+<!--                </LinearLayout>-->
+<!--                    <Space-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_weight="1"/>-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+
+<!--                    android:gravity="center"-->
+<!--                    android:background="@drawable/mendian_diandan_xiangqing_xiaokuang"-->
+<!--                   >-->
+<!--                    <TextView-->
+<!--                        android:layout_width="100dp"-->
+
+<!--                        android:textSize="18dp"-->
+<!--                        android:layout_height="40dp"-->
 
 
-                </LinearLayout>
+<!--                        android:text="单位:"-->
+<!--                        android:gravity="right|center"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textColorHint="@color/white"-->
+<!--                        />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/danwei"-->
+<!--                        android:layout_width="120dp"-->
+
+<!--                        android:textSize="18dp"-->
+<!--                        android:layout_height="40dp"-->
+
+<!--                        android:paddingLeft="10dp"-->
+<!--                        android:text="单位"-->
+<!--                        android:gravity="left|center"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textColorHint="@color/white"-->
+<!--                        />-->
+<!--                </LinearLayout>-->
+
+
+<!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -174,134 +241,399 @@
                     android:gravity="center"
                     >
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:gravity="center"
-                        android:background="@drawable/mendian_diandan_xiangqing_xiaokuang"
+
+                        android:gravity="left|center"
+
                         >
                     <TextView
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="40dp"
-
-                        android:text="规格:"
-                        android:textSize="20dp"
+                        android:layout_marginStart="15dp"
+                        android:text="选规格:"
+                        android:textSize="14sp"
                         android:gravity="center"
-                        android:textColor="@color/white"
+                        android:textColor="#555555"
                         android:textColorHint="@color/white"
                        />
 
 
-                    <Spinner
-                        android:id="@+id/guige"
-                        android:layout_width="120dp"
-                        android:layout_height="40dp"
+<!--                    <Spinner-->
+<!--                        android:id="@+id/guige"-->
+<!--                        android:layout_width="10dp"-->
+<!--                        android:layout_height="40dp"-->
 
-                        android:textSize="25sp"
-                        android:textColor="#FFFFFF"
-                        android:textColorHint="#FFFFFF"
+<!--                        android:textSize="25sp"-->
+<!--                        android:textColor="#FFFFFF"-->
+<!--                        android:textColorHint="#FFFFFF"-->
 
-                        android:spinnerMode="dialog"
-                        android:gravity="end" />
+<!--                        android:spinnerMode="dialog"-->
+<!--                        android:gravity="end" />-->
 
                     </LinearLayout>
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:id="@+id/guige_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" />
+
+                    </HorizontalScrollView>
+
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
-                        android:gravity="center"
-                        android:background="@drawable/mendian_diandan_xiangqing_xiaokuang"
+                        android:gravity="left|center"
+
                         >
                         <TextView
-                            android:layout_width="100dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="40dp"
-
-                            android:text="口味:"
-                            android:textSize="20dp"
+                            android:layout_marginStart="15dp"
+                            android:text="选口味:"
+                            android:textSize="14sp"
                             android:gravity="center"
-                            android:textColor="@color/white"
+                            android:textColor="#555555"
                             android:textColorHint="@color/white"
                             />
 
-                    <Spinner
-                        android:id="@+id/kouwei"
-                        android:layout_width="120dp"
-                        android:layout_height="40dp"
+<!--                    <Spinner-->
+<!--                        android:id="@+id/kouwei"-->
+<!--                        android:layout_width="10dp"-->
+<!--                        android:layout_height="40dp"-->
 
-                        android:textSize="25sp"
-                        android:textColor="#FFFFFF"
-                        android:textColorHint="#FFFFFF"
+<!--                        android:textSize="25sp"-->
+<!--                        android:textColor="#FFFFFF"-->
+<!--                        android:textColorHint="#FFFFFF"-->
 
-                        android:spinnerMode="dialog"
-                       />
+<!--                        android:spinnerMode="dialog"-->
+<!--                       />-->
 
                     </LinearLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    >
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:scrollbars="none">
 
-                        android:gravity="center"
-                        android:background="@drawable/mendian_diandan_xiangqing_xiaokuang"
-                        >
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
+                        <LinearLayout
+                            android:id="@+id/kouwei_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" />
 
-                        android:text="商品数量:"
-                        android:textSize="20dp"
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
-                       />
+                    </HorizontalScrollView>
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
 
-                <EditText
-                    android:id="@+id/num"
-                    android:layout_width="120dp"
-                    android:layout_height="50dp"
+<!--                        android:gravity="left|center"-->
 
-                    android:textIsSelectable="false"
-                    android:textSize="20dp"
-                    android:textColor="#000000"
-                    android:textColorHint="#5E5E5E"
-                    android:gravity="center"
-                    android:hint="填入数量"
-                   />
-                    </LinearLayout>
+<!--                        >-->
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="15dp"-->
+<!--                            android:gravity="left|center"-->
+<!--                            android:background="@drawable/mendian_diandan_chanpin_guige"-->
+<!--                            >-->
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:paddingLeft="10dp"-->
+<!--                                android:paddingRight="10dp"-->
+<!--                                android:minWidth="70dp"-->
+<!--                                android:text="常温"-->
+<!--                                android:textSize="12sp"-->
+<!--                                android:gravity="center"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                />-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="10dp"-->
+<!--                            android:gravity="left|center"-->
+<!--                            android:background="@drawable/mendian_diandan_chanpin_guige"-->
+<!--                            >-->
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:paddingLeft="10dp"-->
+<!--                                android:paddingRight="10dp"-->
+<!--                                android:text="冰冻"-->
+<!--                                android:minWidth="70dp"-->
+<!--                                android:textSize="12sp"-->
+<!--                                android:gravity="center"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                />-->
+<!--                        </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="10dp"-->
+<!--                            android:gravity="left|center"-->
+<!--                            android:background="@drawable/mendian_diandan_chanpin_guige"-->
+<!--                            >-->
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:paddingLeft="10dp"-->
+<!--                                android:paddingRight="10dp"-->
+<!--                                android:minWidth="70dp"-->
+<!--                                android:text="加热"-->
+<!--                                android:textSize="12sp"-->
+<!--                                android:gravity="center"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                />-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
                 </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingLeft="24dp"
-                android:paddingRight="24dp">
 
-                <Button
-                    android:id="@+id/insert_btn"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:onClick="insertClick"
-                    android:text="+ 加入购物车"
-                    android:background="@drawable/mendian_gwcbtn_bg"
-                    android:textColor="#ffffff"
-                    tools:ignore="MissingConstraints" />
-            </LinearLayout>
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    >-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
 
-        </LinearLayout>
+<!--                        android:gravity="center"-->
+<!--                        android:background="@drawable/mendian_diandan_xiangqing_xiaokuang"-->
+<!--                        >-->
+<!--                    <TextView-->
+<!--                        android:layout_width="100dp"-->
+<!--                        android:layout_height="40dp"-->
+
+<!--                        android:text="商品数量:"-->
+<!--                        android:textSize="18dp"-->
+<!--                        android:gravity="right|center"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textColorHint="@color/white"-->
+<!--                       />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/num"-->
+<!--                    android:layout_width="120dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:background="@null"-->
+<!--                    android:textIsSelectable="false"-->
+<!--                    android:textSize="18dp"-->
+<!--                    android:textColor="#000000"-->
+<!--                    android:paddingLeft="10dp"-->
+<!--                    android:textColorHint="#5E5E5E"-->
+<!--                    android:gravity="left|center"-->
+<!--                    android:hint="填入数量"-->
+<!--                   />-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品详情:"
+            android:textColor="#555555"
+            android:textSize="14sp"
+            android:paddingBottom="3dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/xiangqing_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="以百年配方为基底草本香气与细腻气泡交织，带来纯粹愉悦的味觉体验。摩登罐采用现代极简设计，银红配色彰显活力，密封技术锁住新鲜碳酸感。无论是夏日冰镇畅饮，还是佐餐解腻，它都是跨越代际的欢乐符号。"
+            android:textColor="#555555"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="75dp"
+            android:gravity="left|center"/>
+
+    </RelativeLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="200dp" />
+    </LinearLayout>
+
+
 
         </LinearLayout>
 
     </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="vertical"
+
+        android:background="@color/white">
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            tools:ignore="MissingConstraints">
 
 
-</ScrollView>
+            <!--            <view-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="35dp"-->
+            <!--                android:layout_weight="1"/>-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+
+                android:layout_marginStart="15dp">
+
+                <!-- 价格符号 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="￥"
+                    android:textColor="#000000"
+                    android:textSize="11sp"
+                    android:paddingBottom="3dp"
+                    android:gravity="center|bottom"/>
+
+                <!-- 价格数值 -->
+                <TextView
+                    android:id="@+id/jiage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="51"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:gravity="center|bottom"/>
+
+
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="bottom"
+
+                android:layout_marginEnd="15dp">
+
+                <ImageView
+                    android:id="@+id/jianhao"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+
+                    android:src="@drawable/mendian_diandan_product_jian"
+
+
+                    />
+
+                <!-- 价格数值 -->
+                <TextView
+                    android:id="@+id/shuliang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:minWidth="29dp"
+                    android:text="1"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:gravity="center|bottom"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <ImageView
+                    android:id="@+id/jiahao"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+
+                    android:src="@drawable/mendian_diandan_product_jia"
+                    />
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginBottom="10dp"
+            tools:ignore="MissingConstraints">
+            <TextView
+                android:id="@+id/jiaru_kouwei"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="冰冻"
+                android:layout_marginStart="15dp"
+                android:textColor="#919191"
+                android:textSize="10sp"
+                android:gravity="center"/>
+        </LinearLayout>
+        <!-- 改用 LinearLayout 作为可点击容器 -->
+        <LinearLayout
+            android:id="@+id/insert_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mendian_gwcbtn_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:onClick="insertClick"
+            android:foreground="?attr/selectableItemBackground"
+            tools:ignore="MissingConstraints">
+
+
+            <!--            <view-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="35dp"-->
+            <!--                android:layout_weight="1"/>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="+加入购物车"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+
+                android:gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

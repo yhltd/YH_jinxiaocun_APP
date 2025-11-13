@@ -454,6 +454,7 @@ public class JiaowuActivity extends AppCompatActivity {
                 try {
                     quanxianService = new QuanxianService();
                     list = quanxianService.getListQuanXian(teacher.getId(), "");
+                    System.out.println("DEBUG: shuju" + list );
                     if (list == null) return;
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -13,6 +13,14 @@ public class YhMendianProductshezhi {
     private String practice;
     private String product_bianhao;
     private String company;
+    private String photo1;
+    private String photo2;
+    private String xiangqing;
+    private String beizhu1;
+    private String beizhu2;
+    private String beizhu3;
+    private String beizhu4;
+    private String beizhu5;
 
     public int getId() {
         return id;
@@ -108,5 +116,69 @@ public class YhMendianProductshezhi {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    public String getPhoto1() {
+        return photo1;
+    }
+
+    public void setPhoto1(String photo1) {
+        this.photo1 = photo1;
+    }
+
+    public String getPhoto2() {
+        return photo2;
+    }
+
+    public void setPhoto2(String photo2) {
+        this.photo2 = photo2;
+    }
+
+    public String getXiangqing() {
+        return xiangqing;
+    }
+
+    public void setXiangqing(String xiangqing) {
+        this.xiangqing = xiangqing;
+    }
+
+    public String getBeizhu1() {
+        return beizhu1;
+    }
+
+    public void setBeizhu1(String beizhu1) {
+        this.beizhu1 = beizhu1;
+    }
+
+    public String getBeizhu2() {
+        return beizhu2;
+    }
+
+    public void setBeizhu2(String beizhu2) {
+        this.beizhu2 = beizhu2;
+    }
+
+    public String getBeizhu3() {
+        return beizhu3;
+    }
+
+    public void setBeizhu3(String beizhu3) {
+        this.beizhu3 = beizhu3;
+    }
+
+    public String getBeizhu4() {
+        return beizhu4;
+    }
+
+    public void setBeizhu4(String beizhu4) {
+        this.beizhu4 = beizhu4;
+    }
+
+    public String getBeizhu5() {
+        return beizhu5;
+    }
+
+    public void setBeizhu5(String beizhu5) {
+        this.beizhu5 = beizhu5;
     }
 }

@@ -2,10 +2,13 @@ package com.example.myapplication.mendian.entity;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
@@ -62,15 +65,38 @@ public class LeftListAdapter extends BaseAdapter {
 
         public void updataView(final int position) {
             left_list_item.setText(leftStr[position]);
+            float density = left_list_item.getContext().getResources().getDisplayMetrics().density;
+
             if (flagArray[position]) {
                 // 选中状态 - 设置背景颜色和文字颜色
                 left_list_item.setBackgroundResource(R.drawable.mendian_diandian_left_xuanzhong);
+                left_list_item.setTextScaleX(1.1f);
+                // 添加选中时的高度变化
+                ViewGroup.LayoutParams params = left_list_item.getLayoutParams();
+                params.height = (int) (90 * density); // 60dp
+                left_list_item.setLayoutParams(params);
 
-                left_list_item.setTextColor(Color.WHITE); // 选中文字颜色
+                // 设置图标并调整大小
+                Drawable drawable = ContextCompat.getDrawable(left_list_item.getContext(), R.drawable.mendian_diandan_lfimg);
+                if (drawable != null) {
+                    int iconSize = (int) (20 * density); // 设置图标大小为20dp
+                    drawable.setBounds(0, 0, iconSize, iconSize);
+                    left_list_item.setCompoundDrawables(null,  drawable,null, null);
+                }
+
+                left_list_item.setCompoundDrawablePadding((int) (8 * density));
+                left_list_item.setTextColor(Color.parseColor("#FFFFFF")); // 选中文字颜色
             } else {
                 // 未选中状态 - 设置背景颜色和文字颜色
                 left_list_item.setBackgroundColor(Color.TRANSPARENT); // 默认背景
-                left_list_item.setTextColor(Color.BLACK); // 默认文字颜色
+                left_list_item.setTextColor(Color.parseColor("#4C4C4C")); // 默认文字颜色
+                // 清除图标
+                left_list_item.setCompoundDrawables(null, null, null, null);
+
+                // 恢复默认高度
+                ViewGroup.LayoutParams params = left_list_item.getLayoutParams();
+                params.height = (int) (60 * density);  // 默认高度，你可以根据需要调整
+                left_list_item.setLayoutParams(params);
             }
         }
 

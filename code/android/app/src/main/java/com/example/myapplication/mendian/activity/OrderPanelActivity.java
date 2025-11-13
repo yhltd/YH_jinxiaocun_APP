@@ -1,17 +1,27 @@
 package com.example.myapplication.mendian.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -19,6 +29,7 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
@@ -50,7 +61,7 @@ public class OrderPanelActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
 
     MyApplication myApplication;
-
+    private ImageView imageView;
     private YhMendianUser yhMendianUser;
     private YhMendianOrdersService yhMendianOrdersService;
     private EditText ddh;
@@ -60,8 +71,16 @@ public class OrderPanelActivity extends AppCompatActivity {
     private Button sel_button;
     private Button ins_button;
     private YhMendianProductshezhiService yhMendianProductshezhiService;
-
-
+    private LinearLayout yourLinearLayout;
+    private GestureDetector gestureDetector;
+    // 在类的成员变量区域声明
+    private Handler scrollHandler = new Handler();
+    private Runnable hideRunnable;
+    private Runnable showRunnable;
+    private boolean isLayoutVisible = true;
+    private long lastActionTime = 0;
+    private static final long ACTION_COOLDOWN = 800; // 防抖时间800ms
+    private static final long SCROLL_DELAY = 300; // 延迟300ms执行
     private boolean isScroll = true;
     ListView left_listview;//左侧列表
     PinnedHeaderListView pinnedListView;//右侧列表
@@ -74,9 +93,201 @@ public class OrderPanelActivity extends AppCompatActivity {
 
     List<YhMendianOrderDetail> list = new ArrayList<>();
     List<YhMendianOrders> max_order;
+    private int currentScrollDirection = 0;
+    private long lastScrollTime = 0;
+    private static final long SCROLL_INTERVAL = 500;
+    private static final int MIN_SCROLL_DISTANCE = 1; // 最小滑动距离
+    private float totalScrollDistance = 0; // 累计滑动距离
+    int heightInDp = 80;
+    int heightInDpshow = 120;
+    private int heightInPixels;
+    private int heightInPixelsshow;
+//    private Banner banner;
+//    private List<Integer> banner_data;
+private Button btnQuanbu, btnZhekou, btnRexiao, btnXinpin;
+    private List<Button> allButtons = new ArrayList<>();
 
-    private Banner banner;
-    private List<Integer> banner_data;
+    private void initGestureDetection() {
+        yourLinearLayout = findViewById(R.id.ddbh);
+        // 初始化Runnable
+        hideRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (isLayoutVisible) {
+                    Log.d("GestureDebug", "准备隐藏布局");
+                    smoothHideLayout();
+                    isLayoutVisible = false;
+                    lastActionTime = System.currentTimeMillis();
+                    Log.d("GestureDebug", "隐藏完成, isLayoutVisible=" + isLayoutVisible);
+                }else {
+                    Log.d("GestureDebug", "布局已经隐藏，跳过");
+                }
+            }
+        };
+        showRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (!isLayoutVisible) {
+                    Log.d("GestureDebug", "准备显示布局");
+                    smoothShowLayout();
+                    isLayoutVisible = true;
+                    lastActionTime = System.currentTimeMillis();
+                    Log.d("GestureDebug", "显示完成, isLayoutVisible=" + isLayoutVisible);
+                }else {
+                    Log.d("GestureDebug", "布局已经显示，跳过");
+                }
+            }
+        };
+
+        gestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+                if (Math.abs(distanceY) > 3) {
+                    Log.d("GestureDebug", "滑动, distanceY: " + distanceY);
+                    long currentTime = System.currentTimeMillis();
+
+                    // 累计滑动距离
+                    totalScrollDistance += Math.abs(distanceY);
+
+                    // 防抖检查和频率控制
+                    if (currentTime - lastActionTime < ACTION_COOLDOWN ||
+                            currentTime - lastScrollTime < SCROLL_INTERVAL) {
+                        return false;
+                    }
+
+                    int newDirection = (distanceY > 0) ? 1 : 2;
+
+                    // 如果方向改变，重置状态和累计距离
+                    if (newDirection != currentScrollDirection) {
+                        currentScrollDirection = newDirection;
+                        totalScrollDistance = 0;
+                        scrollHandler.removeCallbacks(hideRunnable);
+                        scrollHandler.removeCallbacks(showRunnable);
+                        return false;
+                    }
+
+                    // 只有当滑动距离达到阈值时才触发
+                    if (totalScrollDistance >= MIN_SCROLL_DISTANCE) {
+                        if (currentScrollDirection == 1) { // 上滑
+                            Log.d("GestureDebug", "达到滑动阈值，隐藏");
+                            scrollHandler.removeCallbacks(hideRunnable);
+                            scrollHandler.removeCallbacks(showRunnable);
+                            scrollHandler.postDelayed(hideRunnable, SCROLL_DELAY);
+                            lastScrollTime = currentTime;
+                            totalScrollDistance = 0; // 重置累计距离
+                        } else if (currentScrollDirection == 2) { // 下滑
+                            Log.d("GestureDebug", "达到滑动阈值，显示");
+                            scrollHandler.removeCallbacks(hideRunnable);
+                            scrollHandler.removeCallbacks(showRunnable);
+                            scrollHandler.postDelayed(showRunnable, SCROLL_DELAY);
+                            lastScrollTime = currentTime;
+                            totalScrollDistance = 0; // 重置累计距离
+                        }
+                    }
+                }
+                return false;
+            }
+            @Override
+            public boolean onDown(MotionEvent e) {
+                return true;
+            }
+
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                // 快速滑动时立即执行，不延迟
+                if (Math.abs(velocityY) > 1500) {
+                    scrollHandler.removeCallbacks(hideRunnable);
+                    scrollHandler.removeCallbacks(showRunnable);
+
+                    if (velocityY > 0) {
+                        smoothShowLayout();
+                        isLayoutVisible = true;
+                    } else {
+
+                        smoothHideLayout();
+                        isLayoutVisible = false;
+                    }
+                    lastActionTime = System.currentTimeMillis();
+                }
+                return false;
+            }
+
+        });
+
+
+
+        // 为右侧PinnedHeaderListView设置触摸监听
+        PinnedHeaderListView pinnedListView = findViewById(R.id.pinnedListView);
+        pinnedListView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                gestureDetector.onTouchEvent(event);
+
+//                // 触摸结束时取消延迟任务
+//                if (event.getAction() == MotionEvent.ACTION_UP ||
+//                        event.getAction() == MotionEvent.ACTION_CANCEL) {
+//                    scrollHandler.removeCallbacks(hideRunnable);
+//                    scrollHandler.removeCallbacks(showRunnable);
+//                }
+
+                return false;
+            }
+        });
+    }
+    // 平滑显示动画
+    private void smoothShowLayout() {
+        FrameLayout.LayoutParams imageParams = (FrameLayout.LayoutParams) imageView.getLayoutParams();
+        imageParams.height =heightInPixelsshow;
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                if (yourLinearLayout.getVisibility() != View.VISIBLE) {
+                    yourLinearLayout.setVisibility(View.VISIBLE);
+                    // 从当前位置动画到0
+                    yourLinearLayout.setTranslationY(-yourLinearLayout.getHeight());
+                    yourLinearLayout.animate()
+                            .translationY(0)
+                            .setDuration(400) // 更长的动画时间
+                            .setInterpolator(new OvershootInterpolator(0.8f)) // 弹性效果
+
+                            .start();
+                }
+            }
+        });
+    }
+
+    // 平滑隐藏动画
+    private void smoothHideLayout() {
+        Log.d("GestureDebug", "smoothHideLayout被调用");
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("GestureDebug", "UI线程执行隐藏, 当前visibility=" + yourLinearLayout.getVisibility());
+                if (yourLinearLayout.getVisibility() == View.VISIBLE) {
+                    Log.d("GestureDebug", "开始隐藏动画, 布局高度=" + yourLinearLayout.getHeight());
+                    yourLinearLayout.animate()
+                            .translationY(-yourLinearLayout.getHeight())
+                            .setDuration(400) // 更长的动画时间
+                            .setInterpolator(new AccelerateInterpolator(1.2f)) // 加速效果
+                            .withEndAction(new Runnable() {
+                                @Override
+                                public void run() {
+                                    yourLinearLayout.setVisibility(View.GONE);
+                                    Log.d("GestureDebug", "隐藏动画完成, 设置visibility=GONE");
+
+                                }
+                            })
+                            .start();
+                    FrameLayout.LayoutParams imageParams = (FrameLayout.LayoutParams) imageView.getLayoutParams();
+                    imageParams.height =heightInPixels;
+                } else {
+                    Log.d("GestureDebug", "布局已经不可见，跳过隐藏");
+                }
+                }
+
+        });
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,6 +303,8 @@ public class OrderPanelActivity extends AppCompatActivity {
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        updateWelcomeText();
 
         yhMendianOrdersService = new YhMendianOrdersService();
         yhMendianProductshezhiService = new YhMendianProductshezhiService();
@@ -112,34 +325,293 @@ public class OrderPanelActivity extends AppCompatActivity {
         ins_button = findViewById(R.id.ins_button);
         ins_button.setOnClickListener(insClick());
         ins_button.requestFocus();
+        // 获取布局引用
 
+        imageView = findViewById(R.id.diandantupian);
+
+        // 在 onCreate 中初始化，此时 Context 已就绪
+        heightInPixels = (int) (heightInDp * getResources().getDisplayMetrics().density);
+        heightInPixelsshow = (int) (heightInDpshow * getResources().getDisplayMetrics().density);
         orderRefresh();
+        initViews();
+        setupClickListeners();
+//        initData();
+//        banner = findViewById(R.id.main_banner);
+//
+//        banner.setAdapter(new BannerImageAdapter<Integer>(banner_data) {
+//
+//            @Override
+//            public void onBindView(BannerImageHolder holder, Integer data, int position, int size) {
+//                holder.imageView.setImageResource(data);
+//            }
+//        });
+//
+//        // 开启循环轮播
+//        banner.isAutoLoop(true);
+//        banner.setIndicator(new CircleIndicator(this));
+//        banner.setScrollBarFadeDuration(1000);
+//        // 设置指示器颜色(TODO 即选中时那个小点的颜色)
+//        banner.setIndicatorSelectedColor(Color.GREEN);
+//        // 开始轮播
+//        banner.start();
 
-        initData();
-        banner = findViewById(R.id.main_banner);
 
-        banner.setAdapter(new BannerImageAdapter<Integer>(banner_data) {
 
-            @Override
-            public void onBindView(BannerImageHolder holder, Integer data, int position, int size) {
-                holder.imageView.setImageResource(data);
+        // 初始化滑动检测
+        initGestureDetection();
+    }
+
+//    private void initViews() {
+//        btnQuanbu = findViewById(R.id.quanbu);
+//        btnZhekou = findViewById(R.id.zhekou);
+//        btnRexiao = findViewById(R.id.rexiao);
+//        btnXinpin = findViewById(R.id.xinpin);
+//
+//        // 将所有按钮添加到列表
+//        allButtons.add(btnQuanbu);
+//        allButtons.add(btnZhekou);
+//        allButtons.add(btnRexiao);
+//        allButtons.add(btnXinpin);
+//
+//        // 设置默认选中"全部"按钮
+//        setSelectedButton(btnQuanbu);
+//    }
+
+    private void initViews() {
+        btnQuanbu = findViewById(R.id.quanbu);
+        btnZhekou = findViewById(R.id.zhekou);
+        btnRexiao = findViewById(R.id.rexiao);
+        btnXinpin = findViewById(R.id.xinpin);
+
+        // 将所有按钮添加到列表
+        allButtons.add(btnQuanbu);
+        allButtons.add(btnZhekou);
+        allButtons.add(btnRexiao);
+        allButtons.add(btnXinpin);
+
+        // 设置默认选中"全部"按钮
+        setSelectedButton(btnQuanbu);
+
+        // 设置点击监听器
+        setupClickListeners();
+    }
+
+//    private void setupClickListeners() {
+//        // 方式一：使用实现接口的方式
+//        btnQuanbu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                setSelectedButton(btnQuanbu);
+//            }
+//        });
+//
+//        btnZhekou.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                setSelectedButton(btnZhekou);
+//            }
+//        });
+//
+//        btnRexiao.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                setSelectedButton(btnRexiao);
+//            }
+//        });
+//
+//        btnXinpin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                setSelectedButton(btnXinpin);
+//            }
+//        });
+//    }
+private void setupClickListeners() {
+    btnQuanbu.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            setSelectedButton(btnQuanbu);
+            filterProducts("全部"); // 显示所有商品
+        }
+    });
+
+    btnZhekou.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            setSelectedButton(btnZhekou);
+            filterProducts("折扣"); // 筛选折扣商品
+        }
+    });
+
+    btnRexiao.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            setSelectedButton(btnRexiao);
+            filterProducts("热销"); // 筛选热销商品
+        }
+    });
+
+    btnXinpin.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            setSelectedButton(btnXinpin);
+            filterProducts("新品"); // 筛选新品商品
+        }
+    });
+}
+    private void filterProducts(String filterType) {
+        List<YhMendianProductshezhi> filteredList = new ArrayList<>();
+
+        if ("全部".equals(filterType)) {
+            // 显示所有商品
+            filteredList = product_list;
+        } else {
+            // 根据beizhu1字段筛选
+            for (YhMendianProductshezhi product : product_list) {
+                if (filterType.equals(product.getBeizhu1())) {
+                    filteredList.add(product);
+                }
             }
-        });
+        }
 
-        // 开启循环轮播
-        banner.isAutoLoop(true);
-        banner.setIndicator(new CircleIndicator(this));
-        banner.setScrollBarFadeDuration(1000);
-        // 设置指示器颜色(TODO 即选中时那个小点的颜色)
-        banner.setIndicatorSelectedColor(Color.GREEN);
-        // 开始轮播
-        banner.start();
+        // 更新右侧列表数据
+        updateRightListData(filteredList);
+
+        // 记录日志便于调试
+        Log.d("FilterDebug", "筛选类型: " + filterType + ", 结果数量: " + filteredList.size());
+    }
+    private void updateRightListData(List<YhMendianProductshezhi> filteredList) {
+        try {
+            // 重新组织右侧数据
+            rightStr = new YhMendianProductshezhi[type_list.size()][];
+
+            for(int i = 0; i < type_list.size(); i++){
+                String this_type = type_list.get(i).getType();
+                int this_num = 0;
+
+                // 计算该分类下的商品数量
+                for(YhMendianProductshezhi product : filteredList){
+                    if(product.getType().equals(this_type)){
+                        this_num++;
+                    }
+                }
+
+                if(this_num > 0){
+                    rightStr[i] = new YhMendianProductshezhi[this_num];
+                    this_num = 0;
+                    for(YhMendianProductshezhi product : filteredList){
+                        if(product.getType().equals(this_type)){
+                            rightStr[i][this_num] = product;
+                            this_num++;
+                        }
+                    }
+                } else {
+                    rightStr[i] = new YhMendianProductshezhi[0];
+                }
+            }
+
+            // 刷新适配器
+            if (pinnedListView.getAdapter() != null) {
+                MainSectionedAdapter adapter = (MainSectionedAdapter) pinnedListView.getAdapter();
+                adapter.updateData(rightStr);
+                adapter.notifyDataSetChanged();
+
+                // 重置左侧分类选中状态
+                resetLeftListSelection();
+            }
+        } catch (Exception e) {
+            Log.e("FilterError", "更新列表数据失败: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+
+    private void resetLeftListSelection() {
+        // 重置左侧分类选中状态，默认选中第一个
+        if (flagArray != null && flagArray.length > 0) {
+            for (int i = 0; i < flagArray.length; i++) {
+                flagArray[i] = (i == 0); // 只有第一个选中
+            }
+            if (adapter != null) {
+                adapter.notifyDataSetChanged();
+            }
+
+            // 滚动到顶部
+            pinnedListView.setSelection(0);
+        }
+    }
+
+
+
+
+    private void setSelectedButton(Button selectedButton) {
+        // 重置所有按钮状态
+        for (Button button : allButtons) {
+            if (button == selectedButton) {
+                // 设置选中状态
+                button.setBackgroundResource(R.drawable.mendian_dingbu_xuanzhongbtn);
+                button.setTextColor(Color.parseColor("#E6650F")); // 直接使用橙色
+            } else {
+                // 设置默认状态
+                button.setBackgroundResource(R.drawable.mendian_dingbu_btn);
+                button.setTextColor(ContextCompat.getColor(this, R.color.black)); // 默认文字颜色
+            }
+        }
+    }
+
+    private void handleButtonClick(int buttonId) {
+        switch (buttonId) {
+            case R.id.quanbu:
+                setSelectedButton(btnQuanbu);
+                filterProducts("全部");
+                break;
+            case R.id.zhekou:
+                setSelectedButton(btnZhekou);
+                filterProducts("折扣");
+                break;
+            case R.id.rexiao:
+                setSelectedButton(btnRexiao);
+                filterProducts("热销");
+                break;
+            case R.id.xinpin:
+                setSelectedButton(btnXinpin);
+                filterProducts("新品");
+                break;
+        }
+    }
+
+
+    private void huiseButton(View ins_button) {
+
+            ins_button.setEnabled(false);
+            ins_button.setBackgroundResource(R.drawable.mendian_jiezhang_huise);
+
+    }
+
+
+    private void updateButtonState(View ins_button) {
+        if (list.size() == 0) {
+            ins_button.setEnabled(false);
+            ins_button.setBackgroundResource(R.drawable.mendian_jiezhang_huise);
+        } else {
+            ins_button.setEnabled(true);
+            ins_button.setBackgroundResource(R.drawable.mendian_btn_jiezhang);
+        }
     }
 
     private void instantiation() {
         left_listview = findViewById(R.id.left_listview);
         pinnedListView = findViewById(R.id.pinnedListView);
+
+        // 去掉分割线
+        pinnedListView.setDivider(null);
+        pinnedListView.setDividerHeight(0);
+
         final MainSectionedAdapter sectionedAdapter = new MainSectionedAdapter(this, leftStr, rightStr);
+        // 确保显示轮播图
+        sectionedAdapter.setShowBanner(true);
+
         pinnedListView.setAdapter(sectionedAdapter);
         adapter = new LeftListAdapter(this, leftStr, flagArray);
         left_listview.setAdapter(adapter);
@@ -231,6 +703,7 @@ public class OrderPanelActivity extends AppCompatActivity {
                 myApplication.setYhMendianOrderDetail(new YhMendianOrderDetail());
                 myApplication.setOrderDetails(new ArrayList<>());
                 textView.setText("0");
+                huiseButton(ins_button);
                 ToastUtil.show(OrderPanelActivity.this, "已作废");
             }
         };
@@ -323,18 +796,41 @@ public class OrderPanelActivity extends AppCompatActivity {
             }
         });
         new Thread(new Runnable() {
+//            @RequiresApi(api = Build.VERSION_CODES.O)
+//            @Override
+//            public void run() {
+//                SpinnerAdapter adapter = null;
+//                try {
+//
+//                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+//                    String this_ddh = sdf.format(Calendar.getInstance().getTime());
+////                    String this_ddh = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+//                    max_order = yhMendianOrdersService.getListDDH(this_ddh,yhMendianUser.getCompany());
+//                    type_list = yhMendianProductshezhiService.getTypeList(yhMendianUser.getCompany());
+//                    product_list = yhMendianProductshezhiService.getList("","",yhMendianUser.getCompany());
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                Message msg = new Message();
+//                msg.obj = max_order;
+//                listLoadHandler.sendMessage(msg);
+//            }
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void run() {
                 SpinnerAdapter adapter = null;
                 try {
-
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
                     String this_ddh = sdf.format(Calendar.getInstance().getTime());
-//                    String this_ddh = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-                    max_order = yhMendianOrdersService.getListDDH(this_ddh,yhMendianUser.getCompany());
+                    max_order = yhMendianOrdersService.getListDDH(this_ddh, yhMendianUser.getCompany());
                     type_list = yhMendianProductshezhiService.getTypeList(yhMendianUser.getCompany());
-                    product_list = yhMendianProductshezhiService.getList("","",yhMendianUser.getCompany());
+                    product_list = yhMendianProductshezhiService.getList("", "", yhMendianUser.getCompany());
+
+                    // 调试：打印商品数据，检查beizhu1字段
+                    for (YhMendianProductshezhi product : product_list) {
+                        Log.d("ProductDebug", "商品: " + product.getProduct_name() +
+                                ", beizhu1: " + product.getBeizhu1());
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -360,8 +856,10 @@ public class OrderPanelActivity extends AppCompatActivity {
             }
             myApplication.setYhMendianOrderDetail(new YhMendianOrderDetail());
             myApplication.setOrderDetails(list);
-            textView.setText(list.size() + "");
+
         }
+        textView.setText(list.size() + "");
+        updateButtonState(ins_button);
     }
 
 
@@ -382,9 +880,49 @@ public class OrderPanelActivity extends AppCompatActivity {
         setResult(RESULT_OK, new Intent());
         finish();
     }
-    private void initData(){
-        banner_data = new ArrayList<>();
-        banner_data.add(R.drawable.orderpanel_baokuan);
+//    private void initData(){
+//        banner_data = new ArrayList<>();
+//        banner_data.add(R.drawable.orderpanel_baokuan);
+//        banner_data.add(R.drawable.lunbo1);
+//        banner_data.add(R.drawable.lunbo2);
+//    }
+
+
+    private void updateWelcomeText() {
+        try {
+
+            android.content.SharedPreferences sharedPref = getSharedPreferences("my_cache", MODE_PRIVATE);
+
+            // 获取公司名称
+            String companyName = sharedPref.getString("companyName", "云合未来");
+            Log.d("WelcomeText", "获取到的公司名: " + companyName);
+
+            // 截取前四位
+            String displayName;
+            if (companyName != null && !companyName.isEmpty()) {
+                if (companyName.length() > 4) {
+                    displayName = companyName.substring(0, 4);
+                } else {
+                    displayName = companyName;
+                }
+            } else {
+                displayName = "云合未来"; // 默认值
+            }
+
+            // 更新TextView
+            TextView huanyingTextView = findViewById(R.id.huanying);
+            if (huanyingTextView != null) {
+                huanyingTextView.setText(displayName);
+                Log.d("WelcomeText", "更新欢迎文本: " + displayName);
+            } else {
+                Log.e("WelcomeText", "未找到huanying TextView");
+            }
+
+        } catch (Exception e) {
+            Log.e("WelcomeText", "更新欢迎文本失败: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
+
 
 }
