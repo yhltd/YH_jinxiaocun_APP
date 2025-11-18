@@ -753,7 +753,8 @@
                         android:text="应付明细账"
                         android:textColor="@color/black"
                         android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
+                        tools:ignore="RtlSymmetry"
+                        android:gravity="center" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -778,7 +779,8 @@
                         android:text="应收明细账"
                         android:textColor="@color/black"
                         android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
+                        tools:ignore="RtlSymmetry"
+                        android:gravity="center" />
                 </LinearLayout>
 
                 <LinearLayout

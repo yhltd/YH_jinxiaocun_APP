@@ -115,15 +115,63 @@ public class PaibanRenyuanChangeActivity extends AppCompatActivity {
         banci.setText("");
     }
 
-    private void initList() {
+//    private void initList() {
+//
+//        Handler listLoadHandler = new Handler(new Handler.Callback() {
+//            @Override
+//            public boolean handleMessage(Message msg) {
+//                if (msg.obj != null) {
+//                    departmentName.setAdapter((SpinnerAdapter) msg.obj);
+//                }
+//
+//                return true;
+//            }
+//        });
+//
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                Message msg = new Message();
+//                SpinnerAdapter adapter = null;
+//                try {
+//                    departmentService = new DepartmentService();
+//                    departmentList = new ArrayList<>();
+//                    departmentList = departmentService.getDepartment(userInfo.getCompany());
+//                    adapter = new ArrayAdapter<String>(PaibanRenyuanChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, departmentList);
+//                    if (departmentList.size() > 0) {
+//                        msg.obj = adapter;
+//                    } else {
+//                        msg.obj = null;
+//                    }
+//                    listLoadHandler.sendMessage(msg);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }).start();
+//    }
 
+
+    private void initList() {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
                 if (msg.obj != null) {
                     departmentName.setAdapter((SpinnerAdapter) msg.obj);
-                }
 
+                    // 在数据加载完成后设置选中项
+                    Intent intent = getIntent();
+                    int id = intent.getIntExtra("type", 0);
+                    if (id == R.id.update_btn && paibanRenyuan != null) {
+                        // 延迟设置，确保Spinner已经渲染完成
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                setDepartmentSelection(paibanRenyuan.getDepartment_name());
+                            }
+                        }, 100);
+                    }
+                }
                 return true;
             }
         });
@@ -149,6 +197,19 @@ public class PaibanRenyuanChangeActivity extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    // 新增方法：设置部门选中项
+    private void setDepartmentSelection(String departmentNameValue) {
+        if (departmentList != null && departmentNameValue != null) {
+            for (int i = 0; i < departmentList.size(); i++) {
+                if (departmentNameValue.equals(departmentList.get(i))) {
+                    departmentName.setSelection(i);
+                    department_text = departmentList.get(i); // 同时更新当前选中的文本
+                    break;
+                }
+            }
+        }
     }
 
     public void insertClick(View v) {

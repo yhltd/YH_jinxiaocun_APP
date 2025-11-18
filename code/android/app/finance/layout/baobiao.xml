@@ -45,7 +45,9 @@
             android:layout_weight="1"
             android:hint="输入日期"
             android:focusable="false"
-            android:focusableInTouchMode="false"/>
+            android:focusableInTouchMode="false"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
 
         <Button
             android:id="@+id/sel_button"

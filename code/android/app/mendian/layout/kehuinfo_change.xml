@@ -3,12 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mendian.activity.KehuinfoChangeActivity"
-    android:background="@drawable/mendian_biaoge_bg3">
+    android:background="@drawable/mendian_biaoge_bg3"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <LinearLayout
             android:layout_width="match_parent"

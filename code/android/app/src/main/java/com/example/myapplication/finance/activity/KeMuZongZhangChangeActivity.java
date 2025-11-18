@@ -69,7 +69,7 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
 
     String[] class3_array;
 
-    String[] fangxiang_array = {"借","贷"};
+    String[] fangxiang_array = {"借", "贷"};
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -121,12 +121,106 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
             name.setText(yhFinanceKeMuZongZhang.getName());
             load.setText(yhFinanceKeMuZongZhang.getLoad().toString());
             borrowed.setText(yhFinanceKeMuZongZhang.getBorrowed().toString());
-            if(yhFinanceKeMuZongZhang.isDirection()){
+            if (yhFinanceKeMuZongZhang.isDirection()) {
                 direction.setSelection(0);
-            }else{
+            } else {
                 direction.setSelection(1);
             }
+
+            setupSubjectSelection();
+
         }
+    }
+
+    private void setupSubjectSelection() {
+        if (yhFinanceKeMuZongZhang == null) return;
+
+        String subjectCode = yhFinanceKeMuZongZhang.getCode();
+        if (subjectCode == null || subjectCode.length() < 4) return;
+
+        // 根据科目代码设置一级科目
+        String firstLevelCode = subjectCode.substring(0, 1);
+        setFirstLevelSelection(firstLevelCode);
+    }
+
+    // 设置一级科目选择
+    private void setFirstLevelSelection(String firstLevelCode) {
+        String[] type_selectArray = getResources().getStringArray(R.array.class_list);
+        int position = -1;
+
+        switch (firstLevelCode) {
+            case "1":
+                position = getPositionInArray(type_selectArray, "资产类");
+                break;
+            case "2":
+                position = getPositionInArray(type_selectArray, "负债类");
+                break;
+            case "3":
+                position = getPositionInArray(type_selectArray, "权益类");
+                break;
+            case "4":
+                position = getPositionInArray(type_selectArray, "成本类");
+                break;
+            case "5":
+                position = getPositionInArray(type_selectArray, "损益类");
+                break;
+        }
+
+        if (position != -1) {
+            class1.setSelection(position);
+
+            // 延迟设置二级科目，等待一级科目数据加载完成
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+//                    setSecondLevelSelection(yhFinanceKeMuZongZhang.getCode());
+                }
+            }, 500);
+        }
+    }
+
+    // 设置二级科目选择
+//    private void setSecondLevelSelection(String fullCode) {
+//        if (list1 == null || list1.isEmpty() || fullCode.length() < 4) return;
+//
+//        String secondLevelCode = fullCode.substring(0, 4);
+//        for (int i = 0; i < list1.size(); i++) {
+//            if (list1.get(i).getCode().equals(secondLevelCode)) {
+//                class2.setSelection(i + 1); // +1 因为第一个是空选项
+//
+//                // 延迟设置三级科目，等待二级科目数据加载完成
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        setThirdLevelSelection(fullCode);
+//                    }
+//                }, 500);
+//                break;
+//            }
+//        }
+//    }
+//
+//    // 设置三级科目选择
+//    private void setThirdLevelSelection(String fullCode) {
+//        if (list2 == null || list2.isEmpty() || fullCode.length() < 6) return;
+//
+//        String thirdLevelCode = fullCode.substring(0, 6);
+//        for (int i = 0; i < list2.size(); i++) {
+//            if (list2.get(i).getCode().equals(thirdLevelCode)) {
+//                class3.setSelection(i + 1); // +1 因为第一个是空选项
+//                break;
+//            }
+//        }
+//    }
+//
+//    // 辅助方法：在数组中查找位置
+    private int getPositionInArray(String[] array, String value) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equals(value)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
@@ -172,51 +266,51 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            list1 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"1",4);
+                            list1 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(), "1", 4);
                             if (list1 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }else if (type_selectText.equals("负债类")) {
+                    } else if (type_selectText.equals("负债类")) {
                         this_code = 2001f;
                         Message msg = new Message();
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            list1 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"2",4);
+                            list1 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(), "2", 4);
                             if (list1 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }else if (type_selectText.equals("权益类")) {
+                    } else if (type_selectText.equals("权益类")) {
                         this_code = 3001f;
                         Message msg = new Message();
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            list1 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"3",4);
+                            list1 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(), "3", 4);
                             if (list1 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }else if (type_selectText.equals("成本类")) {
+                    } else if (type_selectText.equals("成本类")) {
                         this_code = 4001f;
                         Message msg = new Message();
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            list1 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"4",4);
+                            list1 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(), "4", 4);
                             if (list1 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }else if (type_selectText.equals("损益类")) {
+                    } else if (type_selectText.equals("损益类")) {
                         this_code = 5001f;
                         Message msg = new Message();
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            list1 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"5",4);
+                            list1 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(), "5", 4);
                             if (list1 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -228,14 +322,14 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                         class2_array = new String[list1.size() + 1];
                         class2_array[0] = "";
                         for (int i = 0; i < list1.size(); i++) {
-                            class2_array[i+1] = list1.get(i).getName();
-                            if(Float.parseFloat(list1.get(i).getCode()) >= this_code){
+                            class2_array[i + 1] = list1.get(i).getName();
+                            if (Float.parseFloat(list1.get(i).getCode()) >= this_code) {
                                 this_code = Float.parseFloat(list1.get(i).getCode()) + 1;
                             }
                         }
                     }
 
-                    code_text1 = Float.toString(this_code).replace(".0","");
+                    code_text1 = Float.toString(this_code).replace(".0", "");
 
                     Message msg = new Message();
                     msg.obj = "";
@@ -246,7 +340,8 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onNothingSelected(AdapterView<?> parent) {}
+        public void onNothingSelected(AdapterView<?> parent) {
+        }
     }
 
 
@@ -260,9 +355,9 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                 public boolean handleMessage(@NonNull Message msg) {
                     SpinnerAdapter adapter_class3 = new ArrayAdapter<String>(KeMuZongZhangChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, class3_array);
                     class3.setAdapter(StringUtils.cast(adapter_class3));
-                    if(!type_selectText.equals("")){
+                    if (!type_selectText.equals("")) {
                         code.setText(code_text2);
-                    }else{
+                    } else {
                         code.setText(code_text1);
                     }
                     return true;
@@ -276,8 +371,8 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                     float this_code = 0;
                     if (type_selectText1.equals("资产类")) {
                         this_code = 1001f;
-                        for(int i=0; i<list1.size(); i++){
-                            if(list1.get(i).getName().equals(class2.getSelectedItem())){
+                        for (int i = 0; i < list1.size(); i++) {
+                            if (list1.get(i).getName().equals(class2.getSelectedItem())) {
                                 this_code = Float.parseFloat(list1.get(i).getCode());
                                 break;
                             }
@@ -287,20 +382,20 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(!class2.getSelectedItem().equals("")){
-                                list2 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"1",6,Float.toString(this_code).replace(".0",""));
-                            }else{
-                                list2 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"1",4);
+                            if (!class2.getSelectedItem().equals("")) {
+                                list2 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "1", 6, Float.toString(this_code).replace(".0", ""));
+                            } else {
+                                list2 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(), "1", 4);
                             }
-                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0","") + "01");
+                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0", "") + "01");
                             if (list2 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }else if (type_selectText1.equals("负债类")) {
+                    } else if (type_selectText1.equals("负债类")) {
                         this_code = 2001f;
-                        for(int i=0; i<list1.size(); i++){
-                            if(list1.get(i).getName().equals(class2.getSelectedItem())){
+                        for (int i = 0; i < list1.size(); i++) {
+                            if (list1.get(i).getName().equals(class2.getSelectedItem())) {
                                 this_code = Float.parseFloat(list1.get(i).getCode());
                                 break;
                             }
@@ -310,20 +405,20 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(!class2.getSelectedItem().equals("")){
-                                list2 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"2",6,Float.toString(this_code).replace(".0",""));
-                            }else{
-                                list2 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"2",4);
+                            if (!class2.getSelectedItem().equals("")) {
+                                list2 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "2", 6, Float.toString(this_code).replace(".0", ""));
+                            } else {
+                                list2 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(), "2", 4);
                             }
-                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0","") + "01");
+                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0", "") + "01");
                             if (list2 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }else if (type_selectText1.equals("权益类")) {
+                    } else if (type_selectText1.equals("权益类")) {
                         this_code = 3001f;
-                        for(int i=0; i<list1.size(); i++){
-                            if(list1.get(i).getName().equals(class2.getSelectedItem())){
+                        for (int i = 0; i < list1.size(); i++) {
+                            if (list1.get(i).getName().equals(class2.getSelectedItem())) {
                                 this_code = Float.parseFloat(list1.get(i).getCode());
                                 break;
                             }
@@ -333,20 +428,20 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(!class2.getSelectedItem().equals("")){
-                                list2 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"3",6,Float.toString(this_code).replace(".0",""));
-                            }else{
-                                list2 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"3",4);
+                            if (!class2.getSelectedItem().equals("")) {
+                                list2 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "3", 6, Float.toString(this_code).replace(".0", ""));
+                            } else {
+                                list2 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(), "3", 4);
                             }
-                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0","") + "01");
+                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0", "") + "01");
                             if (list2 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }else if (type_selectText1.equals("成本类")) {
+                    } else if (type_selectText1.equals("成本类")) {
                         this_code = 4001f;
-                        for(int i=0; i<list1.size(); i++){
-                            if(list1.get(i).getName().equals(class2.getSelectedItem())){
+                        for (int i = 0; i < list1.size(); i++) {
+                            if (list1.get(i).getName().equals(class2.getSelectedItem())) {
                                 this_code = Float.parseFloat(list1.get(i).getCode());
                                 break;
                             }
@@ -356,20 +451,20 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(!class2.getSelectedItem().equals("")){
-                                list2 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"4",6,Float.toString(this_code).replace(".0",""));
-                            }else{
-                                list2 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"4",4);
+                            if (!class2.getSelectedItem().equals("")) {
+                                list2 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "4", 6, Float.toString(this_code).replace(".0", ""));
+                            } else {
+                                list2 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(), "4", 4);
                             }
-                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0","") + "01");
+                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0", "") + "01");
                             if (list2 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }else if (type_selectText1.equals("损益类")) {
+                    } else if (type_selectText1.equals("损益类")) {
                         this_code = 5001f;
-                        for(int i=0; i<list1.size(); i++){
-                            if(list1.get(i).getName().equals(class2.getSelectedItem())){
+                        for (int i = 0; i < list1.size(); i++) {
+                            if (list1.get(i).getName().equals(class2.getSelectedItem())) {
                                 this_code = Float.parseFloat(list1.get(i).getCode());
                                 break;
                             }
@@ -379,12 +474,12 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(!class2.getSelectedItem().equals("")){
-                                list2 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"5",6,Float.toString(this_code).replace(".0",""));
-                            }else{
-                                list2 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"5",4);
+                            if (!class2.getSelectedItem().equals("")) {
+                                list2 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "5", 6, Float.toString(this_code).replace(".0", ""));
+                            } else {
+                                list2 = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(), "5", 4);
                             }
-                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0","") + "01");
+                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0", "") + "01");
                             if (list2 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -396,14 +491,14 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                         class3_array = new String[list2.size() + 1];
                         class3_array[0] = "";
                         for (int i = 0; i < list2.size(); i++) {
-                            class3_array[i+1] = list2.get(i).getName();
-                            if(Float.parseFloat(list2.get(i).getCode()) >= this_code){
+                            class3_array[i + 1] = list2.get(i).getName();
+                            if (Float.parseFloat(list2.get(i).getCode()) >= this_code) {
                                 this_code = Float.parseFloat(list2.get(i).getCode()) + 1;
                             }
                         }
                     }
 
-                    code_text2 = Float.toString(this_code).replace(".0","");
+                    code_text2 = Float.toString(this_code).replace(".0", "");
 
                     Message msg = new Message();
                     msg.obj = "";
@@ -414,7 +509,8 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onNothingSelected(AdapterView<?> parent) {}
+        public void onNothingSelected(AdapterView<?> parent) {
+        }
     }
 
     private class typeSelectSelectedListener03 implements AdapterView.OnItemSelectedListener {
@@ -425,14 +521,14 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
             Handler listLoadHandler = new Handler(new Handler.Callback() {
                 @Override
                 public boolean handleMessage(@NonNull Message msg) {
-                    if(!type_selectText3.equals("") && !type_selectText2.equals("")){
+                    if (!type_selectText3.equals("") && !type_selectText2.equals("")) {
                         code.setText(code_text3);
-                    }else if(!type_selectText2.equals("")){
+                    } else if (!type_selectText2.equals("")) {
                         code.setText(code_text2);
-                    }else{
+                    } else {
                         code.setText(code_text1);
                     }
-                    if(panduan == false){
+                    if (panduan == false) {
                         Intent intent = getIntent();
                         int id = intent.getIntExtra("type", 0);
                         if (id == R.id.insert_btn) {
@@ -463,8 +559,8 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                     float this_code = 0;
                     if (type_selectText1.equals("资产类")) {
                         this_code = 1001f;
-                        for(int i=0; i<list2.size(); i++){
-                            if(list2.get(i).getName().equals(class3.getSelectedItem())){
+                        for (int i = 0; i < list2.size(); i++) {
+                            if (list2.get(i).getName().equals(class3.getSelectedItem())) {
                                 this_code = Float.parseFloat(list2.get(i).getCode());
                                 break;
                             }
@@ -474,21 +570,21 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(!class3.getSelectedItem().equals("")){
-                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"1",8,Float.toString(this_code).replace(".0",""));
-                            }else{
-                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"1",6,code_text2);
+                            if (!class3.getSelectedItem().equals("")) {
+                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "1", 8, Float.toString(this_code).replace(".0", ""));
+                            } else {
+                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "1", 6, code_text2);
                             }
-                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0","") + "01");
+                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0", "") + "01");
 
                             if (list3 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }else if (type_selectText1.equals("负债类")) {
+                    } else if (type_selectText1.equals("负债类")) {
                         this_code = 2001f;
-                        for(int i=0; i<list2.size(); i++){
-                            if(list2.get(i).getName().equals(class3.getSelectedItem())){
+                        for (int i = 0; i < list2.size(); i++) {
+                            if (list2.get(i).getName().equals(class3.getSelectedItem())) {
                                 this_code = Float.parseFloat(list2.get(i).getCode());
                                 break;
                             }
@@ -498,20 +594,20 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(!class3.getSelectedItem().equals("")){
-                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"2",8,Float.toString(this_code).replace(".0",""));
-                            }else{
-                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"2",6,code_text2);
+                            if (!class3.getSelectedItem().equals("")) {
+                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "2", 8, Float.toString(this_code).replace(".0", ""));
+                            } else {
+                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "2", 6, code_text2);
                             }
-                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0","") + "01");
+                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0", "") + "01");
                             if (list3 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }else if (type_selectText1.equals("权益类")) {
+                    } else if (type_selectText1.equals("权益类")) {
                         this_code = 3001f;
-                        for(int i=0; i<list2.size(); i++){
-                            if(list2.get(i).getName().equals(class3.getSelectedItem())){
+                        for (int i = 0; i < list2.size(); i++) {
+                            if (list2.get(i).getName().equals(class3.getSelectedItem())) {
                                 this_code = Float.parseFloat(list2.get(i).getCode());
                                 break;
                             }
@@ -521,20 +617,20 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(!class3.getSelectedItem().equals("")){
-                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"3",8,Float.toString(this_code).replace(".0",""));
-                            }else{
-                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"3",6,code_text2);
+                            if (!class3.getSelectedItem().equals("")) {
+                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "3", 8, Float.toString(this_code).replace(".0", ""));
+                            } else {
+                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "3", 6, code_text2);
                             }
-                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0","") + "01");
+                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0", "") + "01");
                             if (list3 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }else if (type_selectText1.equals("成本类")) {
+                    } else if (type_selectText1.equals("成本类")) {
                         this_code = 4001f;
-                        for(int i=0; i<list2.size(); i++){
-                            if(list2.get(i).getName().equals(class3.getSelectedItem())){
+                        for (int i = 0; i < list2.size(); i++) {
+                            if (list2.get(i).getName().equals(class3.getSelectedItem())) {
                                 this_code = Float.parseFloat(list2.get(i).getCode());
                                 break;
                             }
@@ -544,20 +640,20 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(!class3.getSelectedItem().equals("")){
-                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"4",8,Float.toString(this_code).replace(".0",""));
-                            }else{
-                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"4",6,code_text2);
+                            if (!class3.getSelectedItem().equals("")) {
+                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "4", 8, Float.toString(this_code).replace(".0", ""));
+                            } else {
+                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "4", 6, code_text2);
                             }
-                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0","") + "01");
+                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0", "") + "01");
                             if (list3 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }else if (type_selectText1.equals("损益类")) {
+                    } else if (type_selectText1.equals("损益类")) {
                         this_code = 5001f;
-                        for(int i=0; i<list2.size(); i++){
-                            if(list2.get(i).getName().equals(class3.getSelectedItem())){
+                        for (int i = 0; i < list2.size(); i++) {
+                            if (list2.get(i).getName().equals(class3.getSelectedItem())) {
                                 this_code = Float.parseFloat(list2.get(i).getCode());
                                 break;
                             }
@@ -567,12 +663,12 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                         SpinnerAdapter adapter = null;
                         try {
                             yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(!class3.getSelectedItem().equals("")){
-                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"5",8,Float.toString(this_code).replace(".0",""));
-                            }else{
-                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(),"5",6,code_text2);
+                            if (!class3.getSelectedItem().equals("")) {
+                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "5", 8, Float.toString(this_code).replace(".0", ""));
+                            } else {
+                                list3 = yhFinanceKeMuZongZhangService.getCodeListByCode(yhFinanceUser.getCompany(), "5", 6, code_text2);
                             }
-                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0","") + "01");
+                            this_code = Float.parseFloat(Float.toString(this_code).replace(".0", "") + "01");
                             if (list3 == null) return;
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -582,7 +678,7 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
 
                     if (list3.size() > 0) {
                         for (int i = 0; i < list3.size(); i++) {
-                            if(Float.parseFloat(list3.get(i).getCode()) >= this_code){
+                            if (Float.parseFloat(list3.get(i).getCode()) >= this_code) {
                                 this_code = Float.parseFloat(list3.get(i).getCode()) + 1;
                             }
                         }
@@ -601,7 +697,8 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onNothingSelected(AdapterView<?> parent) {}
+        public void onNothingSelected(AdapterView<?> parent) {
+        }
     }
 
     public void insertClick(View v) throws ParseException {
@@ -693,7 +790,7 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
 
         if (direction.getSelectedItem().equals("借")) {
             yhFinanceKeMuZongZhang.setDirection(true);
-        }else{
+        } else {
             yhFinanceKeMuZongZhang.setDirection(false);
         }
 
@@ -705,5 +802,4 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
         setResult(RESULT_OK, new Intent());
         finish();
     }
-
-}
+    }

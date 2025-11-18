@@ -25,6 +25,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -363,6 +364,278 @@ public class PaibanInfoAddActivity extends AppCompatActivity {
         return weekDaysCode[intWeek];
     }
 
+//    private void insert() {
+//        Button submit_button = findViewById(R.id.submit_button);
+//        submit_button.setEnabled(false);
+//        @SuppressLint("SimpleDateFormat")
+//        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyMMddss");
+//        Date date = new Date();
+//        String paibanbiao_id = sdf2.format(date);
+//
+//        List<PaibanRenyuan> ryList = new ArrayList<>();
+//        for (int i = 0; i < list.size(); i++) {
+//            if (list.get(i).isCheckbox()) {
+//                ryList.add(list.get(i));
+//            }
+//        }
+//        if (ryList.size() == 0) {
+//            ToastUtil.show(PaibanInfoAddActivity.this, "请选择人员！");
+//            submit_button.setEnabled(true);
+//            return;
+//        }
+//
+//        Handler listLoadHandler = new Handler(new Handler.Callback() {
+//            @Override
+//            public boolean handleMessage(Message msg) {
+//                Button submit_button = findViewById(R.id.submit_button);
+//                submit_button.setEnabled(true);
+//                return true;
+//            }
+//        });
+//
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                Message msg = new Message();
+//                try {
+//                    boolean isTianjia = false;
+//                    if (type.equals("不轮换")) {
+//                        if (ks.getText().toString().equals("") || js.getText().toString().equals("") || banci.getText().toString().equals("")) {
+//                            ToastUtil.show(PaibanInfoAddActivity.this, "开始时间、结束时间和班次为必填项！");
+//                            Button submit_button = findViewById(R.id.submit_button);
+//                            submit_button.setEnabled(true);
+//                            return;
+//                        }
+//                        if (Integer.parseInt(banci.getText().toString()) > ryList.size()) {
+//                            ToastUtil.show(PaibanInfoAddActivity.this, "班次不可大于人员数量！");
+//                            Button submit_button = findViewById(R.id.submit_button);
+//                            submit_button.setEnabled(true);
+//                            return;
+//                        }
+//                        String xiuxi = xiuxiri.getText().toString().replace("，", ",");
+//
+//                        int zu = 1;
+//                        for (int i = 0; i < ryList.size(); i++) {
+//                            ryList.get(i).setN("班次" + zu);
+//                            ryList.get(i).setM(paibanbiao_id);
+//                            if (zu == Integer.parseInt(banci.getText().toString())) {
+//                                zu = 1;
+//                            } else {
+//                                zu += 1;
+//                            }
+//                        }
+//
+//                        @SuppressLint("SimpleDateFormat")
+//                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//
+//                        int days = 0;
+//                        days = (int) ((sdf.parse(js.getText().toString()).getTime() - sdf.parse(ks.getText().toString()).getTime()) / (24 * 60 * 60 * 1000));
+//                        Date riqi = sdf.parse(ks.getText().toString());
+//
+//                        for (int i = 0; i <= days; i++) {
+//                            boolean pd = true;
+//                            for (int j = 0; j < xiuxi.split(",").length; j++) {
+//                                if (xiuxi.split(",")[j].equals(getWeekOfDate(riqi))) {
+//                                    pd = false;
+//                                }
+//                            }
+//                            if (pd) {
+//                                for (int j = 0; j < ryList.size(); j++) {
+//                                    PaibanDetail paibanDetail = new PaibanDetail();
+//                                    paibanDetail.setStaff_name(ryList.get(j).getStaff_name());
+//                                    paibanDetail.setPhone_number(ryList.get(j).getPhone_number());
+//                                    paibanDetail.setBanci(ryList.get(j).getBanci());
+//                                    paibanDetail.setDepartment_name(ryList.get(j).getDepartment_name());
+//                                    paibanDetail.setId_number(ryList.get(j).getId_number());
+//                                    paibanDetail.setCompany(ryList.get(j).getCompany());
+//                                    paibanDetail.setB(ryList.get(j).getN());
+//                                    paibanDetail.setC(sdf.format(riqi));
+//                                    paibanDetail.setE(ryList.get(j).getM());
+//                                    paibanDetailService.insert(paibanDetail);
+//                                    isTianjia = true;
+//                                }
+//                            }
+//                            Calendar calendar = new GregorianCalendar();
+//                            calendar.setTime(riqi);
+//                            calendar.add(Calendar.DATE, 1);
+//                            riqi = calendar.getTime();
+//                        }
+//                        if (isTianjia) {
+//                            PaibanInfo paibanInfo = new PaibanInfo();
+//                            Date date = new Date();
+//                            @SuppressLint("SimpleDateFormat")
+//                            SimpleDateFormat spd = new SimpleDateFormat("yyyy-MM-dd");
+//                            paibanInfo.setRiqi(spd.format(date));
+//                            paibanInfo.setPaibanbiao_detail_id(paibanbiao_id);
+//                            paibanInfo.setRenshu(ryList.size() + "");
+//                            paibanInfo.setPlan_name(plan.getText().toString());
+//                            paibanInfo.setDepartment_name(department_text);
+//                            paibanInfo.setRemarks1(userInfo.getCompany());
+//                            paibanInfo.setRemarks2(paibanbiao_id);
+//                            paibanInfoService.insert(paibanInfo);
+//                        }
+//                    } else if (type.equals("轮换")) {
+//                        if (ks.getText().toString().equals("") || js.getText().toString().equals("") || banci.getText().toString().equals("") || jiangeshu.getText().toString().equals("") || lunhuanshuliang.getText().toString().equals("")) {
+//                            ToastUtil.show(PaibanInfoAddActivity.this, "开始时间、结束时间、班次、间隔数和轮换数量为必填项！");
+//                            Button submit_button = findViewById(R.id.submit_button);
+//                            submit_button.setEnabled(true);
+//                            return;
+//                        }
+//                        if (ryList.size() < Integer.parseInt(banci.getText().toString()) * Integer.parseInt(lunhuanshuliang.getText().toString())) {
+//                            ToastUtil.show(PaibanInfoAddActivity.this, "人数不足，无法排班！");
+//                            Button submit_button = findViewById(R.id.submit_button);
+//                            submit_button.setEnabled(true);
+//                            return;
+//                        }
+//
+//                        if (lunhuanfangshi_text.equals("天")) {
+//                            int zu = 1;
+//                            int dui = 1;
+//                            for (int i = 0; i < ryList.size(); i++) {
+//                                ryList.get(i).setN("班次" + zu);
+//                                ryList.get(i).setL("队伍" + dui);
+//                                ryList.get(i).setM(paibanbiao_id);
+//                                if (dui == Integer.parseInt(lunhuanshuliang.getText().toString())) {
+//                                    dui = 1;
+//                                    if (zu == Integer.parseInt(banci.getText().toString())) {
+//                                        zu = 1;
+//                                    } else {
+//                                        zu += 1;
+//                                    }
+//                                } else {
+//                                    dui += 1;
+//                                }
+//                            }
+//
+//                            @SuppressLint("SimpleDateFormat")
+//                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//
+//                            int days = 0;
+//                            days = (int) ((sdf.parse(js.getText().toString()).getTime() - sdf.parse(ks.getText().toString()).getTime()) / (24 * 60 * 60 * 1000));
+//                            Date riqi = sdf.parse(ks.getText().toString());
+//
+//                            int lh = 1;
+//                            int lh_ts = 0;
+//
+//                            for (int i = 0; i <= days; i++) {
+//                                for (int j = 0; j < ryList.size(); j++) {
+//                                    if (ryList.get(j).getL().equals("队伍" + lh)) {
+//                                        PaibanDetail paibanDetail = new PaibanDetail();
+//                                        paibanDetail.setStaff_name(ryList.get(j).getStaff_name());
+//                                        paibanDetail.setPhone_number(ryList.get(j).getPhone_number());
+//                                        paibanDetail.setBanci(ryList.get(j).getBanci());
+//                                        paibanDetail.setDepartment_name(ryList.get(j).getDepartment_name());
+//                                        paibanDetail.setId_number(ryList.get(j).getId_number());
+//                                        paibanDetail.setCompany(ryList.get(j).getCompany());
+//                                        paibanDetail.setB(ryList.get(j).getN());
+//                                        paibanDetail.setC(sdf.format(riqi));
+//                                        paibanDetail.setE(ryList.get(j).getM());
+//                                        paibanDetail.setF("队伍" + lh);
+//                                        paibanDetailService.insert(paibanDetail);
+//                                        isTianjia = true;
+//                                    }
+//                                }
+//                                lh_ts += 1;
+//                                if (lh_ts == Integer.parseInt(jiangeshu.getText().toString())) {
+//                                    lh_ts = 0;
+//                                    lh += 1;
+//                                    if (lh > Integer.parseInt(lunhuanshuliang.getText().toString())) {
+//                                        lh = 1;
+//                                    }
+//                                }
+//                                Calendar calendar = new GregorianCalendar();
+//                                calendar.setTime(riqi);
+//                                calendar.add(Calendar.DATE, 1);
+//                                riqi = calendar.getTime();
+//                            }
+//                        } else {
+//                            int zu = 1;
+//                            int dui = 1;
+//                            for (int i = 0; i < ryList.size(); i++) {
+//                                ryList.get(i).setN("班次" + zu);
+//                                ryList.get(i).setL("队伍" + dui);
+//                                ryList.get(i).setM(paibanbiao_id);
+//                                if (dui == Integer.parseInt(lunhuanshuliang.getText().toString())) {
+//                                    dui = 1;
+//                                    if (zu == Integer.parseInt(banci.getText().toString())) {
+//                                        zu = 1;
+//                                    } else {
+//                                        zu += 1;
+//                                    }
+//                                } else {
+//                                    dui += 1;
+//                                }
+//                            }
+//                            int lh = 1;
+//                            int zhou = 0;
+//
+//                            @SuppressLint("SimpleDateFormat")
+//                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//
+//                            int days = 0;
+//                            days = (int) ((sdf.parse(js.getText().toString()).getTime() - sdf.parse(ks.getText().toString()).getTime()) / (24 * 60 * 60 * 1000));
+//                            Date riqi = sdf.parse(ks.getText().toString());
+//
+//                            for (int i = 0; i <= days; i++) {
+//                                for (int j = 0; j < ryList.size(); j++) {
+//                                    if (ryList.get(j).getL().equals("队伍" + lh)) {
+//                                        PaibanDetail paibanDetail = new PaibanDetail();
+//                                        paibanDetail.setStaff_name(ryList.get(j).getStaff_name());
+//                                        paibanDetail.setPhone_number(ryList.get(j).getPhone_number());
+//                                        paibanDetail.setBanci(ryList.get(j).getBanci());
+//                                        paibanDetail.setDepartment_name(ryList.get(j).getDepartment_name());
+//                                        paibanDetail.setId_number(ryList.get(j).getId_number());
+//                                        paibanDetail.setCompany(ryList.get(j).getCompany());
+//                                        paibanDetail.setB(ryList.get(j).getN());
+//                                        paibanDetail.setC(sdf.format(riqi));
+//                                        paibanDetail.setE(ryList.get(j).getM());
+//                                        paibanDetail.setF("队伍" + lh);
+//                                        paibanDetailService.insert(paibanDetail);
+//                                        isTianjia = true;
+//                                    }
+//                                }
+//                                if (getWeekOfDate(riqi).equals("7")) {
+//                                    zhou += 1;
+//                                    if (zhou == Integer.parseInt(jiangeshu.getText().toString())) {
+//                                        zhou = 0;
+//                                        lh += 1;
+//                                        if (lh > Integer.parseInt(lunhuanshuliang.getText().toString())) {
+//                                            lh = 1;
+//                                        }
+//                                    }
+//                                }
+//                                Calendar calendar = new GregorianCalendar();
+//                                calendar.setTime(riqi);
+//                                calendar.add(Calendar.DATE, 1);
+//                                riqi = calendar.getTime();
+//                            }
+//                        }
+//                        if (isTianjia) {
+//                            PaibanInfo paibanInfo = new PaibanInfo();
+//                            Date date = new Date();
+//                            @SuppressLint("SimpleDateFormat")
+//                            SimpleDateFormat spd = new SimpleDateFormat("yyyy-MM-dd");
+//                            paibanInfo.setRiqi(spd.format(date));
+//                            paibanInfo.setPaibanbiao_detail_id(paibanbiao_id);
+//                            paibanInfo.setRenshu(ryList.size() + "");
+//                            paibanInfo.setPlan_name(plan.getText().toString());
+//                            paibanInfo.setDepartment_name(department_text);
+//                            paibanInfo.setRemarks1(userInfo.getCompany());
+//                            paibanInfo.setRemarks2(paibanbiao_id);
+//                            paibanInfoService.insert(paibanInfo);
+//                            ToastUtil.show(PaibanInfoAddActivity.this, "成功，请前往排班明细查看！");
+//                        }
+//                    }
+//                    msg.obj = null;
+//                    listLoadHandler.sendMessage(msg);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }).start();
+//    }
+//}
+
     private void insert() {
         Button submit_button = findViewById(R.id.submit_button);
         submit_button.setEnabled(false);
@@ -383,32 +656,32 @@ public class PaibanInfoAddActivity extends AppCompatActivity {
             return;
         }
 
-        Handler listLoadHandler = new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(Message msg) {
-                Button submit_button = findViewById(R.id.submit_button);
-                submit_button.setEnabled(true);
-                return true;
-            }
-        });
-
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Message msg = new Message();
                 try {
                     boolean isTianjia = false;
                     if (type.equals("不轮换")) {
                         if (ks.getText().toString().equals("") || js.getText().toString().equals("") || banci.getText().toString().equals("")) {
-                            ToastUtil.show(PaibanInfoAddActivity.this, "开始时间、结束时间和班次为必填项！");
-                            Button submit_button = findViewById(R.id.submit_button);
-                            submit_button.setEnabled(true);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ToastUtil.show(PaibanInfoAddActivity.this, "开始时间、结束时间和班次为必填项！");
+                                    Button submit_button = findViewById(R.id.submit_button);
+                                    submit_button.setEnabled(true);
+                                }
+                            });
                             return;
                         }
                         if (Integer.parseInt(banci.getText().toString()) > ryList.size()) {
-                            ToastUtil.show(PaibanInfoAddActivity.this, "班次不可大于人员数量！");
-                            Button submit_button = findViewById(R.id.submit_button);
-                            submit_button.setEnabled(true);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ToastUtil.show(PaibanInfoAddActivity.this, "班次不可大于人员数量！");
+                                    Button submit_button = findViewById(R.id.submit_button);
+                                    submit_button.setEnabled(true);
+                                }
+                            });
                             return;
                         }
                         String xiuxi = xiuxiri.getText().toString().replace("，", ",");
@@ -472,18 +745,35 @@ public class PaibanInfoAddActivity extends AppCompatActivity {
                             paibanInfo.setRemarks1(userInfo.getCompany());
                             paibanInfo.setRemarks2(paibanbiao_id);
                             paibanInfoService.insert(paibanInfo);
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ToastUtil.show(PaibanInfoAddActivity.this, "排班成功！");
+                                }
+                            });
                         }
                     } else if (type.equals("轮换")) {
                         if (ks.getText().toString().equals("") || js.getText().toString().equals("") || banci.getText().toString().equals("") || jiangeshu.getText().toString().equals("") || lunhuanshuliang.getText().toString().equals("")) {
-                            ToastUtil.show(PaibanInfoAddActivity.this, "开始时间、结束时间、班次、间隔数和轮换数量为必填项！");
-                            Button submit_button = findViewById(R.id.submit_button);
-                            submit_button.setEnabled(true);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ToastUtil.show(PaibanInfoAddActivity.this, "开始时间、结束时间、班次、间隔数和轮换数量为必填项！");
+                                    Button submit_button = findViewById(R.id.submit_button);
+                                    submit_button.setEnabled(true);
+                                }
+                            });
                             return;
                         }
                         if (ryList.size() < Integer.parseInt(banci.getText().toString()) * Integer.parseInt(lunhuanshuliang.getText().toString())) {
-                            ToastUtil.show(PaibanInfoAddActivity.this, "人数不足，无法排班！");
-                            Button submit_button = findViewById(R.id.submit_button);
-                            submit_button.setEnabled(true);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ToastUtil.show(PaibanInfoAddActivity.this, "人数不足，无法排班！");
+                                    Button submit_button = findViewById(R.id.submit_button);
+                                    submit_button.setEnabled(true);
+                                }
+                            });
                             return;
                         }
 
@@ -622,15 +912,115 @@ public class PaibanInfoAddActivity extends AppCompatActivity {
                             paibanInfo.setRemarks1(userInfo.getCompany());
                             paibanInfo.setRemarks2(paibanbiao_id);
                             paibanInfoService.insert(paibanInfo);
-                            ToastUtil.show(PaibanInfoAddActivity.this, "成功，请前往排班明细查看！");
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ToastUtil.show(PaibanInfoAddActivity.this, "成功，请前往排班明细查看！");
+                                }
+                            });
                         }
                     }
-                    msg.obj = null;
-                    listLoadHandler.sendMessage(msg);
+
+                    // 最终启用按钮
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Button submit_button = findViewById(R.id.submit_button);
+                            submit_button.setEnabled(true);
+                        }
+                    });
+
                 } catch (Exception e) {
                     e.printStackTrace();
+                    // 发生异常时也要启用按钮
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ToastUtil.show(PaibanInfoAddActivity.this, "排班失败：" + e.getMessage());
+                            Button submit_button = findViewById(R.id.submit_button);
+                            submit_button.setEnabled(true);
+                        }
+                    });
                 }
             }
         }).start();
-    }
-}
+    }}
+
+
+
+
+//class PaibanInFoAddActivity extends AppCompatActivity {
+//    private TextView departmentText;
+//    private Spinner departmentSpinner;
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.paiban_info_change);
+//
+//        // 1. 初始化视图
+//        initViews();
+//
+//        // 2. 设置Spinner
+//        setupSpinner();
+//    }
+//
+//    private void initViews() {
+//        // 绑定视图
+//        departmentText = findViewById(R.id.department_text);
+//        departmentSpinner = findViewById(R.id.department_name);
+//    }
+//
+//    private void setupSpinner() {
+//        // 1. 获取TextView的文本内容
+//        String textViewValue = departmentText.getText().toString();
+//        // 此时 textViewValue = "部门"
+//
+//        // 2. 创建数据源（必须包含TextView的文本）
+//        String[] items = {
+//                textViewValue,  // "部门" - 来自TextView
+//                "技术部",
+//                "销售部",
+//                "财务部",
+//                "人事部",
+//                "行政部"
+//        };
+//
+//        // 3. 创建Adapter
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+//                this,
+//                android.R.layout.simple_spinner_item,  // 默认布局
+//                items                                  // 数据源
+//        );
+//
+//        // 4. 设置下拉样式
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//
+//        // 5. 设置Adapter到Spinner
+//        departmentSpinner.setAdapter(adapter);
+//
+//        // 6. 设置Spinner初始值为TextView的文本
+//        setSpinnerToValue(departmentSpinner, textViewValue);
+//    }
+//
+//    /**
+//     * 设置Spinner选中指定值
+//    */
+//    private void setSpinnerToValue(Spinner spinner, String value) {
+//        ArrayAdapter adapter = (ArrayAdapter) spinner.getAdapter();
+//        if (adapter != null) {
+//            int position = adapter.getPosition(value);
+//            if (position >= 0) {
+//                spinner.setSelection(position);
+//
+//                // 可选：显示设置成功的提示
+//                Toast.makeText(this, "已设置初始值: " + value, Toast.LENGTH_SHORT).show();
+//           } else {
+//                // 如果值不在数据源中，选择第一项
+//                spinner.setSelection(0);
+//                Toast.makeText(this, "未找到匹配选项，使用默认值", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
+//}

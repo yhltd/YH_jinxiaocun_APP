@@ -7,7 +7,9 @@
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".scheduling.activity.WorkPlAddActivity"
-    android:background="@color/WhiteSmoke">
+    android:background="@color/WhiteSmoke"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <LinearLayout
         android:layout_width="fill_parent"

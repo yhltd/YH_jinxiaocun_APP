@@ -21,21 +21,33 @@ public class StudentService {
 
         if (shujukuValue == 1) {
             // SQL Server 版本（老版兼容）
-            String sql = "select ID, RealName, Sex, rgdate, Course, Teacher, Classnum, phone, Fee, " +
-                    "(select SUM(case when Company = ? and realname = student.realname then paid + money else 0 end) from payment) mall, " +
-                    "ISNULL(ISNULL(Fee, 0) - ISNULL((select SUM(case when Company = ? and realname = student.realname then paid + money else 0 end) from payment), 0), 0) as Nocost, " +
-                    "(select SUM(case when Company = ? and student_name = student.realname and course = student.Course then keshi else 0 end) from keshi_detail) nall, " +
-                    "ISNULL(Allhour, 0) - ISNULL((select SUM(case when Company = ? and student_name = student.realname and course = student.Course then keshi else 0 end) from keshi_detail), 0) as Nohour, " +
-                    "Allhour, Type " +
-                    "FROM student " +
-                    "where RealName LIKE '%' + ? + '%' " +
-                    "AND Teacher LIKE '%' + ? + '%' " +
-                    "AND Course LIKE '%' + ? + '%' " +
-                    "AND rgdate >= ? " +
-                    "AND rgdate <= ?";
+            String sql = "SELECT s.ID, s.RealName, s.Sex, s.rgdate, s.Course, s.Teacher, s.Classnum, s.phone, s.Fee, " +
+                    "CAST(ISNULL(p.total_paid, 0) AS DECIMAL(18,2)) as mall, " +  // BigDecimal → DECIMAL
+                    "CAST(ISNULL(ISNULL(s.Fee, 0) - ISNULL(p.total_paid, 0), 0) AS FLOAT) as Nocost, " +  // float → FLOAT
+                    "CAST(ISNULL(k.used_keshi, 0) AS DECIMAL(18,2)) as nall, " +  // BigDecimal → DECIMAL
+                    "CAST(ISNULL(s.Allhour, 0) - ISNULL(k.used_keshi, 0) AS FLOAT) as Nohour, " +  // float → FLOAT
+                    "s.Allhour, s.Type " +
+                    "FROM student s " +
+                    "LEFT JOIN (" +
+                    "    SELECT realname, SUM(CAST(paid + money AS DECIMAL(18,2))) as total_paid " +
+                    "    FROM payment " +
+                    "    WHERE Company = ? " +
+                    "    GROUP BY realname" +
+                    ") p ON s.RealName = p.realname " +
+                    "LEFT JOIN (" +
+                    "    SELECT student_name, course, SUM(CAST(keshi AS DECIMAL(18,2))) as used_keshi " +
+                    "    FROM keshi_detail " +
+                    "    WHERE Company = ? " +
+                    "    GROUP BY student_name, course" +
+                    ") k ON s.RealName = k.student_name AND s.Course = k.course " +
+                    "WHERE s.RealName LIKE '%' + ? + '%' " +
+                    "AND s.Teacher LIKE '%' + ? + '%' " +
+                    "AND s.Course LIKE '%' + ? + '%' " +
+                    "AND s.rgdate >= ? " +
+                    "AND s.rgdate <= ?";
 
             base1 = new JiaowuServerDao();
-            List<Student> list = base1.query(Student.class, sql, company,company,company,company,student,teacher,kecheng,start_date,stop_date);
+            List<Student> list = base1.query(Student.class, sql, company, company, student, teacher, kecheng, start_date, stop_date);
             return list;
         } else {
             // MySQL 版本（原版不动）

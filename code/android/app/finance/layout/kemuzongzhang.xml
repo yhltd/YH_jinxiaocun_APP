@@ -27,8 +27,9 @@
             android:layout_weight="1"
             android:layout_height="50dp"
             android:hint="选择项目"
-            android:spinnerMode="dialog"/>
+            android:spinnerMode="dialog" />
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="fill_parent"

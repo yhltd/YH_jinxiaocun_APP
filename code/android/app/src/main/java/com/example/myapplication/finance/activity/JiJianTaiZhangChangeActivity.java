@@ -1,7 +1,9 @@
 package com.example.myapplication.finance.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -257,8 +259,42 @@ public class JiJianTaiZhangChangeActivity extends AppCompatActivity implements O
     }
 
 
+//    public void insertClick(View v) throws ParseException {
+//        if (!checkForm()) return;
+//
+//        Handler saveHandler = new Handler(new Handler.Callback() {
+//            @Override
+//            public boolean handleMessage(@NonNull Message msg) {
+//                if ((boolean) msg.obj) {
+//                    ToastUtil.show(JiJianTaiZhangChangeActivity.this, "保存成功");
+//                    back();
+//                } else {
+//                    ToastUtil.show(JiJianTaiZhangChangeActivity.this, "保存失败，请稍后再试");
+//                }
+//
+//                return true;
+//            }
+//        });
+//
+//        new Thread(new Runnable() {
+//            @RequiresApi(api = Build.VERSION_CODES.O)
+//            @Override
+//            public void run() {
+//                Message msg = new Message();
+//                msg.obj = yhFinanceJiJianTaiZhangService.insert(yhFinanceJiJianTaiZhang);
+//                saveHandler.sendMessage(msg);
+//            }
+//        }).start();
+//    }
+
     public void insertClick(View v) throws ParseException {
         if (!checkForm()) return;
+
+        // 在调用 insert 前设置公司名称
+        String companyName = getCompanyNameFromCache();
+        if (!companyName.isEmpty()) {
+            yhFinanceJiJianTaiZhang.setCompany(companyName);
+        }
 
         Handler saveHandler = new Handler(new Handler.Callback() {
             @Override
@@ -269,7 +305,6 @@ public class JiJianTaiZhangChangeActivity extends AppCompatActivity implements O
                 } else {
                     ToastUtil.show(JiJianTaiZhangChangeActivity.this, "保存失败，请稍后再试");
                 }
-
                 return true;
             }
         });
@@ -283,6 +318,17 @@ public class JiJianTaiZhangChangeActivity extends AppCompatActivity implements O
                 saveHandler.sendMessage(msg);
             }
         }).start();
+    }
+
+    // 获取公司名称的方法
+    private String getCompanyNameFromCache() {
+        try {
+            SharedPreferences sharedPref = getSharedPreferences("my_cache", Context.MODE_PRIVATE);
+            return sharedPref.getString("companyName", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
 

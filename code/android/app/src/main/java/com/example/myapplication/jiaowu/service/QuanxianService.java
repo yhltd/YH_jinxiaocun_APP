@@ -7,7 +7,9 @@ import com.example.myapplication.jiaowu.dao.JiaowuBaseDao;
 import com.example.myapplication.jiaowu.dao.JiaowuServerDao;
 import com.example.myapplication.jiaowu.entity.AccountManagement;
 import com.example.myapplication.jiaowu.entity.Quanxian;
+import com.example.myapplication.jiaowu.entity.Teacher;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuanxianService {
@@ -41,6 +43,34 @@ public class QuanxianService {
             return list;
         }
     }
+
+
+    public List<Teacher> getXL(String company) {
+        Log.e("QueryDebug", "存储 company 值: " + company);
+        int shujukuValue = CacheManager.getInstance().getShujukuValue();
+
+        try {
+            if (shujukuValue == 1) {
+                // SQL Server 版本
+                String sql = "select ID,RealName from teacher where Company = ?";
+                JiaowuServerDao base1 = new JiaowuServerDao();
+                List<Teacher> list = base1.query(Teacher.class, sql, company);
+                return list != null ? list : new ArrayList<Teacher>(); // 确保不返回null
+            } else {
+                // MySQL 版本
+                String sql = "select ID,RealName from teacher where Company = ?";
+                JiaowuBaseDao base = new JiaowuBaseDao();
+                List<Teacher> list = base.query(Teacher.class, sql, company);
+                return list != null ? list : new ArrayList<Teacher>(); // 确保不返回null
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<Teacher>(); // 异常时返回空列表而不是null
+        }
+    }
+
+
+
 
 //    public List<Quanxian> getListQuanXian(int t_id,String view_name) {
 //        String sql = "select p.id,t_id,view_name,`add`,del,upd,sel,RealName from power as p left join teacher as t on p.t_id=t.ID  where t_id = ? and view_name like '%'  ?  '%'";

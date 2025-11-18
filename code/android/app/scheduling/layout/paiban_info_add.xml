@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".scheduling.activity.PaibanInfoAddActivity"
-    android:background="@drawable/pcbeijing1">
+    android:background="@drawable/pcbeijing1"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -131,10 +133,8 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -229,31 +229,29 @@
             <ListView
                 android:id="@+id/renyuan_list"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:dividerHeight="1dp"
-                android:paddingBottom="5dp" />
+                android:layout_height="match_parent"
+                android:paddingBottom="5dp"/>
         </LinearLayout>
 
     </HorizontalScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="10dp">
 
         <Button
             android:id="@+id/submit_button"
             android:onClick="paibanClick"
             android:layout_width="110dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:text="保存"
             tools:ignore="MissingConstraints"
             android:gravity="center"
             android:background="@drawable/pcbtn_style"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:textColor="@color/white"/>
     </LinearLayout>
 

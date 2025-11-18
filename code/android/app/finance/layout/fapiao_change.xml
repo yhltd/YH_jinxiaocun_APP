@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".finance.activity.FaPiaoChangeActivity"
-    android:background="@drawable/caiwu_biaoge_bg4">
+    android:background="@drawable/caiwu_biaoge_bg4"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
 <ScrollView
     android:layout_width="match_parent"

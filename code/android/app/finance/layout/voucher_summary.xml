@@ -42,8 +42,11 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:hint=" 选择开始时间"
+            android:textSize="15sp"
             android:focusable="false"
-            android:focusableInTouchMode="false"/>
+            android:focusableInTouchMode="false"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
 
         <ImageView
             android:layout_width="30dp"
@@ -56,6 +59,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:hint=" 选择结束时间"
+            android:textSize="15sp"
             android:focusable="false"
             android:focusableInTouchMode="false"/>
 

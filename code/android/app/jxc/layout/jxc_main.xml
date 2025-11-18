@@ -133,7 +133,8 @@
         android:layout_below="@id/main_banner"
         app:layout_heightPercent="63%"
         android:background="@drawable/jxc_main_bg4"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:layout_marginBottom="80dp">
 
 
         <LinearLayout
@@ -400,14 +401,16 @@
                         android:background="@drawable/kehu_chuhuo" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="客户/供应商查询"
                         android:textColor="@color/white"
                         android:textSize="12sp"
                         tools:ignore="RtlSymmetry"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginLeft="0dp"
+                        android:gravity="center"
+                        android:textAlignment="center"
 
                         />
                 </LinearLayout>
