@@ -248,7 +248,9 @@
                 android:inputType="text"
                 android:textIsSelectable="false"
                 android:textColorHint="#3A3A3A"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
                                     </LinearLayout>
 <!--            <TextView-->
 <!--                android:layout_width="match_parent"-->

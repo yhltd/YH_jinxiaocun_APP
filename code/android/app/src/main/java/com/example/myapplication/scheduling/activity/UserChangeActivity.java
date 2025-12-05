@@ -76,6 +76,10 @@ public class UserChangeActivity extends AppCompatActivity {
         SpinnerAdapter adapter = new ArrayAdapter<String>(UserChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, stateList);
         state.setAdapter(adapter);
 
+        // 先设置监听器
+        department.setOnItemSelectedListener(new departmentSelectedListener());
+
+        // 注意：initList()会在Handler回调中设置下拉框选中项
         initList();
 
         Intent intent = getIntent();
@@ -89,18 +93,20 @@ public class UserChangeActivity extends AppCompatActivity {
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
 
+            // 先设置可以立即生效的EditText
             user_code.setText(newUserInfo.getUser_code());
             password.setText(newUserInfo.getPassword());
+
+            // state下拉框可以立即设置（因为它是同步的）
             if (newUserInfo.getState().equals("正常")) {
                 state.setSelection(0);
             } else {
                 state.setSelection(1);
             }
-            department.setSelection(getDepartmentPosition(newUserInfo.getDepartment_name()));
+
+            // 注意：不要在这里设置department的选中项，移到initList的Handler中
+            // department.setSelection(getDepartmentPosition(newUserInfo.getDepartment_name())); // 删除这行
         }
-
-        department.setOnItemSelectedListener(new departmentSelectedListener());
-
     }
 
     @Override
@@ -122,7 +128,11 @@ public class UserChangeActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 if (msg.obj != null) {
-                    department.setAdapter((SpinnerAdapter) msg.obj);
+                    SpinnerAdapter adapter = (SpinnerAdapter) msg.obj;
+                    department.setAdapter(adapter);
+
+                    // 关键：在Adapter设置完成后，再设置选中项
+                    setDepartmentSelection();
                 }
                 return true;
             }
@@ -137,18 +147,41 @@ public class UserChangeActivity extends AppCompatActivity {
                     departmentService = new DepartmentService();
                     departmentList = new ArrayList<>();
                     departmentList = departmentService.getDepartment(userInfo.getCompany());
-                    adapter = new ArrayAdapter<String>(UserChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, departmentList);
+                    adapter = new ArrayAdapter<String>(UserChangeActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, departmentList);
+
                     if (departmentList.size() > 0) {
                         msg.obj = adapter;
                     } else {
-                        msg.obj = null;
+                        // 如果没数据，创建空适配器
+                        departmentList = new ArrayList<>();
+                        adapter = new ArrayAdapter<String>(UserChangeActivity.this,
+                                android.R.layout.simple_spinner_dropdown_item, departmentList);
+                        msg.obj = adapter;
                     }
                     listLoadHandler.sendMessage(msg);
                 } catch (Exception e) {
                     e.printStackTrace();
+                    // 发生异常时也要发消息，避免界面卡住
+                    listLoadHandler.sendEmptyMessage(0);
                 }
             }
         }).start();
+    }
+
+    // 3. 添加设置department选中项的方法
+    private void setDepartmentSelection() {
+        if (newUserInfo != null && newUserInfo.getDepartment_name() != null) {
+            int position = getDepartmentPosition(newUserInfo.getDepartment_name());
+            if (position >= 0 && position < department.getCount()) {
+                department.setSelection(position, false); // false表示不触发onItemSelected
+            } else {
+                department.setSelection(0, false); // 默认选中第一项
+            }
+        } else {
+            // 新增时设置默认选中项
+            department.setSelection(0, false);
+        }
     }
 
     public void insertClick(View v) {
@@ -229,26 +262,31 @@ public class UserChangeActivity extends AppCompatActivity {
     }
 
     private int getDepartmentPosition(String param) {
-        if (departmentList != null) {
-            for (int i = 0; i < departmentList.size(); i++) {
-                if (param.equals(departmentList.get(i))) {
-                    return i;
-                }
+        if (param == null || departmentList == null || departmentList.isEmpty()) {
+            return 0;
+        }
+        for (int i = 0; i < departmentList.size(); i++) {
+            if (param.equals(departmentList.get(i))) {
+                return i;
             }
         }
-        return 0;
+        return 0; // 没找到返回第一项
     }
 
     private class departmentSelectedListener implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            //获取选择的项的值
-            department_text = departmentList.get(position);
+            // 获取选择的项的值
+            if (departmentList != null && position >= 0 && position < departmentList.size()) {
+                department_text = departmentList.get(position);
+            } else {
+                department_text = "";
+            }
         }
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
-
+            department_text = "";
         }
     }
 

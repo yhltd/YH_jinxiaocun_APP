@@ -77,8 +77,9 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
     private SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private TimePickerDialog pickerdialog;
     private String date_name;
-    private String typeText;
-    private String lvText;
+    // 添加这两个变量到你的类变量中
+    private String typeText = "资产类"; // 设置默认值
+    private String lvText = "一级";    // 设置默认值
     private String nameText;
 
     List<YhFinanceKeMuZongZhang> list;
@@ -122,8 +123,9 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
         note = findViewById(R.id.note);
         real = findViewById(R.id.real);
 
+        // 分别设置不同的监听器
         kemu_type.setOnItemSelectedListener(new typeSelectSelectedListener());
-        kemu_lv.setOnItemSelectedListener(new typeSelectSelectedListener());
+        kemu_lv.setOnItemSelectedListener(new lvSelectSelectedListener());
 
         kemu_name.setOnItemSelectedListener(new nameSelectSelectedListener());
 
@@ -157,140 +159,87 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
         }
     }
 
+    // 为 kemu_type 创建独立的监听器
     private class typeSelectSelectedListener implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            typeText = kemu_type.getItemAtPosition(position).toString();
+            // 只处理 type 的选择
+            if (position >= 0 && position < type_array.length) {
+                typeText = type_array[position];
+            } else {
+                typeText = "资产类"; // 默认值
+            }
 
-                lvText = kemu_lv.getItemAtPosition(position).toString();
+            // 获取当前 lv 的选中项
+            int lvPosition = kemu_lv.getSelectedItemPosition();
+            if (lvPosition >= 0 && lvPosition < lv_array.length) {
+                lvText = lv_array[lvPosition];
+            } else {
+                lvText = "一级"; // 默认值
+            }
 
-            Handler listLoadHandler = new Handler(new Handler.Callback() {
-                @Override
-                public boolean handleMessage(@NonNull Message msg) {
-                    SpinnerAdapter adapter_name = new ArrayAdapter<String>(VoucherSummaryChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, name_array);
-                    kemu_name.setAdapter(StringUtils.cast(adapter_name));
-                    return true;
-                }
-            });
+            Log.d("TypeSelect", "选择类型: " + typeText + ", 级别: " + lvText);
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    List<HashMap<String, Object>> data = new ArrayList<>();
-                    if (typeText.equals("资产类")) {
-                        Message msg = new Message();
-                        SpinnerAdapter adapter = null;
-                        try {
-                            yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(lvText == "一级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"1",4);
-                            }else if(lvText == "二级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"1",6);
-                            }else if(lvText == "三级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"1",8);
-                            }
-
-                            if (list == null) return;
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }else if (typeText.equals("负债类")) {
-                        Message msg = new Message();
-                        SpinnerAdapter adapter = null;
-                        try {
-                            yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(lvText == "一级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"2",4);
-                            }else if(lvText == "二级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"2",6);
-                            }else if(lvText == "三级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"2",8);
-                            }
-                            if (list == null) return;
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }else if (typeText.equals("权益类")) {
-                        Message msg = new Message();
-                        SpinnerAdapter adapter = null;
-                        try {
-                            yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(lvText == "一级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"3",4);
-                            }else if(lvText == "二级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"3",6);
-                            }else if(lvText == "三级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"3",8);
-                            }
-                            if (list == null) return;
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }else if (typeText.equals("成本类")) {
-                        Message msg = new Message();
-                        SpinnerAdapter adapter = null;
-                        try {
-                            yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(lvText == "一级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"4",4);
-                            }else if(lvText == "二级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"4",6);
-                            }else if(lvText == "三级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"4",8);
-                            }
-                            if (list == null) return;
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }else if (typeText.equals("损益类")) {
-                        Message msg = new Message();
-                        SpinnerAdapter adapter = null;
-                        try {
-                            yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
-                            if(lvText == "一级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"5",4);
-                            }else if(lvText == "二级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"5",6);
-                            }else if(lvText == "三级"){
-                                list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),"5",8);
-                            }
-                            if (list == null) return;
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    if(list != null){
-                        if (list.size() > 0) {
-                            name_array = new String[list.size() + 1];
-                            name_array[0] = "";
-                            for (int i = 0; i < list.size(); i++) {
-                                name_array[i+1] = list.get(i).getName();
-                            }
-                        }
-                    }
-                    Message msg = new Message();
-                    msg.obj = "";
-                    listLoadHandler.sendMessage(msg);
-
-                }
-            }).start();
+            // 加载科目名称数据
+            loadKemuNames(typeText, lvText);
         }
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {}
     }
 
+    // 为 kemu_lv 创建独立的监听器
+    private class lvSelectSelectedListener implements AdapterView.OnItemSelectedListener {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            // 只处理 lv 的选择
+            if (position >= 0 && position < lv_array.length) {
+                lvText = lv_array[position];
+            } else {
+                lvText = "一级"; // 默认值
+            }
+
+            // 获取当前 type 的选中项
+            int typePosition = kemu_type.getSelectedItemPosition();
+            if (typePosition >= 0 && typePosition < type_array.length) {
+                typeText = type_array[typePosition];
+            } else {
+                typeText = "资产类"; // 默认值
+            }
+
+            Log.d("LvSelect", "选择类型: " + typeText + ", 级别: " + lvText);
+
+            // 加载科目名称数据
+            loadKemuNames(typeText, lvText);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {}
+    }
+
+
     private class nameSelectSelectedListener implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            nameText = kemu_name.getItemAtPosition(position).toString();
-            if(list != null){
-                for(int i=0; i< list.size(); i++){
-                    if(nameText.equals(list.get(i).getName())){
-                        code.setText(list.get(i).getCode());
+            try {
+                if (position > 0 && name_array != null && position < name_array.length) {
+                    nameText = kemu_name.getItemAtPosition(position).toString();
+
+                    if (list != null && !list.isEmpty()) {
+                        for (int i = 0; i < list.size(); i++) {
+                            if (nameText.equals(list.get(i).getName())) {
+                                code.setText(list.get(i).getCode());
+                                break;
+                            }
+                        }
                     }
+                } else {
+                    // 选择空项时清空代码
+                    code.setText("");
                 }
+            } catch (Exception e) {
+                Log.e("NameSelect", "选择科目异常: " + e.getMessage());
+                e.printStackTrace();
             }
         }
 
@@ -325,6 +274,10 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
                 kemu_type.setAdapter(adapter);
                 adapter = new ArrayAdapter<String>(VoucherSummaryChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, lv_array);
                 kemu_lv.setAdapter(adapter);
+                // ============ 添加这行代码 ============
+                // 初始化时加载默认科目
+                loadKemuNames("资产类", "一级");
+                // ============ 添加结束 ============
 
 
                 return true;
@@ -374,6 +327,10 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
                 kemu_type.setAdapter(adapter);
                 adapter = new ArrayAdapter<String>(VoucherSummaryChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, lv_array);
                 kemu_lv.setAdapter(adapter);
+                // ============ 添加这行代码 ============
+                // 初始化时加载默认科目
+                loadKemuNames("资产类", "一级");
+                // ============ 添加结束 ============
 
 
                 return true;
@@ -631,6 +588,93 @@ public class VoucherSummaryChangeActivity extends AppCompatActivity implements O
     private void back() {
         setResult(RESULT_OK, new Intent());
         finish();
+    }
+
+
+    // ============ 添加这些辅助方法 ============
+// 辅助方法：根据类型文字获取数字
+    private int getTypeNumber(String type) {
+        if (type == null) return 1;
+        switch (type) {
+            case "资产类": return 1;
+            case "负债类": return 2;
+            case "权益类": return 3;
+            case "成本类": return 4;
+            case "损益类": return 5;
+            default: return 1;
+        }
+    }
+
+    // 辅助方法：根据级别获取代码长度
+    private int getCodeLength(String lv) {
+        if (lv == null) return 4;
+        switch (lv) {
+            case "一级": return 4;
+            case "二级": return 6;
+            case "三级": return 8;
+            default: return 4;
+        }
+    }
+
+    // 提取加载科目的方法
+    private void loadKemuNames(String type, String lv) {
+        if (type == null || type.trim().isEmpty() || lv == null || lv.trim().isEmpty()) {
+            Log.w("LoadKemuNames", "类型或级别为空，跳过加载");
+            return;
+        }
+
+        Handler listLoadHandler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(@NonNull Message msg) {
+                if (name_array != null && name_array.length > 0) {
+                    SpinnerAdapter adapter_name = new ArrayAdapter<String>(VoucherSummaryChangeActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, name_array);
+                    kemu_name.setAdapter(StringUtils.cast(adapter_name));
+                } else {
+                    // 设置空适配器
+                    SpinnerAdapter adapter_name = new ArrayAdapter<String>(VoucherSummaryChangeActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, new String[]{""});
+                    kemu_name.setAdapter(StringUtils.cast(adapter_name));
+                }
+                return true;
+            }
+        });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int typeNum = getTypeNumber(type);
+                int codeLength = getCodeLength(lv);
+
+                Log.d("LoadKemuNames", "开始加载科目，类型: " + type + "(" + typeNum + "), 级别: " + lv + "(" + codeLength + ")");
+
+                try {
+                    yhFinanceKeMuZongZhangService = new YhFinanceKeMuZongZhangService();
+                    list = yhFinanceKeMuZongZhangService.getCodeList(yhFinanceUser.getCompany(),
+                            String.valueOf(typeNum), codeLength);
+
+                    if (list != null && !list.isEmpty()) {
+                        name_array = new String[list.size() + 1];
+                        name_array[0] = "";
+                        for (int i = 0; i < list.size(); i++) {
+                            name_array[i + 1] = list.get(i).getName();
+                        }
+                        Log.d("LoadKemuNames", "加载到 " + list.size() + " 个科目");
+                    } else {
+                        name_array = new String[]{""}; // 空数组
+                        Log.d("LoadKemuNames", "未查询到科目数据");
+                    }
+
+                    listLoadHandler.sendEmptyMessage(0);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("LoadKemuNames", "加载科目异常: " + e.getMessage());
+                    name_array = new String[]{""};
+                    listLoadHandler.sendEmptyMessage(0);
+                }
+            }
+        }).start();
     }
 
 }

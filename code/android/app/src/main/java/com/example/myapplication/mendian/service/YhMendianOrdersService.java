@@ -1,10 +1,13 @@
 package com.example.myapplication.mendian.service;
 
+import android.util.Log;
+
 import com.example.myapplication.mendian.dao.MendianDao;
 import com.example.myapplication.mendian.entity.YhMendianMemberinfo;
 import com.example.myapplication.mendian.entity.YhMendianMemberlevel;
 import com.example.myapplication.mendian.entity.YhMendianOrders;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class YhMendianOrdersService {
@@ -21,13 +24,32 @@ public class YhMendianOrdersService {
     }
 
     /**
-     * 查询当日最大订单号
+     * 查询当日最大订单号（修改ddh查询逻辑）
      */
     public List<YhMendianOrders> getListDDH(String ddh, String company) {
-        String sql = "select max(ddh) from orders where company = ? and ddh like ? '%' ";
-        base = new MendianDao();
-        List<YhMendianOrders> list = base.query(YhMendianOrders.class, sql, company, ddh);
-        return list;
+        try {
+            Log.d("OrderService", "查询最大订单号，日期: " + ddh + ", 公司: " + company);
+
+            // 使用CONCAT函数
+            String sql = "select max(ddh) as ddh from orders where company = ? and ddh like CONCAT(?, '%')";
+            Log.d("OrderService", "SQL: " + sql);
+
+            base = new MendianDao();
+            List<YhMendianOrders> list = base.query(YhMendianOrders.class, sql, company, ddh);
+
+            Log.d("OrderService", "查询结果大小: " + (list != null ? list.size() : "null"));
+            if (list != null && !list.isEmpty() && list.get(0) != null) {
+                Log.d("OrderService", "查询到的最大订单号: " + list.get(0).getDdh());
+            } else {
+                Log.d("OrderService", "未查询到订单或订单号为null");
+            }
+
+            return list;
+        } catch (Exception e) {
+            Log.e("OrderService", "查询最大订单号异常: " + e.getMessage(), e);
+            e.printStackTrace();
+            return new ArrayList<>(); // 返回空列表而不是null
+        }
     }
 
     /**

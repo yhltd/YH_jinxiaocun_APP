@@ -27,7 +27,9 @@
             android:layout_weight="1"
             android:textColorHint="#4DC5D5"
             android:textColor="#4DC5D5"
-            android:hint="年月" />
+            android:hint="年月"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <Button
             android:id="@+id/sel_button"

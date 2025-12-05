@@ -13,9 +13,9 @@ public class YhFinanceVoucherSummaryService {
      * 查询全部数据
      */
     public List<YhFinanceVoucherSummary> getList(String this_word, String company, String start_date,String stop_date) {
-        String sql = "select *,abstract as zhaiyao,voucherDate as insert_date from (select isnull((select name from Accounting where code = LEFT (vs.code, 4)),'')+isnull((select top 1 '-'+name from Accounting where code = LEFT (vs.code, 6) and code != LEFT (vs.code, 4)),'')+isnull((select top 1 '-'+name from Accounting where code = LEFT (vs.code, 8) and code != LEFT (vs.code, 6)),'') as full_name,vs.id,vs.word,vs.[no],voucherDate,vs.abstract,vs.code,vs.department,vs.expenditure,vs.note,vs.man,ac.name,isnull(ac.load,0) as load,isnull(ac.borrowed,0) as borrowed,vs.money,vs.real,ROW_NUMBER() over(order by vs.id) rownum from VoucherSummary as vs left join Accounting as ac on vs.code = ac.code and ac.company = ? where vs.company = ?) t where t.word like '%'+ ? +'%' and t.voucherDate >= convert(date,?) and t.voucherDate <= convert(date,?)";
+        String sql = "select *,abstract as zhaiyao,voucherDate as insert_date from (select isnull((select name from Accounting where code = LEFT (vs.code, 4) and company = ?),'')+isnull((select top 1 '-'+name from Accounting where code = LEFT (vs.code, 6) and code != LEFT (vs.code, 4) and company = ?),'')+isnull((select top 1 '-'+name from Accounting where code = LEFT (vs.code, 8) and code != LEFT (vs.code, 6) and company = ?),'') as full_name,vs.id,vs.word,vs.[no],voucherDate,vs.abstract,vs.code,vs.department,vs.expenditure,vs.note,vs.man,ac.name,isnull(ac.load,0) as load,isnull(ac.borrowed,0) as borrowed,vs.money,vs.real,ROW_NUMBER() over(order by vs.id) rownum from VoucherSummary as vs left join Accounting as ac on vs.code = ac.code and ac.company = ? where vs.company = ?) t where t.word like '%'+ ? +'%' and t.voucherDate >= convert(date,?) and t.voucherDate <= convert(date,?)";
         base = new financeBaseDao();
-        List<YhFinanceVoucherSummary> list = base.query(YhFinanceVoucherSummary.class, sql,company,company,this_word,start_date,stop_date);
+        List<YhFinanceVoucherSummary> list = base.query(YhFinanceVoucherSummary.class, sql,company,company,company,company,company,this_word,start_date,stop_date);
         return list;
     }
 

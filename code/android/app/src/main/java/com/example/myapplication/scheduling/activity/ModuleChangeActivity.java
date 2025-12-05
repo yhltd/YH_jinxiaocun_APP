@@ -81,8 +81,9 @@ public class ModuleChangeActivity extends AppCompatActivity {
         num = findViewById(R.id.num);
         parent = findViewById(R.id.parent);
 
-        init();
-        //init2();
+        // 设置监听器（先设置，不影响）
+        type.setOnItemSelectedListener(new typeSelectedListener());
+        parent.setOnItemSelectedListener(new parentSelectedListener());
 
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
@@ -95,14 +96,18 @@ public class ModuleChangeActivity extends AppCompatActivity {
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
 
-            type.setSelection(getTypePosition(moduleInfo.getType()));
+            // 先设置EditText的值（这些可以立即生效）
             name.setText(moduleInfo.getName());
             String num_text = moduleInfo.getNum() + "";
             num.setText(num_text);
-            parent.setSelection(getParentPosition(moduleInfo.getParent()));
+
+            // 注意：现在不在这里设置下拉框选中项
+            // type.setSelection(getTypePosition(moduleInfo.getType())); // 删除这行
+            // parent.setSelection(getParentPosition(moduleInfo.getParent())); // 删除这行
         }
-        type.setOnItemSelectedListener(new typeSelectedListener());
-        parent.setOnItemSelectedListener(new parentSelectedListener());
+
+        // 最后调用init，并在init的Handler中处理下拉框设置
+        init();
     }
 
 
@@ -125,11 +130,16 @@ public class ModuleChangeActivity extends AppCompatActivity {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
+                // 1. 先设置Adapter
                 type.setAdapter(typeAdapter);
                 parent.setAdapter(parentAdapter);
+
+                // 2. 在Adapter设置完成后，再设置下拉框选中项
+                setSpinnerSelections();
                 return true;
             }
         });
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -139,22 +149,27 @@ public class ModuleChangeActivity extends AppCompatActivity {
                     moduleTypeService = new ModuleTypeService();
                     moduleTypeList = moduleTypeService.getList(userInfo.getCompany());
                     typeList = new ArrayList<>();
+                    type_idList = new ArrayList<>(); // 确保初始化
                     for (ModuleType moduleType : moduleTypeList) {
                         typeList.add(moduleType.getName());
                         type_idList.add(moduleType.getId());
                     }
-                    typeAdapter = new ArrayAdapter<String>(ModuleChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, typeList);
+                    typeAdapter = new ArrayAdapter<String>(ModuleChangeActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, typeList);
 
                     moduleInfoService = new ModuleInfoService();
                     moduleInfoList = moduleInfoService.getList(userInfo.getCompany(), "全部");
 
+                    parentList = new ArrayList<>(); // 确保重新初始化，避免重复添加
+                    parent_idList = new ArrayList<>();
                     parentList.add("");
                     parent_idList.add(0);
                     for (ModuleInfo moduleInfo : moduleInfoList) {
                         parentList.add(moduleInfo.getName());
                         parent_idList.add(moduleInfo.getId());
                     }
-                    parentAdapter = new ArrayAdapter<String>(ModuleChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, parentList);
+                    parentAdapter = new ArrayAdapter<String>(ModuleChangeActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, parentList);
 
                     listLoadHandler.sendMessage(msg);
                 } catch (Exception e) {
@@ -162,6 +177,31 @@ public class ModuleChangeActivity extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    // 3. 添加设置下拉框选中项的方法
+    private void setSpinnerSelections() {
+        if (moduleInfo != null) {
+            // 如果是更新操作，设置type下拉框选中项
+            int typePosition = getTypePosition(moduleInfo.getType());
+            if (typePosition >= 0 && typePosition < typeAdapter.getCount()) {
+                type.setSelection(typePosition, false); // false表示不触发onItemSelected
+            } else {
+                type.setSelection(0, false); // 默认选中第一项
+            }
+
+            // 设置parent下拉框选中项
+            int parentPosition = getParentPosition(moduleInfo.getParent());
+            if (parentPosition >= 0 && parentPosition < parentAdapter.getCount()) {
+                parent.setSelection(parentPosition, false);
+            } else {
+                parent.setSelection(0, false); // 默认选中第一项（空项）
+            }
+        } else {
+            // 如果是新增操作，设置默认选中项
+            type.setSelection(0, false);
+            parent.setSelection(0, false);
+        }
     }
 
 
@@ -248,25 +288,28 @@ public class ModuleChangeActivity extends AppCompatActivity {
     }
 
     private int getTypePosition(String param) {
-        if (typeList != null) {
-            for (int i = 0; i < typeList.size(); i++) {
-                if (param.equals(typeList.get(i))) {
-                    return i;
-                }
+        if (param == null || typeList == null || typeList.isEmpty()) {
+            return 0;
+        }
+        for (int i = 0; i < typeList.size(); i++) {
+            if (param.equals(typeList.get(i))) {
+                return i;
             }
         }
-        return 0;
+        return 0; // 没找到返回第一项
     }
 
+
     private int getParentPosition(String param) {
-        if (parentList != null) {
-            for (int i = 0; i < parentList.size(); i++) {
-                if (param.equals(parentList.get(i))) {
-                    return i;
-                }
+        if (param == null || parentList == null || parentList.isEmpty()) {
+            return 0;
+        }
+        for (int i = 0; i < parentList.size(); i++) {
+            if (param.equals(parentList.get(i))) {
+                return i;
             }
         }
-        return 0;
+        return 0; // 没找到返回第一项（空项）
     }
 
     private class typeSelectedListener implements AdapterView.OnItemSelectedListener {

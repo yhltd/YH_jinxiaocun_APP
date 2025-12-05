@@ -57,6 +57,8 @@ import java.util.List;
 
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 public class OrderPanelActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
 
@@ -746,97 +748,175 @@ private void setupClickListeners() {
         return super.onOptionsItemSelected(item);
     }
 
-
+//修改ddh自增逻辑
     public void orderRefresh() {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public boolean handleMessage(Message msg) {
-                if(max_order.get(0).getDdh() != null){
-                    BigDecimal danhao = new BigDecimal(max_order.get(0).getDdh());
-                    ddh.setText(danhao.toString());
-                }else{
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-                    String this_ddh = sdf.format(Calendar.getInstance().getTime());
-//                    String this_ddh = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-                    ddh.setText(this_ddh + "0001");
-                }
-
-                leftStr = new String[type_list.size()];
-                for (int i = 0; i < type_list.size(); i++) {
-                    leftStr[i] = type_list.get(i).getType();
-                }
-
-                rightStr = new YhMendianProductshezhi[type_list.size()][];
-                for(int i=0; i<rightStr.length; i++){
-                    String this_type = leftStr[i];
-                    int this_num = 0;
-                    for(int j=0; j<product_list.size(); j++){
-                        if(product_list.get(j).getType().equals(this_type)){
-                            this_num = this_num + 1;
-                        }
-                    }
-                    if(this_num > 0){
-                        rightStr[i] = new YhMendianProductshezhi[this_num];
-                    }else{
-                        rightStr[i] = new YhMendianProductshezhi[0];
-                    }
-                    this_num = 0;
-                    for(int j=0; j<product_list.size(); j++){
-                        if(product_list.get(j).getType().equals(this_type)){
-                            rightStr[i][this_num] = product_list.get(j);
-                            this_num = this_num + 1;
-
-                        }
-                    }
-                    System.out.println(rightStr);
-                }
-                instantiation();
-                return true;
-            }
-        });
-        new Thread(new Runnable() {
-//            @RequiresApi(api = Build.VERSION_CODES.O)
-//            @Override
-//            public void run() {
-//                SpinnerAdapter adapter = null;
-//                try {
-//
-//                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-//                    String this_ddh = sdf.format(Calendar.getInstance().getTime());
-////                    String this_ddh = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-//                    max_order = yhMendianOrdersService.getListDDH(this_ddh,yhMendianUser.getCompany());
-//                    type_list = yhMendianProductshezhiService.getTypeList(yhMendianUser.getCompany());
-//                    product_list = yhMendianProductshezhiService.getList("","",yhMendianUser.getCompany());
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//                Message msg = new Message();
-//                msg.obj = max_order;
-//                listLoadHandler.sendMessage(msg);
-//            }
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void run() {
-                SpinnerAdapter adapter = null;
                 try {
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-                    String this_ddh = sdf.format(Calendar.getInstance().getTime());
-                    max_order = yhMendianOrdersService.getListDDH(this_ddh, yhMendianUser.getCompany());
-                    type_list = yhMendianProductshezhiService.getTypeList(yhMendianUser.getCompany());
-                    product_list = yhMendianProductshezhiService.getList("", "", yhMendianUser.getCompany());
+                    // 1. 生成今天日期的8位字符串
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+                    String datePart = sdf.format(Calendar.getInstance().getTime()); // 示例："20231215"
 
-                    // 调试：打印商品数据，检查beizhu1字段
-                    for (YhMendianProductshezhi product : product_list) {
-                        Log.d("ProductDebug", "商品: " + product.getProduct_name() +
-                                ", beizhu1: " + product.getBeizhu1());
+                    // 2. 生成订单号
+                    if (max_order != null && !max_order.isEmpty() && max_order.get(0).getDdh() != null) {
+                        // 有历史订单，获取最大订单号
+                        String maxDdh = max_order.get(0).getDdh().trim();
+                        Log.d("OrderRefresh", "数据库最大订单号: " + maxDdh + ", 今天日期: " + datePart);
+
+                        // 检查是否是今天的订单
+                        if (maxDdh.startsWith(datePart) && maxDdh.length() >= 12) {
+                            try {
+                                // 提取序列号（后4位）
+                                String sequenceStr = maxDdh.substring(8, 12); // 取第9-12位
+                                Log.d("OrderRefresh", "提取的序列号: " + sequenceStr);
+
+                                int sequence = Integer.parseInt(sequenceStr); // 转为数字
+                                sequence++; // 自增
+
+                                String newSequence = String.format("%04d", sequence); // 格式化为4位
+                                String newDdh = datePart + newSequence; // 拼接新订单号
+
+                                Log.d("OrderRefresh", "自增后订单号: " + newDdh);
+                                ddh.setText(newDdh);
+                            } catch (NumberFormatException e) {
+                                // 序列号不是数字，从0001开始
+                                Log.e("OrderRefresh", "序列号格式错误: " + e.getMessage());
+                                ddh.setText(datePart + "0001");
+                            } catch (StringIndexOutOfBoundsException e) {
+                                // 字符串长度不够，从0001开始
+                                Log.e("OrderRefresh", "订单号长度错误: " + e.getMessage());
+                                ddh.setText(datePart + "0001");
+                            }
+                        } else {
+                            // 不是今天的订单，从0001开始
+                            Log.d("OrderRefresh", "不是今天订单或格式不符，重新开始");
+                            ddh.setText(datePart + "0001");
+                        }
+                    } else {
+                        // 没有历史订单，从0001开始
+                        Log.d("OrderRefresh", "没有历史订单，生成第一个");
+                        ddh.setText(datePart + "0001");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
+                    Log.e("OrderRefresh", "生成订单号异常: " + e.getMessage());
+                    // 出错时生成默认订单号
+                    try {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+                        ddh.setText(sdf.format(Calendar.getInstance().getTime()) + "0001");
+                    } catch (Exception ex) {
+                        // 再次出错，设置一个默认值
+                        ddh.setText("000000000001");
+                    }
                 }
-                Message msg = new Message();
-                msg.obj = max_order;
-                listLoadHandler.sendMessage(msg);
+
+                // 3. 初始化左侧分类列表
+                if (type_list != null) {
+                    leftStr = new String[type_list.size()];
+                    for (int i = 0; i < type_list.size(); i++) {
+                        leftStr[i] = type_list.get(i).getType();
+                    }
+                } else {
+                    leftStr = new String[0];
+                }
+
+                // 4. 初始化右侧商品列表
+                if (type_list != null && product_list != null) {
+                    rightStr = new YhMendianProductshezhi[type_list.size()][];
+
+                    for(int i = 0; i < type_list.size(); i++){
+                        String this_type = leftStr[i];
+                        int this_num = 0;
+
+                        // 计算该分类下的商品数量
+                        for(int j = 0; j < product_list.size(); j++){
+                            if(product_list.get(j).getType().equals(this_type)){
+                                this_num = this_num + 1;
+                            }
+                        }
+
+                        if(this_num > 0){
+                            rightStr[i] = new YhMendianProductshezhi[this_num];
+                        } else {
+                            rightStr[i] = new YhMendianProductshezhi[0];
+                        }
+
+                        // 填充该分类下的商品
+                        this_num = 0;
+                        for(int j = 0; j < product_list.size(); j++){
+                            if(product_list.get(j).getType().equals(this_type)){
+                                rightStr[i][this_num] = product_list.get(j);
+                                this_num = this_num + 1;
+                            }
+                        }
+                    }
+
+                    Log.d("OrderRefresh", "商品分类初始化完成，共" + type_list.size() + "个分类");
+                } else {
+                    rightStr = new YhMendianProductshezhi[0][];
+                    Log.w("OrderRefresh", "商品数据为空，初始化空列表");
+                }
+
+                // 5. 实例化列表视图
+                instantiation();
+
+                return true;
+            }
+        });
+
+        new Thread(new Runnable() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void run() {
+                try {
+                    // 1. 获取今天日期的8位字符串
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+                    String this_ddh = sdf.format(Calendar.getInstance().getTime());
+
+                    Log.d("OrderRefresh", "线程开始，查询日期: " + this_ddh + ", 公司: " + yhMendianUser.getCompany());
+
+                    // 2. 查询数据库中今天的最大订单号
+                    max_order = yhMendianOrdersService.getListDDH(this_ddh, yhMendianUser.getCompany());
+                    if (max_order != null) {
+                        Log.d("OrderRefresh", "查询到订单数据条数: " + max_order.size());
+                        if (!max_order.isEmpty() && max_order.get(0).getDdh() != null) {
+                            Log.d("OrderRefresh", "最大订单号: " + max_order.get(0).getDdh());
+                        }
+                    }
+
+                    // 3. 获取商品分类列表
+                    type_list = yhMendianProductshezhiService.getTypeList(yhMendianUser.getCompany());
+                    Log.d("OrderRefresh", "商品分类数量: " + (type_list != null ? type_list.size() : 0));
+
+                    // 4. 获取商品列表
+                    product_list = yhMendianProductshezhiService.getList("", "", yhMendianUser.getCompany());
+                    Log.d("OrderRefresh", "商品总数: " + (product_list != null ? product_list.size() : 0));
+
+                    // 调试：打印商品数据，检查beizhu1字段
+                    if (product_list != null) {
+                        for (YhMendianProductshezhi product : product_list) {
+                            Log.d("ProductDebug", "商品: " + product.getProduct_name() +
+                                    ", 分类: " + product.getType() +
+                                    ", 标签: " + product.getBeizhu1());
+                        }
+                    }
+
+                    // 5. 发送消息到主线程
+                    Message msg = new Message();
+                    msg.obj = max_order;
+                    listLoadHandler.sendMessage(msg);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("OrderRefresh", "线程执行异常: " + e.getMessage());
+
+                    // 即使出错也要发送消息，避免界面卡住
+                    Message msg = new Message();
+                    msg.obj = new ArrayList<YhMendianOrders>(); // 发送空列表
+                    listLoadHandler.sendMessage(msg);
+                }
             }
         }).start();
     }

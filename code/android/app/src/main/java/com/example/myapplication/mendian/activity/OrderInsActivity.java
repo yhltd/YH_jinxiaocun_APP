@@ -33,11 +33,14 @@ import com.example.myapplication.mendian.service.YhMendianOrdersService;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class OrderInsActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_CHANG = 1;
@@ -177,7 +180,6 @@ public class OrderInsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         new Thread(new Runnable() {
-                            @RequiresApi(api = Build.VERSION_CODES.O)
                             @Override
                             public void run() {
                                 Message msg = new Message();
@@ -185,11 +187,11 @@ public class OrderInsActivity extends AppCompatActivity {
                                 order_detail_list = myApplication.getOrderDetails();
                                 yhMendianOrders = new YhMendianOrders();
 
-                                LocalDate now = LocalDate.now();
-                                System.out.println(now);
-                                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                                String format = now.format(dateTimeFormatter);
+                                // 替换 LocalDate 为 SimpleDateFormat
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                                String format = sdf.format(new Date());
                                 yhMendianOrders.setRiqi(format);
+
                                 yhMendianOrders.setDdh(order_detail_list.get(0).getDdid());
                                 yhMendianOrders.setHyzh(list.get(position).getUsername());
                                 yhMendianOrders.setHyxm(list.get(position).getName());
@@ -200,6 +202,7 @@ public class OrderInsActivity extends AppCompatActivity {
                                 yhMendianOrders.setSsje("");
                                 yhMendianOrders.setYhje("");
                                 yhMendianOrdersService.insertByOrders(yhMendianOrders);
+
                                 for(int i=0; i<order_detail_list.size(); i++){
                                     yhMendianOrdersDetailsService.insert(order_detail_list.get(i));
                                 }
