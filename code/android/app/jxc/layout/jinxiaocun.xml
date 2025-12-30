@@ -13,15 +13,47 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
-        android:background="@drawable/shape_corner"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
+        android:background="@drawable/shape_corner_up1"
         android:layout_marginTop="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/shape_corner_up"
+
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/search"
+                android:orientation="vertical" />
+            <EditText
+                android:id="@+id/cangku_text"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:hint="请输入仓库名" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/shape_corner"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+      >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#FFFFFF"
             android:gravity="center_vertical">
             <ImageView
                 android:layout_width="30dp"
@@ -33,7 +65,7 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:hint=" 按商品代码查询" />
+                android:hint=" 请输入商品代码" />
         </LinearLayout>
 
     </LinearLayout>
@@ -42,14 +74,16 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
-        android:background="@drawable/shape_corner"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
+        android:background="@drawable/shape_corner_down"
       >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/shape_corner_down"
+
             android:gravity="center_vertical">
             <ImageView
                 android:layout_width="30dp"
@@ -265,6 +299,19 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2" />
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="120dp"
+                    android:text="所属仓库"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
             </LinearLayout>
 
             <ListView
@@ -281,7 +328,7 @@
         android:id="@+id/list_block"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="73"
+        android:layout_weight="68"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"

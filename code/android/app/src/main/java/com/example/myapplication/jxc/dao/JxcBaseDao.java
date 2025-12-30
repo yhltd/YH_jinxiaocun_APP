@@ -143,6 +143,31 @@ public class JxcBaseDao<T> {
         return result;
     }
 
+    public long executeOfId_diaobo(String sql, Object... params) {
+        long result = 0;
+        try {
+            preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            if (params != null) for (int i = 0; i < params.length; i++) {
+                preparedStatement.setString(i + 1, params[i] != null ?
+                        handlerParam(params[i]) :
+                        "");
+            }
+
+            result = preparedStatement.executeUpdate();
+            resultSet = preparedStatement.getGeneratedKeys();
+            if (resultSet.next()) {
+                result = resultSet.getLong(1);
+            }
+            preparedStatement.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+//            close();
+        }
+        return result;
+    }
+
     public boolean updateFile(String sql, int id, InputStream inputStream) {
         int result = 0;
 

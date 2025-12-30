@@ -68,16 +68,16 @@ public class YhJinXiaoCunQiChuShuService {
             // 根据状态执行不同的业务逻辑
             if (shujukuValue == 1) {
                 // SQL Server 版本
-                String sql = "insert into yh_jinxiaocun_qichushu_mssql (cpname,cpid,cplb,cpsj,cpsl,gs_name) values(?,?,?,?,?,?)";
+                String sql = "insert into yh_jinxiaocun_qichushu_mssql (cpname,cpid,cplb,cpsj,cpsl,gs_name,cangku) values(?,?,?,?,?,?,?)";
                 base2 = new JxcServerDao();
-                long result = base2.executeOfId(sql, yhJinXiaoCunQiChuShu.getCpname(), yhJinXiaoCunQiChuShu.getCpid(), yhJinXiaoCunQiChuShu.getCplb(), yhJinXiaoCunQiChuShu.getCpsj(), yhJinXiaoCunQiChuShu.getCpsl(), yhJinXiaoCunQiChuShu.getGs_name());
+                long result = base2.executeOfId(sql, yhJinXiaoCunQiChuShu.getCpname(), yhJinXiaoCunQiChuShu.getCpid(), yhJinXiaoCunQiChuShu.getCplb(), yhJinXiaoCunQiChuShu.getCpsj(), yhJinXiaoCunQiChuShu.getCpsl(), yhJinXiaoCunQiChuShu.getGs_name(),yhJinXiaoCunQiChuShu.getcangku());
                 return result > 0;
 
             } else {
                 // MySQL 版本
-                String sql = "insert into yh_jinxiaocun_qichushu (cpname,cpid,cplb,cpsj,cpsl,gs_name) values(?,?,?,?,?,?)";
+                String sql = "insert into yh_jinxiaocun_qichushu (cpname,cpid,cplb,cpsj,cpsl,gs_name,cangku) values(?,?,?,?,?,?,?)";
                 base = new JxcBaseDao();
-                long result = base.executeOfId(sql, yhJinXiaoCunQiChuShu.getCpname(), yhJinXiaoCunQiChuShu.getCpid(), yhJinXiaoCunQiChuShu.getCplb(), yhJinXiaoCunQiChuShu.getCpsj(), yhJinXiaoCunQiChuShu.getCpsl(), yhJinXiaoCunQiChuShu.getGs_name());
+                long result = base.executeOfId(sql, yhJinXiaoCunQiChuShu.getCpname(), yhJinXiaoCunQiChuShu.getCpid(), yhJinXiaoCunQiChuShu.getCplb(), yhJinXiaoCunQiChuShu.getCpsj(), yhJinXiaoCunQiChuShu.getCpsl(), yhJinXiaoCunQiChuShu.getGs_name(),yhJinXiaoCunQiChuShu.getcangku());
                 return result > 0;
             }
         } catch (Exception e) {
@@ -105,16 +105,16 @@ public class YhJinXiaoCunQiChuShuService {
             // 根据状态执行不同的业务逻辑
             if (shujukuValue == 1) {
                 // SQL Server 版本
-                String sql = "update yh_jinxiaocun_qichushu_mssql set cpname=?,cpid=?,cplb=?,cpsj=?,cpsl=? where _id=?";
+                String sql = "update yh_jinxiaocun_qichushu_mssql set cpname=?,cpid=?,cplb=?,cpsj=?,cpsl=?,cangku=? where _id=?";
                 base2 = new JxcServerDao();
-                boolean result = base2.execute(sql, yhJinXiaoCunQiChuShu.getCpname(), yhJinXiaoCunQiChuShu.getCpid(), yhJinXiaoCunQiChuShu.getCplb(), yhJinXiaoCunQiChuShu.getCpsj(), yhJinXiaoCunQiChuShu.getCpsl(), yhJinXiaoCunQiChuShu.get_id());
+                boolean result = base2.execute(sql, yhJinXiaoCunQiChuShu.getCpname(), yhJinXiaoCunQiChuShu.getCpid(), yhJinXiaoCunQiChuShu.getCplb(), yhJinXiaoCunQiChuShu.getCpsj(), yhJinXiaoCunQiChuShu.getCpsl(),yhJinXiaoCunQiChuShu.getcangku(), yhJinXiaoCunQiChuShu.get_id());
                 return result;
 
             } else {
                 // MySQL 版本
-                String sql = "update yh_jinxiaocun_qichushu set cpname=?,cpid=?,cplb=?,cpsj=?,cpsl=? where _id=?";
+                String sql = "update yh_jinxiaocun_qichushu set cpname=?,cpid=?,cplb=?,cpsj=?,cpsl=?,cangku=? where _id=?";
                 base = new JxcBaseDao();
-                boolean result = base.execute(sql, yhJinXiaoCunQiChuShu.getCpname(), yhJinXiaoCunQiChuShu.getCpid(), yhJinXiaoCunQiChuShu.getCplb(), yhJinXiaoCunQiChuShu.getCpsj(), yhJinXiaoCunQiChuShu.getCpsl(), yhJinXiaoCunQiChuShu.get_id());
+                boolean result = base.execute(sql, yhJinXiaoCunQiChuShu.getCpname(), yhJinXiaoCunQiChuShu.getCpid(), yhJinXiaoCunQiChuShu.getCplb(), yhJinXiaoCunQiChuShu.getCpsj(), yhJinXiaoCunQiChuShu.getCpsl(),yhJinXiaoCunQiChuShu.getcangku(), yhJinXiaoCunQiChuShu.get_id());
                 return result;
             }
         } catch (Exception e) {

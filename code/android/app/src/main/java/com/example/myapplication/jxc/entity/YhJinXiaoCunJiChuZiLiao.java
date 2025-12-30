@@ -15,6 +15,11 @@ public class YhJinXiaoCunJiChuZiLiao implements Serializable {
     private boolean check;
     private String num;
     private String jine;
+    private String cangku;
+    private String pankusl;
+    private String pankuisl;
+    private String ruku_num;
+    private String qc_cpsj;
     private String mark1;
 
     public String getMark1() {
@@ -120,4 +125,46 @@ public class YhJinXiaoCunJiChuZiLiao implements Serializable {
     public void setJine(String jine) {
         this.jine = jine;
     }
+
+    public String getcangku() {
+        return cangku;
+    }
+
+    public void setcangku(String cangku) {
+        this.cangku = cangku;
+    }
+
+    public String getpankusl() {
+        return pankusl;
+    }
+
+    public void setpankusl(String pankusl) {
+        this.pankusl = pankusl;
+    }
+
+    public String getkucun_sl() {
+        return ruku_num;
+    }
+
+    public void setkucun_sl(String ruku_num) {
+        this.ruku_num = ruku_num;
+    }
+
+    public String getpankuisl() {
+        return pankuisl;
+    }
+
+    public void setpankuisl(String pankuisl) {
+        this.pankuisl = pankuisl;
+    }
+
+    public String getqc_cpsj() {
+        return qc_cpsj;
+    }
+
+    public void setqc_cpsj(String qc_cpsj) {
+        this.qc_cpsj = qc_cpsj;
+    }
+
+
 }

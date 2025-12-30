@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".jxc.activity.MingXiActivity"
+    android:background="@drawable/jxc_biaoge_bg2">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_corner"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:focusableInTouchMode="true">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/shape_corner"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/search"
+                    android:orientation="vertical" />
+                <EditText
+                    android:id="@+id/ks"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:hint=" 选择开始时间"
+                    android:textSize="13dp"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/hengxian"
+                    android:orientation="vertical" />
+                <EditText
+                    android:id="@+id/js"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:hint=" 选择结束时间"
+                    android:textSize="13dp"/>
+
+                <Button
+                    android:id="@+id/sel_button"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:text="查询"
+                    tools:ignore="MissingConstraints"
+                    android:gravity="center"
+                    android:background="@null"
+                    android:textSize="17dp"
+                    android:textColor="@color/blue"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <HorizontalScrollView
+        android:id="@+id/list_table"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#0D35FD"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="150dp"
+                    android:text="订单号"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="120dp"
+                    android:text="商品代码"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="120dp"
+                    android:text="商品名称"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="120dp"
+                    android:text="商品类别"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="120dp"
+                    android:text="价格"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="120dp"
+                    android:text="数量"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="120dp"
+                    android:text="明细类型"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="150dp"
+                    android:text="时间"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="150dp"
+                    android:text="公司名"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="120dp"
+                    android:text="仓库"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/mingxi_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:divider="@null"
+                android:paddingBottom="5dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_weight="5"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:orientation="horizontal">-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/up_button"-->
+    <!--            android:layout_width="110dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:onClick="switchClick"-->
+    <!--            android:text="上一页"-->
+    <!--            tools:ignore="MissingConstraints"-->
+    <!--            android:background="@drawable/btn_style"-->
+    <!--            android:textSize="17dp"-->
+    <!--            android:textColor="@color/white"/>-->
+
+
+    <!--        <EditText-->
+    <!--            android:id="@+id/ye"-->
+    <!--            android:layout_width="50dp"-->
+    <!--            android:layout_height="50dp"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="1"-->
+    <!--           />-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/down_button"-->
+    <!--            android:layout_width="110dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="下一页"-->
+    <!--            tools:ignore="MissingConstraints"-->
+    <!--            android:gravity="center"-->
+    <!--            android:background="@drawable/btn_style"-->
+    <!--            android:textSize="17dp"-->
+    <!--            android:textColor="@color/white"/>-->
+    <!--        <EditText-->
+    <!--            android:id="@+id/yea"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="0dp"-->
+    <!--            android:gravity="center"-->
+    <!--            android:text="1"-->
+    <!--            />-->
+    <!--    </LinearLayout>-->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_weight="5"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:orientation="horizontal">-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/chear_btn"-->
+    <!--            android:layout_width="110dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:onClick="switchClick"-->
+    <!--            android:text="切换列表"-->
+    <!--            tools:ignore="MissingConstraints"-->
+    <!--            android:background="@drawable/btn_style"-->
+    <!--            android:textSize="17dp"-->
+    <!--            android:textColor="@color/white"/>-->
+    <!--        <ImageView-->
+    <!--            android:layout_width="30dp"-->
+    <!--            android:layout_height="30dp"-->
+    <!--            android:src="@drawable/search"-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:visibility="invisible"-->
+    <!--            android:gravity="center_horizontal"/>-->
+    <!--        <Button-->
+    <!--            android:id="@+id/sel_button"-->
+    <!--            android:layout_width="110dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="查询"-->
+    <!--            tools:ignore="MissingConstraints"-->
+    <!--            android:gravity="center"-->
+    <!--            android:background="@drawable/btn_style"-->
+    <!--            android:textSize="17dp"-->
+    <!--            android:textColor="@color/white"/>-->
+    <!--    </LinearLayout>-->
+
+    <ListView
+        android:id="@+id/list_block"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="3dp"
+        android:layout_weight="100"
+        android:divider="@null"
+        android:paddingBottom="5dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="10"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="25dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:src="@drawable/search"
+                android:visibility="invisible" />
+            <Button
+                android:id="@+id/export_button"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="导出excel"
+                tools:ignore="MissingConstraints"
+                android:gravity="center"
+                android:background="@drawable/jxc_btn_bg"
+                android:textSize="17dp"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="30dp"
+                android:src="@drawable/search"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                android:gravity="center_horizontal"/>
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:onClick="onOrderScanClick"
+                android:text="打印二维码"
+                tools:ignore="MissingConstraints"
+                android:background="@drawable/jxc_btn_bg"
+                android:textSize="17dp"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="30dp"
+                android:src="@drawable/search"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                android:gravity="center_horizontal"/>
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:onClick="onOrderScanClick2"
+                android:text="打印条形码"
+                tools:ignore="MissingConstraints"
+                android:background="@drawable/jxc_btn_bg"
+                android:textSize="17dp"
+                android:textColor="@color/white"/>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="30dp"
+                android:src="@drawable/search"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                android:gravity="center_horizontal"/>
+        </LinearLayout>
+
+        <!--    <LinearLayout-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="30dp"-->
+        <!--        android:layout_weight="10"-->
+        <!--        android:layout_marginTop="10dp"-->
+        <!--        android:gravity="center"-->
+        <!--        android:orientation="horizontal">-->
+
+        <!--        <Button-->
+        <!--            android:id="@+id/up_button"-->
+        <!--            android:layout_width="110dp"-->
+        <!--            android:layout_height="30dp"-->
+        <!--            android:onClick="switchClick"-->
+        <!--            android:text="上一页"-->
+        <!--            tools:ignore="MissingConstraints"-->
+        <!--            android:background="#808080"-->
+        <!--            android:textSize="17dp"-->
+        <!--            android:textColor="@color/white"/>-->
+
+
+        <!--        <EditText-->
+        <!--            android:id="@+id/ye"-->
+        <!--            android:layout_width="50dp"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="1"-->
+        <!--            />-->
+
+        <!--        <Button-->
+        <!--            android:id="@+id/down_button"-->
+        <!--            android:layout_width="110dp"-->
+        <!--            android:layout_height="30dp"-->
+        <!--            android:text="下一页"-->
+        <!--            tools:ignore="MissingConstraints"-->
+        <!--            android:gravity="center"-->
+        <!--            android:background="#808080"-->
+        <!--            android:textSize="17dp"-->
+        <!--            android:textColor="@color/white"/>-->
+        <!--        <EditText-->
+        <!--            android:id="@+id/yea"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="1"-->
+        <!--            />-->
+        <!--    </LinearLayout>-->
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/chear_btn"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
+            android:onClick="switchClick"
+            android:text="切换列表"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/jxc_btn_bg"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+
+    </LinearLayout>
+</LinearLayout>

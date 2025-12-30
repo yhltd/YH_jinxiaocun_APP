@@ -162,6 +162,21 @@
                     android:text="单价"
                     android:textStyle="bold"
                     android:width="120dp"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+                </View>
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:text="仓库"
+                    android:textStyle="bold"
+                    android:width="120dp"/>
                 <View
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

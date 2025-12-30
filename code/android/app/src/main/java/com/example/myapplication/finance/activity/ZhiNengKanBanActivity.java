@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,11 +28,17 @@ import com.example.myapplication.finance.service.YhFinanceKeMuZongZhangService;
 import com.example.myapplication.mendian.entity.YhMendianReportForm;
 import com.example.myapplication.utils.LoadingDialog;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -90,6 +97,15 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
 
     private float jiefang_sum = 0f;
     private float daifang_sum = 0f;
+    private LineChart lineChart1; // 新增折线图对象
+    private LineChart lineChart3; // 新增折线图对象
+    private LineChart lineChart4; // 新增折线图对象
+    private boolean isBarChart = true; // 标记当前显示的是柱状图还是折线图
+    private boolean isBarChart3 = true; // 标记当前显示的是柱状图还是折线图
+    private boolean isBarChart4 = true; // 标记当前显示的是柱状图还是折线图
+    private Button toggleChartButton; // 切换按钮
+    private Button toggleChartButton3; // 切换按钮
+    private Button toggleChartButton4; // 切换按钮
 
     List<YhFinanceKeMuZongZhang> list1;
     List<YhFinanceKeMuZongZhang> list2;
@@ -122,6 +138,18 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
 
         barChart1 = findViewById(R.id.bc_1);
         barChart2 = findViewById(R.id.bc_2);
+        // 初始化新增的折线图
+        lineChart1 = findViewById(R.id.lc_1);
+        lineChart3 = findViewById(R.id.lc_3);
+        lineChart4 = findViewById(R.id.lc_4);
+
+        // 初始化切换按钮
+        toggleChartButton = findViewById(R.id.toggle_chart_button);
+        toggleChartButton.setOnClickListener(v -> toggleChart());
+        toggleChartButton3 = findViewById(R.id.toggle_chart_button3);
+        toggleChartButton3.setOnClickListener(v -> toggleChart3());
+        toggleChartButton4 = findViewById(R.id.toggle_chart_button4);
+        toggleChartButton4.setOnClickListener(v -> toggleChart4());
         
         //初始化控件
         start_date = findViewById(R.id.start_date);
@@ -156,6 +184,159 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
     public static float toFloat(BigDecimal b)
     {
         return b.setScale(2).floatValue();
+    }
+
+    // 切换图表显示
+    private void toggleChart() {
+        if (isBarChart) {
+            // 显示折线图，隐藏柱状图
+            barChart1.setVisibility(View.GONE);
+            lineChart1.setVisibility(View.VISIBLE);
+            toggleChartButton.setText("切换为柱状图");
+
+            // 设置折线图数据
+            setNianChuYuELineChart();
+        } else {
+            // 显示柱状图，隐藏折线图
+            barChart1.setVisibility(View.VISIBLE);
+            lineChart1.setVisibility(View.GONE);
+            toggleChartButton.setText("切换为折线图");
+
+            // 重新设置柱状图数据（确保数据最新）
+            setNianChuYuE();
+        }
+        isBarChart = !isBarChart;
+    }
+
+
+    // 切换图表显示
+    private void toggleChart3() {
+        if (isBarChart3) {
+            // 显示折线图，隐藏柱状图
+            barChart3.setVisibility(View.GONE);
+            lineChart3.setVisibility(View.VISIBLE);
+            toggleChartButton3.setText("切换为柱状图");
+
+            // 设置折线图数据
+            setKeMuYuELineChart();
+        } else {
+            // 显示柱状图，隐藏折线图
+            barChart3.setVisibility(View.VISIBLE);
+            lineChart3.setVisibility(View.GONE);
+            toggleChartButton3.setText("切换为折线图");
+
+            // 重新设置柱状图数据（确保数据最新）
+            setKeMuYuE();
+        }
+        isBarChart3 = !isBarChart3;
+    }
+
+    // 切换图表显示
+    private void toggleChart4() {
+        if (isBarChart4) {
+            // 显示折线图，隐藏柱状图
+            barChart4.setVisibility(View.GONE);
+            lineChart4.setVisibility(View.VISIBLE);
+            toggleChartButton3.setText("切换为柱状图");
+
+            // 设置折线图数据
+            setZiChanFuZhaiLineChart();
+        } else {
+            // 显示柱状图，隐藏折线图
+            barChart4.setVisibility(View.VISIBLE);
+            lineChart4.setVisibility(View.GONE);
+            toggleChartButton4.setText("切换为折线图");
+
+            // 重新设置柱状图数据（确保数据最新）
+            setZiChanFuZhai();
+        }
+        isBarChart4 = !isBarChart4;
+    }
+
+    // 新增的折线图方法
+    private void setNianChuYuELineChart() {
+        // 使用与柱状图相同的数据
+        list = new ArrayList<>();
+        list.add(new DictModel("资产类", list1.get(0).getLoad(), list1.get(0).getBorrowed()));
+        list.add(new DictModel("负债类", list1.get(1).getLoad(), list1.get(1).getBorrowed()));
+        list.add(new DictModel("权益类", list1.get(2).getLoad(), list1.get(2).getBorrowed()));
+        list.add(new DictModel("成本类", list1.get(3).getLoad(), list1.get(3).getBorrowed()));
+        list.add(new DictModel("损益类", list1.get(4).getLoad(), list1.get(4).getBorrowed()));
+
+        // 计算净额（借金 - 贷金）
+        List<Entry> netEntries = new ArrayList<>();
+        float totalNet = 0f;
+
+        for (int i = 0; i < list.size(); i++) {
+            float boyValue = toFloat(list.get(i).boyCnt);
+            float girlValue = toFloat(list.get(i).girlCnt);
+            float netValue = boyValue - girlValue;
+            totalNet += netValue;
+            netEntries.add(new Entry(i, netValue));
+        }
+
+        // 设置TextView显示净额合计
+        TextView jiejin = findViewById(R.id.jiejin_sum);
+        TextView daijin = findViewById(R.id.daijin_sum);
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setGroupingUsed(true);
+        jiejin.setText("借金合计：" + nf.format(jiejin_sum));
+        daijin.setText("贷金合计：" + nf.format(daijin_sum));
+
+
+        // 创建折线数据集
+        LineDataSet lineDataSet = new LineDataSet(netEntries, "净额");
+        lineDataSet.setColor(Color.parseColor("#FF9800")); // 橙色线条
+        lineDataSet.setCircleColor(Color.parseColor("#FF5722")); // 红色圆点
+        lineDataSet.setLineWidth(2f);
+        lineDataSet.setCircleRadius(4f);
+        lineDataSet.setDrawValues(true); // 显示数值
+        lineDataSet.setValueTextSize(10f);
+
+        // 创建折线数据对象
+        LineData lineData = new LineData(lineDataSet);
+
+        // 设置折线图
+        lineChart1.setData(lineData);
+        lineChart1.getDescription().setEnabled(false);
+        lineChart1.setDrawGridBackground(false);
+        lineChart1.setTouchEnabled(true);
+        lineChart1.setDragEnabled(true);
+        lineChart1.setScaleEnabled(true);
+        lineChart1.setPinchZoom(true);
+
+        // X轴设置
+        XAxis xAxis = lineChart1.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+        xAxis.setGranularity(1f);
+        xAxis.setAxisMinimum(-0.5f); // 添加这行
+        xAxis.setAxisMaximum(list.size() - 0.5f); // 添加这行
+        xAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                int index = (int) value;
+                if (index >= 0 && index < list.size()) { // 添加边界检查
+                    return list.get(index).title;
+                }
+                return "";
+            }
+        });
+
+        // 增加左边距
+        lineChart1.setExtraLeftOffset(15f);
+
+        // 左侧Y轴设置
+        lineChart1.getAxisLeft().setDrawGridLines(true);
+        lineChart1.getAxisRight().setEnabled(false);
+
+        // 图例设置
+        Legend legend = lineChart1.getLegend();
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
+
+        // 刷新图表
+        lineChart1.invalidate();
     }
 
 
@@ -394,6 +575,115 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
         barChart3.invalidate();
     }
 
+
+    private void setKeMuYuELineChart() {
+        // 获取或创建折线图视图
+        LineChart lineChart = findViewById(R.id.lc_3); // 确保布局中有这个ID
+
+        // 使用与柱状图相同的数据
+        List<DictModel> kemu_list = new ArrayList<>();
+        kemu_list.add(new DictModel("资产类", list3.get(0).getLoad(), list3.get(0).getBorrowed()));
+        kemu_list.add(new DictModel("负债类", list3.get(1).getLoad(), list3.get(1).getBorrowed()));
+        kemu_list.add(new DictModel("权益类", list3.get(2).getLoad(), list3.get(2).getBorrowed()));
+        kemu_list.add(new DictModel("成本类", list3.get(3).getLoad(), list3.get(3).getBorrowed()));
+        kemu_list.add(new DictModel("损益类", list3.get(4).getLoad(), list3.get(4).getBorrowed()));
+
+        // 计算净额（借方 - 贷方）和合计
+        List<Entry> netEntries = new ArrayList<>();
+        float totalNet = 0f;
+        float jiefangSum = 0f;
+        float daifangSum = 0f;
+
+        for (int i = 0; i < kemu_list.size(); i++) {
+            float jiefangValue = toFloat(kemu_list.get(i).boyCnt);
+            float daifangValue = toFloat(kemu_list.get(i).girlCnt);
+            float netValue = jiefangValue - daifangValue;
+            totalNet += netValue;
+            jiefangSum += jiefangValue;
+            daifangSum += daifangValue;
+            netEntries.add(new Entry(i, netValue));
+        }
+
+
+
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setGroupingUsed(true);
+
+
+        // 创建折线数据集
+        LineDataSet lineDataSet = new LineDataSet(netEntries, "净额(借方-贷方)");
+        lineDataSet.setColor(Color.parseColor("#4CAF50")); // 绿色线条
+        lineDataSet.setCircleColor(Color.parseColor("#2E7D32")); // 深绿色圆点
+        lineDataSet.setLineWidth(2f);
+        lineDataSet.setCircleRadius(4f);
+        lineDataSet.setDrawValues(true); // 显示数值
+        lineDataSet.setValueTextSize(10f);
+        lineDataSet.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return nf.format(value);
+            }
+        });
+
+        // 创建折线数据对象
+        LineData lineData = new LineData(lineDataSet);
+
+        // 设置折线图
+        lineChart.setData(lineData);
+        lineChart.getDescription().setEnabled(false);
+        lineChart.setDrawGridBackground(false);
+        lineChart.setTouchEnabled(true);
+        lineChart.setDragEnabled(true);
+        lineChart.setScaleEnabled(true);
+        lineChart.setPinchZoom(true);
+
+        // X轴设置
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+        xAxis.setGranularity(1f);
+        xAxis.setAxisMinimum(-0.5f); // 给第一条数据留出空间
+        xAxis.setAxisMaximum(kemu_list.size() - 0.5f); // 确保最后一条数据显示完整
+        xAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                int index = (int) value;
+                if (index >= 0 && index < kemu_list.size()) {
+                    return kemu_list.get(index).title;
+                }
+                return "";
+            }
+        });
+
+        // Y轴设置
+        YAxis leftAxis = lineChart.getAxisLeft();
+        leftAxis.setDrawGridLines(true);
+        leftAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return nf.format(value);
+            }
+        });
+
+        lineChart.getAxisRight().setEnabled(false);
+
+        // 图例设置
+        Legend legend = lineChart.getLegend();
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
+
+        // 增加边距防止数据贴边
+        lineChart.setExtraLeftOffset(15f);
+        lineChart.setExtraRightOffset(15f);
+        lineChart.setExtraBottomOffset(10f);
+
+        // 刷新图表
+        lineChart.invalidate();
+    }
+
+
+
+
     private void setZiChanFuZhai(){
 
         barChart4=findViewById(R.id.bc_4);
@@ -461,71 +751,283 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
         barChart4.invalidate();
     }
 
-    private void setLiRunHeJi(){
+    private void setZiChanFuZhaiLineChart() {
+        // 获取折线图视图
+        LineChart lineChart = findViewById(R.id.lc_4);
 
-        barChart5=findViewById(R.id.bc_5);
-        lirun_list = new ArrayList<>();
-        if(list5.size()>1) {
-            lirun_list.add(new DictModel("收入", list5.get(0).getLoad(), list5.get(0).getBorrowed()));
-            lirun_list.add(new DictModel("支出", list5.get(1).getLoad(), list5.get(1).getBorrowed()));
+        // 使用与柱状图相同的数据源
+        List<DictModel> zichanList = new ArrayList<>();
+        zichanList.add(new DictModel("资产类", list4_1.get(0).getLoad(), list4_1.get(0).getBorrowed()));
+        zichanList.add(new DictModel("负债类", list4_2.get(0).getLoad(), list4_2.get(0).getBorrowed()));
+        zichanList.add(new DictModel("权益类", list4_3.get(0).getLoad(), list4_3.get(0).getBorrowed()));
+
+        // 计算增长额（年末 - 年初）和合计
+        List<Entry> growthEntries = new ArrayList<>();
+        float totalGrowth = 0f;
+        float nianchuSum = 0f;
+        float nianmoSum = 0f;
+
+        for (int i = 0; i < zichanList.size(); i++) {
+            float nianchuValue = toFloat(zichanList.get(i).boyCnt);  // 年初值
+            float nianmoValue = toFloat(zichanList.get(i).girlCnt);  // 年末值
+            float growthValue = nianmoValue-nianchuValue;  // 增长额
+            totalGrowth += growthValue;
+            nianchuSum += nianchuValue;
+            nianmoSum += nianmoValue;
+            growthEntries.add(new Entry(i, growthValue));
+        }
+
+
+
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setGroupingUsed(true);
+
+
+        // 创建折线数据集
+        LineDataSet lineDataSet = new LineDataSet(growthEntries, "增长额(年末-年初)");
+        lineDataSet.setColor(Color.parseColor("#9C27B0")); // 紫色线条
+        lineDataSet.setCircleColor(Color.parseColor("#7B1FA2")); // 深紫色圆点
+        lineDataSet.setLineWidth(2f);
+        lineDataSet.setCircleRadius(4f);
+        lineDataSet.setDrawValues(true);
+        lineDataSet.setValueTextSize(10f);
+        lineDataSet.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER); // 水平平滑曲线
+
+        // 设置增长额的正负颜色区分
+        lineDataSet.setColor(Color.parseColor("#4CAF50")); // 默认绿色
+        lineDataSet.setCircleColor(Color.parseColor("#2E7D32")); // 默认深绿色
+
+        // 根据数值设置不同颜色（正数为增长，负数为减少）
+        lineDataSet.setGradientColor(Color.parseColor("#4CAF50"), Color.parseColor("#F44336"));
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+
+        // 设置数值格式化
+        lineDataSet.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return nf.format(value);
+            }
+        });
+
+        // 创建折线数据对象
+        LineData lineData = new LineData(lineDataSet);
+
+        // 设置折线图
+        lineChart.setData(lineData);
+        lineChart.getDescription().setEnabled(false);
+        lineChart.setDrawGridBackground(false);
+        lineChart.setTouchEnabled(true);
+        lineChart.setDragEnabled(true);
+        lineChart.setScaleEnabled(true);
+        lineChart.setPinchZoom(true);
+        lineChart.setExtraBottomOffset(10f);
+
+        // X轴设置
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+        xAxis.setGranularity(1f);
+        xAxis.setAxisMinimum(-0.5f);
+        xAxis.setAxisMaximum(zichanList.size() - 0.5f);
+        xAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                int index = (int) value;
+                if (index >= 0 && index < zichanList.size()) {
+                    return zichanList.get(index).title;
+                }
+                return "";
+            }
+        });
+
+        // Y轴设置
+        YAxis leftAxis = lineChart.getAxisLeft();
+        leftAxis.setDrawGridLines(true);
+        leftAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return nf.format(value);
+            }
+        });
+        lineChart.getAxisRight().setEnabled(false);
+
+        // 添加限制线（0值线）
+        LimitLine zeroLine = new LimitLine(0f, "基准线");
+        zeroLine.setLineColor(Color.RED);
+        zeroLine.setLineWidth(1f);
+        zeroLine.enableDashedLine(10f, 5f, 0f);
+        zeroLine.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);
+        zeroLine.setTextSize(10f);
+        leftAxis.addLimitLine(zeroLine);
+
+        // 图例设置
+        Legend legend = lineChart.getLegend();
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
+
+        // 增加边距
+        lineChart.setExtraLeftOffset(15f);
+        lineChart.setExtraRightOffset(15f);
+
+        // 刷新图表
+        lineChart.invalidate();
+    }
+
+    private void setLiRunHeJi() {
+        try {
+            barChart5 = findViewById(R.id.bc_5);
+
+            // 清除旧数据
+            barChart5.clear();
+
+            // 1. 添加空值和大小检查
+            if (list5 == null) {
+                Log.e("ChartError", "list5 is null");
+                barChart5.setNoDataText("数据加载中...");
+                barChart5.invalidate();
+                return;
+            }
+
+            if (list5.isEmpty()) {
+                Log.e("ChartError", "list5 is empty, size: 0");
+                barChart5.setNoDataText("暂无利润数据");
+                barChart5.invalidate();
+                return;
+            }
+
+            Log.d("ChartDebug", "list5 size: " + list5.size());
+
+            lirun_list = new ArrayList<>();
+
+            // 2. 处理数据，确保至少有2条数据
+            if (list5.size() >= 2) {
+                // 正常情况：有收入和支出两条数据
+                lirun_list.add(new DictModel("收入",
+                        list5.get(0).getLoad() != null ? list5.get(0).getLoad() : BigDecimal.ZERO,
+                        list5.get(0).getBorrowed() != null ? list5.get(0).getBorrowed() : BigDecimal.ZERO));
+                lirun_list.add(new DictModel("支出",
+                        list5.get(1).getLoad() != null ? list5.get(1).getLoad() : BigDecimal.ZERO,
+                        list5.get(1).getBorrowed() != null ? list5.get(1).getBorrowed() : BigDecimal.ZERO));
+            } else if (list5.size() == 1) {
+                // 只有一条数据的情况：假设为收入，支出设为0
+                Log.w("ChartWarning", "Only one data in list5, using default for expense");
+                lirun_list.add(new DictModel("收入",
+                        list5.get(0).getLoad() != null ? list5.get(0).getLoad() : BigDecimal.ZERO,
+                        list5.get(0).getBorrowed() != null ? list5.get(0).getBorrowed() : BigDecimal.ZERO));
+                lirun_list.add(new DictModel("支出", BigDecimal.ZERO, BigDecimal.ZERO));
+            }
+
+            // 3. 验证数据是否有效
+            for (int i = 0; i < lirun_list.size(); i++) {
+                DictModel item = lirun_list.get(i);
+                Log.d("ChartDebug", item.title + ": boyCnt=" + item.boyCnt + ", girlCnt=" + item.girlCnt);
+            }
 
             nianchuLiRunList = new ArrayList<>();
             nianmoLiRunList = new ArrayList<>();
 
+            // 4. 创建图表数据条目
             for (int i = 0; i < lirun_list.size(); i++) {
-                nianchuLiRunList.add(new BarEntry((float) (i + 1), toFloat(lirun_list.get(i).boyCnt)));
-                nianmoLiRunList.add(new BarEntry((float) (i + 1), toFloat(lirun_list.get(i).girlCnt)));
+                try {
+                    float boyValue = toFloat(lirun_list.get(i).boyCnt);
+                    float girlValue = toFloat(lirun_list.get(i).girlCnt);
+
+                    // 确保值不是NaN或无限大
+                    if (Float.isNaN(boyValue) || Float.isInfinite(boyValue)) boyValue = 0f;
+                    if (Float.isNaN(girlValue) || Float.isInfinite(girlValue)) girlValue = 0f;
+
+                    nianchuLiRunList.add(new BarEntry((float) (i + 1), boyValue));
+                    nianmoLiRunList.add(new BarEntry((float) (i + 1), girlValue));
+
+                    Log.d("ChartDebug", "Entry " + i + ": boy=" + boyValue + ", girl=" + girlValue);
+                } catch (Exception e) {
+                    Log.e("ChartError", "Error creating BarEntry for index " + i, e);
+                    nianchuLiRunList.add(new BarEntry((float) (i + 1), 0f));
+                    nianmoLiRunList.add(new BarEntry((float) (i + 1), 0f));
+                }
             }
 
+            // 5. 检查图表数据是否有效
+            if (nianchuLiRunList.isEmpty() || nianmoLiRunList.isEmpty()) {
+                Log.e("ChartError", "Chart data lists are empty");
+                barChart5.setNoDataText("数据异常");
+                barChart5.invalidate();
+                return;
+            }
 
             BarDataSet barDataSet = new BarDataSet(nianchuLiRunList, "月");
-            barDataSet.setColor(Color.parseColor("#0066CC"));    //为第一组柱子设置颜色
+            barDataSet.setColor(Color.parseColor("#0066CC"));
             BarDataSet barDataSet2 = new BarDataSet(nianmoLiRunList, "年");
-            barDataSet2.setColor(Color.parseColor("#66CCFF"));   //为第二组柱子设置颜色
-            BarData barData = new BarData(barDataSet);   //加上第一组
-            barData.addDataSet(barDataSet2);    //加上第二组   （多组也可以用同样的方法）
+            barDataSet2.setColor(Color.parseColor("#66CCFF"));
 
+            BarData barData = new BarData(barDataSet);
+            barData.addDataSet(barDataSet2);
+
+            // 6. 防止高亮效果
             barDataSet.setHighLightAlpha(0);
             barDataSet2.setHighLightAlpha(0);
 
-            barChart5.setData(
-                    barData);
+            // 7. 设置数据
+            barChart5.setData(barData);
 
-            barData.setBarWidth(0.2f);//柱子的宽度
-            //重点！   三个参数   分别代表   X轴起点     组与组之间的间隔      组内柱子的间隔
+            // 8. 图表配置
+            barData.setBarWidth(0.2f);
             barData.groupBars(1f, 0.4f, 0.1f);
 
-            barChart5.getXAxis().setCenterAxisLabels(true);   //设置柱子（柱子组）居中对齐X轴上的点
-            barChart5.setScaleEnabled(false);//禁止缩放
-            barChart5.getXAxis().setAxisMaximum(nianchuLiRunList.size() + 1);   //X轴最大数值
-            barChart5.getXAxis().setAxisMinimum(1);   //X轴最小数值
-            //X轴坐标的个数    第二个参数一般填false     true表示强制设置标签数 可能会导致X轴坐标显示不全等问题
+            barChart5.getXAxis().setCenterAxisLabels(true);
+            barChart5.setScaleEnabled(false);
+            barChart5.getXAxis().setAxisMaximum(nianchuLiRunList.size() + 1);
+            barChart5.getXAxis().setAxisMinimum(1);
             barChart5.getXAxis().setLabelCount(nianmoLiRunList.size() + 1, false);
-            barChart5.getDescription().setEnabled(false);    //右下角一串英文字母不显示
-            barChart5.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);   //X轴的位置设置为下  默认为上
-            barChart5.getAxisRight().setEnabled(false);     //右侧Y轴不显示   默认为显示
+            barChart5.getDescription().setEnabled(false);
+            barChart5.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+            barChart5.getAxisRight().setEnabled(false);
+
             XAxis xl = barChart5.getXAxis();
             xl.setPosition(XAxis.XAxisPosition.BOTTOM);
             xl.setDrawAxisLine(true);
             xl.setDrawGridLines(false);
             xl.setGranularity(1f);
 
+            // 9. X轴标签格式化器
             xl.setValueFormatter(new ValueFormatter() {
                 @Override
                 public String getFormattedValue(float value) {
-                    if ((int) value <= lirun_list.size() && (int) value - 1 > 0) {
-                        return lirun_list.get((int) value - 1).title;
-                    } else {
-                        return lirun_list.get(0).title;
+                    try {
+                        int index = (int) value - 1;
+                        if (index >= 0 && index < lirun_list.size()) {
+                            return lirun_list.get(index).title;
+                        } else if (lirun_list.size() > 0) {
+                            return lirun_list.get(0).title;
+                        } else {
+                            return "数据";
+                        }
+                    } catch (Exception e) {
+                        Log.e("ChartError", "Error in value formatter", e);
+                        return "数据";
                     }
                 }
             });
 
+            // 10. 图例设置
             Legend l = barChart5.getLegend();
             l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
             l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
 
+            // 11. 强制Y轴从0开始
+            barChart5.getAxisLeft().setAxisMinimum(0f);
+
+            // 12. 刷新图表
             barChart5.invalidate();
+
+            Log.d("ChartDebug", "Chart 5 setup completed successfully");
+
+        } catch (Exception e) {
+            Log.e("ChartError", "Error in setLiRunHeJi", e);
+            if (barChart5 != null) {
+                barChart5.setNoDataText("图表加载失败: " + e.getMessage());
+                barChart5.invalidate();
+            }
         }
     }
 

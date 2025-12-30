@@ -9,6 +9,7 @@
     tools:context=".finance.activity.JiJianPeiZhiActivity"
     android:background="@drawable/caiwu_biaoge_bg4">
 
+    <!-- 顶部选择区域 -->
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -29,6 +30,7 @@
             android:spinnerMode="dialog"/>
     </LinearLayout>
 
+    <!-- 数据列表区域 -->
     <HorizontalScrollView
         android:fillViewport="true"
         android:layout_width="fill_parent"
@@ -43,6 +45,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!-- 表头 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -50,35 +53,45 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
+                <!-- 第一列标题 -->
                 <TextView
                     android:gravity="center"
-                    android:id="@+id/jingyingshouru_insert"
-                    android:layout_width="match_parent"
+                    android:id="@+id/column1_title"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="科目"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <View
+                <!-- 第二列标题（税率时显示） -->
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/column2_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="临界值"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
+            <!-- 列表 -->
             <ListView
                 android:id="@+id/jingyingshouru_list"
                 android:layout_width="match_parent"
-                android:layout_height="539dp"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:dividerHeight="1dp"
                 android:paddingBottom="5dp" />
         </LinearLayout>
 
     </HorizontalScrollView>
 
-
+    <!-- 底部按钮 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

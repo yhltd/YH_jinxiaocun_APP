@@ -946,19 +946,19 @@
             android:textColor="@color/white"/>
     </LinearLayout>
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/jczl_insert"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="end"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginRight="20dp"-->
-<!--        android:layout_marginBottom="20dp"-->
-<!--        android:onClick="onInsertClick"-->
-<!--        android:src="@drawable/insert"-->
-<!--        app:backgroundTint="@color/primary"-->
-<!--        app:backgroundTintMode="add"-->
-<!--        app:pressedTranslationZ="10dp"-->
-<!--        app:tint="@color/white" />-->
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--        android:id="@+id/jczl_insert"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="end"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:layout_marginRight="20dp"-->
+    <!--        android:layout_marginBottom="20dp"-->
+    <!--        android:onClick="onInsertClick"-->
+    <!--        android:src="@drawable/insert"-->
+    <!--        app:backgroundTint="@color/primary"-->
+    <!--        app:backgroundTintMode="add"-->
+    <!--        app:pressedTranslationZ="10dp"-->
+    <!--        app:tint="@color/white" />-->
 
 </LinearLayout>

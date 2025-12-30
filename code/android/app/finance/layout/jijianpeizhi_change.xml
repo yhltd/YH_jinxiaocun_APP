@@ -8,68 +8,142 @@
     tools:context=".finance.activity.JiJianPeiZhiChangeActivity"
     android:background="@drawable/caiwu_biaoge_bg4">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
 
             <LinearLayout
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="95dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/caiwu_form_body">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/jingyingshouru_text"
-                    android:gravity="center"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:text="经营收入:" />
-
-                <EditText
-                    android:id="@+id/shouru"
-                    android:textSize="15sp"
-                    android:background="@drawable/form_input"
+                <!-- 第一个输入框：税率/币种/普通配置 -->
+                <LinearLayout
+                    android:id="@+id/shouru_layout"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:hint="请输入内容"
-                    android:inputType="text"
-                    android:textIsSelectable="false" />
+                    android:layout_height="95dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/caiwu_form_body">
+
+                    <TextView
+                        android:id="@+id/jingyingshouru_text"
+                        android:gravity="center"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:text="经营收入:" />
+
+                    <EditText
+                        android:id="@+id/shouru"
+                        android:textSize="15sp"
+                        android:background="@drawable/form_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:hint="请输入内容"
+                        android:inputType="text"
+                        android:textIsSelectable="false" />
+
+                </LinearLayout>
+
+                <!-- 第二个输入框：临界值（税率时显示） -->
+                <LinearLayout
+                    android:id="@+id/linjiezhi_layout"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/caiwu_form_body"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/linjiezhi_label"
+                        android:gravity="center"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:text="临界值:" />
+
+                    <EditText
+                        android:id="@+id/linjiezhi"
+                        android:textSize="15sp"
+                        android:background="@drawable/form_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:hint="请输入临界值"
+                        android:inputType="numberDecimal"
+                        android:textIsSelectable="false" />
+
+                </LinearLayout>
+
+                <!-- 第三个输入框：汇率（外币时显示） -->
+                <LinearLayout
+                    android:id="@+id/huilv_layout"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/caiwu_form_body"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/huilv_label"
+                        android:gravity="center"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:text="汇率:" />
+
+                    <EditText
+                        android:id="@+id/huilv"
+                        android:textSize="15sp"
+                        android:background="@drawable/form_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:hint="请输入汇率"
+                        android:inputType="numberDecimal"
+                        android:textIsSelectable="false" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-
         </LinearLayout>
 
-
-
-    </LinearLayout>
-
-
-</ScrollView>
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"

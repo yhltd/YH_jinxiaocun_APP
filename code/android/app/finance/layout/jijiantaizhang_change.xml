@@ -148,6 +148,35 @@
                     android:textIsSelectable="false" />
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="币种:" />
+
+                <Spinner
+                    android:id="@+id/bizhong"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -170,13 +199,24 @@
                     android:id="@+id/receivable"
                     android:textSize="15sp"
                     android:background="@drawable/form_input"
-                    android:layout_width="match_parent"
+                    android:layout_width="190dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="10dp"
                     android:hint="请输入应收"
                     android:inputType="numberDecimal"
                     android:textIsSelectable="false" />
+                <Button
+                    android:id="@+id/yingshoujisuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:onClick="yingshoujisuan"
+                    android:text="计算"
+                    tools:ignore="MissingConstraints"
+                    android:background="@drawable/caiwu_btn_bg"
+                    android:textSize="17dp"
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
 
@@ -232,13 +272,24 @@
                     android:id="@+id/cope"
                     android:textSize="15sp"
                     android:background="@drawable/form_input"
-                    android:layout_width="match_parent"
+                    android:layout_width="190dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="10dp"
                     android:hint="请输入应付"
                     android:inputType="numberDecimal"
                     android:textIsSelectable="false" />
+                <Button
+                    android:id="@+id/yingfujisuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:onClick="yingfujisuan"
+                    android:text="计算"
+                    tools:ignore="MissingConstraints"
+                    android:background="@drawable/caiwu_btn_bg"
+                    android:textSize="17dp"
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
 
@@ -268,6 +319,80 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
                     android:hint="请输入实付"
+                    android:inputType="numberDecimal"
+                    android:textIsSelectable="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="纳税金额:" />
+
+                <EditText
+                    android:id="@+id/nashuijine"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="190dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:hint="请输入纳税金额"
+                    android:inputType="numberDecimal"
+                    android:textIsSelectable="false" />
+
+                <Button
+                    android:id="@+id/nashuijisuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:onClick="nashuijisuan"
+                    android:text="计算"
+                    tools:ignore="MissingConstraints"
+                    android:background="@drawable/caiwu_btn_bg"
+                    android:textSize="17dp"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/form_body">
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:text="已交税金额:" />
+
+                <EditText
+                    android:id="@+id/yijiaoshuijine"
+                    android:textSize="15sp"
+                    android:background="@drawable/form_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="请输入已交税金额"
                     android:inputType="numberDecimal"
                     android:textIsSelectable="false" />
 

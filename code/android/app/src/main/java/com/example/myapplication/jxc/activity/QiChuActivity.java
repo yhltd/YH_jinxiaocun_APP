@@ -130,6 +130,7 @@ public class QiChuActivity extends AppCompatActivity {
                         item.put("cplb", list.get(i).getCplb());
                         item.put("cpsj", list.get(i).getCpsj());
                         item.put("cpsl", list.get(i).getCpsl());
+                        item.put("cangku", list.get(i).getcangku());
                         item.put("jine", Double.parseDouble(list.get(i).getCpsl()) * Double.parseDouble(list.get(i).getCpsj()));
                         data.add(item);
                     }
@@ -137,7 +138,7 @@ public class QiChuActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                adapter = new SimpleAdapter(QiChuActivity.this, data, R.layout.qichu_row, new String[]{"cpname", "cpid", "cplb", "cpsj", "cpsl", "jine"}, new int[]{R.id.cpname, R.id.cpid, R.id.cplb, R.id.cpsj, R.id.cpsl, R.id.jine}) {
+                adapter = new SimpleAdapter(QiChuActivity.this, data, R.layout.qichu_row, new String[]{"cpname", "cpid", "cplb", "cpsj", "cpsl", "jine","cangku"}, new int[]{R.id.cpname, R.id.cpid, R.id.cplb, R.id.cpsj, R.id.cpsl, R.id.jine,R.id.cangku}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -149,7 +150,7 @@ public class QiChuActivity extends AppCompatActivity {
                     }
                 };
 
-                adapter_block = new SimpleAdapter(QiChuActivity.this, data, R.layout.qichu_row_block, new String[]{"cpname", "cpid", "cplb", "cpsj", "cpsl", "jine"}, new int[]{R.id.cpname, R.id.cpid, R.id.cplb, R.id.cpsj, R.id.cpsl, R.id.jine}) {
+                adapter_block = new SimpleAdapter(QiChuActivity.this, data, R.layout.qichu_row_block, new String[]{"cpname", "cpid", "cplb", "cpsj", "cpsl", "jine","cangku"}, new int[]{R.id.cpname, R.id.cpid, R.id.cplb, R.id.cpsj, R.id.cpsl, R.id.jine,R.id.cangku}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -227,12 +228,14 @@ public class QiChuActivity extends AppCompatActivity {
                         xiangQingYe.setD_title("商品售价:");
                         xiangQingYe.setE_title("商品数量:");
                         xiangQingYe.setF_title("金额:");
+                        xiangQingYe.setG_title("仓库:");
 
                         xiangQingYe.setA(list.get(position).getCpname());
                         xiangQingYe.setB(list.get(position).getCpid());
                         xiangQingYe.setC(list.get(position).getCplb());
                         xiangQingYe.setD(list.get(position).getCpsj());
                         xiangQingYe.setE(list.get(position).getCpsl());
+                        xiangQingYe.setG(list.get(position).getcangku());
                         xiangQingYe.setF(String.valueOf(Double.parseDouble(list.get(position).getCpsl()) * Double.parseDouble(list.get(position).getCpsj())));
 
                         Intent intent = new Intent(QiChuActivity.this, XiangQingYeActivity.class);

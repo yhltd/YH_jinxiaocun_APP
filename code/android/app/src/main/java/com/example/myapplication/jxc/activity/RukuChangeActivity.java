@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -72,6 +73,20 @@ public class RukuChangeActivity extends AppCompatActivity {
             kehu_type.setText("供应商:");
         } else {
             kehu_type.setText("客户:");
+        }
+
+        // 打印接收到的cangku数据
+        Log.e("CangkuDebug", "=== RukuChangeActivity接收到的数据 ===");
+        if (mingxiList != null) {
+            Log.e("CangkuDebug", "接收到的记录数量: " + mingxiList.size());
+            for (int i = 0; i < mingxiList.size(); i++) {
+                YhJinXiaoCunJiChuZiLiao item = mingxiList.get(i);
+                Log.e("CangkuDebug", "接收的第" + (i+1) + "条 - cangku: " + item.getcangku() +
+                        ", 商品: " + item.getName() +
+                        ", 数量: " + item.getNum());
+            }
+        } else {
+            Log.e("CangkuDebug", "接收到的jczlList为null");
         }
 
 
@@ -198,6 +213,8 @@ public class RukuChangeActivity extends AppCompatActivity {
             yhJinXiaoCunMingXi.setShou_h(kehu.getSelectedItem().toString());
             yhJinXiaoCunMingXi.setZhName(yhJinXiaoCunUser.getName());
             yhJinXiaoCunMingXi.setGsName(yhJinXiaoCunUser.getGongsi());
+            yhJinXiaoCunMingXi.setcangku(mingxiList.get(i).getcangku());
+            Log.e("FormDebug", "设置后的cangku: " + mingxiList.get(i).getcangku());
             list.add(yhJinXiaoCunMingXi);
         }
 

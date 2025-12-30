@@ -202,7 +202,7 @@ public class MingXiActivity extends AppCompatActivity {
                     yhJinXiaoCunMingXiService = new YhJinXiaoCunMingXiService();
                     if (ks.getText().toString().equals("") && js.getText().toString().equals("")) {
                         if(yhJinXiaoCunUser.getGongsi()!=null) {
-                            list = yhJinXiaoCunMingXiService.getList(yhJinXiaoCunUser.getGongsi());
+                            list = yhJinXiaoCunMingXiService.getListmingxi(yhJinXiaoCunUser.getGongsi());
                         }
                     } else {
                         if(yhJinXiaoCunUser.getGongsi()!=null) {
@@ -224,6 +224,7 @@ public class MingXiActivity extends AppCompatActivity {
                         item.put("shijian", list.get(i).getShijian());
                         item.put("gs_name", list.get(i).getGsName());
                         item.put("shou_h", list.get(i).getShou_h());
+                        item.put("cangku", list.get(i).getcangku());
 
                         data.add(item);
                     }
@@ -231,7 +232,7 @@ public class MingXiActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                adapter = new SimpleAdapter(MingXiActivity.this, data, R.layout.mingxi_row, new String[]{"orderid", "spDm", "cpname", "cplb", "cpsj", "cpsl", "mxtype", "shijian", "gs_name", "shou_h"}, new int[]{R.id.orderid, R.id.spDm, R.id.cpname, R.id.cplb, R.id.cpsj, R.id.cpsl, R.id.mxtype, R.id.shijian, R.id.gs_name, R.id.shou_h}) {
+                adapter = new SimpleAdapter(MingXiActivity.this, data, R.layout.mingxi_row, new String[]{"orderid", "spDm", "cpname", "cplb", "cpsj", "cpsl", "mxtype", "shijian", "gs_name", "shou_h","cangku"}, new int[]{R.id.orderid, R.id.spDm, R.id.cpname, R.id.cplb, R.id.cpsj, R.id.cpsl, R.id.mxtype, R.id.shijian, R.id.gs_name, R.id.shou_h,R.id.cangku}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -243,7 +244,7 @@ public class MingXiActivity extends AppCompatActivity {
                     }
                 };
 
-                adapter_block = new SimpleAdapter(MingXiActivity.this, data, R.layout.mingxi_row_block, new String[]{"orderid", "spDm", "cpname", "cplb", "cpsj", "cpsl", "mxtype", "shijian", "gs_name", "shou_h"}, new int[]{R.id.orderid, R.id.spDm, R.id.cpname, R.id.cplb, R.id.cpsj, R.id.cpsl, R.id.mxtype, R.id.shijian, R.id.gs_name, R.id.shou_h}) {
+                adapter_block = new SimpleAdapter(MingXiActivity.this, data, R.layout.mingxi_row_block, new String[]{"orderid", "spDm", "cpname", "cplb", "cpsj", "cpsl", "mxtype", "shijian", "gs_name", "shou_h","cangku"}, new int[]{R.id.orderid, R.id.spDm, R.id.cpname, R.id.cplb, R.id.cpsj, R.id.cpsl, R.id.mxtype, R.id.shijian, R.id.gs_name, R.id.shou_h,R.id.cangku}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -297,7 +298,7 @@ public class MingXiActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] title = {"订单号", "商品代码", "商品名称", "商品类别", "价格", "数量", "明细类型", "时间", "公司名","收/进货方"};
+                String[] title = {"订单号", "商品代码", "商品名称", "商品类别", "价格", "数量", "明细类型", "时间", "公司名","收/进货方","仓库"};
                 String fileName = "明细" + System.currentTimeMillis() + ".xls";
                 ExcelUtil.initExcel(fileName, "明细", title);
                 ExcelUtil.mingxiToExcel(list, fileName, MyApplication.getContext());
@@ -398,6 +399,7 @@ public class MingXiActivity extends AppCompatActivity {
                         xiangQingYe.setH_title("时间:");
                         xiangQingYe.setI_title("公司名:");
                         xiangQingYe.setJ_title("收/进货方:");
+                        xiangQingYe.setK_title("仓库:");
 
                         xiangQingYe.setA(list.get(position).getOrderid());
                         xiangQingYe.setB(list.get(position).getSpDm());
@@ -409,6 +411,7 @@ public class MingXiActivity extends AppCompatActivity {
                         xiangQingYe.setH(list.get(position).getShijian());
                         xiangQingYe.setI(list.get(position).getGsName());
                         xiangQingYe.setJ(list.get(position).getShou_h());
+                        xiangQingYe.setK(list.get(position).getcangku());
 
                         Intent intent = new Intent(MingXiActivity.this, XiangQingYeActivity.class);
                         MyApplication myApplication = (MyApplication) getApplication();

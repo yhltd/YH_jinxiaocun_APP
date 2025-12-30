@@ -90,6 +90,231 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".jxc.activity.XiaoShouTuiHuoTongJiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="销售退货统计">
+            <intent-filter>
+                <action android:name="android.intent.action.XiaoShouTuiHuoTongJiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jxc.activity.JinChuMingXiTongJiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="进出明细统计">
+            <intent-filter>
+                <action android:name="android.intent.action.JinChuMingXiTongJiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jxc.activity.CaiGouTuiHuoTongJiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="采购退货统计">
+            <intent-filter>
+                <action android:name="android.intent.action.CaiGouTuiHuoTongJiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jxc.activity.DiaoBoTongJiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="调拨统计">
+            <intent-filter>
+                <action android:name="android.intent.action.MingXiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.DiaoBoTongJiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="调拨统计">
+            <intent-filter>
+                <action android:name="android.intent.action.MingXiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jxc.activity.KuCunDiaoboActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="库存调拨">
+            <intent-filter>
+                <action android:name="android.intent.action.KuCunDiaoboActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.KuCunDiaoboChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="库存调拨">
+            <intent-filter>
+                <action android:name="android.intent.action.KuCunDiaoboChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jxc.activity.CaiGouActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="采购">
+            <intent-filter>
+                <action android:name="android.intent.action.CaiGouActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.CaiGouChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="采购">
+            <intent-filter>
+                <action android:name="android.intent.action.CaiGouChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".jxc.activity.CaiGouWeiRuKuActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="采购未入库明细">
+            <intent-filter>
+                <action android:name="android.intent.action.CaiGouWeiRuKuActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.CaiGouWeiRuKuChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="采购未入库明细">
+            <intent-filter>
+                <action android:name="android.intent.action.CaiGouWeiRuKuChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".jxc.activity.CaiGouTuiHuoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="采购退货">
+            <intent-filter>
+                <action android:name="android.intent.action.CaiGouTuiHuoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.CaiGouTuiHuoChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="采购退货">
+            <intent-filter>
+                <action android:name="android.intent.action.CaiGouTuiHuoChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jxc.activity.CangKuActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="仓库配置">
+            <intent-filter>
+                <action android:name="android.intent.action.CangKuActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.CangKuChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="仓库配置">
+            <intent-filter>
+                <action android:name="android.intent.action.CangKuChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jxc.activity.XiaoShouTuiHuoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="销售退货">
+            <intent-filter>
+                <action android:name="android.intent.action.XiaoShouTuiHuoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.XiaoShouTuiHuoChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="销售退货">
+            <intent-filter>
+                <action android:name="android.intent.action.XiaoShouTuiHuoChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jxc.activity.QiMoTongJiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="期末统计">
+            <intent-filter>
+                <action android:name="android.intent.action.QiMoTongJiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jxc.activity.KuCunPanDianActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="库存盘点">
+            <intent-filter>
+                <action android:name="android.intent.action.KuCunPanDianActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.KuCunPanDianChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="库存盘点">
+            <intent-filter>
+                <action android:name="android.intent.action.KuCunPanDianChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jxc.activity.KuCunJiYaActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="库存积压">
+            <intent-filter>
+                <action android:name="android.intent.action.KuCunJiYaActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jxc.activity.ZoomPreviewActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="打印预览">
+            <intent-filter>
+                <action android:name="android.intent.action.ZoomPreviewActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jxc.activity.PrintActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="单据打印">
+            <intent-filter>
+                <action android:name="android.intent.action.PrintActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
         <activity
             android:name=".jxc.activity.RukuActivity"
             android:windowSoftInputMode="stateHidden|adjustPan"
@@ -496,6 +721,46 @@
         </activity>
 
         <activity
+            android:name=".finance.activity.GongZiMingXiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="工资明细">
+            <intent-filter>
+                <action android:name="android.intent.action.GongZiMingXiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.GongZiMingXiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="工资明细">
+            <intent-filter>
+                <action android:name="android.intent.action.GongZiMingXiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.XiangMuPeiZhiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="项目配置">
+            <intent-filter>
+                <action android:name="android.intent.action.XiangMuPeiZhiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.XiangMuPeiZhiChangeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="项目配置">
+            <intent-filter>
+                <action android:name="android.intent.action.XiangMuPeiZhiChangeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".finance.activity.VoucherSummaryChangeActivity"
             android:windowSoftInputMode="stateHidden|adjustPan"
             android:label="凭证汇总">
@@ -511,6 +776,26 @@
             android:label="智能看板">
             <intent-filter>
                 <action android:name="android.intent.action.ZhiNengKanBanActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.TongJiKanBanActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="统计看板">
+            <intent-filter>
+                <action android:name="android.intent.action.TongJiKanBanActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".finance.activity.LiRunActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="利润">
+            <intent-filter>
+                <action android:name="android.intent.action.LiRunActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

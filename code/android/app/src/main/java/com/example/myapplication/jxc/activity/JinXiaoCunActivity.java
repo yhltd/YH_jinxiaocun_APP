@@ -72,6 +72,7 @@ public class JinXiaoCunActivity extends AppCompatActivity {
     private SimpleAdapter adapter_block;
     private Button sel_button;
     private Button export_button;
+    private EditText cangku_text;
 
     List<YhJinXiaoCun> list;
 
@@ -88,6 +89,7 @@ public class JinXiaoCunActivity extends AppCompatActivity {
         }
 
         spDm_text = findViewById(R.id.spDm_text);
+        cangku_text = findViewById(R.id.cangku_text);
         listView = findViewById(R.id.jinxiaocun_list);
         listView_block = findViewById(R.id.list_block);
         list_table = findViewById(R.id.list_table);
@@ -194,7 +196,7 @@ public class JinXiaoCunActivity extends AppCompatActivity {
                 try {
                     yhJinXiaoCunService = new YhJinXiaoCunService();
                     yhJinXiaoCunMingXiService = new YhJinXiaoCunMingXiService();
-                    list = yhJinXiaoCunService.queryJxc(yhJinXiaoCunUser.getGongsi(), start_dateText, stop_dateText, spDm_text.getText().toString());
+                    list = yhJinXiaoCunService.queryJxc(yhJinXiaoCunUser.getGongsi(), start_dateText, stop_dateText, spDm_text.getText().toString(),cangku_text.getText().toString());
                     order_list = yhJinXiaoCunMingXiService.getList(yhJinXiaoCunUser.getGongsi());
                     if (list == null) return;
 
@@ -211,15 +213,17 @@ public class JinXiaoCunActivity extends AppCompatActivity {
                         item.put("mx_chuku_price", list.get(i).getMx_chuku_price());
                         item.put("jc_sl", list.get(i).getJc_sl());
                         item.put("jc_price", list.get(i).getJc_price());
-
+                        item.put("cangku", list.get(i).getcangku());
+                        item.put("zzl", list.get(i).getzzl());
                         data.add(item);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                adapter = new SimpleAdapter(JinXiaoCunActivity.this, data, R.layout.jinxiaocun_row, new String[]{"spDm", "name", "leiBie", "jq_cpsl", "jq_price", "mx_ruku_cpsl", "mx_ruku_price", "mx_chuku_cpsl", "mx_chuku_price", "jc_sl", "jc_price"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.jq_cpsl, R.id.jq_price, R.id.mx_ruku_cpsl, R.id.mx_ruku_price, R.id.mx_chuku_cpsl, R.id.mx_chuku_price, R.id.jc_sl, R.id.jc_price}) {
-                    @Override
+
+                adapter = new SimpleAdapter(JinXiaoCunActivity.this, data, R.layout.jinxiaocun_row, new String[]{"spDm", "name", "leiBie", "jq_cpsl", "jq_price", "mx_ruku_cpsl", "mx_ruku_price", "mx_chuku_cpsl", "mx_chuku_price", "jc_sl", "jc_price","cangku","zzl"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.jq_cpsl, R.id.jq_price, R.id.mx_ruku_cpsl, R.id.mx_ruku_price, R.id.mx_chuku_cpsl, R.id.mx_chuku_price, R.id.jc_sl, R.id.jc_price,R.id.cangku,R.id.zzl}) {
+                @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
                         LinearLayout linearLayout = (LinearLayout) view.getChildAt(0);
@@ -229,7 +233,7 @@ public class JinXiaoCunActivity extends AppCompatActivity {
                     }
                 };
 
-                adapter_block = new SimpleAdapter(JinXiaoCunActivity.this, data, R.layout.jinxiaocun_row_block, new String[]{"spDm", "name", "leiBie", "jq_cpsl", "jq_price", "mx_ruku_cpsl", "mx_ruku_price", "mx_chuku_cpsl", "mx_chuku_price", "jc_sl", "jc_price"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.jq_cpsl, R.id.jq_price, R.id.mx_ruku_cpsl, R.id.mx_ruku_price, R.id.mx_chuku_cpsl, R.id.mx_chuku_price, R.id.jc_sl, R.id.jc_price}) {
+                adapter_block = new SimpleAdapter(JinXiaoCunActivity.this, data, R.layout.jinxiaocun_row_block, new String[]{"spDm", "name", "leiBie", "jq_cpsl", "jq_price", "mx_ruku_cpsl", "mx_ruku_price", "mx_chuku_cpsl", "mx_chuku_price", "jc_sl", "jc_price","cangku","zzl"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.jq_cpsl, R.id.jq_price, R.id.mx_ruku_cpsl, R.id.mx_ruku_price, R.id.mx_chuku_cpsl, R.id.mx_chuku_price, R.id.jc_sl, R.id.jc_price,R.id.cangku,R.id.zzl}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -279,14 +283,15 @@ public class JinXiaoCunActivity extends AppCompatActivity {
                         item.put("mx_chuku_price", list.get(i).getMx_chuku_price());
                         item.put("jc_sl", list.get(i).getJc_sl());
                         item.put("jc_price", list.get(i).getJc_price());
-
+                        item.put("cangku", list.get(i).getcangku());
+                        item.put("zzl", list.get(i).getzzl());
                         data.add(item);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                adapter = new SimpleAdapter(JinXiaoCunActivity.this, data, R.layout.jinxiaocun_row, new String[]{"spDm", "name", "leiBie", "jq_cpsl", "jq_price", "mx_ruku_cpsl", "mx_ruku_price", "mx_chuku_cpsl", "mx_chuku_price", "jc_sl", "jc_price"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.jq_cpsl, R.id.jq_price, R.id.mx_ruku_cpsl, R.id.mx_ruku_price, R.id.mx_chuku_cpsl, R.id.mx_chuku_price, R.id.jc_sl, R.id.jc_price}) {
+                adapter = new SimpleAdapter(JinXiaoCunActivity.this, data, R.layout.jinxiaocun_row, new String[]{"spDm", "name", "leiBie", "jq_cpsl", "jq_price", "mx_ruku_cpsl", "mx_ruku_price", "mx_chuku_cpsl", "mx_chuku_price", "jc_sl", "jc_price","cangku","zzl"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.jq_cpsl, R.id.jq_price, R.id.mx_ruku_cpsl, R.id.mx_ruku_price, R.id.mx_chuku_cpsl, R.id.mx_chuku_price, R.id.jc_sl, R.id.jc_price,R.id.cangku,R.id.zzl}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -297,7 +302,7 @@ public class JinXiaoCunActivity extends AppCompatActivity {
                     }
                 };
 
-                adapter_block = new SimpleAdapter(JinXiaoCunActivity.this, data, R.layout.jinxiaocun_row_block, new String[]{"spDm", "name", "leiBie", "jq_cpsl", "jq_price", "mx_ruku_cpsl", "mx_ruku_price", "mx_chuku_cpsl", "mx_chuku_price", "jc_sl", "jc_price"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.jq_cpsl, R.id.jq_price, R.id.mx_ruku_cpsl, R.id.mx_ruku_price, R.id.mx_chuku_cpsl, R.id.mx_chuku_price, R.id.jc_sl, R.id.jc_price}) {
+                adapter_block = new SimpleAdapter(JinXiaoCunActivity.this, data, R.layout.jinxiaocun_row_block, new String[]{"spDm", "name", "leiBie", "jq_cpsl", "jq_price", "mx_ruku_cpsl", "mx_ruku_price", "mx_chuku_cpsl", "mx_chuku_price", "jc_sl", "jc_price","cangku","zzl"}, new int[]{R.id.spDm, R.id.name, R.id.leiBie, R.id.jq_cpsl, R.id.jq_price, R.id.mx_ruku_cpsl, R.id.mx_ruku_price, R.id.mx_chuku_cpsl, R.id.mx_chuku_price, R.id.jc_sl, R.id.jc_price,R.id.cangku,R.id.zzl}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -339,6 +344,8 @@ public class JinXiaoCunActivity extends AppCompatActivity {
                         xiangQingYe.setI_title("出库金额:");
                         xiangQingYe.setJ_title("结存数量:");
                         xiangQingYe.setK_title("结存金额:");
+                        xiangQingYe.setL_title("所属仓库:");
+                        xiangQingYe.setM_title("周转率:");
 
                         xiangQingYe.setA(list.get(position).getSp_dm());
                         xiangQingYe.setB(list.get(position).getName());
@@ -351,6 +358,8 @@ public class JinXiaoCunActivity extends AppCompatActivity {
                         xiangQingYe.setI(list.get(position).getMx_chuku_price());
                         xiangQingYe.setJ(list.get(position).getJc_sl());
                         xiangQingYe.setK(list.get(position).getJc_price());
+                        xiangQingYe.setL(list.get(position).getcangku());
+                        xiangQingYe.setM(list.get(position).getzzl());
 
                         Intent intent = new Intent(JinXiaoCunActivity.this, XiangQingYeActivity.class);
                         MyApplication myApplication = (MyApplication) getApplication();
@@ -412,7 +421,7 @@ public class JinXiaoCunActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] title = { "商品代码", "商品名称", "商品类别", "期初数量", "期初金额", "入库数量", "入库金额", "出库数量","出库金额","结存数量","结存金额"};
+                String[] title = { "商品代码", "商品名称", "商品类别", "期初数量", "期初金额", "入库数量", "入库金额", "出库数量","出库金额","结存数量","结存金额","所属仓库","周转率"};
                 String fileName = "进销存" + System.currentTimeMillis() + ".xls";
                 ExcelUtil.initExcel(fileName, "进销存", title);
                 ExcelUtil.jinXiaoCunToExcel(list, fileName, MyApplication.getContext());

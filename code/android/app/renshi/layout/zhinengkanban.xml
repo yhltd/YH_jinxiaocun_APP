@@ -133,6 +133,12 @@
                 android:gravity="center"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"/>
+            <Button
+                android:id="@+id/toggle_chart_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="切换为折线图"
+                android:layout_gravity="center_horizontal"/>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:layout_marginTop="10dp"
@@ -142,7 +148,15 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/caiwu_form_body"/>
-
+            <com.github.mikephil.charting.charts.LineChart
+                android:layout_marginTop="10dp"
+                android:id="@+id/lc_1"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/caiwu_form_body"
+                android:visibility="gone"/>
 
 
             <TextView
@@ -182,6 +196,13 @@
                 android:gravity="center"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"/>
+            <Button
+                android:id="@+id/toggle_chart_button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="切换为折线图"
+                android:layout_gravity="center_horizontal"/>
+
 
             <com.github.mikephil.charting.charts.BarChart
                 android:layout_marginTop="10dp"
@@ -191,6 +212,16 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/caiwu_form_body"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:layout_marginTop="10dp"
+                android:id="@+id/lc_3"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/caiwu_form_body"
+                android:visibility="gone"/>
 
 
 
@@ -206,6 +237,12 @@
                 android:gravity="center"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"/>
+            <Button
+                android:id="@+id/toggle_chart_button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="切换为折线图"
+                android:layout_gravity="center_horizontal"/>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:layout_marginTop="10dp"
@@ -215,6 +252,16 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/caiwu_form_body"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:layout_marginTop="10dp"
+                android:id="@+id/lc_4"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/caiwu_form_body"
+                android:visibility="gone"/>
 
 
 
@@ -239,6 +286,8 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/caiwu_form_body"/>
+
+
 
 
             <TextView

@@ -375,6 +375,7 @@ public class RenShiActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 setupMarqueeText("暂无公告信息");
+                                hideAllContent();
                             }
                         });
                     }

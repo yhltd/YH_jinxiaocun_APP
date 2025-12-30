@@ -14,6 +14,7 @@ public class YhJinXiaoCunQiChuShu {
     private String shijian;
     private String zh_name;
     private String gs_name;
+    private String cangku;
     private String mark1;
 
     public int get_id() {
@@ -126,5 +127,14 @@ public class YhJinXiaoCunQiChuShu {
 
     public void setMark1(String mark1) {
         this.mark1 = mark1;
+    }
+
+
+    public String getcangku() {
+        return cangku;
+    }
+
+    public void setcangku(String cangku) {
+        this.cangku = cangku;
     }
 }

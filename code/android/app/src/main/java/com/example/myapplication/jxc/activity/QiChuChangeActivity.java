@@ -47,6 +47,7 @@ public class QiChuChangeActivity extends AppCompatActivity {
     private EditText cplb;
     private EditText cpsj;
     private EditText cpsl;
+    private EditText cangku;
 
 
     String[] cpid_array;
@@ -73,7 +74,7 @@ public class QiChuChangeActivity extends AppCompatActivity {
         cplb = findViewById(R.id.cplb);
         cpsj = findViewById(R.id.cpsj);
         cpsl = findViewById(R.id.cpsl);
-
+        cangku = findViewById(R.id.cangku);
         init();
 
         cpid.setOnItemSelectedListener(new cpidItemSelectedListener());
@@ -93,6 +94,7 @@ public class QiChuChangeActivity extends AppCompatActivity {
         cplb.setText("");
         cpsj.setText("");
         cpsl.setText("");
+        cangku.setText("");
     }
 
     public void init() {
@@ -119,6 +121,7 @@ public class QiChuChangeActivity extends AppCompatActivity {
                     cplb.setText(yhJinXiaoCunQiChuShu.getCplb());
                     cpsj.setText(yhJinXiaoCunQiChuShu.getCpsj());
                     cpsl.setText(yhJinXiaoCunQiChuShu.getCpsl());
+                    cangku.setText(yhJinXiaoCunQiChuShu.getcangku());
                 }
                 return true;
             }
@@ -240,9 +243,29 @@ public class QiChuChangeActivity extends AppCompatActivity {
         } else {
             yhJinXiaoCunQiChuShu.setCpsl(cpsl.getText().toString());
         }
+        if (cangku.getText().toString().equals("")) {
+            ToastUtil.show(QiChuChangeActivity.this, "请输入所属仓库");
+            return false;
+        } else {
+            yhJinXiaoCunQiChuShu.setcangku(cangku.getText().toString());
+        }
 
-        yhJinXiaoCunQiChuShu.setCpid(cpid.getSelectedItem().toString());
-        yhJinXiaoCunQiChuShu.setCplb(cplb.getText().toString());
+        if (cpid.getSelectedItem().toString().equals("")) {
+            ToastUtil.show(QiChuChangeActivity.this, "请选择商品代码");
+            return false;
+        } else {
+            yhJinXiaoCunQiChuShu.setCpid(cpid.getSelectedItem().toString());
+        }
+
+        if (cplb.getText().toString().equals("")) {
+            ToastUtil.show(QiChuChangeActivity.this, "请输入商品类别");
+            return false;
+        } else {
+            yhJinXiaoCunQiChuShu.setCplb(cplb.getText().toString());
+        }
+
+//        yhJinXiaoCunQiChuShu.setCpid(cpid.getSelectedItem().toString());
+//        yhJinXiaoCunQiChuShu.setCplb(cplb.getText().toString());
         yhJinXiaoCunQiChuShu.setGs_name(yhJinXiaoCunUser.getGongsi());
 
 

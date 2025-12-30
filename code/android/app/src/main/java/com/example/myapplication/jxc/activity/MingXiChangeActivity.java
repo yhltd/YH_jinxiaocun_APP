@@ -54,6 +54,7 @@ public class MingXiChangeActivity extends AppCompatActivity {
     private EditText cplb;
     private EditText cpsj;
     private EditText cpsl;
+    private EditText cangku;
     private Spinner mxtype;
     private Spinner shou_h;
     private LinearLayout qr_code_line;
@@ -90,6 +91,7 @@ public class MingXiChangeActivity extends AppCompatActivity {
         cplb = findViewById(R.id.cplb);
         cpsj = findViewById(R.id.cpsj);
         cpsl = findViewById(R.id.cpsl);
+        cangku = findViewById(R.id.cangku);
         mxtype = findViewById(R.id.mxtype);
         shou_h = findViewById(R.id.shou_h);
         qr_code_line = findViewById(R.id.qr_code_line);
@@ -115,7 +117,7 @@ public class MingXiChangeActivity extends AppCompatActivity {
             cplb.setText(yhJinXiaoCunMingXi.getCplb());
             cpsj.setText(yhJinXiaoCunMingXi.getCpsj());
             cpsl.setText(yhJinXiaoCunMingXi.getCpsl());
-
+            cangku.setText(yhJinXiaoCunMingXi.getcangku());
             QRcode qrcode = new QRcode();
             Bitmap bitmap= qrcode.qrcode(yhJinXiaoCunMingXi.getOrderid(),"qrcode");
             qr_code.setImageBitmap(bitmap);
@@ -141,6 +143,7 @@ public class MingXiChangeActivity extends AppCompatActivity {
         cplb.setText("");
         cpsj.setText("");
         cpsl.setText("");
+        cangku.setText("");
     }
 
     private class spDmItemSelectedListener implements AdapterView.OnItemSelectedListener {
@@ -451,6 +454,13 @@ public class MingXiChangeActivity extends AppCompatActivity {
             return false;
         } else {
             yhJinXiaoCunMingXi.setCpsl(cpsl.getText().toString());
+        }
+
+        if (cangku.getText().toString().equals("")) {
+            ToastUtil.show(MingXiChangeActivity.this, "请输入仓库");
+            return false;
+        } else {
+            yhJinXiaoCunMingXi.setcangku(cangku.getText().toString());
         }
 
         if (mxtype.getSelectedItem().toString().equals("")) {

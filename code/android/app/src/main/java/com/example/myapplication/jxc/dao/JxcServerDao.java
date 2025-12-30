@@ -150,6 +150,27 @@ public class JxcServerDao<T> {
         return generatedKey;
     }
 
+    public long executeOfId_diaobo(String sql, Object... params) {
+        long generatedKey = 0;
+        try {
+            preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            setParameters(preparedStatement, params);
+
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows > 0) {
+                resultSet = preparedStatement.getGeneratedKeys();
+                if (resultSet.next()) {
+                    generatedKey = resultSet.getLong(1);
+                }
+            }
+        } catch (Exception e) {
+            Log.e("JxcServerDao", "执行SQL获取ID失败", e);
+        } finally {
+//            close();
+        }
+        return generatedKey;
+    }
+
     /**
      * 更新文件字段 - 保持原有功能不变
      */

@@ -1,7 +1,11 @@
 package com.example.myapplication.jxc.entity;
 
-public class YhJinXiaoCunMingXi {
+import java.io.Serializable;
+
+public class YhJinXiaoCunMingXi implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int _id;
+    private int id;
     private String _openid;
     private String cpid;
     private String cpjj;
@@ -18,11 +22,18 @@ public class YhJinXiaoCunMingXi {
     private String shou_h;
     private String zhName;
     private String gsName;
-
+    private String cangku;
+    private String cangku2;
+    private String jcsl;
+    private String pankusl;
+    private String ruku_num;
+    private String pankuisl;
+    private String qc_cpsj;
     private String rukuNum;
     private String rukuPrice;
     private String chukuNum;
     private String chukuPrice;
+    private String ruku;
 
     public int get_id() {
         return _id;
@@ -30,6 +41,14 @@ public class YhJinXiaoCunMingXi {
 
     public void set_id(int _id) {
         this._id = _id;
+    }
+
+    public int getid() {
+        return id;
+    }
+
+    public void setid(int id) {
+        this.id = id;
     }
 
     public String get_openid() {
@@ -190,5 +209,69 @@ public class YhJinXiaoCunMingXi {
 
     public void setChukuPrice(String chukuPrice) {
         this.chukuPrice = chukuPrice;
+    }
+
+    public String getcangku() {
+        return cangku;
+    }
+
+    public void setcangku(String cangku) {
+        this.cangku = cangku;
+    }
+
+    public String getcangku2() {
+        return cangku2;
+    }
+
+    public void setcangku2(String cangku2) {
+        this.cangku2 = cangku2;
+    }
+
+    public String getjcsl() {
+        return jcsl;
+    }
+
+    public void setjcsl(String jcsl) {
+        this.jcsl = jcsl;
+    }
+
+    public String getpankusl() {
+        return pankusl;
+    }
+
+    public void setpankusl(String pankusl) {
+        this.pankusl = pankusl;
+    }
+
+    public String getkucun_sl() {
+        return ruku_num;
+    }
+
+    public void setkucun_sl(String ruku_num) {
+        this.ruku_num = ruku_num;
+    }
+
+    public String getpankuisl() {
+        return pankuisl;
+    }
+
+    public void setpankuisl(String pankuisl) {
+        this.pankuisl = pankuisl;
+    }
+
+    public String getqc_cpsj() {
+        return qc_cpsj;
+    }
+
+    public void setqc_cpsj(String qc_cpsj) {
+        this.qc_cpsj = qc_cpsj;
+    }
+
+    public String getRuku() {
+        return ruku;
+    }
+
+    public void setRuku(String ruku) {
+        this.ruku = ruku;
     }
 }

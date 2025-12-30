@@ -168,6 +168,7 @@ public class ExcelUtil {
                     sheet.addCell(new Label(7, i + 1, list.get(i).getShijian(), arial12format));
                     sheet.addCell(new Label(8, i + 1, list.get(i).getGsName(), arial12format));
                     sheet.addCell(new Label(9, i + 1, list.get(i).getShou_h(), arial12format));
+                    sheet.addCell(new Label(10, i + 1, list.get(i).getcangku(), arial12format));
                     //设置行高
                     sheet.setRowView(i + 1, 350);
                 }
@@ -234,6 +235,8 @@ public class ExcelUtil {
                     sheet.addCell(new Label(8, i + 1, list.get(i).getMx_chuku_price(), arial12format));
                     sheet.addCell(new Label(9, i + 1, list.get(i).getJc_sl(), arial12format));
                     sheet.addCell(new Label(10, i + 1, list.get(i).getJc_price(), arial12format));
+                    sheet.addCell(new Label(11, i + 1, list.get(i).getcangku(), arial12format));
+                    sheet.addCell(new Label(12, i + 1, list.get(i).getzzl(), arial12format));
                     //设置行高
                     sheet.setRowView(i + 1, 350);
                 }
@@ -616,6 +619,178 @@ public class ExcelUtil {
             }
         }
     }
+
+    public static void dbtjToExcel(List<YhJinXiaoCunMingXi> list, String fileName, Context c) {
+        if (list != null && list.size() > 0) {
+            WritableWorkbook writebook = null;
+            InputStream in = null;
+            try {
+                WorkbookSettings setEncode = new WorkbookSettings();
+                setEncode.setEncoding(UTF8_ENCODING);
+                File file = new File(Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统");
+                makeDir(file);
+                File saveFile = new File(file, fileName);
+                if (!saveFile.exists()) {
+                    saveFile.createNewFile();
+                }
+
+                in = new FileInputStream(saveFile);
+                Workbook workbook = Workbook.getWorkbook(in);
+                writebook = Workbook.createWorkbook(saveFile, workbook);
+                WritableSheet sheet = writebook.getSheet(0);
+
+
+                for(int i=0;i<list.size();i++){
+                    sheet.addCell(new Label(0, i + 1, list.get(i).getOrderid(), arial12format));
+                    sheet.addCell(new Label(1, i + 1, list.get(i).getSpDm(), arial12format));
+                    sheet.addCell(new Label(2, i + 1, list.get(i).getCpname(), arial12format));
+                    sheet.addCell(new Label(3, i + 1, list.get(i).getCplb(), arial12format));
+                    sheet.addCell(new Label(4, i + 1, list.get(i).getCpsj(), arial12format));
+                    sheet.addCell(new Label(5, i + 1, list.get(i).getCpsl(), arial12format));
+                    sheet.addCell(new Label(6, i + 1, list.get(i).getMxtype(), arial12format));
+                    sheet.addCell(new Label(7, i + 1, list.get(i).getShijian(), arial12format));
+                    sheet.addCell(new Label(8, i + 1, list.get(i).getGsName(), arial12format));
+                    sheet.addCell(new Label(9, i + 1, list.get(i).getcangku(), arial12format));
+                    //设置行高
+                    sheet.setRowView(i + 1, 350);
+                }
+                writebook.write();
+                Toast.makeText(c, "成功！请前往"+Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (writebook != null) {
+                    try {
+                        writebook.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (in != null) {
+                    try {
+                        in.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
+
+    public static void qimotongjiToExcel(List<YhJinXiaoCun> list, String fileName, Context c) {
+        if (list != null && list.size() > 0) {
+            WritableWorkbook writebook = null;
+            InputStream in = null;
+            try {
+                WorkbookSettings setEncode = new WorkbookSettings();
+                setEncode.setEncoding(UTF8_ENCODING);
+                File file = new File(Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统");
+                makeDir(file);
+                File saveFile = new File(file, fileName);
+                if (!saveFile.exists()) {
+                    saveFile.createNewFile();
+                }
+
+                in = new FileInputStream(saveFile);
+                Workbook workbook = Workbook.getWorkbook(in);
+                writebook = Workbook.createWorkbook(saveFile, workbook);
+                WritableSheet sheet = writebook.getSheet(0);
+
+
+                for(int i=0;i<list.size();i++){
+                    sheet.addCell(new Label(0, i + 1, list.get(i).getcangku(), arial12format));
+                    sheet.addCell(new Label(1, i + 1, list.get(i).getmonth(), arial12format));
+                    sheet.addCell(new Label(2, i + 1, list.get(i).getMx_ruku_cpsl(), arial12format));
+                    sheet.addCell(new Label(3, i + 1, list.get(i).getMx_ruku_price(), arial12format));
+                    sheet.addCell(new Label(4, i + 1, list.get(i).getMx_chuku_cpsl(), arial12format));
+                    sheet.addCell(new Label(5, i + 1, list.get(i).getMx_chuku_price(), arial12format));
+                    sheet.addCell(new Label(6, i + 1, list.get(i).getJc_sl(), arial12format));
+                    sheet.addCell(new Label(7, i + 1, list.get(i).getJc_price(), arial12format));
+
+                    //设置行高
+                    sheet.setRowView(i + 1, 350);
+                }
+                writebook.write();
+                Toast.makeText(c, "成功！请前往"+Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (writebook != null) {
+                    try {
+                        writebook.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (in != null) {
+                    try {
+                        in.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
+
+    public static void jiyatongjiToExcel(List<YhJinXiaoCun> list, String fileName, Context c) {
+        if (list != null && list.size() > 0) {
+            WritableWorkbook writebook = null;
+            InputStream in = null;
+            try {
+                WorkbookSettings setEncode = new WorkbookSettings();
+                setEncode.setEncoding(UTF8_ENCODING);
+                File file = new File(Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统");
+                makeDir(file);
+                File saveFile = new File(file, fileName);
+                if (!saveFile.exists()) {
+                    saveFile.createNewFile();
+                }
+
+                in = new FileInputStream(saveFile);
+                Workbook workbook = Workbook.getWorkbook(in);
+                writebook = Workbook.createWorkbook(saveFile, workbook);
+                WritableSheet sheet = writebook.getSheet(0);
+
+
+                for(int i=0;i<list.size();i++){
+                    sheet.addCell(new Label(0, i + 1, list.get(i).getName(), arial12format));
+                    sheet.addCell(new Label(1, i + 1, list.get(i).getSp_dm(), arial12format));
+                    sheet.addCell(new Label(2, i + 1, list.get(i).getLei_bie(), arial12format));
+                    sheet.addCell(new Label(3, i + 1, list.get(i).getcangku(), arial12format));
+                    sheet.addCell(new Label(4, i + 1, list.get(i).getMx_chuku_cpsl(), arial12format));
+                    sheet.addCell(new Label(5, i + 1, list.get(i).getJc_sl(), arial12format));
+                    sheet.addCell(new Label(6, i + 1, list.get(i).getJc_price(), arial12format));
+
+
+                    //设置行高
+                    sheet.setRowView(i + 1, 350);
+                }
+                writebook.write();
+                Toast.makeText(c, "成功！请前往"+Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (writebook != null) {
+                    try {
+                        writebook.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (in != null) {
+                    try {
+                        in.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
 
     /**
      * 将制定类型的List写入Excel中

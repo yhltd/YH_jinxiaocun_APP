@@ -172,6 +172,200 @@ public class JxcActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayout danjudayin = findViewById(R.id.danjudayin);
+        danjudayin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(JxcActivity.this, PrintActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        LinearLayout kucunjiya = findViewById(R.id.kucunjiya);
+        kucunjiya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(JxcActivity.this, KuCunJiYaActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout qimotongji = findViewById(R.id.qimotongji);
+        qimotongji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(JxcActivity.this, QiMoTongJiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout kucundiaobo = findViewById(R.id.kucundiaobo);
+        kucundiaobo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (yhJinXiaoCunUser.getAdminis().equals("true")) {
+                    Intent intent = new Intent(JxcActivity.this, KuCunDiaoboActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    ToastUtil.show(JxcActivity.this, "无权限！");
+                }
+
+            }
+        });
+
+        LinearLayout kucunpandian = findViewById(R.id.kucunpandian);
+        kucunpandian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (yhJinXiaoCunUser.getAdminis().equals("true")) {
+                    Intent intent = new Intent(JxcActivity.this, KuCunPanDianActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    ToastUtil.show(JxcActivity.this, "无权限！");
+                }
+
+            }
+        });
+
+
+        LinearLayout diaobotongji = findViewById(R.id.diaobotongji);
+        diaobotongji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (yhJinXiaoCunUser.getAdminis().equals("true")) {
+                    Intent intent = new Intent(JxcActivity.this, DiaoBoTongJiActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    ToastUtil.show(JxcActivity.this, "无权限！");
+                }
+
+            }
+        });
+
+        LinearLayout cangkupeizhi = findViewById(R.id.cangkupeizhi);
+        cangkupeizhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (yhJinXiaoCunUser.getAdminis().equals("true")) {
+                    Intent intent = new Intent(JxcActivity.this, CangKuActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    ToastUtil.show(JxcActivity.this, "无权限！");
+                }
+
+            }
+        });
+
+        LinearLayout caigou = findViewById(R.id.caigou);
+        caigou.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (yhJinXiaoCunUser.getAdminis().equals("true")) {
+                    Intent intent = new Intent(JxcActivity.this, CaiGouActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    ToastUtil.show(JxcActivity.this, "无权限！");
+                }
+
+            }
+        });
+
+        LinearLayout cgwrk = findViewById(R.id.cgwrk);
+        cgwrk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (yhJinXiaoCunUser.getAdminis().equals("true")) {
+                    Intent intent = new Intent(JxcActivity.this, CaiGouWeiRuKuActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    ToastUtil.show(JxcActivity.this, "无权限！");
+                }
+
+            }
+        });
+
+        LinearLayout cgth = findViewById(R.id.cgth);
+        cgth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (yhJinXiaoCunUser.getAdminis().equals("true")) {
+                    Intent intent = new Intent(JxcActivity.this, CaiGouTuiHuoActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    ToastUtil.show(JxcActivity.this, "无权限！");
+                }
+
+            }
+        });
+
+        LinearLayout xsth = findViewById(R.id.xiaoshoutuihuo);
+        xsth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (yhJinXiaoCunUser.getAdminis().equals("true")) {
+                    Intent intent = new Intent(JxcActivity.this, XiaoShouTuiHuoActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    ToastUtil.show(JxcActivity.this, "无权限！");
+                }
+
+            }
+        });
+
+        LinearLayout xsthtongji = findViewById(R.id.xsthtongji);
+        xsthtongji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (yhJinXiaoCunUser.getAdminis().equals("true")) {
+                    Intent intent = new Intent(JxcActivity.this, XiaoShouTuiHuoTongJiActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    ToastUtil.show(JxcActivity.this, "无权限！");
+                }
+
+            }
+        });
+
+        LinearLayout cgthtongji = findViewById(R.id.cgthtongji);
+        cgthtongji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (yhJinXiaoCunUser.getAdminis().equals("true")) {
+                    Intent intent = new Intent(JxcActivity.this, CaiGouTuiHuoTongJiActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    ToastUtil.show(JxcActivity.this, "无权限！");
+                }
+
+            }
+        });
+
+        LinearLayout jcmxtongji = findViewById(R.id.jcmxtongji);
+        jcmxtongji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (yhJinXiaoCunUser.getAdminis().equals("true")) {
+                    Intent intent = new Intent(JxcActivity.this, JinChuMingXiTongJiActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    ToastUtil.show(JxcActivity.this, "无权限！");
+                }
+
+            }
+        });
+
         LinearLayout jichuziliao = findViewById(R.id.jczl);
         jichuziliao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -409,6 +603,7 @@ public class JxcActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 setupMarqueeText("暂无公告信息");
+                                hideAllContent();
                             }
                         });
                     }

@@ -8,6 +8,9 @@ public class YhFinanceJiJianTaiZhang {
     private int id;
     private String company;
     private String project;
+    private String bizhong;
+    private BigDecimal nashuijine;
+    private BigDecimal yijiaoshuijine;
     private BigDecimal receivable;
     private BigDecimal receipts;
     private BigDecimal cope;
@@ -48,6 +51,25 @@ public class YhFinanceJiJianTaiZhang {
     public void setReceivable(BigDecimal receivable) {
         this.receivable = receivable;
     }
+
+
+    public BigDecimal getNashuijine() {
+        return nashuijine;
+    }
+
+    public void setNashuijine(BigDecimal nashuijine) {
+        this.nashuijine = nashuijine;
+    }
+
+    public BigDecimal getYijiaoshuijine() {
+        return yijiaoshuijine;
+    }
+
+    public void setYijiaoshuijine(BigDecimal yijiaoshuijine) {
+        this.yijiaoshuijine = yijiaoshuijine;
+    }
+
+
 
     public BigDecimal getReceipts() {
         return receipts;
@@ -103,5 +125,13 @@ public class YhFinanceJiJianTaiZhang {
 
     public void setZhaiyao(String zhaiyao) {
         this.zhaiyao = zhaiyao;
+    }
+
+    public String getBizhong() {
+        return bizhong;
+    }
+
+    public void setBizhong(String bizhong) {
+        this.bizhong = bizhong;
     }
 }

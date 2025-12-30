@@ -40,6 +40,7 @@ import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -220,11 +221,20 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
                     item.put("payment", list.get(i).getPayment());
                     item.put("weifu", list.get(i).getCope().subtract(list.get(i).getPayment()));
                     item.put("accounting", list.get(i).getAccounting());
+                    item.put("nashuijine", list.get(i).getNashuijine());
+                    item.put("yijiaoshuijine", list.get(i).getYijiaoshuijine());
+                    BigDecimal nashuijine = list.get(i).getNashuijine();
+                    BigDecimal yijiaoshuijine = list.get(i).getYijiaoshuijine();
+                    BigDecimal safeNashuijine = nashuijine != null ? nashuijine : BigDecimal.ZERO;
+                    BigDecimal safeYijiaoshuijine = yijiaoshuijine != null ? yijiaoshuijine : BigDecimal.ZERO;
+
+                    BigDecimal weijiaoshuijine = safeNashuijine.subtract(safeYijiaoshuijine);
+                    item.put("weijiaoshuijine", weijiaoshuijine);
                     item.put("zhaiyao", list.get(i).getZhaiyao());
                     data.add(item);
                 }
 
-                adapter = new SimpleAdapter(JiJianTaiZhangActivity.this, data, R.layout.jijiantaizhang_row, new String[]{"insert_date","kehu","project","receivable","receipts","weishou","cope","payment","weifu","accounting","zhaiyao"}, new int[]{R.id.insert_date,R.id.kehu,R.id.project,R.id.receivable,R.id.receipts,R.id.weishou,R.id.cope,R.id.payment,R.id.weifu,R.id.accounting,R.id.zhaiyao}) {
+                adapter = new SimpleAdapter(JiJianTaiZhangActivity.this, data, R.layout.jijiantaizhang_row, new String[]{"insert_date","kehu","project","receivable","receipts","weishou","cope","payment","weifu","accounting","nashuijine","yijiaoshuijine","weijiaoshuijine","zhaiyao"}, new int[]{R.id.insert_date,R.id.kehu,R.id.project,R.id.receivable,R.id.receipts,R.id.weishou,R.id.cope,R.id.payment,R.id.weifu,R.id.accounting,R.id.nashuijine,R.id.yijiaoshuijine,R.id.weijiaoshuijine,R.id.zhaiyao}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -236,7 +246,7 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
                     }
                 };
 
-                adapter_block = new SimpleAdapter(JiJianTaiZhangActivity.this, data, R.layout.jijiantaizhang_row_block, new String[]{"insert_date","kehu","project","receivable","receipts","weishou","cope","payment","weifu","accounting","zhaiyao"}, new int[]{R.id.insert_date,R.id.kehu,R.id.project,R.id.receivable,R.id.receipts,R.id.weishou,R.id.cope,R.id.payment,R.id.weifu,R.id.accounting,R.id.zhaiyao}) {
+                adapter_block = new SimpleAdapter(JiJianTaiZhangActivity.this, data, R.layout.jijiantaizhang_row_block, new String[]{"insert_date","kehu","project","receivable","receipts","weishou","cope","payment","weifu","accounting","nashuijine","yijiaoshuijine","weijiaoshuijine","zhaiyao"}, new int[]{R.id.insert_date,R.id.kehu,R.id.project,R.id.receivable,R.id.receipts,R.id.weishou,R.id.cope,R.id.payment,R.id.weifu,R.id.accounting,R.id.nashuijine,R.id.yijiaoshuijine,R.id.weijiaoshuijine,R.id.zhaiyao}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -308,7 +318,10 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
                         xiangQingYe.setH_title("实付:");
                         xiangQingYe.setI_title("未付:");
                         xiangQingYe.setJ_title("科目:");
-                        xiangQingYe.setK_title("摘要:");
+                        xiangQingYe.setK_title("纳税金额:");
+                        xiangQingYe.setL_title("已交税金额:");
+                        xiangQingYe.setM_title("未交税金额:");
+                        xiangQingYe.setN_title("摘要:");
 
                         xiangQingYe.setA(list.get(position).getInsert_date().toString());
                         xiangQingYe.setB(list.get(position).getProject());
@@ -320,7 +333,29 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
                         xiangQingYe.setH(list.get(position).getPayment().toString());
                         xiangQingYe.setI(list.get(position).getCope().subtract(list.get(position).getPayment()).toString());
                         xiangQingYe.setJ(list.get(position).getAccounting());
-                        xiangQingYe.setK(list.get(position).getZhaiyao());
+                        xiangQingYe.setK(
+                                list.get(position).getNashuijine() != null ?
+                                        list.get(position).getNashuijine().toString() :
+                                        "0"
+                        );
+
+// 修复第2行：yijiaoshuijine
+                        xiangQingYe.setL(
+                                list.get(position).getYijiaoshuijine() != null ?
+                                        list.get(position).getYijiaoshuijine().toString() :
+                                        "0"
+                        );
+
+// 修复第3行：减法计算
+                        BigDecimal nashuijine = list.get(position).getNashuijine();
+                        BigDecimal yijiaoshuijine = list.get(position).getYijiaoshuijine();
+
+                        BigDecimal safeNashuijine = nashuijine != null ? nashuijine : BigDecimal.ZERO;
+                        BigDecimal safeYijiaoshuijine = yijiaoshuijine != null ? yijiaoshuijine : BigDecimal.ZERO;
+
+                        BigDecimal result = safeNashuijine.subtract(safeYijiaoshuijine);
+                        xiangQingYe.setM(result.toString());
+                        xiangQingYe.setN(list.get(position).getZhaiyao());
 
                         Intent intent = new Intent(JiJianTaiZhangActivity.this, XiangQingYeActivity.class);
                         MyApplication myApplication = (MyApplication) getApplication();

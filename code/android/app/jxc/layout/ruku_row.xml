@@ -119,6 +119,20 @@
             android:width="120dp"
             android:inputType="number"
             android:digits="1234567890."/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+        <Spinner
+            android:id="@+id/cangku"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:textSize="14sp" />
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -337,6 +337,44 @@ public class FinanceActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayout gongzimingxi = findViewById(R.id.gongzimingxi);
+        gongzimingxi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, GongZiMingXiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout xiangmupeizhi = findViewById(R.id.xiangmupeizhi);
+        xiangmupeizhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, XiangMuPeiZhiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout tongjikanban = findViewById(R.id.tongjikanban);
+        tongjikanban.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, TongJiKanBanActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout lirun = findViewById(R.id.lirun);
+        lirun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FinanceActivity.this, LiRunActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
         LinearLayout zhanghaoguanli = findViewById(R.id.zhanghaoguanli);
         zhanghaoguanli.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -578,6 +616,8 @@ public class FinanceActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 setupMarqueeText("暂无公告信息");
+                                // 同时调用隐藏方法
+                                hideAllContent();
                             }
                         });
                     }

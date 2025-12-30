@@ -1,0 +1,164 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:background="@drawable/jxc_table_body">
+
+<!--    <CheckBox-->
+<!--        android:id="@+id/cb"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="right|center_vertical"-->
+<!--        android:clickable="true"-->
+<!--        android:focusable="true"-->
+<!--        android:width="40dp"-->
+<!--        tools:ignore="RtlHardcoded"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <!--        android:background="@drawable/border_bottom"-->
+        <TextView
+            android:gravity="center"
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:text="商品名称"
+            android:textStyle="bold"
+            android:width="120dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+        </View>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/spDm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:text="商品代码"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry"
+            android:width="120dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/leiBie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:text="商品类别"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry"
+            android:width="120dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/jc_sl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:text="库存数量"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry"
+            android:width="120dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/cangku"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:text="所属仓库"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry"
+            android:width="120dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+        <EditText
+            android:gravity="center"
+            android:id="@+id/panku_sl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry"
+            android:width="120dp"
+            android:inputType="number"
+            android:digits="1234567890."/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/pankui_sl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry"
+            android:width="120dp"
+          />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+        </View>
+
+
+    </LinearLayout>
+
+
+
+    <!--    <Button-->
+    <!--        android:text="更换项目"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginRight="15dp"-->
+    <!--        android:onClick="onSubmitClick"-->
+    <!--        android:layout_marginEnd="15dp">-->
+    <!--        &lt;!&ndash;        tools:ignore=""&ndash;&gt;-->
+    <!--    </Button>-->
+
+    <!--    <CheckBox-->
+    <!--        android:layout_width="150dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:id="@+id/cb1">-->
+    <!--    </CheckBox>-->
+</LinearLayout>

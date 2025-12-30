@@ -12,6 +12,12 @@ public class YhJinXiaoCun {
     private String mx_chuku_price;
     private String jc_sl;
     private String jc_price;
+    private String cangku;
+    private String zzl;
+    private String month;
+    private String zhouzhuan;
+    private String yjdj;
+
 
     public String getSp_dm() {
         return sp_dm;
@@ -99,5 +105,40 @@ public class YhJinXiaoCun {
 
     public void setJc_price(String jc_price) {
         this.jc_price = jc_price;
+    }
+
+    public String getcangku() {
+        return cangku;
+    }
+    public void setcangku(String zzl) {
+        this.cangku = cangku;
+    }
+
+    public String getzzl() {
+        return zzl;
+    }
+    public void setzzl(String zzl) {
+        this.zzl = zzl;
+    }
+
+    public String getmonth() {
+        return month;
+    }
+    public void setmonth(String month) {
+        this.month = month;
+    }
+
+    public String getzhouzhuan() {
+        return zhouzhuan;
+    }
+    public void setzhouzhuan(String zhouzhuan) {
+        this.zhouzhuan = zhouzhuan;
+    }
+
+    public String getyjdj() {
+        return yjdj;
+    }
+    public void setyjdj(String yjdj) {
+        this.yjdj = yjdj;
     }
 }
