@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="目标字段"
+            android:textSize="14sp"
+            android:paddingBottom="5dp" />
+
+        <Spinner
+            android:id="@+id/spinner_target_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="计算公式"
+            android:textSize="14sp"
+            android:paddingBottom="5dp" />
+
+        <EditText
+            android:id="@+id/et_formula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="例如：字段1 + 字段2"
+            android:layout_marginBottom="10dp" />
+
+        <!-- 运算符区域 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="运算符"
+            android:textSize="14sp"
+            android:paddingBottom="5dp" />
+
+        <!-- 运算符水平滚动视图 -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:scrollbars="horizontal"
+            android:fadeScrollbars="false">
+
+            <LinearLayout
+                android:id="@+id/operators_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp" />
+
+        </HorizontalScrollView>
+
+        <!-- 可用字段区域 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="可用字段"
+            android:textSize="14sp"
+            android:paddingBottom="5dp" />
+
+        <!-- 字段水平滚动视图 -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:scrollbars="horizontal"
+            android:fadeScrollbars="false">
+
+            <LinearLayout
+                android:id="@+id/fields_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp" />
+
+        </HorizontalScrollView>
+
+        <!-- 现有公式区域 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="现有公式"
+            android:textSize="14sp"
+            android:paddingBottom="5dp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="10dp"
+            android:scrollbars="horizontal">
+
+            <LinearLayout
+                android:id="@+id/existing_formulas_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+</ScrollView>

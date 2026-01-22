@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".renshi.activity.QingJiaShenPiActivity"
+    android:background="@drawable/shape_corner"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <!-- 顶部查询区域 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:gravity="center_vertical"
+        android:background="@drawable/shape_corner"
+        android:layout_marginTop="5dp"
+        android:paddingHorizontal="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="审批状态:"
+            android:textColor="#4DC5D5"
+            android:textSize="15sp"/>
+
+        <Spinner
+            android:id="@+id/spinner_zhuangtai"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/form_input"/>
+
+        <Button
+            android:id="@+id/sel_button"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:text="查询"
+            android:background="@drawable/newbtn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <!-- 横滚列表视图 -->
+    <HorizontalScrollView
+        android:id="@+id/list_table"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="82"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="3dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/yemianbeijing"
+            android:orientation="vertical">
+
+            <!-- 表格标题行 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/title"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- 序号 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="80dp"
+                    android:gravity="center"
+                    android:text="序号"
+                    android:textColor="@color/title_text"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <!-- 部门 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="120dp"
+                    android:gravity="center"
+                    android:text="部门"
+                    android:textColor="@color/title_text"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <!-- 员工名称 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="100dp"
+                    android:gravity="center"
+                    android:text="员工名称"
+                    android:textColor="@color/title_text"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <!-- 申请时间 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="120dp"
+                    android:gravity="center"
+                    android:text="申请时间"
+                    android:textColor="@color/title_text"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <!-- 起始请假日期 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="150dp"
+                    android:gravity="center"
+                    android:text="起始请假日期"
+                    android:textColor="@color/title_text"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <!-- 截止请假日期 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="150dp"
+                    android:gravity="center"
+                    android:text="截止请假日期"
+                    android:textColor="@color/title_text"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <!-- 请假原因 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="120dp"
+                    android:gravity="center"
+                    android:text="请假原因"
+                    android:textColor="@color/title_text"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <!-- 审批状态 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="100dp"
+                    android:gravity="center"
+                    android:text="审批状态"
+                    android:textColor="@color/title_text"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <!-- 审批原因 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="150dp"
+                    android:gravity="center"
+                    android:text="审批原因"
+                    android:textColor="@color/title_text"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <!-- 列表视图 -->
+            <ListView
+                android:id="@+id/baopan_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:dividerHeight="1dp"
+                android:paddingBottom="5dp" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- 卡片式列表视图 -->
+    <ListView
+        android:id="@+id/list_block"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="82"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="3dp"
+        android:divider="@null"
+        android:background="@drawable/yemianbeijing"
+        android:paddingBottom="5dp" />
+
+    <!-- 底部操作按钮 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/switch_btn"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:onClick="switchClick"
+            android:text="切换列表"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/newbtn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="添加记录"
+            android:onClick="onAddClick"
+            tools:ignore="MissingConstraints"
+            android:gravity="center"
+            android:background="@drawable/newbtn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+</LinearLayout>

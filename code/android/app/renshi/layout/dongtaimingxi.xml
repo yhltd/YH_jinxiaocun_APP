@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="@drawable/shape_corner"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <!-- 标题行 (预留空间，实际可隐藏) -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:gravity="center_vertical"
+        android:background="@drawable/shape_corner"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <!-- 这里可以根据需要添加筛选条件 -->
+    </LinearLayout>
+
+    <!-- 表格视图 -->
+    <HorizontalScrollView
+        android:id="@+id/list_table"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="82"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/yemianbeijing"
+            android:orientation="vertical">
+
+            <!-- 动态表头 -->
+            <LinearLayout
+                android:id="@+id/table_header"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/title"
+                android:gravity="center">
+
+                <!-- 序号列 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="100dp"
+                    android:gravity="center"
+                    android:text="序号"
+                    android:textColor="@color/title_text"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- 动态列会通过代码添加 -->
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/baopan_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:dividerHeight="1dp"
+                android:paddingBottom="5dp" />
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- 列表块视图 -->
+    <ListView
+        android:id="@+id/list_block"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="82"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:divider="@null"
+        android:background="@drawable/yemianbeijing"
+        android:paddingBottom="5dp" />
+
+    <!-- 底部操作栏 -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/xiujiaClick"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="配置标题"
+            tools:ignore="MissingConstraints"
+            android:gravity="center"
+            android:background="@drawable/newbtn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/shenpijilu"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="公式配置"
+            tools:ignore="MissingConstraints"
+            android:gravity="center"
+            android:background="@drawable/newbtn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"/>
+
+
+    </LinearLayout>
+
+    <!-- 添加一行按钮 (悬浮按钮) -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/jczl_insert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/insert"/>
+
+
+
+</LinearLayout>

@@ -200,6 +200,98 @@ public class RenShiActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayout jianliguanli = findViewById(R.id.jianliguanli);
+        jianliguanli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RenShiActivity.this, JianLiGuanLiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout jianlishenpi = findViewById(R.id.jianlishenpi);
+        jianlishenpi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RenShiActivity.this, JianLiShenPiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout mianshiguanli = findViewById(R.id.mianshiguanli);
+        mianshiguanli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RenShiActivity.this, MianShiGuanLiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout lizhishenpi = findViewById(R.id.lizhishenpi);
+        lizhishenpi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RenShiActivity.this, LiZhiShenPiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout qingjiashenpi = findViewById(R.id.qingjiashenpi);
+        qingjiashenpi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RenShiActivity.this, QingJiaShenPiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout gongzuoshijian = findViewById(R.id.gongzuoshijian);
+        gongzuoshijian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RenShiActivity.this, GongZuoShiJianActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout gongzuotongji = findViewById(R.id.gongzuotongji);
+        gongzuotongji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RenShiActivity.this, GongZuoTongJiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout dongtaimingxi = findViewById(R.id.dongtaimingxi);
+        dongtaimingxi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RenShiActivity.this, DongTaiMingXiActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout lizhishenqing = findViewById(R.id.lizhishenqing);
+        lizhishenqing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RenShiActivity.this, LizhishenqingActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        LinearLayout kaoqindaka = findViewById(R.id.kaoqindaka);
+        kaoqindaka.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RenShiActivity.this, KaoQinDaKaActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
         LinearLayout baopan = findViewById(R.id.baopan);
         baopan.setOnClickListener(new View.OnClickListener() {
             @Override

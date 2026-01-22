@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_corner"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <!-- 顶部标题栏 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/shape_corner_sel"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="动态数据统计图表"
+                android:textSize="20sp"
+                android:textColor="@color/title_text"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_data_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="共加载 0 条数据"
+                android:textSize="14sp"
+                android:textColor="#666666"/>
+        </LinearLayout>
+
+        <!-- 配置面板 -->
+        <LinearLayout
+            android:id="@+id/config_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/shape_corner_sel"
+            android:padding="16dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="统计配置"
+                android:textSize="18sp"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- 配置选项 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="图表类型:"
+                    android:textSize="14sp"
+                    android:textColor="#333333"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"/>
+
+                <Spinner
+                    android:id="@+id/spinner_chart_type"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分组字段:"
+                    android:textSize="14sp"
+                    android:textColor="#333333"
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"/>
+
+                <Spinner
+                    android:id="@+id/spinner_group_field"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <!-- 字段选择区域 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="选择统计字段（数值字段）："
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 修改这里：将普通ScrollView改为NestedScrollView，实现独立滚动 -->
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="12dp"
+                android:background="#F9F9F9"
+                android:padding="8dp"
+                android:fillViewport="true"
+                android:overScrollMode="always">
+
+                <LinearLayout
+                    android:id="@+id/field_selection_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+
+            </androidx.core.widget.NestedScrollView>
+
+            <!-- 操作按钮 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/btn_load_data"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:text="重新加载"
+                    android:background="@drawable/newbtn_style"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+
+                <Button
+                    android:id="@+id/btn_generate_chart"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="生成图表"
+                    android:background="@drawable/newbtn_style"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/btn_show_data"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:text="查看数据表格"
+                    android:background="@drawable/newbtn_style"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+
+                <Button
+                    android:id="@+id/btn_hide_data"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="隐藏表格"
+                    android:background="@drawable/newbtn_style"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/chart_container"
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:orientation="vertical"
+            android:background="@drawable/shape_corner_sel"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone">
+
+            <!-- 图表标题 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp"
+                android:paddingBottom="8dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="图表图标"/>
+
+                <TextView
+                    android:id="@+id/tv_chart_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="统计图表"
+                    android:textSize="18sp"
+                    android:textColor="#333333"
+                    android:textStyle="bold"/>
+
+                <!-- 图表类型标签 -->
+                <TextView
+                    android:id="@+id/tv_chart_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="柱状图"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="2dp"/>
+            </LinearLayout>
+
+            <!-- 统计摘要卡片 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="信息图标"/>
+
+                <TextView
+                    android:id="@+id/tv_chart_summary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="共统计 0 个字段，0 组数据"
+                    android:textSize="12sp"
+                    android:textColor="#666666"
+                    android:maxLines="2"/>
+
+                <TextView
+                    android:id="@+id/tv_data_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="数据点：0"
+                    android:textSize="11sp"
+                    android:textColor="#999999"/>
+            </LinearLayout>
+
+            <!-- 可滚动的图表显示区域 -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="420dp"
+                android:background="#FAFAFA">
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/chart_scroll_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical|horizontal"
+                    android:fillViewport="true"
+                    android:fadingEdgeLength="32dp">
+
+                    <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scrollbars="horizontal"
+                        android:fadingEdgeLength="32dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <!-- 柱状图 -->
+                            <com.github.mikephil.charting.charts.BarChart
+                                android:id="@+id/bar_chart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="400dp"
+                                android:minWidth="600dp"
+                                android:background="#FFFFFF"
+                                android:elevation="2dp"/>
+
+                            <!-- 折线图 -->
+                            <com.github.mikephil.charting.charts.LineChart
+                                android:id="@+id/line_chart"
+                                android:layout_width="wrap_content"
+                                android:layout_height="400dp"
+                                android:minWidth="600dp"
+                                android:background="#FFFFFF"
+                                android:elevation="2dp"
+                                android:visibility="gone"/>
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                </androidx.core.widget.NestedScrollView>
+
+                <!-- 滚动提示 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="#E6F7FF"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:layout_margin="8dp"
+                    android:layout_gravity="bottom|end">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="4dp"
+                        android:contentDescription="手势图标"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="滑动查看完整图表"
+                        android:textSize="10sp"
+                        android:textColor="#1890FF"/>
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- 图表底部状态栏 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="生成时间："
+                    android:textSize="10sp"
+                    android:textColor="#999999"/>
+
+                <TextView
+                    android:id="@+id/tv_chart_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="10sp"
+                    android:textColor="#666666"
+                    android:layout_marginEnd="16dp"/>
+
+                <TextView
+                    android:id="@+id/tv_chart_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="尺寸：0x0"
+                    android:textSize="10sp"
+                    android:textColor="#999999"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 统计信息 -->
+        <TextView
+            android:id="@+id/tv_statistics_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_corner_sel"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"
+            android:text="统计信息"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:lineSpacingExtra="4dp"/>
+
+        <!-- 数据表格容器 -->
+        <LinearLayout
+            android:id="@+id/data_table_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="数据表格"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="#F9F9F9">
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TableLayout
+                            android:id="@+id/data_table_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:stretchColumns="*"
+                            android:background="@drawable/shape_corner_sel"/>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+        <!-- 进度条 -->
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

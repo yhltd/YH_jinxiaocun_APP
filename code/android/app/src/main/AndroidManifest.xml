@@ -15,6 +15,7 @@
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -1603,6 +1604,116 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".renshi.activity.JianLiGuanLiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="简历管理">
+            <intent-filter>
+                <action android:name="android.intent.action.JianLiGuanLiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.JianLiShenPiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="简历审批">
+            <intent-filter>
+                <action android:name="android.intent.action.JianLiShenPiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.MianShiGuanLiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="面试管理">
+            <intent-filter>
+                <action android:name="android.intent.action.MianShiGuanLiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.LiZhiShenPiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="离职审批">
+            <intent-filter>
+                <action android:name="android.intent.action.LiZhiShenPiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.QingJiaShenPiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="请假审批">
+            <intent-filter>
+                <action android:name="android.intent.action.QingJiaShenPiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.GongZuoShiJianActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="工作时间">
+            <intent-filter>
+                <action android:name="android.intent.action.GongZuoShiJianActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.GongZuoTongJiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="统计图">
+            <intent-filter>
+                <action android:name="android.intent.action.GongZuoTongJiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.DongTaiMingXiActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="动态明细">
+            <intent-filter>
+                <action android:name="android.intent.action.DongTaiMingXiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".renshi.activity.LizhishenqingActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="离职申请">
+            <intent-filter>
+                <action android:name="android.intent.action.LizhishenqingActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".renshi.activity.LizhiHistoryActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="离职申请历史">
+            <intent-filter>
+                <action android:name="android.intent.action.LizhiHistoryActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".renshi.activity.KaoQinDaKaActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="考勤打卡">
+            <intent-filter>
+                <action android:name="android.intent.action.KaoQinDaKaActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
 
         <!--    教务    -->
         <activity

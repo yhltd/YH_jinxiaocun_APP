@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/shape_corner_sel"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:elevation="2dp">
+
+        <!-- 序号 -->
+        <TextView
+            android:id="@+id/B"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="序号"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <!-- 投历人名 -->
+        <TextView
+            android:id="@+id/C"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:text="投历人名"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <!-- 学历 -->
+        <TextView
+            android:id="@+id/D"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="学历"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <!-- 目标岗位 -->
+        <TextView
+            android:id="@+id/E"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:text="目标岗位"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <!-- 提交时间 -->
+        <TextView
+            android:id="@+id/F"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:text="提交时间"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <!-- 文件 -->
+        <TextView
+            android:id="@+id/G"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="文件"
+            android:textColor="#4CAF50"
+            android:textSize="14sp" />
+
+        <!-- 备注 -->
+        <TextView
+            android:id="@+id/H"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:text="备注"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <!-- 面试批注 -->
+        <TextView
+            android:id="@+id/I"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="面试批注"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

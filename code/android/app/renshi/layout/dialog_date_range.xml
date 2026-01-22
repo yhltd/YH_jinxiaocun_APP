@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开始日期："
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_start_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:text="2024-01-01"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="结束日期："
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_end_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:text="2024-02-01"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="筛选选项："
+        android:textSize="16sp"
+        android:layout_marginBottom="5dp"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rb_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="所有日期"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/rb_exclude_sat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="排除周六"/>
+
+        <RadioButton
+            android:id="@+id/rb_exclude_sun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="排除周日"/>
+
+        <RadioButton
+            android:id="@+id/rb_weekends"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="仅双休日"/>
+
+        <RadioButton
+            android:id="@+id/rb_weekdays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="仅工作日"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_date_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="共 0 天"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"/>
+
+    <ListView
+        android:id="@+id/list_dates"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/btn_apply"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            android:text="应用选择"
+            android:background="@drawable/newbtn_style"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            android:text="取消"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</LinearLayout>

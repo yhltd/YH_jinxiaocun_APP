@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="?android:attr/selectableItemBackground">
+
+    <!-- 序号列 -->
+    <TextView
+        android:id="@+id/B"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:background="#f0f0f0"
+        android:textColor="#333333" />
+
+    <!-- 隐藏的ID -->
+    <TextView
+        android:id="@+id/id_hidden"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+    <!-- 动态列 (最多15列) -->
+    <TextView
+        android:id="@+id/C"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:background="#ffffff"
+        android:textColor="#333333" />
+
+    <TextView
+        android:id="@+id/D"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:background="#ffffff"
+        android:textColor="#333333" />
+
+    <!-- 继续添加其他列，确保最多有15个列ID -->
+
+</LinearLayout>
