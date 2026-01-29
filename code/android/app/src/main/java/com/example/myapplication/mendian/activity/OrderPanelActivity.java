@@ -891,7 +891,7 @@ private void setupClickListeners() {
                     Log.d("OrderRefresh", "商品分类数量: " + (type_list != null ? type_list.size() : 0));
 
                     // 4. 获取商品列表
-                    product_list = yhMendianProductshezhiService.getList("", "", yhMendianUser.getCompany());
+                    product_list = yhMendianProductshezhiService.getActiveList("", "", yhMendianUser.getCompany());
                     Log.d("OrderRefresh", "商品总数: " + (product_list != null ? product_list.size() : 0));
 
                     // 调试：打印商品数据，检查beizhu1字段

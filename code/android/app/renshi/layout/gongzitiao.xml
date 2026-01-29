@@ -58,13 +58,22 @@
 
         <Button
             android:id="@+id/sel_button"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="40dp"
             android:text="查询"
             android:background="@drawable/btn_style"
             android:textSize="17dp"
             android:textColor="@color/white"
             android:layout_marginEnd="10dp"/>
+        <Button
+            android:id="@+id/clear_button"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:text="清除"
+            android:background="@drawable/newbtn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white"
+            android:layout_marginEnd="5dp"/>
     </LinearLayout>
 
     <HorizontalScrollView

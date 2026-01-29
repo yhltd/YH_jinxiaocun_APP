@@ -26,10 +26,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.jiaowu.activity.KeShiTongJiActivity;
 import com.example.myapplication.mendian.entity.YhMendianReportForm;
 import com.example.myapplication.mendian.entity.YhMendianUser;
 import com.example.myapplication.mendian.service.YhMendianReportFormService;
 import com.example.myapplication.utils.StringUtils;
+import com.example.myapplication.utils.ToastUtil;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -57,6 +59,7 @@ public class ReportFormActivity extends AppCompatActivity {
     private String end_dateText;
     private ListView reportform_list;
     private Button sel_button;
+    private Button clear_button;
     private Float xiaofei_num;
     private Float shishou_num;
     private Float youhui_num;
@@ -96,6 +99,8 @@ public class ReportFormActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         initList();
     }
 
@@ -104,6 +109,17 @@ public class ReportFormActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 initList();
+            }
+        };
+    }
+
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                end_date.setText("");
             }
         };
     }
@@ -127,7 +143,10 @@ public class ReportFormActivity extends AppCompatActivity {
         if(end_dateText.equals("")){
             end_dateText = "2100-12-31";
         }
-
+        if(start_dateText.compareTo(end_dateText) > 0){
+            ToastUtil.show(ReportFormActivity.this, "开始日期不能晚于结束日期");
+            return;
+        }
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {

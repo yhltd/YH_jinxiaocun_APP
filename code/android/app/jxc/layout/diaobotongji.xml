@@ -57,7 +57,7 @@
 
                 <Button
                     android:id="@+id/sel_button"
-                    android:layout_width="110dp"
+                    android:layout_width="80dp"
                     android:layout_height="35dp"
                     android:text="查询"
                     tools:ignore="MissingConstraints"
@@ -65,6 +65,14 @@
                     android:background="@null"
                     android:textSize="17dp"
                     android:textColor="@color/blue"/>
+                <Button
+                    android:id="@+id/clear_button"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:text="清除"
+                    android:background="@null"
+                    android:textSize="17dp"
+                    android:textColor="@color/blue" />
             </LinearLayout>
 
         </LinearLayout>

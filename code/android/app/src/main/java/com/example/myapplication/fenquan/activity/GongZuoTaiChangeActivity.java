@@ -6,12 +6,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -28,13 +31,20 @@ import com.example.myapplication.fenquan.service.WorkbenchService;
 import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GongZuoTaiChangeActivity extends AppCompatActivity {
     private Renyuan renyuan;
     private Workbench workbench;
     private WorkbenchService workbenchService;
-
+    private JisuanService jisuanService;
+    private boolean isCalculating = false;
+    private Handler formulaHandler = new Handler();
     private EditText A;
     private EditText B;
     private EditText C;
@@ -2049,6 +2059,7 @@ public class GongZuoTaiChangeActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         workbenchService = new WorkbenchService();
+        jisuanService = new JisuanService(); // 新增：初始化公式服务
 
         MyApplication myApplication = (MyApplication) getApplication();
         renyuan = myApplication.getRenyuan();
@@ -2265,8 +2276,389 @@ public class GongZuoTaiChangeActivity extends AppCompatActivity {
             CU.setText(workbench.getCu());
             CV.setText(workbench.getCv());
         }
-
+        initFormulaCalculation();
     }
+//----------0129
+private void initFormulaCalculation() {
+    // 设置所有输入框的文本变化监听
+    setupTextChangeListeners();
+
+    // 如果是编辑模式，初始加载后应用一次公式
+    Intent intent = getIntent();
+    int id = intent.getIntExtra("type", 0);
+    if (id == R.id.update_btn) {
+        // 延迟执行，确保所有EditText都已初始化
+        formulaHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                applyAllFormulas();
+            }
+        }, 500);
+    }
+}
+
+    private void setupTextChangeListeners() {
+        // 为所有可能参与公式计算的列添加监听器
+        EditText[] allEditTexts = new EditText[] {
+                A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, RR, S, T, U, V, W, X, Y, Z,
+                AA, AB, AC, AD, AE, AF, AG, AH, AI, AJ, AK, AL, AM, AN, AO, AP, AQ, AR, ASS, AT, AU, AV, AW, AX, AY, AZ,
+                BA, BB, BC, BD, BE, BF, BG, BH, BI, BJ, BK, BL, BM, BN, BO, BP, BQ, BR, BS, BT, BU, BV, BW, BX, BYY, BZ,
+                CA, CB, CC, CD, CE, CF, CG, CH, CI, CJ, CK, CL, CM, CN, CO, CP, CQ, CR, CS, CT, CU, CV
+        };
+
+        for (int i = 0; i < allEditTexts.length; i++) {
+            EditText editText = allEditTexts[i];
+            if (editText != null) {
+                addFormulaTextWatcher(editText);
+            }
+        }
+    }
+
+    private void addFormulaTextWatcher(final EditText editText) {
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // 防止递归调用
+                if (isCalculating) return;
+
+                // 延迟计算，避免频繁计算
+                formulaHandler.removeCallbacksAndMessages(null);
+                formulaHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        applyAllFormulas();
+                    }
+                }, 300); // 300毫秒延迟
+            }
+        });
+    }
+//--------0129
+private void applyAllFormulas() {
+    // 防止递归
+    if (isCalculating) return;
+
+    isCalculating = true;
+
+    try {
+        // 获取该公司的所有公式
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    List<Jisuan> formulas = jisuanService.getList(renyuan.getB(), "");
+
+                    if (formulas != null && !formulas.isEmpty()) {
+                        // 在主线程中更新UI
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    for (Jisuan formula : formulas) {
+                                        applySingleFormula(formula);
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    isCalculating = false;
+                }
+            }
+        }).start();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        isCalculating = false;
+    }
+}
+
+    private void applySingleFormula(Jisuan formula) {
+        if (formula == null) return;
+
+        String targetColumn = formula.getThiscolumn();  // 目标列，如 "H"
+        String expression = formula.getGongshi();       // 公式，如 "A+B-C"
+
+        if (targetColumn == null || expression == null ||
+                targetColumn.trim().isEmpty() || expression.trim().isEmpty()) {
+            return;
+        }
+
+        try {
+            // 计算表达式
+            double result = calculateExpression(expression);
+
+            // 更新对应的EditText
+            setColumnValue(targetColumn.trim(), result);
+
+        } catch (Exception e) {
+            // 公式计算失败，可以记录日志
+            Log.e("Formula", "公式计算失败: " + targetColumn + " = " + expression, e);
+        }
+    }
+
+    private double calculateExpression(String expression) {
+        // 简单的表达式解析器
+        // 这里只支持基本的四则运算，您可以根据需要扩展
+
+        // 1. 替换所有列名为对应的值
+        String calculatedExpression = expression;
+
+        // 替换A-Z列
+        for (char col = 'A'; col <= 'Z'; col++) {
+            calculatedExpression = calculatedExpression.replace(
+                    String.valueOf(col),
+                    getEditTextValue(String.valueOf(col))
+            );
+        }
+
+        // 替换AA-AZ列
+        for (char first = 'A'; first <= 'A'; first++) {
+            for (char second = 'A'; second <= 'Z'; second++) {
+                String colName = first + "" + second;
+                calculatedExpression = calculatedExpression.replace(
+                        colName,
+                        getEditTextValue(colName)
+                );
+            }
+        }
+
+        // 替换BA-BZ列
+        for (char second = 'A'; second <= 'Z'; second++) {
+            String colName = "B" + second;
+            calculatedExpression = calculatedExpression.replace(
+                    colName,
+                    getEditTextValue(colName)
+            );
+        }
+
+        // 替换CA-CV列
+        for (char second = 'A'; second <= 'V'; second++) {
+            String colName = "C" + second;
+            calculatedExpression = calculatedExpression.replace(
+                    colName,
+                    getEditTextValue(colName)
+            );
+        }
+
+        // 2. 计算表达式（简化版本，只处理基本运算）
+        try {
+            return evaluateSimpleExpression(calculatedExpression);
+        } catch (Exception e) {
+            return 0.0;
+        }
+    }
+
+    private String getEditTextValue(String columnName) {
+        EditText editText = getEditTextByColumn(columnName);
+        if (editText != null) {
+            String text = editText.getText().toString();
+            if (text != null && !text.trim().isEmpty()) {
+                try {
+                    // 确保是有效的数字
+                    Double.parseDouble(text.trim());
+                    return text.trim();
+                } catch (NumberFormatException e) {
+                    return "0";
+                }
+            }
+        }
+        return "0";
+    }
+
+    private double evaluateSimpleExpression(String expression) {
+        try {
+            // 使用ScriptEngine进行简单计算（Android不支持，需要替代方案）
+            // 这里使用简化版本，只支持加减乘除
+
+            // 移除所有空格
+            expression = expression.replaceAll("\\s+", "");
+
+            // 处理乘除法
+            expression = evaluateOperations(expression, "[*/]");
+
+            // 处理加减法
+            expression = evaluateOperations(expression, "[+-]");
+
+            return Double.parseDouble(expression);
+
+        } catch (Exception e) {
+            return 0.0;
+        }
+    }
+
+    private String evaluateOperations(String expression, String operators) {
+        // 简化的表达式计算（实际项目中建议使用第三方库如exp4j）
+        Pattern pattern = Pattern.compile("(-?\\d+\\.?\\d*)([" + operators + "])(-?\\d+\\.?\\d*)");
+        Matcher matcher = pattern.matcher(expression);
+
+        while (matcher.find()) {
+            double left = Double.parseDouble(matcher.group(1));
+            String operator = matcher.group(2);
+            double right = Double.parseDouble(matcher.group(3));
+
+            double result = 0;
+            switch (operator) {
+                case "+": result = left + right; break;
+                case "-": result = left - right; break;
+                case "*": result = left * right; break;
+                case "/": result = left / right; break;
+            }
+
+            expression = expression.replace(matcher.group(0), String.valueOf(result));
+            matcher = pattern.matcher(expression);
+        }
+
+        return expression;
+    }
+
+    private void setColumnValue(String columnName, double value) {
+        EditText editText = getEditTextByColumn(columnName);
+        if (editText != null) {
+            // 只更新，不触发文本变化监听
+            removeTextWatchers(editText);
+            editText.setText(String.format("%.2f", value));
+            addFormulaTextWatcher(editText);
+        }
+    }
+
+    private EditText getEditTextByColumn(String columnName) {
+        switch (columnName) {
+            case "A": return A;
+            case "B": return B;
+            case "C": return C;
+            case "D": return D;
+            case "E": return E;
+            case "F": return F;
+            case "G": return G;
+            case "H": return H;
+            case "I": return I;
+            case "J": return J;
+            case "K": return K;
+            case "L": return L;
+            case "M": return M;
+            case "N": return N;
+            case "O": return O;
+            case "P": return P;
+            case "Q": return Q;
+            case "R": return RR;
+            case "S": return S;
+            case "T": return T;
+            case "U": return U;
+            case "V": return V;
+            case "W": return W;
+            case "X": return X;
+            case "Y": return Y;
+            case "Z": return Z;
+            case "AA": return AA;
+            case "AB": return AB;
+            case "AC": return AC;
+            case "AD": return AD;
+            case "AE": return AE;
+            case "AF": return AF;
+            case "AG": return AG;
+            case "AH": return AH;
+            case "AI": return AI;
+            case "AJ": return AJ;
+            case "AK": return AK;
+            case "AL": return AL;
+            case "AM": return AM;
+            case "AN": return AN;
+            case "AO": return AO;
+            case "AP": return AP;
+            case "AQ": return AQ;
+            case "AR": return AR;
+            case "AS": return ASS;
+            case "AT": return AT;
+            case "AU": return AU;
+            case "AV": return AV;
+            case "AW": return AW;
+            case "AX": return AX;
+            case "AY": return AY;
+            case "AZ": return AZ;
+            case "BA": return BA;
+            case "BB": return BB;
+            case "BC": return BC;
+            case "BD": return BD;
+            case "BE": return BE;
+            case "BF": return BF;
+            case "BG": return BG;
+            case "BH": return BH;
+            case "BI": return BI;
+            case "BJ": return BJ;
+            case "BK": return BK;
+            case "BL": return BL;
+            case "BM": return BM;
+            case "BN": return BN;
+            case "BO": return BO;
+            case "BP": return BP;
+            case "BQ": return BQ;
+            case "BR": return BR;
+            case "BS": return BS;
+            case "BT": return BT;
+            case "BU": return BU;
+            case "BV": return BV;
+            case "BW": return BW;
+            case "BX": return BX;
+            case "BY": return BYY;
+            case "BZ": return BZ;
+            case "CA": return CA;
+            case "CB": return CB;
+            case "CC": return CC;
+            case "CD": return CD;
+            case "CE": return CE;
+            case "CF": return CF;
+            case "CG": return CG;
+            case "CH": return CH;
+            case "CI": return CI;
+            case "CJ": return CJ;
+            case "CK": return CK;
+            case "CL": return CL;
+            case "CM": return CM;
+            case "CN": return CN;
+            case "CO": return CO;
+            case "CP": return CP;
+            case "CQ": return CQ;
+            case "CR": return CR;
+            case "CS": return CS;
+            case "CT": return CT;
+            case "CU": return CU;
+            case "CV": return CV;
+            default: return null;
+        }
+    }
+
+    private void removeTextWatchers(EditText editText) {
+        // 移除所有TextWatcher
+        List<TextWatcher> watchers = getTextWatchers(editText);
+        for (TextWatcher watcher : watchers) {
+            editText.removeTextChangedListener(watcher);
+        }
+    }
+
+    // 辅助方法：获取EditText的所有TextWatcher
+    private List<TextWatcher> getTextWatchers(EditText editText) {
+        try {
+            Field field = TextView.class.getDeclaredField("mListeners");
+            field.setAccessible(true);
+            return (List<TextWatcher>) field.get(editText);
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
+    }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -2439,15 +2831,31 @@ public class GongZuoTaiChangeActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // 在这里执行你的方法
-        new Thread(() -> {
-            Message msg = new Message();
-            workbenchService.updateClearAll(workbench);
-        }).start();
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        // 在这里执行你的方法
+//        new Thread(() -> {
+//            Message msg = new Message();
+//            workbenchService.updateClearAll(workbench);
+//        }).start();
+//    }
+    ///--------0129
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+
+    // 清除Handler的callback
+    if (formulaHandler != null) {
+        formulaHandler.removeCallbacksAndMessages(null);
     }
+
+    // 在这里执行你的方法
+    new Thread(() -> {
+        Message msg = new Message();
+        workbenchService.updateClearAll(workbench);
+    }).start();
+}
 
     private void back() {
         setResult(RESULT_OK, new Intent());

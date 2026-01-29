@@ -29,6 +29,7 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.XiangQingYeActivity;
 import com.example.myapplication.entity.XiangQingYe;
+import com.example.myapplication.jxc.activity.KuCunJiYaActivity;
 import com.example.myapplication.jxc.activity.MingXiActivity;
 import com.example.myapplication.scheduling.entity.Department;
 import com.example.myapplication.scheduling.entity.OrderCheck;
@@ -38,8 +39,11 @@ import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -53,14 +57,15 @@ public class OrderCheckActivity extends AppCompatActivity {
     private EditText moudle_text;
     private EditText ks;
     private EditText js;
-
+    private String start_dateText;
+    private String stop_dateText;
     private ListView listView;
     private ListView listView_block;
     private HorizontalScrollView list_table;
     private SimpleAdapter adapter;
     private SimpleAdapter adapter_block;
     private Button sel_button;
-
+    private Button clear_button;
     List<OrderCheck> list;
 
     @Override
@@ -86,7 +91,8 @@ public class OrderCheckActivity extends AppCompatActivity {
         js = findViewById(R.id.js);
 
         sel_button = findViewById(R.id.sel_button);
-
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         initList();
         sel_button.setOnClickListener(selClick());
 
@@ -117,6 +123,31 @@ public class OrderCheckActivity extends AppCompatActivity {
 
     private void initList() {
         sel_button.setEnabled(false);
+        start_dateText = ks.getText().toString();
+        stop_dateText = js.getText().toString();
+        if(start_dateText.equals("")){
+            start_dateText = "1900-01-01";
+        }
+        if(stop_dateText.equals("")){
+            stop_dateText = "2100-12-31";
+        }
+
+        if (!start_dateText.isEmpty() && !stop_dateText.isEmpty()) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date startDate = sdf.parse(start_dateText);
+                Date endDate = sdf.parse(stop_dateText);
+
+                if (startDate.after(endDate)) {
+                    ToastUtil.show(OrderCheckActivity.this, "开始时间不能大于结束时间");
+                    return; // 验证不通过，直接返回，不执行查询
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+                ToastUtil.show(OrderCheckActivity.this, "日期格式错误，请使用yyyy-MM-dd格式");
+                return;
+            }
+        }
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -187,7 +218,18 @@ public class OrderCheckActivity extends AppCompatActivity {
             }
         };
     }
-
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                ks.setText("");
+                js.setText("");
+                order_number_text.setText("");
+                moudle_text.setText("");
+            }
+        };
+    }
     public void onInsertClick(View v) {
         if(!department.getAdd().equals("是")){
             ToastUtil.show(OrderCheckActivity.this, "无权限！");

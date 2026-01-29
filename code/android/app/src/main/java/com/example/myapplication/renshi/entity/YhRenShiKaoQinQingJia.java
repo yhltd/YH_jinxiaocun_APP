@@ -8,7 +8,7 @@ public class YhRenShiKaoQinQingJia {
     private String xingming;         // 姓名
     private String tijiaoshijian;    // 提交时间
     private String qsqingjiashijian; // 请假开始时间
-    private String jzqingjiashijian; // 请假结束时间
+    private String jzqingjiashijan; // 请假结束时间
     private String qingjiayuanyin;   // 请假原因
     private String zhuangtai;        // 状态：待审批/驳回/通过
     private String shenpiyuanyin;    // 审批原因
@@ -55,11 +55,11 @@ public class YhRenShiKaoQinQingJia {
     }
 
     public String getJzqingjiashijian() {
-        return jzqingjiashijian;
+        return jzqingjiashijan;
     }
 
-    public void setJzqingjiashijian(String jzqingjiashijian) {
-        this.jzqingjiashijian = jzqingjiashijian;
+    public void setJzqingjiashijian(String jzqingjiashijan) {
+        this.jzqingjiashijan = jzqingjiashijan;
     }
 
     public String getQingjiayuanyin() {

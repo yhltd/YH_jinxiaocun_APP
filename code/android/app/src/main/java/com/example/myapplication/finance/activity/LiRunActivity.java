@@ -44,6 +44,7 @@ import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -73,7 +74,7 @@ public class LiRunActivity extends AppCompatActivity {
     private String stop_dateText;
 
     private Button sel_button;
-
+    private Button clear_button;
     List<YhFinanceLiRun> list;
 
 
@@ -101,6 +102,8 @@ public class LiRunActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         showDateOnClick(start_date);
         showDateOnClick(stop_date);
         initList();
@@ -171,6 +174,18 @@ public class LiRunActivity extends AppCompatActivity {
         };
     }
 
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                stop_date.setText("");
+            }
+        };
+    }
+
+
     private void initList() {
         Log.d("INIT_LIST", "开始重新加载数据...");
         sel_button.setEnabled(false);
@@ -215,15 +230,21 @@ public class LiRunActivity extends AppCompatActivity {
             }
 
             // 验证结束日期不能小于开始日期（通过字符串比较，格式为yyyy/MM/dd）
-            if (start_dateText.compareTo(stop_dateText) > 0) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        ToastUtil.show(LiRunActivity.this, "结束日期不能早于开始日期！");
-                        sel_button.setEnabled(true);
+            if (!start_dateText.isEmpty() && !stop_dateText.isEmpty()) {
+                try {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                    Date startDate = sdf.parse(start_dateText);
+                    Date endDate = sdf.parse(stop_dateText);
+
+                    if (startDate.after(endDate)) {
+                        ToastUtil.show(LiRunActivity.this, "开始时间不能大于结束时间");
+                        return; // 验证不通过，直接返回，不执行查询
                     }
-                });
-                return;
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    ToastUtil.show(LiRunActivity.this, "日期格式错误，请使用yyyy/MM/dd格式");
+                    return;
+                }
             }
 
         } catch (Exception e) {

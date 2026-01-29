@@ -25,13 +25,15 @@ public class JiaoShiKeShiService {
 
         if (shujukuValue == 1) {
             // SQL Server 版本
-            String sql = "select student_name,teacher_name,course,sum(keshi) as keshi,Company from keshi_detail where teacher_name like '%' + ? + '%' and riqi >= ? and riqi <= ? and Company = ? group by student_name,teacher_name,course,Company";
+//            String sql = "select student_name,teacher_name,course,sum(keshi) as keshi,Company from keshi_detail where teacher_name like '%' + ? + '%' and riqi >= ? and riqi <= ? and Company = ? group by student_name,teacher_name,course,Company";
+            String sql = "select student_name,teacher_name,course,riqi,keshi,Company from keshi_detail where teacher_name like '%' + ? + '%' and riqi >= ? and riqi <= ? and Company = ? order by riqi desc";
             base1 = new JiaowuServerDao();
             List<JiaoShiKeShi> list = base1.query(JiaoShiKeShi.class, sql, teacher_name, start_date, stop_date, company);
             return list;
         } else {
             // MySQL 版本
-            String sql = "select student_name,teacher_name,course,sum(keshi) as keshi,Company from keshi_detail where teacher_name like '%' ? '%' and riqi >= ? and riqi <= ? and Company = ? group by student_name,teacher_name,course,Company";
+//            String sql = "select student_name,teacher_name,course,sum(keshi) as keshi,Company from keshi_detail where teacher_name like '%' ? '%' and riqi >= ? and riqi <= ? and Company = ? group by student_name,teacher_name,course,Company";
+            String sql = "select student_name,teacher_name,course,riqi,keshi,Company from keshi_detail where teacher_name like '%' ? '%' and riqi >= ? and riqi <= ? and Company = ? order by riqi desc";
             base = new JiaowuBaseDao();
             List<JiaoShiKeShi> list = base.query(JiaoShiKeShi.class, sql, teacher_name, start_date, stop_date, company);
             return list;

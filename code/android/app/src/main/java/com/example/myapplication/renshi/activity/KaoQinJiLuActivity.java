@@ -85,6 +85,8 @@ public class KaoQinJiLuActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+        Button clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         //初始化控件
         listView = findViewById(R.id.kaoqinjilu_list);
 
@@ -105,7 +107,15 @@ public class KaoQinJiLuActivity extends AppCompatActivity {
             }
         };
     }
-
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start_date.setText("");
+                stop_date.setText("");
+            }
+        };
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

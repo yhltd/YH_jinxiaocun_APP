@@ -25,7 +25,6 @@ import android.widget.NumberPicker;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -36,6 +35,7 @@ import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.XiangQingYeActivity;
 import com.example.myapplication.entity.XiangQingYe;
+import com.example.myapplication.finance.activity.XianJinLiuLiangActivity;
 import com.example.myapplication.jxc.entity.YhJinXiaoCun;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunMingXi;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
@@ -47,8 +47,11 @@ import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -76,45 +79,80 @@ public class KuCunJiYaActivity extends AppCompatActivity {
     private SimpleAdapter adapter_block;
     private Button sel_button;
     private Button export_button;
-
+    private Button clear_button;
     List<YhJinXiaoCun> list;
 
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.kucunjiya);
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.kucunjiya);
+//
+//        ActionBar actionBar = getSupportActionBar();
+//        if (actionBar != null) {
+//            actionBar.setHomeButtonEnabled(true);
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//        }
+//
+//        cangku_text = findViewById(R.id.cangku_text);
+//        listView = findViewById(R.id.jinxiaocun_list);
+//        listView_block = findViewById(R.id.list_block);
+//        list_table = findViewById(R.id.list_table);
+//        sel_button = findViewById(R.id.sel_button);
+//        export_button=findViewById(R.id.export);
+//        ks = findViewById(R.id.ks);
+//        js = findViewById(R.id.js);
+//
+//        MyApplication myApplication = (MyApplication) getApplication();
+//        yhJinXiaoCunUser = myApplication.getYhJinXiaoCunUser();
+//
+//        initList();
+//        sel_button.setOnClickListener(selClick());
+//        export_button.setOnClickListener(exportClick());
+//
+//        sel_button.requestFocus();
+//        clear_button = findViewById(R.id.clear_button);
+//        clear_button.setOnClickListener(clearClick());
+//        showDateOnClick(ks);
+//        showDateOnClick(js);
+//
+//
+//    }
+@Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+    // 删除强制登录检查，只获取用户对象但不强制跳转
+    MyApplication myApplication = (MyApplication) getApplication();
+    yhJinXiaoCunUser = myApplication.getYhJinXiaoCunUser();
 
-        cangku_text = findViewById(R.id.cangku_text);
-        listView = findViewById(R.id.jinxiaocun_list);
-        listView_block = findViewById(R.id.list_block);
-        list_table = findViewById(R.id.list_table);
-        sel_button = findViewById(R.id.sel_button);
-        export_button=findViewById(R.id.export);
-        ks = findViewById(R.id.ks);
-        js = findViewById(R.id.js);
+    setContentView(R.layout.kucunjiya);
 
-        MyApplication myApplication = (MyApplication) getApplication();
-        yhJinXiaoCunUser = myApplication.getYhJinXiaoCunUser();
-
-        initList();
-        sel_button.setOnClickListener(selClick());
-        export_button.setOnClickListener(exportClick());
-
-        sel_button.requestFocus();
-
-        showDateOnClick(ks);
-        showDateOnClick(js);
-
-
+    ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
+    cangku_text = findViewById(R.id.cangku_text);
+    listView = findViewById(R.id.jinxiaocun_list);
+    listView_block = findViewById(R.id.list_block);
+    list_table = findViewById(R.id.list_table);
+    sel_button = findViewById(R.id.sel_button);
+    export_button = findViewById(R.id.export_button);
+    ks = findViewById(R.id.ks);
+    js = findViewById(R.id.js);
+
+    initList();
+    sel_button.setOnClickListener(selClick());
+    export_button.setOnClickListener(exportClick());
+
+    sel_button.requestFocus();
+    clear_button = findViewById(R.id.clear_button);
+    clear_button.setOnClickListener(clearClick());
+    showDateOnClick(ks);
+    showDateOnClick(js);
+}
     @SuppressLint("WrongConstant")
     public void switchClick(View v) {
         if(listView_block.getVisibility() == 0){
@@ -185,7 +223,22 @@ public class KuCunJiYaActivity extends AppCompatActivity {
             stop_dateText = "2100/12/31";
         }
 
+        if (!start_dateText.isEmpty() && !stop_dateText.isEmpty()) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                Date startDate = sdf.parse(start_dateText);
+                Date endDate = sdf.parse(stop_dateText);
 
+                if (startDate.after(endDate)) {
+                    ToastUtil.show(KuCunJiYaActivity.this, "开始时间不能大于结束时间");
+                    return; // 验证不通过，直接返回，不执行查询
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+                ToastUtil.show(KuCunJiYaActivity.this, "日期格式错误，请使用yyyy/MM/dd格式");
+                return;
+            }
+        }
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -394,7 +447,16 @@ public class KuCunJiYaActivity extends AppCompatActivity {
         };
     }
 
-
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                ks.setText("");
+                js.setText("");
+            }
+        };
+    }
 
 
     public View.OnClickListener exportClick() {

@@ -93,7 +93,8 @@ public class BaoPanActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
-
+        Button clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         MyApplication myApplication = (MyApplication) getApplication();
         yhRenShiUser = myApplication.getYhRenShiUser();
 
@@ -117,7 +118,15 @@ public class BaoPanActivity extends AppCompatActivity {
             }
         };
     }
-
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start_date.setText("");
+                stop_date.setText("");
+            }
+        };
+    }
     @SuppressLint("WrongConstant")
     public void switchClick(View v) {
         if(listView_block.getVisibility() == 0){

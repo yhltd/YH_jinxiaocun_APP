@@ -111,4 +111,12 @@ public class YhMendianProductshezhiService {
         base = new MendianDao();
         return base.execute(sql, id);
     }
+
+
+    public List<YhMendianProductshezhi> getActiveList(String produce_name, String type, String company) {
+        String sql = "select * from product where company = ? and (tingyong != '是' or tingyong is null or tingyong = '') and product_name like '%' ? '%' and type like '%' ? '%' ";
+        base = new MendianDao();
+        List<YhMendianProductshezhi> list = base.query(YhMendianProductshezhi.class, sql, company, produce_name, type);
+        return list;
+    }
 }

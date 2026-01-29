@@ -70,7 +70,7 @@ public class GongSiChartActivity extends AppCompatActivity {
     private Spinner class_select;
     private Button sel_button;
     private EChartView barChart;
-
+    private Button clear_button;
     private String start_dateText;
     private String stop_dateText;
     private String class_selectText;
@@ -100,7 +100,8 @@ public class GongSiChartActivity extends AppCompatActivity {
         class_select = findViewById(R.id.class_select);
         barChart = findViewById(R.id.barChart);
         sel_button = findViewById(R.id.sel_button);
-
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         String[] class_selectArray = getResources().getStringArray(R.array.column_list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, class_selectArray);
         class_select.setAdapter(adapter);
@@ -254,6 +255,17 @@ public class GongSiChartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mHandler.post(mRunnable);
+            }
+        };
+    }
+
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                stop_date.setText("");
             }
         };
     }

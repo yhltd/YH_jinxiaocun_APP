@@ -70,6 +70,14 @@
             android:background="@null"
             android:textSize="17dp"
             android:textColor="@color/blue"/>
+        <Button
+            android:id="@+id/clear_button"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:text="清除"
+            android:background="@null"
+            android:textSize="17dp"
+            android:textColor="@color/blue" />
     </LinearLayout>
 
     <HorizontalScrollView

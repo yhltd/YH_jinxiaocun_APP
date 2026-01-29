@@ -84,6 +84,28 @@ public class OrderInsActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+        // 添加非会员结算按钮---0129
+        Button nonMemberBtn = findViewById(R.id.non_member_btn);
+        if (nonMemberBtn == null) {
+            // 如果没有这个按钮，需要在布局中添加
+            // 或者动态创建一个按钮
+            nonMemberBtn = new Button(this);
+            nonMemberBtn.setText("非会员结算");
+            nonMemberBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    processNonMemberOrder();
+                }
+            });
+            // 添加到布局中...
+        } else {
+            nonMemberBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    processNonMemberOrder();
+                }
+            });
+        }//----------0129
         initList();
     }
 
@@ -157,7 +179,113 @@ public class OrderInsActivity extends AppCompatActivity {
         }).start();
     }
 
+    // 非会员结算方法------0129
+    private void processNonMemberOrder() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(OrderInsActivity.this);
 
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            MyApplication myApplication = (MyApplication) getApplication();
+                            order_detail_list = myApplication.getOrderDetails();
+                            yhMendianOrders = new YhMendianOrders();
+
+                            // 设置日期
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                            String format = sdf.format(new Date());
+                            yhMendianOrders.setRiqi(format);
+
+                            // 设置订单号
+                            yhMendianOrders.setDdh(order_detail_list.get(0).getDdid());
+
+                            // 非会员结算 - 会员信息留空
+                            yhMendianOrders.setHyzh("");        // 会员号为空
+                            yhMendianOrders.setHyxm("");        // 会员姓名为空
+                            yhMendianOrders.setYhfa("");        // 优惠方案为空
+
+                            // 设置其他信息
+                            yhMendianOrders.setSyy(yhMendianUser.getUname());
+                            yhMendianOrders.setCompany(yhMendianUser.getCompany());
+
+                            // 计算金额（需要根据实际情况实现）
+                            double totalAmount = calculateTotalAmount(order_detail_list);
+                            yhMendianOrders.setXfje(String.valueOf(totalAmount));   // 消费金额
+                            yhMendianOrders.setSsje(String.valueOf(totalAmount));   // 实收金额（非会员无优惠）
+                            yhMendianOrders.setYhje("0");                          // 优惠金额为0
+
+                            // 保存订单
+                            boolean orderResult = yhMendianOrdersService.insertByOrders(yhMendianOrders);
+
+                            // 保存订单详情
+                            if (orderResult && order_detail_list != null) {
+                                for (int i = 0; i < order_detail_list.size(); i++) {
+                                    YhMendianOrderDetail detail = order_detail_list.get(i);
+                                    detail.setCompany(yhMendianUser.getCompany());
+                                    detail.setDdid(yhMendianOrders.getDdh());
+                                    yhMendianOrdersDetailsService.insert(detail);
+                                }
+                            }
+
+                            // 回到主线程显示结果
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (orderResult) {
+                                        ToastUtil.show(OrderInsActivity.this, "非会员结算成功");
+                                        back();
+                                    } else {
+                                        ToastUtil.show(OrderInsActivity.this, "结算失败");
+                                    }
+                                }
+                            });
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ToastUtil.show(OrderInsActivity.this, "结算出错: " + e.getMessage());
+                                }
+                            });
+                        }
+                    }
+                }).start();
+            }
+        });
+
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.setMessage("确定进行非会员结算？");
+        builder.setTitle("提示");
+        builder.show();
+    }
+    //-----------0129
+//----------0129
+    // 计算总金额的方法
+    private double calculateTotalAmount(List<YhMendianOrderDetail> orderList) {
+        double total = 0.0;
+        if (orderList != null) {
+            for (YhMendianOrderDetail detail : orderList) {
+                try {
+                    double price = Double.parseDouble(detail.getDj());
+                    double quantity = Double.parseDouble(detail.getGs());
+                    total += price * quantity;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return total;
+    }
     public View.OnClickListener updateClick() {
         return new View.OnClickListener() {
             @Override

@@ -66,6 +66,7 @@ public class JiaoShiKeShiActivity extends AppCompatActivity {
     private String teacher_nameText;
     private Button sel_button;
     private Button export_button;
+    private Button clear_button;
     List<JiaoShiKeShi> list;
 
     @Override
@@ -94,7 +95,8 @@ public class JiaoShiKeShiActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
-
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         export_button = findViewById(R.id.export_button);
         export_button.setOnClickListener(exportClick());
 
@@ -108,6 +110,18 @@ public class JiaoShiKeShiActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 initList();
+            }
+        };
+    }
+
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                stop_date.setText("");
+                teacher_name.setText("");
             }
         };
     }
@@ -135,7 +149,6 @@ public class JiaoShiKeShiActivity extends AppCompatActivity {
 
 
     private void initList() {
-
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();
         teacher_nameText = teacher_name.getText().toString();
@@ -160,7 +173,7 @@ public class JiaoShiKeShiActivity extends AppCompatActivity {
                 return true;
             }
         });
-
+//----------0129
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -172,6 +185,7 @@ public class JiaoShiKeShiActivity extends AppCompatActivity {
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
+                        item.put("riqi", list.get(i).getRiqi());  // 新增：日期
                         item.put("teacher_name", list.get(i).getTeacher_name());
                         item.put("course", list.get(i).getCourse());
                         item.put("student_name", list.get(i).getStudent_name());
@@ -182,7 +196,8 @@ public class JiaoShiKeShiActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                adapter = new SimpleAdapter(JiaoShiKeShiActivity.this, data, R.layout.jiaowu_jiaoshikeshitongji_row, new String[]{"teacher_name","course","student_name","keshi"}, new int[]{R.id.teacher_name, R.id.course, R.id.student_name, R.id.keshi}) {
+                // 修改：添加 "riqi" 到字段列表中
+                adapter = new SimpleAdapter(JiaoShiKeShiActivity.this, data, R.layout.jiaowu_jiaoshikeshitongji_row, new String[]{"riqi","teacher_name","course","student_name","keshi"}, new int[]{R.id.riqi, R.id.teacher_name, R.id.course, R.id.student_name, R.id.keshi}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -192,7 +207,8 @@ public class JiaoShiKeShiActivity extends AppCompatActivity {
                     }
                 };
 
-                adapter_block = new SimpleAdapter(JiaoShiKeShiActivity.this, data, R.layout.jiaowu_jiaoshikeshitongji_row_block, new String[]{"teacher_name","course","student_name","keshi"}, new int[]{R.id.teacher_name, R.id.course, R.id.student_name, R.id.keshi}) {
+                // 修改：添加 "riqi" 到字段列表中
+                adapter_block = new SimpleAdapter(JiaoShiKeShiActivity.this, data, R.layout.jiaowu_jiaoshikeshitongji_row_block, new String[]{"riqi","teacher_name","course","student_name","keshi"}, new int[]{R.id.riqi, R.id.teacher_name, R.id.course, R.id.student_name, R.id.keshi}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -205,7 +221,6 @@ public class JiaoShiKeShiActivity extends AppCompatActivity {
                 Message msg = new Message();
                 msg.obj = adapter;
                 listLoadHandler.sendMessage(msg);
-
             }
         }).start();
     }

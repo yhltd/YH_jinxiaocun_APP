@@ -94,6 +94,8 @@ public class GongZiTiaoActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+        Button clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
 
         MyApplication myApplication = (MyApplication) getApplication();
         yhRenShiUser = myApplication.getYhRenShiUser();
@@ -108,7 +110,14 @@ public class GongZiTiaoActivity extends AppCompatActivity {
             }
         };
     }
-
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                this_date.setText("");
+            }
+        };
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

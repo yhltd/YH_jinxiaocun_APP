@@ -52,6 +52,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -68,6 +69,8 @@ public class DiaoBoTongJiActivity extends AppCompatActivity {
 
     private EditText ks;
     private EditText js;
+    private String start_dateText;
+    private String stop_dateText;
     //    private EditText ye;
 //    private EditText yea;
     private ListView listView;
@@ -79,47 +82,154 @@ public class DiaoBoTongJiActivity extends AppCompatActivity {
 
     private Button sel_button;
     private Button export_button;
+    private Button clear_button;
     //    private Button up_button;
 //    private Button down_button;
     List<YhJinXiaoCunMingXi> list;
 
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.diaobotongji);
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.diaobotongji);
+//
+//        ActionBar actionBar = getSupportActionBar();
+//        if (actionBar != null) {
+//            actionBar.setHomeButtonEnabled(true);
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//        }
+//
+//        listView = findViewById(R.id.mingxi_list);
+//        listView_block = findViewById(R.id.list_block);
+//        list_table = findViewById(R.id.list_table);
+//        sel_button = findViewById(R.id.sel_button);
+//        clear_button = findViewById(R.id.clear_button);
+////        up_button = findViewById(R.id.up_button);
+////        down_button=findViewById(R.id.down_button);
+//        export_button = findViewById(R.id.export);
+//        ks = findViewById(R.id.ks);
+//        js = findViewById(R.id.js);
+////        ye = findViewById(R.id.ye);
+////        yea=findViewById(R.id.yea);
+//        MyApplication myApplication = (MyApplication) getApplication();
+//        yhJinXiaoCunUser = myApplication.getYhJinXiaoCunUser();
+//
+//
+//        sel_button.setOnClickListener(selClick());
+//        export_button.setOnClickListener(exportClick());
+//        clear_button.setOnClickListener(clearClick());
+////        up_button.setOnClickListener(upClick());
+////        down_button.setOnClickListener(downClick());
+//        showDateOnClick(ks);
+//        showDateOnClick(js);
+//        initList();
+//
+//    }
+@Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.diaobotongji);
 
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+    Log.e("DEBUG", "=== DiaoBoTongJiActivity启动 ===");
 
-        listView = findViewById(R.id.mingxi_list);
-        listView_block = findViewById(R.id.list_block);
-        list_table = findViewById(R.id.list_table);
-        sel_button = findViewById(R.id.sel_button);
-//        up_button = findViewById(R.id.up_button);
-//        down_button=findViewById(R.id.down_button);
-        export_button = findViewById(R.id.export_button);
-        ks = findViewById(R.id.ks);
-        js = findViewById(R.id.js);
-//        ye = findViewById(R.id.ye);
-//        yea=findViewById(R.id.yea);
-        MyApplication myApplication = (MyApplication) getApplication();
-        yhJinXiaoCunUser = myApplication.getYhJinXiaoCunUser();
-
-        initList();
-        sel_button.setOnClickListener(selClick());
-        export_button.setOnClickListener(exportClick());
-//        up_button.setOnClickListener(upClick());
-//        down_button.setOnClickListener(downClick());
-        showDateOnClick(ks);
-        showDateOnClick(js);
-
-
+    // 1. 初始化ActionBar
+    ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
+    // 2. 初始化控件（添加日志）
+    listView = findViewById(R.id.mingxi_list);
+    Log.e("DEBUG", "listView: " + (listView != null ? "找到" : "未找到"));
+
+    listView_block = findViewById(R.id.list_block);
+    Log.e("DEBUG", "listView_block: " + (listView_block != null ? "找到" : "未找到"));
+
+    list_table = findViewById(R.id.list_table);
+    Log.e("DEBUG", "list_table: " + (list_table != null ? "找到" : "未找到"));
+
+    // 重点：sel_button
+    View selButtonView = findViewById(R.id.sel_button);
+    Log.e("DEBUG", "sel_button View: " + selButtonView);
+    if (selButtonView instanceof Button) {
+        sel_button = (Button) selButtonView;
+        Log.e("DEBUG", "sel_button 是Button类型");
+    } else if (selButtonView != null) {
+        Log.e("DEBUG", "sel_button 是 " + selButtonView.getClass().getSimpleName() + " 类型，不是Button");
+        // 如果不是Button，尝试转换为Button或创建新的
+        sel_button = new Button(this);
+        sel_button.setId(R.id.sel_button);
+    } else {
+        Log.e("DEBUG", "严重错误：sel_button 未找到！");
+        // 创建临时按钮避免崩溃
+        sel_button = new Button(this);
+        sel_button.setId(R.id.sel_button);
+        sel_button.setText("查询");
+    }
+
+    clear_button = findViewById(R.id.clear_button);
+    Log.e("DEBUG", "clear_button: " + (clear_button != null ? "找到" : "未找到"));
+
+    export_button = findViewById(R.id.export);
+    Log.e("DEBUG", "export_button: " + (export_button != null ? "找到" : "未找到"));
+
+    ks = findViewById(R.id.ks);
+    Log.e("DEBUG", "ks: " + (ks != null ? "找到" : "未找到"));
+
+    js = findViewById(R.id.js);
+    Log.e("DEBUG", "js: " + (js != null ? "找到" : "未找到"));
+
+    // 3. 初始化应用数据
+    MyApplication myApplication = (MyApplication) getApplication();
+    yhJinXiaoCunUser = myApplication.getYhJinXiaoCunUser();
+
+    // 4. 设置监听器（使用匿名内部类，避免方法调用问题）
+    if (sel_button != null) {
+        sel_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("DEBUG", "查询按钮被点击");
+                initList();
+            }
+        });
+        Log.e("DEBUG", "sel_button 点击监听器设置成功");
+    } else {
+        Log.e("ERROR", "sel_button 为null，无法设置点击监听器");
+    }
+
+    if (clear_button != null) {
+        clear_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ks != null) ks.setText("");
+                if (js != null) js.setText("");
+            }
+        });
+    }
+
+    if (export_button != null) {
+        export_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 导出逻辑稍后添加
+                Toast.makeText(DiaoBoTongJiActivity.this, "导出功能", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    // 5. 设置日期选择
+    if (ks != null) showDateOnClick(ks);
+    if (js != null) showDateOnClick(js);
+
+    // 6. 延迟初始化列表（避免立即加载数据）
+    new Handler().postDelayed(new Runnable() {
+        @Override
+        public void run() {
+            initList();
+        }
+    }, 500); // 延迟500毫秒
+}
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -178,6 +288,31 @@ public class DiaoBoTongJiActivity extends AppCompatActivity {
 
     private void initList() {
         sel_button.setEnabled(false);
+        start_dateText = ks.getText().toString();
+        stop_dateText = js.getText().toString();
+        if(start_dateText.equals("")){
+            start_dateText = "1900-01-01";
+        }
+        if(stop_dateText.equals("")){
+            stop_dateText = "2100-12-31";
+        }
+
+        if (!start_dateText.isEmpty() && !stop_dateText.isEmpty()) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date startDate = sdf.parse(start_dateText);
+                Date endDate = sdf.parse(stop_dateText);
+
+                if (startDate.after(endDate)) {
+                    ToastUtil.show(DiaoBoTongJiActivity.this, "开始时间不能大于结束时间");
+                    return; // 验证不通过，直接返回，不执行查询
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+                ToastUtil.show(DiaoBoTongJiActivity.this, "日期格式错误，请使用yyyy-MM-dd格式");
+                return;
+            }
+        }
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -270,6 +405,16 @@ public class DiaoBoTongJiActivity extends AppCompatActivity {
             }
         };
     }
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                ks.setText("");
+                js.setText("");
+            }
+        };
+    }
     //    public View.OnClickListener downClick() {
 //        return new View.OnClickListener() {
 //            @Override
@@ -293,6 +438,8 @@ public class DiaoBoTongJiActivity extends AppCompatActivity {
 //            }
 //        };
 //    }
+
+
     public View.OnClickListener exportClick() {
         return new View.OnClickListener() {
             @Override
@@ -446,44 +593,115 @@ public class DiaoBoTongJiActivity extends AppCompatActivity {
         };
     }
 
-    public void onOrderScanClick(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        MyApplication myApplication = (MyApplication) getApplication();
-        List<YhJinXiaoCunMingXi> mingxi_list = new ArrayList<>();
-        for(int i=0; i<list.size(); i++){
-            YhJinXiaoCunMingXi this_mingxi = new YhJinXiaoCunMingXi();
-            this_mingxi.setSpDm(list.get(i).getOrderid());
-            this_mingxi.setCpname(list.get(i).getShijian());
-            mingxi_list.add(this_mingxi);
-        }
-        if(mingxi_list.size()>0){
-            myApplication.setMingxiList(mingxi_list);
-            intent.putExtra("type", "qrcode");
-            intent.putExtra("title1", "订单号：");
-            intent.putExtra("title2", "时间：");
-            startActivityForResult(intent, REQUEST_CODE_SCAN);
-        }
+//    public void onOrderScanClick(View view) {
+//        Intent intent = new Intent(this, MainActivity.class);
+//        MyApplication myApplication = (MyApplication) getApplication();
+//        List<YhJinXiaoCunMingXi> mingxi_list = new ArrayList<>();
+//        for(int i=0; i<list.size(); i++){
+//            YhJinXiaoCunMingXi this_mingxi = new YhJinXiaoCunMingXi();
+//            this_mingxi.setSpDm(list.get(i).getOrderid());
+//            this_mingxi.setCpname(list.get(i).getShijian());
+//            mingxi_list.add(this_mingxi);
+//        }
+//        if(mingxi_list.size()>0){
+//            myApplication.setMingxiList(mingxi_list);
+//            intent.putExtra("type", "qrcode");
+//            intent.putExtra("title1", "订单号：");
+//            intent.putExtra("title2", "时间：");
+//            startActivityForResult(intent, REQUEST_CODE_SCAN);
+//        }
+//    }
+public void onOrderScanClick(View view) {
+    // 检查用户是否已登录
+    if (yhJinXiaoCunUser == null) {
+        ToastUtil.show(DiaoBoTongJiActivity.this, "用户未登录，请重新登录");
+        // 跳转到登录页面
+        startActivity(new Intent(this, com.example.myapplication.LoginActivity.class));
+        finish();
+        return;
     }
+
+    // 检查数据是否为空
+    if (list == null || list.isEmpty()) {
+        ToastUtil.show(DiaoBoTongJiActivity.this, "没有可扫描的数据");
+        return;
+    }
+
+    Intent intent = new Intent(this, MainActivity.class);
+    MyApplication myApplication = (MyApplication) getApplication();
+    List<YhJinXiaoCunMingXi> mingxi_list = new ArrayList<>();
+
+    for(int i=0; i<list.size(); i++){
+        YhJinXiaoCunMingXi this_mingxi = new YhJinXiaoCunMingXi();
+        // 这里根据实际情况设置正确的字段
+        this_mingxi.setSpDm(list.get(i).getSpDm());  // 改为商品代码
+        this_mingxi.setCpname(list.get(i).getCpname());  // 改为商品名称
+        this_mingxi.setOrderid(list.get(i).getOrderid());  // 添加订单号
+        this_mingxi.setShijian(list.get(i).getShijian());  // 添加时间
+        mingxi_list.add(this_mingxi);
+    }
+
+    myApplication.setMingxiList(mingxi_list);
+    intent.putExtra("type", "qrcode");
+    intent.putExtra("title1", "订单号：");
+    intent.putExtra("title2", "时间：");
+    startActivityForResult(intent, REQUEST_CODE_SCAN);
+}
+//    public void onOrderScanClick2(View view) {
+//        Intent intent = new Intent(this, MainActivity.class);
+//        MyApplication myApplication = (MyApplication) getApplication();
+//        List<YhJinXiaoCunMingXi> mingxi_list = new ArrayList<>();
+//        for(int i=0; i<list.size(); i++){
+//            YhJinXiaoCunMingXi this_mingxi = new YhJinXiaoCunMingXi();
+//            this_mingxi.setSpDm(list.get(i).getOrderid());
+//            this_mingxi.setCpname(list.get(i).getShijian());
+//            mingxi_list.add(this_mingxi);
+//        }
+//        if(mingxi_list.size()>0){
+//            myApplication.setMingxiList(mingxi_list);
+//            intent.putExtra("type", "barcode");
+//            intent.putExtra("title1", "订单号：");
+//            intent.putExtra("title2", "时间：");
+//            startActivityForResult(intent, REQUEST_CODE_SCAN);
+//        }
+//    }
 
     public void onOrderScanClick2(View view) {
+        // 检查用户是否已登录
+        if (yhJinXiaoCunUser == null) {
+            ToastUtil.show(DiaoBoTongJiActivity.this, "用户未登录，请重新登录");
+            // 跳转到登录页面
+            startActivity(new Intent(this, com.example.myapplication.LoginActivity.class));
+            finish();
+            return;
+        }
+
+        // 检查数据是否为空
+        if (list == null || list.isEmpty()) {
+            ToastUtil.show(DiaoBoTongJiActivity.this, "没有可扫描的数据");
+            return;
+        }
+
         Intent intent = new Intent(this, MainActivity.class);
         MyApplication myApplication = (MyApplication) getApplication();
         List<YhJinXiaoCunMingXi> mingxi_list = new ArrayList<>();
+
         for(int i=0; i<list.size(); i++){
             YhJinXiaoCunMingXi this_mingxi = new YhJinXiaoCunMingXi();
-            this_mingxi.setSpDm(list.get(i).getOrderid());
-            this_mingxi.setCpname(list.get(i).getShijian());
+            // 这里根据实际情况设置正确的字段
+            this_mingxi.setSpDm(list.get(i).getSpDm());  // 改为商品代码
+            this_mingxi.setCpname(list.get(i).getCpname());  // 改为商品名称
+            this_mingxi.setOrderid(list.get(i).getOrderid());  // 添加订单号
+            this_mingxi.setShijian(list.get(i).getShijian());  // 添加时间
             mingxi_list.add(this_mingxi);
         }
-        if(mingxi_list.size()>0){
-            myApplication.setMingxiList(mingxi_list);
-            intent.putExtra("type", "barcode");
-            intent.putExtra("title1", "订单号：");
-            intent.putExtra("title2", "时间：");
-            startActivityForResult(intent, REQUEST_CODE_SCAN);
-        }
-    }
 
+        myApplication.setMingxiList(mingxi_list);
+        intent.putExtra("type", "barcode");
+        intent.putExtra("title1", "订单号：");
+        intent.putExtra("title2", "时间：");
+        startActivityForResult(intent, REQUEST_CODE_SCAN);
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

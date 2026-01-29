@@ -26,6 +26,7 @@ import com.example.myapplication.jxc.entity.YhJinXiaoCunMingXi;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
 import com.example.myapplication.jxc.service.YhJinXiaoCunMingXiService;
 import com.example.myapplication.utils.LoadingDialog;
+import com.example.myapplication.utils.ToastUtil;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -74,6 +75,7 @@ public class XiaoShouTuiHuoTongJiActivity extends AppCompatActivity {
     private String start_dateText;
     private String end_dateText;
     private Button sel_button;
+    private Button clear_button;
     private LineChart lineChart;  // 改为LineChart
     private BarChart barChart;  // 改为BarChart
     private PieChart pieChart;
@@ -112,6 +114,8 @@ public class XiaoShouTuiHuoTongJiActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         // 初始化控件后添加以下代码
         jiejin_sum = findViewById(R.id.jiejin_sum);
         daijin_sum = findViewById(R.id.daijin_sum);
@@ -385,7 +389,22 @@ public class XiaoShouTuiHuoTongJiActivity extends AppCompatActivity {
         if (end_dateText.equals("")) {
             end_dateText = formatter.format(date) + "-12-31";
         }
+        if (!start_dateText.isEmpty() && !end_dateText.isEmpty()) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date startDate = sdf.parse(start_dateText);
+                Date endDate = sdf.parse(end_dateText);
 
+                if (startDate.after(endDate)) {
+                    ToastUtil.show(XiaoShouTuiHuoTongJiActivity.this, "开始时间不能大于结束时间");
+                    return; // 验证不通过，直接返回，不执行查询
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+                ToastUtil.show(XiaoShouTuiHuoTongJiActivity.this, "日期格式错误，请使用yyyy-MM-dd格式");
+                return;
+            }
+        }
         Log.d("DateRange", "查询日期范围: " + start_dateText + " 到 " + end_dateText);
 
         Handler listLoadHandler = new Handler(new Handler.Callback() {
@@ -881,6 +900,16 @@ public class XiaoShouTuiHuoTongJiActivity extends AppCompatActivity {
 
         // 返回排序后的TreeMap
         return sortedMap;
+    }
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                end_date.setText("");
+            }
+        };
     }
 
     // 设置折线图数据

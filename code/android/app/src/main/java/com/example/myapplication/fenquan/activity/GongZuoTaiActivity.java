@@ -37,12 +37,15 @@ import com.example.myapplication.fenquan.entity.Renyuan;
 import com.example.myapplication.fenquan.entity.Workbench;
 import com.example.myapplication.fenquan.service.Copy1Service;
 import com.example.myapplication.fenquan.service.WorkbenchService;
+import com.example.myapplication.finance.activity.GongZiMingXiActivity;
+import com.example.myapplication.jxc.activity.DiaoBoTongJiActivity;
 import com.example.myapplication.utils.ExcelUtil;
 import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -66,7 +69,7 @@ public class GongZuoTaiActivity extends AppCompatActivity {
 
     private Button sel_button;
     private Button export_button;
-
+    private Button clear_button;
     private String start_dateText;
     private String stop_dateText;
 
@@ -96,7 +99,8 @@ public class GongZuoTaiActivity extends AppCompatActivity {
 
         sel_button = findViewById(R.id.sel_button);
         export_button = findViewById(R.id.export_button);
-
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         MyApplication myApplication = (MyApplication) getApplication();
         renyuan = myApplication.getRenyuan();
 
@@ -137,9 +141,21 @@ public class GongZuoTaiActivity extends AppCompatActivity {
             stop_dateText = "2100-12-31";
         }
 
-        if(start_dateText.compareTo(stop_dateText) > 0){
-            ToastUtil.show(GongZuoTaiActivity.this, "开始日期不能晚于结束日期");
-            return;
+        if (!start_dateText.isEmpty() && !stop_dateText.isEmpty()) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date startDate = sdf.parse(start_dateText);
+                Date endDate = sdf.parse(stop_dateText);
+
+                if (startDate.after(endDate)) {
+                    ToastUtil.show(GongZuoTaiActivity.this, "开始时间不能大于结束时间");
+                    return; // 验证不通过，直接返回，不执行查询
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+                ToastUtil.show(GongZuoTaiActivity.this, "日期格式错误，请使用yyyy-MM-dd格式");
+                return;
+            }
         }
 
         sel_button.setEnabled(false);
@@ -318,7 +334,16 @@ public class GongZuoTaiActivity extends AppCompatActivity {
             }
         };
     }
-
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                stop_date.setText("");
+            }
+        };
+    }
     public View.OnClickListener updateClick() {
         return new View.OnClickListener() {
             @Override
@@ -481,16 +506,55 @@ public class GongZuoTaiActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_CHANG) {
-            if (resultCode == RESULT_OK) {
-                initList();
-            }
-        }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == REQUEST_CODE_CHANG) {
+//            if (resultCode == RESULT_OK) {
+//                initList();
+//            }
+//        }
+//    }
+//----0129
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == REQUEST_CODE_CHANG && resultCode == RESULT_OK) {
+        // 方法1：直接强制刷新
+        forceRefreshList();
     }
+}
 
+    private void forceRefreshList() {
+        // 清空适配器
+        adapter = null;
+        adapter_block = null;
+        listView.setAdapter(null);
+        listView_block.setAdapter(null);
+
+        // 重新查询数据
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // 查询最新数据
+                final List<Workbench> newList = workbenchService.queryList(
+                        renyuan.getB(),
+                        start_date.getText().toString().isEmpty() ? "1900-01-01" : start_date.getText().toString(),
+                        stop_date.getText().toString().isEmpty() ? "2100-12-31" : stop_date.getText().toString()
+                );
+
+                // 在主线程更新UI
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        list = newList;
+                        initList(); // 重新调用 initList() 重建适配器
+                        ToastUtil.show(GongZuoTaiActivity.this, "数据已更新");
+                    }
+                });
+            }
+        }).start();
+    }
     @Override
     protected void onStop() {
         super.onStop();

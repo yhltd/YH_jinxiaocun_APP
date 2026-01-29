@@ -109,7 +109,7 @@ public class RenYuanXinXiGuanLiChangeActivity extends AppCompatActivity {
         Q = findViewById(R.id.Q);
 
         showDateOnClick(Q);
-
+        showDateOnClick(H);
         RR = findViewById(R.id.RR);
         S = findViewById(R.id.S);
         T = findViewById(R.id.T);
@@ -318,10 +318,10 @@ public class RenYuanXinXiGuanLiChangeActivity extends AppCompatActivity {
                 }
 
                 String day = "";
-                if(dayOfMonth + 1 < 10){
-                    day = "0" + String.valueOf(dayOfMonth + 1);
+                if(dayOfMonth < 10){
+                    day = "0" + String.valueOf(dayOfMonth );
                 }else{
-                    day = String.valueOf(dayOfMonth + 1);
+                    day = String.valueOf(dayOfMonth );
                 }
                 editText.setText(year + "-" + month + "-" + day);
             }

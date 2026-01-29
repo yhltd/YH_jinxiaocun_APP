@@ -62,7 +62,7 @@ public class rijiaoActivity extends AppCompatActivity {
     private String end_dateText;
     private ListView rijiao_list;
     private Button sel_button;
-
+    private Button clear_button;
     List<YhMendianRijiao> list;
 
     private boolean isExpanded = true;
@@ -100,6 +100,8 @@ public class rijiaoActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         initList();
 
 
@@ -186,6 +188,17 @@ public class rijiaoActivity extends AppCompatActivity {
         };
     }
 
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                end_date.setText("");
+            }
+        };
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -208,7 +221,10 @@ public class rijiaoActivity extends AppCompatActivity {
         if(end_dateText.equals("")){
             end_dateText = "2100-12-31";
         }
-
+        if(start_dateText.compareTo(end_dateText) > 0){
+            ToastUtil.show(rijiaoActivity.this, "开始日期不能晚于结束日期");
+            return;
+        }
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {

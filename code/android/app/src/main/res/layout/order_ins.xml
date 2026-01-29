@@ -151,6 +151,13 @@
             android:layout_height="35dp"
             android:background="@drawable/search"
             android:gravity="center_horizontal" />
+            <Button
+                android:id="@+id/non_member_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="非会员结算"
+                android:background="@drawable/mendian_btn_jiezhang"/>
     </LinearLayout>
     </LinearLayout>
 </LinearLayout>

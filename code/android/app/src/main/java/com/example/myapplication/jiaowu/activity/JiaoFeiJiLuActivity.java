@@ -67,6 +67,7 @@ public class JiaoFeiJiLuActivity extends AppCompatActivity {
     private String student_nameText;
     private Button sel_button;
     private Button export_button;
+    private Button clear_button;
     List<Payment> list;
     private Quanxian quanxian;
 
@@ -95,7 +96,8 @@ public class JiaoFeiJiLuActivity extends AppCompatActivity {
 
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
-
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         export_button = findViewById(R.id.export_button);
         export_button.setOnClickListener(exportClick());
 
@@ -112,6 +114,18 @@ public class JiaoFeiJiLuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 initList();
+            }
+        };
+    }
+
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                stop_date.setText("");
+                student_name.setText("");
             }
         };
     }

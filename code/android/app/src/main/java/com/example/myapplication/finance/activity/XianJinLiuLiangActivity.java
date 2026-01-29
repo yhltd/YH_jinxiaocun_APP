@@ -39,7 +39,9 @@ import com.example.myapplication.finance.service.YhFinanceKehuPeizhiService;
 import com.example.myapplication.finance.service.YhFinanceXianJinLiuLiangService;
 import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
+import com.example.myapplication.utils.ToastUtil;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -66,7 +68,7 @@ public class XianJinLiuLiangActivity extends AppCompatActivity {
     private String stop_dateText;
 
     private Button sel_button;
-
+    private Button clear_button;
     List<YhFinanceXianJinLiuLiang> list;
 
 
@@ -97,6 +99,8 @@ public class XianJinLiuLiangActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         initList();
     }
 
@@ -130,10 +134,39 @@ public class XianJinLiuLiangActivity extends AppCompatActivity {
             }
         };
     }
-
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                stop_date.setText("");
+            }
+        };
+    }
 
 
     private void initList() {
+        start_dateText = start_date.getText().toString();
+        stop_dateText = stop_date.getText().toString();
+
+        // 如果用户输入了日期，则进行验证
+        if (!start_dateText.isEmpty() && !stop_dateText.isEmpty()) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                Date startDate = sdf.parse(start_dateText);
+                Date endDate = sdf.parse(stop_dateText);
+
+                if (startDate.after(endDate)) {
+                    ToastUtil.show(XianJinLiuLiangActivity.this, "开始时间不能大于结束时间");
+                    return; // 验证不通过，直接返回，不执行查询
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+                ToastUtil.show(XianJinLiuLiangActivity.this, "日期格式错误，请使用yyyy/MM/dd格式");
+                return;
+            }
+        }
         sel_button.setEnabled(false);
         start_dateText = start_date.getText().toString();
         stop_dateText = stop_date.getText().toString();

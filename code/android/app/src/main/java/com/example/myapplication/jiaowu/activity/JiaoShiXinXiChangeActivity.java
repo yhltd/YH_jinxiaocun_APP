@@ -84,6 +84,7 @@ public class JiaoShiXinXiChangeActivity extends AppCompatActivity {
         id_code = findViewById(R.id.id_code);
         minzu = findViewById(R.id.minzu);
         birthday = findViewById(R.id.birthday);
+        showDateOnClick(birthday);
         post = findViewById(R.id.post);
         education = findViewById(R.id.education);
         phone = findViewById(R.id.phone);

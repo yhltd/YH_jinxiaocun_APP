@@ -72,6 +72,7 @@ public class JinXiaoCunActivity extends AppCompatActivity {
     private SimpleAdapter adapter_block;
     private Button sel_button;
     private Button export_button;
+    private Button clear_button;
     private EditText cangku_text;
 
     List<YhJinXiaoCun> list;
@@ -106,7 +107,8 @@ public class JinXiaoCunActivity extends AppCompatActivity {
         export_button.setOnClickListener(exportClick());
 
         sel_button.requestFocus();
-
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         showDateOnClick(ks);
         showDateOnClick(js);
 
@@ -390,6 +392,20 @@ public class JinXiaoCunActivity extends AppCompatActivity {
             }
         };
     }
+
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                ks.setText("");
+                js.setText("");
+                spDm_text.setText("");
+                cangku_text.setText("");
+            }
+        };
+    }
+
 
     public void onOrderScanClick(View view) {
         Intent intent = new Intent(this, ScanActivity.class);

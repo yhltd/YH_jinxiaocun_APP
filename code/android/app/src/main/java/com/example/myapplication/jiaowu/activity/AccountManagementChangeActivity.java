@@ -173,32 +173,128 @@ public class AccountManagementChangeActivity extends AppCompatActivity {
         }).start();
     }
 
-    private boolean checkForm() {
+//    private boolean checkForm() {
+//
+//        accountManagement.setUsername(Username.getText().toString());
+//        accountManagement.setPassword(Password.getText().toString());
+//        accountManagement.setRealname(Realname.getText().toString());
+//        accountManagement.setRealname(Realname.getText().toString());
+//        if(UseType.getText().toString().equals("")){
+//            accountManagement.setUsetype(Integer.parseInt("1"));
+//        }else{
+//            accountManagement.setUsetype(Integer.parseInt(UseType.getText().toString()));
+//        }
+//        if(Age.getText().toString().equals("")){
+//            accountManagement.setAge(Integer.parseInt("0"));
+//        }else{
+//            accountManagement.setAge(Integer.parseInt(Age.getText().toString()));
+//        }
+//        accountManagement.setPhone(Phone.getText().toString());
+//        accountManagement.setHome(Home.getText().toString());
+//        accountManagement.setPhoto(photo.getText().toString());
+//        accountManagement.setEducation(Education.getText().toString());
+////        accountManagement.setState(state.getText().toString());
+//        accountManagement.setState(state.getSelectedItem().toString());
+//        accountManagement.setCompany(teacher.getCompany());
+//        return true;
+//    }
+private boolean checkForm() {
+    // 获取输入的值
+    String username = Username.getText().toString().trim();
+    String password = Password.getText().toString().trim();
+    String realname = Realname.getText().toString().trim();
+    String ageText = Age.getText().toString().trim();
+    String phone = Phone.getText().toString().trim();
+    String idCard = photo.getText().toString().trim();  // 身份证号
+    String home = Home.getText().toString().trim();
+    String education = Education.getText().toString().trim();
 
-        accountManagement.setUsername(Username.getText().toString());
-        accountManagement.setPassword(Password.getText().toString());
-        accountManagement.setRealname(Realname.getText().toString());
-        accountManagement.setRealname(Realname.getText().toString());
-        if(UseType.getText().toString().equals("")){
-            accountManagement.setUsetype(Integer.parseInt("1"));
-        }else{
-            accountManagement.setUsetype(Integer.parseInt(UseType.getText().toString()));
-        }
-        if(Age.getText().toString().equals("")){
-            accountManagement.setAge(Integer.parseInt("0"));
-        }else{
-            accountManagement.setAge(Integer.parseInt(Age.getText().toString()));
-        }
-        accountManagement.setPhone(Phone.getText().toString());
-        accountManagement.setHome(Home.getText().toString());
-        accountManagement.setPhoto(photo.getText().toString());
-        accountManagement.setEducation(Education.getText().toString());
-//        accountManagement.setState(state.getText().toString());
-        accountManagement.setState(state.getSelectedItem().toString());
-        accountManagement.setCompany(teacher.getCompany());
-        return true;
+    // 验证必填字段
+    if (username.isEmpty()) {
+        ToastUtil.show(AccountManagementChangeActivity.this, "请输入登录名");
+        Username.requestFocus();
+        return false;
     }
 
+    if (password.isEmpty()) {
+        ToastUtil.show(AccountManagementChangeActivity.this, "请输入密码");
+        Password.requestFocus();
+        return false;
+    }
+
+    if (realname.isEmpty()) {
+        ToastUtil.show(AccountManagementChangeActivity.this, "请输入姓名");
+        Realname.requestFocus();
+        return false;
+    }
+
+    if (ageText.isEmpty()) {
+        ToastUtil.show(AccountManagementChangeActivity.this, "请输入年龄");
+        Age.requestFocus();
+        return false;
+    }
+
+    // 验证年龄是否为有效数字
+    try {
+        int age = Integer.parseInt(ageText);
+        if (age <= 0 || age > 150) {
+            ToastUtil.show(AccountManagementChangeActivity.this, "请输入有效的年龄（1-150）");
+            Age.requestFocus();
+            return false;
+        }
+    } catch (NumberFormatException e) {
+        ToastUtil.show(AccountManagementChangeActivity.this, "年龄必须为数字");
+        Age.requestFocus();
+        return false;
+    }
+
+    if (idCard.isEmpty()) {
+        ToastUtil.show(AccountManagementChangeActivity.this, "请输入身份证号");
+        photo.requestFocus();
+        return false;
+    }
+
+    // 身份证号格式验证（18位或15位）
+    String idCardPattern = "\\d{15}|\\d{18}";
+    if (!idCard.matches(idCardPattern)) {
+        ToastUtil.show(AccountManagementChangeActivity.this, "请输入有效的身份证号（15或18位数字）");
+        photo.requestFocus();
+        return false;
+    }
+
+    // 设置对象属性
+    accountManagement.setUsername(username);
+    accountManagement.setPassword(password);
+    accountManagement.setRealname(realname);
+
+    // 处理UseType，如果为空则设为1
+    String useTypeText = UseType.getText().toString().trim();
+    if (useTypeText.isEmpty()) {
+        accountManagement.setUsetype(1);
+    } else {
+        try {
+            accountManagement.setUsetype(Integer.parseInt(useTypeText));
+        } catch (NumberFormatException e) {
+            accountManagement.setUsetype(1);
+        }
+    }
+
+    // 设置年龄
+    try {
+        accountManagement.setAge(Integer.parseInt(ageText));
+    } catch (NumberFormatException e) {
+        accountManagement.setAge(0);
+    }
+
+    accountManagement.setPhone(phone);
+    accountManagement.setHome(home);
+    accountManagement.setPhoto(idCard);  // 身份证号
+    accountManagement.setEducation(education);
+    accountManagement.setState(state.getSelectedItem().toString());
+    accountManagement.setCompany(teacher.getCompany());
+
+    return true;
+}
     private void back() {
         setResult(RESULT_OK, new Intent());
         finish();

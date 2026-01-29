@@ -42,6 +42,7 @@ import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -72,7 +73,7 @@ public class GongZiMingXiActivity extends AppCompatActivity {
     private String stop_dateText;
 
     private Button sel_button;
-
+    private Button clear_button;
     List<YhFinanceGongZiMingXi> list;
 
 
@@ -100,6 +101,8 @@ public class GongZiMingXiActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         showDateOnClick(start_date);
         showDateOnClick(stop_date);
         initList();
@@ -170,6 +173,18 @@ public class GongZiMingXiActivity extends AppCompatActivity {
         };
     }
 
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                stop_date.setText("");
+                renming.setText("");
+            }
+        };
+    }
+
     private void initList() {
         Log.d("INIT_LIST", "开始重新加载数据...");
         sel_button.setEnabled(false);
@@ -182,7 +197,34 @@ public class GongZiMingXiActivity extends AppCompatActivity {
         if(stop_dateText.equals("")){
             stop_dateText = "2100/12/31";
         }
+        if (!start_dateText.isEmpty() && !stop_dateText.isEmpty()) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                Date startDate = sdf.parse(start_dateText);
 
+                // 关键修改：将结束日期加一天，然后减一秒，确保包含当天的所有时间
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(sdf.parse(stop_dateText));
+                calendar.add(Calendar.DAY_OF_MONTH, 1); // 加一天
+                calendar.add(Calendar.SECOND, -1);      // 减一秒，得到 23:59:59
+
+                Date endDate = calendar.getTime();
+                if (startDate.after(endDate)) {
+                    ToastUtil.show(GongZiMingXiActivity.this, "开始时间不能大于结束时间");
+                    return;
+                }
+
+                // 重新格式化日期用于数据库查询
+                SimpleDateFormat sdfForQuery = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                start_dateText = sdfForQuery.format(startDate); // 保持为 00:00:00
+                stop_dateText = sdfForQuery.format(endDate);    // 修改为 23:59:59
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+                ToastUtil.show(GongZiMingXiActivity.this, "日期格式错误，请使用yyyy/MM/dd格式");
+                return;
+            }
+        }
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {

@@ -52,6 +52,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -68,6 +69,8 @@ public class MingXiActivity extends AppCompatActivity {
 
     private EditText ks;
     private EditText js;
+    private String start_dateText;
+    private String stop_dateText;
 //    private EditText ye;
 //    private EditText yea;
     private ListView listView;
@@ -79,6 +82,7 @@ public class MingXiActivity extends AppCompatActivity {
 
     private Button sel_button;
     private Button export_button;
+    private Button clear_button;
 //    private Button up_button;
 //    private Button down_button;
     List<YhJinXiaoCunMingXi> list;
@@ -112,6 +116,8 @@ public class MingXiActivity extends AppCompatActivity {
         initList();
         sel_button.setOnClickListener(selClick());
         export_button.setOnClickListener(exportClick());
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
 //        up_button.setOnClickListener(upClick());
 //        down_button.setOnClickListener(downClick());
         showDateOnClick(ks);
@@ -178,6 +184,56 @@ public class MingXiActivity extends AppCompatActivity {
 
     private void initList() {
         sel_button.setEnabled(false);
+        Log.d("INIT_LIST", "开始重新加载数据...");
+        start_dateText = ks.getText().toString();
+        stop_dateText = js.getText().toString();
+
+        // 创建临时变量存储查询用的日期
+        String queryStartDate = "";
+        String queryStopDate = "";
+
+        if(start_dateText.equals("")){
+            start_dateText = "1900-01-01";
+            queryStartDate = start_dateText;
+        }
+        if(stop_dateText.equals("")){
+            stop_dateText = "2100-12-31";
+            queryStopDate = stop_dateText;
+        }
+
+        if (!start_dateText.isEmpty() && !stop_dateText.isEmpty()) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat sdfForQuery = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+                // 处理开始日期：设置为 00:00:00
+                Date startDate = sdf.parse(start_dateText);
+                queryStartDate = sdf.format(startDate) + " 00:00:00";
+
+                // 处理结束日期：设置为 23:59:59
+                Date endDate = sdf.parse(stop_dateText);
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(endDate);
+                calendar.set(Calendar.HOUR_OF_DAY, 23);
+                calendar.set(Calendar.MINUTE, 59);
+                calendar.set(Calendar.SECOND, 59);
+                queryStopDate = sdfForQuery.format(calendar.getTime());
+
+                // 验证日期
+                if (startDate.after(calendar.getTime())) {
+                    ToastUtil.show(MingXiActivity.this, "开始时间不能大于结束时间");
+                    return;
+                }
+
+                Log.d("DATE_QUERY", "查询开始时间: " + queryStartDate);
+                Log.d("DATE_QUERY", "查询结束时间: " + queryStopDate);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+                ToastUtil.show(MingXiActivity.this, "日期格式错误，请使用yyyy-MM-dd格式");
+                return;
+            }
+        }
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -294,6 +350,17 @@ public class MingXiActivity extends AppCompatActivity {
 //            }
 //        };
 //    }
+public View.OnClickListener clearClick() {
+    return new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // 清空搜索框的值
+            ks.setText("");
+            js.setText("");
+        }
+    };
+}
+
     public View.OnClickListener exportClick() {
         return new View.OnClickListener() {
             @Override

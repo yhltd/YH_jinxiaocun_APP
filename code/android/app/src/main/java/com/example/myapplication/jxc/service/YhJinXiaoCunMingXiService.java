@@ -480,17 +480,57 @@ public List<YhJinXiaoCunMingXi> getListByCpid1(String company, String cpid) {
 //        List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company, ks, js);
 //        return list;
 //    }
+//    public List<YhJinXiaoCunMingXi> getQuery(String company, String ks, String js) {
+//        try {
+//            int shujukuValue = CacheManager.getInstance().getShujukuValue();
+//            Log.e("MyService", "当前shujuku状态: " + shujukuValue);
+//
+//            // 根据状态执行不同的业务逻辑
+//            if (shujukuValue == 1) {
+//                // SQL Server 版本
+//                String sql = "select * from yh_jinxiaocun_mingxi_mssql where gs_name=? and shijian between ? and ? and mxtype in ('入库', '出库') order by _id";
+//                base2 = new JxcServerDao();
+//                List<YhJinXiaoCunMingXi> list = base2.query(YhJinXiaoCunMingXi.class, sql, company, ks, js);
+//                return list != null ? list : new ArrayList<>();
+//
+//            } else {
+//                // MySQL 版本
+//                String sql = "select * from yh_jinxiaocun_mingxi where gs_name=? and shijian between ? and ? and mxtype in ('入库', '出库') order by _id";
+//                base = new JxcBaseDao();
+//                Log.e("SQLDebug", "查询明细SQL: " + sql);
+//                List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company, ks, js);
+//                return list != null ? list : new ArrayList<>();
+//            }
+//        } catch (Exception e) {
+//            Log.e("SQLDebug", "获取查询明细过程发生异常: " + e.getMessage());
+//            e.printStackTrace();
+//            return new ArrayList<>();
+//        }
+//    }
     public List<YhJinXiaoCunMingXi> getQuery(String company, String ks, String js) {
         try {
             int shujukuValue = CacheManager.getInstance().getShujukuValue();
             Log.e("MyService", "当前shujuku状态: " + shujukuValue);
+
+            // 简单处理：如果日期不包含时间，就加上时间
+            String queryStartDate = ks;
+            String queryEndDate = js;
+
+            if (ks != null && !ks.contains(":")) {
+                queryStartDate = ks + " 00:00:00";
+            }
+            if (js != null && !js.contains(":")) {
+                queryEndDate = js + " 23:59:59";
+            }
+
+            Log.e("SQLDebug", "查询参数 - 开始: " + queryStartDate + ", 结束: " + queryEndDate);
 
             // 根据状态执行不同的业务逻辑
             if (shujukuValue == 1) {
                 // SQL Server 版本
                 String sql = "select * from yh_jinxiaocun_mingxi_mssql where gs_name=? and shijian between ? and ? and mxtype in ('入库', '出库') order by _id";
                 base2 = new JxcServerDao();
-                List<YhJinXiaoCunMingXi> list = base2.query(YhJinXiaoCunMingXi.class, sql, company, ks, js);
+                List<YhJinXiaoCunMingXi> list = base2.query(YhJinXiaoCunMingXi.class, sql, company, queryStartDate, queryEndDate);
                 return list != null ? list : new ArrayList<>();
 
             } else {
@@ -498,7 +538,7 @@ public List<YhJinXiaoCunMingXi> getListByCpid1(String company, String cpid) {
                 String sql = "select * from yh_jinxiaocun_mingxi where gs_name=? and shijian between ? and ? and mxtype in ('入库', '出库') order by _id";
                 base = new JxcBaseDao();
                 Log.e("SQLDebug", "查询明细SQL: " + sql);
-                List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company, ks, js);
+                List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company, queryStartDate, queryEndDate);
                 return list != null ? list : new ArrayList<>();
             }
         } catch (Exception e) {
@@ -507,7 +547,6 @@ public List<YhJinXiaoCunMingXi> getListByCpid1(String company, String cpid) {
             return new ArrayList<>();
         }
     }
-
     public List<YhJinXiaoCunMingXi> getQuerycgwrk(String company, String ks, String js) {
         try {
             int shujukuValue = CacheManager.getInstance().getShujukuValue();
@@ -1100,17 +1139,57 @@ public List<YhJinXiaoCunMingXi> getListByCpid1(String company, String cpid) {
 //        List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company, ks, js);
 //        return list;
 //    }
+//    public List<YhJinXiaoCunMingXi> dbtjquery(String company, String ks, String js) {
+//        try {
+//            int shujukuValue = CacheManager.getInstance().getShujukuValue();
+//            Log.e("MyService", "当前shujuku状态: " + shujukuValue);
+//
+//            // 根据状态执行不同的业务逻辑
+//            if (shujukuValue == 1) {
+//                // SQL Server 版本
+//                String sql = "select * from yh_jinxiaocun_mingxi_mssql where gs_name=? and shijian between ? and ? and mxtype in ('调拨入库', '调拨出库') order by _id";
+//                base2 = new JxcServerDao();
+//                List<YhJinXiaoCunMingXi> list = base2.query(YhJinXiaoCunMingXi.class, sql, company, ks, js);
+//                return list != null ? list : new ArrayList<>();
+//
+//            } else {
+//                // MySQL 版本
+//                String sql = "select * from yh_jinxiaocun_mingxi where gs_name=? and shijian between ? and ? and mxtype in ('调拨入库', '调拨出库') order by _id";
+//                base = new JxcBaseDao();
+//                Log.e("SQLDebug", "查询SQL: " + sql);
+//                List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company, ks, js);
+//                return list != null ? list : new ArrayList<>();
+//            }
+//        } catch (Exception e) {
+//            Log.e("SQLDebug", "获取查询调拨统计过程发生异常: " + e.getMessage());
+//            e.printStackTrace();
+//            return new ArrayList<>();
+//        }
+//    }
     public List<YhJinXiaoCunMingXi> dbtjquery(String company, String ks, String js) {
         try {
             int shujukuValue = CacheManager.getInstance().getShujukuValue();
             Log.e("MyService", "当前shujuku状态: " + shujukuValue);
+
+            // 简单处理：如果日期不包含时间，就加上时间
+            String queryStartDate = ks;
+            String queryEndDate = js;
+
+            if (ks != null && !ks.contains(":")) {
+                queryStartDate = ks + " 00:00:00";
+            }
+            if (js != null && !js.contains(":")) {
+                queryEndDate = js + " 23:59:59";
+            }
+
+            Log.e("SQLDebug", "调拨查询日期 - 开始: " + queryStartDate + ", 结束: " + queryEndDate);
 
             // 根据状态执行不同的业务逻辑
             if (shujukuValue == 1) {
                 // SQL Server 版本
                 String sql = "select * from yh_jinxiaocun_mingxi_mssql where gs_name=? and shijian between ? and ? and mxtype in ('调拨入库', '调拨出库') order by _id";
                 base2 = new JxcServerDao();
-                List<YhJinXiaoCunMingXi> list = base2.query(YhJinXiaoCunMingXi.class, sql, company, ks, js);
+                List<YhJinXiaoCunMingXi> list = base2.query(YhJinXiaoCunMingXi.class, sql, company, queryStartDate, queryEndDate);
                 return list != null ? list : new ArrayList<>();
 
             } else {
@@ -1118,7 +1197,7 @@ public List<YhJinXiaoCunMingXi> getListByCpid1(String company, String cpid) {
                 String sql = "select * from yh_jinxiaocun_mingxi where gs_name=? and shijian between ? and ? and mxtype in ('调拨入库', '调拨出库') order by _id";
                 base = new JxcBaseDao();
                 Log.e("SQLDebug", "查询SQL: " + sql);
-                List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company, ks, js);
+                List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company, queryStartDate, queryEndDate);
                 return list != null ? list : new ArrayList<>();
             }
         } catch (Exception e) {
@@ -1127,7 +1206,6 @@ public List<YhJinXiaoCunMingXi> getListByCpid1(String company, String cpid) {
             return new ArrayList<>();
         }
     }
-
     /**
      * 调拨修改
      */

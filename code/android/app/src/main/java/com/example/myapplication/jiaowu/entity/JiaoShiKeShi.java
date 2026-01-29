@@ -8,7 +8,7 @@ public class JiaoShiKeShi implements Serializable {
     private String course;
     private String keshi;
     private String student_name;
-
+    private String riqi;  // 新增：上课日期字段
     public String getTeacher_name() {
         return teacher_name;
     }
@@ -39,5 +39,13 @@ public class JiaoShiKeShi implements Serializable {
 
     public void setStudent_name(String student_name) {
         this.student_name = student_name;
+    }
+
+    public String getRiqi() {
+        return riqi;
+    }
+
+    public void setRiqi(String riqi) {
+        this.riqi = riqi;
     }
 }

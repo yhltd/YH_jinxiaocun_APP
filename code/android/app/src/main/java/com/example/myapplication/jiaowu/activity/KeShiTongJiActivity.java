@@ -67,6 +67,7 @@ public class KeShiTongJiActivity extends AppCompatActivity {
     private String class_nameText;
     private Button sel_button;
     private Button export_button;
+    private Button clear_button;
     List<KeShiDetail> list;
     private Quanxian quanxian;
 
@@ -95,7 +96,8 @@ public class KeShiTongJiActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
-
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         export_button = findViewById(R.id.export_button);
         export_button.setOnClickListener(exportClick());
 
@@ -110,6 +112,19 @@ public class KeShiTongJiActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 initList();
+            }
+        };
+    }
+
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                stop_date.setText("");
+                teacher_name.setText("");
+                class_name.setText("");
             }
         };
     }
@@ -233,7 +248,7 @@ public class KeShiTongJiActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String[] title = {"日期", "学生姓名", "培训课程", "课时", "每节课时金额"};
+                String[] title = {"日期", "学生姓名", "培训课程", "课时","教师姓名", "每节课时金额"};
                 String fileName = "课时统计" + System.currentTimeMillis() + ".xls";
                 ExcelUtil.initExcel(fileName, "课时统计", title);
                 ExcelUtil.jiaowu_keshitongjiToExcel(list, fileName, MyApplication.getContext());

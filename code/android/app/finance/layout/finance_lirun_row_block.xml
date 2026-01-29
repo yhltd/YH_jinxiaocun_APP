@@ -248,10 +248,6 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="right">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    app:srcCompat="@drawable/right_jiantou"/>
 
             </LinearLayout>
 

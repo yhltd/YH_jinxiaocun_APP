@@ -31,6 +31,7 @@ import com.example.myapplication.mendian.entity.YhMendianYuejiao;
 import com.example.myapplication.mendian.service.YhMendianRijiaoService;
 import com.example.myapplication.mendian.service.YhMendianYuejiaoService;
 import com.example.myapplication.utils.StringUtils;
+import com.example.myapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -57,7 +58,7 @@ private final static int REQUEST_CODE_CHANG = 1;
     private String end_dateText;
     private ListView Yuejiao_list;
     private Button sel_button;
-
+    private Button clear_button;
     List<YhMendianYuejiao> list;
 
     private boolean isExpanded = true;
@@ -94,6 +95,8 @@ private final static int REQUEST_CODE_CHANG = 1;
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         initList();
 
         seleOut = findViewById(R.id.sele_out);
@@ -177,6 +180,18 @@ private final static int REQUEST_CODE_CHANG = 1;
         };
     }
 
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                end_date.setText("");
+            }
+        };
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -199,7 +214,10 @@ private final static int REQUEST_CODE_CHANG = 1;
         if(end_dateText.equals("")){
             end_dateText = "2100-12-31";
         }
-
+        if(start_dateText.compareTo(end_dateText) > 0){
+            ToastUtil.show(YuejiaoActivity.this, "开始日期不能晚于结束日期");
+            return;
+        }
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {

@@ -1,5 +1,7 @@
 package com.example.myapplication.finance.service;
 
+import android.util.Log;
+
 import com.example.myapplication.finance.dao.financeBaseDao;
 import com.example.myapplication.finance.entity.YhFinanceGongZiMingXi;
 import com.example.myapplication.finance.entity.YhFinanceJiJianTaiZhang;
@@ -15,6 +17,7 @@ public class YhFinanceGongZiMingXiService {
     public List<YhFinanceGongZiMingXi> getList(String company, String renming, String start_date, String stop_date) {
         String sql = "select a.id,a.company,a.renming,a.shijian as riqi,a.yinhangzhanghu,a.koukuan,a.gongzi,a.yifu,a.beizhu from (select row_number() over(order by id) as rownum,* from gongzimingxi where company = ? and renming like '%'+ ? +'%') as a where a.shijian >= ? and shijian <= ?";
         base = new financeBaseDao();
+        Log.e("TAG", stop_date);
         List<YhFinanceGongZiMingXi> list = base.query(YhFinanceGongZiMingXi.class, sql,company,renming,start_date,stop_date);
         return list;
     }

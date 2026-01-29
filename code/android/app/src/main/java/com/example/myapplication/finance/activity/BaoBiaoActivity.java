@@ -66,7 +66,7 @@ public class BaoBiaoActivity extends AppCompatActivity {
     private String stop_date;
 
     private Button sel_button;
-
+    private Button clear_button;
     List<YhFinanceBaoBiao> list;
     List<YhFinanceBaoBiao> list1;
     List<YhFinanceBaoBiao> list2;
@@ -102,6 +102,8 @@ public class BaoBiaoActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         initList();
     }
 
@@ -135,7 +137,15 @@ public class BaoBiaoActivity extends AppCompatActivity {
         };
     }
 
-
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                this_date.setText("");
+            }
+        };
+    }
 
     private void initList() {
         sel_button.setEnabled(false);

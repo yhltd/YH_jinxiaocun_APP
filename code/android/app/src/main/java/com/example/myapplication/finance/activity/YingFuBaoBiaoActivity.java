@@ -37,9 +37,13 @@ import com.example.myapplication.finance.service.YhFinanceKehuPeizhiService;
 import com.example.myapplication.finance.service.YhFinanceYingShouBaoBiaoService;
 import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
+import com.example.myapplication.utils.ToastUtil;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -66,7 +70,7 @@ public class YingFuBaoBiaoActivity extends AppCompatActivity {
     private String stop_dateText;
 
     private Button sel_button;
-
+    private Button clear_button;
     List<YhFinanceYingShouBaoBiao> list;
     List<YhFinanceYingShouBaoBiao> list1;
     List<YhFinanceYingShouBaoBiao> list2;
@@ -103,6 +107,8 @@ public class YingFuBaoBiaoActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         init_select();
 //        initList();
     }
@@ -133,6 +139,17 @@ public class YingFuBaoBiaoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 initList();
+            }
+        };
+    }
+
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                stop_date.setText("");
             }
         };
     }
@@ -184,7 +201,24 @@ public class YingFuBaoBiaoActivity extends AppCompatActivity {
         if(stop_dateText.equals("")){
             stop_dateText = "2100-12-31";
         }
+        if (!start_dateText.isEmpty() && !stop_dateText.isEmpty()) {
+            try {
+                // 将日期格式改为 yyyy-MM-dd
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date startDate = sdf.parse(start_dateText);
+                Date endDate = sdf.parse(stop_dateText);
 
+                if (startDate.after(endDate)) {
+                    ToastUtil.show(YingFuBaoBiaoActivity.this, "开始时间不能大于结束时间");
+                    return; // 验证不通过，直接返回，不执行查询
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+                // 同时修改这里的提示信息
+                ToastUtil.show(YingFuBaoBiaoActivity.this, "日期格式错误，请使用yyyy-MM-dd格式");
+                return;
+            }
+        }
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {

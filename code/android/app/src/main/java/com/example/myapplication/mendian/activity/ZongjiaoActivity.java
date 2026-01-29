@@ -31,6 +31,7 @@ import com.example.myapplication.mendian.entity.YhMendianZongjiao;
 import com.example.myapplication.mendian.service.YhMendianYuejiaoService;
 import com.example.myapplication.mendian.service.YhMendianZongjiaoService;
 import com.example.myapplication.utils.StringUtils;
+import com.example.myapplication.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,7 +51,7 @@ public class ZongjiaoActivity extends AppCompatActivity {
     private String end_dateText;
     private ListView Zongjiao_list;
     private Button sel_button;
-
+    private Button clear_button;
     List<YhMendianZongjiao> list;
 
     private boolean isExpanded = true;
@@ -82,6 +83,8 @@ public class ZongjiaoActivity extends AppCompatActivity {
         sel_button = findViewById(R.id.sel_button);
         sel_button.setOnClickListener(selClick());
         sel_button.requestFocus();
+        clear_button = findViewById(R.id.clear_button);
+        clear_button.setOnClickListener(clearClick());
         showDateOnClick(start_date);
         showDateOnClick(end_date);
         initList();
@@ -167,6 +170,17 @@ public class ZongjiaoActivity extends AppCompatActivity {
         };
     }
 
+    public View.OnClickListener clearClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 清空搜索框的值
+                start_date.setText("");
+                end_date.setText("");
+            }
+        };
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -186,7 +200,10 @@ public class ZongjiaoActivity extends AppCompatActivity {
         if(end_dateText.equals("")){
             end_dateText = "2100-12-31";
         }
-
+        if(start_dateText.compareTo(end_dateText) > 0){
+            ToastUtil.show(ZongjiaoActivity.this, "开始日期不能晚于结束日期");
+            return;
+        }
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {

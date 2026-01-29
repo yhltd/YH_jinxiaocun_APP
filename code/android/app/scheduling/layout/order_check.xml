@@ -212,7 +212,7 @@
 
         <Button
             android:id="@+id/sel_button"
-            android:layout_width="110dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="查询"
             tools:ignore="MissingConstraints"
@@ -228,9 +228,24 @@
             android:visibility="invisible"
             android:gravity="center_horizontal"/>
         <Button
+            android:id="@+id/clear_button"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:text="清除"
+            android:background="@drawable/pcbtn_style"
+            android:textSize="17dp"
+            android:textColor="@color/white" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/search"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:gravity="center_horizontal"/>
+        <Button
             android:id="@+id/bom_insert"
             android:onClick="onInsertClick"
-            android:layout_width="110dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text="添加"
             tools:ignore="MissingConstraints"
