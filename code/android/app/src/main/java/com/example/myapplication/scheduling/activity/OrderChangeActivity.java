@@ -32,11 +32,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.scheduling.entity.BomInfo;
+import com.example.myapplication.scheduling.entity.ModuleInfo;
 import com.example.myapplication.scheduling.entity.OrderBom;
+import com.example.myapplication.scheduling.entity.OrderGongXu;
 import com.example.myapplication.scheduling.entity.OrderInfo;
 import com.example.myapplication.scheduling.entity.PaibanInfo;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.BomInfoService;
+import com.example.myapplication.scheduling.service.ModuleInfoService;
+import com.example.myapplication.scheduling.service.OrderGongXuService;
 import com.example.myapplication.scheduling.service.OrderInfoService;
 import com.example.myapplication.scheduling.service.PaibanRenyuanService;
 import com.example.myapplication.utils.LoadingDialog;
@@ -52,6 +56,10 @@ public class OrderChangeActivity extends AppCompatActivity {
     private OrderInfo orderInfo;
     private OrderInfoService orderInfoService;
     private BomInfoService bomInfoService;
+    private ListView moduleListView;
+    private List<ModuleInfo> moduleList;
+    private ModuleInfoService moduleInfoService;
+    private OrderGongXuService orderGongXuService;
 
     private EditText order_id;
     private EditText code;
@@ -83,6 +91,7 @@ public class OrderChangeActivity extends AppCompatActivity {
 
         orderInfoService = new OrderInfoService();
         bomInfoService = new BomInfoService();
+        orderGongXuService = new OrderGongXuService();
 
         order_id = findViewById(R.id.order_id);
         code = findViewById(R.id.code);
@@ -91,6 +100,9 @@ public class OrderChangeActivity extends AppCompatActivity {
         set_num = findViewById(R.id.set_num);
         is_complete = findViewById(R.id.is_complete);
         listView = findViewById(R.id.bom_list);
+
+        moduleListView = findViewById(R.id.module_list);
+        moduleInfoService = new ModuleInfoService();
 
         is_complete_list = new ArrayList<>();
         is_complete_list.add("否");
@@ -141,7 +153,10 @@ public class OrderChangeActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 MyApplication myApplication = (MyApplication) getApplication();
-                listView.setAdapter(new MyAdapter(myApplication.getApplicationContext()));
+                listView.setAdapter(new BomAdapter(myApplication.getApplicationContext()));
+
+                // 添加工序列表适配器
+                moduleListView.setAdapter(new ModuleAdapter(myApplication.getApplicationContext()));
 
                 return true;
             }
@@ -165,11 +180,161 @@ public class OrderChangeActivity extends AppCompatActivity {
                         }
                     }
                 }
+
+                // 加载工序列表
+                moduleList = moduleInfoService.getList(userInfo.getCompany(), "全部");
+                if (moduleList == null) {
+                    moduleList = new ArrayList<>();
+                }
+
+                if (typeId == R.id.update_btn) {
+                    List<ModuleInfo> existingModules = orderGongXuService.getModuleListByOrderId(orderInfo.getId());
+                    if (existingModules != null && existingModules.size() > 0) {
+                        // 将已有的工序数据合并到工序列表中
+                        for (ModuleInfo module : moduleList) {
+                            for (ModuleInfo existingModule : existingModules) {
+                                if (module.getId() == existingModule.getId()) {
+                                    module.setEstimatedTime(existingModule.getEstimatedTime());
+                                    // 如果已有工时数据，设置为选中状态
+                                    if (existingModule.getEstimatedTime() > 0) {
+                                        module.setCheck(true);
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
                 Message msg = new Message();
                 msg.obj = list;
                 listLoadHandler.sendMessage(msg);
             }
         }).start();
+    }
+
+    // 修改ModuleViewHolder类
+    class ModuleViewHolder {
+        public TextView name;
+        public TextView efficiency;
+        public EditText estimatedTime;
+        public CheckBox cb; // 添加复选框
+    }
+
+    // 添加工序列表的Adapter
+    class ModuleAdapter extends BaseAdapter {
+
+        Context context;
+        private LayoutInflater inflater = null;
+
+        public ModuleAdapter(Context context) {
+            inflater = LayoutInflater.from(context);
+        }
+
+        @Override
+        public int getCount() {
+            return moduleList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return moduleList.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @SuppressLint("SetTextI18n")
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ModuleViewHolder holder = null;
+            View view;
+
+            if (convertView == null) {
+                holder = new ModuleViewHolder();
+                view = inflater.inflate(R.layout.module_list_row, null);
+                holder.name = view.findViewById(R.id.module_name);
+                holder.efficiency = view.findViewById(R.id.module_efficiency);
+                holder.estimatedTime = view.findViewById(R.id.estimated_time);
+                holder.cb = view.findViewById(R.id.cb);
+                holder.cb.setVisibility(View.VISIBLE);
+                view.setTag(holder);
+            } else {
+                view = convertView;
+                holder = (ModuleViewHolder) view.getTag();
+            }
+
+            // 设置工序数据
+            ModuleInfo module = moduleList.get(position);
+            holder.name.setText(module.getName());
+            holder.efficiency.setText(module.getNum() + "");
+
+            // 设置预计工时输入框
+            holder.estimatedTime.setTag(position);
+            holder.estimatedTime.clearFocus();
+
+            // 如果有已有数据，设置初始值
+            if (module.getEstimatedTime() > 0) {
+                holder.estimatedTime.setText(module.getEstimatedTime() + "");
+            } else {
+                holder.estimatedTime.setText("");
+            }
+
+            // 设置复选框状态
+            holder.cb.setChecked(module.isCheck());
+            holder.cb.setTag(position);
+
+            // 复选框点击监听
+            holder.cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    int pos = (int) compoundButton.getTag();
+                    moduleList.get(pos).setCheck(b);
+                }
+            });
+
+            // 将holder复制到final变量中，解决内部类访问问题
+            final ModuleViewHolder finalHolder = holder;
+
+            // 添加预计工时输入监听
+            final EditText timeInput = holder.estimatedTime;
+            holder.estimatedTime.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    int pos = (int) timeInput.getTag();
+                    if (!s.toString().trim().equals("")) {
+                        try {
+                            double estimatedTime = Double.parseDouble(s.toString().trim());
+                            moduleList.get(pos).setEstimatedTime(estimatedTime);
+                            // 如果输入了工时，自动选中复选框
+                            moduleList.get(pos).setCheck(true);
+                            finalHolder.cb.setChecked(true);
+                        } catch (NumberFormatException e) {
+                            moduleList.get(pos).setEstimatedTime(0);
+                            moduleList.get(pos).setCheck(false);
+                            finalHolder.cb.setChecked(false);
+                        }
+                    } else {
+                        moduleList.get(pos).setEstimatedTime(0);
+                        // 如果清空工时，取消选中复选框
+                        moduleList.get(pos).setCheck(false);
+                        finalHolder.cb.setChecked(false);
+                    }
+                }
+            });
+
+            return view;
+        }
     }
 
     // 创建一个 ViewHolder 类
@@ -185,12 +350,12 @@ public class OrderChangeActivity extends AppCompatActivity {
         public CheckBox cb;
     }
 
-    class MyAdapter extends BaseAdapter {
+    class BomAdapter extends BaseAdapter {
 
         Context context;
         private LayoutInflater inflater = null;
 
-        public MyAdapter(Context context) {
+        public BomAdapter(Context context) {
             inflater = LayoutInflater.from(context);
         }
 
@@ -303,49 +468,15 @@ public class OrderChangeActivity extends AppCompatActivity {
             return;
         }
 
-        Handler saveHandler = new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(@NonNull Message msg) {
-                if ((boolean) msg.obj) {
-                    ToastUtil.show(OrderChangeActivity.this, "保存成功");
-                    back();
-                } else {
-                    ToastUtil.show(OrderChangeActivity.this, "保存失败，请稍后再试");
-                }
-
-                return true;
-            }
-        });
-
-        new Thread(new Runnable() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void run() {
-                Message msg = new Message();
-                msg.obj = orderInfoService.insert(orderInfo);
-                List<OrderInfo> getLast = orderInfoService.getLast();
-                for (BomInfo bomInfo : bmList) {
-                    OrderBom orderBom = new OrderBom();
-                    orderBom.setOrder_id(getLast.get(0).getId());
-                    orderBom.setBom_id(bomInfo.getId());
-                    orderBom.setUse_num((int) bomInfo.getUse_num());
-                    orderInfoService.insertOrderBom(orderBom);
-                }
-                saveHandler.sendMessage(msg);
-            }
-        }).start();
-    }
-
-    public void updateClick(View v) {
-        if (!checkForm()) return;
-        List<BomInfo> bmList = new ArrayList<>();
-        for (BomInfo bomInfo : list) {
-            if (bomInfo.isCheck()) {
-                bmList.add(bomInfo);
+        // 检查是否有选中的工序
+        List<ModuleInfo> selectedModules = new ArrayList<>();
+        for (ModuleInfo module : moduleList) {
+            if (module.isCheck() && module.getEstimatedTime() > 0) {
+                selectedModules.add(module);
             }
         }
-        if (bmList.size() == 0) {
-            ToastUtil.show(OrderChangeActivity.this, "请选择物料！");
+        if (selectedModules.size() == 0) {
+            ToastUtil.show(OrderChangeActivity.this, "请选择工序并填写预计工时！");
             return;
         }
 
@@ -368,16 +499,134 @@ public class OrderChangeActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Message msg = new Message();
-                msg.obj = orderInfoService.update(orderInfo);
+                boolean insertResult = orderInfoService.insert(orderInfo);
+                if (!insertResult) {
+                    msg.obj = false;
+                    saveHandler.sendMessage(msg);
+                    return;
+                }
+
                 List<OrderInfo> getLast = orderInfoService.getLast();
-                orderInfoService.deleteOrderBom(orderInfo.getId());
+                if (getLast == null || getLast.size() == 0) {
+                    msg.obj = false;
+                    saveHandler.sendMessage(msg);
+                    return;
+                }
+
+                int newOrderId = getLast.get(0).getId();
+
+                // 保存物料信息 - 循环中单个插入
+                boolean bomSuccess = true;
                 for (BomInfo bomInfo : bmList) {
                     OrderBom orderBom = new OrderBom();
-                    orderBom.setOrder_id(getLast.get(0).getId());
+                    orderBom.setOrder_id(newOrderId);
                     orderBom.setBom_id(bomInfo.getId());
                     orderBom.setUse_num((int) bomInfo.getUse_num());
-                    orderInfoService.insertOrderBom(orderBom);
+                    if (!orderInfoService.insertOrderBom(orderBom)) {
+                        bomSuccess = false;
+                    }
                 }
+
+                // 保存工序信息 - 改为循环中单个插入（和物料一样）
+                boolean moduleSuccess = true;
+                for (ModuleInfo module : selectedModules) {
+                    OrderGongXu orderGongXu = new OrderGongXu();
+                    orderGongXu.setOrder_id(newOrderId);
+                    orderGongXu.setModule_id(module.getId());
+                    orderGongXu.setModule_num((int) module.getEstimatedTime());
+                    if (!orderGongXuService.insert(orderGongXu)) {
+                        moduleSuccess = false;
+                    }
+                }
+
+                msg.obj = bomSuccess && moduleSuccess;
+                saveHandler.sendMessage(msg);
+            }
+        }).start();
+    }
+
+    public void updateClick(View v) {
+        if (!checkForm()) return;
+
+        List<BomInfo> bmList = new ArrayList<>();
+        for (BomInfo bomInfo : list) {
+            if (bomInfo.isCheck()) {
+                bmList.add(bomInfo);
+            }
+        }
+        if (bmList.size() == 0) {
+            ToastUtil.show(OrderChangeActivity.this, "请选择物料！");
+            return;
+        }
+
+        // 检查是否有选中的工序
+        List<ModuleInfo> selectedModules = new ArrayList<>();
+        for (ModuleInfo module : moduleList) {
+            if (module.isCheck() && module.getEstimatedTime() > 0) {
+                selectedModules.add(module);
+            }
+        }
+        if (selectedModules.size() == 0) {
+            ToastUtil.show(OrderChangeActivity.this, "请选择工序并填写预计工时！");
+            return;
+        }
+
+        Handler saveHandler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(@NonNull Message msg) {
+                if ((boolean) msg.obj) {
+                    ToastUtil.show(OrderChangeActivity.this, "保存成功");
+                    back();
+                } else {
+                    ToastUtil.show(OrderChangeActivity.this, "保存失败，请稍后再试");
+                }
+
+                return true;
+            }
+        });
+
+        new Thread(new Runnable() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void run() {
+                Message msg = new Message();
+                boolean updateResult = orderInfoService.update(orderInfo);
+                if (!updateResult) {
+                    msg.obj = false;
+                    saveHandler.sendMessage(msg);
+                    return;
+                }
+
+                // 删除原有的物料信息
+                orderInfoService.deleteOrderBom(orderInfo.getId());
+                // 删除原有的工序信息
+                orderGongXuService.deleteByOrderId(orderInfo.getId());
+
+                // 保存物料信息 - 循环中单个插入
+                boolean bomSuccess = true;
+                for (BomInfo bomInfo : bmList) {
+                    OrderBom orderBom = new OrderBom();
+                    orderBom.setOrder_id(orderInfo.getId());
+                    orderBom.setBom_id(bomInfo.getId());
+                    orderBom.setUse_num((int) bomInfo.getUse_num());
+                    if (!orderInfoService.insertOrderBom(orderBom)) {
+                        bomSuccess = false;
+                    }
+                }
+
+                // 保存工序信息 - 改为循环中单个插入（和物料一样）
+                boolean moduleSuccess = true;
+                for (ModuleInfo module : selectedModules) {
+                    OrderGongXu orderGongXu = new OrderGongXu();
+                    orderGongXu.setOrder_id(orderInfo.getId());
+                    orderGongXu.setModule_id(module.getId());
+                    orderGongXu.setModule_num((int) module.getEstimatedTime());
+                    if (!orderGongXuService.insert(orderGongXu)) {
+                        moduleSuccess = false;
+                    }
+                }
+
+                msg.obj = bomSuccess && moduleSuccess;
                 saveHandler.sendMessage(msg);
             }
         }).start();

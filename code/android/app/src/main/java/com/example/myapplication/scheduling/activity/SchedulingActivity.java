@@ -348,6 +348,46 @@ public class SchedulingActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayout shengchanxian = findViewById(R.id.shengchanxian);
+        shengchanxian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("生产线") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, ShengChanXianActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        LinearLayout paichan = findViewById(R.id.paichan);
+        paichan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pd = false;
+                for (Department department : list) {
+                    if (department.getView_name().equals("排产") && department.getSel().equals("是")) {
+                        myApplication.setPcDepartment(department);
+                        pd = true;
+                    }
+                }
+                if (!pd) {
+                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+                } else {
+                    Intent intent = new Intent(SchedulingActivity.this, PaiChanListActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
         LinearLayout grzx = findViewById(R.id.grzx);
         grzx.setOnClickListener(new View.OnClickListener() {
             @Override

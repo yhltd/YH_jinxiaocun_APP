@@ -46,6 +46,8 @@ public class PaibanRenyuanChangeActivity extends AppCompatActivity {
     private EditText idNumber;
     private Spinner departmentName;
     private EditText banci;
+    private EditText shengchanxian;
+    private EditText gongxu;
 
     private String department_text;
 
@@ -74,9 +76,10 @@ public class PaibanRenyuanChangeActivity extends AppCompatActivity {
         idNumber = findViewById(R.id.idNumber);
         departmentName = findViewById(R.id.departmentName);
         banci = findViewById(R.id.banci);
+        shengchanxian = findViewById(R.id.shengchanxian);
+        gongxu = findViewById(R.id.gongxu);
 
-        initList();
-
+        // 先初始化数据和对象，再加载部门列表
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
         if (id == R.id.insert_btn) {
@@ -88,15 +91,17 @@ public class PaibanRenyuanChangeActivity extends AppCompatActivity {
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
 
+            // 设置所有字段的值，包括生产线和工序
             staffName.setText(paibanRenyuan.getStaff_name());
             phoneNumber.setText(paibanRenyuan.getPhone_number());
             idNumber.setText(paibanRenyuan.getId_number());
-            departmentName.setSelection(getDepartmentPosition(paibanRenyuan.getDepartment_name()));
             banci.setText(paibanRenyuan.getBanci());
+            shengchanxian.setText(paibanRenyuan.getShengchanxian());
+            gongxu.setText(paibanRenyuan.getGongxu());
         }
 
+        initList();
         departmentName.setOnItemSelectedListener(new departmentSelectedListener());
-        
     }
 
     @Override
@@ -113,6 +118,8 @@ public class PaibanRenyuanChangeActivity extends AppCompatActivity {
         phoneNumber.setText("");
         idNumber.setText("");
         banci.setText("");
+        shengchanxian.setText("");
+        gongxu.setText("");
     }
 
 //    private void initList() {
@@ -279,6 +286,8 @@ public class PaibanRenyuanChangeActivity extends AppCompatActivity {
         paibanRenyuan.setId_number(idNumber.getText().toString());
         paibanRenyuan.setDepartment_name(department_text);
         paibanRenyuan.setBanci(banci.getText().toString());
+        paibanRenyuan.setShengchanxian(shengchanxian.getText().toString());
+        paibanRenyuan.setGongxu(gongxu.getText().toString());
         paibanRenyuan.setCompany(userInfo.getCompany());
         return true;
     }

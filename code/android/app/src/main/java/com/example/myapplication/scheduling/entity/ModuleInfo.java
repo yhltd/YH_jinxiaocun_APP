@@ -13,6 +13,26 @@ public class ModuleInfo implements Serializable {
     private String type;
     private String parent;
 
+    private double estimatedTime; // 预计工时
+    private boolean check;
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
+
+
+    public double getEstimatedTime() {
+        return estimatedTime;
+    }
+
+    public void setEstimatedTime(double estimatedTime) {
+        this.estimatedTime = estimatedTime;
+    }
+
     public int getId() {
         return id;
     }

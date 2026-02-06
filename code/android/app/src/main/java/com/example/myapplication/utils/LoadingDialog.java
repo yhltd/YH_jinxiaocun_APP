@@ -109,5 +109,10 @@ public class LoadingDialog extends Dialog {
         animationSet.addAnimation(animation_rotate);
     }
 
+    // 添加静态工厂方法
+    public static LoadingDialog create(Context context) {
+        return new LoadingDialog(context);
+    }
+
 
 }

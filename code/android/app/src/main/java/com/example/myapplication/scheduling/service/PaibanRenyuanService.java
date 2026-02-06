@@ -28,20 +28,50 @@ public class PaibanRenyuanService {
     /**
      * 新增
      */
+//    public boolean insert(PaibanRenyuan paibanRenyuan) {
+//        String sql = "insert into paibanbiao_renyuan(staff_name,phone_number,banci,department_name,id_number,company) values(?,?,?,?,?,?)";
+//        base = new SchedulingDao();
+//        long result = base.executeOfId(sql, paibanRenyuan.getStaff_name(), paibanRenyuan.getPhone_number(), paibanRenyuan.getBanci(), paibanRenyuan.getDepartment_name(), paibanRenyuan.getId_number(), paibanRenyuan.getCompany());
+//        return result > 0;
+//    }
     public boolean insert(PaibanRenyuan paibanRenyuan) {
-        String sql = "insert into paibanbiao_renyuan(staff_name,phone_number,banci,department_name,id_number,company) values(?,?,?,?,?,?)";
+        String sql = "insert into paibanbiao_renyuan(staff_name,phone_number,banci,department_name,id_number,company,shengchanxian,gongxu) values(?,?,?,?,?,?,?,?)";
         base = new SchedulingDao();
-        long result = base.executeOfId(sql, paibanRenyuan.getStaff_name(), paibanRenyuan.getPhone_number(), paibanRenyuan.getBanci(), paibanRenyuan.getDepartment_name(), paibanRenyuan.getId_number(), paibanRenyuan.getCompany());
+        long result = base.executeOfId(sql,
+                paibanRenyuan.getStaff_name(),
+                paibanRenyuan.getPhone_number(),
+                paibanRenyuan.getBanci(),
+                paibanRenyuan.getDepartment_name(),
+                paibanRenyuan.getId_number(),
+                paibanRenyuan.getCompany(),
+                paibanRenyuan.getShengchanxian(),
+                paibanRenyuan.getGongxu());
         return result > 0;
     }
 
     /**
      * 修改
      */
+//    public boolean update(PaibanRenyuan paibanRenyuan) {
+//        String sql = "update paibanbiao_renyuan set staff_name=?,phone_number=?,banci=?,department_name=?,id_number=?,company=? where id=? ";
+//        base = new SchedulingDao();
+//        boolean result = base.execute(sql, paibanRenyuan.getStaff_name(), paibanRenyuan.getPhone_number(), paibanRenyuan.getBanci(), paibanRenyuan.getDepartment_name(), paibanRenyuan.getId_number(), paibanRenyuan.getCompany(),paibanRenyuan.getId());
+//        return result;
+//    }
+
     public boolean update(PaibanRenyuan paibanRenyuan) {
-        String sql = "update paibanbiao_renyuan set staff_name=?,phone_number=?,banci=?,department_name=?,id_number=?,company=? where id=? ";
+        String sql = "update paibanbiao_renyuan set staff_name=?,phone_number=?,banci=?,department_name=?,id_number=?,company=?,shengchanxian=?,gongxu=? where id=? ";
         base = new SchedulingDao();
-        boolean result = base.execute(sql, paibanRenyuan.getStaff_name(), paibanRenyuan.getPhone_number(), paibanRenyuan.getBanci(), paibanRenyuan.getDepartment_name(), paibanRenyuan.getId_number(), paibanRenyuan.getCompany(),paibanRenyuan.getId());
+        boolean result = base.execute(sql,
+                paibanRenyuan.getStaff_name(),
+                paibanRenyuan.getPhone_number(),
+                paibanRenyuan.getBanci(),
+                paibanRenyuan.getDepartment_name(),
+                paibanRenyuan.getId_number(),
+                paibanRenyuan.getCompany(),
+                paibanRenyuan.getShengchanxian(),
+                paibanRenyuan.getGongxu(),
+                paibanRenyuan.getId());
         return result;
     }
 

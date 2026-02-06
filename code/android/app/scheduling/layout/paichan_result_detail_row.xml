@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/pcrow_main"
+    android:padding="10dp">
+
+    <!-- 订单号 -->
+    <TextView
+        android:id="@+id/dingdanhao"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:singleLine="true" />
+
+    <!-- 工序名称 -->
+    <TextView
+        android:id="@+id/processName"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:singleLine="true" />
+
+    <!-- 开始时间 -->
+    <TextView
+        android:id="@+id/kaishishijian"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:singleLine="true" />
+
+    <!-- 结束时间 -->
+    <TextView
+        android:id="@+id/jiezhishijian"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:singleLine="true" />
+
+    <!-- 是否插入 -->
+    <TextView
+        android:id="@+id/charu"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:singleLine="true" />
+
+    <!-- 订单类型 -->
+    <TextView
+        android:id="@+id/dingdanleixing"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:singleLine="true" />
+
+    <!-- 工序数量 -->
+    <TextView
+        android:id="@+id/gongxushuliang"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:singleLine="true" />
+
+    <!-- 生产线 -->
+    <TextView
+        android:id="@+id/gongxumingcheng"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:singleLine="true" />
+
+    <!-- 工序效率 -->
+    <TextView
+        android:id="@+id/gongxuxiaolv"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:singleLine="true" />
+
+</LinearLayout>

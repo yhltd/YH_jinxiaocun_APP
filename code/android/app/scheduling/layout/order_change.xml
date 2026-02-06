@@ -5,113 +5,126 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="100"
     tools:context=".scheduling.activity.OrderChangeActivity"
     android:background="@drawable/pcbeijing1">
 
-    <LinearLayout
-        android:layout_marginTop="7dp"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@drawable/shape_corner_up"
-        android:gravity="center_vertical">
-
-        <EditText
-            android:id="@+id/order_id"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:hint="订单号" />
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"
-            android:visibility="invisible"/>
-
-        <EditText
-            android:id="@+id/code"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:hint="产品编码" />
-    </LinearLayout>
-
+    <!-- 订单基本信息区域 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@drawable/border_bottom_top"
-        android:gravity="center_vertical">
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:orientation="vertical"
+        android:layout_marginTop="7dp">
 
-        <EditText
-            android:id="@+id/product_name"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:inputType="text"
-            android:hint="产品名称" />
+            android:background="@drawable/shape_corner_up"
+            android:gravity="center_vertical">
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"
-            android:visibility="invisible"/>
+            <EditText
+                android:id="@+id/order_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="订单号" />
 
-        <EditText
-            android:id="@+id/norms"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/search"
+                android:visibility="invisible"/>
+
+            <EditText
+                android:id="@+id/code"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="产品编码" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:inputType="text"
-            android:hint="规格" />
+            android:background="@drawable/border_bottom_top"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/product_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="text"
+                android:hint="产品名称" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/search"
+                android:visibility="invisible"/>
+
+            <EditText
+                android:id="@+id/norms"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="text"
+                android:hint="规格" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_corner_down"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/set_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:inputType="number"
+                android:hint="下单数量"/>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/search"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="是否完成:"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/is_complete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"/>
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/shape_corner_down"
-        android:gravity="center_vertical">
-
-        <EditText
-            android:id="@+id/set_num"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="4"
-            android:inputType="number"
-            android:hint="下单数量"/>
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/search"
-            android:visibility="invisible"/>
-
-        <TextView
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="2"
-            android:text="是否完成:"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/is_complete"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="2"/>
-
-    </LinearLayout>
-
+    <!-- 物料列表区域 -->
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="400px"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
@@ -187,7 +200,7 @@
             <ListView
                 android:id="@+id/bom_list"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="0dp"
                 android:layout_weight="1"
                 android:dividerHeight="1dp"
                 android:paddingBottom="5dp" />
@@ -195,10 +208,93 @@
 
     </HorizontalScrollView>
 
+    <!-- 工序列表区域 -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/pcrow_header"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/search"
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="150dp"
+                    android:text="工序名称"
+                    android:textColor="@color/title_text"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="120dp"
+                    android:text="效率"
+                    android:textColor="@color/title_text"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:width="150dp"
+                    android:text="预计工时"
+                    android:textColor="@color/title_text"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/module_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:dividerHeight="1dp"
+                android:paddingBottom="5dp" />
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- 按钮区域 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="100dp"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="horizontal">
 

@@ -73,4 +73,11 @@ public class TimeConfig {
     public void setNight_end(String night_end) {
         this.night_end = night_end;
     }
+
+    public boolean isWorkDay() {
+        // 如果有任意一个工作时间段，就认为是工作日
+        return (morning_start != null && morning_end != null) ||
+                (noon_start != null && noon_end != null) ||
+                (night_start != null && night_end != null);
+    }
 }

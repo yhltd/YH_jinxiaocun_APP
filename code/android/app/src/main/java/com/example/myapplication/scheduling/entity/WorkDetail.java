@@ -15,6 +15,7 @@ public class WorkDetail implements Serializable {
     private String module;
     private double num;
     private String order_number;
+    private String jiezhishijian;
 
     public int getId() {
         return id;
@@ -110,5 +111,13 @@ public class WorkDetail implements Serializable {
 
     public void setOrder_number(String order_number) {
         this.order_number = order_number;
+    }
+
+    public String getJiezhishijian() {
+        return jiezhishijian;
+    }
+
+    public void setJiezhishijian(String jiezhishijian) {
+        this.jiezhishijian = jiezhishijian;
     }
 }

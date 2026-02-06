@@ -106,13 +106,17 @@ public class PaibanRenyuanActivity extends AppCompatActivity {
                         item.put("idNumber", list.get(i).getId_number());
                         item.put("departmentName", list.get(i).getDepartment_name());
                         item.put("banci", list.get(i).getBanci());
+                        item.put("shengchanxian", list.get(i).getShengchanxian());
+                        item.put("gongxu", list.get(i).getGongxu());
                         data.add(item);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                SimpleAdapter adapter = new SimpleAdapter(PaibanRenyuanActivity.this, data, R.layout.paiban_renyuan_row, new String[]{"staffName", "phoneNumber", "idNumber", "departmentName", "banci"}, new int[]{R.id.staffName, R.id.phoneNumber, R.id.idNumber, R.id.departmentName, R.id.banci}) {
+                SimpleAdapter adapter = new SimpleAdapter(PaibanRenyuanActivity.this, data, R.layout.paiban_renyuan_row,
+                        new String[]{"staffName", "phoneNumber", "idNumber", "departmentName", "banci", "shengchanxian", "gongxu"},
+                        new int[]{R.id.staffName, R.id.phoneNumber, R.id.idNumber, R.id.departmentName, R.id.banci, R.id.shengchanxian, R.id.gongxu}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);

@@ -1202,6 +1202,56 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".scheduling.activity.ShengChanXianActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="生产线">
+            <intent-filter>
+                <action android:name="android.intent.action.ShengChanXianActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.PaichanActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="排产">
+            <intent-filter>
+                <action android:name="android.intent.action.PaichanActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.PaiChanListActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="排产">
+            <intent-filter>
+                <action android:name="android.intent.action.PaiChanListActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.PaiChanEditActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="排产">
+            <intent-filter>
+                <action android:name="android.intent.action.PaiChanEditActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".scheduling.activity.PaiChanResultActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:label="排产明细">
+            <intent-filter>
+                <action android:name="android.intent.action.PaiChanResultActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <!--    分权    -->
         <activity
             android:name=".fenquan.activity.FenquanActivity"

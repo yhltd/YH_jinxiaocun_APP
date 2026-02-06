@@ -104,5 +104,38 @@
             android:layout_weight="2">
         </View>
 
+        <!-- 在班次TextView后面添加 -->
+        <TextView
+            android:gravity="center"
+            android:id="@+id/shengchanxian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:text="生产线"
+            android:textStyle="bold"
+            android:width="120dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+        </View>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/gongxu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:text="工序"
+            android:textStyle="bold"
+            android:width="120dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+        </View>
+
     </LinearLayout>
 </LinearLayout>

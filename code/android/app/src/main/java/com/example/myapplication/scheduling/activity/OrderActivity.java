@@ -35,6 +35,7 @@ import com.example.myapplication.scheduling.service.OrderInfoService;
 import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
+import com.example.myapplication.scheduling.service.OrderGongXuService;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -275,8 +276,17 @@ public class OrderActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 Message msg = new Message();
-                                orderInfoService.deleteOrderBom(list.get(position).getId());
-                                msg.obj = orderInfoService.delete(list.get(position).getId());
+                                int orderId = list.get(position).getId();
+
+                                // 1. 先删除关联的物料信息
+                                orderInfoService.deleteOrderBom(orderId);
+
+                                // 2. 删除关联的工序信息（新增）
+                                OrderGongXuService orderGongXuService = new OrderGongXuService();
+                                orderGongXuService.deleteByOrderId(orderId);
+
+                                // 3. 最后删除订单主表
+                                msg.obj = orderInfoService.delete(orderId);
                                 deleteHandler.sendMessage(msg);
                             }
                         }).start();

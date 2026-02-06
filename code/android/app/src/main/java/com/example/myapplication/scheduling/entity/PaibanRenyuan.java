@@ -22,6 +22,9 @@ public class PaibanRenyuan {
     private String m;
     private String n;
     private boolean checkbox;
+    private String shengchanxian;
+    private String gongxu;
+
 
     public int getId() {
         return id;
@@ -189,6 +192,22 @@ public class PaibanRenyuan {
 
     public void setCheckbox(boolean checkbox) {
         this.checkbox = checkbox;
+    }
+
+    public String getShengchanxian() {
+        return shengchanxian;
+    }
+
+    public void setShengchanxian(String shengchanxian) {
+        this.shengchanxian = shengchanxian;
+    }
+
+    public String getGongxu() {
+        return gongxu;
+    }
+
+    public void setGongxu(String gongxu) {
+        this.gongxu = gongxu;
     }
 }
 

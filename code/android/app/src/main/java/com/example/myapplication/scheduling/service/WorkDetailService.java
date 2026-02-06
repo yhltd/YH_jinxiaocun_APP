@@ -14,7 +14,7 @@ public class WorkDetailService {
      */
     public List<WorkDetail> getList(String company, String orderId) {
         base = new SchedulingDao();
-        String sql = "select wd.id,wd.orderId as order_number,wd.work_num,wd.work_start_date,wd.company,wd.row_num,wd.is_insert,wd.type,module_id from (select row_number() over(order by wd.id) as rownum,wd.*,oi.order_id as orderId from work_detail as wd left join order_info as oi on wd.order_id = oi.id) as wd left join work_module wm on wd.id= wm.work_id where wd.company = ? and wd.orderId like '%' + ? + '%' order by wd.row_num,wd.is_insert asc ";
+        String sql = "select wd.id,wd.orderId as order_number,wd.work_num,wd.work_start_date,wd.jiezhishijian,wd.company,wd.row_num,wd.is_insert,wd.type,module_id from (select row_number() over(order by wd.id) as rownum,wd.*,oi.order_id as orderId from work_detail as wd left join order_info as oi on wd.order_id = oi.id) as wd left join work_module wm on wd.id= wm.work_id where wd.company = ? and wd.orderId like '%' + ? + '%' order by wd.row_num,wd.is_insert asc ";
         List<WorkDetail> list = base.query(WorkDetail.class, sql, company, orderId);
         return list;
     }
@@ -23,9 +23,9 @@ public class WorkDetailService {
      * 新增
      */
     public boolean insert(WorkDetail workDetail) {
-        String sql = "insert into work_detail(order_id,work_num,work_start_date,company,is_insert,type) values(?,?,?,?,?,?)";
+        String sql = "insert into work_detail(order_id,work_num,work_start_date,company,is_insert,type,jiezhishijian) values(?,?,?,?,?,?,?)";
         base = new SchedulingDao();
-        long result = base.executeOfId(sql, workDetail.getOrder_id(), workDetail.getWork_num(), workDetail.getWork_start_date(), workDetail.getCompany(), workDetail.getIs_insert(), workDetail.getType());
+        long result = base.executeOfId(sql, workDetail.getOrder_id(), workDetail.getWork_num(), workDetail.getWork_start_date(), workDetail.getCompany(), workDetail.getIs_insert(), workDetail.getType(), workDetail.getJiezhishijian());
         return result > 0;
     }
 
@@ -42,12 +42,34 @@ public class WorkDetailService {
     /**
      * 修改
      */
+//    public boolean update(WorkDetail workDetail) {
+//        String sql = "update work_detail set row_num=? where id=? ";
+//        base = new SchedulingDao();
+//        boolean result = base.execute(sql, workDetail.getRow_num(), workDetail.getId());
+//        return result;
+//    }
+
+    /**
+     * 修改
+     */
     public boolean update(WorkDetail workDetail) {
-        String sql = "update work_detail set row_num=? where id=? ";
+        String sql = "update work_detail set order_id=?, work_num=?, work_start_date=?, " +
+                "jiezhishijian=?, is_insert=?, type=?, row_num=?, company=? " +
+                "where id=?";
         base = new SchedulingDao();
-        boolean result = base.execute(sql, workDetail.getRow_num(), workDetail.getId());
+        boolean result = base.execute(sql,
+                workDetail.getOrder_id(),
+                workDetail.getWork_num(),
+                workDetail.getWork_start_date(),
+                workDetail.getJiezhishijian(),
+                workDetail.getIs_insert(),
+                workDetail.getType(),
+                workDetail.getRow_num(),
+                workDetail.getCompany(),
+                workDetail.getId());
         return result;
     }
+
 
     /**
      * 刷新
