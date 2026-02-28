@@ -8,7 +8,10 @@ import com.example.myapplication.jxc.dao.JxcServerDao;
 import com.example.myapplication.jxc.entity.YhJinXiaoCun;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunMingXi;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class YhJinXiaoCunService {
@@ -286,174 +289,251 @@ public class YhJinXiaoCunService {
 
             // 根据状态执行不同的业务逻辑
             if (shujukuValue == 1) {
-                // SQL Server 版本
-                String sql = "SELECT " +
-                        "jxc.cpid AS sp_dm, " +
-                        "jxc.cpname AS name, " +
-                        "jxc.cplb AS lei_bie, " +
-                        "jxc.qcsl, jxc.qcje, jxc.rksl, jxc.rkje, " +
-                        "jxc.cksl AS mx_chuku_cpsl, " +
-                        "jxc.ckje, " +
-                        "jxc.jcsl AS jc_sl, " +
-                        "jxc.jcje AS jc_price, " +
-                        "jxc.cangku, " +
-                        "ISNULL(bian_yuan.bianyuan, '') AS bianyuan, " +
-                        "ISNULL(bian_yuan.mark1, '') AS mark1, " +
-                        "ISNULL(last_ck.cpsj, 0) AS yjdj, " +
-                        "CASE " +
-                        "  WHEN (ISNULL(jxc.qimo_sl, 0) > 0 AND ISNULL(period_ck.cksl, 0) > 0) " +
-                        "  THEN ROUND(CAST(ISNULL(period_ck.cksl, 0) AS FLOAT) / ISNULL(jxc.qimo_sl, 0), 2) " +
-                        "  ELSE 0 " +
-                        "END AS zhouzhuan " +
-                        "FROM ( " +
-                        "  SELECT " +
-                        "    ISNULL(link_rk.cpid, '') AS cpid, " +
-                        "    ISNULL(link_rk.cpname, '') AS cpname, " +
-                        "    ISNULL(link_rk.cplb, '') AS cplb, " +
-                        "    ISNULL(link_rk.cpsl, 0) AS qcsl, " +
-                        "    ISNULL(link_rk.cpje, 0) AS qcje, " +
-                        "    ISNULL(link_rk.rksl, 0) AS rksl, " +
-                        "    ISNULL(link_rk.rkje, 0) AS rkje, " +
-                        "    ISNULL(ck.cksl, 0) AS cksl, " +
-                        "    ISNULL(ck.ckje, 0) AS ckje, " +
-                        "    ISNULL(link_rk.cpsl, 0) + ISNULL(link_rk.rksl, 0) - ISNULL(ck.cksl, 0) AS jcsl, " +
-                        "    ISNULL(link_rk.cpje, 0) + ISNULL(link_rk.rkje, 0) - ISNULL(ck.ckje, 0) AS jcje, " +
-                        "    ISNULL(cangku_info.cangku, '') AS cangku, " +
-                        "    (ISNULL(link_rk.cpsl, 0) + ISNULL(all_rk.rksl, 0) - ISNULL(all_ck.cksl, 0)) AS qimo_sl " +
-                        "  FROM ( " +
-                        "    SELECT " +
-                        "      link_qc.cpid, " +
-                        "      link_qc.cpname, " +
-                        "      link_qc.cplb, " +
-                        "      link_qc.cpsl, " +
-                        "      link_qc.cpje, " +
-                        "      rk.rksl, " +
-                        "      rk.rkje " +
-                        "    FROM ( " +
-                        "      SELECT " +
-                        "        cp.cpid, " +
-                        "        cp.cpname, " +
-                        "        cp.cplb, " +
-                        "        qc.cpsl, " +
-                        "        qc.cpje " +
-                        "      FROM ( " +
-                        "        SELECT cpid, cpname, cplb FROM yh_jinxiaocun_qichushu_mssql WHERE gs_name = ? " +  // 参数1
-                        "        UNION " +
-                        "        SELECT sp_dm, cpname, cplb FROM yh_jinxiaocun_mingxi_mssql WHERE gs_name = ? " +  // 参数2
-                        "      ) AS cp " +
-                        "      LEFT JOIN ( " +
-                        "        SELECT " +
-                        "          cpid, " +
-                        "          cplb, " +
-                        "          cpname, " +
-                        "          SUM(cpsl) AS cpsl, " +
-                        "          SUM(cpsj * cpsl) AS cpje " +
-                        "        FROM yh_jinxiaocun_qichushu_mssql " +
-                        "        WHERE gs_name = ? " +  // 参数3
-                        "        GROUP BY cpid, cpname, cplb " +
-                        "      ) AS qc ON cp.cpid = qc.cpid AND cp.cpname = qc.cpname AND cp.cplb = qc.cplb " +
-                        "    ) AS link_qc " +
-                        "    LEFT JOIN ( " +
-                        "      SELECT " +
-                        "        sp_dm, " +
-                        "        cpname, " +
-                        "        cplb, " +
-                        "        SUM(cpsl) AS rksl, " +
-                        "        SUM(cpsl * cpsj) AS rkje " +
-                        "      FROM yh_jinxiaocun_mingxi_mssql " +
-                        "      WHERE (mxtype = '入库' OR mxtype = '调拨入库' OR mxtype = '盘盈入库') " +
-                        "        AND gs_name = ? " +  // 参数4
-                        "        AND shijian BETWEEN ? AND ? " +  // 参数5,6
-                        "      GROUP BY sp_dm, cpname, cplb " +
-                        "    ) AS rk ON rk.sp_dm = link_qc.cpid AND rk.cpname = link_qc.cpname AND rk.cplb = link_qc.cplb " +
-                        "  ) AS link_rk " +
-                        "  LEFT JOIN ( " +
-                        "    SELECT " +
-                        "      sp_dm, " +
-                        "      cpname, " +
-                        "      cplb, " +
-                        "      SUM(cpsl) AS cksl, " +
-                        "      SUM(cpsl * cpsj) AS ckje " +
-                        "    FROM yh_jinxiaocun_mingxi_mssql " +
-                        "    WHERE (mxtype = '出库' OR mxtype = '调拨出库' OR mxtype = '盘亏出库') " +
-                        "      AND gs_name = ? " +  // 参数7
-                        "      AND shijian BETWEEN ? AND ? " +  // 参数8,9
-                        "    GROUP BY sp_dm, cpname, cplb " +
-                        "  ) AS ck ON ck.sp_dm = link_rk.cpid AND ck.cpname = link_rk.cpname AND ck.cplb = link_rk.cplb " +
-                        "  LEFT JOIN ( " +
-                        "    SELECT sp_dm, cangku " +
-                        "    FROM yh_jinxiaocun_mingxi_mssql " +
-                        "    WHERE gs_name = ? " +  // 参数10
-                        "    GROUP BY sp_dm, cangku " +
-                        "  ) AS cangku_info ON link_rk.cpid = cangku_info.sp_dm " +
-                        "  LEFT JOIN ( " +
-                        "    SELECT " +
-                        "      sp_dm, " +
-                        "      cpname, " +
-                        "      cplb, " +
-                        "      SUM(cpsl) AS rksl " +
-                        "    FROM yh_jinxiaocun_mingxi_mssql " +
-                        "    WHERE (mxtype = '入库' OR mxtype = '调拨入库' OR mxtype = '盘盈入库') " +
-                        "      AND gs_name = ? " +  // 参数11
-                        "      AND shijian <= ? " +  // 参数12 (结束时间)
-                        "    GROUP BY sp_dm, cpname, cplb " +
-                        "  ) AS all_rk ON link_rk.cpid = all_rk.sp_dm AND link_rk.cpname = all_rk.cpname AND link_rk.cplb = all_rk.cplb " +
-                        "  LEFT JOIN ( " +
-                        "    SELECT " +
-                        "      sp_dm, " +
-                        "      cpname, " +
-                        "      cplb, " +
-                        "      SUM(cpsl) AS cksl " +
-                        "    FROM yh_jinxiaocun_mingxi_mssql " +
-                        "    WHERE (mxtype = '出库' OR mxtype = '调拨出库' OR mxtype = '盘亏出库') " +
-                        "      AND gs_name = ? " +  // 参数13
-                        "      AND shijian <= ? " +  // 参数14 (结束时间)
-                        "    GROUP BY sp_dm, cpname, cplb " +
-                        "  ) AS all_ck ON link_rk.cpid = all_ck.sp_dm AND link_rk.cpname = all_ck.cpname AND link_rk.cplb = all_ck.cplb " +
-                        ") AS jxc " +
-                        "LEFT JOIN ( " +
-                        "  SELECT sp_dm, lei_bie, name, bianyuan, mark1 " +
-                        "  FROM yh_jinxiaocun_jichuziliao_mssql " +
-                        "  WHERE gs_name = ? " +  // 参数15
-                        ") AS bian_yuan ON jxc.cpid = bian_yuan.sp_dm AND jxc.cpname = bian_yuan.name AND jxc.cplb = bian_yuan.lei_bie " +
-                        "LEFT JOIN ( " +
-                        "  SELECT " +
-                        "    m1.sp_dm, " +
-                        "    m1.cpname, " +
-                        "    m1.cplb, " +
-                        "    m1.cpsj " +
-                        "  FROM yh_jinxiaocun_mingxi_mssql m1 " +
-                        "  INNER JOIN ( " +
-                        "    SELECT " +
-                        "      sp_dm, " +
-                        "      cpname, " +
-                        "      cplb, " +
-                        "      MAX(shijian) AS max_shijian " +
-                        "    FROM yh_jinxiaocun_mingxi_mssql " +
-                        "    WHERE mxtype = '出库' AND gs_name = ? " +  // 参数16
-                        "    GROUP BY sp_dm, cpname, cplb " +
-                        "  ) m2 ON m1.sp_dm = m2.sp_dm AND m1.cpname = m2.cpname AND m1.cplb = m2.cplb AND m1.shijian = m2.max_shijian " +
-                        "  WHERE m1.mxtype = '出库' AND m1.gs_name = ? " +  // 参数17
-                        ") AS last_ck ON jxc.cpid = last_ck.sp_dm AND jxc.cpname = last_ck.cpname AND jxc.cplb = last_ck.cplb " +
-                        "LEFT JOIN ( " +
-                        "  SELECT " +
-                        "    sp_dm, " +
-                        "    cpname, " +
-                        "    cplb, " +
-                        "    SUM(cpsl) AS cksl " +
-                        "  FROM yh_jinxiaocun_mingxi_mssql " +
-                        "  WHERE (mxtype = '出库' OR mxtype = '调拨出库' OR mxtype = '盘亏出库') " +
-                        "    AND gs_name = ? " +  // 参数18
-                        "    AND shijian BETWEEN ? AND ? " +  // 参数19,20
-                        "  GROUP BY sp_dm, cpname, cplb " +
-                        ") AS period_ck ON jxc.cpid = period_ck.sp_dm AND jxc.cpname = period_ck.cpname AND jxc.cplb = period_ck.cplb " +
-                        "WHERE jxc.cksl < ? " +  // 参数21
-                        "ORDER BY jxc.cpname, jxc.cangku";
+                try {
+                    // 添加参数验证和默认值
+                    if (jiyanum == null || jiyanum.trim().isEmpty()) {
+                        jiyanum = "0";  // 设置默认值
+                        Log.e("SQLDebug", "jiyanum为空，设置为默认值: 0");
+                    }
 
-                base2 = new JxcServerDao();
-                Log.e("SQLDebug", "查询统计SQL: " + sql);
-                List<YhJinXiaoCun> list = base2.query(YhJinXiaoCun.class, sql, company, company, company, company, ks, js,company,ks,js,company,company,js,company,js,company,company,company,company,ks,js,jiyanum);
-                return list != null ? list : new ArrayList<>();
+                    // 确保jiyanum是有效的数字
+                    try {
+                        Double.parseDouble(jiyanum);
+                    } catch (NumberFormatException e) {
+                        jiyanum = "0";  // 如果不是有效数字，设置为0
+                        Log.e("SQLDebug", "jiyanum不是有效数字，设置为默认值: 0");
+                    }
+
+                    // 1. 将字符串日期参数转换为SQL Server可识别的格式
+                    String ksFormatted = formatDateTimeString(ks, true);  // 开始日期，设为当天00:00:00
+                    String jsFormatted = formatDateTimeString(js, false); // 结束日期，设为当天23:59:59
+
+                    Log.e("SQLDebug", "原始ks: " + ks + ", 格式化后ks: " + ksFormatted);
+                    Log.e("SQLDebug", "原始js: " + js + ", 格式化后js: " + jsFormatted);
+                    Log.e("SQLDebug", "jiyanum: " + jiyanum);
+
+                    String sql = "SELECT " +
+                            "jxc.cpid AS sp_dm, " +
+                            "jxc.cpname AS name, " +
+                            "jxc.cplb AS lei_bie, " +
+                            // 期初数量
+                            "ISNULL(jxc.qcsl, '0') AS jq_cpsl, " +
+                            // 期初金额
+                            "ISNULL(jxc.qcje, '0') AS jq_price, " +
+                            // 入库数量
+                            "ISNULL(jxc.rksl, '0') AS mx_ruku_cpsl, " +
+                            // 入库金额
+                            "ISNULL(jxc.rkje, '0') AS mx_ruku_price, " +
+                            // 出库数量
+                            "ISNULL(jxc.cksl, '0') AS mx_chuku_cpsl, " +
+                            // 出库金额
+                            "ISNULL(jxc.ckje, '0') AS mx_chuku_price, " +
+                            // 结存数量
+                            "ISNULL(jxc.jcsl, '0') AS jc_sl, " +
+                            // 结存金额
+                            "ISNULL(jxc.jcje, '0') AS jc_price, " +
+                            "jxc.cangku, " +
+                            "'' AS zzl, " +
+                            "'' AS month, " +
+                            "ISNULL(jxc.zhouzhuan_calc, '0') AS zhouzhuan, " +
+                            "ISNULL(last_ck.cpsj, '0') AS yjdj " +
+                            "FROM ( " +
+                            "  SELECT " +
+                            "    link_rk.cpid, " +
+                            "    link_rk.cpname, " +
+                            "    link_rk.cplb, " +
+                            "    link_rk.qcsl, " +
+                            "    link_rk.qcje, " +
+                            "    link_rk.rksl, " +
+                            "    link_rk.rkje, " +
+                            "    ck.cksl, " +
+                            "    ck.ckje, " +
+                            "    CAST( " +
+                            "      (CASE WHEN ISNUMERIC(link_rk.qcsl) = 1 THEN CAST(link_rk.qcsl AS DECIMAL(18,2)) ELSE 0 END + " +
+                            "       CASE WHEN ISNUMERIC(link_rk.rksl) = 1 THEN CAST(link_rk.rksl AS DECIMAL(18,2)) ELSE 0 END - " +
+                            "       CASE WHEN ISNUMERIC(ck.cksl) = 1 THEN CAST(ck.cksl AS DECIMAL(18,2)) ELSE 0 END) " +
+                            "    AS VARCHAR) AS jcsl, " +
+                            "    CAST( " +
+                            "      (CASE WHEN ISNUMERIC(link_rk.qcje) = 1 THEN CAST(link_rk.qcje AS DECIMAL(18,2)) ELSE 0 END + " +
+                            "       CASE WHEN ISNUMERIC(link_rk.rkje) = 1 THEN CAST(link_rk.rkje AS DECIMAL(18,2)) ELSE 0 END - " +
+                            "       CASE WHEN ISNUMERIC(ck.ckje) = 1 THEN CAST(ck.ckje AS DECIMAL(18,2)) ELSE 0 END) " +
+                            "    AS VARCHAR) AS jcje, " +
+                            "    cangku_info.cangku, " +
+                            "    link_rk.qimo_sl, " +
+                            "    CAST( " +
+                            "      CASE " +
+                            "        WHEN (CASE WHEN ISNUMERIC(link_rk.qimo_sl) = 1 THEN CAST(link_rk.qimo_sl AS DECIMAL(18,2)) ELSE 0 END > 0 " +
+                            "          AND CASE WHEN ISNUMERIC(period_ck.cksl) = 1 THEN CAST(period_ck.cksl AS DECIMAL(18,2)) ELSE 0 END > 0) " +
+                            "        THEN ROUND( " +
+                            "          CASE WHEN ISNUMERIC(period_ck.cksl) = 1 THEN CAST(period_ck.cksl AS DECIMAL(18,2)) ELSE 0 END / " +
+                            "          CASE WHEN ISNUMERIC(link_rk.qimo_sl) = 1 THEN CAST(link_rk.qimo_sl AS DECIMAL(18,2)) ELSE 0 END, 2) " +
+                            "        ELSE 0 " +
+                            "      END AS VARCHAR) AS zhouzhuan_calc " +
+                            "  FROM ( " +
+                            "    SELECT " +
+                            "      link_qc.cpid, " +
+                            "      link_qc.cpname, " +
+                            "      link_qc.cplb, " +
+                            "      link_qc.qcsl, " +
+                            "      link_qc.qcje, " +
+                            "      rk.rksl, " +
+                            "      rk.rkje, " +
+                            "      (CASE WHEN ISNUMERIC(link_qc.qcsl) = 1 THEN CAST(link_qc.qcsl AS DECIMAL(18,2)) ELSE 0 END + " +
+                            "       CASE WHEN ISNUMERIC(all_rk.rksl) = 1 THEN CAST(all_rk.rksl AS DECIMAL(18,2)) ELSE 0 END - " +
+                            "       CASE WHEN ISNUMERIC(all_ck.cksl) = 1 THEN CAST(all_ck.cksl AS DECIMAL(18,2)) ELSE 0 END) AS qimo_sl " +
+                            "    FROM ( " +
+                            "      SELECT " +
+                            "        cp.cpid, " +
+                            "        cp.cpname, " +
+                            "        cp.cplb, " +
+                            "        qc.qcsl, " +
+                            "        qc.qcje " +
+                            "      FROM ( " +
+                            "        SELECT cpid, cpname, cplb FROM yh_jinxiaocun_qichushu_mssql WHERE gs_name = ? " +  // 参数1
+                            "        UNION " +
+                            "        SELECT sp_dm, cpname, cplb FROM yh_jinxiaocun_mingxi_mssql WHERE gs_name = ? " +  // 参数2
+                            "      ) AS cp " +
+                            "      LEFT JOIN ( " +
+                            "        SELECT " +
+                            "          cpid, " +
+                            "          cpname, " +
+                            "          cplb, " +
+                            "          CAST(SUM(CASE WHEN ISNUMERIC(cpsl) = 1 THEN CAST(cpsl AS DECIMAL(18,2)) ELSE 0 END) AS VARCHAR) AS qcsl, " +
+                            "          CAST(SUM(CASE WHEN ISNUMERIC(cpsl) = 1 AND ISNUMERIC(cpsj) = 1 THEN CAST(cpsl AS DECIMAL(18,2)) * CAST(cpsj AS DECIMAL(18,2)) ELSE 0 END) AS VARCHAR) AS qcje " +
+                            "        FROM yh_jinxiaocun_qichushu_mssql " +
+                            "        WHERE gs_name = ? " +  // 参数3
+                            "        GROUP BY cpid, cpname, cplb " +
+                            "      ) AS qc ON cp.cpid = qc.cpid AND cp.cpname = qc.cpname AND cp.cplb = qc.cplb " +
+                            "    ) AS link_qc " +
+                            "    LEFT JOIN ( " +
+                            "      SELECT " +
+                            "        sp_dm, " +
+                            "        cpname, " +
+                            "        cplb, " +
+                            "        CAST(SUM(CASE WHEN ISNUMERIC(cpsl) = 1 THEN CAST(cpsl AS DECIMAL(18,2)) ELSE 0 END) AS VARCHAR) AS rksl, " +
+                            "        CAST(SUM(CASE WHEN ISNUMERIC(cpsl) = 1 AND ISNUMERIC(cpsj) = 1 THEN CAST(cpsl AS DECIMAL(18,2)) * CAST(cpsj AS DECIMAL(18,2)) ELSE 0 END) AS VARCHAR) AS rkje " +
+                            "      FROM yh_jinxiaocun_mingxi_mssql " +
+                            "      WHERE (mxtype = '入库' OR mxtype = '调拨入库' OR mxtype = '盘盈入库') " +
+                            "        AND gs_name = ? " +  // 参数4
+                            "        AND shijian >= CONVERT(datetime, ?) AND shijian <= CONVERT(datetime, ?) " +  // 参数5,6
+                            "      GROUP BY sp_dm, cpname, cplb " +
+                            "    ) AS rk ON rk.sp_dm = link_qc.cpid AND rk.cpname = link_qc.cpname AND rk.cplb = link_qc.cplb " +
+                            "    LEFT JOIN ( " +
+                            "      SELECT " +
+                            "        sp_dm, " +
+                            "        cpname, " +
+                            "        cplb, " +
+                            "        CAST(SUM(CASE WHEN ISNUMERIC(cpsl) = 1 THEN CAST(cpsl AS DECIMAL(18,2)) ELSE 0 END) AS VARCHAR) AS rksl " +
+                            "      FROM yh_jinxiaocun_mingxi_mssql " +
+                            "      WHERE (mxtype = '入库' OR mxtype = '调拨入库' OR mxtype = '盘盈入库') " +
+                            "        AND gs_name = ? " +  // 参数7
+                            "        AND shijian <= CONVERT(datetime, ?) " +  // 参数8
+                            "      GROUP BY sp_dm, cpname, cplb " +
+                            "    ) AS all_rk ON link_qc.cpid = all_rk.sp_dm AND link_qc.cpname = all_rk.cpname AND link_qc.cplb = all_rk.cplb " +
+                            "    LEFT JOIN ( " +
+                            "      SELECT " +
+                            "        sp_dm, " +
+                            "        cpname, " +
+                            "        cplb, " +
+                            "        CAST(SUM(CASE WHEN ISNUMERIC(cpsl) = 1 THEN CAST(cpsl AS DECIMAL(18,2)) ELSE 0 END) AS VARCHAR) AS cksl " +
+                            "      FROM yh_jinxiaocun_mingxi_mssql " +
+                            "      WHERE (mxtype = '出库' OR mxtype = '调拨出库' OR mxtype = '盘亏出库') " +
+                            "        AND gs_name = ? " +  // 参数9
+                            "        AND shijian <= CONVERT(datetime, ?) " +  // 参数10
+                            "      GROUP BY sp_dm, cpname, cplb " +
+                            "    ) AS all_ck ON link_qc.cpid = all_ck.sp_dm AND link_qc.cpname = all_ck.cpname AND link_qc.cplb = all_ck.cplb " +
+                            "  ) AS link_rk " +
+                            "  LEFT JOIN ( " +
+                            "    SELECT " +
+                            "      sp_dm, " +
+                            "      cpname, " +
+                            "      cplb, " +
+                            "      CAST(SUM(CASE WHEN ISNUMERIC(cpsl) = 1 THEN CAST(cpsl AS DECIMAL(18,2)) ELSE 0 END) AS VARCHAR) AS cksl, " +
+                            "      CAST(SUM(CASE WHEN ISNUMERIC(cpsl) = 1 AND ISNUMERIC(cpsj) = 1 THEN CAST(cpsl AS DECIMAL(18,2)) * CAST(cpsj AS DECIMAL(18,2)) ELSE 0 END) AS VARCHAR) AS ckje " +
+                            "    FROM yh_jinxiaocun_mingxi_mssql " +
+                            "    WHERE (mxtype = '出库' OR mxtype = '调拨出库' OR mxtype = '盘亏出库') " +
+                            "      AND gs_name = ? " +  // 参数11
+                            "      AND shijian >= CONVERT(datetime, ?) AND shijian <= CONVERT(datetime, ?) " +  // 参数12,13
+                            "    GROUP BY sp_dm, cpname, cplb " +
+                            "  ) AS ck ON link_rk.cpid = ck.sp_dm AND link_rk.cpname = ck.cpname AND link_rk.cplb = ck.cplb " +
+                            "  LEFT JOIN ( " +
+                            "    SELECT sp_dm, cangku " +
+                            "    FROM yh_jinxiaocun_mingxi_mssql " +
+                            "    WHERE gs_name = ? " +  // 参数14
+                            "    GROUP BY sp_dm, cangku " +
+                            "  ) AS cangku_info ON link_rk.cpid = cangku_info.sp_dm " +
+                            "  LEFT JOIN ( " +
+                            "    SELECT " +
+                            "      sp_dm, " +
+                            "      cpname, " +
+                            "      cplb, " +
+                            "      CAST(SUM(CASE WHEN ISNUMERIC(cpsl) = 1 THEN CAST(cpsl AS DECIMAL(18,2)) ELSE 0 END) AS VARCHAR) AS cksl " +
+                            "    FROM yh_jinxiaocun_mingxi_mssql " +
+                            "    WHERE (mxtype = '出库' OR mxtype = '调拨出库' OR mxtype = '盘亏出库') " +
+                            "      AND gs_name = ? " +  // 参数15
+                            "      AND shijian >= CONVERT(datetime, ?) AND shijian <= CONVERT(datetime, ?) " +  // 参数16,17
+                            "    GROUP BY sp_dm, cpname, cplb " +
+                            "  ) AS period_ck ON link_rk.cpid = period_ck.sp_dm AND link_rk.cpname = period_ck.cpname AND link_rk.cplb = period_ck.cplb " +
+                            ") AS jxc " +
+                            "LEFT JOIN ( " +
+                            "  SELECT sp_dm, lei_bie, name, bianyuan, mark1 " +
+                            "  FROM yh_jinxiaocun_jichuziliao_mssql " +
+                            "  WHERE gs_name = ? " +  // 参数18
+                            ") AS bian_yuan ON jxc.cpid = bian_yuan.sp_dm AND jxc.cpname = bian_yuan.name AND jxc.cplb = bian_yuan.lei_bie " +
+                            "LEFT JOIN ( " +
+                            "  SELECT " +
+                            "    m1.sp_dm, " +
+                            "    m1.cpname, " +
+                            "    m1.cplb, " +
+                            "    CAST(m1.cpsj AS VARCHAR) AS cpsj " +
+                            "  FROM yh_jinxiaocun_mingxi_mssql m1 " +
+                            "  INNER JOIN ( " +
+                            "    SELECT sp_dm, cpname, cplb, MAX(shijian) AS max_shijian " +
+                            "    FROM yh_jinxiaocun_mingxi_mssql " +
+                            "    WHERE mxtype = '出库' AND gs_name = ? " +  // 参数19
+                            "    GROUP BY sp_dm, cpname, cplb " +
+                            "  ) m2 ON m1.sp_dm = m2.sp_dm AND m1.cpname = m2.cpname AND m1.cplb = m2.cplb AND m1.shijian = m2.max_shijian " +
+                            "  WHERE m1.mxtype = '出库' AND m1.gs_name = ? " +  // 参数20
+                            ") AS last_ck ON jxc.cpid = last_ck.sp_dm AND jxc.cpname = last_ck.cpname AND jxc.cplb = last_ck.cplb " +
+                            "WHERE CASE WHEN ISNUMERIC(jxc.cksl) = 1 THEN CAST(jxc.cksl AS DECIMAL(18,2)) ELSE 0 END < ? " +  // 参数21
+                            "ORDER BY jxc.cpname, jxc.cangku";
+
+                    base2 = new JxcServerDao();
+                    Log.e("SQLDebug", "SQL中?占位符数量: " + countParameters(sql));
+
+                    // 使用正确的参数顺序
+                    List<YhJinXiaoCun> list = base2.query(YhJinXiaoCun.class, sql,
+                            company,  // 参数1: 第一个company (qc表)
+                            company,  // 参数2: 第二个company (mx表)
+                            company,  // 参数3: 第三个company (qc表group by)
+                            company,  // 参数4: 第四个company (rk表)
+                            ksFormatted,  // 参数5: 开始时间
+                            jsFormatted,  // 参数6: 结束时间
+                            company,  // 参数7: 第五个company (all_rk表)
+                            jsFormatted,  // 参数8: 结束时间 (all_rk)
+                            company,  // 参数9: 第六个company (all_ck表)
+                            jsFormatted,  // 参数10: 结束时间 (all_ck)
+                            company,  // 参数11: 第七个company (ck表)
+                            ksFormatted,  // 参数12: 开始时间 (ck)
+                            jsFormatted,  // 参数13: 结束时间 (ck)
+                            company,  // 参数14: 第八个company (cangku_info)
+                            company,  // 参数15: 第九个company (period_ck)
+                            ksFormatted,  // 参数16: 开始时间 (period_ck)
+                            jsFormatted,  // 参数17: 结束时间 (period_ck)
+                            company,  // 参数18: 第十个company (jichuziliao)
+                            company,  // 参数19: 第十一个company (last_ck inner)
+                            company,  // 参数20: 第十二个company (last_ck where)
+                            jiyanum);  // 参数21: jiyanum
+
+                    Log.e("SQLDebug", "查询结果数量: " + (list != null ? list.size() : 0));
+                    return list != null ? list : new ArrayList<>();
+
+                } catch (Exception e) {
+                    Log.e("SQLDebug", "SQL Server查询异常: " + e.getMessage());
+                    e.printStackTrace();
+                    return new ArrayList<>();
+                }
+
 
             } else {
                 // MySQL 版本
@@ -650,6 +730,63 @@ public class YhJinXiaoCunService {
             return new ArrayList<>();
         }
     }
+
+
+    // 在类中添加这个辅助方法
+    private String formatDateTimeString(String dateStr, boolean isStart) {
+        if (dateStr == null || dateStr.trim().isEmpty()) {
+            return isStart ? "1900-01-01 00:00:00" : "2099-12-31 23:59:59";
+        }
+
+        try {
+            // 如果已经是完整格式，直接返回
+            if (dateStr.length() >= 19 && dateStr.contains(" ")) {
+                return dateStr;
+            }
+
+            // 处理常见的日期格式
+            String formattedDate = dateStr.trim();
+
+            // 如果只有日期部分，补全时间部分
+            if (formattedDate.length() == 10) { // yyyy-MM-dd
+                if (isStart) {
+                    return formattedDate + " 00:00:00";
+                } else {
+                    return formattedDate + " 23:59:59";
+                }
+            }
+
+            // 尝试解析并重新格式化
+            SimpleDateFormat[] formats = {
+                    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"),
+                    new SimpleDateFormat("yyyy-MM-dd"),
+                    new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"),
+                    new SimpleDateFormat("yyyy/MM/dd"),
+                    new SimpleDateFormat("yyyyMMdd HH:mm:ss"),
+                    new SimpleDateFormat("yyyyMMdd")
+            };
+
+            for (SimpleDateFormat format : formats) {
+                try {
+                    Date date = format.parse(formattedDate);
+                    SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    return outputFormat.format(date);
+                } catch (ParseException ignored) {
+                    // 继续尝试下一个格式
+                }
+            }
+
+            // 如果都无法解析，返回原始字符串并添加日志
+            Log.e("SQLDebug", "无法解析的日期格式: " + dateStr + ", 使用默认格式");
+            return formattedDate;
+
+        } catch (Exception e) {
+            Log.e("SQLDebug", "日期格式化异常: " + e.getMessage());
+            return isStart ? dateStr + " 00:00:00" : dateStr + " 23:59:59";
+        }
+    }
+
+
     private int countParameters(String sql) {
         int count = 0;
         for (int i = 0; i < sql.length(); i++) {
