@@ -120,6 +120,7 @@ public class KuCunPanDianActivity extends AppCompatActivity {
         search_text = findViewById(R.id.product_search);
         cangkuSpinner = findViewById(R.id.cangku); // 改为Spinner
         js = findViewById(R.id.js);
+        showDateOnClick(js);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         // 页面加载时查询一次数据（初始化）
@@ -156,6 +157,47 @@ public class KuCunPanDianActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * 时间选择器点击事件
+     */
+    @SuppressLint("ClickableViewAccessibility")
+    protected void showDateOnClick(final EditText editText) {
+        editText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    showDatePickDlg(editText);
+                    return true;
+                }
+                return false;
+            }
+        });
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    showDatePickDlg(editText);
+                }
+            }
+        });
+    }
+
+    /**
+     * 显示日期选择对话框
+     */
+    protected void showDatePickDlg(final EditText editText) {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(KuCunPanDianActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        editText.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
+                    }
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
     // ViewHolder类

@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,6 +26,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,9 +37,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.jxc.entity.YhJinXiaoCunCangKu;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunJiChuZiLiao;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunMingXi;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
+import com.example.myapplication.jxc.service.YhJinXiaoCunCangKuService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunJiChuZiLiaoService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunMingXiService;
 import com.example.myapplication.utils.LoadingDialog;
@@ -59,9 +64,11 @@ public class KuCunDiaoboActivity extends AppCompatActivity {
     private YhJinXiaoCunUser yhJinXiaoCunUser;
     private YhJinXiaoCunJiChuZiLiaoService yhJinXiaoCunJiChuZiLiaoService;
     private YhJinXiaoCunMingXiService yhJinXiaoCunMingXiService;
+    private YhJinXiaoCunCangKuService yhJinXiaoCunCangKuService;
 
     private List<YhJinXiaoCunJiChuZiLiao> list;
     private List<YhJinXiaoCunMingXi> order_list;
+    private List<YhJinXiaoCunCangKu> cangkuList;
 
     private String churuku;
     private ListView listView;
@@ -121,17 +128,25 @@ public class KuCunDiaoboActivity extends AppCompatActivity {
         public TextView danWei;
         public EditText num;
         public EditText jine;
-        public EditText cangku;
+        public Spinner cangku;
         public CheckBox cb;
     }
 
     class MyAdapter extends BaseAdapter {
-
         Context context;
         private LayoutInflater inflater = null;
+        private List<String> cangkuNames; // 仓库名称列表
 
         public MyAdapter(Context context) {
+            this.context = context; // 保存context
             inflater = LayoutInflater.from(context);
+            // 初始化仓库名称列表
+            cangkuNames = new ArrayList<>();
+            if (cangkuList != null) {
+                for (YhJinXiaoCunCangKu cangku : cangkuList) {
+                    cangkuNames.add(cangku.getcangku());
+                }
+            }
         }
 
         @Override
@@ -151,20 +166,13 @@ public class KuCunDiaoboActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            // 声明一个 ViewHolder对象
-            KuCunDiaoboActivity.ViewHolder holder = null;
+            ViewHolder holder = null;
             View view;
-            // convertView .就是上一次使用的Item的View对象, 参数View convertView 而这个convertView其实就是最关键的部分了 原理上讲
-            // 当ListView滑动的过程中 会有item被滑出屏幕 而不再被使用 这时候Android会回收这个条目的view ,当item1被移除屏幕的时候 我们会重新new一个View给新显示的item_new
-            // 而如果使用了这个convertView 我们其实可以复用它 这样就省去了new View的大量开销
-            // 如果没有可用的 convertView 那么就要创建它
+
             if (convertView == null) {
-                //view = LayoutInflater.from(context).inflate(R.layout.ruku_row,null);
-                // 创建一个 ViewHolder对象,来保存这个 View中的了控件,这样,我们就不需要每都用 使用findViewById了.
-                holder = new KuCunDiaoboActivity.ViewHolder();
-                // 使用 LayoutInflater 创建View
+                holder = new ViewHolder();
                 view = inflater.inflate(R.layout.kucundiaobo_row, null);
-                // 将,View 的了控件保存到 holder 中.
+
                 holder.name = view.findViewById(R.id.name);
                 holder.spDm = view.findViewById(R.id.spDm);
                 holder.leiBie = view.findViewById(R.id.leiBie);
@@ -172,21 +180,21 @@ public class KuCunDiaoboActivity extends AppCompatActivity {
                 holder.num = view.findViewById(R.id.num);
                 holder.jine = view.findViewById(R.id.jine);
                 holder.cangku = view.findViewById(R.id.cangku);
-                holder.cb=view.findViewById(R.id.cb);
-                // 将Hodler 存放在 convertView 的 Tag 中.
+                holder.cb = view.findViewById(R.id.cb);
+
                 view.setTag(holder);
             } else {
                 view = convertView;
-                // 如果有可用的 convertView.那么就得到存在它Tag中的 Holder对象
-                holder = (KuCunDiaoboActivity.ViewHolder) view.getTag();
+                holder = (ViewHolder) view.getTag();
             }
 
-            // 对Holder对象中的控制设置属性或绑定事件
+            // 设置基本数据
             holder.name.setText(list.get(position).getName());
             holder.spDm.setText(list.get(position).getSpDm());
             holder.leiBie.setText(list.get(position).getLeiBie());
             holder.danWei.setText(list.get(position).getDanWei());
 
+            // 设置数量输入框
             holder.num.setTag(position);
             holder.num.clearFocus();
             holder.num.setText(list.get(position).getNum());
@@ -194,14 +202,10 @@ public class KuCunDiaoboActivity extends AppCompatActivity {
             final EditText num = holder.num;
             holder.num.addTextChangedListener(new TextWatcher() {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
                 @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
+                public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
                 @Override
                 public void afterTextChanged(Editable s) {
@@ -210,6 +214,7 @@ public class KuCunDiaoboActivity extends AppCompatActivity {
                 }
             });
 
+            // 设置金额输入框
             holder.jine.setTag(position);
             holder.jine.clearFocus();
             holder.jine.setText(list.get(position).getJine());
@@ -217,14 +222,10 @@ public class KuCunDiaoboActivity extends AppCompatActivity {
             final EditText jine = holder.jine;
             holder.jine.addTextChangedListener(new TextWatcher() {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
                 @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
+                public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
                 @Override
                 public void afterTextChanged(Editable s) {
@@ -233,25 +234,47 @@ public class KuCunDiaoboActivity extends AppCompatActivity {
                 }
             });
 
+            // 设置仓库下拉框
             holder.cangku.setTag(position);
-            holder.cangku.clearFocus();
-            holder.cangku.setText(list.get(position).getcangku());
-            final EditText cangku = holder.cangku;
-            holder.cangku.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            // 创建适配器 - 使用传入的context
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                    context, // 使用正确的context
+                    android.R.layout.simple_spinner_item,
+                    cangkuNames
+            );
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            holder.cangku.setAdapter(adapter);
+
+            // 设置默认选中项
+            String currentCangku = list.get(position).getcangku();
+            if (currentCangku != null && !currentCangku.isEmpty()) {
+                int selectionPosition = cangkuNames.indexOf(currentCangku);
+                if (selectionPosition >= 0) {
+                    holder.cangku.setSelection(selectionPosition);
+                } else {
+                    holder.cangku.setSelection(0);
+                }
+            } else {
+                holder.cangku.setSelection(0);
+            }
+
+            // 设置选择监听器
+            final Spinner cangkuSpinner = holder.cangku;
+            holder.cangku.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                    int itemPosition = (int) cangkuSpinner.getTag();
+                    if (pos >= 0 && pos < cangkuNames.size()) {
+                        String selectedCangku = cangkuNames.get(pos);
+                        list.get(itemPosition).setcangku(selectedCangku);
+                        Log.d("CangkuSelection", "第" + (itemPosition + 1) + "行选择了仓库: " + selectedCangku);
+                    }
                 }
 
                 @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    int a = (int) cangku.getTag();
-                    list.get(a).setcangku(s.toString());
+                public void onNothingSelected(AdapterView<?> parent) {
+                    // 什么都不选时的处理
                 }
             });
 
@@ -265,7 +288,6 @@ public class KuCunDiaoboActivity extends AppCompatActivity {
             });
             holder.cb.setChecked(list.get(position).isCheck());
 
-            // 将这个 view 返回
             return view;
         }
     }
@@ -351,6 +373,10 @@ public class KuCunDiaoboActivity extends AppCompatActivity {
                 yhJinXiaoCunMingXiService = new YhJinXiaoCunMingXiService();
                 list = yhJinXiaoCunJiChuZiLiaoService.getList(yhJinXiaoCunUser.getGongsi(), search_text.getText().toString());
                 order_list = yhJinXiaoCunMingXiService.getList(yhJinXiaoCunUser.getGongsi());
+                yhJinXiaoCunCangKuService = new YhJinXiaoCunCangKuService();
+                cangkuList = yhJinXiaoCunCangKuService.getList(yhJinXiaoCunUser.getGongsi());
+                Log.d("CangkuDebug", "获取到仓库数量: " + (cangkuList != null ? cangkuList.size() : 0));
+
                 Message msg = new Message();
                 msg.obj = list;
                 listLoadHandler.sendMessage(msg);

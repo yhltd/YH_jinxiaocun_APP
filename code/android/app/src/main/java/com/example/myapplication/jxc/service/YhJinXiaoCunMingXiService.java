@@ -583,26 +583,73 @@ public List<YhJinXiaoCunMingXi> getListByCpid1(String company, String cpid) {
             int shujukuValue = CacheManager.getInstance().getShujukuValue();
             Log.e("MyService", "当前shujuku状态: " + shujukuValue);
 
+            // 自动处理日期格式
+            String formattedKs = formatDateTimeForQuery(ks, true);
+            String formattedJs = formatDateTimeForQuery(js, false);
+
+            Log.e("DateDebug", "原始开始日期: " + ks + ", 处理后: " + formattedKs);
+            Log.e("DateDebug", "原始结束日期: " + js + ", 处理后: " + formattedJs);
+
             // 根据状态执行不同的业务逻辑
             if (shujukuValue == 1) {
                 // SQL Server 版本
-                String sql = "select * from yh_jinxiaocun_tuihuomingxi_mssql where gs_name=? and shijian between ? and ? and mxtype='采购'  order by id";
+                String sql = "select * from yh_jinxiaocun_tuihuomingxi_mssql where gs_name=? and shijian between ? and ? and mxtype='采购退货'  order by id";
                 base2 = new JxcServerDao();
-                List<YhJinXiaoCunMingXi> list = base2.query(YhJinXiaoCunMingXi.class, sql, company, ks, js);
+                List<YhJinXiaoCunMingXi> list = base2.query(YhJinXiaoCunMingXi.class, sql, company, formattedKs, formattedJs);
                 return list != null ? list : new ArrayList<>();
 
             } else {
                 // MySQL 版本
-                String sql = "select * from yh_jinxiaocun_tuihuomingxi where gs_name=? and shijian between ? and ? and mxtype='采购'  order by id";
+                String sql = "select * from yh_jinxiaocun_tuihuomingxi where gs_name=? and shijian between ? and ? and mxtype='采购退货'  order by id";
                 base = new JxcBaseDao();
                 Log.e("SQLDebug", "查询明细SQL: " + sql);
-                List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company, ks, js);
+                List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company, formattedKs, formattedJs);
                 return list != null ? list : new ArrayList<>();
             }
         } catch (Exception e) {
             Log.e("SQLDebug", "获取查询明细过程发生异常: " + e.getMessage());
             e.printStackTrace();
             return new ArrayList<>();
+        }
+    }
+
+    /**
+     * 格式化日期时间用于查询
+     * @param dateStr 前端传入的日期字符串
+     * @param isStart true=开始日期(返回当天00:00:00), false=结束日期(返回当天23:59:59)
+     * @return 格式化后的完整日期时间字符串
+     */
+    private String formatDateTimeForQuery(String dateStr, boolean isStart) {
+        if (dateStr == null || dateStr.trim().isEmpty()) {
+            return isStart ? "1900-01-01 00:00:00" : "2100-12-31 23:59:59";
+        }
+
+        String trimmedDate = dateStr.trim();
+
+        // 如果已经是完整格式（包含空格），直接返回
+        if (trimmedDate.contains(" ")) {
+            return trimmedDate;
+        }
+
+        // 统一将分隔符替换为连字符
+        String formattedDate = trimmedDate.replace("/", "-");
+
+        // 处理可能的时分秒部分
+        if (formattedDate.contains(":")) {
+            // 如果包含时间但没空格，可能是 yyyy-MM-ddHH:mm:ss 格式
+            if (formattedDate.length() > 10) {
+                String datePart = formattedDate.substring(0, 10);
+                String timePart = formattedDate.substring(10);
+                formattedDate = datePart + " " + timePart;
+            }
+            return formattedDate;
+        }
+
+        // 补全时间部分
+        if (isStart) {
+            return formattedDate + " 00:00:00";  // 开始日期：当天0点
+        } else {
+            return formattedDate + " 23:59:59";  // 结束日期：当天23:59:59
         }
     }
 
@@ -1025,14 +1072,14 @@ public List<YhJinXiaoCunMingXi> getListByCpid1(String company, String cpid) {
             // 根据状态执行不同的业务逻辑
             if (shujukuValue == 1) {
                 // SQL Server 版本
-                String sql = "select * from yh_jinxiaocun_tuihuomingxi_mssql where gs_name=?  and mxtype='采购'  order by id";
+                String sql = "select * from yh_jinxiaocun_tuihuomingxi_mssql where gs_name=?  and mxtype='采购退货'  order by id";
                 base2 = new JxcServerDao();
                 List<YhJinXiaoCunMingXi> list = base2.query(YhJinXiaoCunMingXi.class, sql, company);
                 return list != null ? list : new ArrayList<>();
 
             } else {
                 // MySQL 版本
-                String sql = "select * from yh_jinxiaocun_tuihuomingxi where gs_name=? and mxtype='采购'  order by id";
+                String sql = "select * from yh_jinxiaocun_tuihuomingxi where gs_name=? and mxtype='采购退货'  order by id";
                 base = new JxcBaseDao();
                 Log.e("SQLDebug", "查询明细所有SQL: " + sql);
                 List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company);
@@ -1250,99 +1297,6 @@ public List<YhJinXiaoCunMingXi> getListByCpid1(String company, String cpid) {
             Log.e("MyService", "当前shujuku状态: " + shujukuValue);
 
             if (shujukuValue == 1) {
-//                // SQL Server 版本 - 修复WHERE条件位置
-//                String baseSql = "SELECT mx.sp_dm, mx.cpname, mx.cplb, mx.cangku, \n" +
-//                        "       ISNULL(jc.jcsl,0) AS ruku_num, ISNULL(rk.cp_price,0) AS ruku_price, \n" +
-//                        "       ISNULL(ck.cpsl,0) AS chuku_num, ISNULL(ck.cp_price,0) AS chuku_price, \n" +
-//                        "       ISNULL(qc.cpsj,0) AS qc_cpsj \n" +
-//                        "FROM (SELECT sp_dm, cpname, cplb, cangku FROM yh_jinxiaocun_mingxi_mssql WHERE gs_name = @gongsi GROUP BY sp_dm, cpname, cplb, cangku) AS mx \n" +
-//                        "LEFT JOIN (SELECT sp_dm, cangku, SUM(cpsl) AS cpsl, SUM(cpsl*cpsj) AS cp_price \n" +
-//                        "           FROM yh_jinxiaocun_mingxi_mssql \n" +
-//                        "           WHERE (mxtype = '入库' OR mxtype = '调拨入库' OR mxtype = '盘盈入库') AND gs_name = @gongsi \n" +
-//                        "           AND shijian <= @stop_date \n" +
-//                        "           GROUP BY sp_dm, cangku) AS rk ON mx.sp_dm = rk.sp_dm AND mx.cangku = rk.cangku \n" +
-//                        "LEFT JOIN (SELECT sp_dm, cangku, SUM(cpsl) AS cpsl, SUM(cpsl*cpsj) AS cp_price \n" +
-//                        "           FROM yh_jinxiaocun_mingxi_mssql \n" +
-//                        "           WHERE (mxtype = '出库' OR mxtype = '调拨出库' OR mxtype = '盘亏出库') AND gs_name = @gongsi \n" +
-//                        "           AND shijian <= @stop_date \n" +
-//                        "           GROUP BY sp_dm, cangku) AS ck ON ck.sp_dm = rk.sp_dm AND ck.cangku = rk.cangku \n" +
-//                        "LEFT JOIN (SELECT cpid, cpname, cplb, cangku, ISNULL(cpsl,0)+ISNULL(rksl,0)-ISNULL(cksl,0) AS jcsl \n" +
-//                        "           FROM (SELECT link_rk.cpid, link_rk.cpname, link_rk.cplb, link_rk.cangku, \n" +
-//                        "                        ISNULL(link_rk.cpsl,0) AS cpsl, ISNULL(link_rk.rksl,0) AS rksl, ISNULL(ck.cksl,0) AS cksl \n" +
-//                        "                 FROM (SELECT link_qc.cpid, link_qc.cpname, link_qc.cplb, link_qc.cangku, link_qc.cpsl, rk.rksl \n" +
-//                        "                       FROM (SELECT cp.cpid, cp.cpname, cp.cplb, cp.cangku, qc.cpsl \n" +
-//                        "                             FROM (SELECT cpid, cpname, cplb, cangku FROM yh_jinxiaocun_qichushu_mssql WHERE gs_name = @gongsi \n" +
-//                        "                                   UNION \n" +
-//                        "                                   SELECT sp_dm, cpname, cplb, cangku FROM yh_jinxiaocun_mingxi_mssql WHERE gs_name = @gongsi) AS cp \n" +
-//                        "                             LEFT JOIN (SELECT cpid, cplb, cpname, cangku, SUM(cpsl) AS cpsl \n" +
-//                        "                                        FROM yh_jinxiaocun_qichushu_mssql WHERE gs_name = @gongsi \n" +
-//                        "                                        GROUP BY cpid, cpname, cplb, cangku) AS qc \n" +
-//                        "                             ON cp.cpid = qc.cpid AND cp.cpname = qc.cpname AND cp.cplb = qc.cplb AND cp.cangku = qc.cangku) AS link_qc \n" +
-//                        "                       LEFT JOIN (SELECT sp_dm, cpname, cplb, cangku, SUM(cpsl) AS rksl \n" +
-//                        "                                  FROM yh_jinxiaocun_mingxi_mssql \n" +
-//                        "                                  WHERE (mxtype = '入库' OR mxtype = '调拨入库' OR mxtype = '盘盈入库') AND gs_name = @gongsi \n" +
-//                        "                                  AND shijian <= @stop_date \n" +
-//                        "                                  GROUP BY sp_dm, cpname, cplb, cangku) AS rk \n" +
-//                        "                       ON rk.sp_dm = link_qc.cpid AND rk.cpname = link_qc.cpname AND rk.cplb = link_qc.cplb AND rk.cangku = link_qc.cangku) AS link_rk \n" +
-//                        "                 LEFT JOIN (SELECT sp_dm, cpname, cplb, cangku, SUM(cpsl) AS cksl \n" +
-//                        "                            FROM yh_jinxiaocun_mingxi_mssql \n" +
-//                        "                            WHERE (mxtype = '出库' OR mxtype = '调拨出库' OR mxtype = '盘亏出库') AND gs_name = @gongsi \n" +
-//                        "                            AND shijian <= @stop_date \n" +
-//                        "                            GROUP BY sp_dm, cpname, cplb, cangku) AS ck \n" +
-//                        "                 ON ck.sp_dm = link_rk.cpid AND ck.cpname = link_rk.cpname AND ck.cplb = link_rk.cplb AND ck.cangku = link_rk.cangku) AS jc_data) AS jc \n" +
-//                        "           ON mx.sp_dm = jc.cpid AND mx.cpname = jc.cpname AND mx.cplb = jc.cplb AND mx.cangku = jc.cangku \n" +
-//                        "LEFT JOIN (SELECT cpid, cpname, cplb, cangku, cpsj \n" +
-//                        "           FROM yh_jinxiaocun_qichushu_mssql WHERE gs_name = @gongsi \n" +
-//                        "           GROUP BY cpid, cpname, cplb, cangku, cpsj) AS qc \n" +
-//                        "           ON mx.sp_dm = qc.cpid AND mx.cpname = qc.cpname AND mx.cplb = qc.cplb AND mx.cangku = qc.cangku";
-//
-//                // 构建条件
-//                List<String> conditions = new ArrayList<>();
-//
-//                if (product_name != null && !product_name.isEmpty()) {
-//                    conditions.add("mx.cpname = @product_name");
-//                }
-//
-//                if (wareHouse != null && !wareHouse.isEmpty()) {
-//                    conditions.add("mx.cangku = @warehouse");
-//                }
-//
-//                // 添加WHERE条件（在正确位置）
-//                StringBuilder sqlBuilder = new StringBuilder(baseSql);
-//
-//                if (!conditions.isEmpty()) {
-//                    sqlBuilder.append(" WHERE ");
-//                    for (int i = 0; i < conditions.size(); i++) {
-//                        if (i > 0) {
-//                            sqlBuilder.append(" AND ");
-//                        }
-//                        sqlBuilder.append(conditions.get(i));
-//                    }
-//                }
-//
-//                // 添加ORDER BY
-//                sqlBuilder.append(" ORDER BY mx.cpname, mx.cangku");
-//
-//                String sql = sqlBuilder.toString();
-//                System.out.println("生成的SQL: " + sql);
-//
-//                // 准备参数
-//                List<Object> params = new ArrayList<>();
-//                Collections.addAll(params, company, company, js, company, js,
-//                        company, company, company, company, js, company, js, company);
-//
-//                if (product_name != null && !product_name.isEmpty()) {
-//                    params.add(product_name);
-//                }
-//                if (wareHouse != null && !wareHouse.isEmpty()) {
-//                    params.add(wareHouse);
-//                }
-//
-//                base2 = new JxcServerDao();
-//                List<YhJinXiaoCunMingXi> list = base2.query(YhJinXiaoCunMingXi.class, sql, params.toArray());
-//                return list != null ? list : new ArrayList<>();
-                // 构建基础 SQL（使用命名参数）
-                // SQL Server 版本 - 使用 ? 占位符
                 String baseSql = "SELECT mx.sp_dm, mx.cpname, mx.cplb, mx.cangku, \n" +
                         "       ISNULL(jc.jcsl,0) AS ruku_num, ISNULL(rk.cp_price,0) AS ruku_price, \n" +
                         "       ISNULL(ck.cpsl,0) AS chuku_num, ISNULL(ck.cp_price,0) AS chuku_price, \n" +
@@ -1421,9 +1375,13 @@ public List<YhJinXiaoCunMingXi> getListByCpid1(String company, String cpid) {
                 params.add(company);  // 第十三个? - 最后一个qc子查询的gs_name
 
 // 动态条件参数
+//                if (product_name != null && !product_name.isEmpty()) {
+//                    conditions.add("mx.cpname = ?");
+//                    params.add(product_name);
+//                }
                 if (product_name != null && !product_name.isEmpty()) {
-                    conditions.add("mx.cpname = ?");
-                    params.add(product_name);
+                    conditions.add("mx.cpname LIKE ?");
+                    params.add("%" + product_name + "%");  // 添加通配符实现模糊查询
                 }
 
                 if (wareHouse != null && !wareHouse.isEmpty()) {
@@ -1512,9 +1470,13 @@ public List<YhJinXiaoCunMingXi> getListByCpid1(String company, String cpid) {
                 // 构建条件
                 List<String> conditions = new ArrayList<>();
 
+//                if (product_name != null && !product_name.isEmpty()) {
+//                    conditions.add("mx.cpname = ?");
+//                }
                 if (product_name != null && !product_name.isEmpty()) {
-                    conditions.add("mx.cpname = ?");
+                    conditions.add("mx.cpname LIKE CONCAT('%', ?, '%')");
                 }
+
 
                 if (wareHouse != null && !wareHouse.isEmpty()) {
                     conditions.add("mx.cangku = ?");

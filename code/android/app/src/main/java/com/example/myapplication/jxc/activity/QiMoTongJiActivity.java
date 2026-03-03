@@ -232,6 +232,7 @@ public class QiMoTongJiActivity extends AppCompatActivity {
         });
     }
 
+
     protected void showYearMonthPickDlg(final EditText editText) {
         Calendar calendar = Calendar.getInstance();
         final int currentYear = calendar.get(Calendar.YEAR);
@@ -257,12 +258,15 @@ public class QiMoTongJiActivity extends AppCompatActivity {
         yearPicker.setMinValue(0);
         yearPicker.setMaxValue(years.length - 1);
         yearPicker.setDisplayedValues(years);
-        yearPicker.setValue(5); // 默认当前年份
+
+        // 修改这里：计算当前年份在数组中的索引并设置为默认值
+        int currentYearIndex = currentYear - startYear;
+        yearPicker.setValue(currentYearIndex);  // 改为当前年份
 
         // 设置月份
         monthPicker.setMinValue(1);
         monthPicker.setMaxValue(12);
-        monthPicker.setValue(currentMonth);
+        monthPicker.setValue(currentMonth);  // 保持当前月份
 
         // 设置布局参数
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -298,6 +302,73 @@ public class QiMoTongJiActivity extends AppCompatActivity {
                 .setNegativeButton("取消", null)
                 .show();
     }
+
+//    protected void showYearMonthPickDlg(final EditText editText) {
+//        Calendar calendar = Calendar.getInstance();
+//        final int currentYear = calendar.get(Calendar.YEAR);
+//        final int currentMonth = calendar.get(Calendar.MONTH) + 1;
+//
+//        // 创建包含两个NumberPicker的布局
+//        LinearLayout layout = new LinearLayout(this);
+//        layout.setOrientation(LinearLayout.HORIZONTAL);
+//        layout.setGravity(Gravity.CENTER);
+//        layout.setPadding(50, 30, 50, 30);
+//
+//        final NumberPicker yearPicker = new NumberPicker(this);
+//        final NumberPicker monthPicker = new NumberPicker(this);
+//
+//        // 设置年份（最近10年）
+//        int startYear = 1900;
+//        int endYear = 2100;
+//        String[] years = new String[endYear - startYear + 1];
+//        for (int i = 0; i < years.length; i++) {
+//            years[i] = String.valueOf(startYear + i);
+//        }
+//
+//        yearPicker.setMinValue(0);
+//        yearPicker.setMaxValue(years.length - 1);
+//        yearPicker.setDisplayedValues(years);
+//        yearPicker.setValue(5); // 默认当前年份
+//
+//        // 设置月份
+//        monthPicker.setMinValue(1);
+//        monthPicker.setMaxValue(12);
+//        monthPicker.setValue(currentMonth);
+//
+//        // 设置布局参数
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+//                0, LinearLayout.LayoutParams.WRAP_CONTENT, 1
+//        );
+//        params.setMargins(10, 0, 10, 0);
+//
+//        layout.addView(yearPicker, params);
+//
+//        TextView yearText = new TextView(this);
+//        yearText.setText("年");
+//        yearText.setTextSize(16);
+//        layout.addView(yearText);
+//
+//        layout.addView(monthPicker, params);
+//
+//        TextView monthText = new TextView(this);
+//        monthText.setText("月");
+//        monthText.setTextSize(16);
+//        layout.addView(monthText);
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setView(layout)
+//                .setTitle("选择年月")
+//                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        int selectedYear = Integer.parseInt(years[yearPicker.getValue()]);
+//                        int selectedMonth = monthPicker.getValue();
+//                        editText.setText(selectedYear + "/" + selectedMonth);
+//                    }
+//                })
+//                .setNegativeButton("取消", null)
+//                .show();
+//    }
 
 
 

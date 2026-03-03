@@ -136,6 +136,18 @@ public class YhJinXiaoCunUserService {
                 String sql = "insert into yh_jinxiaocun_user_mssql (_id,AdminIS,Btype,gongsi,name,password) values(?,?,?,?,?,?)";
                 base2 = new JxcServerDao();
                 long result = base2.executeOfId(sql, yhJinXiaoCunUser.get_id(), yhJinXiaoCunUser.getAdminis(), yhJinXiaoCunUser.getBtype(), yhJinXiaoCunUser.getGongsi(), yhJinXiaoCunUser.getName(), yhJinXiaoCunUser.getPassword());
+                Log.e("SQLDebug", "SQL Server executeOfId 返回值: " + result);
+                Log.e("SQLDebug", "result > 0: " + (result > 0));
+
+                if (result <= 0) {
+                    // 验证数据是否真的保存成功
+                    List<YhJinXiaoCunUser> checkList = getListById(yhJinXiaoCunUser.get_id());
+                    if (checkList != null && !checkList.isEmpty()) {
+                        Log.e("SQLDebug", "数据实际已保存，但返回值异常，强制返回true");
+                        return true; // 强制返回成功
+                    }
+                }
+
                 return result > 0;
 
             } else {
