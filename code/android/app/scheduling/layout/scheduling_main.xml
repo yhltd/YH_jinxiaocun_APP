@@ -522,28 +522,28 @@
                         tools:ignore="RtlSymmetry" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/paichan"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/paichan"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical">-->
 
-                    <ImageView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:background="@drawable/pcbm" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="65dp"-->
+<!--                        android:layout_height="65dp"-->
+<!--                        android:background="@drawable/pcbm" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="排产"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:text="排产"-->
+<!--                        android:textColor="@color/main_text"-->
+<!--                        android:textSize="15sp"-->
+<!--                        tools:ignore="RtlSymmetry" />-->
+<!--                </LinearLayout>-->
 
             </LinearLayout>
 
@@ -656,7 +656,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/work"
+                    android:id="@+id/paichan"
                     android:layout_width="0dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
@@ -751,100 +751,100 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="110dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:orientation="horizontal">-->
 
-                <LinearLayout
-                    android:id="@+id/work_check"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/work_check"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical">-->
 
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/pcpchd" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="55dp"-->
+<!--                        android:layout_height="55dp"-->
+<!--                        android:background="@drawable/pcpchd" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="排产核对"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:text="排产核对"-->
+<!--                        android:textColor="@color/main_text"-->
+<!--                        android:textSize="15sp"-->
+<!--                        tools:ignore="RtlSymmetry" />-->
+<!--                </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical">-->
 
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        />
+<!--                    <ImageView-->
+<!--                        android:layout_width="55dp"-->
+<!--                        android:layout_height="55dp"-->
+<!--                        />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:textColor="@color/main_text"-->
+<!--                        android:textSize="15sp"-->
+<!--                        tools:ignore="RtlSymmetry" />-->
+<!--                </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical">-->
 
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        />
+<!--                    <ImageView-->
+<!--                        android:layout_width="55dp"-->
+<!--                        android:layout_height="55dp"-->
+<!--                        />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:textColor="@color/main_text"-->
+<!--                        android:textSize="15sp"-->
+<!--                        tools:ignore="RtlSymmetry" />-->
+<!--                </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical">-->
 
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        />
+<!--                    <ImageView-->
+<!--                        android:layout_width="55dp"-->
+<!--                        android:layout_height="55dp"-->
+<!--                        />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:textColor="@color/main_text"-->
+<!--                        android:textSize="15sp"-->
+<!--                        tools:ignore="RtlSymmetry" />-->
+<!--                </LinearLayout>-->
 
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -897,7 +897,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="汇总"
+                    android:text="个人中心"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -954,28 +954,28 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/summary"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/summary"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical">-->
 
-                    <ImageView
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/pchz" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="55dp"-->
+<!--                        android:layout_height="55dp"-->
+<!--                        android:background="@drawable/pchz" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="汇总"
-                        android:textColor="@color/main_text"
-                        android:textSize="15sp"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:text="汇总"-->
+<!--                        android:textColor="@color/main_text"-->
+<!--                        android:textSize="15sp"-->
+<!--                        tools:ignore="RtlSymmetry" />-->
+<!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:id="@+id/grzx"

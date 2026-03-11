@@ -11,6 +11,7 @@ public class OrderInfo {
     private String company;
     private String is_complete;
     private boolean check;
+    private String wenjian;
 
     public int getId() {
         return id;
@@ -90,5 +91,13 @@ public class OrderInfo {
 
     public void setCheck(boolean check) {
         this.check = check;
+    }
+
+    public String getWenjian() {
+        return wenjian;
+    }
+
+    public void setWenjian(String wenjian) {
+        this.wenjian = wenjian;
     }
 }

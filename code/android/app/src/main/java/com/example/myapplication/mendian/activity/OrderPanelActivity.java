@@ -986,7 +986,7 @@ private void setupClickListeners() {
                     displayName = companyName;
                 }
             } else {
-                displayName = "云合未来"; // 默认值
+                displayName = "云合未来"; // 默认E值
             }
 
             // 更新TextView

@@ -17,6 +17,7 @@ public class TeacherInfo implements Serializable {
     private String shebao;
     private String address;
     private String company;
+    private String wenjian;
 
     public int getId() {
         return id;
@@ -128,5 +129,13 @@ public class TeacherInfo implements Serializable {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    public String getWenjian() {
+        return wenjian;
+    }
+
+    public void setWenjian(String wenjian) {
+        this.wenjian = wenjian;
     }
 }

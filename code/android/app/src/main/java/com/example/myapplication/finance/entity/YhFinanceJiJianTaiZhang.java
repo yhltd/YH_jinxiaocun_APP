@@ -19,6 +19,7 @@ public class YhFinanceJiJianTaiZhang {
     private Timestamp insert_date;
     private String kehu;
     private String zhaiyao;
+    private String wenjian;
 
     public int getId() {
         return id;
@@ -133,5 +134,13 @@ public class YhFinanceJiJianTaiZhang {
 
     public void setBizhong(String bizhong) {
         this.bizhong = bizhong;
+    }
+
+    public String getWenjian() {
+        return wenjian;
+    }
+
+    public void setWenjian(String wenjian) {
+        this.wenjian = wenjian;
     }
 }

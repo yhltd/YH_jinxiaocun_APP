@@ -13,6 +13,7 @@ public class Renyuan {
     private String bianhao;
     private String bumen;
     private String company;
+    private String wenjian;
 
     public int getId() {
         return id;
@@ -107,6 +108,14 @@ public class Renyuan {
 
     public String getCompany() {
         return company;
+    }
+
+    public String getWenjian() {
+        return wenjian;
+    }
+
+    public void setWenjian(String wenjian) {
+        this.wenjian = wenjian;
     }
 
 }

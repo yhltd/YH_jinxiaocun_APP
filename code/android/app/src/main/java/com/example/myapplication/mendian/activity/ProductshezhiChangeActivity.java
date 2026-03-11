@@ -1,7 +1,10 @@
 package com.example.myapplication.mendian.activity;
 
 import android.annotation.SuppressLint;
+import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -25,8 +28,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.mendian.entity.YhMendianMemberinfo;
@@ -39,10 +44,19 @@ import com.example.myapplication.mendian.service.YhMendianUserService;
 import com.example.myapplication.utils.ToastUtil;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.ParseException;
 import java.util.List;
 
 public class ProductshezhiChangeActivity extends AppCompatActivity {
+    private final static int REQUEST_CODE_CHANG = 1;
+    private final static int REQUEST_CODE_FILE = 1001;
+    private final static int REQUEST_CODE_GALLERY = 1002;
+    private final static int REQUEST_CODE_CAMERA = 1003;
+
     private YhMendianUser yhMendianUser;
 
     private YhMendianProductshezhi yhMendianProductshezhi;
@@ -59,36 +73,28 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
     private EditText xiangqing;
     private Spinner beizhu1;
     private Spinner tingyong;
-    private EditText photo;
 
     List<YhMendianProductshezhi> List;
 
     String[] tingyong_selectArray;
     String[] beizhu1_selectArray;
 
-    private static final int REQUEST_CODE_PICK_IMAGE = 1001;
-    private static final int REQUEST_CODE_PICK_IMAGE1 = 1002;
-    private static final int REQUEST_CODE_PICK_IMAGE2 = 1003;
-
-    // 图片预览视图 - 对应数据库字段
+    // 图片相关
     private ImageView photoPreview;      // 对应 photo
     private ImageView photo1Preview;     // 对应 photo1
     private ImageView photo2Preview;     // 对应 photo2
 
-    // 选择按钮
     private Button selectPhoto, selectPhoto1, selectPhoto2;
-
-    // 移除按钮
     private Button removePhoto, removePhoto1, removePhoto2;
 
-    // 图片Bitmap和Base64字符串 - 对应数据库字段
-    private Bitmap photoBitmap;          // 对应 photo
-    private Bitmap photo1Bitmap;         // 对应 photo1
-    private Bitmap photo2Bitmap;         // 对应 photo2
+    // 文件上传相关
+    private File currentImageFile;
+    private String currentFieldName = "";  // 当前正在操作的图片字段
+    private String photoUrl = "";          // 对应 photo 字段
+    private String photo1Url = "";         // 对应 photo1 字段
+    private String photo2Url = "";         // 对应 photo2 字段
 
-    private String photoBase64 = "";     // 对应 photo 字段
-    private String photo1Base64 = "";    // 对应 photo1 字段
-    private String photo2Base64 = "";    // 对应 photo2 字段
+    private AlertDialog uploadProgressDialog;
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -96,11 +102,8 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.productshezhi_change);
 
-        initControls();  // 先调用这个
-
-        // 然后初始化下拉选项
-        initSpinners();  // 再调用这个
-
+        initControls();
+        initSpinners();
         initViews();
         setupImageSelection();
 
@@ -115,24 +118,6 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
         yhMendianProductshezhi = new YhMendianProductshezhi();
         yhMendianProductshezhiService = new YhMendianProductshezhiService();
 
-        product_bianhao = findViewById(R.id.product_bianhao);
-        type = findViewById(R.id.type);
-        product_name = findViewById(R.id.product_name);
-        unit = findViewById(R.id.unit);
-        price = findViewById(R.id.price);
-        chengben = findViewById(R.id.chengben);
-        specifications = findViewById(R.id.specifications);
-        practice = findViewById(R.id.practice);
-        xiangqing = findViewById(R.id.xiangqing);
-        beizhu1 = findViewById(R.id.beizhu1);
-        tingyong = findViewById(R.id.tingyong);
-        photo = findViewById(R.id.photo);
-
-        tingyong_selectArray = getResources().getStringArray(R.array.tingyong_list);
-        beizhu1_selectArray = getResources().getStringArray(R.array.beizhu1_list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tingyong_selectArray);
-        tingyong.setAdapter(adapter);
-
         Intent intent = getIntent();
         int id = intent.getIntExtra("type", 0);
         if (id == R.id.insert_btn) {
@@ -143,20 +128,7 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
             yhMendianProductshezhi = (YhMendianProductshezhi) myApplication.getObj();
             Button btn = findViewById(id);
             btn.setVisibility(View.VISIBLE);
-            product_bianhao.setText(yhMendianProductshezhi.getProduct_bianhao());
-            type.setText(yhMendianProductshezhi.getType());
-            product_name.setText(yhMendianProductshezhi.getProduct_name());
-            unit.setText(yhMendianProductshezhi.getUnit());
-            price.setText(yhMendianProductshezhi.getPrice());
-            chengben.setText(yhMendianProductshezhi.getChengben());
-            specifications.setText(yhMendianProductshezhi.getSpecifications());
-            practice.setText(yhMendianProductshezhi.getPractice());
-            xiangqing.setText(yhMendianProductshezhi.getXiangqing());
-            beizhu1.setSelection(getSpinnerPosition(beizhu1_selectArray, yhMendianProductshezhi.getBeizhu1()));
-            tingyong.setSelection(gettingyongPosition(yhMendianProductshezhi.getTingyong()));
-
-            // 加载现有图片数据
-            loadExistingData();
+            setControlData();
         }
     }
 
@@ -208,7 +180,6 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(ProductshezhiChangeActivity.this, "保存失败，请稍后再试");
                 }
-
                 return true;
             }
         });
@@ -284,7 +255,7 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
             yhMendianProductshezhi.setXiangqing(xiangqing.getText().toString());
         }
 
-        if (beizhu1.getSelectedItemPosition() == 0) {  // 第一个是"请选择"
+        if (beizhu1.getSelectedItemPosition() == 0) {
             ToastUtil.show(ProductshezhiChangeActivity.this, "请选择商品类型");
             return false;
         } else {
@@ -298,10 +269,10 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
             yhMendianProductshezhi.setTingyong(tingyong.getSelectedItem().toString());
         }
 
-        // 设置图片字段 - 直接对应数据库字段名
-        yhMendianProductshezhi.setPhoto(photoBase64);      // 对应 photo 字段
-        yhMendianProductshezhi.setPhoto1(photo1Base64);    // 对应 photo1 字段
-        yhMendianProductshezhi.setPhoto2(photo2Base64);    // 对应 photo2 字段
+        // 设置图片URL字段
+        yhMendianProductshezhi.setPhoto(photoUrl);      // 对应 photo 字段
+        yhMendianProductshezhi.setPhoto1(photo1Url);    // 对应 photo1 字段
+        yhMendianProductshezhi.setPhoto2(photo2Url);    // 对应 photo2 字段
 
         yhMendianProductshezhi.setCompany(yhMendianUser.getCompany());
 
@@ -323,6 +294,7 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
         }
         return 0;
     }
+
     private int getSpinnerPosition(String[] array, String value) {
         if (array != null && value != null) {
             for (int i = 0; i < array.length; i++) {
@@ -331,11 +303,11 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
                 }
             }
         }
-        return 0;  // 默认选择第一个
+        return 0;
     }
 
     private void initViews() {
-        // 初始化图片预览视图 - 对应数据库字段
+        // 初始化图片预览视图
         photoPreview = findViewById(R.id.photo_preview);      // photo
         photo1Preview = findViewById(R.id.photo1_preview);    // photo1
         photo2Preview = findViewById(R.id.photo2_preview);    // photo2
@@ -353,144 +325,445 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
 
     private void setupImageSelection() {
         // photo 字段图片选择
-        selectPhoto.setOnClickListener(v -> openImageChooser(REQUEST_CODE_PICK_IMAGE));
+        selectPhoto.setOnClickListener(v -> {
+            currentFieldName = "photo";
+            showImageSourceDialog();
+        });
         removePhoto.setOnClickListener(v -> removeSelectedImage("photo"));
 
         // photo1 字段图片选择
-        selectPhoto1.setOnClickListener(v -> openImageChooser(REQUEST_CODE_PICK_IMAGE1));
+        selectPhoto1.setOnClickListener(v -> {
+            currentFieldName = "photo1";
+            showImageSourceDialog();
+        });
         removePhoto1.setOnClickListener(v -> removeSelectedImage("photo1"));
 
         // photo2 字段图片选择
-        selectPhoto2.setOnClickListener(v -> openImageChooser(REQUEST_CODE_PICK_IMAGE2));
+        selectPhoto2.setOnClickListener(v -> {
+            currentFieldName = "photo2";
+            showImageSourceDialog();
+        });
         removePhoto2.setOnClickListener(v -> removeSelectedImage("photo2"));
     }
 
-    private void openImageChooser(int requestCode) {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+    /**
+     * 显示图片来源选择对话框
+     */
+    private void showImageSourceDialog() {
+        String[] options = {"从相册选择", "拍照"};
+
+        new AlertDialog.Builder(this)
+                .setTitle("选择图片")
+                .setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case 0:
+                                openGallery();
+                                break;
+                            case 1:
+                                openCamera();
+                                break;
+                        }
+                    }
+                })
+                .setNegativeButton("取消", null)
+                .show();
+    }
+
+    /**
+     * 打开相册
+     */
+    private void openGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
-        startActivityForResult(Intent.createChooser(intent, "选择图片"), requestCode);
+        startActivityForResult(intent, REQUEST_CODE_GALLERY);
+    }
+
+    /**
+     * 打开相机
+     */
+    private void openCamera() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File photoFile = new File(getExternalCacheDir(), "temp_photo_" + System.currentTimeMillis() + ".jpg");
+        currentImageFile = photoFile;
+        Uri photoUri = Uri.fromFile(photoFile);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+        startActivityForResult(intent, REQUEST_CODE_CAMERA);
     }
 
     private void removeSelectedImage(String fieldName) {
-        switch (fieldName) {
-            case "photo":
-                photoBitmap = null;
-                photoBase64 = "";
-                photoPreview.setImageResource(android.R.drawable.ic_menu_gallery);
-                removePhoto.setVisibility(View.GONE);
-                break;
-            case "photo1":
-                photo1Bitmap = null;
-                photo1Base64 = "";
-                photo1Preview.setImageResource(android.R.drawable.ic_menu_gallery);
-                removePhoto1.setVisibility(View.GONE);
-                break;
-            case "photo2":
-                photo2Bitmap = null;
-                photo2Base64 = "";
-                photo2Preview.setImageResource(android.R.drawable.ic_menu_gallery);
-                removePhoto2.setVisibility(View.GONE);
-                break;
+        // 先删除服务器上的文件
+        String oldImageUrl = getImageUrlByField(fieldName);
+        if (oldImageUrl != null && !oldImageUrl.isEmpty() && oldImageUrl.startsWith("http")) {
+            deleteImageFromServer(oldImageUrl, fieldName);
+        } else {
+            // 没有旧图片，直接清空界面
+            clearImageUI(fieldName);
         }
+    }
+
+    /**
+     * 根据字段名获取图片URL
+     */
+    private String getImageUrlByField(String fieldName) {
+        switch (fieldName) {
+            case "photo": return photoUrl;
+            case "photo1": return photo1Url;
+            case "photo2": return photo2Url;
+            default: return null;
+        }
+    }
+
+    /**
+     * 根据字段名设置图片URL
+     */
+    private void setImageUrlByField(String fieldName, String url) {
+        switch (fieldName) {
+            case "photo": photoUrl = url; break;
+            case "photo1": photo1Url = url; break;
+            case "photo2": photo2Url = url; break;
+        }
+    }
+
+    /**
+     * 根据字段名获取ImageView
+     */
+    private ImageView getImageViewByField(String fieldName) {
+        switch (fieldName) {
+            case "photo": return photoPreview;
+            case "photo1": return photo1Preview;
+            case "photo2": return photo2Preview;
+            default: return null;
+        }
+    }
+
+    /**
+     * 根据字段名获取移除按钮
+     */
+    private Button getRemoveButtonByField(String fieldName) {
+        switch (fieldName) {
+            case "photo": return removePhoto;
+            case "photo1": return removePhoto1;
+            case "photo2": return removePhoto2;
+            default: return null;
+        }
+    }
+
+    /**
+     * 清空图片UI
+     */
+    private void clearImageUI(String fieldName) {
+        ImageView imageView = getImageViewByField(fieldName);
+        Button removeButton = getRemoveButtonByField(fieldName);
+
+        if (imageView != null) {
+            imageView.setImageResource(android.R.drawable.ic_menu_gallery);
+        }
+        if (removeButton != null) {
+            removeButton.setVisibility(View.GONE);
+        }
+        setImageUrlByField(fieldName, "");
+    }
+
+    /**
+     * 从服务器删除图片
+     */
+    private void deleteImageFromServer(String imageUrl, String fieldName) {
+        String fileName = extractFileName(imageUrl);
+        String path = "/mendian/";
+
+        ToastUtil.show(this, "正在删除图片...");
+
+        yhMendianProductshezhiService.deleteFileFromServer(fileName, path,
+                new YhMendianProductshezhiService.DeleteCallback() {
+                    @Override
+                    public void onSuccess() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // 清空UI
+                                clearImageUI(fieldName);
+
+                                // 如果是在编辑模式，同时更新数据库
+                                if (yhMendianProductshezhi != null && yhMendianProductshezhi.getId() > 0) {
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            boolean dbSuccess = yhMendianProductshezhiService.clearImageRecord(
+                                                    yhMendianProductshezhi.getId(), fieldName);
+
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    if (dbSuccess) {
+                                                        ToastUtil.show(ProductshezhiChangeActivity.this, "图片已删除");
+                                                    } else {
+                                                        ToastUtil.show(ProductshezhiChangeActivity.this, "数据库更新失败");
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }).start();
+                                } else {
+                                    ToastUtil.show(ProductshezhiChangeActivity.this, "图片已删除");
+                                }
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(String error) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtil.show(ProductshezhiChangeActivity.this, "删除图片失败: " + error);
+                            }
+                        });
+                    }
+                });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK && data != null) {
-            Uri selectedImageUri = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
-                String base64Image = bitmapToBase64(bitmap);
-
-                switch (requestCode) {
-                    case REQUEST_CODE_PICK_IMAGE:
-                        // 对应 photo 字段
-                        photoBitmap = bitmap;
-                        photoBase64 = base64Image;
-                        photoPreview.setImageBitmap(bitmap);
-                        removePhoto.setVisibility(View.VISIBLE);
-                        break;
-                    case REQUEST_CODE_PICK_IMAGE1:
-                        // 对应 photo1 字段
-                        photo1Bitmap = bitmap;
-                        photo1Base64 = base64Image;
-                        photo1Preview.setImageBitmap(bitmap);
-                        removePhoto1.setVisibility(View.VISIBLE);
-                        break;
-                    case REQUEST_CODE_PICK_IMAGE2:
-                        // 对应 photo2 字段
-                        photo2Bitmap = bitmap;
-                        photo2Base64 = base64Image;
-                        photo2Preview.setImageBitmap(bitmap);
-                        removePhoto2.setVisibility(View.VISIBLE);
-                        break;
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_CODE_GALLERY && data != null) {
+                Uri uri = data.getData();
+                if (uri != null) {
+                    // 显示图片预览
+                    ImageView imageView = getImageViewByField(currentFieldName);
+                    if (imageView != null) {
+                        imageView.setImageURI(uri);
+                    }
+                    // 获取文件路径并上传
+                    String filePath = getPathFromUri(uri);
+                    if (filePath != null) {
+                        uploadImageFile(new File(filePath), currentFieldName);
+                    }
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(this, "图片选择失败", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    private String bitmapToBase64(Bitmap bitmap) {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
-        byte[] byteArray = byteArrayOutputStream.toByteArray();
-        return Base64.encodeToString(byteArray, Base64.DEFAULT);
-    }
-
-    // 加载现有数据（编辑模式）
-    private void loadExistingData() {
-        // 从Intent或全局变量获取现有商品数据
-        MyApplication myApplication = (MyApplication) getApplication();
-        YhMendianProductshezhi product = (YhMendianProductshezhi) myApplication.getObj();
-
-        if (product != null) {
-            // 加载现有图片 - 对应数据库字段
-            loadImageFromBase64(product.getPhoto(), photoPreview, removePhoto, "photo");
-            loadImageFromBase64(product.getPhoto1(), photo1Preview, removePhoto1, "photo1");
-            loadImageFromBase64(product.getPhoto2(), photo2Preview, removePhoto2, "photo2");
-        }
-    }
-
-    private void loadImageFromBase64(String base64String, ImageView imageView, Button removeButton, String fieldName) {
-        if (base64String != null && !base64String.isEmpty() && !base64String.equals("null")) {
-            Bitmap bitmap = base64ToBitmap(base64String);
-            if (bitmap != null) {
-                imageView.setImageBitmap(bitmap);
-                removeButton.setVisibility(View.VISIBLE);
-
-                // 保存Base64字符串到对应字段
-                switch (fieldName) {
-                    case "photo":
-                        photoBase64 = base64String;
-                        photoBitmap = bitmap;
-                        break;
-                    case "photo1":
-                        photo1Base64 = base64String;
-                        photo1Bitmap = bitmap;
-                        break;
-                    case "photo2":
-                        photo2Base64 = base64String;
-                        photo2Bitmap = bitmap;
-                        break;
+            } else if (requestCode == REQUEST_CODE_CAMERA) {
+                if (currentImageFile != null && currentImageFile.exists()) {
+                    // 显示图片预览
+                    ImageView imageView = getImageViewByField(currentFieldName);
+                    if (imageView != null) {
+                        imageView.setImageURI(Uri.fromFile(currentImageFile));
+                    }
+                    // 上传图片
+                    uploadImageFile(currentImageFile, currentFieldName);
                 }
             }
         }
     }
 
-    private Bitmap base64ToBitmap(String base64String) {
+    /**
+     * 从URI获取文件路径
+     */
+    private String getPathFromUri(Uri uri) {
+        String filePath = null;
+
         try {
-            if (base64String.contains(",")) {
-                base64String = base64String.substring(base64String.indexOf(",") + 1);
+            if ("content".equalsIgnoreCase(uri.getScheme())) {
+                ContentResolver resolver = getContentResolver();
+
+                String[] projection = {MediaStore.MediaColumns.DATA, MediaStore.MediaColumns.DISPLAY_NAME};
+                Cursor cursor = resolver.query(uri, projection, null, null, null);
+
+                if (cursor != null && cursor.moveToFirst()) {
+                    int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
+                    filePath = cursor.getString(columnIndex);
+
+                    if (filePath == null) {
+                        int nameIndex = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DISPLAY_NAME);
+                        String fileName = cursor.getString(nameIndex);
+
+                        File tempFile = new File(getCacheDir(), fileName);
+                        copyFileFromUri(uri, tempFile);
+                        filePath = tempFile.getAbsolutePath();
+                    }
+
+                    cursor.close();
+                }
+            } else if ("file".equalsIgnoreCase(uri.getScheme())) {
+                filePath = uri.getPath();
             }
-            byte[] decodedString = Base64.decode(base64String, Base64.DEFAULT);
-            return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+        }
+
+        return filePath;
+    }
+
+    /**
+     * 从URI复制文件
+     */
+    private void copyFileFromUri(Uri uri, File destFile) {
+        try {
+            InputStream in = getContentResolver().openInputStream(uri);
+            OutputStream out = new FileOutputStream(destFile);
+
+            byte[] buffer = new byte[1024];
+            int len;
+            while ((len = in.read(buffer)) > 0) {
+                out.write(buffer, 0, len);
+            }
+
+            in.close();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 上传图片文件
+     */
+    private void uploadImageFile(final File file, final String fieldName) {
+        if (file == null || !file.exists()) {
+            ToastUtil.show(this, "文件不存在");
+            return;
+        }
+
+        showUploadProgressDialog();
+
+        String fileName = file.getName();
+        String kongjian = "3";  // 空间标识
+
+        String recordId;
+        if (yhMendianProductshezhi != null && yhMendianProductshezhi.getId() > 0) {
+            recordId = String.valueOf(yhMendianProductshezhi.getId());
+        } else {
+            recordId = "temp_" + System.currentTimeMillis();
+        }
+
+        String recordName = product_name.getText().toString() + "_" + product_bianhao.getText().toString();
+
+        // 如果有旧图片URL，先删除服务器上的旧文件
+        String oldImageUrl = getImageUrlByField(fieldName);
+        if (oldImageUrl != null && !oldImageUrl.isEmpty() && oldImageUrl.startsWith("http")) {
+            String oldFileName = extractFileName(oldImageUrl);
+            String path = "/mendian/";
+
+            yhMendianProductshezhiService.deleteFileFromServer(oldFileName, path,
+                    new YhMendianProductshezhiService.DeleteCallback() {
+                        @Override
+                        public void onSuccess() {
+                            doUploadFile(file, fileName, kongjian, recordId, recordName, fieldName);
+                        }
+
+                        @Override
+                        public void onFailure(String error) {
+                            Log.e("FileUpload", "删除旧文件失败: " + error);
+                            doUploadFile(file, fileName, kongjian, recordId, recordName, fieldName);
+                        }
+                    });
+        } else {
+            doUploadFile(file, fileName, kongjian, recordId, recordName, fieldName);
+        }
+    }
+
+    /**
+     * 执行文件上传
+     */
+    private void doUploadFile(File file, String fileName, String kongjian,
+                              String recordId, String recordName, String fieldName) {
+        yhMendianProductshezhiService.uploadFile(file, fileName, "", kongjian,
+                recordId, recordName, "",
+                new YhMendianProductshezhiService.UploadCallback() {
+                    @Override
+                    public void onSuccess(String fileUrl) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                hideUploadProgressDialog();
+
+                                // 保存URL到对应字段
+                                setImageUrlByField(fieldName, fileUrl);
+
+                                // 显示移除按钮
+                                Button removeButton = getRemoveButtonByField(fieldName);
+                                if (removeButton != null) {
+                                    removeButton.setVisibility(View.VISIBLE);
+                                }
+
+                                // 如果是在编辑模式，同时更新数据库
+                                if (yhMendianProductshezhi != null && yhMendianProductshezhi.getId() > 0) {
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            boolean dbSuccess = yhMendianProductshezhiService.updateImageRecord(
+                                                    yhMendianProductshezhi.getId(), fieldName, fileUrl);
+
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    if (dbSuccess) {
+                                                        ToastUtil.show(ProductshezhiChangeActivity.this, "图片上传成功");
+                                                    } else {
+                                                        ToastUtil.show(ProductshezhiChangeActivity.this, "数据库更新失败");
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }).start();
+                                } else {
+                                    ToastUtil.show(ProductshezhiChangeActivity.this, "图片上传成功");
+                                }
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(String error) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                hideUploadProgressDialog();
+                                ToastUtil.show(ProductshezhiChangeActivity.this, "图片上传失败: " + error);
+                            }
+                        });
+                    }
+                });
+    }
+
+    /**
+     * 从URL中提取文件名
+     */
+    private String extractFileName(String fileUrl) {
+        if (fileUrl == null || fileUrl.isEmpty()) {
+            return "";
+        }
+        int lastSlash = fileUrl.lastIndexOf('/');
+        if (lastSlash != -1 && lastSlash < fileUrl.length() - 1) {
+            return fileUrl.substring(lastSlash + 1);
+        }
+        return fileUrl;
+    }
+
+    /**
+     * 显示上传进度对话框
+     */
+    private void showUploadProgressDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("上传中...");
+        builder.setMessage("请稍候");
+        builder.setCancelable(false);
+
+        View progressView = getLayoutInflater().inflate(R.layout.dialog_progress, null);
+        builder.setView(progressView);
+
+        uploadProgressDialog = builder.create();
+        uploadProgressDialog.show();
+    }
+
+    /**
+     * 隐藏上传进度对话框
+     */
+    private void hideUploadProgressDialog() {
+        if (uploadProgressDialog != null && uploadProgressDialog.isShowing()) {
+            uploadProgressDialog.dismiss();
+            uploadProgressDialog = null;
         }
     }
 
@@ -505,9 +778,8 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
         practice = findViewById(R.id.practice);
         xiangqing = findViewById(R.id.xiangqing);
         tingyong = findViewById(R.id.tingyong);
-        beizhu1 = findViewById(R.id.beizhu1);  // 确保这行存在
+        beizhu1 = findViewById(R.id.beizhu1);
 
-        // 添加调试信息
         if (beizhu1 == null) {
             Log.e("ProductshezhiChange", "beizhu1 Spinner not found in layout");
             Toast.makeText(this, "销售类型控件未找到，请检查布局文件", Toast.LENGTH_LONG).show();
@@ -518,11 +790,9 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
 
     private void initSpinners() {
         try {
-            // 获取下拉选项数组
             tingyong_selectArray = getResources().getStringArray(R.array.tingyong_list);
             beizhu1_selectArray = getResources().getStringArray(R.array.beizhu1_list);
 
-            // 设置适配器 - 添加null检查
             if (tingyong != null && tingyong_selectArray != null) {
                 ArrayAdapter<String> tingyongAdapter = new ArrayAdapter<>(this,
                         android.R.layout.simple_spinner_dropdown_item, tingyong_selectArray);
@@ -564,7 +834,7 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
             practice.setText(yhMendianProductshezhi.getPractice());
             xiangqing.setText(yhMendianProductshezhi.getXiangqing());
 
-            // 设置下拉选择 - 添加null检查
+            // 设置下拉选择
             if (tingyong != null && yhMendianProductshezhi.getTingyong() != null) {
                 int tingyongPosition = getSpinnerPosition(tingyong_selectArray, yhMendianProductshezhi.getTingyong());
                 tingyong.setSelection(tingyongPosition);
@@ -574,17 +844,69 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
                 int beizhu1Position = getSpinnerPosition(beizhu1_selectArray, yhMendianProductshezhi.getBeizhu1());
                 beizhu1.setSelection(beizhu1Position);
                 Log.d("ProductshezhiChange", "beizhu1 selection set to position: " + beizhu1Position);
-            } else {
-                Log.e("ProductshezhiChange", "Cannot set beizhu1 selection - spinner: " + beizhu1 + ", value: " + yhMendianProductshezhi.getBeizhu1());
             }
 
-            // 加载现有图片数据
-            loadExistingData();
+            // 加载现有图片数据（URL格式）
+            loadExistingImages();
         } catch (Exception e) {
             Log.e("ProductshezhiChange", "Error setting control data: " + e.getMessage());
             e.printStackTrace();
         }
     }
+
+    /**
+     * 加载现有图片（支持URL和Base64兼容）
+     */
+    private void loadExistingImages() {
+        // 加载 photo
+        loadImage(yhMendianProductshezhi.getPhoto(), photoPreview, removePhoto, "photo");
+        // 加载 photo1
+        loadImage(yhMendianProductshezhi.getPhoto1(), photo1Preview, removePhoto1, "photo1");
+        // 加载 photo2
+        loadImage(yhMendianProductshezhi.getPhoto2(), photo2Preview, removePhoto2, "photo2");
+    }
+
+    /**
+     * 加载图片（兼容URL和Base64）
+     */
+    private void loadImage(String imageData, ImageView imageView, Button removeButton, String fieldName) {
+        if (imageData != null && !imageData.isEmpty() && !imageData.equals("null")) {
+            if (imageData.startsWith("http")) {
+                // 新格式：URL
+                Glide.with(this)
+                        .load(imageData)
+                        .placeholder(android.R.drawable.ic_menu_gallery)
+                        .error(android.R.drawable.ic_menu_gallery)
+                        .into(imageView);
+                setImageUrlByField(fieldName, imageData);
+            } else {
+                // 旧格式：Base64（兼容处理）
+                try {
+                    Bitmap bitmap = base64ToBitmap(imageData);
+                    if (bitmap != null) {
+                        imageView.setImageBitmap(bitmap);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            removeButton.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /**
+     * Base64转Bitmap（用于兼容旧数据）
+     */
+    private Bitmap base64ToBitmap(String base64String) {
+        try {
+            if (base64String.contains(",")) {
+                base64String = base64String.substring(base64String.indexOf(",") + 1);
+            }
+            byte[] decodedString = Base64.decode(base64String, Base64.DEFAULT);
+            return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
-
-

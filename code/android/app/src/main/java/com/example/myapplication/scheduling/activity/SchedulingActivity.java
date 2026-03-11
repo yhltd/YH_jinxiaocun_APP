@@ -188,25 +188,25 @@ public class SchedulingActivity extends AppCompatActivity {
             }
         });
 
-        LinearLayout orderCheck = findViewById(R.id.work_check);
-        orderCheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pd = false;
-                for (Department department : list) {
-                    if (department.getView_name().equals("排产核对") && department.getSel().equals("是")) {
-                        myApplication.setPcDepartment(department);
-                        pd = true;
-                    }
-                }
-                if (!pd) {
-                    ToastUtil.show(SchedulingActivity.this, "无权限！");
-                } else {
-                    Intent intent = new Intent(SchedulingActivity.this, OrderCheckActivity.class);
-                    startActivity(intent);
-                }
-            }
-        });
+//        LinearLayout orderCheck = findViewById(R.id.work_check);
+//        orderCheck.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                pd = false;
+//                for (Department department : list) {
+//                    if (department.getView_name().equals("排产核对") && department.getSel().equals("是")) {
+//                        myApplication.setPcDepartment(department);
+//                        pd = true;
+//                    }
+//                }
+//                if (!pd) {
+//                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+//                } else {
+//                    Intent intent = new Intent(SchedulingActivity.this, OrderCheckActivity.class);
+//                    startActivity(intent);
+//                }
+//            }
+//        });
 
         LinearLayout department = findViewById(R.id.department);
         department.setOnClickListener(new View.OnClickListener() {
@@ -308,45 +308,45 @@ public class SchedulingActivity extends AppCompatActivity {
             }
         });
 
-        LinearLayout work = findViewById(R.id.work);
-        work.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pd = false;
-                for (Department department : list) {
-                    if (department.getView_name().equals("排产") && department.getSel().equals("是")) {
-                        myApplication.setPcDepartment(department);
-                        pd = true;
-                    }
-                }
-                if (!pd) {
-                    ToastUtil.show(SchedulingActivity.this, "无权限！");
-                } else {
-                    Intent intent = new Intent(SchedulingActivity.this, WorkActivity.class);
-                    startActivity(intent);
-                }
-            }
-        });
+//        LinearLayout work = findViewById(R.id.work);
+//        work.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                pd = false;
+//                for (Department department : list) {
+//                    if (department.getView_name().equals("排产") && department.getSel().equals("是")) {
+//                        myApplication.setPcDepartment(department);
+//                        pd = true;
+//                    }
+//                }
+//                if (!pd) {
+//                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+//                } else {
+//                    Intent intent = new Intent(SchedulingActivity.this, WorkActivity.class);
+//                    startActivity(intent);
+//                }
+//            }
+//        });
 
-        LinearLayout summary = findViewById(R.id.summary);
-        summary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pd = false;
-                for (Department department : list) {
-                    if (department.getView_name().equals("汇总") && department.getSel().equals("是")) {
-                        myApplication.setPcDepartment(department);
-                        pd = true;
-                    }
-                }
-                if (!pd) {
-                    ToastUtil.show(SchedulingActivity.this, "无权限！");
-                } else {
-                    Intent intent = new Intent(SchedulingActivity.this, SummaryActivity.class);
-                    startActivity(intent);
-                }
-            }
-        });
+//        LinearLayout summary = findViewById(R.id.summary);
+//        summary.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                pd = false;
+//                for (Department department : list) {
+//                    if (department.getView_name().equals("汇总") && department.getSel().equals("是")) {
+//                        myApplication.setPcDepartment(department);
+//                        pd = true;
+//                    }
+//                }
+//                if (!pd) {
+//                    ToastUtil.show(SchedulingActivity.this, "无权限！");
+//                } else {
+//                    Intent intent = new Intent(SchedulingActivity.this, SummaryActivity.class);
+//                    startActivity(intent);
+//                }
+//            }
+//        });
 
         LinearLayout shengchanxian = findViewById(R.id.shengchanxian);
         shengchanxian.setOnClickListener(new View.OnClickListener() {

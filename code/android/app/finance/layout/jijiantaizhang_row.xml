@@ -5,13 +5,13 @@
     android:orientation="horizontal"
     android:gravity="center">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:orientation="horizontal"
         android:gravity="center"
         android:background="@drawable/caiwu_table_liebiao">
+
         <TextView
             android:gravity="center"
             android:id="@+id/insert_date"
@@ -21,7 +21,7 @@
             android:textSize="14sp"
             android:text="日期"
             android:textStyle="bold"
-            android:width="200dp"/>
+            android:width="180dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:textSize="14sp"
             android:text="客户/供应商"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="130dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
             android:textSize="14sp"
             android:text="应收"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
             android:textSize="14sp"
             android:text="实收"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
             android:textSize="14sp"
             android:text="未收"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
             android:textSize="14sp"
             android:text="应付"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -133,7 +133,7 @@
             android:textSize="14sp"
             android:text="实付"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -149,7 +149,7 @@
             android:textSize="14sp"
             android:text="未付"
             android:textStyle="bold"
-            android:width="150dp"/>
+            android:width="120dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -165,7 +165,7 @@
             android:textSize="14sp"
             android:text="科目"
             android:textStyle="bold"
-            android:width="100dp"/>
+            android:width="80dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -181,7 +181,7 @@
             android:textSize="14sp"
             android:text="纳税金额"
             android:textStyle="bold"
-            android:width="100dp"/>
+            android:width="80dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -195,9 +195,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="14sp"
-            android:text="已交税金额"
+            android:text="已交税"
             android:textStyle="bold"
-            android:width="100dp"/>
+            android:width="80dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -211,9 +211,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="14sp"
-            android:text="未交税金额"
+            android:text="未交税"
             android:textStyle="bold"
-            android:width="100dp"/>
+            android:width="80dp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -230,13 +230,15 @@
             android:text="摘要"
             android:textStyle="bold"
             android:width="100dp"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
 
-
-
+        <!-- 添加文件图标 -->
+        <ImageView
+            android:id="@+id/file_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_file"
+            android:padding="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
     </LinearLayout>
 </LinearLayout>

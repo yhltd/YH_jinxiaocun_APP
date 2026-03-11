@@ -1,11 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:gravity="center">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,12 +25,21 @@
             <TextView
                 android:id="@+id/c"
                 android:layout_marginLeft="15dp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:text="姓名" />
 
+            <!-- 添加文件图标 -->
+            <ImageView
+                android:id="@+id/file_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_file"
+                android:padding="5dp"
+                android:layout_marginRight="15dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -67,7 +75,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="账号"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -92,7 +99,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="密码"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -105,7 +111,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                         android:textColor="@color/white"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="部门:"/>
 
@@ -114,10 +120,9 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                         android:textColor="@color/white"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="部门"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -130,7 +135,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                         android:textColor="@color/white"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="状态:"/>
 
@@ -139,10 +144,9 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                         android:textColor="@color/white"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="状态"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -155,7 +159,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                         android:textColor="@color/white"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="邮箱:"/>
 
@@ -164,10 +168,9 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                         android:textColor="@color/white"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="邮箱"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -180,7 +183,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                         android:textColor="@color/white"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="手机号码:"/>
 
@@ -189,10 +192,9 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                         android:textColor="@color/white"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="手机号码"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -205,7 +207,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                         android:textColor="@color/white"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="员工编号:"/>
 
@@ -214,12 +216,10 @@
                         android:layout_marginLeft="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                         android:textColor="@color/white"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="员工编号"/>
-
                 </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
@@ -233,10 +233,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     app:srcCompat="@drawable/right_jiantou"/>
-
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
 </LinearLayout>

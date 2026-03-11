@@ -1,11 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:gravity="center">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +16,6 @@
         android:layout_margin="5dp">
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/caiwu_table_head"
@@ -26,12 +24,21 @@
             <TextView
                 android:id="@+id/kehu"
                 android:layout_marginLeft="15dp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:text="客户/供应商" />
 
+            <!-- 添加文件图标 -->
+            <ImageView
+                android:id="@+id/file_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_file"
+                android:padding="5dp"
+                android:layout_marginRight="15dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -67,7 +74,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="日期"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -92,7 +98,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="项目名称"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -117,7 +122,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="应收"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -142,7 +146,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="实收"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -167,7 +170,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="未收"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -192,7 +194,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="应付"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -217,7 +218,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="实付"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -242,7 +242,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="未付"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -267,7 +266,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="科目"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -292,8 +290,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="纳税金额"/>
-
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -318,7 +314,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="已交税金额"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -343,7 +338,6 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="未交税金额"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -368,9 +362,7 @@
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:text="摘要"/>
-
                 </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
@@ -384,10 +376,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     app:srcCompat="@drawable/right_jiantou"/>
-
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
 </LinearLayout>

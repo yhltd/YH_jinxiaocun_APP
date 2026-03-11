@@ -5,7 +5,6 @@
     android:orientation="horizontal"
     android:gravity="center">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -200,11 +199,15 @@
             android:text="地址"
             android:textStyle="bold"
             android:width="150dp"/>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </View>
 
+        <!-- 添加文件图标 -->
+        <ImageView
+            android:id="@+id/file_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_file"
+            android:padding="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
     </LinearLayout>
 </LinearLayout>

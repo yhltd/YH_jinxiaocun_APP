@@ -24,6 +24,7 @@ public class Student implements Serializable {
     private String type;
     @SerializedName("Company")
     private String company;
+    private String wenjian;
 
     public String getCompany() {
         return company;
@@ -152,5 +153,13 @@ public class Student implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getWenjian() {
+        return wenjian;
+    }
+
+    public void setWenjian(String wenjian) {
+        this.wenjian = wenjian;
     }
 }
