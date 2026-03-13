@@ -523,7 +523,11 @@ public class GrzxActivity extends AppCompatActivity {
 
 
 
-
+    public void gotoUserStep(View view) {
+        String url = "http://yhocn.cn/chanpin7_shipin/excel_7product/7product/userstep/index.html";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
+    }
 
 
 }
