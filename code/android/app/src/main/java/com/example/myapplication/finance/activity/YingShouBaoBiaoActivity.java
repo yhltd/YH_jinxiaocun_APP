@@ -205,6 +205,22 @@ public class YingShouBaoBiaoActivity extends AppCompatActivity {
         }
         if (!start_dateText.isEmpty() && !stop_dateText.isEmpty()) {
             try {
+
+                start_dateText = start_dateText.replace("/", "-").replace(".", "-");
+                stop_dateText = stop_dateText.replace("/", "-").replace(".", "-");
+
+                // 处理可能的无分隔符格式 (如 20230101 → 2023-01-01)
+                if (start_dateText.matches("\\d{8}")) {
+                    start_dateText = start_dateText.substring(0, 4) + "-" +
+                            start_dateText.substring(4, 6) + "-" +
+                            start_dateText.substring(6, 8);
+                }
+                if (stop_dateText.matches("\\d{8}")) {
+                    stop_dateText = stop_dateText.substring(0, 4) + "-" +
+                            stop_dateText.substring(4, 6) + "-" +
+                            stop_dateText.substring(6, 8);
+                }
+
                 // 将日期格式改为 yyyy-MM-dd
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 Date startDate = sdf.parse(start_dateText);
