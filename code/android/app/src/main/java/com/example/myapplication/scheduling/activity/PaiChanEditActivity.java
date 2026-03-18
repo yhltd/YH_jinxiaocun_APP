@@ -314,7 +314,7 @@ public class PaiChanEditActivity extends AppCompatActivity {
 
         new Thread(() -> {
             try {
-                orderList = orderInfoService.getOrderId();
+                orderList = orderInfoService.getOrderId(userInfo.getCompany());
                 orderIdList = new ArrayList<>();
                 for (OrderInfo order : orderList) {
                     orderIdList.add(order.getOrder_id());

@@ -535,8 +535,10 @@ public class GongZuoTaiQuanXianChangeActivity extends AppCompatActivity {
 
     private int getQuanXianTypePosition(String param) {
         if (quanxian_typeArray != null) {
+            String safeParam = param == null ? "" : param;
+
             for (int i = 0; i < quanxian_typeArray.length; i++) {
-                if (param.equals(quanxian_typeArray[i])) {
+                if (safeParam.equals(quanxian_typeArray[i])) {
                     return i;
                 }
             }

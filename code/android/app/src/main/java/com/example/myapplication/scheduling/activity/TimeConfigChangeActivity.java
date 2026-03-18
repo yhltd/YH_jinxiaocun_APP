@@ -171,6 +171,7 @@ public class TimeConfigChangeActivity extends AppCompatActivity {
         night_end.setAdapter(wanAdapter);
 
         Intent intent = getIntent();
+        String action = intent.getStringExtra("action");
         int id = intent.getIntExtra("type", 0);
         if (id == R.id.update_btn) {
             timeconfig = (TimeConfig) myApplication.getObj();
@@ -232,7 +233,6 @@ public class TimeConfigChangeActivity extends AppCompatActivity {
                 } else {
                     ToastUtil.show(TimeConfigChangeActivity.this, "保存失败，请稍后再试");
                 }
-
                 return true;
             }
         });
@@ -242,7 +242,18 @@ public class TimeConfigChangeActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Message msg = new Message();
-                msg.obj = timeConfigService.update(timeconfig);
+                boolean result;
+
+                // ✅ 正确判断：int类型不能为null，用 > 0 判断是否为已存在的记录
+                if (timeconfig.getId() > 0) {
+                    // 有ID（ID > 0），执行更新
+                    result = timeConfigService.update(timeconfig);
+                } else {
+                    // 无ID（ID == 0），执行新增
+                    result = timeConfigService.insert(timeconfig);
+                }
+
+                msg.obj = result;
                 saveHandler.sendMessage(msg);
             }
         }).start();

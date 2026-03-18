@@ -227,6 +227,7 @@ public class GongZuoTongJiActivity extends AppCompatActivity {
                             List<DynamicData> data = (List<DynamicData>) dataMap.get("data");
 
                             if (fields != null && data != null) {
+                                // 第一条数据已经作为标题，这里fields就是标题字段列表
                                 allFields = fields;
                                 allData = data;
                                 numericFields = tongJiService.getNumericFields(fields, data);

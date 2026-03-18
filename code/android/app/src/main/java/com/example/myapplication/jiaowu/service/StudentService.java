@@ -37,7 +37,7 @@ public class StudentService {
                     "CAST(ISNULL(ISNULL(s.Fee, 0) - ISNULL(p.total_paid, 0), 0) AS FLOAT) as Nocost, " +
                     "CAST(ISNULL(k.used_keshi, 0) AS DECIMAL(18,2)) as nall, " +
                     "CAST(ISNULL(s.Allhour, 0) - ISNULL(k.used_keshi, 0) AS FLOAT) as Nohour, " +
-                    "s.Allhour, s.Type, s.wenjian " +  // 新增文件字段
+                    "s.Allhour, s.Type, s.wenjian " +
                     "FROM student s " +
                     "LEFT JOIN (" +
                     "    SELECT realname, SUM(CAST(paid + money AS DECIMAL(18,2))) as total_paid " +
@@ -51,20 +51,35 @@ public class StudentService {
                     "    WHERE Company = ? " +
                     "    GROUP BY student_name, course" +
                     ") k ON s.RealName = k.student_name AND s.Course = k.course " +
-                    "WHERE s.RealName LIKE '%' + ? + '%' " +
+                    "WHERE s.Company = ? " +  // 新增：student表公司过滤
+                    "AND s.RealName LIKE '%' + ? + '%' " +
                     "AND s.Teacher LIKE '%' + ? + '%' " +
                     "AND s.Course LIKE '%' + ? + '%' " +
                     "AND s.rgdate >= ? " +
                     "AND s.rgdate <= ?";
 
+
             base1 = new JiaowuServerDao();
-            List<Student> list = base1.query(Student.class, sql, company, company, student, teacher, kecheng, start_date, stop_date);
+            List<Student> list = base1.query(Student.class, sql, company, company,company,  student, teacher, kecheng, start_date, stop_date);
             return list;
         } else {
             // MySQL 版本（原版不动）
-            String sql = "select ID,RealName,Sex,rgdate,Course,Teacher,Classnum,phone,Fee,(select SUM(case when Company =? and realname=student.realname then paid + money else 0 end) from payment ) mall ,ifnull(ifnull(Fee,0) -ifnull((select SUM(case when Company =? and realname=student.realname then paid + money else 0 end) from payment ),0),0) as Nocost,(select SUM(case when Company=? and student_name=student.realname and course=student.Course then keshi else 0 end ) from keshi_detail ) nall,ifnull(Allhour,0) - ifnull((select SUM(case when Company=? and student_name=student.realname and course=student.Course then keshi else 0 end ) from keshi_detail ),0) as Nohour,Allhour,Type,wenjian FROM student where RealName LIKE '%' ? '%' AND Teacher LIKE '%' ? '%' AND Course LIKE '%' ? '%' AND rgdate >= ? AND rgdate <= ?";
+            String sql = "select ID,RealName,Sex,rgdate,Course,Teacher,Classnum,phone,Fee," +
+                    "(select SUM(case when Company =? and realname=student.realname then paid + money else 0 end) from payment ) mall ," +
+                    "ifnull(ifnull(Fee,0) -ifnull((select SUM(case when Company =? and realname=student.realname then paid + money else 0 end) from payment ),0),0) as Nocost," +
+                    "(select SUM(case when Company=? and student_name=student.realname and course=student.Course then keshi else 0 end ) from keshi_detail ) nall," +
+                    "ifnull(Allhour,0) - ifnull((select SUM(case when Company=? and student_name=student.realname and course=student.Course then keshi else 0 end ) from keshi_detail ),0) as Nohour," +
+                    "Allhour,Type,wenjian " +
+                    "FROM student " +
+                    "WHERE student.Company = ? " +  // 新增：student表公司过滤
+                    "AND RealName LIKE '%' ? '%' " +
+                    "AND Teacher LIKE '%' ? '%' " +
+                    "AND Course LIKE '%' ? '%' " +
+                    "AND rgdate >= ? " +
+                    "AND rgdate <= ?";
+
             base = new JiaowuBaseDao();
-            List<Student> list = base.query(Student.class, sql, company,company,company,company,student,teacher,kecheng,start_date,stop_date);
+            List<Student> list = base.query(Student.class, sql, company,company,company,company,company,student,teacher,kecheng,start_date,stop_date);
             return list;
         }
     }
@@ -77,15 +92,32 @@ public class StudentService {
 
         if (shujukuValue == 1) {
             // SQL Server 版本（老版兼容）
-            String sql = "select ID,RealName,isnull(isnull(Fee,0) -isnull((select SUM(case when Company = ? and realname=student.realname then paid+money else 0 end) from payment ),0),0) as Nocost,rgdate,Course,Teacher,Classnum,phone,isnull(Allhour,0) - isnull((select SUM(case when Company= ? and student_name=student.realname and course=student.Course then keshi else 0 end ) from keshi_detail ),0) as Nohour,wenjian FROM student where RealName like '%' + ? + '%' and isnull(isnull(Fee,0) -isnull((select SUM(case when Company = ? and realname=student.realname then paid+money else 0 end) from payment ),0),0) > 0";
+            String sql = "select ID,RealName,isnull(isnull(Fee,0) -isnull((select SUM(case when Company = ? and realname=student.realname then paid+money else 0 end) from payment ),0),0) as Nocost," +
+                    "rgdate,Course,Teacher,Classnum,phone," +
+                    "isnull(Allhour,0) - isnull((select SUM(case when Company= ? and student_name=student.realname and course=student.Course then keshi else 0 end ) from keshi_detail ),0) as Nohour," +
+                    "wenjian " +
+                    "FROM student " +
+                    "WHERE student.Company = ? " +  // 新增：student表公司过滤
+                    "and RealName like '%' + ? + '%' " +
+                    "and isnull(isnull(Fee,0) -isnull((select SUM(case when Company = ? and realname=student.realname then paid+money else 0 end) from payment ),0),0) > 0";
+
             base1 = new JiaowuServerDao();
-            List<Student> list = base1.query(Student.class, sql, s, teacherCompany, student, company);
+            List<Student> list = base1.query(Student.class, sql, s, teacherCompany, company, student, company);
             return list;
         } else {
             // MySQL 版本（原版不动）
-            String sql = "select ID,RealName,ifnull(ifnull(Fee,0) -ifnull((select SUM(case when Company = ? and realname=student.realname then paid+money else 0 end) from payment ),0),0) as Nocost,rgdate,Course,Teacher,Classnum,phone,ifnull(Allhour,0) - ifnull((select SUM(case when Company= ? and student_name=student.realname and course=student.Course then keshi else 0 end ) from keshi_detail ),0) as Nohour,wenjian FROM student where RealName like '%' ? '%' and ifnull(ifnull(Fee,0) -ifnull((select SUM(case when Company = ? and realname=student.realname then paid+money else 0 end) from payment ),0),0) > 0";
+            String sql = "select ID,RealName," +
+                    "ifnull(ifnull(Fee,0) -ifnull((select SUM(case when Company = ? and realname=student.realname then paid+money else 0 end) from payment ),0),0) as Nocost," +
+                    "rgdate,Course,Teacher,Classnum,phone," +
+                    "ifnull(Allhour,0) - ifnull((select SUM(case when Company= ? and student_name=student.realname and course=student.Course then keshi else 0 end ) from keshi_detail ),0) as Nohour," +
+                    "wenjian " +
+                    "FROM student " +
+                    "WHERE student.Company = ? " +  // 新增：student表公司过滤
+                    "and RealName like CONCAT('%', ?, '%') " +
+                    "and ifnull(ifnull(Fee,0) -ifnull((select SUM(case when Company = ? and realname=student.realname then paid+money else 0 end) from payment ),0),0) > 0";
+
             base = new JiaowuBaseDao();
-            List<Student> list = base.query(Student.class, sql, s, teacherCompany, student, company);
+            List<Student> list = base.query(Student.class, sql, s, teacherCompany, company, student, company);
             return list;
         }
     }

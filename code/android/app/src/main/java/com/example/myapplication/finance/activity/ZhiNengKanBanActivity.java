@@ -257,6 +257,13 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
     private void setNianChuYuELineChart() {
         // 使用与柱状图相同的数据
         list = new ArrayList<>();
+        if (list1 == null || list1.size() < 5) {
+            Log.e("ChartError", "list1数据不足，当前大小: " + (list1 == null ? 0 : list1.size()));
+            barChart1.setNoDataText("数据不足，无法显示图表。请完善五个分类数据后重新查看");
+            barChart1.invalidate();
+            return;
+        }
+
         list.add(new DictModel("资产类", list1.get(0).getLoad(), list1.get(0).getBorrowed()));
         list.add(new DictModel("负债类", list1.get(1).getLoad(), list1.get(1).getBorrowed()));
         list.add(new DictModel("权益类", list1.get(2).getLoad(), list1.get(2).getBorrowed()));
@@ -344,6 +351,13 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
 
         barChart1=findViewById(R.id.bc_1);
         list = new ArrayList<>();
+
+        if (list1 == null || list1.size() < 5) {
+            Log.e("ChartError", "list1数据不足，当前大小: " + (list1 == null ? 0 : list1.size()));
+            barChart1.setNoDataText("数据不足，无法显示图表。请完善五个分类数据后重新查看");
+            barChart1.invalidate();
+            return;
+        }
 
         list.add(new DictModel("资产类",list1.get(0).getLoad(),list1.get(0).getBorrowed()));
         list.add(new DictModel("负债类",list1.get(1).getLoad(),list1.get(1).getBorrowed()));
@@ -500,6 +514,12 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
 
         barChart3=findViewById(R.id.bc_3);
         kemu_list = new ArrayList<>();
+        if (list3 == null || list3.size() < 5) {
+            Log.e("ChartError", "list3数据不足，当前大小: " + (list3 == null ? 0 : list3.size()));
+            barChart3.setNoDataText("数据不足，无法显示图表。请完善五个分类数据后重新查看");
+            barChart3.invalidate();
+            return;
+        }
         kemu_list.add(new DictModel("资产类",list3.get(0).getLoad(),list3.get(0).getBorrowed()));
         kemu_list.add(new DictModel("负债类",list3.get(1).getLoad(),list3.get(1).getBorrowed()));
         kemu_list.add(new DictModel("权益类",list3.get(2).getLoad(),list3.get(2).getBorrowed()));
@@ -579,6 +599,12 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
     private void setKeMuYuELineChart() {
         // 获取或创建折线图视图
         LineChart lineChart = findViewById(R.id.lc_3); // 确保布局中有这个ID
+
+        if (list3 == null || list3.size() < 5) {
+            lineChart.setNoDataText("数据不足");
+            lineChart.invalidate();
+            return;
+        }
 
         // 使用与柱状图相同的数据
         List<DictModel> kemu_list = new ArrayList<>();
@@ -687,6 +713,14 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
     private void setZiChanFuZhai(){
 
         barChart4=findViewById(R.id.bc_4);
+        if (list4_1 == null || list4_1.isEmpty() ||
+                list4_2 == null || list4_2.isEmpty() ||
+                list4_3 == null || list4_3.isEmpty()) {
+            barChart4.setNoDataText("数据不足");
+            barChart4.invalidate();
+            return;
+        }
+
         zichan_list = new ArrayList<>();
         zichan_list.add(new DictModel("资产类",list4_1.get(0).getLoad(),list4_1.get(0).getBorrowed()));
         zichan_list.add(new DictModel("负债类",list4_2.get(0).getLoad(),list4_2.get(0).getBorrowed()));
@@ -1034,6 +1068,15 @@ public class ZhiNengKanBanActivity extends AppCompatActivity {
     private void setXianJinLiuLiang(){
 
         barChart6=findViewById(R.id.bc_6);
+
+        if (list6_1 == null || list6_1.isEmpty() ||
+                list6_2 == null || list6_2.isEmpty() ||
+                list6_3 == null || list6_3.isEmpty()) {
+            barChart6.setNoDataText("数据不足");
+            barChart6.invalidate();
+            return;
+        }
+
         xianjin_list = new ArrayList<>();
 
         xianjin_list.add(new DictModel("投资结余",list6_1.get(0).getLoad(),list6_1.get(0).getBorrowed()));

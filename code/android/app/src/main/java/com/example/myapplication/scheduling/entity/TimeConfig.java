@@ -9,6 +9,7 @@ public class TimeConfig {
     private String noon_end;
     private String night_start;
     private String night_end;
+    private String company;
 
     public int getId() {
         return id;
@@ -72,6 +73,14 @@ public class TimeConfig {
 
     public void setNight_end(String night_end) {
         this.night_end = night_end;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public boolean isWorkDay() {

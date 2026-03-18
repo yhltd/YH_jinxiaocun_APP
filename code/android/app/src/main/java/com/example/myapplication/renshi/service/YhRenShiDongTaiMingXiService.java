@@ -30,6 +30,14 @@ public class YhRenShiDongTaiMingXiService {
     }
 
     /**
+     * 更新第一条数据作为标题
+     */
+    public boolean updateTitleRow(int id, String company, String titleStr) {
+        String updateSql = "update gongzi_dongtaimingxi set name = ? where id = ? and gongsi = ?";
+        return executeWithRetry(updateSql, titleStr, id, company);
+    }
+
+    /**
      * 带重试机制的数据库执行方法
      */
     private boolean executeWithRetry(String sql, Object... params) {

@@ -28,4 +28,19 @@ public class TimeConfigService {
         boolean result = base.execute(sql, timeConfig.getMorning_start(), timeConfig.getMorning_end(), timeConfig.getNoon_start(), timeConfig.getNoon_end(), timeConfig.getNight_start(), timeConfig.getNight_end(),timeConfig.getId());
         return result;
     }
+
+    public boolean insert(TimeConfig timeConfig) {
+        String sql = "insert into time_config (company, week, morning_start, morning_end, noon_start, noon_end, night_start, night_end) values (?, ?, ?, ?, ?, ?, ?, ?)";
+        base = new SchedulingDao();
+        boolean result = base.execute(sql,
+                timeConfig.getCompany(),
+                timeConfig.getWeek(),
+                timeConfig.getMorning_start(),
+                timeConfig.getMorning_end(),
+                timeConfig.getNoon_start(),
+                timeConfig.getNoon_end(),
+                timeConfig.getNight_start(),
+                timeConfig.getNight_end());
+        return result;
+    }
 }

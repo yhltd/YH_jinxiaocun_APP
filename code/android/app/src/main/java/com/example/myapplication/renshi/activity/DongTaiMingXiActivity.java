@@ -58,6 +58,8 @@ public class DongTaiMingXiActivity extends AppCompatActivity {
     private int currentEditId = -1;
     private int currentEditColumn = -1;
 
+    private int titleRowId = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,30 +135,33 @@ public class DongTaiMingXiActivity extends AppCompatActivity {
                 try {
                     String company = yhRenShiUser.getL().replace("_hr", "");
 
-                    // 获取所有数据
+                    // 获取所有数据（按id排序）
                     List<YhRenShiDongTaiMingXi> allRecords = dongTaiMingXiService.getAllData(company);
 
-                    // 分离标题配置和数据
+                    // 初始化列表
                     dataList = new ArrayList<>();
                     YhRenShiDongTaiMingXi titleConfig = null;
 
-                    for (YhRenShiDongTaiMingXi record : allRecords) {
-                        if (record.getId() == 1) {
-                            titleConfig = record;
-                        } else {
-                            dataList.add(record);
+                    if (allRecords != null && !allRecords.isEmpty()) {
+                        // 第一条数据作为标题，保存其ID
+                        titleConfig = allRecords.get(0);
+                        titleRowId = titleConfig.getId(); // 保存标题行ID
+
+                        // 剩余数据作为内容
+                        for (int i = 1; i < allRecords.size(); i++) {
+                            dataList.add(allRecords.get(i));
                         }
+                    } else {
+                        // 如果没有数据，重置标题行ID
+                        titleRowId = -1;
                     }
 
                     // 处理标题配置
                     if (titleConfig != null && titleConfig.getName() != null) {
                         dynamicTitles = dongTaiMingXiService.processTitleConfig(titleConfig.getName());
                     } else {
-                        // 如果没有标题配置，创建默认
+                        // 如果没有数据，使用默认标题
                         dynamicTitles = dongTaiMingXiService.processTitleConfig("");
-                        // 保存默认配置到数据库
-                        String defaultTitle = "字段1|||字段2|||字段3|||字段4|||字段5";
-                        dongTaiMingXiService.saveTitleConfig(company, defaultTitle);
                     }
 
                     // 处理内容数据
@@ -689,8 +694,10 @@ public class DongTaiMingXiActivity extends AppCompatActivity {
         // 清空现有字段
         fieldsLayout.removeAllViews();
 
-        // 添加现有字段
+        // 添加现有字段 - 从 dynamicTitles 加载
         final List<EditText> fieldInputs = new ArrayList<>();
+
+        // 直接从 dynamicTitles 加载当前标题
         for (Map<String, Object> title : dynamicTitles) {
             String fieldName = (String) title.get("text");
             addFieldInput(fieldsLayout, fieldInputs, fieldName);
@@ -869,20 +876,39 @@ public class DongTaiMingXiActivity extends AppCompatActivity {
                     }
                     String titleStr = titleBuilder.toString();
 
-                    // 保存到数据库
-                    boolean success = dongTaiMingXiService.saveTitleConfig(company, titleStr);
+                    boolean success;
 
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (success) {
-                                ToastUtil.show(DongTaiMingXiActivity.this, "标题配置保存成功");
+                    if (titleRowId != -1) {
+                        // 有标题行ID，直接更新
+                        success = dongTaiMingXiService.updateTitleRow(titleRowId, company, titleStr);
+                    } else {
+                        // 没有数据，插入新数据作为第一条
+                        success = dongTaiMingXiService.insert(company, titleStr);
+                        // 插入后重新加载数据以获取新的ID
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
                                 loadAllData();
-                            } else {
+                            }
+                        });
+                    }
+
+                    if (success) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtil.show(DongTaiMingXiActivity.this, "标题配置保存成功");
+                                loadAllData(); // 重新加载数据
+                            }
+                        });
+                    } else {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
                                 ToastUtil.show(DongTaiMingXiActivity.this, "保存失败");
                             }
-                        }
-                    });
+                        });
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                     runOnUiThread(new Runnable() {
@@ -913,7 +939,7 @@ public class DongTaiMingXiActivity extends AppCompatActivity {
         final LinearLayout fieldsLayout = dialogView.findViewById(R.id.fields_layout);
         final LinearLayout existingFormulasLayout = dialogView.findViewById(R.id.existing_formulas_layout);
 
-        // 设置目标字段下拉列表
+        // 设置目标字段下拉列表 - 使用 dynamicTitles
         List<String> fieldNames = new ArrayList<>();
         for (Map<String, Object> title : dynamicTitles) {
             fieldNames.add((String) title.get("text"));
@@ -939,7 +965,7 @@ public class DongTaiMingXiActivity extends AppCompatActivity {
             operatorsLayout.addView(btn);
         }
 
-        // 设置字段按钮
+        // 设置字段按钮 - 使用 dynamicTitles
         for (final String fieldName : fieldNames) {
             Button btn = createFieldButton(fieldName);
             btn.setOnClickListener(new View.OnClickListener() {
@@ -1347,7 +1373,7 @@ public class DongTaiMingXiActivity extends AppCompatActivity {
                 try {
                     String company = yhRenShiUser.getL().replace("_hr", "");
 
-                    // 创建空数据
+                    // 创建空数据，字段数量与标题一致
                     StringBuilder dataBuilder = new StringBuilder();
                     for (int i = 0; i < dynamicTitles.size(); i++) {
                         if (i > 0) {

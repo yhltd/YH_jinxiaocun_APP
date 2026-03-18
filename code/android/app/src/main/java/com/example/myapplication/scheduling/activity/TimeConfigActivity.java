@@ -105,39 +105,93 @@ public class TimeConfigActivity extends AppCompatActivity {
                 List<HashMap<String, Object>> data = new ArrayList<>();
                 try {
                     timeConfigService = new TimeConfigService();
-                    list = timeConfigService.getList(userInfo.getCompany());
-                    if (list == null) return;
+                    // 查询数据库中的时间配置
+                    List<TimeConfig> dbList = timeConfigService.getList(userInfo.getCompany());
 
-                    for (int i = 0; i < list.size(); i++) {
-                        HashMap<String, Object> item = new HashMap<>();
-                        if (list.get(i).getWeek()==1){
-                            item.put("week", "星期一");
-                        }else if(list.get(i).getWeek()==2){
-                            item.put("week", "星期二");
-                        }else if(list.get(i).getWeek()==3){
-                            item.put("week", "星期三");
-                        }else if(list.get(i).getWeek()==4){
-                            item.put("week", "星期四");
-                        }else if(list.get(i).getWeek()==5){
-                            item.put("week", "星期五");
-                        }else if(list.get(i).getWeek()==6){
-                            item.put("week", "星期六");
-                        }else if(list.get(i).getWeek()==7){
-                            item.put("week", "星期天");
+                    // 创建7条默认数据（星期一到星期日）
+                    List<TimeConfig> fullList = new ArrayList<>();
+
+                    // 先将数据库中的数据按week映射
+                    HashMap<Integer, TimeConfig> dbMap = new HashMap<>();
+                    if (dbList != null) {
+                        for (TimeConfig config : dbList) {
+                            dbMap.put(config.getWeek(), config);
                         }
-                        item.put("morning_start", list.get(i).getMorning_start());
-                        item.put("morning_end", list.get(i).getMorning_end());
-                        item.put("noon_start", list.get(i).getNoon_start());
-                        item.put("noon_end", list.get(i).getNoon_end());
-                        item.put("night_start", list.get(i).getNight_start());
-                        item.put("night_end", list.get(i).getNight_end());
+                    }
+
+                    // 生成完整的7条数据
+                    for (int week = 1; week <= 7; week++) {
+                        TimeConfig config;
+                        if (dbMap.containsKey(week)) {
+                            // 数据库中有数据，使用数据库中的数据
+                            config = dbMap.get(week);
+                        } else {
+                            // 数据库中没有数据，创建空的时间配置
+                            config = new TimeConfig();
+                            config.setWeek(week);
+                            config.setCompany(userInfo.getCompany());
+                            config.setMorning_start("08:00");
+                            config.setMorning_end("12:00");
+                            config.setNoon_start("12:00");
+                            config.setNoon_end("14:00");
+                            config.setNight_start("14:00");
+                            config.setNight_end("18:00");
+                            // 设置默认值，可以根据实际需求调整
+                        }
+                        fullList.add(config);
+                    }
+
+                    // 使用fullList进行界面显示
+                    for (int i = 0; i < fullList.size(); i++) {
+                        TimeConfig config = fullList.get(i);
+                        HashMap<String, Object> item = new HashMap<>();
+
+                        // 设置星期显示
+                        switch (config.getWeek()) {
+                            case 1:
+                                item.put("week", "星期一");
+                                break;
+                            case 2:
+                                item.put("week", "星期二");
+                                break;
+                            case 3:
+                                item.put("week", "星期三");
+                                break;
+                            case 4:
+                                item.put("week", "星期四");
+                                break;
+                            case 5:
+                                item.put("week", "星期五");
+                                break;
+                            case 6:
+                                item.put("week", "星期六");
+                                break;
+                            case 7:
+                                item.put("week", "星期天");
+                                break;
+                        }
+
+                        // 设置时间值
+                        item.put("morning_start", config.getMorning_start() != null ? config.getMorning_start() : "");
+                        item.put("morning_end", config.getMorning_end() != null ? config.getMorning_end() : "");
+                        item.put("noon_start", config.getNoon_start() != null ? config.getNoon_start() : "");
+                        item.put("noon_end", config.getNoon_end() != null ? config.getNoon_end() : "");
+                        item.put("night_start", config.getNight_start() != null ? config.getNight_start() : "");
+                        item.put("night_end", config.getNight_end() != null ? config.getNight_end() : "");
+
                         data.add(item);
                     }
+
+                    // 保存完整的列表供编辑时使用
+                    list = fullList;
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                adapter = new SimpleAdapter(TimeConfigActivity.this, data, R.layout.time_config_row, new String[]{"week", "morning_start", "morning_end", "noon_start", "noon_end","night_start","night_end"}, new int[]{R.id.week, R.id.morning_start, R.id.morning_end, R.id.noon_start, R.id.noon_end, R.id.night_start,R.id.night_end}) {
+                adapter = new SimpleAdapter(TimeConfigActivity.this, data, R.layout.time_config_row,
+                        new String[]{"week", "morning_start", "morning_end", "noon_start", "noon_end","night_start","night_end"},
+                        new int[]{R.id.week, R.id.morning_start, R.id.morning_end, R.id.noon_start, R.id.noon_end, R.id.night_start,R.id.night_end}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -148,7 +202,9 @@ public class TimeConfigActivity extends AppCompatActivity {
                     }
                 };
 
-                adapter_block = new SimpleAdapter(TimeConfigActivity.this, data, R.layout.time_config_row_block, new String[]{"week", "morning_start", "morning_end", "noon_start", "noon_end","night_start","night_end"}, new int[]{R.id.week, R.id.morning_start, R.id.morning_end, R.id.noon_start, R.id.noon_end, R.id.night_start,R.id.night_end}) {
+                adapter_block = new SimpleAdapter(TimeConfigActivity.this, data, R.layout.time_config_row_block,
+                        new String[]{"week", "morning_start", "morning_end", "noon_start", "noon_end","night_start","night_end"},
+                        new int[]{R.id.week, R.id.morning_start, R.id.morning_end, R.id.noon_start, R.id.noon_end, R.id.night_start,R.id.night_end}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -177,8 +233,19 @@ public class TimeConfigActivity extends AppCompatActivity {
                 int position = Integer.parseInt(view.getTag().toString());
                 Intent intent = new Intent(TimeConfigActivity.this, TimeConfigChangeActivity.class);
                 intent.putExtra("type", R.id.update_btn);
+
+                // 传递选中的TimeConfig对象
                 MyApplication myApplication = (MyApplication) getApplication();
                 myApplication.setObj(list.get(position));
+
+                // 添加一个标记，用于判断是更新还是新增
+                TimeConfig selectedConfig = list.get(position);
+                if (selectedConfig.getId() != 0) {  // int类型不能为null，默认值为0
+                    intent.putExtra("action", "update");  // 已存在的数据，执行更新
+                } else {
+                    intent.putExtra("action", "insert");  // 补全的数据，执行新增
+                }
+
                 startActivityForResult(intent, REQUEST_CODE_CHANG);
             }
         };

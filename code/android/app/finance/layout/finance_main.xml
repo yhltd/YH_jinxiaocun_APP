@@ -855,7 +855,7 @@
                     <ImageView
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:background="@drawable/caiwu_yfmxz" />
+                        android:background="@drawable/cwgzmx" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -881,7 +881,7 @@
                     <ImageView
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:background="@drawable/caiwu_ysmxz" />
+                        android:background="@drawable/xmpz" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -907,7 +907,7 @@
                     <ImageView
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:background="@drawable/caiwu_yfbb" />
+                        android:background="@drawable/kb" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -965,7 +965,7 @@
                     <ImageView
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:background="@drawable/caiwu_yfmxz" />
+                        android:background="@drawable/lr" />
 
                     <TextView
                         android:layout_width="wrap_content"

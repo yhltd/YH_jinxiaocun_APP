@@ -454,7 +454,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/fenquan_grzx" />
+                        android:background="@drawable/jxckcdb" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -479,7 +479,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/fenquan_grzx" />
+                        android:background="@drawable/jxckctj" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -513,7 +513,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/kehu_chuhuo" />
+                        android:background="@drawable/jxckcpd" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -541,7 +541,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/fenquan_grzx" />
+                        android:background="@drawable/jxcjytj" />
 
                     <TextView
 
@@ -567,7 +567,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/fenquan_grzx"
+                        android:background="@drawable/jxcqmtj"
                         />
 
                     <TextView
@@ -593,7 +593,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/fenquan_grzx"
+                        android:background="@drawable/jxcdjdy"
                         />
 
                     <TextView
@@ -628,7 +628,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/kehu_chuhuo" />
+                        android:background="@drawable/jxcckpz" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -656,7 +656,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/kehu_chuhuo"
+                        android:background="@drawable/jxccg"
                         />
 
                     <TextView
@@ -683,7 +683,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/kehu_chuhuo"
+                        android:background="@drawable/jxccgwrk"
                         />
 
                     <TextView
@@ -709,7 +709,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/kehu_chuhuo"
+                        android:background="@drawable/jxccgth"
                         />
 
                     <TextView
@@ -745,7 +745,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/kehu_chuhuo" />
+                        android:background="@drawable/jxcxsth" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -773,7 +773,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/kehu_chuhuo"
+                        android:background="@drawable/jxcxsthtj"
                         />
 
                     <TextView
@@ -801,7 +801,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/kehu_chuhuo"
+                        android:background="@drawable/jxccgthtj"
                         />
 
                     <TextView
@@ -827,7 +827,7 @@
                     <ImageView
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:background="@drawable/kehu_chuhuo"
+                        android:background="@drawable/jxcjcmxtj"
                         />
 
                     <TextView

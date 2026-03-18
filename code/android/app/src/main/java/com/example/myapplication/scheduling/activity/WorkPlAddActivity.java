@@ -126,7 +126,8 @@ public class WorkPlAddActivity extends AppCompatActivity {
                             mList.add(moduleInfo.getName());
                         }
                     }
-                    orderInfoList = orderInfoService.getOrderId();
+                    orderInfoList = orderInfoService.getOrderId(userInfo.getCompany());
+
                     moduleAdapter = new ArrayAdapter<String>(WorkPlAddActivity.this, android.R.layout.simple_spinner_dropdown_item, mList);
                     listLoadHandler.sendMessage(msg);
                 } catch (Exception e) {

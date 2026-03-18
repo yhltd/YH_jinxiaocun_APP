@@ -13,7 +13,7 @@ public class GongZuoTongJiService {
     private renshiBaseDao base;
     private Gson gson = new Gson();
     private static final String TITLE_SEPARATOR = "|||";
-    private static final int TITLE_CONFIG_ID = 1;
+    // 不再使用固定的 TITLE_CONFIG_ID，而是使用第一条数据作为标题
 
     /**
      * 正确分割字符串的方法
@@ -35,7 +35,7 @@ public class GongZuoTongJiService {
     }
 
     /**
-     * 加载图表数据（从动态明细表）
+     * 加载图表数据（从动态明细表）- 使用第一条数据作为标题
      */
     public Map<String, Object> loadChartData(String company) {
         Map<String, Object> result = new HashMap<>();
@@ -43,7 +43,7 @@ public class GongZuoTongJiService {
         try {
             company = company.replace("_hr", "");
 
-            // 1. 获取标题配置和数据行（合并到一个查询中）
+            // 获取所有数据，按id排序
             String sql = "SELECT id, gongsi, name FROM gongzi_dongtaimingxi WHERE gongsi = ? ORDER BY id";
             base = new renshiBaseDao();
             List<DongTaiMingXi> allRecords = base.query(DongTaiMingXi.class, sql, company);
@@ -55,24 +55,20 @@ public class GongZuoTongJiService {
             int totalRows = 0;
 
             if (allRecords != null && !allRecords.isEmpty()) {
-                // 先处理标题配置（id=1的记录）
-                for (DongTaiMingXi record : allRecords) {
-                    System.out.println("记录 ID: " + record.getId() + ", 内容: " + record.getName());
-                    if (record.getId() == TITLE_CONFIG_ID) {
-                        // 这是标题配置行
-                        String titleStr = record.getName();
-                        System.out.println("标题配置原始内容: " + titleStr);
-                        if (titleStr != null && !titleStr.isEmpty()) {
-                            // 使用正确的方法解析标题配置
-                            String[] titleArray = splitFieldValues(titleStr);
-                            System.out.println("分割后字段数量: " + titleArray.length);
-                            for (String title : titleArray) {
-                                if (title != null && !title.trim().isEmpty()) {
-                                    fields.add(title.trim());
-                                }
-                            }
+                // 第一条数据作为标题
+                DongTaiMingXi titleRecord = allRecords.get(0);
+                System.out.println("标题记录 ID: " + titleRecord.getId() + ", 内容: " + titleRecord.getName());
+
+                // 解析标题配置
+                String titleStr = titleRecord.getName();
+                System.out.println("标题配置原始内容: " + titleStr);
+                if (titleStr != null && !titleStr.isEmpty()) {
+                    String[] titleArray = splitFieldValues(titleStr);
+                    System.out.println("分割后字段数量: " + titleArray.length);
+                    for (String title : titleArray) {
+                        if (title != null && !title.trim().isEmpty()) {
+                            fields.add(title.trim());
                         }
-                        break; // 标题配置只有一条
                     }
                 }
 
@@ -85,12 +81,9 @@ public class GongZuoTongJiService {
                     }
                 }
 
-                // 处理数据行（排除标题配置行）
-                for (DongTaiMingXi record : allRecords) {
-                    if (record.getId() == TITLE_CONFIG_ID) {
-                        continue; // 跳过标题配置行
-                    }
-
+                // 处理剩余数据作为内容（从索引1开始）
+                for (int i = 1; i < allRecords.size(); i++) {
+                    DongTaiMingXi record = allRecords.get(i);
                     totalRows++;
 
                     DynamicData data = new DynamicData();
@@ -99,7 +92,6 @@ public class GongZuoTongJiService {
 
                     List<String> values = new ArrayList<>();
                     if (valueStr != null && !valueStr.isEmpty()) {
-                        // 使用正确的方法解析数据值
                         String[] valueArray = splitFieldValues(valueStr);
                         for (String value : valueArray) {
                             values.add(value != null ? value.trim() : "");
@@ -118,9 +110,9 @@ public class GongZuoTongJiService {
 
                     // 创建字段映射
                     data.fieldMap = new HashMap<>();
-                    for (int i = 0; i < fields.size(); i++) {
-                        String fieldName = fields.get(i);
-                        String fieldValue = i < values.size() ? values.get(i) : "";
+                    for (int j = 0; j < fields.size(); j++) {
+                        String fieldName = fields.get(j);
+                        String fieldValue = j < values.size() ? values.get(j) : "";
                         data.fieldMap.put(fieldName, fieldValue);
                     }
 
@@ -128,7 +120,7 @@ public class GongZuoTongJiService {
                 }
             }
 
-            // 3. 准备返回数据
+            // 准备返回数据
             result.put("success", true);
             result.put("message", "加载成功");
             result.put("dataCount", totalRows);
@@ -447,7 +439,7 @@ public class GongZuoTongJiService {
      * 获取图表类型选项
      */
     public String[] getChartTypeOptions() {
-        return new String[]{"柱状图", "折线图"}; // 饼图和环形图暂时不实现
+        return new String[]{"柱状图", "折线图"};
     }
 
     /**
@@ -497,9 +489,6 @@ public class GongZuoTongJiService {
         return sb.toString();
     }
 
-    /**
-     * 获取数据表格内容
-     */
     /**
      * 获取数据表格内容
      */

@@ -195,7 +195,7 @@ public class WorkAddActivity extends AppCompatActivity {
                     List<String> oList = new ArrayList<>();
                     List<String> mList = new ArrayList<>();
                     List<Integer> iList = new ArrayList<>();
-                    orderInfoList = orderInfoService.getOrderId();
+                    orderInfoList = orderInfoService.getOrderId(userInfo.getCompany());
                     if (orderInfoList != null) {
                         for (OrderInfo orderInfo : orderInfoList) {
                             oList.add(orderInfo.getOrder_id());
