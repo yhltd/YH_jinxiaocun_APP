@@ -717,18 +717,22 @@ public class JianLiGuanLiActivity extends AppCompatActivity {
             return;
         }
 
-        // 显示上传进度对话框
+        // 获取公司名（需要从用户信息中获取）
+        String companyName = yhRenShiUser != null ? yhRenShiUser.getL().replace("_hr", "") : "";
+        if (companyName == null || companyName.isEmpty()) {
+            ToastUtil.show(this, "公司名称不存在");
+            return;
+        }
+
         showUploadProgressDialog();
 
         String fileName = file.getName();
-        String path = "/人事系统/简历文件/";
-        String kongjian = "3";
         String recordId = String.valueOf(currentRecordForUpload.getId());
         String recordName = currentRecordForUpload.getTouliren() != null ?
                 currentRecordForUpload.getTouliren() : "未知人员";
 
-        // 调用上传服务
-        jianLiGuanLiService.uploadFile(file, fileName, path, kongjian,
+        // 使用新的带空间检查的上传方法
+        jianLiGuanLiService.uploadFileWithCheck(file, fileName, companyName,
                 recordId, recordName, currentUserFileName,
                 new YhRenShiJianLiGuanLiService.UploadCallback() {
                     @Override
@@ -738,7 +742,6 @@ public class JianLiGuanLiActivity extends AppCompatActivity {
                             public void run() {
                                 hideUploadProgressDialog();
 
-                                // 保存文件URL到数据库
                                 new Thread(new Runnable() {
                                     @Override
                                     public void run() {
@@ -769,6 +772,17 @@ public class JianLiGuanLiActivity extends AppCompatActivity {
                             public void run() {
                                 hideUploadProgressDialog();
                                 ToastUtil.show(JianLiGuanLiActivity.this, "文件上传失败: " + error);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onWarning(String message, double usagePercent, double estimatedUsagePercent) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // 显示警告信息，但不阻止上传
+                                ToastUtil.show(JianLiGuanLiActivity.this, message);
                             }
                         });
                     }
@@ -962,19 +976,21 @@ public class JianLiGuanLiActivity extends AppCompatActivity {
                 .setPositiveButton("删除", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // 显示删除进度
                         ToastUtil.show(JianLiGuanLiActivity.this, "正在删除文件...");
 
-                        // 从URL中提取文件名
-                        String fileName = extractFileName(fileUrl);
-                        String path = "/人事系统/简历文件/";
+                        // 获取公司名
+                        String companyName = yhRenShiUser != null ? yhRenShiUser.getL().replace("_hr", "") : "";
+                        if (companyName == null || companyName.isEmpty()) {
+                            ToastUtil.show(JianLiGuanLiActivity.this, "公司名称不存在");
+                            return;
+                        }
 
-                        // 先删除服务器上的文件
-                        jianLiGuanLiService.deleteFileFromServer(fileName, path,
+                        String fileName = extractFileName(fileUrl);
+
+                        jianLiGuanLiService.deleteFileFromServer(fileName, companyName,
                                 new YhRenShiJianLiGuanLiService.DeleteCallback() {
                                     @Override
                                     public void onSuccess() {
-                                        // 服务器删除成功后，删除数据库记录
                                         new Thread(new Runnable() {
                                             @Override
                                             public void run() {
@@ -987,9 +1003,7 @@ public class JianLiGuanLiActivity extends AppCompatActivity {
                                                         parentDialog.dismiss();
                                                         if (dbSuccess) {
                                                             ToastUtil.show(JianLiGuanLiActivity.this, "文件删除成功");
-                                                            // 重新显示文件列表
-//                                                            showFileListDialog(record);
-                                                                loadData(null);
+                                                            loadData(null);
                                                         } else {
                                                             ToastUtil.show(JianLiGuanLiActivity.this, "数据库更新失败");
                                                         }

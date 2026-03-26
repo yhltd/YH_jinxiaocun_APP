@@ -471,11 +471,17 @@ public class RenyuanActivity extends AppCompatActivity {
         showUploadProgressDialog();
 
         String fileName = file.getName();
-        String kongjian = "3";  // 空间标识
+        String companyName = renyuan != null ? renyuan.getB() : "";
+        if (companyName == null || companyName.isEmpty()) {
+            ToastUtil.show(this, "公司名称不存在");
+            hideUploadProgressDialog();
+            return;
+        }
+
         String recordId = String.valueOf(currentRecordForUpload.getId());
         String recordName = currentRecordForUpload.getC() + "_" + currentRecordForUpload.getBianhao();
 
-        renyuanService.uploadFile(file, fileName, "", kongjian,
+        renyuanService.uploadFileWithCheck(file, fileName, companyName,
                 recordId, recordName, currentUserFileName,
                 new RenyuanService.UploadCallback() {
                     @Override
@@ -496,7 +502,7 @@ public class RenyuanActivity extends AppCompatActivity {
                                             public void run() {
                                                 if (success) {
                                                     ToastUtil.show(RenyuanActivity.this, "文件上传成功");
-                                                    initList();  // 刷新列表
+                                                    initList();
                                                 } else {
                                                     ToastUtil.show(RenyuanActivity.this, "文件信息保存失败");
                                                 }
@@ -515,6 +521,16 @@ public class RenyuanActivity extends AppCompatActivity {
                             public void run() {
                                 hideUploadProgressDialog();
                                 ToastUtil.show(RenyuanActivity.this, "文件上传失败: " + error);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onWarning(String message, double usagePercent, double estimatedUsagePercent) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtil.show(RenyuanActivity.this, message);
                             }
                         });
                     }
@@ -664,9 +680,13 @@ public class RenyuanActivity extends AppCompatActivity {
                         ToastUtil.show(RenyuanActivity.this, "正在删除文件...");
 
                         String fileName = extractFileName(fileUrl);
-                        String path = "/fenquan/";
+                        String companyName = renyuan != null ? renyuan.getB() : "";
+                        if (companyName == null || companyName.isEmpty()) {
+                            ToastUtil.show(RenyuanActivity.this, "公司名称不存在");
+                            return;
+                        }
 
-                        renyuanService.deleteFileFromServer(fileName, path,
+                        renyuanService.deleteFileFromServer(fileName, companyName,
                                 new RenyuanService.DeleteCallback() {
                                     @Override
                                     public void onSuccess() {
@@ -682,7 +702,7 @@ public class RenyuanActivity extends AppCompatActivity {
                                                         parentDialog.dismiss();
                                                         if (dbSuccess) {
                                                             ToastUtil.show(RenyuanActivity.this, "文件删除成功");
-                                                            initList();  // 刷新列表
+                                                            initList();
                                                         } else {
                                                             ToastUtil.show(RenyuanActivity.this, "数据库更新失败");
                                                         }

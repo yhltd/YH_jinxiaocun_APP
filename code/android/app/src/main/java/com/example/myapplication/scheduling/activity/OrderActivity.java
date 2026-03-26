@@ -538,14 +538,20 @@ public class OrderActivity extends AppCompatActivity {
             return;
         }
 
+        // 获取公司名
+        String savedCompany = userInfo != null ? userInfo.getCompany() : "";
+        if (savedCompany == null || savedCompany.isEmpty()) {
+            ToastUtil.show(this, "公司名称不存在");
+            return;
+        }
+
         showUploadProgressDialog();
 
         String fileName = file.getName();
-        String kongjian = "3";  // 空间标识
         String recordId = String.valueOf(currentRecordForUpload.getId());
         String recordName = "订单_" + currentRecordForUpload.getOrder_id();
 
-        orderInfoService.uploadFile(file, fileName, "", kongjian,
+        orderInfoService.uploadFileWithCheck(file, fileName, savedCompany,
                 recordId, recordName, currentUserFileName,
                 new OrderInfoService.UploadCallback() {
                     @Override
@@ -585,6 +591,17 @@ public class OrderActivity extends AppCompatActivity {
                             public void run() {
                                 hideUploadProgressDialog();
                                 ToastUtil.show(OrderActivity.this, "文件上传失败: " + error);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onWarning(String message, double usagePercent, double estimatedUsagePercent) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // 显示警告信息，但不阻止上传
+                                ToastUtil.show(OrderActivity.this, message);
                             }
                         });
                     }
@@ -734,10 +751,16 @@ public class OrderActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         ToastUtil.show(OrderActivity.this, "正在删除文件...");
 
-                        String fileName = extractFileName(fileUrl);
-                        String path = "/paichan/";
+                        // 获取公司名
+                        String savedCompany = userInfo != null ? userInfo.getCompany() : "";
+                        if (savedCompany == null || savedCompany.isEmpty()) {
+                            ToastUtil.show(OrderActivity.this, "公司名称不存在");
+                            return;
+                        }
 
-                        orderInfoService.deleteFileFromServer(fileName, path,
+                        String fileName = extractFileName(fileUrl);
+
+                        orderInfoService.deleteFileFromServer(fileName, savedCompany,
                                 new OrderInfoService.DeleteCallback() {
                                     @Override
                                     public void onSuccess() {

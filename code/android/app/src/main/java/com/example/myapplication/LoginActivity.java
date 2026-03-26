@@ -45,6 +45,12 @@ import com.example.myapplication.jiaowu.entity.Teacher;
 import com.example.myapplication.jiaowu.service.TeacherService;
 import com.example.myapplication.jxc.activity.JxcActivity;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
+import com.example.myapplication.service.DatabaseSpaceService;
+import com.example.myapplication.service.FenquanDatabaseSpaceService;
+import com.example.myapplication.service.FinanceDatabaseSpaceService;
+import com.example.myapplication.service.JiaowuDatabaseSpaceService;
+import com.example.myapplication.service.JxcDatabaseSpaceService;
+import com.example.myapplication.service.MendianDatabaseSpaceService;
 import com.example.myapplication.service.PushNewsService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunUserService;
 import com.example.myapplication.mendian.activity.MendianActivity;
@@ -56,6 +62,7 @@ import com.example.myapplication.renshi.service.YhRenShiUserService;
 import com.example.myapplication.scheduling.activity.SchedulingActivity;
 import com.example.myapplication.scheduling.entity.UserInfo;
 import com.example.myapplication.scheduling.service.UserInfoService;
+import com.example.myapplication.service.RenShiDatabaseSpaceService;
 import com.example.myapplication.service.SystemService;
 import com.example.myapplication.utils.InputUtil;
 import com.example.myapplication.utils.ToastUtil;
@@ -65,6 +72,7 @@ import com.example.myapplication.finance.service.YhFinanceUserService;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -519,8 +527,6 @@ public class LoginActivity extends AppCompatActivity {
                 saveSystemAndCompanyToCache();
 
 
-
-
                 SharedPreferences testPref = getSharedPreferences("my_cache", MODE_PRIVATE);
                 String testSystem = testPref.getString("systemName", "");
                 String testCompany = testPref.getString("companyName", "");
@@ -540,10 +546,31 @@ public class LoginActivity extends AppCompatActivity {
                         boolean panduan = true;
                         if (msg.obj != null) {
                             String thisNum = "";
+
+                            Log.d("LoginActivity", "softTimeList: " + Arrays.toString(softTimeList.toArray()));
+
                             if(softTimeList == null){
                                 panduan = false;
                                 ToastUtil.show(LoginActivity.this, "工具到期，请联系我公司续费");
                             }else{
+                                if(softTimeList.get(0).getMark5() == null || !softTimeList.get(0).getMark5().trim().contains("APP安卓")){
+                                    panduan = false;
+                                    ToastUtil.show(LoginActivity.this, "您没有当前使用端权限，请联系我公司续费或者购买系统");
+                                }
+
+                                String mark4 = softTimeList.get(0).getMark4();
+                                if (mark4 != null && !mark4.isEmpty()) {
+                                    // 保存到 CacheManager
+                                    CacheManager.getInstance().put("mark4", mark4);
+
+                                    // 保存到 Application
+                                    MyApplication application = (MyApplication) getApplicationContext();
+                                    application.setMark4(mark4);
+
+                                    Log.d("LoginActivity", "保存 mark4 值: " + mark4);
+                                }
+
+
                                 if (!softTimeList.get(0).getMark1().trim().equals("a8xd2s")){
                                     if(softTimeList.get(0).getEndtime().trim().equals("1")){
                                         panduan = false;
@@ -662,6 +689,19 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 yhJinXiaoCunUserService = new YhJinXiaoCunUserService();
                                 softTimeList = systemService.getSoftTime(formattedDate,companyText,"进销存");
+
+                                // 🆕 获取进销存系统数据库空间大小
+                                JxcDatabaseSpaceService spaceService = new JxcDatabaseSpaceService();
+                                double dbSizeKB = spaceService.getDatabaseSizeByCompany(companyText);
+
+                                // 🆕 保存到 SharedPreferences
+                                SharedPreferences sharedPref = getSharedPreferences("my_cache", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.putFloat("dbSizeKB", (float) dbSizeKB);
+                                editor.apply();
+
+                                Log.d("SpaceCheck", "进销存系统 - 公司 " + companyText + " 数据库大小: " + dbSizeKB + " KB (" + (dbSizeKB / 1024) + " MB)");
+
                                 msg.obj = yhJinXiaoCunUserService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -672,6 +712,19 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 yhFinanceUserService = new YhFinanceUserService();
                                 softTimeList = systemService.getSoftTime(formattedDate,companyText,"财务");
+
+                                // 🆕 获取财务系统数据库空间大小
+                                FinanceDatabaseSpaceService spaceService = new FinanceDatabaseSpaceService();
+                                double dbSizeKB = spaceService.getDatabaseSizeByCompany(companyText);
+
+                                // 🆕 保存到 SharedPreferences
+                                SharedPreferences sharedPref = getSharedPreferences("my_cache", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.putFloat("dbSizeKB", (float) dbSizeKB);
+                                editor.apply();
+
+                                Log.d("SpaceCheck", "财务系统 - 公司 " + companyText + " 数据库大小: " + dbSizeKB + " KB (" + (dbSizeKB / 1024) + " MB)");
+
                                 msg.obj = yhFinanceUserService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -682,6 +735,19 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 userInfoService = new UserInfoService();
                                 softTimeList = systemService.getSoftTime(formattedDate,companyText,"排产");
+
+                                // 🆕 获取数据库空间大小
+                                DatabaseSpaceService spaceService = new DatabaseSpaceService();
+                                double dbSizeKB = spaceService.getDatabaseSizeByCompany(companyText);
+
+                                // 🆕 保存到 SharedPreferences
+                                SharedPreferences sharedPref = getSharedPreferences("my_cache", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.putFloat("dbSizeKB", (float) dbSizeKB);
+                                editor.apply();
+
+                                Log.d("SpaceCheck", "公司 " + companyText + " 数据库大小: " + dbSizeKB + " KB (" + (dbSizeKB / 1024) + " MB)");
+
                                 msg.obj = userInfoService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -692,6 +758,19 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 renyuanService = new RenyuanService();
                                 softTimeList = systemService.getSoftTime(formattedDate,companyText,"分权");
+
+                                // 🆕 获取分权系统数据库空间大小
+                                FenquanDatabaseSpaceService spaceService = new FenquanDatabaseSpaceService();
+                                double dbSizeKB = spaceService.getDatabaseSizeByCompany(companyText);
+
+                                // 🆕 保存到 SharedPreferences
+                                SharedPreferences sharedPref = getSharedPreferences("my_cache", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.putFloat("dbSizeKB", (float) dbSizeKB);
+                                editor.apply();
+
+                                Log.d("SpaceCheck", "分权系统 - 公司 " + companyText + " 数据库大小: " + dbSizeKB + " KB (" + (dbSizeKB / 1024) + " MB)");
+
                                 msg.obj = renyuanService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -702,6 +781,19 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 yhRenShiUserService = new YhRenShiUserService();
                                 softTimeList = systemService.getSoftTime(formattedDate,companyText,"人事");
+
+                                // 🆕 获取人事系统数据库空间大小
+                                RenShiDatabaseSpaceService spaceService = new RenShiDatabaseSpaceService();
+                                double dbSizeKB = spaceService.getDatabaseSizeByCompany(companyText);
+
+                                // 🆕 保存到 SharedPreferences
+                                SharedPreferences sharedPref = getSharedPreferences("my_cache", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.putFloat("dbSizeKB", (float) dbSizeKB);
+                                editor.apply();
+
+                                Log.d("SpaceCheck", "人事系统 - 公司 " + companyText + " 数据库大小: " + dbSizeKB + " KB (" + (dbSizeKB / 1024) + " MB)");
+
                                 msg.obj = yhRenShiUserService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -712,6 +804,20 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 teacherService = new TeacherService();
                                 softTimeList = systemService.getSoftTime(formattedDate,companyText,"教务");
+
+
+                                // 🆕 获取教务系统数据库空间大小
+                                JiaowuDatabaseSpaceService spaceService = new JiaowuDatabaseSpaceService();
+                                double dbSizeKB = spaceService.getDatabaseSizeByCompany(companyText);
+
+                                // 🆕 保存到 SharedPreferences
+                                SharedPreferences sharedPref = getSharedPreferences("my_cache", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.putFloat("dbSizeKB", (float) dbSizeKB);
+                                editor.apply();
+
+                                Log.d("SpaceCheck", "教务系统 - 公司 " + companyText + " 数据库大小: " + dbSizeKB + " KB (" + (dbSizeKB / 1024) + " MB)");
+
                                 msg.obj = teacherService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -722,6 +828,19 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 yhMendianUserService = new YhMendianUserService();
                                 softTimeList = systemService.getSoftTime(formattedDate,companyText,"门店");
+
+                                // 🆕 获取门店系统数据库空间大小
+                                MendianDatabaseSpaceService spaceService = new MendianDatabaseSpaceService();
+                                double dbSizeKB = spaceService.getDatabaseSizeByCompany(companyText);
+
+                                // 🆕 保存到 SharedPreferences
+                                SharedPreferences sharedPref = getSharedPreferences("my_cache", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.putFloat("dbSizeKB", (float) dbSizeKB);
+                                editor.apply();
+
+                                Log.d("SpaceCheck", "门店系统 - 公司 " + companyText + " 数据库大小: " + dbSizeKB + " KB (" + (dbSizeKB / 1024) + " MB)");
+
                                 msg.obj = yhMendianUserService.login(username.getText().toString(), password.getText().toString(), companyText);
                             } catch (Exception e) {
                                 e.printStackTrace();

@@ -639,11 +639,17 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
         showUploadProgressDialog();
 
         String fileName = file.getName();
-        String kongjian = "3";  // 空间标识
+        String companyName = yhFinanceUser != null ? yhFinanceUser.getCompany() : "";
+        if (companyName == null || companyName.isEmpty()) {
+            ToastUtil.show(this, "公司名称不存在");
+            hideUploadProgressDialog();
+            return;
+        }
+
         String recordId = String.valueOf(currentRecordForUpload.getId());
         String recordName = currentRecordForUpload.getProject() + "_" + currentRecordForUpload.getKehu();
 
-        yhFinanceJiJianTaiZhangService.uploadFile(file, fileName, "", kongjian,
+        yhFinanceJiJianTaiZhangService.uploadFileWithCheck(file, fileName, companyName,
                 recordId, recordName, currentUserFileName,
                 new YhFinanceJiJianTaiZhangService.UploadCallback() {
                     @Override
@@ -664,7 +670,7 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
                                             public void run() {
                                                 if (success) {
                                                     ToastUtil.show(JiJianTaiZhangActivity.this, "文件上传成功");
-                                                    initList();  // 刷新列表
+                                                    initList();
                                                 } else {
                                                     ToastUtil.show(JiJianTaiZhangActivity.this, "文件信息保存失败");
                                                 }
@@ -683,6 +689,16 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
                             public void run() {
                                 hideUploadProgressDialog();
                                 ToastUtil.show(JiJianTaiZhangActivity.this, "文件上传失败: " + error);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onWarning(String message, double usagePercent, double estimatedUsagePercent) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtil.show(JiJianTaiZhangActivity.this, message);
                             }
                         });
                     }
@@ -832,9 +848,13 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
                         ToastUtil.show(JiJianTaiZhangActivity.this, "正在删除文件...");
 
                         String fileName = extractFileName(fileUrl);
-                        String path = "/caiwu/";
+                        String companyName = yhFinanceUser != null ? yhFinanceUser.getCompany() : "";
+                        if (companyName == null || companyName.isEmpty()) {
+                            ToastUtil.show(JiJianTaiZhangActivity.this, "公司名称不存在");
+                            return;
+                        }
 
-                        yhFinanceJiJianTaiZhangService.deleteFileFromServer(fileName, path,
+                        yhFinanceJiJianTaiZhangService.deleteFileFromServer(fileName, companyName,
                                 new YhFinanceJiJianTaiZhangService.DeleteCallback() {
                                     @Override
                                     public void onSuccess() {
@@ -850,7 +870,7 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
                                                         parentDialog.dismiss();
                                                         if (dbSuccess) {
                                                             ToastUtil.show(JiJianTaiZhangActivity.this, "文件删除成功");
-                                                            initList();  // 刷新列表
+                                                            initList();
                                                         } else {
                                                             ToastUtil.show(JiJianTaiZhangActivity.this, "数据库更新失败");
                                                         }

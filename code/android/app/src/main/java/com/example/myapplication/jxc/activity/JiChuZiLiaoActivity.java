@@ -12,6 +12,7 @@ import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.myapplication.LoginActivity;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
@@ -116,18 +119,67 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * 兼容加载图片（支持URL和Base64）
+     * @param imageData 图片数据（可能是URL或Base64）
+     * @return Bitmap对象，如果是URL则返回null（需要Glide加载）
+     */
+    private Object getImageObject(String imageData) {
+        if (imageData == null || imageData.isEmpty() || imageData.equals("null")) {
+            return "";
+        }
+
+        // 判断是否为URL格式
+        if (imageData.startsWith("http://") || imageData.startsWith("https://")) {
+            // URL格式 - 直接返回URL字符串，让ViewBinder处理
+            return imageData;
+        } else {
+            // Base64格式 - 解码返回Bitmap
+            try {
+                // 清理Base64字符串
+                String base64Image = imageData;
+                if (imageData.contains(",")) {
+                    base64Image = imageData.substring(imageData.indexOf(",") + 1);
+                }
+                byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+                return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            } catch (IllegalArgumentException e) {
+                Log.e("JiChuZiLiao", "Base64解码失败: " + e.getMessage());
+                return "";
+            } catch (Exception e) {
+                Log.e("JiChuZiLiao", "图片加载异常: " + e.getMessage());
+                return "";
+            }
+        }
+    }
+
     private void initList() {
         sel_button.setEnabled(false);
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
+                // 设置ViewBinder处理图片加载
                 adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
-                    public boolean setViewValue(View view, Object data,
-                                                String textRepresentation) {
-                        if (view instanceof ImageView && data instanceof Bitmap) {
+                    public boolean setViewValue(View view, Object data, String textRepresentation) {
+                        if (view instanceof ImageView) {
                             ImageView image = (ImageView) view;
-                            image.setImageBitmap((Bitmap) data);
-                            return true;
+                            if (data instanceof Bitmap) {
+                                // Base64格式 - 直接设置Bitmap
+                                image.setImageBitmap((Bitmap) data);
+                                return true;
+                            } else if (data instanceof String) {
+                                String url = (String) data;
+                                if (url.startsWith("http://") || url.startsWith("https://")) {
+                                    // URL格式 - 使用Glide加载
+                                    Glide.with(JiChuZiLiaoActivity.this)
+                                            .load(url)
+                                            .placeholder(R.drawable.ic_image_placeholder)
+                                            .error(R.drawable.ic_image_error)
+                                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                            .into(image);
+                                    return true;
+                                }
+                            }
                         }
                         return false;
                     }
@@ -135,12 +187,24 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                 listView.setAdapter(StringUtils.cast(adapter));
 
                 adapter_block.setViewBinder(new SimpleAdapter.ViewBinder() {
-                    public boolean setViewValue(View view, Object data,
-                                                String textRepresentation) {
-                        if (view instanceof ImageView && data instanceof Bitmap) {
+                    public boolean setViewValue(View view, Object data, String textRepresentation) {
+                        if (view instanceof ImageView) {
                             ImageView image = (ImageView) view;
-                            image.setImageBitmap((Bitmap) data);
-                            return true;
+                            if (data instanceof Bitmap) {
+                                image.setImageBitmap((Bitmap) data);
+                                return true;
+                            } else if (data instanceof String) {
+                                String url = (String) data;
+                                if (url.startsWith("http://") || url.startsWith("https://")) {
+                                    Glide.with(JiChuZiLiaoActivity.this)
+                                            .load(url)
+                                            .placeholder(R.drawable.ic_image_placeholder)
+                                            .error(R.drawable.ic_image_error)
+                                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                            .into(image);
+                                    return true;
+                                }
+                            }
                         }
                         return false;
                     }
@@ -162,13 +226,9 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
 
                     for (int i = 0; i < list.size(); i++) {
                         HashMap<String, Object> item = new HashMap<>();
-                        if(list.get(i).getMark1() == null){
-                            item.put("mark1", "");
-                        }else{
-                            byte[] decodedString = Base64.decode(list.get(i).getMark1(), Base64.DEFAULT);
-                            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                            item.put("mark1", decodedByte);
-                        }
+                        // 使用兼容方法处理图片
+                        String mark1Value = list.get(i).getMark1();
+                        item.put("mark1", getImageObject(mark1Value));
                         item.put("spDm", list.get(i).getSpDm());
                         item.put("name", list.get(i).getName());
                         item.put("leiBie", list.get(i).getLeiBie());
@@ -181,7 +241,9 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                adapter = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row, new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"}, new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
+                adapter = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row,
+                        new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"},
+                        new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -193,7 +255,9 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                     }
                 };
 
-                adapter_block = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row_block, new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"}, new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
+                adapter_block = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row_block,
+                        new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"},
+                        new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -220,13 +284,26 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                 Handler listLoadHandler = new Handler(new Handler.Callback() {
                     @Override
                     public boolean handleMessage(@NonNull Message msg) {
+                        // 设置ViewBinder处理图片加载
                         adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
-                            public boolean setViewValue(View view, Object data,
-                                                        String textRepresentation) {
-                                if (view instanceof ImageView && data instanceof Bitmap) {
+                            public boolean setViewValue(View view, Object data, String textRepresentation) {
+                                if (view instanceof ImageView) {
                                     ImageView image = (ImageView) view;
-                                    image.setImageBitmap((Bitmap) data);
-                                    return true;
+                                    if (data instanceof Bitmap) {
+                                        image.setImageBitmap((Bitmap) data);
+                                        return true;
+                                    } else if (data instanceof String) {
+                                        String url = (String) data;
+                                        if (url.startsWith("http://") || url.startsWith("https://")) {
+                                            Glide.with(JiChuZiLiaoActivity.this)
+                                                    .load(url)
+                                                    .placeholder(R.drawable.ic_image_placeholder)
+                                                    .error(R.drawable.ic_image_error)
+                                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                                    .into(image);
+                                            return true;
+                                        }
+                                    }
                                 }
                                 return false;
                             }
@@ -234,12 +311,24 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                         listView.setAdapter(StringUtils.cast(adapter));
 
                         adapter_block.setViewBinder(new SimpleAdapter.ViewBinder() {
-                            public boolean setViewValue(View view, Object data,
-                                                        String textRepresentation) {
-                                if (view instanceof ImageView && data instanceof Bitmap) {
+                            public boolean setViewValue(View view, Object data, String textRepresentation) {
+                                if (view instanceof ImageView) {
                                     ImageView image = (ImageView) view;
-                                    image.setImageBitmap((Bitmap) data);
-                                    return true;
+                                    if (data instanceof Bitmap) {
+                                        image.setImageBitmap((Bitmap) data);
+                                        return true;
+                                    } else if (data instanceof String) {
+                                        String url = (String) data;
+                                        if (url.startsWith("http://") || url.startsWith("https://")) {
+                                            Glide.with(JiChuZiLiaoActivity.this)
+                                                    .load(url)
+                                                    .placeholder(R.drawable.ic_image_placeholder)
+                                                    .error(R.drawable.ic_image_error)
+                                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                                    .into(image);
+                                            return true;
+                                        }
+                                    }
                                 }
                                 return false;
                             }
@@ -260,13 +349,9 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
 
                             for (int i = 0; i < list.size(); i++) {
                                 HashMap<String, Object> item = new HashMap<>();
-                                if(list.get(i).getMark1() == null){
-                                    item.put("mark1", "");
-                                }else{
-                                    byte[] decodedString = Base64.decode(list.get(i).getMark1(), Base64.DEFAULT);
-                                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                                    item.put("mark1", decodedByte);
-                                }
+                                // 使用兼容方法处理图片
+                                String mark1Value = list.get(i).getMark1();
+                                item.put("mark1", getImageObject(mark1Value));
                                 item.put("spDm", list.get(i).getSpDm());
                                 item.put("name", list.get(i).getName());
                                 item.put("leiBie", list.get(i).getLeiBie());
@@ -279,7 +364,9 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        adapter = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row, new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"}, new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
+                        adapter = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row,
+                                new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"},
+                                new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
                             @Override
                             public View getView(int position, View convertView, ViewGroup parent) {
                                 final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -291,7 +378,9 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
                             }
                         };
 
-                        adapter_block = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row_block, new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"}, new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
+                        adapter_block = new SimpleAdapter(JiChuZiLiaoActivity.this, data, R.layout.jichuziliao_row_block,
+                                new String[]{"mark1","spDm", "name", "leiBie", "danWei", "kehu", "gongyingshang"},
+                                new int[]{R.id.mark1,R.id.spDm, R.id.name, R.id.leiBie, R.id.danWei, R.id.kehu, R.id.gongyingshang}) {
                             @Override
                             public View getView(int position, View convertView, ViewGroup parent) {
                                 final LinearLayout view = (LinearLayout) super.getView(position, convertView, parent);
@@ -451,5 +540,4 @@ public class JiChuZiLiaoActivity extends AppCompatActivity {
             }
         }
     }
-
 }

@@ -471,21 +471,23 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
      */
     private void deleteImageFromServer(String imageUrl, String fieldName) {
         String fileName = extractFileName(imageUrl);
-        String path = "/mendian/";
+        String companyName = yhMendianUser != null ? yhMendianUser.getCompany() : "";
+        if (companyName == null || companyName.isEmpty()) {
+            ToastUtil.show(this, "公司名称不存在");
+            return;
+        }
 
         ToastUtil.show(this, "正在删除图片...");
 
-        yhMendianProductshezhiService.deleteFileFromServer(fileName, path,
+        yhMendianProductshezhiService.deleteFileFromServer(fileName, companyName,
                 new YhMendianProductshezhiService.DeleteCallback() {
                     @Override
                     public void onSuccess() {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                // 清空UI
                                 clearImageUI(fieldName);
 
-                                // 如果是在编辑模式，同时更新数据库
                                 if (yhMendianProductshezhi != null && yhMendianProductshezhi.getId() > 0) {
                                     new Thread(new Runnable() {
                                         @Override
@@ -617,7 +619,7 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
     }
 
     /**
-     * 上传图片文件
+     * 上传图片文件（带空间检查）
      */
     private void uploadImageFile(final File file, final String fieldName) {
         if (file == null || !file.exists()) {
@@ -628,7 +630,12 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
         showUploadProgressDialog();
 
         String fileName = file.getName();
-        String kongjian = "3";  // 空间标识
+        String companyName = yhMendianUser != null ? yhMendianUser.getCompany() : "";
+        if (companyName == null || companyName.isEmpty()) {
+            ToastUtil.show(this, "公司名称不存在");
+            hideUploadProgressDialog();
+            return;
+        }
 
         String recordId;
         if (yhMendianProductshezhi != null && yhMendianProductshezhi.getId() > 0) {
@@ -643,32 +650,31 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
         String oldImageUrl = getImageUrlByField(fieldName);
         if (oldImageUrl != null && !oldImageUrl.isEmpty() && oldImageUrl.startsWith("http")) {
             String oldFileName = extractFileName(oldImageUrl);
-            String path = "/mendian/";
 
-            yhMendianProductshezhiService.deleteFileFromServer(oldFileName, path,
+            yhMendianProductshezhiService.deleteFileFromServer(oldFileName, companyName,
                     new YhMendianProductshezhiService.DeleteCallback() {
                         @Override
                         public void onSuccess() {
-                            doUploadFile(file, fileName, kongjian, recordId, recordName, fieldName);
+                            doUploadWithCheck(file, fileName, companyName, recordId, recordName, fieldName);
                         }
 
                         @Override
                         public void onFailure(String error) {
                             Log.e("FileUpload", "删除旧文件失败: " + error);
-                            doUploadFile(file, fileName, kongjian, recordId, recordName, fieldName);
+                            doUploadWithCheck(file, fileName, companyName, recordId, recordName, fieldName);
                         }
                     });
         } else {
-            doUploadFile(file, fileName, kongjian, recordId, recordName, fieldName);
+            doUploadWithCheck(file, fileName, companyName, recordId, recordName, fieldName);
         }
     }
 
     /**
-     * 执行文件上传
+     * 执行带空间检查的上传
      */
-    private void doUploadFile(File file, String fileName, String kongjian,
-                              String recordId, String recordName, String fieldName) {
-        yhMendianProductshezhiService.uploadFile(file, fileName, "", kongjian,
+    private void doUploadWithCheck(File file, String fileName, String companyName,
+                                   String recordId, String recordName, String fieldName) {
+        yhMendianProductshezhiService.uploadFileWithCheck(file, fileName, companyName,
                 recordId, recordName, "",
                 new YhMendianProductshezhiService.UploadCallback() {
                     @Override
@@ -678,10 +684,8 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
                             public void run() {
                                 hideUploadProgressDialog();
 
-                                // 保存URL到对应字段
                                 setImageUrlByField(fieldName, fileUrl);
 
-                                // 显示移除按钮
                                 Button removeButton = getRemoveButtonByField(fieldName);
                                 if (removeButton != null) {
                                     removeButton.setVisibility(View.VISIBLE);
@@ -721,6 +725,16 @@ public class ProductshezhiChangeActivity extends AppCompatActivity {
                             public void run() {
                                 hideUploadProgressDialog();
                                 ToastUtil.show(ProductshezhiChangeActivity.this, "图片上传失败: " + error);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onWarning(String message, double usagePercent, double estimatedUsagePercent) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtil.show(ProductshezhiChangeActivity.this, message);
                             }
                         });
                     }

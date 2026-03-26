@@ -350,6 +350,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -364,6 +365,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunJiChuZiLiao;
@@ -449,28 +451,9 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
             btn.setVisibility(View.VISIBLE);
             qr_code_line.setVisibility(View.VISIBLE);
 
-            // 加载图片 - 如果是URL则使用Glide加载
+            // 加载图片 - 兼容URL和Base64格式
             String mark1Value = yhJinXiaoCunJiChuZiLiao.getMark1();
-            if (mark1Value != null && !mark1Value.isEmpty()) {
-                if (mark1Value.startsWith("http")) {
-                    // 如果是URL，使用Glide加载
-                    Glide.with(this)
-                            .load(mark1Value)
-                            .placeholder(R.drawable.ic_image_placeholder)
-                            .error(R.drawable.ic_image_error)
-                            .into(mark1);
-                } else {
-                    // 如果是Base64，按原方式处理（兼容旧数据）
-                    try {
-                        byte[] decodedString = Base64.decode(mark1Value, Base64.DEFAULT);
-                        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                        mark1.setImageBitmap(decodedByte);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        mark1.setImageResource(R.drawable.ic_image_error);
-                    }
-                }
-            }
+            loadImageCompat(mark1Value, mark1);
 
             cpDm.setText(yhJinXiaoCunJiChuZiLiao.getSpDm());
             name.setText(yhJinXiaoCunJiChuZiLiao.getName());
@@ -481,12 +464,62 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
 
             // 生成二维码
             Bitmap bitmap = generateQRCode(yhJinXiaoCunJiChuZiLiao.getSpDm());
-            qr_code.setImageBitmap(bitmap);
+            if (bitmap != null) {
+                qr_code.setImageBitmap(bitmap);
+            }
         }
+
+
 
         mark1.setOnClickListener(imageSel());
         // 添加长按删除图片功能
         mark1.setOnLongClickListener(imageLongClick());
+    }
+
+    /**
+     * 兼容加载图片（支持URL和Base64）
+     */
+    private void loadImageCompat(String imageData, ImageView imageView) {
+        if (imageData == null || imageData.isEmpty() || imageData.equals("null")) {
+            // 没有图片，设置默认占位图
+            imageView.setImageResource(R.drawable.ic_image_placeholder);
+            return;
+        }
+
+        // 判断是否为URL格式
+        if (imageData.startsWith("http://") || imageData.startsWith("https://")) {
+            // URL格式 - 使用Glide加载网络图片
+            Glide.with(this)
+                    .load(imageData)
+                    .placeholder(R.drawable.ic_image_placeholder)
+                    .error(R.drawable.ic_image_error)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imageView);
+        } else {
+            // Base64格式 - 解码显示
+            try {
+                // 清理Base64字符串（移除可能的数据URI前缀）
+                String base64Image = imageData;
+                if (imageData.contains(",")) {
+                    base64Image = imageData.substring(imageData.indexOf(",") + 1);
+                }
+                byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                if (decodedByte != null) {
+                    imageView.setImageBitmap(decodedByte);
+                    Log.d("ImageLoad", "Base64解码成功");
+                } else {
+                    imageView.setImageResource(R.drawable.ic_image_error);
+                    Log.e("ImageLoad", "Base64解码结果为null");
+                }
+            } catch (IllegalArgumentException e) {
+                Log.e("ImageLoad", "Base64解码失败: " + e.getMessage());
+                imageView.setImageResource(R.drawable.ic_image_error);
+            } catch (Exception e) {
+                Log.e("ImageLoad", "图片加载异常: " + e.getMessage());
+                imageView.setImageResource(R.drawable.ic_image_error);
+            }
+        }
     }
 
     @Override
@@ -511,29 +544,26 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
         currentImageUrl = null;
     }
 
-    /**
-     * 清空图片（单独的清空图片按钮）
-     */
-    /**
-     * 清空图片（单独的清空图片按钮）
-     */
     public void clearImageClick(View v) {
         // 如果已有图片，先删除服务器上的文件
         if (yhJinXiaoCunJiChuZiLiao != null && yhJinXiaoCunJiChuZiLiao.getId() > 0) {
             String oldImageUrl = yhJinXiaoCunJiChuZiLiao.getMark1();
-            if (oldImageUrl != null && oldImageUrl.startsWith("http")) {
-                // 从URL中提取文件名
+            // 只有URL格式才需要从服务器删除，Base64格式不需要
+            if (oldImageUrl != null && (oldImageUrl.startsWith("http://") || oldImageUrl.startsWith("https://"))) {
                 String fileName = extractFileName(oldImageUrl);
-                String path = "/进销存系统/商品图片/";
+                String companyName = yhJinXiaoCunUser != null ? yhJinXiaoCunUser.getGongsi() : "";
 
-                // 显示删除进度
+                if (companyName == null || companyName.isEmpty()) {
+                    ToastUtil.show(this, "公司名称不存在");
+                    return;
+                }
+
                 ToastUtil.show(this, "正在删除图片...");
 
-                yhJinXiaoCunJiChuZiLiaoService.deleteFileFromServer(fileName, path,
+                yhJinXiaoCunJiChuZiLiaoService.deleteFileFromServer(fileName, companyName,
                         new YhJinXiaoCunJiChuZiLiaoService.DeleteCallback() {
                             @Override
                             public void onSuccess() {
-                                // 服务器删除成功后，在子线程中更新数据库
                                 new Thread(new Runnable() {
                                     @Override
                                     public void run() {
@@ -744,44 +774,49 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
         showUploadProgressDialog();
 
         String fileName = file.getName();
-        String kongjian = "3";  // 空间标识
+        String companyName = yhJinXiaoCunUser != null ? yhJinXiaoCunUser.getGongsi() : "";
+        if (companyName == null || companyName.isEmpty()) {
+            ToastUtil.show(this, "公司名称不存在");
+            hideUploadProgressDialog();
+            return;
+        }
+
         String recordId = yhJinXiaoCunJiChuZiLiao.getId() > 0 ?
                 String.valueOf(yhJinXiaoCunJiChuZiLiao.getId()) : "temp_" + System.currentTimeMillis();
         String recordName = cpDm.getText().toString() + "_" + name.getText().toString();
 
-        // 如果有旧图片URL，先删除服务器上的旧文件
+        // 如果有旧图片URL，先删除服务器上的旧文件（只有URL格式才需要删除）
         if (yhJinXiaoCunJiChuZiLiao != null && yhJinXiaoCunJiChuZiLiao.getMark1() != null &&
-                yhJinXiaoCunJiChuZiLiao.getMark1().startsWith("http")) {
+                (yhJinXiaoCunJiChuZiLiao.getMark1().startsWith("http://") ||
+                        yhJinXiaoCunJiChuZiLiao.getMark1().startsWith("https://"))) {
 
             String oldImageUrl = yhJinXiaoCunJiChuZiLiao.getMark1();
             String oldFileName = extractFileName(oldImageUrl);
-            String path = "/进销存系统/商品图片/";
 
-            yhJinXiaoCunJiChuZiLiaoService.deleteFileFromServer(oldFileName, path,
+            yhJinXiaoCunJiChuZiLiaoService.deleteFileFromServer(oldFileName, companyName,
                     new YhJinXiaoCunJiChuZiLiaoService.DeleteCallback() {
                         @Override
                         public void onSuccess() {
-                            // 旧文件删除成功，上传新文件
-                            doUploadFile(file, fileName, kongjian, recordId, recordName);
+                            doUploadWithCheck(file, fileName, companyName, recordId, recordName);
                         }
 
                         @Override
                         public void onFailure(String error) {
-                            // 旧文件删除失败，继续上传新文件（可以选择提示或忽略）
-                            doUploadFile(file, fileName, kongjian, recordId, recordName);
+                            // 删除失败也继续上传
+                            doUploadWithCheck(file, fileName, companyName, recordId, recordName);
                         }
                     });
         } else {
-            // 没有旧文件，直接上传
-            doUploadFile(file, fileName, kongjian, recordId, recordName);
+            doUploadWithCheck(file, fileName, companyName, recordId, recordName);
         }
     }
 
     /**
-     * 执行文件上传
+     * 执行带空间检查的上传
      */
-    private void doUploadFile(File file, String fileName, String kongjian, String recordId, String recordName) {
-        yhJinXiaoCunJiChuZiLiaoService.uploadFile(file, fileName, "", kongjian,
+    private void doUploadWithCheck(File file, String fileName, String companyName,
+                                   String recordId, String recordName) {
+        yhJinXiaoCunJiChuZiLiaoService.uploadFileWithCheck(file, fileName, companyName,
                 recordId, recordName, "",
                 new YhJinXiaoCunJiChuZiLiaoService.UploadCallback() {
                     @Override
@@ -791,10 +826,8 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
                             public void run() {
                                 hideUploadProgressDialog();
 
-                                // 保存URL到对象中
                                 currentImageUrl = fileUrl;
 
-                                // 如果有ID，更新数据库（在子线程中执行）
                                 if (yhJinXiaoCunJiChuZiLiao.getId() > 0) {
                                     new Thread(new Runnable() {
                                         @Override
@@ -816,7 +849,6 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
                                         }
                                     }).start();
                                 } else {
-                                    // 新增模式，先保存到对象，等insert时一起保存
                                     yhJinXiaoCunJiChuZiLiao.setMark1(fileUrl);
                                     ToastUtil.show(JiChuZiLiaoChangeActivity.this, "图片上传成功");
                                 }
@@ -831,6 +863,16 @@ public class JiChuZiLiaoChangeActivity extends AppCompatActivity {
                             public void run() {
                                 hideUploadProgressDialog();
                                 ToastUtil.show(JiChuZiLiaoChangeActivity.this, "图片上传失败: " + error);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onWarning(String message, double usagePercent, double estimatedUsagePercent) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtil.show(JiChuZiLiaoChangeActivity.this, message);
                             }
                         });
                     }

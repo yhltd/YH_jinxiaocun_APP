@@ -19,7 +19,7 @@ public class SystemService {
     }
 
     public List<SoftTime> getSoftTime(String now, String name, String soft_name) {
-        String sql = "select CASE WHEN convert(date,endtime)< convert(date,?) THEN 1 ELSE 0 END as endtime,CASE WHEN convert(date,mark2)< convert(date,?) THEN 1 ELSE 0 END as mark2,mark1,isnull(mark3,'') as mark3 from control_soft_time where [name] = ? and soft_name = ?";
+        String sql = "select CASE WHEN convert(date,endtime)< convert(date,?) THEN 1 ELSE 0 END as endtime,CASE WHEN convert(date,mark2)< convert(date,?) THEN 1 ELSE 0 END as mark2,mark1,isnull(mark3,'') as mark3,isnull(mark5,'') as mark5,isnull(mark4,'') as mark4 from control_soft_time where [name] = ? and soft_name = ?";
         base = new systemBaseDao();
         List<SoftTime> list = base.query(SoftTime.class, sql,now,now,name, soft_name);
         return list;

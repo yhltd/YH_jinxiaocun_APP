@@ -40,6 +40,15 @@ public class MyApplication extends Application {
     private YhFinanceQuanXian yhFinanceQuanXian;
     private List<YhJinXiaoCunMingXi> mingxiList;
     private String userNum;
+    private String mark4;
+
+    public String getMark4() {
+        return mark4;
+    }
+
+    public void setMark4(String mark4) {
+        this.mark4 = mark4;
+    }
 
     public String getUserNum() {
         return userNum;

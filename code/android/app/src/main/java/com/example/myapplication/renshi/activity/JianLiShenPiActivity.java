@@ -716,18 +716,23 @@ public class JianLiShenPiActivity extends AppCompatActivity {
             return;
         }
 
+        // 获取公司名（从用户信息中获取，去掉 _hr 后缀）
+        String companyName = yhRenShiUser != null ? yhRenShiUser.getL().replace("_hr", "") : "";
+        if (companyName == null || companyName.isEmpty()) {
+            ToastUtil.show(this, "公司名称不存在");
+            return;
+        }
+
         // 显示上传进度对话框
         showUploadProgressDialog();
 
         String fileName = file.getName();
-        String path = "/人事系统/简历文件/";
-        String kongjian = "3";
         String recordId = String.valueOf(currentRecordForUpload.getId());
         String recordName = currentRecordForUpload.getTouliren() != null ?
                 currentRecordForUpload.getTouliren() : "未知人员";
 
-        // 调用上传服务
-        jianLiGuanLiService.uploadFile(file, fileName, path, kongjian,
+        // 使用新的带空间检查的上传方法
+        jianLiGuanLiService.uploadFileWithCheck(file, fileName, companyName,
                 recordId, recordName, currentUserFileName,
                 new YhRenShiJianLiShenPiService.UploadCallback() {
                     @Override
@@ -768,6 +773,17 @@ public class JianLiShenPiActivity extends AppCompatActivity {
                             public void run() {
                                 hideUploadProgressDialog();
                                 ToastUtil.show(JianLiShenPiActivity.this, "文件上传失败: " + error);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onWarning(String message, double usagePercent, double estimatedUsagePercent) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // 显示警告信息，但不阻止上传
+                                ToastUtil.show(JianLiShenPiActivity.this, message);
                             }
                         });
                     }
@@ -964,12 +980,18 @@ public class JianLiShenPiActivity extends AppCompatActivity {
                         // 显示删除进度
                         ToastUtil.show(JianLiShenPiActivity.this, "正在删除文件...");
 
+                        // 获取公司名
+                        String companyName = yhRenShiUser != null ? yhRenShiUser.getL().replace("_hr", "") : "";
+                        if (companyName == null || companyName.isEmpty()) {
+                            ToastUtil.show(JianLiShenPiActivity.this, "公司名称不存在");
+                            return;
+                        }
+
                         // 从URL中提取文件名
                         String fileName = extractFileName(fileUrl);
-                        String path = "/人事系统/简历文件/";
 
                         // 先删除服务器上的文件
-                        jianLiGuanLiService.deleteFileFromServer(fileName, path,
+                        jianLiGuanLiService.deleteFileFromServer(fileName, companyName,
                                 new YhRenShiJianLiShenPiService.DeleteCallback() {
                                     @Override
                                     public void onSuccess() {
@@ -986,8 +1008,6 @@ public class JianLiShenPiActivity extends AppCompatActivity {
                                                         parentDialog.dismiss();
                                                         if (dbSuccess) {
                                                             ToastUtil.show(JianLiShenPiActivity.this, "文件删除成功");
-                                                            // 重新显示文件列表
-//                                                            showFileListDialog(record);
                                                             loadData(null);
                                                         } else {
                                                             ToastUtil.show(JianLiShenPiActivity.this, "数据库更新失败");

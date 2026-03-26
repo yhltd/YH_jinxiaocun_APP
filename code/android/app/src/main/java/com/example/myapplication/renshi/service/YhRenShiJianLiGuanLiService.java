@@ -1,7 +1,11 @@
 package com.example.myapplication.renshi.service;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.example.myapplication.CacheManager;
+import com.example.myapplication.MyApplication;
 import com.example.myapplication.renshi.dao.renshiBaseDao;
 import com.example.myapplication.renshi.entity.YhRenShiJianLiGuanLi;
 
@@ -21,6 +25,12 @@ import java.net.URL;
 
 public class YhRenShiJianLiGuanLiService {
     private renshiBaseDao base;
+
+    // 服务器配置
+    private static final String UPLOAD_URL = "https://yhocn.cn:9097/file/upload";
+    private static final String DELETE_URL = "https://yhocn.cn:9097/file/delete";
+    private static final String FOLDER_SIZE_URL = "https://yhocn.cn:9097/file/getFolderSize";
+    private static final String FILE_SERVER_URL = "http://yhocn.cn:9088";
 
     /**
      * 查询简历管理列表
@@ -132,81 +142,318 @@ public class YhRenShiJianLiGuanLiService {
         return delete(id);
     }
 
-    /**
-     * 上传文件到服务器
-     */
-    public void uploadFile(File file, String fileName, String path, String kongjian,
-                           String recordId, String recordName, String userFileName,
-                           UploadCallback callback) {
+    // ==================== 空间检查相关方法 ====================
 
+    /**
+     * 从 Application 获取数据库大小（已在登录时保存）
+     */
+    private double getDbSizeFromCache() {
+        try {
+            Context context = MyApplication.getContext();
+            if (context != null) {
+                SharedPreferences prefs = context.getSharedPreferences("my_cache", Context.MODE_PRIVATE);
+                return prefs.getFloat("dbSizeKB", 0);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    /**
+     * 从 Application 获取空间限制（mark4 解析后的值，已在登录时保存）
+     */
+    private double getStorageSpaceFromCache() {
+        try {
+            Object mark4Obj = CacheManager.getInstance().get("mark4");
+            if (mark4Obj != null) {
+                String mark4 = mark4Obj.toString();
+                if (!mark4.isEmpty()) {
+                    // 解析 mark4 获取空间限制（单位：KB）
+                    if (mark4.contains(":")) {
+                        String[] parts = mark4.split(":");
+                        if (parts.length > 1) {
+                            String value = parts[1].replace("(", "").replace(")", "").trim();
+                            return Double.parseDouble(value);
+                        }
+                    } else {
+                        return Double.parseDouble(mark4);
+                    }
+                }
+            }
+        } catch (Exception e) {
+        }
+        // 降级：从 SharedPreferences 获取
+        try {
+            Context context = MyApplication.getContext();
+            if (context != null) {
+                SharedPreferences prefs = context.getSharedPreferences("my_cache", Context.MODE_PRIVATE);
+                return prefs.getFloat("storageSpace", 10 * 1024 * 1024);
+            }
+        } catch (Exception e) {
+        }
+        return 10 * 1024 * 1024; // 默认10GB
+    }
+
+    /**
+     * 获取当前公司的文件夹大小（简历文件路径：/renshi/公司名/）
+     */
+    private double getFolderSize(String companyName) {
+        double folderSizeKB = 0;
+        HttpURLConnection conn = null;
+        try {
+            // 构建简历文件夹路径：/renshi/公司名/
+            String path = "/renshi/" + companyName + "/";
+            URL url = new URL(FOLDER_SIZE_URL + "?path=" + URLEncoder.encode(path, "UTF-8"));
+
+            Log.d("FolderSize", "请求URL: " + url.toString());
+
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setConnectTimeout(30000);
+
+            int responseCode = conn.getResponseCode();
+            Log.d("FolderSize", "响应码: " + responseCode);
+
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder response = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+                reader.close();
+
+                String responseStr = response.toString();
+                Log.d("FolderSize", "原始响应: " + responseStr);
+
+                JSONObject json = new JSONObject(responseStr);
+                int code = json.optInt("code", -1);
+
+                if (code == 200) {
+                    JSONObject data = json.getJSONObject("data");
+                    long sizeBytes = data.optLong("sizeBytes", 0);
+                    folderSizeKB = sizeBytes / 1024.0;
+                    Log.d("FolderSize", "文件夹大小 - bytes: " + sizeBytes + ", KB: " + folderSizeKB);
+                    Log.d("FolderSize", "文件/文件夹数量: " + data.optInt("fileCount", 0));
+                } else if (code == 500 && json.optString("msg").contains("不存在")) {
+                    folderSizeKB = 0;
+                    Log.d("FolderSize", "文件夹不存在，大小设为0");
+                } else {
+                    Log.d("FolderSize", "获取文件夹大小失败，msg: " + json.optString("msg"));
+                }
+            } else {
+                Log.d("FolderSize", "HTTP请求失败，响应码: " + responseCode);
+            }
+        } catch (Exception e) {
+            Log.e("FolderSize", "获取文件夹大小异常: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            if (conn != null) conn.disconnect();
+        }
+
+        Log.d("FolderSize", "最终返回文件夹大小: " + folderSizeKB + " KB");
+        return folderSizeKB;
+    }
+
+    /**
+     * 空间信息类
+     */
+    public static class SpaceInfo {
+        public boolean canUpload;
+        public boolean showWarning;
+        public String message;
+        public double usagePercent;
+        public double estimatedUsagePercent;
+        public double totalUsedKB;
+        public double limitKB;
+    }
+
+    /**
+     * 检查空间使用情况（使用真实保存的数据）
+     * @param companyName 公司名称
+     * @param fileSizeKB 要上传的文件大小(KB)
+     */
+    public void checkTotalSpace(String companyName, double fileSizeKB, SpaceCheckCallback callback) {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    // 从缓存获取数据库大小（登录时已保存）
+                    double dbSizeKB = getDbSizeFromCache();
+
+                    // 从缓存获取空间限制（mark4解析，登录时已保存）
+                    double limitKB = getStorageSpaceFromCache();
+
+                    // 获取文件夹大小（路径：/renshi/公司名/）
+                    double folderSizeKB = getFolderSize(companyName);
+
+                    // 总使用空间
+                    double totalUsedKB = dbSizeKB + folderSizeKB;
+                    double usagePercent = (totalUsedKB / limitKB) * 100;
+                    double estimatedUsagePercent = ((totalUsedKB + fileSizeKB) / limitKB) * 100;
+
+                    boolean canUpload = true;
+                    boolean showWarning = false;
+                    String message = "";
+
+                    if (totalUsedKB >= limitKB * 1.1) {
+                        canUpload = false;
+                        message = "空间使用已超110%（" + String.format("%.2f", usagePercent) + "%），无法上传！";
+                    } else if (totalUsedKB >= limitKB * 0.9) {
+                        showWarning = true;
+                        message = "空间使用已超90%（" + String.format("%.2f", usagePercent) + "%），请注意清理！";
+                    } else if (estimatedUsagePercent > 110) {
+                        canUpload = false;
+                        message = "上传后空间使用率将达到 " + String.format("%.2f", estimatedUsagePercent) + "%，超过110%限制，无法上传！";
+                    } else if (estimatedUsagePercent > 90) {
+                        showWarning = true;
+                        message = "上传后空间使用率将达到 " + String.format("%.2f", estimatedUsagePercent) + "%，请注意清理！";
+                    }
+
+                    SpaceInfo spaceInfo = new SpaceInfo();
+                    spaceInfo.canUpload = canUpload;
+                    spaceInfo.showWarning = showWarning;
+                    spaceInfo.message = message;
+                    spaceInfo.usagePercent = usagePercent;
+                    spaceInfo.estimatedUsagePercent = estimatedUsagePercent;
+                    spaceInfo.totalUsedKB = totalUsedKB;
+                    spaceInfo.limitKB = limitKB;
+
+                    callback.onResult(spaceInfo);
+
+                } catch (Exception e) {
+                    callback.onError("空间检查失败: " + e.getMessage());
+                }
+            }
+        }).start();
+    }
+
+    /**
+     * 空间检查回调接口
+     */
+    public interface SpaceCheckCallback {
+        void onResult(SpaceInfo spaceInfo);
+        void onError(String error);
+    }
+
+    // ==================== 文件上传相关方法 ====================
+
+    /**
+     * 上传文件到服务器（带空间检查和文件大小限制）
+     */
+    public void uploadFileWithCheck(File file, String fileName, String companyName,
+                                    String recordId, String recordName, String userFileName,
+                                    UploadCallback callback) {
+        final long fileSize = file.length();
+        final double fileSizeKB = fileSize / 1024.0;
+
+        // 先检查文件大小是否超过500MB
+        if (fileSize > 500 * 1024 * 1024) {
+            callback.onFailure("文件超过500MB限制，无法上传！");
+            return;
+        }
+
+        // 检查空间
+        checkTotalSpace(companyName, fileSizeKB, new SpaceCheckCallback() {
+            @Override
+            public void onResult(SpaceInfo spaceInfo) {
+                if (!spaceInfo.canUpload) {
+                    callback.onFailure(spaceInfo.message);
+                    return;
+                }
+
+                if (spaceInfo.showWarning && spaceInfo.message != null && !spaceInfo.message.isEmpty()) {
+                    callback.onWarning(spaceInfo.message, spaceInfo.usagePercent, spaceInfo.estimatedUsagePercent);
+                }
+
+                // 空间充足，执行上传
+                doUploadFile(file, fileName, companyName, recordId, recordName, userFileName, callback);
+            }
+
+            @Override
+            public void onError(String error) {
+                callback.onFailure(error);
+            }
+        });
+    }
+
+    /**
+     * 实际执行上传
+     */
+    private void doUploadFile(File file, String fileName, String companyName,
+                              String recordId, String recordName, String userFileName,
+                              UploadCallback callback) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HttpURLConnection conn = null;
+                DataOutputStream dos = null;
+                FileInputStream fis = null;
                 try {
                     // 1. 构建最终文件名
                     String finalFileName = fileName;
                     if (userFileName != null && !userFileName.trim().isEmpty()) {
                         String baseName = userFileName.trim().replaceAll("[\\\\/:*?\"<>|]", "_");
-                        if (baseName.contains(".")) {
-                            baseName = baseName.substring(0, baseName.lastIndexOf('.'));
+                        if (fileName.contains(".")) {
+                            String extension = fileName.substring(fileName.lastIndexOf('.'));
+                            finalFileName = baseName + extension;
+                        } else {
+                            finalFileName = baseName;
                         }
-                        String extension = fileName.substring(fileName.lastIndexOf('.'));
-                        finalFileName = baseName + extension;
                     }
 
-                    Log.d("FileUpload", "最终文件名（中文）: " + finalFileName);
+                    Log.d("FileUpload", "最终文件名: " + finalFileName);
 
-                    // 2. 创建连接
-                    URL url = new URL("https://yhocn.cn:9097/file/upload");
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    // 2. 构建动态路径：/renshi/公司名/
+                    String dynamicPath = "/renshi/" + companyName + "/";
+
+                    // 3. 创建连接
+                    URL url = new URL(UPLOAD_URL);
+                    conn = (HttpURLConnection) url.openConnection();
                     conn.setDoInput(true);
                     conn.setDoOutput(true);
                     conn.setUseCaches(false);
                     conn.setRequestMethod("POST");
                     conn.setConnectTimeout(30000);
-                    conn.setReadTimeout(60000);
+                    conn.setReadTimeout(600000); // 10分钟超时
 
-                    // 3. 设置边界 - 重要：不要指定charset
+                    // 4. 设置边界
                     String boundary = "----WebKitFormBoundary" + System.currentTimeMillis();
                     conn.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
 
-                    // 4. 构建请求体
-                    DataOutputStream dos = new DataOutputStream(conn.getOutputStream());
+                    // 5. 构建请求体
+                    dos = new DataOutputStream(conn.getOutputStream());
 
-                    // 5. 写入文件 - 关键修改：filename直接使用原始中文
+                    // 6. 写入文件
                     dos.writeBytes("--" + boundary + "\r\n");
                     dos.writeBytes("Content-Disposition: form-data; name=\"file\"; filename=\"" + finalFileName + "\"\r\n");
                     dos.writeBytes("Content-Type: application/octet-stream\r\n\r\n");
 
-                    // 写入文件内容
-                    FileInputStream fis = new FileInputStream(file);
+                    fis = new FileInputStream(file);
                     byte[] buffer = new byte[8192];
                     int count;
                     while ((count = fis.read(buffer)) != -1) {
                         dos.write(buffer, 0, count);
                     }
-                    fis.close();
                     dos.writeBytes("\r\n");
 
-                    // 6. 写入其他参数 - 直接写入原始值
+                    // 7. 写入表单参数
                     writeFormField(dos, boundary, "name", finalFileName);
-                    writeFormField(dos, boundary, "path", path);
-                    writeFormField(dos, boundary, "kongjian", kongjian);
+                    writeFormField(dos, boundary, "path", dynamicPath);
+                    writeFormField(dos, boundary, "kongjian", "3");
                     writeFormField(dos, boundary, "fileType",
-                            finalFileName.substring(finalFileName.lastIndexOf('.') + 1));
+                            fileName.contains(".") ? fileName.substring(fileName.lastIndexOf('.') + 1) : "");
                     writeFormField(dos, boundary, "recordId", recordId);
                     writeFormField(dos, boundary, "recordName", recordName);
-                    writeFormField(dos, boundary, "userFileName",
-                            userFileName != null ? userFileName : "");
-                    writeFormField(dos, boundary, "timestamp",
-                            String.valueOf(System.currentTimeMillis()));
+                    writeFormField(dos, boundary, "userFileName", userFileName != null ? userFileName : "");
+                    writeFormField(dos, boundary, "timestamp", String.valueOf(System.currentTimeMillis()));
+                    writeFormField(dos, boundary, "fileSize", String.valueOf(file.length()));
 
                     // 结束请求体
                     dos.writeBytes("--" + boundary + "--\r\n");
                     dos.flush();
-                    dos.close();
 
-                    // 7. 处理响应
+                    // 8. 处理响应
                     int responseCode = conn.getResponseCode();
                     if (responseCode == HttpURLConnection.HTTP_OK) {
                         InputStream is = conn.getInputStream();
@@ -219,8 +466,8 @@ public class YhRenShiJianLiGuanLiService {
                         reader.close();
 
                         JSONObject json = new JSONObject(response.toString());
-                        if (json.optInt("code", -1) == 200) {
-                            String fileUrl = "http://yhocn.cn:9088" + path + finalFileName;
+                        if (json.optInt("code", -1) == 200 || json.optBoolean("success", false)) {
+                            String fileUrl = FILE_SERVER_URL + dynamicPath + finalFileName;
                             callback.onSuccess(fileUrl);
                         } else {
                             callback.onFailure(json.optString("msg", "上传失败"));
@@ -228,79 +475,63 @@ public class YhRenShiJianLiGuanLiService {
                     } else {
                         callback.onFailure("服务器错误: " + responseCode);
                     }
-
-                    conn.disconnect();
-
                 } catch (Exception e) {
+                    e.printStackTrace();
                     callback.onFailure("上传失败: " + e.getMessage());
+                } finally {
+                    try {
+                        if (fis != null) fis.close();
+                        if (dos != null) dos.close();
+                        if (conn != null) conn.disconnect();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }).start();
     }
 
-    // 修改writeFormField方法 - 直接写入原始值
-    private void writeFormField(DataOutputStream dos, String boundary,
-                                String name, String value) throws Exception {
-        dos.writeBytes("--" + boundary + "\r\n");
-        dos.writeBytes("Content-Disposition: form-data; name=\"" + name + "\"\r\n\r\n");
-
-        dos.write(value.getBytes("UTF-8"));
-        dos.writeBytes("\r\n");
-
-        Log.d("FileUpload", "表单字段 - " + name + ": " + value);
-    }
-
-
     /**
-     * 从服务器删除文件（使用OkHttp）
+     * 从服务器删除文件（使用动态路径：/renshi/公司名/）
      */
-    public void deleteFileFromServer(String fileName, String path, DeleteCallback callback) {
+    public void deleteFileFromServer(String fileName, String companyName, DeleteCallback callback) {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                HttpURLConnection conn = null;
+                DataOutputStream dos = null;
                 try {
-                    // 记录传入参数
-                    Log.d("FileDelete", "开始删除文件");
-                    Log.d("FileDelete", "原始文件名: " + fileName);
-                    Log.d("FileDelete", "路径: " + path);
-
                     // 清理文件名
                     String cleanFileName = fileName;
                     if (fileName.contains(".")) {
                         cleanFileName = fileName.substring(0, fileName.lastIndexOf('.'));
                     }
-                    Log.d("FileDelete", "清理后的文件名: " + cleanFileName);
+
+                    // 构建动态路径：/renshi/公司名/
+                    String dynamicPath = "/renshi/" + companyName + "/";
 
                     // 创建连接
-                    URL url = new URL("https://yhocn.cn:9097/file/delete");
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    URL url = new URL(DELETE_URL);
+                    conn = (HttpURLConnection) url.openConnection();
                     conn.setDoOutput(true);
                     conn.setRequestMethod("POST");
                     conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
                     conn.setConnectTimeout(30000);
                     conn.setReadTimeout(30000);
 
-                    // 关键修改：对中文字符进行URL编码
+                    // 对中文字符进行URL编码
                     String encodedOrderNumber = URLEncoder.encode(cleanFileName, "UTF-8");
-                    String encodedPath = URLEncoder.encode(path, "UTF-8");
+                    String encodedPath = URLEncoder.encode(dynamicPath, "UTF-8");
                     String formData = "order_number=" + encodedOrderNumber + "&path=" + encodedPath;
 
-                    Log.d("FileDelete", "原始参数: order_number=" + cleanFileName + "&path=" + path);
-                    Log.d("FileDelete", "编码后参数: " + formData);
-                    Log.d("FileDelete", "请求URL: " + url.toString());
+                    Log.d("FileDelete", "删除参数 - order_number: " + cleanFileName + ", path: " + dynamicPath);
 
-                    // 关键修改：使用getBytes("UTF-8")确保正确编码
-                    DataOutputStream dos = new DataOutputStream(conn.getOutputStream());
-                    dos.write(formData.getBytes("UTF-8")); // 不要用writeBytes()
+                    dos = new DataOutputStream(conn.getOutputStream());
+                    dos.write(formData.getBytes("UTF-8"));
                     dos.flush();
-                    dos.close();
 
-                    // 获取响应
                     int responseCode = conn.getResponseCode();
-                    Log.d("FileDelete", "响应码: " + responseCode);
-
                     if (responseCode == HttpURLConnection.HTTP_OK) {
-                        // 关键修改：设置响应流的字符编码
                         InputStream is = conn.getInputStream();
                         BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
                         StringBuilder response = new StringBuilder();
@@ -310,60 +541,38 @@ public class YhRenShiJianLiGuanLiService {
                         }
                         reader.close();
 
-                        // 记录完整响应
-                        String responseStr = response.toString();
-                        Log.d("FileDelete", "完整响应内容: " + responseStr);
+                        JSONObject json = new JSONObject(response.toString());
+                        int code = json.optInt("code", -1);
+                        boolean success = json.optBoolean("success", false);
 
-                        // 解析响应
-                        try {
-                            JSONObject json = new JSONObject(responseStr);
-                            int code = json.optInt("code", -1);
-                            boolean success = json.optBoolean("success", false);
-                            String msg = json.optString("msg", "无返回消息");
-
-                            Log.d("FileDelete", "解析结果 - code: " + code + ", success: " + success + ", msg: " + msg);
-
-                            if (code == 200 || success) {
-                                Log.d("FileDelete", "删除成功");
-                                callback.onSuccess();
-                            } else {
-                                Log.w("FileDelete", "删除失败: " + msg);
-                                callback.onFailure(msg);
-                            }
-                        } catch (Exception e) {
-                            Log.e("FileDelete", "JSON解析异常: " + e.getMessage());
-                            callback.onFailure("响应解析失败");
+                        if (code == 200 || success) {
+                            callback.onSuccess();
+                        } else {
+                            callback.onFailure(json.optString("msg", "删除失败"));
                         }
                     } else {
-                        // 获取错误流信息
-                        InputStream errorStream = conn.getErrorStream();
-                        if (errorStream != null) {
-                            BufferedReader errorReader = new BufferedReader(new InputStreamReader(errorStream, "UTF-8"));
-                            StringBuilder errorResponse = new StringBuilder();
-                            String errorLine;
-                            while ((errorLine = errorReader.readLine()) != null) {
-                                errorResponse.append(errorLine);
-                            }
-                            errorReader.close();
-                            Log.w("FileDelete", "错误响应: " + errorResponse.toString());
-                        }
-
-                        String errorMsg = "服务器错误: " + responseCode;
-                        Log.e("FileDelete", errorMsg);
-                        callback.onFailure(errorMsg);
+                        callback.onFailure("服务器错误: " + responseCode);
                     }
-
-                    conn.disconnect();
-                    Log.d("FileDelete", "连接已关闭");
-
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Log.e("FileDelete", "删除异常", e);
-                    String errorMsg = "删除失败: " + e.getMessage();
-                    callback.onFailure(errorMsg);
+                    callback.onFailure("删除失败: " + e.getMessage());
+                } finally {
+                    try {
+                        if (dos != null) dos.close();
+                        if (conn != null) conn.disconnect();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }).start();
+    }
+
+    private void writeFormField(DataOutputStream dos, String boundary, String name, String value) throws Exception {
+        dos.writeBytes("--" + boundary + "\r\n");
+        dos.writeBytes("Content-Disposition: form-data; name=\"" + name + "\"\r\n\r\n");
+        dos.write(value.getBytes("UTF-8"));
+        dos.writeBytes("\r\n");
     }
 
     /**
@@ -374,7 +583,6 @@ public class YhRenShiJianLiGuanLiService {
         renshiBaseDao checkDao = new renshiBaseDao();
         List<YhRenShiJianLiGuanLi> result = checkDao.query(YhRenShiJianLiGuanLi.class, selectSql, id);
 
-        // 记录存在即可更新
         return result != null && result.size() > 0;
     }
 
@@ -400,7 +608,6 @@ public class YhRenShiJianLiGuanLiService {
             return fileUrls;
         }
 
-        // 将新文件URL追加到现有文件URL后面，用逗号分隔
         return currentFiles + "," + fileUrls;
     }
 
@@ -417,18 +624,12 @@ public class YhRenShiJianLiGuanLiService {
      * 更新文件字段 - 新增文件（整合所有步骤）
      */
     public boolean updateFilesWithCheck(int id, String fileUrls) {
-        // 1. 检查是否可以更新
         if (!canUpdateFiles(id)) {
-            return false; // 记录不存在，无法更新
+            return false;
         }
 
-        // 2. 获取当前文件
         String currentFiles = getCurrentFilesadd(id);
-
-        // 3. 构建新的文件字符串
         String newFileUrls = buildNewFilesStringadd(currentFiles, fileUrls);
-
-        // 4. 更新数据库记录
         return updateFileRecordadd(id, newFileUrls);
     }
 
@@ -482,13 +683,8 @@ public class YhRenShiJianLiGuanLiService {
      * 执行删除文件记录操作（删除指定文件URL，保留其他文件）
      */
     public boolean deleteFile(int id, String fileUrlToDelete) {
-        // 1. 获取当前文件
         String currentFiles = getCurrentFiles(id);
-
-        // 2. 构建新的文件字符串
         String newFiles = buildNewFilesString(currentFiles, fileUrlToDelete);
-
-        // 3. 更新数据库记录
         return updateFileRecord(id, newFiles);
     }
 
@@ -505,10 +701,10 @@ public class YhRenShiJianLiGuanLiService {
         String[] fileArray = currentFiles.split(",");
         for (String file : fileArray) {
             if (file.trim().equals(fileUrlToDelete.trim())) {
-                return true; // 文件存在，可以执行删除
+                return true;
             }
         }
-        return false; // 文件不存在，无需删除
+        return false;
     }
 
     /**
@@ -516,7 +712,7 @@ public class YhRenShiJianLiGuanLiService {
      */
     public boolean deleteFileWithCheck(int id, String fileUrlToDelete) {
         if (!canDeleteFile(id, fileUrlToDelete)) {
-            return false; // 不能删除或文件不存在
+            return false;
         }
         return deleteFile(id, fileUrlToDelete);
     }
@@ -531,11 +727,12 @@ public class YhRenShiJianLiGuanLiService {
     }
 
     /**
-     * 回调接口
+     * 回调接口（带警告信息）
      */
     public interface UploadCallback {
         void onSuccess(String fileUrl);
         void onFailure(String error);
+        void onWarning(String message, double usagePercent, double estimatedUsagePercent);
     }
 
     public interface DeleteCallback {

@@ -591,11 +591,17 @@ public class XueShengXinXiActivity extends AppCompatActivity {
         showUploadProgressDialog();
 
         String fileName = file.getName();
-        String kongjian = "3";  // 空间标识
+        String companyName = teacher != null ? teacher.getCompany() : "";
+        if (companyName == null || companyName.isEmpty()) {
+            ToastUtil.show(this, "公司名称不存在");
+            hideUploadProgressDialog();
+            return;
+        }
+
         String recordId = String.valueOf(currentRecordForUpload.getId());
         String recordName = currentRecordForUpload.getRealname() + "_" + currentRecordForUpload.getPhone();
 
-        studentService.uploadFile(file, fileName, "", kongjian,
+        studentService.uploadFileWithCheck(file, fileName, companyName,
                 recordId, recordName, currentUserFileName,
                 new StudentService.UploadCallback() {
                     @Override
@@ -616,7 +622,7 @@ public class XueShengXinXiActivity extends AppCompatActivity {
                                             public void run() {
                                                 if (success) {
                                                     ToastUtil.show(XueShengXinXiActivity.this, "文件上传成功");
-                                                    initList();  // 刷新列表
+                                                    initList();
                                                 } else {
                                                     ToastUtil.show(XueShengXinXiActivity.this, "文件信息保存失败");
                                                 }
@@ -635,6 +641,16 @@ public class XueShengXinXiActivity extends AppCompatActivity {
                             public void run() {
                                 hideUploadProgressDialog();
                                 ToastUtil.show(XueShengXinXiActivity.this, "文件上传失败: " + error);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onWarning(String message, double usagePercent, double estimatedUsagePercent) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ToastUtil.show(XueShengXinXiActivity.this, message);
                             }
                         });
                     }
@@ -784,9 +800,13 @@ public class XueShengXinXiActivity extends AppCompatActivity {
                         ToastUtil.show(XueShengXinXiActivity.this, "正在删除文件...");
 
                         String fileName = extractFileName(fileUrl);
-                        String path = "/jiaowu/";
+                        String companyName = teacher != null ? teacher.getCompany() : "";
+                        if (companyName == null || companyName.isEmpty()) {
+                            ToastUtil.show(XueShengXinXiActivity.this, "公司名称不存在");
+                            return;
+                        }
 
-                        studentService.deleteFileFromServer(fileName, path,
+                        studentService.deleteFileFromServer(fileName, companyName,
                                 new StudentService.DeleteCallback() {
                                     @Override
                                     public void onSuccess() {
@@ -802,7 +822,7 @@ public class XueShengXinXiActivity extends AppCompatActivity {
                                                         parentDialog.dismiss();
                                                         if (dbSuccess) {
                                                             ToastUtil.show(XueShengXinXiActivity.this, "文件删除成功");
-                                                            initList();  // 刷新列表
+                                                            initList();
                                                         } else {
                                                             ToastUtil.show(XueShengXinXiActivity.this, "数据库更新失败");
                                                         }
