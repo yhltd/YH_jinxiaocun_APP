@@ -23,14 +23,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.LoginActivity;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.jxc.entity.YhJinXiaoCunCangKu;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunJiChuZiLiao;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunQiChuShu;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
+import com.example.myapplication.jxc.service.YhJinXiaoCunCangKuService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunJiChuZiLiaoService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunQiChuShuService;
 import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import java.util.List;
 
@@ -47,7 +52,13 @@ public class QiChuChangeActivity extends AppCompatActivity {
     private EditText cplb;
     private EditText cpsj;
     private EditText cpsl;
-    private EditText cangku;
+//    private EditText cangku;
+    private Spinner cangku;  // 原来是 EditText
+
+    // 添加仓库列表相关变量
+    private List<YhJinXiaoCunCangKu> cangkuList;
+    private String[] cangku_array;
+    private YhJinXiaoCunCangKuService yhJinXiaoCunCangKuService;
 
 
     String[] cpid_array;
@@ -75,6 +86,9 @@ public class QiChuChangeActivity extends AppCompatActivity {
         cpsj = findViewById(R.id.cpsj);
         cpsl = findViewById(R.id.cpsl);
         cangku = findViewById(R.id.cangku);
+
+        yhJinXiaoCunCangKuService = new YhJinXiaoCunCangKuService();
+
         init();
 
         cpid.setOnItemSelectedListener(new cpidItemSelectedListener());
@@ -94,7 +108,7 @@ public class QiChuChangeActivity extends AppCompatActivity {
         cplb.setText("");
         cpsj.setText("");
         cpsl.setText("");
-        cangku.setText("");
+//        cangku.setText("");
     }
 
     public void init() {
@@ -102,6 +116,15 @@ public class QiChuChangeActivity extends AppCompatActivity {
             @Override
             public boolean handleMessage(Message msg) {
                 cpid.setAdapter(StringUtils.cast(msg.obj));
+                // 设置仓库下拉框的适配器
+                if (cangku_array != null) {
+                    ArrayAdapter<String> cangkuAdapter = new ArrayAdapter<>(
+                            QiChuChangeActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item,
+                            cangku_array
+                    );
+                    cangku.setAdapter(cangkuAdapter);
+                }
                 MyApplication myApplication = (MyApplication) getApplication();
                 Intent intent = getIntent();
                 int id = intent.getIntExtra("type", 0);
@@ -121,7 +144,11 @@ public class QiChuChangeActivity extends AppCompatActivity {
                     cplb.setText(yhJinXiaoCunQiChuShu.getCplb());
                     cpsj.setText(yhJinXiaoCunQiChuShu.getCpsj());
                     cpsl.setText(yhJinXiaoCunQiChuShu.getCpsl());
-                    cangku.setText(yhJinXiaoCunQiChuShu.getcangku());
+//                    cangku.setText(yhJinXiaoCunQiChuShu.getcangku());
+                    if (cangku_array != null) {
+                        int cangkuPosition = getCangkuPosition(yhJinXiaoCunQiChuShu.getcangku());
+                        cangku.setSelection(cangkuPosition, true);
+                    }
                 }
                 return true;
             }
@@ -134,6 +161,20 @@ public class QiChuChangeActivity extends AppCompatActivity {
                 try {
                     List<String> cpidList = yhJinXiaoCunJiChuZiLiaoService.getCpid(yhJinXiaoCunUser.getGongsi());
                     if (cpidList == null) return;
+
+                    // 获取仓库列表
+                    cangkuList = yhJinXiaoCunCangKuService.getList(yhJinXiaoCunUser.getGongsi());
+                    if (cangkuList != null && cangkuList.size() > 0) {
+                        cangku_array = new String[cangkuList.size() + 1];
+                        cangku_array[0] = "";
+                        for (int i = 0; i < cangkuList.size(); i++) {
+                            cangku_array[i + 1] = cangkuList.get(i).getcangku();
+                        }
+                    } else {
+                        cangku_array = new String[1];
+                        cangku_array[0] = "";
+                    }
+
                     MyApplication myApplication = (MyApplication) getApplication();
                     Intent intent = getIntent();
                     int id = intent.getIntExtra("type", 0);
@@ -243,11 +284,17 @@ public class QiChuChangeActivity extends AppCompatActivity {
         } else {
             yhJinXiaoCunQiChuShu.setCpsl(cpsl.getText().toString());
         }
-        if (cangku.getText().toString().equals("")) {
-            ToastUtil.show(QiChuChangeActivity.this, "请输入所属仓库");
+//        if (cangku.getText().toString().equals("")) {
+//            ToastUtil.show(QiChuChangeActivity.this, "请输入所属仓库");
+//            return false;
+//        } else {
+//            yhJinXiaoCunQiChuShu.setcangku(cangku.getText().toString());
+//        }
+        if (cangku.getSelectedItem() == null || cangku.getSelectedItem().toString().equals("")) {
+            ToastUtil.show(QiChuChangeActivity.this, "请选择所属仓库");
             return false;
         } else {
-            yhJinXiaoCunQiChuShu.setcangku(cangku.getText().toString());
+            yhJinXiaoCunQiChuShu.setcangku(cangku.getSelectedItem().toString());
         }
 
         if (cpid.getSelectedItem().toString().equals("")) {
@@ -287,6 +334,17 @@ public class QiChuChangeActivity extends AppCompatActivity {
             }
         }
         return 0;
+    }
+
+    private int getCangkuPosition(String cangkuName) {
+        if (cangku_array != null && cangkuName != null) {
+            for (int i = 0; i < cangku_array.length; i++) {
+                if (cangkuName.equals(cangku_array[i])) {
+                    return i;
+                }
+            }
+        }
+        return 0;  // 默认返回第一个位置（空选项）
     }
 
     private class cpidItemSelectedListener implements AdapterView.OnItemSelectedListener {

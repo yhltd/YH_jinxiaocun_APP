@@ -983,69 +983,213 @@ public class GongZiMingXiChangeActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    private boolean checkForm() {
-        if (B.getSelectedItem().toString().equals("")) {
-            ToastUtil.show(GongZiMingXiChangeActivity.this, "请输入姓名");
-            return false;
-        } else {
-            yhRenShiGongZiMingXi.setB(B.getSelectedItem().toString());
-        }
-        yhRenShiGongZiMingXi.setC(C.getText().toString());
-        yhRenShiGongZiMingXi.setD(D.getText().toString());
-        yhRenShiGongZiMingXi.setE(E.getText().toString());
-        yhRenShiGongZiMingXi.setF(F.getText().toString());
-        yhRenShiGongZiMingXi.setG(G.getText().toString());
-        yhRenShiGongZiMingXi.setH(H.getText().toString());
-        yhRenShiGongZiMingXi.setI(I.getText().toString());
-        yhRenShiGongZiMingXi.setJ(J.getText().toString());
-        yhRenShiGongZiMingXi.setK(K.getSelectedItem().toString());
-        yhRenShiGongZiMingXi.setL(L.getSelectedItem().toString());
-        yhRenShiGongZiMingXi.setM(M.getText().toString());
-        yhRenShiGongZiMingXi.setN(N.getText().toString());
-        yhRenShiGongZiMingXi.setO(O.getText().toString());
-        yhRenShiGongZiMingXi.setP(P.getText().toString());
-        yhRenShiGongZiMingXi.setQ(Q.getText().toString());
-        yhRenShiGongZiMingXi.setR(RR.getText().toString());
-        yhRenShiGongZiMingXi.setS(S.getText().toString());
-        yhRenShiGongZiMingXi.setT(T.getText().toString());
-        yhRenShiGongZiMingXi.setU(U.getText().toString());
-        yhRenShiGongZiMingXi.setV(V.getSelectedItem().toString());
-        yhRenShiGongZiMingXi.setW(W.getSelectedItem().toString());
-        yhRenShiGongZiMingXi.setX(X.getSelectedItem().toString());
-        yhRenShiGongZiMingXi.setY(Y.getSelectedItem().toString());
-        yhRenShiGongZiMingXi.setZ(Z.getText().toString());
-        yhRenShiGongZiMingXi.setAa(AA.getText().toString());
-        yhRenShiGongZiMingXi.setAb(AB.getText().toString());
-        yhRenShiGongZiMingXi.setAc(AC.getText().toString());
-        yhRenShiGongZiMingXi.setAd(AD.getText().toString());
-        yhRenShiGongZiMingXi.setAe(AE.getText().toString());
-        yhRenShiGongZiMingXi.setAf(AF.getText().toString());
-        yhRenShiGongZiMingXi.setAg(AG.getSelectedItem().toString());
-        yhRenShiGongZiMingXi.setAh(AH.getSelectedItem().toString());
-        yhRenShiGongZiMingXi.setAi(AI.getText().toString());
-        yhRenShiGongZiMingXi.setAj(AJ.getText().toString());
-        yhRenShiGongZiMingXi.setAk(AK.getText().toString());
-        yhRenShiGongZiMingXi.setAl(AL.getText().toString());
-        yhRenShiGongZiMingXi.setAm(AM.getText().toString());
-        yhRenShiGongZiMingXi.setAn(AN.getText().toString());
-        yhRenShiGongZiMingXi.setAo(AO.getText().toString());
-        yhRenShiGongZiMingXi.setAp(AP.getSelectedItem().toString());
-        yhRenShiGongZiMingXi.setAq(AQ.getSelectedItem().toString());
-        yhRenShiGongZiMingXi.setAr(AR.getText().toString());
-        yhRenShiGongZiMingXi.setAsa(ASA.getText().toString());
-        yhRenShiGongZiMingXi.setAta(ATA.getText().toString());
-        yhRenShiGongZiMingXi.setAu(AU.getText().toString());
-        yhRenShiGongZiMingXi.setAv(AV.getText().toString());
-        yhRenShiGongZiMingXi.setAw(AW.getText().toString());
-        yhRenShiGongZiMingXi.setAx(AX.getSelectedItem().toString());
-        yhRenShiGongZiMingXi.setAy(AY.getText().toString());
-        yhRenShiGongZiMingXi.setAz(AZ.getSelectedItem().toString());
-        yhRenShiGongZiMingXi.setBa(BA.getText().toString());
-        yhRenShiGongZiMingXi.setBb(BB.getText().toString());
-        yhRenShiGongZiMingXi.setBc(BC.getText().toString());
-        yhRenShiGongZiMingXi.setBd(yhRenShiUser.getL().replace("_hr",""));
-        return true;
+//    private boolean checkForm() {
+//        if (B.getSelectedItem().toString().equals("")) {
+//            ToastUtil.show(GongZiMingXiChangeActivity.this, "请输入姓名");
+//            return false;
+//        } else {
+//            yhRenShiGongZiMingXi.setB(B.getSelectedItem().toString());
+//        }
+//        yhRenShiGongZiMingXi.setC(C.getText().toString());
+//        yhRenShiGongZiMingXi.setD(D.getText().toString());
+//        yhRenShiGongZiMingXi.setE(E.getText().toString());
+//        yhRenShiGongZiMingXi.setF(F.getText().toString());
+//        yhRenShiGongZiMingXi.setG(G.getText().toString());
+//        yhRenShiGongZiMingXi.setH(H.getText().toString());
+//        yhRenShiGongZiMingXi.setI(I.getText().toString());
+//        yhRenShiGongZiMingXi.setJ(J.getText().toString());
+//        yhRenShiGongZiMingXi.setK(K.getSelectedItem().toString());
+//        yhRenShiGongZiMingXi.setL(L.getSelectedItem().toString());
+//        yhRenShiGongZiMingXi.setM(M.getText().toString());
+//        yhRenShiGongZiMingXi.setN(N.getText().toString());
+//        yhRenShiGongZiMingXi.setO(O.getText().toString());
+//        yhRenShiGongZiMingXi.setP(P.getText().toString());
+//        yhRenShiGongZiMingXi.setQ(Q.getText().toString());
+//        yhRenShiGongZiMingXi.setR(RR.getText().toString());
+//        yhRenShiGongZiMingXi.setS(S.getText().toString());
+//        yhRenShiGongZiMingXi.setT(T.getText().toString());
+//        yhRenShiGongZiMingXi.setU(U.getText().toString());
+//        yhRenShiGongZiMingXi.setV(V.getSelectedItem().toString());
+//        yhRenShiGongZiMingXi.setW(W.getSelectedItem().toString());
+//        yhRenShiGongZiMingXi.setX(X.getSelectedItem().toString());
+//        yhRenShiGongZiMingXi.setY(Y.getSelectedItem().toString());
+//        yhRenShiGongZiMingXi.setZ(Z.getText().toString());
+//        yhRenShiGongZiMingXi.setAa(AA.getText().toString());
+//        yhRenShiGongZiMingXi.setAb(AB.getText().toString());
+//        yhRenShiGongZiMingXi.setAc(AC.getText().toString());
+//        yhRenShiGongZiMingXi.setAd(AD.getText().toString());
+//        yhRenShiGongZiMingXi.setAe(AE.getText().toString());
+//        yhRenShiGongZiMingXi.setAf(AF.getText().toString());
+//        yhRenShiGongZiMingXi.setAg(AG.getSelectedItem().toString());
+//        yhRenShiGongZiMingXi.setAh(AH.getSelectedItem().toString());
+//        yhRenShiGongZiMingXi.setAi(AI.getText().toString());
+//        yhRenShiGongZiMingXi.setAj(AJ.getText().toString());
+//        yhRenShiGongZiMingXi.setAk(AK.getText().toString());
+//        yhRenShiGongZiMingXi.setAl(AL.getText().toString());
+//        yhRenShiGongZiMingXi.setAm(AM.getText().toString());
+//        yhRenShiGongZiMingXi.setAn(AN.getText().toString());
+//        yhRenShiGongZiMingXi.setAo(AO.getText().toString());
+//        yhRenShiGongZiMingXi.setAp(AP.getSelectedItem().toString());
+//        yhRenShiGongZiMingXi.setAq(AQ.getSelectedItem().toString());
+//        yhRenShiGongZiMingXi.setAr(AR.getText().toString());
+//        yhRenShiGongZiMingXi.setAsa(ASA.getText().toString());
+//        yhRenShiGongZiMingXi.setAta(ATA.getText().toString());
+//        yhRenShiGongZiMingXi.setAu(AU.getText().toString());
+//        yhRenShiGongZiMingXi.setAv(AV.getText().toString());
+//        yhRenShiGongZiMingXi.setAw(AW.getText().toString());
+//        yhRenShiGongZiMingXi.setAx(AX.getSelectedItem().toString());
+//        yhRenShiGongZiMingXi.setAy(AY.getText().toString());
+//        yhRenShiGongZiMingXi.setAz(AZ.getSelectedItem().toString());
+//        yhRenShiGongZiMingXi.setBa(BA.getText().toString());
+//        yhRenShiGongZiMingXi.setBb(BB.getText().toString());
+//        yhRenShiGongZiMingXi.setBc(BC.getText().toString());
+//        yhRenShiGongZiMingXi.setBd(yhRenShiUser.getL().replace("_hr",""));
+//        return true;
+//    }
+private boolean checkForm() {
+    // 检查姓名 Spinner
+    if (B == null || B.getSelectedItem() == null || B.getSelectedItem().toString().equals("")) {
+        ToastUtil.show(GongZiMingXiChangeActivity.this, "请选择姓名");
+        return false;
+    } else {
+        yhRenShiGongZiMingXi.setB(B.getSelectedItem().toString());
     }
+
+    yhRenShiGongZiMingXi.setC(C.getText().toString());
+    yhRenShiGongZiMingXi.setD(D.getText().toString());
+    yhRenShiGongZiMingXi.setE(E.getText().toString());
+    yhRenShiGongZiMingXi.setF(F.getText().toString());
+    yhRenShiGongZiMingXi.setG(G.getText().toString());
+    yhRenShiGongZiMingXi.setH(H.getText().toString());
+    yhRenShiGongZiMingXi.setI(I.getText().toString());
+    yhRenShiGongZiMingXi.setJ(J.getText().toString());
+
+    // 检查跨渡工资 Spinner
+    if (K != null && K.getSelectedItem() != null) {
+        yhRenShiGongZiMingXi.setK(K.getSelectedItem().toString());
+    } else {
+        yhRenShiGongZiMingXi.setK("");
+    }
+
+    // 检查职称津贴 Spinner
+    if (L != null && L.getSelectedItem() != null) {
+        yhRenShiGongZiMingXi.setL(L.getSelectedItem().toString());
+    } else {
+        yhRenShiGongZiMingXi.setL("");
+    }
+
+    yhRenShiGongZiMingXi.setM(M.getText().toString());
+    yhRenShiGongZiMingXi.setN(N.getText().toString());
+    yhRenShiGongZiMingXi.setO(O.getText().toString());
+    yhRenShiGongZiMingXi.setP(P.getText().toString());
+    yhRenShiGongZiMingXi.setQ(Q.getText().toString());
+    yhRenShiGongZiMingXi.setR(RR.getText().toString());
+    yhRenShiGongZiMingXi.setS(S.getText().toString());
+    yhRenShiGongZiMingXi.setT(T.getText().toString());
+    yhRenShiGongZiMingXi.setU(U.getText().toString());
+
+    // 检查社保基数 Spinner
+    if (V != null && V.getSelectedItem() != null) {
+        yhRenShiGongZiMingXi.setV(V.getSelectedItem().toString());
+    } else {
+        yhRenShiGongZiMingXi.setV("");
+    }
+
+    // 检查医疗基数 Spinner
+    if (W != null && W.getSelectedItem() != null) {
+        yhRenShiGongZiMingXi.setW(W.getSelectedItem().toString());
+    } else {
+        yhRenShiGongZiMingXi.setW("");
+    }
+
+    // 检查公积金基数 Spinner
+    if (X != null && X.getSelectedItem() != null) {
+        yhRenShiGongZiMingXi.setX(X.getSelectedItem().toString());
+    } else {
+        yhRenShiGongZiMingXi.setX("");
+    }
+
+    // 检查年金基数 Spinner
+    if (Y != null && Y.getSelectedItem() != null) {
+        yhRenShiGongZiMingXi.setY(Y.getSelectedItem().toString());
+    } else {
+        yhRenShiGongZiMingXi.setY("");
+    }
+
+    yhRenShiGongZiMingXi.setZ(Z.getText().toString());
+    yhRenShiGongZiMingXi.setAa(AA.getText().toString());
+    yhRenShiGongZiMingXi.setAb(AB.getText().toString());
+    yhRenShiGongZiMingXi.setAc(AC.getText().toString());
+    yhRenShiGongZiMingXi.setAd(AD.getText().toString());
+    yhRenShiGongZiMingXi.setAe(AE.getText().toString());
+    yhRenShiGongZiMingXi.setAf(AF.getText().toString());
+
+    // 检查滞纳金 Spinner
+    if (AG != null && AG.getSelectedItem() != null) {
+        yhRenShiGongZiMingXi.setAg(AG.getSelectedItem().toString());
+    } else {
+        yhRenShiGongZiMingXi.setAg("");
+    }
+
+    // 检查利息 Spinner
+    if (AH != null && AH.getSelectedItem() != null) {
+        yhRenShiGongZiMingXi.setAh(AH.getSelectedItem().toString());
+    } else {
+        yhRenShiGongZiMingXi.setAh("");
+    }
+
+    yhRenShiGongZiMingXi.setAi(AI.getText().toString());
+    yhRenShiGongZiMingXi.setAj(AJ.getText().toString());
+    yhRenShiGongZiMingXi.setAk(AK.getText().toString());
+    yhRenShiGongZiMingXi.setAl(AL.getText().toString());
+    yhRenShiGongZiMingXi.setAm(AM.getText().toString());
+    yhRenShiGongZiMingXi.setAn(AN.getText().toString());
+    yhRenShiGongZiMingXi.setAo(AO.getText().toString());
+
+    // 检查滞纳金2 Spinner
+    if (AP != null && AP.getSelectedItem() != null) {
+        yhRenShiGongZiMingXi.setAp(AP.getSelectedItem().toString());
+    } else {
+        yhRenShiGongZiMingXi.setAp("");
+    }
+
+    // 检查利息2 Spinner
+    if (AQ != null && AQ.getSelectedItem() != null) {
+        yhRenShiGongZiMingXi.setAq(AQ.getSelectedItem().toString());
+    } else {
+        yhRenShiGongZiMingXi.setAq("");
+    }
+
+    yhRenShiGongZiMingXi.setAr(AR.getText().toString());
+    yhRenShiGongZiMingXi.setAsa(ASA.getText().toString());
+    yhRenShiGongZiMingXi.setAta(ATA.getText().toString());
+    yhRenShiGongZiMingXi.setAu(AU.getText().toString());
+    yhRenShiGongZiMingXi.setAv(AV.getText().toString());
+    yhRenShiGongZiMingXi.setAw(AW.getText().toString());
+
+    // 检查年金1 Spinner
+    if (AX != null && AX.getSelectedItem() != null) {
+        yhRenShiGongZiMingXi.setAx(AX.getSelectedItem().toString());
+    } else {
+        yhRenShiGongZiMingXi.setAx("");
+    }
+
+    yhRenShiGongZiMingXi.setAy(AY.getText().toString());
+
+    // 检查演算公式 Spinner
+    if (AZ != null && AZ.getSelectedItem() != null) {
+        yhRenShiGongZiMingXi.setAz(AZ.getSelectedItem().toString());
+    } else {
+        yhRenShiGongZiMingXi.setAz("");
+    }
+
+    yhRenShiGongZiMingXi.setBa(BA.getText().toString());
+    yhRenShiGongZiMingXi.setBb(BB.getText().toString());
+    yhRenShiGongZiMingXi.setBc(BC.getText().toString());
+    yhRenShiGongZiMingXi.setBd(yhRenShiUser.getL().replace("_hr",""));
+
+    return true;
+}
 
     private void back() {
         setResult(RESULT_OK, new Intent());

@@ -1072,14 +1072,14 @@ public List<YhJinXiaoCunMingXi> getListByCpid1(String company, String cpid) {
             // 根据状态执行不同的业务逻辑
             if (shujukuValue == 1) {
                 // SQL Server 版本
-                String sql = "select * from yh_jinxiaocun_tuihuomingxi_mssql where gs_name=?  and mxtype='采购退货'  order by id";
+                String sql = "select * from yh_jinxiaocun_tuihuomingxi_mssql where gs_name=?  and mxtype='采购'  order by id";
                 base2 = new JxcServerDao();
                 List<YhJinXiaoCunMingXi> list = base2.query(YhJinXiaoCunMingXi.class, sql, company);
                 return list != null ? list : new ArrayList<>();
 
             } else {
                 // MySQL 版本
-                String sql = "select * from yh_jinxiaocun_tuihuomingxi where gs_name=? and mxtype='采购退货'  order by id";
+                String sql = "select * from yh_jinxiaocun_tuihuomingxi where gs_name=? and mxtype='采购'  order by id";
                 base = new JxcBaseDao();
                 Log.e("SQLDebug", "查询明细所有SQL: " + sql);
                 List<YhJinXiaoCunMingXi> list = base.query(YhJinXiaoCunMingXi.class, sql, company);

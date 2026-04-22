@@ -171,7 +171,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/kqb" />
+                        android:background="@drawable/rskqb" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -194,7 +194,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/ryxxgl" />
+                        android:background="@drawable/rsryxx" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -217,7 +217,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/bp" />
+                        android:background="@drawable/rsbp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -240,7 +240,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/pzb" />
+                        android:background="@drawable/rspzb" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -271,7 +271,7 @@
                 <ImageView
                     android:layout_width="65dp"
                     android:layout_height="65dp"
-                    android:background="@drawable/rsgz" />
+                    android:background="@drawable/rsgzmx" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -322,7 +322,7 @@
                 <ImageView
                     android:layout_width="65dp"
                     android:layout_height="65dp"
-                    android:background="@drawable/pzb" />  <!-- 需要准备离职图标 -->
+                    android:background="@drawable/rslzsq" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -399,7 +399,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/bs" />
+                        android:background="@drawable/rsbs" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -422,7 +422,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/kqjl" />
+                        android:background="@drawable/rskqjl" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -445,7 +445,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/bmhz" />
+                        android:background="@drawable/rsbmhz" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -468,7 +468,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/sb" />
+                        android:background="@drawable/rssb" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -499,7 +499,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/ygda" />
+                        android:background="@drawable/rsygda" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -522,7 +522,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/grsds" />
+                        android:background="@drawable/rsgrsds" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -545,7 +545,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/gzt" />
+                        android:background="@drawable/rsgzt" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -568,7 +568,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/srtx" />
+                        android:background="@drawable/rssrtx" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -599,7 +599,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/rsgzmx" />
+                        android:background="@drawable/rsjlgl" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -645,7 +645,7 @@
                     <ImageView
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/rsjlgl" />
+                        android:background="@drawable/rsmsgl" />
 
                     <TextView
                         android:layout_width="wrap_content"

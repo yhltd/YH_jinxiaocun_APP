@@ -183,6 +183,37 @@
 
             </LinearLayout>
 
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="75dp"-->
+<!--                android:paddingBottom="20dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:background="@drawable/form_foot">-->
+
+<!--                <TextView-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_width="80dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:text="所属仓库:" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/cangku"-->
+<!--                    android:textSize="15sp"-->
+<!--                    android:background="@drawable/form_input"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="45dp"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    android:hint="请输入所属仓库"-->
+<!--                    android:inputType="text"-->
+<!--                    android:textIsSelectable="false" />-->
+
+<!--            </LinearLayout>-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
@@ -201,7 +232,7 @@
                     android:textSize="15sp"
                     android:text="所属仓库:" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/cangku"
                     android:textSize="15sp"
                     android:background="@drawable/form_input"
@@ -209,9 +240,7 @@
                     android:layout_height="45dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
-                    android:hint="请输入所属仓库"
-                    android:inputType="text"
-                    android:textIsSelectable="false" />
+                    android:hint="请选择所属仓库" />
 
             </LinearLayout>
 

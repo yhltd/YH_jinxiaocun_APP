@@ -318,7 +318,8 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                     }
 
 
-                    if (list1.size() > 0) {
+//                    if (list1.size() > 0) {
+                    if (list1 != null && list1.size() > 0) {
                         class2_array = new String[list1.size() + 1];
                         class2_array[0] = "";
                         for (int i = 0; i < list1.size(); i++) {
@@ -327,6 +328,9 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                                 this_code = Float.parseFloat(list1.get(i).getCode()) + 1;
                             }
                         }
+                    } else {
+                        class2_array = new String[1];
+                        class2_array[0] = "";
                     }
 
                     code_text1 = Float.toString(this_code).replace(".0", "");
@@ -487,7 +491,17 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                     }
 
 
-                    if (list2.size() > 0) {
+//                    if (list2.size() > 0) {
+//                        class3_array = new String[list2.size() + 1];
+//                        class3_array[0] = "";
+//                        for (int i = 0; i < list2.size(); i++) {
+//                            class3_array[i + 1] = list2.get(i).getName();
+//                            if (Float.parseFloat(list2.get(i).getCode()) >= this_code) {
+//                                this_code = Float.parseFloat(list2.get(i).getCode()) + 1;
+//                            }
+//                        }
+//                    }
+                    if (list2 != null && list2.size() > 0) {
                         class3_array = new String[list2.size() + 1];
                         class3_array[0] = "";
                         for (int i = 0; i < list2.size(); i++) {
@@ -496,6 +510,10 @@ public class KeMuZongZhangChangeActivity extends AppCompatActivity {
                                 this_code = Float.parseFloat(list2.get(i).getCode()) + 1;
                             }
                         }
+                    } else {
+                        // 确保 class3_array 不为 null
+                        class3_array = new String[1];
+                        class3_array[0] = "";
                     }
 
                     code_text2 = Float.toString(this_code).replace(".0", "");

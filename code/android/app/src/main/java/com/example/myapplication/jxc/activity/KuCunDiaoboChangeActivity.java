@@ -22,10 +22,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
+import com.example.myapplication.jxc.entity.YhJinXiaoCunCangKu;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunJiChuZiLiao;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunKeHu;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunMingXi;
 import com.example.myapplication.jxc.entity.YhJinXiaoCunUser;
+import com.example.myapplication.jxc.service.YhJinXiaoCunCangKuService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunKeHuService;
 import com.example.myapplication.jxc.service.YhJinXiaoCunMingXiService;
 import com.example.myapplication.utils.LoadingDialog;
@@ -48,11 +50,16 @@ public class KuCunDiaoboChangeActivity extends AppCompatActivity {
 
     private EditText orderid;
     private Spinner kehu;
-    private EditText cangku2;
+//    private EditText cangku2;
+    private Spinner cangku2;
     private List<YhJinXiaoCunJiChuZiLiao> mingxiList;
     private List<YhJinXiaoCunMingXi> list;
 
     private String[] kehu_array;
+
+    private List<YhJinXiaoCunCangKu> cangkuList;
+    private String[] cangku_array;
+    private YhJinXiaoCunCangKuService yhJinXiaoCunCangKuService;
 
     public KuCunDiaoboChangeActivity() {
     }
@@ -101,12 +108,13 @@ public class KuCunDiaoboChangeActivity extends AppCompatActivity {
         yhJinXiaoCunUser = myApplication.getYhJinXiaoCunUser();
         yhJinXiaoCunMingXiService = new YhJinXiaoCunMingXiService();
         yhJinXiaoCunKeHuService = new YhJinXiaoCunKeHuService();
+        yhJinXiaoCunCangKuService = new YhJinXiaoCunCangKuService();
 
 
         orderid = findViewById(R.id.orderid);
 //        kehu = findViewById(R.id.kehu);
         cangku2 = findViewById(R.id.cangku2);
-//        init();
+        init();
     }
 
     @Override
@@ -123,7 +131,16 @@ public class KuCunDiaoboChangeActivity extends AppCompatActivity {
         Handler listLoadHandler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
-                kehu.setAdapter(StringUtils.cast(msg.obj));
+//                kehu.setAdapter(StringUtils.cast(msg.obj));
+
+                if (cangku_array != null) {
+                    ArrayAdapter<String> cangkuAdapter = new ArrayAdapter<>(
+                            KuCunDiaoboChangeActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item,
+                            cangku_array
+                    );
+                    cangku2.setAdapter(cangkuAdapter);
+                }
                 return true;
             }
         });
@@ -134,13 +151,25 @@ public class KuCunDiaoboChangeActivity extends AppCompatActivity {
                 SpinnerAdapter adapter = null;
                 try {
 
-                        List<YhJinXiaoCunKeHu> kehuList = yhJinXiaoCunKeHuService.getListByGys(yhJinXiaoCunUser.getGongsi(), "");
-                        kehu_array = new String[kehuList.size()];
-                        for (int i = 0; i < kehuList.size(); i++) {
-                            kehu_array[i] = kehuList.get(i).getBeizhu();
+//                        List<YhJinXiaoCunKeHu> kehuList = yhJinXiaoCunKeHuService.getListByGys(yhJinXiaoCunUser.getGongsi(), "");
+//                        kehu_array = new String[kehuList.size()];
+//                        for (int i = 0; i < kehuList.size(); i++) {
+//                            kehu_array[i] = kehuList.get(i).getBeizhu();
+//
+//                    }
+//                    adapter = new ArrayAdapter<String>(KuCunDiaoboChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, kehu_array);
 
+                    // 获取仓库列表
+                    cangkuList = yhJinXiaoCunCangKuService.getList(yhJinXiaoCunUser.getGongsi());
+                    if (cangkuList != null && cangkuList.size() > 0) {
+                        cangku_array = new String[cangkuList.size()];
+                        for (int i = 0; i < cangkuList.size(); i++) {
+                            cangku_array[i] = cangkuList.get(i).getcangku();
+                        }
+                    } else {
+                        cangku_array = new String[1];
+                        cangku_array[0] = "";
                     }
-                    adapter = new ArrayAdapter<String>(KuCunDiaoboChangeActivity.this, android.R.layout.simple_spinner_dropdown_item, kehu_array);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -188,8 +217,12 @@ public class KuCunDiaoboChangeActivity extends AppCompatActivity {
             return false;
         }
 
-        if (cangku2.getText().toString().equals("")) {
-            ToastUtil.show(KuCunDiaoboChangeActivity.this, "请输入目标仓库");
+//        if (cangku2.getText().toString().equals("")) {
+//            ToastUtil.show(KuCunDiaoboChangeActivity.this, "请输入目标仓库");
+//            return false;
+//        }
+        if (cangku2.getSelectedItem() == null || cangku2.getSelectedItem().toString().equals("")) {
+            ToastUtil.show(KuCunDiaoboChangeActivity.this, "请选择目标仓库");
             return false;
         }
 
@@ -209,7 +242,8 @@ public class KuCunDiaoboChangeActivity extends AppCompatActivity {
             yhJinXiaoCunMingXi.setShijian(spd.format(date));
             yhJinXiaoCunMingXi.setSpDm(mingxiList.get(i).getSpDm());
 //            yhJinXiaoCunMingXi.setShou_h(kehu.getSelectedItem().toString());
-            yhJinXiaoCunMingXi.setcangku2(cangku2.getText().toString());
+//            yhJinXiaoCunMingXi.setcangku2(cangku2.getText().toString());
+            yhJinXiaoCunMingXi.setcangku2(cangku2.getSelectedItem().toString());
             yhJinXiaoCunMingXi.setZhName(yhJinXiaoCunUser.getName());
             yhJinXiaoCunMingXi.setGsName(yhJinXiaoCunUser.getGongsi());
             yhJinXiaoCunMingXi.setcangku(mingxiList.get(i).getcangku());
