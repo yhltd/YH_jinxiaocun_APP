@@ -25,7 +25,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
+import com.example.myapplication.BuildConfig;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.fenquan.activity.GongZuoTaiActivity;
@@ -40,6 +42,7 @@ import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -250,21 +253,42 @@ public class KeShiTongJiActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String[] title = {"日期", "学生姓名", "培训课程", "课时","教师姓名", "每节课时金额"};
                 String fileName = "课时统计" + System.currentTimeMillis() + ".xls";
+
+                // 1. 初始化Excel文件
                 ExcelUtil.initExcel(fileName, "课时统计", title);
+                // 2. 写入数据
                 ExcelUtil.jiaowu_keshitongjiToExcel(list, fileName, MyApplication.getContext());
-                String filePath = null;
+
                 try {
-                    filePath = Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统/" + fileName;
-                    Uri uri = Uri.parse("file://" + filePath);
+                    // 3. 构建文件路径和URI
+                    File file = new File(Environment.getExternalStorageDirectory(), "云合未来一体化系统/" + fileName);
+
+                    // 4. 创建Intent并设置类型
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(uri);
+                    // 关键：使用FileProvider获取安全的content:// URI
+                    Uri fileUri = FileProvider.getUriForFile(
+                            KeShiTongJiActivity.this, // 使用当前Activity作为Context
+                            BuildConfig.APPLICATION_ID + ".fileprovider", //  authority必须和Manifest中的一致
+                            file
+                    );
+
+                    // 关键：指定MIME类型
+                    intent.setDataAndType(fileUri, "application/vnd.ms-excel");
+
+                    // 关键：授予临时读取权限，这是让其他App能打开文件的关键
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                    // 5. 启动Activity
                     startActivity(intent);
-                } catch (IOException e) {
+
+                } catch (Exception e) {
                     e.printStackTrace();
+                    ToastUtil.show(KeShiTongJiActivity.this, "打开文件失败，请检查是否安装了WPS或Excel软件");
                 }
             }
         };
     }
+
 
     public View.OnClickListener updateClick() {
         return new View.OnClickListener() {

@@ -39,6 +39,7 @@ import com.example.myapplication.utils.LoadingDialog;
 import com.example.myapplication.utils.StringUtils;
 import com.example.myapplication.utils.ToastUtil;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -200,10 +201,18 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
                     item.put("kehu", list.get(i).getKehu());
                     item.put("receipts", list.get(i).getReceipts());
                     item.put("receivable", list.get(i).getReceivable());
-                    item.put("weishou", list.get(i).getReceivable().subtract(list.get(i).getReceipts()));
+                    BigDecimal rec = list.get(i).getReceivable();
+                    BigDecimal recpt = list.get(i).getReceipts();
+                    BigDecimal safeRec = rec != null ? rec : BigDecimal.ZERO;
+                    BigDecimal safeRecpt = recpt != null ? recpt : BigDecimal.ZERO;
+                    item.put("weishou", safeRec.subtract(safeRecpt));
                     item.put("cope", list.get(i).getCope());
                     item.put("payment", list.get(i).getPayment());
-                    item.put("weifu", list.get(i).getCope().subtract(list.get(i).getPayment()));
+                    BigDecimal cp = list.get(i).getCope();
+                    BigDecimal py = list.get(i).getPayment();
+                    BigDecimal safeCp = cp != null ? cp : BigDecimal.ZERO;
+                    BigDecimal safePy = py != null ? py : BigDecimal.ZERO;
+                    item.put("weifu", safeCp.subtract(safePy));
                     data.add(item);
                 }
 
@@ -261,12 +270,23 @@ public class JiJianZongZhangActivity extends AppCompatActivity {
 
                         xiangQingYe.setA(list.get(position).getProject());
                         xiangQingYe.setB(list.get(position).getKehu());
-                        xiangQingYe.setC(list.get(position).getReceipts().toString());
-                        xiangQingYe.setD(list.get(position).getReceivable().toString());
-                        xiangQingYe.setE(list.get(position).getReceivable().subtract(list.get(position).getReceipts()).toString());
-                        xiangQingYe.setF(list.get(position).getCope().toString());
-                        xiangQingYe.setG(list.get(position).getPayment().toString());
-                        xiangQingYe.setH(list.get(position).getCope().subtract(list.get(position).getPayment()).toString());
+                        BigDecimal rec = list.get(position).getReceivable();
+                        BigDecimal recpt = list.get(position).getReceipts();
+                        BigDecimal safeRec = rec != null ? rec : BigDecimal.ZERO;
+                        BigDecimal safeRecpt = recpt != null ? recpt : BigDecimal.ZERO;
+
+                        xiangQingYe.setC(safeRecpt.toString());
+                        xiangQingYe.setD(safeRec.toString());
+                        xiangQingYe.setE(safeRec.subtract(safeRecpt).toString());
+
+                        BigDecimal cp = list.get(position).getCope();
+                        BigDecimal py = list.get(position).getPayment();
+                        BigDecimal safeCp = cp != null ? cp : BigDecimal.ZERO;
+                        BigDecimal safePy = py != null ? py : BigDecimal.ZERO;
+
+                        xiangQingYe.setF(safeCp.toString());
+                        xiangQingYe.setG(safePy.toString());
+                        xiangQingYe.setH(safeCp.subtract(safePy).toString());
 
                         Intent intent = new Intent(JiJianZongZhangActivity.this, XiangQingYeActivity.class);
                         MyApplication myApplication = (MyApplication) getApplication();

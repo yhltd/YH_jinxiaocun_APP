@@ -27,7 +27,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
+import com.example.myapplication.BuildConfig;
 import com.example.myapplication.MyApplication;
 import com.example.myapplication.R;
 import com.example.myapplication.XiangQingYeActivity;
@@ -302,19 +304,37 @@ public class CaiGouWeiRuKuActivity extends AppCompatActivity {
                 String fileName = "明细" + System.currentTimeMillis() + ".xls";
                 ExcelUtil.initExcel(fileName, "明细", title);
                 ExcelUtil.mingxiToExcel(list, fileName, MyApplication.getContext());
-                String filePath = null;
+
                 try {
-                    filePath = Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统/" + fileName;
-                    Uri uri = Uri.parse("file://" + filePath);
+                    // 构建文件路径
+                    File file = new File(Environment.getExternalStorageDirectory(), "云合未来一体化系统/" + fileName);
+
+                    // 创建Intent并设置类型
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(uri);
+                    // 关键：使用FileProvider获取安全的content:// URI
+                    Uri fileUri = FileProvider.getUriForFile(
+                            CaiGouWeiRuKuActivity.this,
+                            BuildConfig.APPLICATION_ID + ".fileprovider",
+                            file
+                    );
+
+                    // 关键：指定MIME类型
+                    intent.setDataAndType(fileUri, "application/vnd.ms-excel");
+
+                    // 关键：授予临时读取权限
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                    // 启动Activity
                     startActivity(intent);
-                } catch (IOException e) {
+
+                } catch (Exception e) {
                     e.printStackTrace();
+                    ToastUtil.show(CaiGouWeiRuKuActivity.this, "打开文件失败，请检查是否安装了WPS或Excel软件");
                 }
             }
         };
     }
+
 
     private String filePath;
 

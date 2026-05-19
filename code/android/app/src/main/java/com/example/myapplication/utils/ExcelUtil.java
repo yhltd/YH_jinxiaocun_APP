@@ -101,9 +101,6 @@ public class ExcelUtil {
                 file.mkdirs();
             }
             File saveFile = new File(file, filePath);
-            if (!saveFile.exists()) {
-                saveFile.createNewFile();
-            }
 
             workbook = Workbook.createWorkbook(saveFile);
             //设置表格的名字
@@ -140,22 +137,24 @@ public class ExcelUtil {
     public static void mingxiToExcel(List<YhJinXiaoCunMingXi> list, String fileName, Context c) {
         if (list != null && list.size() > 0) {
             WritableWorkbook writebook = null;
-            InputStream in = null;
             try {
                 WorkbookSettings setEncode = new WorkbookSettings();
                 setEncode.setEncoding(UTF8_ENCODING);
-                File file = new File(Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统");
+                File file = new File(c.getExternalFilesDir(null), "云合未来一体化系统");
                 makeDir(file);
                 File saveFile = new File(file, fileName);
-                if (!saveFile.exists()) {
-                    saveFile.createNewFile();
+
+                if (saveFile.exists()) {
+                    InputStream in = new FileInputStream(saveFile);
+                    Workbook workbook = Workbook.getWorkbook(in);
+                    writebook = Workbook.createWorkbook(saveFile, workbook);
+                    in.close();
+                } else {
+                    writebook = Workbook.createWorkbook(saveFile);
+                    writebook.createSheet("Sheet1", 0);
                 }
 
-                in = new FileInputStream(saveFile);
-                Workbook workbook = Workbook.getWorkbook(in);
-                writebook = Workbook.createWorkbook(saveFile, workbook);
                 WritableSheet sheet = writebook.getSheet(0);
-
 
                 for(int i=0;i<list.size();i++){
                     sheet.addCell(new Label(0, i + 1, list.get(i).getOrderid(), arial12format));
@@ -173,21 +172,15 @@ public class ExcelUtil {
                     sheet.setRowView(i + 1, 350);
                 }
                 writebook.write();
-                Toast.makeText(c, "成功！请前往"+Environment.getExternalStorageDirectory().getCanonicalPath()+"/云合未来一体化系统", Toast.LENGTH_SHORT).show();
+                Toast.makeText(c, "成功！请前往" + file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 e.printStackTrace();
+                Toast.makeText(c, "导出失败: " + e.getMessage(), Toast.LENGTH_LONG).show();
             } finally {
                 if (writebook != null) {
                     try {
                         writebook.close();
                     } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                if (in != null) {
-                    try {
-                        in.close();
-                    } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }

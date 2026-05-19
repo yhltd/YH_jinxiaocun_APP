@@ -247,17 +247,25 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
                     HashMap<String, Object> item = new HashMap<>();
                     item.put("company", list.get(i).getCompany());
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    Date date = new Date(list.get(i).getInsert_date().getTime());
-                    String java_date = sdf.format(date);
-                    item.put("insert_date", java_date);
+                    Date insertDate = list.get(i).getInsert_date();
+
+                    item.put("insert_date", insertDate);
                     item.put("project", list.get(i).getProject());
                     item.put("kehu", list.get(i).getKehu());
                     item.put("receipts", list.get(i).getReceipts());
                     item.put("receivable", list.get(i).getReceivable());
-                    item.put("weishou", list.get(i).getReceivable().subtract(list.get(i).getReceipts()));
+                    BigDecimal rec = list.get(i).getReceivable();
+                    BigDecimal recpt = list.get(i).getReceipts();
+                    BigDecimal safeRec = rec != null ? rec : BigDecimal.ZERO;
+                    BigDecimal safeRecpt = recpt != null ? recpt : BigDecimal.ZERO;
+                    item.put("weishou", safeRec.subtract(safeRecpt));
                     item.put("cope", list.get(i).getCope());
                     item.put("payment", list.get(i).getPayment());
-                    item.put("weifu", list.get(i).getCope().subtract(list.get(i).getPayment()));
+                    BigDecimal cp = list.get(i).getCope();
+                    BigDecimal py = list.get(i).getPayment();
+                    BigDecimal safeCp = cp != null ? cp : BigDecimal.ZERO;
+                    BigDecimal safePy = py != null ? py : BigDecimal.ZERO;
+                    item.put("weifu", safeCp.subtract(safePy));
                     item.put("accounting", list.get(i).getAccounting());
                     item.put("nashuijine", list.get(i).getNashuijine());
                     item.put("yijiaoshuijine", list.get(i).getYijiaoshuijine());
@@ -412,15 +420,27 @@ public class JiJianTaiZhangActivity extends AppCompatActivity {
         xiangQingYe.setM_title("未交税金额:");
         xiangQingYe.setN_title("摘要:");
 
-        xiangQingYe.setA(list.get(position).getInsert_date().toString());
+        xiangQingYe.setA(list.get(position).getInsert_date() != null ? list.get(position).getInsert_date().toString() : "无日期");
         xiangQingYe.setB(list.get(position).getProject());
         xiangQingYe.setC(list.get(position).getKehu());
-        xiangQingYe.setD(list.get(position).getReceipts().toString());
-        xiangQingYe.setE(list.get(position).getReceivable().toString());
-        xiangQingYe.setF(list.get(position).getReceivable().subtract(list.get(position).getReceipts()).toString());
-        xiangQingYe.setG(list.get(position).getCope().toString());
-        xiangQingYe.setH(list.get(position).getPayment().toString());
-        xiangQingYe.setI(list.get(position).getCope().subtract(list.get(position).getPayment()).toString());
+
+        BigDecimal rec = list.get(position).getReceivable();
+        BigDecimal recpt = list.get(position).getReceipts();
+        BigDecimal safeRec = rec != null ? rec : BigDecimal.ZERO;
+        BigDecimal safeRecpt = recpt != null ? recpt : BigDecimal.ZERO;
+
+        xiangQingYe.setD(safeRecpt.toString());
+        xiangQingYe.setE(safeRec.toString());
+        xiangQingYe.setF(safeRec.subtract(safeRecpt).toString());
+
+        BigDecimal cp = list.get(position).getCope();
+        BigDecimal py = list.get(position).getPayment();
+        BigDecimal safeCp = cp != null ? cp : BigDecimal.ZERO;
+        BigDecimal safePy = py != null ? py : BigDecimal.ZERO;
+
+        xiangQingYe.setG(safeCp.toString());
+        xiangQingYe.setH(safePy.toString());
+        xiangQingYe.setI(safeCp.subtract(safePy).toString());
         xiangQingYe.setJ(list.get(position).getAccounting());
         xiangQingYe.setK(
                 list.get(position).getNashuijine() != null ?
